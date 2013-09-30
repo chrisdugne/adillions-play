@@ -6,10 +6,33 @@ this.UserManager = {};
 
 //-------------------------------------------//
 
+UserManager.receivedPlayer = function(player)
+{
+   App.user.set("uid",              player.uid);
+   App.user.set("email",            player.email);
+   App.user.set("userName",         player.userName);
+   App.user.set("firstName",        player.firstName);
+   App.user.set("lastName",         player.lastName);
+   App.user.set("draws",            player.draws);
+
+   App.user.set("currentPoints",    player.currentPoints);
+   App.user.set("idlePoints",       player.idlePoints);
+   App.user.set("totalPoints",      player.totalPoints);
+
+   App.user.set("facebookId",       player.facebookId);
+   
+   App.user.set("loggedIn",         true)   
+
+   App.message("Welcome back " + player.userName + " !", true)
+}
+
+
+//-------------------------------------------//
+
 UserManager.getPlayer = function()
 {
    var params = new Object();
-
+   
    $.ajax({
       type: "POST",  
       url: "/player",
@@ -17,12 +40,42 @@ UserManager.getPlayer = function()
       dataType: "json",
       success: function (player, textStatus, jqXHR)
       {
-         App.user.set("uid",        player.uid);
-         App.user.set("email",      player.email);
-         App.user.set("firstName",  player.firstName);
-         App.user.set("lastName",   player.lastName);
-         App.user.set("draws",      player.draws);
-         App.message("Welcome back " + player.firstName + " " + player.lastName + " !", true)
+         UserManager.receivedPlayer(player)
+      }
+   });
+}
+
+//-------------------------------------------//
+
+UserManager.getPlayerByFacebookId = function()
+{
+   var params = new Object();
+   params["facebookData"] = App.user.facebookData;
+
+   $.ajax({
+      type: "POST",  
+      url: "/playerFromFB",
+      data: JSON.stringify(params),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (player)
+      {
+         UserManager.receivedPlayer(player)
+      },
+      error:function(){
+         
+         UserManager.setupForms()
+         
+         $("#signinFBWindow").reveal({
+            animation: 'fade',
+            animationspeed: 100, 
+         });
+         
+         $("#fbForm_title").text("Welcome " + App.user.facebookData.name + " !" )
+         $("#fbForm_firstName").val(App.user.facebookData.first_name)
+         $("#fbForm_lastName").val(App.user.facebookData.last_name)
+         $("#fbForm_birthDate").val(App.user.facebookData.birthday)
+         $("#facebookPicture").attr('src', App.user.facebookData.picture.data.url)
       }
    });
 }
@@ -42,6 +95,9 @@ UserManager.signin = function()
       App.user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
       App.user.referrerId  = $("#referrerId").val() 
       
+      delete App.user.facebookId
+      delete App.user.facebookName 
+      
       var passwordHash  = CryptoJS.SHA512($("#password").val());
       var password512   = passwordHash.toString(CryptoJS.enc.Hex)
       App.user.password = password512
@@ -51,23 +107,73 @@ UserManager.signin = function()
       
       var params = new Object();
       params["user"] = App.user;
-      
+
       $.ajax({
          type: "POST",  
          url: "/signin",
          data: JSON.stringify(params),  
          contentType: "application/json; charset=utf-8",
          dataType: "json",
+         success: function (response){
+            App.free()
+
+            $("#loginWindow").reveal({
+               animation: 'fade',
+               animationspeed: 100, 
+            });
+
+            $("#loginemail").val(App.user.email)
+         },
+         error: function (data){
+            //no json returned -> reach error
+            App.free()
+            if(data.responseText == "email"){
+               App.message("_An account with this email exists", false)
+            }
+            else if(data.responseText == "names"){
+               App.message("_An account with these names exists", false)
+            }
+         }
+      });
+
+   }
+}
+
+
+//-------------------------------------------//
+
+UserManager.signinFB = function()
+{
+   
+   if($("#fbForm").valid()){
+      App.user.email                = App.user.facebookData.email
+      App.user.facebookName         = App.user.facebookData.name
+      App.user.facebookId           = App.user.facebookData.id
+      App.user.firstName            = $("#fbForm_firstName").val() 
+      App.user.lastName             = $("#fbForm_lastName").val() 
+      App.user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
+      App.user.referrerId           = $("#fbForm_referrerId").val() 
+      
+      $("#signinFBWindow").trigger("reveal:close");
+      App.wait()
+      
+      var params = new Object();
+      params["user"] = App.user;
+      
+      $.ajax({
+         type: "POST",  
+         url: "/signinFromFacebook",
+         data: JSON.stringify(params),  
+         contentType: "application/json; charset=utf-8",
+         dataType: "json",
          success: function (player){
             if(player){
                App.free()
-               $("#loginWindow").reveal({
-                  animation: 'fade',
-                  animationspeed: 100, 
-               });
+               UserManager.receivedPlayer(player)
             }
             else{
-               App.message("_Email already taken", false)
+               // todo merge
+               App.message("_An account with these names exists", false)
             }
          }
       });
@@ -206,6 +312,12 @@ UserManager.setupForms = function()
         changeYear: true,
         yearRange: "-100:-12"
       });
+
+      $( "#fbForm_birthDate" ).datepicker({
+         changeMonth: true,
+         changeYear: true,
+         yearRange: "-100:-12"
+      });
     });
    
    $.validator.addMethod(
@@ -265,6 +377,32 @@ UserManager.setupForms = function()
          repeatPassword: {
             required: "Required",
             same: "Must match password !"
+         }
+      }
+   });
+   
+
+   $("#fbForm").validate({
+      rules: {
+         firstName: {
+            required: true,
+         },
+         lastName: {
+            required: true,
+         },
+         birthDate: {
+            required: true,
+         },
+      },
+      messages: {
+         firstName: {
+            required: "Required",
+         },
+         lastName: {
+            required: "Required",
+         },
+         birthDate: {
+            required: "Required",
          }
       }
    });

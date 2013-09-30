@@ -3,7 +3,7 @@
 <div id="header">
 	<div class="span1 pointerCursor" {{action openHome}}></div>
 	<div class="span1 pointerCursor" {{action openHome}}>
-		<h1>@Messages("applicationName")</h1>
+		<h1>Adillions</h1>
 	</div>
 
 	<!-- --------------------------- -->
@@ -25,6 +25,7 @@
 	{{#if user.loggedIn}}
 		<li id="userDisplay" class="btn-large btn-primary headerButton">{{user.firstName}} {{user.lastName}}</li>
 		<li {{action play}} class="btn-large btn-primary headerButton">{{App.translations.messages.Play}}</li>
+		<li {{action logout}} class="btn-large btn-primary headerButton">{{App.translations.messages.Logout}}</li>
 	{{else}}
 		<li {{action openSignin}} class="btn-large btn-primary headerButton">{{App.translations.messages.SignIn}}</li>
 		<li {{action openLogin}} class="btn-large btn-primary headerButton">{{App.translations.messages.LogIn}}</li>

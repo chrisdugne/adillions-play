@@ -14,6 +14,7 @@ import play.libs.Json;
 import play.mvc.Action;
 import play.mvc.Http;
 import play.mvc.Result;
+import views.html.defaultpages.error;
 import domain.AccountManager;
 
 public class SecurityController extends Action.Simple {
@@ -51,6 +52,24 @@ public class SecurityController extends Action.Simple {
 	}
 
 	//----------------------------------------------------------------------------//
+	
+	public static Result getPlayerFromFB()
+	{
+		JsonNode params = request().body().asJson();
+		JsonNode facebookData = params.get("facebookData");
+		
+		Player player = AccountManager.getPlayerByFacebookId(facebookData.get("id").asText());
+		
+		if(player != null){
+			return ok(gson.toJson(player));
+		}
+		else{
+			return unauthorized();
+		}
+		
+	}
+	
+	//----------------------------------------------------------------------------//
 
 	public static Result login() {
 		JsonNode params = request().body().asJson();
@@ -78,6 +97,29 @@ public class SecurityController extends Action.Simple {
 		JsonNode userJson = params.get("user");
 		
 		if(!AccountManager.existEmail(userJson)){
+			if(!AccountManager.existNames(userJson)){
+				System.out.println("create account");
+				Player player = AccountManager.createNewPlayer(userJson);
+				return ok(gson.toJson(player));
+			}
+			else{
+				return ok("names");
+			}
+		}
+		else{
+			return ok("email");
+		}
+		
+	}
+
+	// ---------------------------------------------//
+	
+	public static Result signinFromFacebook()
+	{
+		JsonNode params = request().body().asJson();
+		JsonNode userJson = params.get("user");
+		
+		if(!AccountManager.existNames(userJson)){
 			Player player = AccountManager.createNewPlayer(userJson);
 			return ok(gson.toJson(player));
 		}

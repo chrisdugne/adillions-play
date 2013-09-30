@@ -10,6 +10,11 @@
 
       //-------------------------------------------//
       
+      FACEBOOK_APP_ID      : "170148346520274",
+      FACEBOOK_APP_SECRET  : "887e8f7abb9b1cb9238a097e06585ae2",
+
+      //-------------------------------------------//
+      
       APP_READY:false,
 
       //-------------------------------------------//
@@ -27,7 +32,8 @@
    App.Globals = Globals.create();
    App.youtubeManager = new YoutubeManager();
    
-   UserManager.getPlayer()
+   Facebook.init()
+//   UserManager.getPlayer()
    
    //------------------------------------------------------//
    // create footer email

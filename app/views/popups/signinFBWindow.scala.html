@@ -1,0 +1,62 @@
+<div id="signinFBWindow" class="reveal-modal">
+	<a id="lightbox-close" class="close-reveal-modal btn btn-rounded btn-icon-only btn-dark closer"> <i
+		class="icon icon-ex-white-outline"></i></a> <br />
+
+	<div class="row-fluid">
+		<div class="span5 offset2">
+			<p id="fbForm_title" class="popuptitle"></p>
+		</div>
+		<div class="span3 offset2">
+			<img title="icon" id="facebookPicture"></img>
+		</div>
+	</div>
+
+	<br />
+
+	<div id="signin" class="row-fluid">
+
+		<div class="span5 offset1">
+			
+			<form id="fbForm">
+
+				<div class="clearfix  " id="name_field">
+					<label for="firstName">First name</label>
+					<div class="input">
+						<input type="text" id="fbForm_firstName" name="firstName" > 
+					</div>
+				</div>
+
+				<div class="clearfix  " id="name_field">
+					<label for="lastName">Last name</label>
+					<div class="input">
+						<input type="text" id="fbForm_lastName" name="lastName" > 
+					</div>
+				</div>
+
+				<label for="birthDate">Birth date</label>
+				<input type="text" id="fbForm_birthDate" name="birthDate" readonly style="cursor:pointer!important;"/>
+				
+				<div class="clearfix  " id="name_field">
+					<label for="referrerId">Referrer Id</label>
+					<div class="input">
+						<input type="text" id="fbForm_referrerId" name="referrerId" > 
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="span5">
+			<p>Obviously we will always use your Facebook names everywhere.</p>
+			<p> That being said, you must provide us with real names and birthdates in order to get paid.</p>
+			<br/>
+			<br/>
+			<br/>
+			<form id="signinForm2">
+				<div {{action signinFB}} class="btn-large btn-primary headerButton">{{App.translations.messages.SignIn}}</div>
+			</form>
+		</div>
+
+	</div>
+
+	<br />
+</div>

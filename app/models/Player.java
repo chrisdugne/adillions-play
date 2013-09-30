@@ -1,6 +1,5 @@
 package models;
 
-import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -19,6 +18,13 @@ public class Player extends Model {
 	@Expose
 	private String uid;
 
+	@Expose
+	private String facebookId;
+
+	// FB : facebookData.name
+	// A	: firstName + lastName 
+	@Expose
+	private String userName;
    
 	@Expose
 	private String email;
@@ -34,10 +40,13 @@ public class Player extends Model {
 	private String birthDate;
 	
 	@Expose
-	private int points;
+	private int currentPoints;
 	
-	@Expose 
-	private List<String> awayPoints; // utilise pour les messages "points de parrainage" par exemple
+	@Expose
+	private int idlePoints;
+
+	@Expose
+	private int totalPoints;
 	
 
 	// -----------------------------------------------------------------------------------------------//
@@ -78,6 +87,21 @@ public class Player extends Model {
           return null;
       }
   }
+	
+	// -----------------------------------------------------------------------------------------------//
+	
+	public static Player findByFacebookId(String facebookId) {
+		if (facebookId == null) {
+			return null;
+		}
+		
+		try  {
+			return find.where().eq("facebookId", facebookId).findUnique();
+		}
+		catch (Exception e) {
+			return null;
+		}
+	}
 	
 	// -----------------------------------------------------------------------------------------------//
 	
@@ -143,6 +167,45 @@ public class Player extends Model {
 
 	public void setCreationDate(Long creationDate) {
 		this.creationDate = creationDate;
+	}
+	public String getFacebookId() {
+		return facebookId;
+	}
+
+	public void setFacebookId(String facebookId) {
+		this.facebookId = facebookId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public int getCurrentPoints() {
+		return currentPoints;
+	}
+
+	public void setCurrentPoints(int currentPoints) {
+		this.currentPoints = currentPoints;
+	}
+
+	public int getIdlePoints() {
+		return idlePoints;
+	}
+
+	public void setIdlePoints(int idlePoints) {
+		this.idlePoints = idlePoints;
+	}
+
+	public int getTotalPoints() {
+		return totalPoints;
+	}
+
+	public void setTotalPoints(int totalPoints) {
+		this.totalPoints = totalPoints;
 	}
 	
 	// -----------------------------------------------------------------------------------------------//

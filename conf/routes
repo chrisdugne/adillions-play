@@ -23,8 +23,11 @@ GET     /mvideo           			controllers.Application.mobileVideo()
 #   SecurityController 
 
 POST 	/signin						controllers.SecurityController.signIn()
+POST 	/signinFromFacebook			controllers.SecurityController.signinFromFacebook()
 POST    /login                      controllers.SecurityController.login()
-#POST    /logout                    controllers.SecurityController.logout()
+POST    /playerFromFB               controllers.SecurityController.getPlayerFromFB()
+
+#POST   /logout                    controllers.SecurityController.logout()
 
 #---------------------------------------------------------------------------
 #   AccountService 

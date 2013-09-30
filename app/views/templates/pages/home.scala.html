@@ -1,5 +1,6 @@
 @import views.html.popups.loginWindow;
 @import views.html.popups.signinWindow;
+@import views.html.popups.signinFBWindow;
 @import views.html.popups.videoWindow;
 
 <div class="container-fluid" id="homeContent">
@@ -16,8 +17,8 @@
 		<div id="homeImage"></div>
 
 		<div class="row-fluid" id="part1">
-			<h1 class="homeTitle">{{App.translations.messages.AwesomeMaps}}</h1>
-			<p class="homeSubtitle">{{App.translations.messages.Everywhere}}</p>
+			<h1 class="homeTitle">Social Luck</h1>
+			<p class="homeSubtitle">Everywhere</p>
 
 		</div>
 
@@ -34,5 +35,6 @@
 </div>
 
 @signinWindow()
+@signinFBWindow()
 @loginWindow()
 @videoWindow()

@@ -38,6 +38,12 @@
 
 			//-------------------------------------------------------//
 			
+			facebookLogin         : function(){
+			   $("#signinWindow").trigger("reveal:close");
+			   $("#loginWindow").trigger("reveal:close");
+			   Facebook.popupLogin()
+			},
+			
 			login         : function(){
             UserManager.login()
 			},
@@ -46,39 +52,33 @@
 		      UserManager.signin()
 			},
 			
+			signinFB       : function(){
+			   UserManager.signinFB()
+			},
+			
+			//-------------------------------------------------------//
+			   
+			logout         : function(){
+			   Facebook.logout()
+			   App.user.set("loggedIn", false)
+			},
+
+			//-------------------------------------------------------//
+			
+			play         : function(){
+			   
+			},
+			
 			//-------------------------------------------------------//
 			// Routes used when calling Ember.Route.transitionTo
 			//-------------------//
 			
 			home           : App.HomeRouting,
-			more           : App.MoreRouting,
-			usechrome      : App.UsechromeRouting,
 			team           : App.TeamRouting,
 			credits        : App.CreditsRouting,
-			jobs           : App.JobsRouting,
 			blog           : App.BlogRouting,
-			features       : App.FeaturesRouting,
 			presentation   : App.PresentationRouting,
-			prices         : App.PricesRouting,
-			screenshots    : App.ScreenshotsRouting,
-			allNews        : App.AllNewsRouting,
-			cartotheque    : App.CartothequeRouting,
 			
-			tryscreen      : App.TryscreenRouting,
-			dashboard      : App.DashboardRouting,
-			
-			styles         : App.StylesRouting,
-			styleEditor    : App.StyleEditorRouting,
-			
-			colorbars      : App.ColorbarsRouting,
-			colorbarEditor : App.ColorbarEditorRouting,
-
-			datasets       : App.DatasetsRouting,
-			fonts          : App.FontsRouting,
-			icons          : App.IconsRouting,
-
-			viewMap        : App.ViewMapRouting,
-			mapCreation    : App.MapCreationRouting
 		})
 	})
 	
