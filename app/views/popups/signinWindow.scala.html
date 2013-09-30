@@ -1,0 +1,81 @@
+<div id="signinWindow" class="reveal-modal">
+	<a id="lightbox-close" class="close-reveal-modal btn btn-rounded btn-icon-only btn-dark closer"> <i
+		class="icon icon-ex-white-outline"></i></a> <br />
+
+	<div class="row-fluid">
+		<div class="span5 offset2">
+			<p class="popuptitle">Sign In</p>
+		</div>
+		<div class="span3 offset2">
+			or sign up using Facebook
+			<a href="/authenticate/facebook"> <img alt="facebook icon" title="facebook"	src='@routes.Assets.at("images/icons/facebook-24x24.png")'></a>
+		</div>
+	</div>
+
+	<br />
+
+	<div id="signin" class="row-fluid">
+
+		<div class="span5 offset1">
+			
+			<form id="signinForm1">
+
+				<div class="clearfix  " id="name_field">
+					<label for="firstName">First name</label>
+					<div class="input">
+						<input type="text" id="firstName" name="firstName" value=""> 
+					</div>
+				</div>
+
+				<div class="clearfix  " id="name_field">
+					<label for="lastName">Last name</label>
+					<div class="input">
+						<input type="text" id="lastName" name="lastName" value=""> 
+					</div>
+				</div>
+
+				<div class="clearfix  " id="email_field">
+					<label for="email">E-mail</label>
+					<div class="input">
+						<input type="text" id="email" name="email" value="">
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="span5">
+			
+			<form id="signinForm2">
+
+				<div class="clearfix  " id="password_field">
+					<label for="password">Password</label>
+					<div class="input">
+						<input type="password" id="password" name="password">
+					</div>
+				</div>
+
+				<div class="clearfix  " id="repeatPassword_field">
+					<label for="repeatPassword">Repeat password</label>
+					<div class="input">
+						<input type="password" id="repeatPassword" name="repeatPassword"> 
+					</div>
+				</div>
+				
+				<label for="birthDate">Birth date</label>
+				<input type="text" id="birthDate" name="birthDate" readonly style="cursor:pointer!important;"/>
+
+				<div class="clearfix  " id="name_field">
+					<label for="referrerId">Referrer Id</label>
+					<div class="input">
+						<input type="text" id="referrerId" name="referrerId" value=""> 
+					</div>
+				</div>
+
+				<div {{action signin}} class="btn-large btn-primary headerButton">{{App.translations.messages.SignIn}}</div>
+			</form>
+		</div>
+
+	</div>
+
+	<br />
+</div>

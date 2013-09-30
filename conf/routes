@@ -1,0 +1,39 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+####################################################################################
+# Home page
+GET     /                           controllers.Application.home()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+####################################################################################
+# Mobile pages
+
+GET     /msignin           			controllers.Application.mobileSignin()
+GET     /mlogin           			controllers.Application.mobileLogin()
+GET     /mvideo           			controllers.Application.mobileVideo()
+
+####################################################################################
+# Services
+
+#---------------------------------------------------------------------------
+#   SecurityController 
+
+POST 	/signin						controllers.SecurityController.signIn()
+POST    /login                      controllers.SecurityController.login()
+#POST    /logout                    controllers.SecurityController.logout()
+
+#---------------------------------------------------------------------------
+#   AccountService 
+
+POST    /player                     controllers.AccountService.getPlayer()
+
+#---------------------------------------------------------------------------
+# deprecated
+#POST /login						controllers.AccountService.logIn()
+#POST /autoLogIn					controllers.AccountService.autoLogIn()
+
+#---------------------------------------------------------------------------

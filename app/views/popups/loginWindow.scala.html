@@ -1,0 +1,45 @@
+<div id="loginWindow" class="reveal-modal">
+	<a id="lightbox-close" class="close-reveal-modal btn btn-rounded btn-icon-only btn-dark closer"> <i
+		class="icon icon-ex-white-outline"></i></a> <br />
+	
+	<div class="row-fluid">
+		<div class="span5 offset2">
+			<p class="popuptitle">Log In</p>
+		</div>
+		<div class="span3 offset2">
+			or login with Facebook
+			<a href="/authenticate/facebook"> <img alt="facebook icon" title="facebook"	src='@routes.Assets.at("images/icons/facebook-24x24.png")'></a>
+		</div>
+	</div>
+
+	<br />
+
+	<div id="login" class="row-fluid">
+
+		<div class="span5 offset1">
+			
+			<form id="loginForm">
+
+				<div class="clearfix  " id="email_field">
+					<label for="loginemail">E-mail</label>
+					<div class="input">
+						<input type="text" id="loginemail" name="loginemail" value="">
+					</div>
+				</div>
+
+				<div class="clearfix  " id="password_field">
+					<label for="loginpassword">Password</label>
+					<div class="input">
+						<input type="password" id="loginpassword" name="loginpassword">
+					</div>
+				</div>
+
+			</form>
+
+			<div {{action login}} class="btn-large btn-primary headerButton">{{App.translations.messages.LogIn}}</div>
+		</div>
+
+	</div>
+
+	<br />
+</div>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+<title>Adillions - Sign in</title>
+<link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/favicon.png")'>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/bootstrap.min.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/responsive.min.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/mobile.css")' />
+</head>
+
+<body id="body" class="mobile">
+	<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
+		
+	<div class="offset1">
+		<p class="popuptitle">Sign In</p>
+		or login with Facebook 
+		<a href="/authenticate/facebook"> 
+			<img alt="facebook icon" title="facebook" src='@routes.Assets.at("images/icons/facebook-24x24.png")'>
+		</a>
+	</div>
+
+	<br />
+	<br />
+
+	<form id="signinForm1">
+
+		<div class="clearfix  " id="name_field">
+			<label for="firstName">First name</label>
+			<div class="input">
+				<input type="text" id="firstName" name="firstName" value=""> 
+			</div>
+		</div>
+
+		<div class="clearfix  " id="name_field">
+			<label for="lastName">Last name</label>
+			<div class="input">
+				<input type="text" id="lastName" name="lastName" value=""> 
+			</div>
+		</div>
+
+		<div class="clearfix  " id="email_field">
+			<label for="email">E-mail</label>
+			<div class="input">
+				<input type="text" id="email" name="email" value="">
+			</div>
+		</div>
+	</form>
+	<form id="signinForm2">
+		<div class="clearfix  " id="password_field">
+			<label for="password">Password</label>
+			<div class="input">
+				<input type="password" id="password" name="password">
+			</div>
+		</div>
+
+		<div class="clearfix  " id="repeatPassword_field">
+			<label for="repeatPassword">Repeat password</label>
+			<div class="input">
+				<input type="password" id="repeatPassword" name="repeatPassword"> 
+			</div>
+		</div>
+		
+		<label for="birthDate">Birth date</label>
+		<input type="text" id="birthDate" name="birthDate" readonly style="cursor:pointer!important;"/>
+
+		<div class="clearfix  " id="name_field">
+			<label for="referrerId">Referrer Id</label>
+			<div class="input">
+				<input type="text" id="referrerId" name="referrerId" value=""> 
+			</div>
+		</div>
+	</form>
+
+	<div id="validateButton" class="btn-large btn-primary headerButton">Sign in</div>
+
+
+
+</body>
+
+
+<!-- Libs -->
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript" src='@routes.Assets.at("js/libs/jquery.ui.touch-punch.min.js")'></script>
+
+<script src='@routes.Assets.at("js/libs/jquery.blockUI.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/libs/sha512.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/libs/jquery.validate.min.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/libs/spin.min.js")' type="text/javascript"></script>
+
+<script src='@routes.Assets.at("js/webapp/managers/userManager.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/webapp/app-common.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/webapp/tools/utils.js")' type="text/javascript"></script>
+
+
+<script type="text/javascript">
+   UserManager.setupForms()
+
+   $("#validateButton").click(function() {
+      UserManager.mobileSignin(function() {
+          window.location.href = "/signedIn"
+      })
+   });
+
+   
+   $("#closeButton").click(function() {
+      window.location.href = "/backToMobile"
+   });
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+@(defaultHeader:Boolean = true)
+
+<div id="header">
+	<div class="span1 pointerCursor" {{action openHome}}></div>
+	<div class="span1 pointerCursor" {{action openHome}}>
+		<h1>@Messages("applicationName")</h1>
+	</div>
+
+	<!-- --------------------------- -->
+	<!-- Language buttons -->
+	
+	<div id="langButtons">
+		<div id="enButton" onClick="App.translator.setLang('en')" class="langButton">{{App.translations.messages.en}}</div>
+		<div id="frButton" onClick="App.translator.setLang('fr')" class="langButton">{{App.translations.messages.fr}}</div>
+	</div>
+	
+	
+	<ul id="headerButtons">
+		<li class="btn-large">
+			<img onclick="window.youtubeManager.openVideoWindow(App.translator.lang)" class="touchable" src='@routes.Assets.at("images/play.45.png")'></img>
+		</li>
+		<li class="btn-large">
+			<img {{action openPrezi}} class="touchable" src='@routes.Assets.at("images/play.prezi.png")'></img>
+		</li>
+	{{#if user.loggedIn}}
+		<li id="userDisplay" class="btn-large btn-primary headerButton">{{user.firstName}} {{user.lastName}}</li>
+		<li {{action play}} class="btn-large btn-primary headerButton">{{App.translations.messages.Play}}</li>
+	{{else}}
+		<li {{action openSignin}} class="btn-large btn-primary headerButton">{{App.translations.messages.SignIn}}</li>
+		<li {{action openLogin}} class="btn-large btn-primary headerButton">{{App.translations.messages.LogIn}}</li>
+	{{/if}}
+	</ul>
+
+	<!-- --------------------------- -->
+
+
+</div>

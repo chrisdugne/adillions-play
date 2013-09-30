@@ -1,0 +1,32 @@
+@import views.html.popups.loginWindow;
+@import views.html.popups.videoWindow;
+
+<div class="container-fluid" id="homeContent">
+
+	<!-- ----------------------------------------------------------------------------- -->
+	<!-- Content 																	   -->
+	<!-- ----------------------------------------------------------------------------- -->
+
+	<div class="marketing home-container">
+
+		<!-- -------------------------------------------------------------- -->
+		<!-- Top Image -->
+
+		<div id="homeImage"></div>
+		<img id="playImage" onclick="window.youtubeManager.openVideoWindow()" class="touchable" src="http://static.maperial.localhost/images/home/part1/play.png"></img>
+
+		<div class="row-fluid" id="part1">
+			<h1 class="homeTitle">{{App.translations.messages.AwesomeMaps}}</h1>
+			<p class="homeSubtitle">{{App.translations.messages.Everywhere}}</p>
+
+		</div>
+
+		<!-- -------------------------------------------------------------- -->
+		<!-- Choose/Upload/Organize/Customize/Share -->
+
+	</div>
+
+</div>
+
+@loginWindow()
+@videoWindow()
