@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-<title>Adillions - Login</title>
+<title>Adillions - Sign in</title>
 <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/favicon.png")'>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/bootstrap.min.css")' />
@@ -18,44 +18,51 @@
 	<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
 		
 	<div class="row-fluid">
-		<div class="offset4">
-			<p class="popuptitle">Log In</p>
+		<div class="span3 offset1">
+			<img title="icon" id="facebookPicture"></img>
+		</div>
+		<div class="span2">
+			<div id="changeAccountButton" class="btn-large btn-primary headerButton">_change account</div>
+		</div>
+		<div class="span5">
+			<p id="fbForm_title" class="popuptitle"></p>
 		</div>
 	</div>
 
-	<div id="login" class="row-fluid">
-
-		<form id="loginForm">
-
-			<div class="clearfix  " id="email_field">
-				<label for="loginemail">E-mail</label>
-				<div class="input">
-					<input type="text" id="loginemail" name="loginemail" value="">
-				</div>
-			</div>
-
-			<div class="clearfix  " id="password_field">
-				<label for="loginpassword">Password</label>
-				<div class="input">
-					<input type="password" id="loginpassword" name="loginpassword">
-				</div>
-			</div>
-
-		</form>
-
-		<div id="validateButton" class="btn-large btn-primary headerButton">Log in</div>
-
+	<div class="row-fluid">
+		<p>_Obviously we will always use your Facebook names everywhere.</p>
+		<p>_That being said, you must provide us with real names and birthdates in order to get paid.</p>
 	</div>
+	<br />
+	
+	<form id="fbForm">
 
-	<br />
-	<br />
-	<br />
-	<br />
+		<div class="clearfix  " id="name_field">
+			<label for="firstName">First name</label>
+			<div class="input">
+				<input type="text" id="fbForm_firstName" name="firstName" value=""> 
+			</div>
+		</div>
 
-	<div class="offset1">
-		or login with Facebook : 
-		<img onclick="Facebook.popupLogin()" alt="facebook icon" title="facebook"	src='@routes.Assets.at("images/icons/facebook-24x24.png")'></img>
-	</div>
+		<div class="clearfix  " id="name_field">
+			<label for="lastName">Last name</label>
+			<div class="input">
+				<input type="text" id="fbForm_lastName" name="lastName" value=""> 
+			</div>
+		</div>
+
+		<label for="birthDate">Birth date</label>
+		<input type="text" id="fbForm_birthDate" name="birthDate" readonly style="cursor:pointer!important;"/>
+
+		<div class="clearfix  " id="name_field">
+			<label for="referrerId">Referrer Id</label>
+			<div class="input">
+				<input type="text" id="fbForm_referrerId" name="referrerId" value=""> 
+			</div>
+		</div>
+
+		<div id="validateButton" class="btn-large btn-primary headerButton">Sign in</div>
+	</form>
 
 </body>
 
@@ -72,31 +79,35 @@
 <script src='@routes.Assets.at("js/libs/sha512.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/libs/jquery.validate.min.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/libs/spin.min.js")' type="text/javascript"></script>
-<script src='@routes.Assets.at("js/webapp/tools/facebook.js")' type="text/javascript"></script>
+
 <script src='@routes.Assets.at("js/webapp/managers/userManager.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/webapp/app-common.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/webapp/tools/facebook.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/webapp/tools/utils.js")' type="text/javascript"></script>
 
 
 <script type="text/javascript">
    UserManager.setupForms()
-   Facebook.init(function(){})
+   Facebook.init(function(){
+      window.location.href = "/backToMobile"
+   })
 
    $("#validateButton").click(function() {
-      UserManager.mobileLogin(function(result) {
-         if (result) {
-   			var url = "/loggedin"
-            url += "?authToken=" 	+ result.authToken
-            url += "&email=" 		+ $("#loginemail").val()
-            window.location.href = url
-
-         } else {
-            App.message("Wrong login/password", false)
-         }
+      UserManager.mobileSigninFB(function() {
+         var url = "/signedIn"
+         url += "?firstName=" + $("#fbForm_firstName").val()
+         url += "&lastName=" + $("#fbForm_lastName").val()
+         url += "&birthDate=" + Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
+         window.location.href = url
       })
    });
 
-   
    $("#closeButton").click(function() {
+      window.location.href = "/backToMobile"
+   });
+   
+   $("#changeAccountButton").click(function() {
+      Facebook.logout()
       window.location.href = "/backToMobile"
    });
 </script>

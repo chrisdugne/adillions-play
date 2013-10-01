@@ -50,7 +50,7 @@ UserManager.getPlayer = function()
 UserManager.getPlayerByFacebookId = function()
 {
    var params = new Object();
-   params["facebookData"] = App.user.facebookData;
+   params["facebookData"] = Facebook.data
 
    $.ajax({
       type: "POST",  
@@ -66,16 +66,18 @@ UserManager.getPlayerByFacebookId = function()
          
          UserManager.setupForms()
          
-         $("#signinFBWindow").reveal({
-            animation: 'fade',
-            animationspeed: 100, 
-         });
+         try{
+            $("#signinFBWindow").reveal({
+               animation: 'fade',
+               animationspeed: 100, 
+            });
+         }catch(e){}
          
-         $("#fbForm_title").text("Welcome " + App.user.facebookData.name + " !" )
-         $("#fbForm_firstName").val(App.user.facebookData.first_name)
-         $("#fbForm_lastName").val(App.user.facebookData.last_name)
-         $("#fbForm_birthDate").val(App.user.facebookData.birthday)
-         $("#facebookPicture").attr('src', App.user.facebookData.picture.data.url)
+         $("#fbForm_title").text("Welcome " + Facebook.data.name + " !" )
+         $("#fbForm_firstName").val(Facebook.data.first_name)
+         $("#fbForm_lastName").val(Facebook.data.last_name)
+         $("#fbForm_birthDate").val(Facebook.data.birthday)
+         $("#facebookPicture").attr('src', Facebook.data.picture.data.url)
       }
    });
 }
@@ -299,6 +301,48 @@ UserManager.mobileSignin = function(callback)
          }
       });
       
+   }
+}
+
+
+
+//-------------------------------------------//
+
+UserManager.mobileSigninFB = function(callback)
+{
+   if($("#fbForm").valid()){
+      var user = {}
+      user.email                = Facebook.data.email
+      user.facebookName         = Facebook.data.name
+      user.facebookId           = Facebook.data.id
+      user.firstName            = $("#fbForm_firstName").val() 
+      user.lastName             = $("#fbForm_lastName").val() 
+      user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
+      user.referrerId           = $("#fbForm_referrerId").val() 
+
+      App.wait()
+
+      var params = new Object();
+      params["user"] = user;
+
+      $.ajax({
+         type: "POST",  
+         url: "/signinFromFacebook",
+         data: JSON.stringify(params),  
+         contentType: "application/json; charset=utf-8",
+         dataType: "json",
+         success: function (player){
+            if(player){
+               App.free()
+               callback()
+            }
+            else{
+               // todo merge
+               App.message("_An account with these names exists", false)
+            }
+         }
+      });
+
    }
 }
 

@@ -15,10 +15,13 @@ window.Facebook = window.Facebook || {}
 
 //----------------------------------------------------------------//
 
-Facebook.init = function() 
+Facebook.init = function(notConnectedCallback) 
 {
+   this.FACEBOOK_APP_ID      = "170148346520274"
+   this.FACEBOOK_APP_SECRET  = "887e8f7abb9b1cb9238a097e06585ae2"
+   
    FB.init({
-      appId      : App.Globals.FACEBOOK_APP_ID, // App ID
+      appId      : this.FACEBOOK_APP_ID, // App ID
       channelUrl : '//'+window.location.hostname+'/channel', // Path to your Channel File
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
@@ -41,7 +44,10 @@ Facebook.init = function()
          // the user is logged in to Facebook, 
          // but has not authenticated your app
          // the user isn't logged in to Facebook.
-         Facebook.popupLogin();
+         //Facebook.popupLogin();
+//         UserManager.getPlayer()
+         
+         notConnectedCallback()
       }
       else 
       {
@@ -49,7 +55,8 @@ Facebook.init = function()
          //         Facebook.popupLogin(); -- force popup to login
 
          // then try Application autologin
-         UserManager.getPlayer()
+//         UserManager.getPlayer()
+         notConnectedCallback()
       }
    });
 
@@ -129,7 +136,7 @@ Facebook.getAppAccessToken = function()
 {
    $.ajax({  
       type: "GET",  
-      url: "https://graph.facebook.com/oauth/access_token?client_id=" + App.Globals.FACEBOOK_APP_ID + "&client_secret=" + App.Globals.FACEBOOK_APP_SECRET + "&grant_type=client_credentials",
+      url: "https://graph.facebook.com/oauth/access_token?client_id=" + this.FACEBOOK_APP_ID + "&client_secret=" + this.FACEBOOK_APP_SECRET + "&grant_type=client_credentials",
       success: function (data, textStatus, jqXHR)
       {
          if(data.indexOf("access_token") == -1){
@@ -152,11 +159,11 @@ Facebook.getMe = function(next)
 {
    $.ajax({  
       type: "GET",  
-      url: "https://graph.facebook.com/me?fields=name,first_name,last_name,picture,locale,birthday,email&access_token="+ Facebook.accessToken,
+      url: "https://graph.facebook.com/me?fields=name,first_name,last_name,picture,locale,birthday,email&access_token="+ this.accessToken,
       dataType: "jsonp",
       success: function (data, textStatus, jqXHR)
       {
-         App.user.facebookData = data
+         Facebook.data = data
          next();
       },
       error: function(jqXHR, textStatus, errorThrown)
