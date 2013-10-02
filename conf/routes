@@ -36,6 +36,11 @@ POST    /playerFromFB               controllers.SecurityController.getPlayerFrom
 POST    /player                     controllers.AccountService.getPlayer()
 
 #---------------------------------------------------------------------------
+#  	DrawService 
+
+POST    /nextDraw                	controllers.DrawService.getNextDraw()
+
+#---------------------------------------------------------------------------
 # deprecated
 #POST /login						controllers.AccountService.logIn()
 #POST /autoLogIn					controllers.AccountService.autoLogIn()

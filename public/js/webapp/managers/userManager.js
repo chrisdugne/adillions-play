@@ -13,17 +13,34 @@ UserManager.receivedPlayer = function(player)
    App.user.set("userName",         player.userName);
    App.user.set("firstName",        player.firstName);
    App.user.set("lastName",         player.lastName);
-   App.user.set("draws",            player.draws);
+   App.user.set("birthDate",        player.birthDate);
+   App.user.set("referrerId",       player.referrerId);
 
    App.user.set("currentPoints",    player.currentPoints);
    App.user.set("idlePoints",       player.idlePoints);
    App.user.set("totalPoints",      player.totalPoints);
 
    App.user.set("facebookId",       player.facebookId);
+
+   App.user.set("drawTickets",      player.drawTickets);
+   App.user.set("lotteryTickets",   player.lotteryTickets);
    
    App.user.set("loggedIn",         true)   
 
    App.message("Welcome back " + player.userName + " !", true)
+   
+   console.log(App.authToken)
+   
+   $.ajax({
+      type: "POST",  
+      url: "/nextDraw",
+      headers: {"X-AUTH-TOKEN": App.authToken},
+      dataType: "json",
+      success: function (draw, textStatus, jqXHR)
+      {
+         console.log(draw)
+      }
+   });
 }
 
 
@@ -31,8 +48,6 @@ UserManager.receivedPlayer = function(player)
 
 UserManager.getPlayer = function()
 {
-   var params = new Object();
-   
    $.ajax({
       type: "POST",  
       url: "/player",
@@ -58,9 +73,12 @@ UserManager.getPlayerByFacebookId = function()
       data: JSON.stringify(params),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
-      success: function (player)
+      success: function (result)
       {
-         UserManager.receivedPlayer(player)
+         console.log("---> getPlayerByFacebookId ok")
+         console.log(result)
+         App.authToken = result.authToken
+         UserManager.receivedPlayer(result.player)
       },
       error:function(){
          
@@ -146,11 +164,10 @@ UserManager.signin = function()
 
 UserManager.signinFB = function()
 {
-   
    if($("#fbForm").valid()){
-      App.user.email                = App.user.facebookData.email
-      App.user.facebookName         = App.user.facebookData.name
-      App.user.facebookId           = App.user.facebookData.id
+      App.user.email                = Facebook.data.email
+      App.user.facebookName         = Facebook.data.name
+      App.user.facebookId           = Facebook.data.id
       App.user.firstName            = $("#fbForm_firstName").val() 
       App.user.lastName             = $("#fbForm_lastName").val() 
       App.user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
@@ -168,10 +185,13 @@ UserManager.signinFB = function()
          data: JSON.stringify(params),  
          contentType: "application/json; charset=utf-8",
          dataType: "json",
-         success: function (player){
-            if(player){
+         success: function (response){
+            if(response){
+               console.log("---> signinFB ok")
+               console.log(response)
                App.free()
-               UserManager.receivedPlayer(player)
+               App.authToken = response.authToken
+               UserManager.receivedPlayer(response.player)
             }
             else{
                // todo merge
@@ -211,10 +231,6 @@ UserManager.login = function()
             App.free()
             if(response){
                App.authToken = response.authToken
-               
-               App.user.set("email",         user.email);
-               App.user.set("loggedIn",      true);
-               
                UserManager.getPlayer()
             }
          },
@@ -250,9 +266,9 @@ UserManager.mobileLogin = function(callback)
          data: JSON.stringify(params),  
          contentType: "application/json; charset=utf-8",
          dataType: "json",
-         success: function (player){
+         success: function (result){
             App.free()
-            callback(player)
+            callback(result)
          },
          error: function(){
             App.free()
@@ -304,8 +320,6 @@ UserManager.mobileSignin = function(callback)
    }
 }
 
-
-
 //-------------------------------------------//
 
 UserManager.mobileSigninFB = function(callback)
@@ -331,10 +345,11 @@ UserManager.mobileSigninFB = function(callback)
          data: JSON.stringify(params),  
          contentType: "application/json; charset=utf-8",
          dataType: "json",
-         success: function (player){
-            if(player){
+         success: function (result){
+            if(result){
+               console.log("---> signinFromFacebook",result)
                App.free()
-               callback()
+               callback(result)
             }
             else{
                // todo merge

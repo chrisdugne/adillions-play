@@ -50,24 +50,6 @@ public class SecurityController extends Action.Simple {
 	public static Player getPlayer() {
 		return (Player)Http.Context.current().args.get("player");
 	}
-
-	//----------------------------------------------------------------------------//
-	
-	public static Result getPlayerFromFB()
-	{
-		JsonNode params = request().body().asJson();
-		JsonNode facebookData = params.get("facebookData");
-		
-		Player player = AccountManager.getPlayerByFacebookId(facebookData.get("id").asText());
-		
-		if(player != null){
-			return ok(gson.toJson(player));
-		}
-		else{
-			return unauthorized();
-		}
-		
-	}
 	
 	//----------------------------------------------------------------------------//
 
@@ -112,6 +94,30 @@ public class SecurityController extends Action.Simple {
 		
 	}
 
+	//----------------------------------------------------------------------------//
+	
+	public static Result getPlayerFromFB()
+	{
+		JsonNode params = request().body().asJson();
+		JsonNode facebookData = params.get("facebookData");
+		
+		Player player = AccountManager.getPlayerByFacebookId(facebookData.get("id").asText());
+		
+		if(player != null){
+			String authToken = player.createToken();
+			response().setCookie(AUTH_TOKEN, authToken);
+
+			ObjectNode responseJson = Json.newObject();
+			responseJson.put(AUTH_TOKEN, authToken);
+			responseJson.put("player", Json.toJson(player));
+			return ok(responseJson);
+		}
+		else{
+			return unauthorized();
+		}
+		
+	}
+	
 	// ---------------------------------------------//
 	
 	public static Result signinFromFacebook()
@@ -121,7 +127,14 @@ public class SecurityController extends Action.Simple {
 		
 		if(!AccountManager.existNames(userJson)){
 			Player player = AccountManager.createNewPlayer(userJson);
-			return ok(gson.toJson(player));
+
+			String authToken = player.createToken();
+			response().setCookie(AUTH_TOKEN, authToken);
+
+			ObjectNode responseJson = Json.newObject();
+			responseJson.put(AUTH_TOKEN, authToken);
+			responseJson.put("player", Json.toJson(player));
+			return ok(responseJson);
 		}
 		else{
 			return ok(gson.toJson(null));

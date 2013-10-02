@@ -93,11 +93,12 @@
    })
 
    $("#validateButton").click(function() {
-      UserManager.mobileSigninFB(function() {
+      UserManager.mobileSigninFB(function(result) {
          var url = "/signedIn"
          url += "?firstName=" + $("#fbForm_firstName").val()
          url += "&lastName=" + $("#fbForm_lastName").val()
          url += "&birthDate=" + Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
+         url += "&authToken=" + result.authToken
          window.location.href = url
       })
    });

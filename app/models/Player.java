@@ -1,9 +1,11 @@
 package models;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import play.db.ebean.Model;
 
@@ -47,7 +49,16 @@ public class Player extends Model {
 
 	@Expose
 	private int totalPoints;
+
+	// -----------------------------------------------------------------------------------------------//
+
+	@OneToMany
+	@Expose
+	private List<DrawTicket> drawTickets;
 	
+	@OneToMany
+	@Expose
+	private List<LotteryTicket> lotteryTickets;
 
 	// -----------------------------------------------------------------------------------------------//
 
@@ -182,6 +193,22 @@ public class Player extends Model {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public List<DrawTicket> getDrawTickets() {
+		return drawTickets;
+	}
+
+	public void setDrawTickets(List<DrawTicket> drawTickets) {
+		this.drawTickets = drawTickets;
+	}
+
+	public List<LotteryTicket> getLotteryTickets() {
+		return lotteryTickets;
+	}
+
+	public void setLotteryTickets(List<LotteryTicket> lotteryTickets) {
+		this.lotteryTickets = lotteryTickets;
 	}
 
 	public int getCurrentPoints() {
