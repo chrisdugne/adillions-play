@@ -29,8 +29,6 @@ UserManager.receivedPlayer = function(player)
 
    App.message("Welcome back " + player.userName + " !", true)
    
-   console.log(App.authToken)
-   
    $.ajax({
       type: "POST",  
       url: "/nextDraw",
