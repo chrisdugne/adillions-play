@@ -20,32 +20,16 @@ def main():
 
     #--------------------------------------------------------------------
 
-    cursor.execute("SELECT * FROM draw where uid='141799ffbccc36e1178'")
-    draw            = cursor.fetchone()
-    winningNumbers  = json.loads(draw[6])
+    cursor.execute("SHOW data_directory;")
+    history            = cursor.fetchone()
+    print "history: " , history
+
+    cursor.execute("SELECT pg_size_pretty(pg_database_size('adillions'));")
+    size            = cursor.fetchone()
+    print "database size : " , size
+
 
     #--------------------------------------------------------------------
 
-    cursor.execute("SELECT * FROM draw_ticket")
-    tickets = cursor.fetchall()
- 
-
-    for ticket in tickets:
-        #ticket[1] is column draw_ticket.numbers 
-        numbers = json.loads(ticket[1])
-        nbWinning = 0
-        additional = 0
-        
-        for k1, n in numbers.iteritems():
-            for k2, w in winningNumbers.iteritems():
-                if n == w :
-                    if k1 == '6' :
-                        additional = 1
-                    else :
-                        nbWinning = nbWinning + 1
-            
-        
-        print "ticket " , nbWinning, additional
- 
 if __name__ == "__main__":
     main()
