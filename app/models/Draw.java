@@ -1,5 +1,6 @@
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -26,6 +27,7 @@ public class Draw extends Model {
 	private Double ratio; 				// nbjoueurs / ratio = cagnotte
 
 	@Expose
+	@Column(columnDefinition = "TEXT")
 	private String additionalIcons; 	// {"A":"urlA", "B":"urlB", ...}
 
 	@Expose
