@@ -9,7 +9,7 @@ create table draw (
   max_picks                 integer,
   max_numbers               integer,
   ratio                     float,
-  additional_icons          TEXT,
+  theme                     TEXT,
   result                    varchar(255),
   constraint pk_draw primary key (uid))
 ;
