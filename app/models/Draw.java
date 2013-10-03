@@ -28,7 +28,7 @@ public class Draw extends Model {
 
 	@Expose
 	@Column(columnDefinition = "TEXT")
-	private String additionalIcons; 	// {"A":"urlA", "B":"urlB", ...}
+	private String theme; 	// {"A":"urlA", "B":"urlB", ...}
 
 	@Expose
 	private String result; 				// {[34,65,2,5,65,7]}
@@ -72,12 +72,12 @@ public class Draw extends Model {
 		this.ratio = ratio;
 	}
 
-	public String getAdditionalIcons() {
-		return additionalIcons;
+	public String getTheme() {
+		return theme;
 	}
 
-	public void setAdditionalIcons(String additionalIcons) {
-		this.additionalIcons = additionalIcons;
+	public void setTheme(String additionalIcons) {
+		this.theme = additionalIcons;
 	}
 
 	public String getResult() {
