@@ -29,11 +29,19 @@ def main():
     cursor.execute("SELECT * FROM draw where uid='141799ffbccc36e1178'")
     draw            = cursor.fetchone()
     winningNumbers  = json.loads(draw[6])
-
+    
+    wnums = []
+    for k, w in winningNumbers.iteritems():
+        wnums.append(w)
+    
+    print wnums
+    
     #--------------------------------------------------------------------
 
     cursor.execute("SELECT * FROM draw_ticket")
     tickets = cursor.fetchall()
+    
+    winningTickets = {}
     i = 0
 
     for ticket in tickets:
@@ -51,13 +59,18 @@ def main():
                     else :
                         nbWinning = nbWinning + 1
             
+        nums = []
+        for k, n in numbers.iteritems():
+            nums.append(n)
         
-        if nbWinning >= 4 :
-            print "ticket " ,ticket[0], nbWinning, additional
- 
-        
-        if i % 10000 == 0 :
-            print i
+        if nbWinning == 5 and additional == 1:
+            print "rang 1 " , ticket[0], nbWinning, additional, nums
+
+        elif nbWinning == 5 and additional == 0:
+            print "rang 2 " , ticket[0], nbWinning, additional, nums
+            
+        elif nbWinning == 4  and additional == 1 :
+            print "rang3 " , ticket[0], nbWinning, additional, nums
             
 if __name__ == "__main__":
     main()

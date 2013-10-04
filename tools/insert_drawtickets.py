@@ -37,7 +37,7 @@ def main():
     now = utils.now()
     print "now " , now
 
-    for player in range(1,10000):
+    for player in range(1,100000):
         playerUID       = utils.generateUID()
         username        = "player" + str(player)
         email           = username + "@test.com"
@@ -52,8 +52,9 @@ def main():
                        (playerUID, username, email, firstname, lastname, birthDate, "", 0, 0, 0, secret, creationDate))
     
         #--------------------------------------------------------------------
+        # 5 sur 49 : 1 906 884     * 6 = 11 441 304      * 8 = 15 255 072
+        # 4 sur 49 :   211 876     * 6 =  1 271 256      * 8 =  1 695 008
         
-        # 5 sur 49 : 1 906 884 * 6 = 11 441 304
         for i in range(1,10):
             uid = utils.generateUID()
             numbers = []
