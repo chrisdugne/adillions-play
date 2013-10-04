@@ -37,7 +37,7 @@ def main():
     now = utils.now()
     print "now " , now
 
-    for player in range(1,10000):
+    for player in range(1,300000):
         playerUID       = utils.generateUID()
         username        = "player" + str(player)
         email           = username + "@test.com"
