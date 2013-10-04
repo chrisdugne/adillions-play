@@ -87,17 +87,20 @@ public class Player extends Model {
 	// -----------------------------------------------------------------------------------------------//
 
 	public static Player findByAuthToken(String authToken) {
-      if (authToken == null) {
-          return null;
-      }
+		if (authToken == null) {
+			return null;
+		}
 
-      try  {
-          return find.where().eq("authToken", authToken).findUnique();
-      }
-      catch (Exception e) {
-          return null;
-      }
-  }
+		try  {
+			return find
+					.fetch("drawTickets")
+					.fetch("drawTickets.draw")
+					.where().eq("authToken", authToken).findUnique();
+		}
+		catch (Exception e) {
+			return null;
+		}
+	}
 	
 	// -----------------------------------------------------------------------------------------------//
 	
@@ -107,7 +110,10 @@ public class Player extends Model {
 		}
 		
 		try  {
-			return find.where().eq("facebookId", facebookId).findUnique();
+			return find
+					.fetch("drawTickets")
+					.fetch("drawTickets.draw")
+					.where().eq("facebookId", facebookId).findUnique();
 		}
 		catch (Exception e) {
 			return null;

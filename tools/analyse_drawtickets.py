@@ -8,69 +8,51 @@ def main():
     #Define our connection string
     conn_string = "host='localhost' dbname='adillions' user='mad'"
  
-    # print the connection string we will use to connect
-    print "Connecting to database\n    ->%s" % (conn_string)
- 
     # get a connection, if a connect cannot be made an exception will be raised here
     conn = psycopg2.connect(conn_string)
  
     # conn.cursor will return a cursor object, you can use this cursor to perform queries
     cursor = conn.cursor()
-    print "Connected!\n"
-
-    #--------------------------------------------------------------------
-
-    cursor.execute("SELECT pg_size_pretty(pg_database_size('adillions'));")
-    size            = cursor.fetchone()
-    print "database size : " , size
 
     #--------------------------------------------------------------------
 
     cursor.execute("SELECT * FROM draw where uid='141799ffbccc36e1178'")
     draw            = cursor.fetchone()
     winningNumbers  = json.loads(draw[6])
+    winningTickets  = {}
     
-    wnums = []
-    for k, w in winningNumbers.iteritems():
-        wnums.append(w)
-    
-    print wnums
+    print "Result: ",  winningNumbers
     
     #--------------------------------------------------------------------
 
     cursor.execute("SELECT * FROM draw_ticket")
     tickets = cursor.fetchall()
-    
-    winningTickets = {}
-    i = 0
+    print len(tickets), " tickets"
+
+    #--------------------------------------------------------------------
 
     for ticket in tickets:
-        i = i+1
         #ticket[1] is column draw_ticket.numbers 
         numbers = json.loads(ticket[1])
         nbWinning = 0
         additional = 0
         
-        for k1, n in numbers.iteritems():
-            for k2, w in winningNumbers.iteritems():
-                if n == w :
-                    if k1 == '6' :
-                        additional = 1
-                    else :
-                        nbWinning = nbWinning + 1
-            
-        nums = []
-        for k, n in numbers.iteritems():
-            nums.append(n)
+        for i in range(0,len(numbers) - 1):
+            for j in range(0,len(winningNumbers) - 1):
+                if numbers[i] == winningNumbers[j] :
+                    nbWinning = nbWinning + 1
+                    
+        if numbers[len(numbers)-1] == winningNumbers[len(numbers)-1] :
+            additional = 1
         
-        if nbWinning == 5 and additional == 1:
-            print "rang 1 " , ticket[0], nbWinning, additional, nums
+        if nbWinning == len(winningNumbers)-1 and additional == 1:
+            print "rang 1 " , ticket[0], nbWinning, additional, numbers
 
-        elif nbWinning == 5 and additional == 0:
-            print "rang 2 " , ticket[0], nbWinning, additional, nums
+        elif nbWinning == len(winningNumbers)-1 and additional == 0:
+            print "rang 2 " , ticket[0], nbWinning, additional, numbers
             
-        elif nbWinning == 4  and additional == 1 :
-            print "rang3 " , ticket[0], nbWinning, additional, nums
+        elif nbWinning == len(winningNumbers) - 2  and additional == 1 :
+            print "rang3 " , ticket[0], nbWinning, additional, numbers
             
 if __name__ == "__main__":
     main()

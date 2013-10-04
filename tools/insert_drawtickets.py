@@ -37,7 +37,7 @@ def main():
     now = utils.now()
     print "now " , now
 
-    for player in range(1,100000):
+    for player in range(1,10000):
         playerUID       = utils.generateUID()
         username        = "player" + str(player)
         email           = username + "@test.com"
@@ -63,13 +63,9 @@ def main():
                 numbers.append( getNum(numbers) )
                 
             numbers = sorted(numbers)
-            jsonNums = {}
             
-            for n in range(0,5):
-                jsonNums[n+1] = numbers[n]
-            
-            jsonNums[6] = ("%x" % (random.randint(1,6) + 9)).upper()
-            jsonNums = json.dumps(jsonNums)
+            numbers.append(random.randint(1,6))
+            jsonNums = json.dumps(numbers)
             
             cursor.execute("INSERT INTO draw_ticket (uid, numbers, draw_uid, player_uid) VALUES (%s, %s, %s, %s)", (uid, jsonNums, "141799ffbccc36e1178", playerUID))
         
