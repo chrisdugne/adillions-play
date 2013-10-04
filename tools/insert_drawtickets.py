@@ -3,7 +3,7 @@ import sys
 import json
 import utils
 import random
- 
+import hashlib
 def getNum(numsChosen):
     num = random.randint(1,49)
     alreadyChosen = False
@@ -34,30 +34,48 @@ def main():
     cursor = conn.cursor()
     print "Connected!\n"
 
-    #--------------------------------------------------------------------
+    now = utils.now()
+    print "now " , now
+
+    for player in range(1,10000):
+        playerUID       = utils.generateUID()
+        username        = "player" + str(player)
+        email           = username + "@test.com"
+        firstname       = "player"
+        lastname        = player
+        birthDate       = "1980-10-10"
+        creationDate    = now
+        password        = "22e7e9d85b7fe6004f7b9f3aa592ea9ec9ce098682e8192fa83785f1784c768d1d1ac3b8afcae88666f66aec24739ac133e9d4adc7506f1a5f1f6078cb27c674"
+        secret          = hashlib.sha512( str(creationDate) + password ).hexdigest()
+
+        cursor.execute("INSERT INTO player (uid, user_name, email, first_name, last_name, birth_date, referrer_id, current_points, idle_points, total_points, secret, creation_date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+                       (playerUID, username, email, firstname, lastname, birthDate, "", 0, 0, 0, secret, creationDate))
     
-    # 5 sur 49 : 1 906 884 * 6 = 11 441 304
-    for i in range(1,10000000):
-        uid = utils.generateUID()
-        numbers = []
+        #--------------------------------------------------------------------
         
-        for n in range(0,5):
-            numbers.append( getNum(numbers) )
+        # 5 sur 49 : 1 906 884 * 6 = 11 441 304
+        for i in range(1,10):
+            uid = utils.generateUID()
+            numbers = []
             
-        numbers = sorted(numbers)
-        jsonNums = {}
+            for n in range(0,5):
+                numbers.append( getNum(numbers) )
+                
+            numbers = sorted(numbers)
+            jsonNums = {}
+            
+            for n in range(0,5):
+                jsonNums[n+1] = numbers[n]
+            
+            jsonNums[6] = ("%x" % (random.randint(1,6) + 9)).upper()
+            jsonNums = json.dumps(jsonNums)
+            
+            cursor.execute("INSERT INTO draw_ticket (uid, numbers, draw_uid, player_uid) VALUES (%s, %s, %s, %s)", (uid, jsonNums, "141799ffbccc36e1178", playerUID))
         
-        for n in range(0,5):
-            jsonNums[n+1] = numbers[n]
-        
-        jsonNums[6] = ("%x" % (random.randint(1,6) + 9)).upper()
-        jsonNums = json.dumps(jsonNums)
-        
-        cursor.execute("INSERT INTO draw_ticket (uid, numbers, draw_uid, player_uid) VALUES (%s, %s, %s, %s)", (uid, jsonNums, "141799ffbccc36e1178", "1417d5dcf5aca576ce8"))
     
-        if i % 100000 == 1 :
-            print i
-            
+        if player % 1000 == 0 :
+            print "player : " , player
+    
     #--------------------------------------------------------------------
 
     conn.commit()

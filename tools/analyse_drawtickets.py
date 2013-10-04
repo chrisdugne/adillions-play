@@ -52,11 +52,11 @@ def main():
                         nbWinning = nbWinning + 1
             
         
-        if nbWinning >= 5 :
+        if nbWinning >= 4 :
             print "ticket " ,ticket[0], nbWinning, additional
  
         
-        if i % 100000 == 0 :
+        if i % 10000 == 0 :
             print i
             
 if __name__ == "__main__":
