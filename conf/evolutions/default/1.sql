@@ -8,6 +8,8 @@ create table draw (
   date                      bigint,
   max_picks                 integer,
   max_numbers               integer,
+  nb_players                integer,
+  max_price                 integer,
   ratio                     float,
   theme                     TEXT,
   result                    varchar(255),

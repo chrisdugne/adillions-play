@@ -18,11 +18,16 @@ public class Draw extends Model {
 	@Expose
 	private Long date;
    
+	
 	@Expose
 	private Integer maxPicks; 			// 5
 	@Expose
 	private Integer maxNumbers; 		// 35
 
+	@Expose
+	private Integer nbPlayers;
+	@Expose
+	private Integer maxPrice; 			// price = min(maxPrice, nbPlayers/ratio)
 	@Expose
 	private Double ratio; 				// nbjoueurs / ratio = cagnotte
 
@@ -56,6 +61,14 @@ public class Draw extends Model {
 		this.maxPicks = maxPicks;
 	}
 
+	public Integer getNbPlayers() {
+		return nbPlayers;
+	}
+
+	public void setNbPlayers(Integer nbPlayers) {
+		this.nbPlayers = nbPlayers;
+	}
+
 	public Integer getMaxNumbers() {
 		return maxNumbers;
 	}
@@ -86,6 +99,14 @@ public class Draw extends Model {
 
 	public void setResult(String result) {
 		this.result = result;
+	}
+
+	public Integer getMaxPrice() {
+		return maxPrice;
+	}
+
+	public void setMaxPrice(Integer maxPrice) {
+		this.maxPrice = maxPrice;
 	}
 
 	public Long getDate() {

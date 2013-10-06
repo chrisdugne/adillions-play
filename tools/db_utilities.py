@@ -4,6 +4,7 @@ import time
 import json
 import math
 import hashlib
+
  
 def main():
     
@@ -30,7 +31,6 @@ def main():
     cursor.execute("SELECT pg_size_pretty(pg_database_size('adillions'));")
     size            = cursor.fetchone()
     print "database size : " , size
-
 
     #--------------------------------------------------------------------
 

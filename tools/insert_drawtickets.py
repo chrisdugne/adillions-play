@@ -22,22 +22,21 @@ def getNum(numsChosen):
 def main():
     
     #--------------------------------------------------------------------
-    #Define our connection string
+
     conn_string = "host='localhost' dbname='adillions' user='mad'"
- 
-    # print the connection string we will use to connect
-    print "Connecting to database\n    ->%s" % (conn_string)
-    # get a connection, if a connect cannot be made an exception will be raised here
     conn = psycopg2.connect(conn_string)
- 
-    # conn.cursor will return a cursor object, you can use this cursor to perform queries
     cursor = conn.cursor()
-    print "Connected!\n"
+
+    #--------------------------------------------------------------------
+
+    drawUID = "1418dee0d8da5ccb450"
+    nbPlayers = 150000
+    
+    #--------------------------------------------------------------------
 
     now = utils.now()
-    print "now " , now
 
-    for player in range(1,300000):
+    for player in range(0,nbPlayers):
         playerUID       = utils.generateUID()
         username        = "player" + str(player)
         email           = username + "@test.com"
@@ -67,11 +66,10 @@ def main():
             numbers.append(random.randint(1,6))
             jsonNums = json.dumps(numbers)
             
-            cursor.execute("INSERT INTO draw_ticket (uid, numbers, draw_uid, player_uid) VALUES (%s, %s, %s, %s)", (uid, jsonNums, "141799ffbccc36e1178", playerUID))
+            cursor.execute("INSERT INTO draw_ticket (uid, numbers, draw_uid, player_uid) VALUES (%s, %s, %s, %s)", (uid, jsonNums, drawUID, playerUID))
         
     
-        if player % 1000 == 0 :
-            print "player : " , player
+            utils.printPercentage(player, nbPlayers)  
     
     #--------------------------------------------------------------------
 
