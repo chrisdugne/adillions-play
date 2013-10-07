@@ -157,6 +157,7 @@ Facebook.getAppAccessToken = function()
 
 Facebook.getMe = function(next)
 {
+   console.log("getMe", this.accessToken)
    $.ajax({  
       type: "GET",  
       url: "https://graph.facebook.com/me?fields=name,first_name,last_name,picture,locale,birthday,email&access_token="+ this.accessToken,

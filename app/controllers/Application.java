@@ -2,7 +2,10 @@ package controllers;
 
 import java.util.Map;
 
+import models.Player;
+
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 
 import com.google.gson.Gson;
@@ -20,6 +23,8 @@ public class Application extends Controller {
 
 	protected static Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 	
+	// -----------------------------------------------------------------------------------//
+	// Web
 	// ---------------------------------------------//
 
 	public static Result home()
@@ -31,6 +36,15 @@ public class Application extends Controller {
 		
 		// prod
 		return ok(main.render(popupLoginWindow));
+	}
+
+	
+	// -----------------------------------------------------------------------------------//
+	// Common
+	//----------------------------------------------------------------------------//
+
+	public static Player player() {
+		return (Player)Http.Context.current().args.get("player");
 	}
 
 	// -----------------------------------------------------------------------------------//

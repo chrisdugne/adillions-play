@@ -31,12 +31,12 @@ UserManager.receivedPlayer = function(player)
    
    $.ajax({
       type: "POST",  
-      url: "/nextDraw",
+      url: "/nextLottery",
       headers: {"X-AUTH-TOKEN": App.authToken},
       dataType: "json",
-      success: function (draw, textStatus, jqXHR)
+      success: function (lottery, textStatus, jqXHR)
       {
-         console.log(draw)
+         console.log(lottery)
       }
    });
 }
@@ -64,6 +64,7 @@ UserManager.getPlayerByFacebookId = function()
 {
    var params = new Object();
    params["facebookData"] = Facebook.data
+   params["accessToken"] = Facebook.accessToken
 
    $.ajax({
       type: "POST",  
@@ -176,6 +177,7 @@ UserManager.signinFB = function()
       
       var params = new Object();
       params["user"] = App.user;
+      params["accessToken"] = Facebook.accessToken;
       
       $.ajax({
          type: "POST",  
@@ -314,7 +316,6 @@ UserManager.mobileSignin = function(callback)
             callback()
          }
       });
-      
    }
 }
 
@@ -336,6 +337,7 @@ UserManager.mobileSigninFB = function(callback)
 
       var params = new Object();
       params["user"] = user;
+      params["accessToken"] = Facebook.accessToken;
 
       $.ajax({
          type: "POST",  

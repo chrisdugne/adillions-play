@@ -4,11 +4,11 @@ import java.util.Date;
 
 import models.Lottery;
 
-public class DrawManager {
+public class LotteryManager {
 
 	//------------------------------------------------------------------------------------//
 
-	public static Lottery getNextDraw()
+	public static Lottery getNextLottery()
 	{
 		Long now = new Date().getTime();
 		return Lottery.find

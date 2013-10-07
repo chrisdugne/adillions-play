@@ -7,22 +7,25 @@ import models.Player;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.node.ObjectNode;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import play.libs.Json;
 import play.mvc.Action;
 import play.mvc.Http;
 import play.mvc.Result;
-import views.html.defaultpages.error;
+import utils.HttpHelper;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import domain.AccountManager;
 
 public class SecurityController extends Action.Simple {
 
 	//----------------------------------------------------------------------------//
 	
-	public final static String AUTH_TOKEN_HEADER = "X-AUTH-TOKEN";
-	public static final String AUTH_TOKEN = "authToken";
+	public final static String AUTH_TOKEN_HEADER 	= "X-AUTH-TOKEN";
+	public static final String AUTH_TOKEN 				= "authToken";
+
+	public static final String FACEBOOK_APP_ID 		= "170148346520274";
 
 	//----------------------------------------------------------------------------//
 	
@@ -33,9 +36,11 @@ public class SecurityController extends Action.Simple {
 	public Result call(Http.Context ctx) throws Throwable {
 		Player player = null;
 		String[] authTokenHeaderValues = ctx.request().headers().get(AUTH_TOKEN_HEADER);
+		
 		if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
 			player = models.Player.findByAuthToken(authTokenHeaderValues[0]);
 			if (player != null) {
+				System.out.println("player : " + player.getLotteryTickets().size() + " lottery tickets");
 				ctx.args.put("player", player);
 				return delegate.call(ctx);
 			}
@@ -43,12 +48,6 @@ public class SecurityController extends Action.Simple {
 
 		System.out.println("unauthorized");
 		return unauthorized("unauthorized");
-	}
-
-	//----------------------------------------------------------------------------//
-
-	public static Player getPlayer() {
-		return (Player)Http.Context.current().args.get("player");
 	}
 	
 	//----------------------------------------------------------------------------//
@@ -80,7 +79,6 @@ public class SecurityController extends Action.Simple {
 		
 		if(!AccountManager.existEmail(userJson)){
 			if(!AccountManager.existNames(userJson)){
-				System.out.println("create account");
 				Player player = AccountManager.createNewPlayer(userJson);
 				return ok(gson.toJson(player));
 			}
@@ -100,8 +98,21 @@ public class SecurityController extends Action.Simple {
 	{
 		JsonNode params = request().body().asJson();
 		JsonNode facebookData = params.get("facebookData");
+
+		//----------------------
+
+		String facebookId = facebookData.get("id").asText();
+		String accessToken = params.get("accessToken").asText();
 		
-		Player player = AccountManager.getPlayerByFacebookId(facebookData.get("id").asText());
+		//----------------------
+		// verify token
+		
+		if(!validAccessToken(accessToken, facebookId))
+			return unauthorized();
+		
+		//----------------------
+		
+		Player player = AccountManager.getPlayerByFacebookId(facebookId);
 		
 		if(player != null){
 			String authToken = player.createToken();
@@ -113,6 +124,7 @@ public class SecurityController extends Action.Simple {
 			return ok(responseJson);
 		}
 		else{
+			// require signinFromFB
 			return unauthorized();
 		}
 		
@@ -123,7 +135,20 @@ public class SecurityController extends Action.Simple {
 	public static Result signinFromFacebook()
 	{
 		JsonNode params = request().body().asJson();
+
+		//----------------------
+
 		JsonNode userJson = params.get("user");
+		String facebookId = userJson.get("facebookId").asText();
+		String accessToken = params.get("accessToken").asText();
+		
+		//----------------------
+		// verify token
+		
+		if(!validAccessToken(accessToken, facebookId))
+			return unauthorized();
+		
+		//----------------------
 		
 		if(!AccountManager.existNames(userJson)){
 			Player player = AccountManager.createNewPlayer(userJson);
@@ -141,4 +166,39 @@ public class SecurityController extends Action.Simple {
 		}
 		
 	}
+	
+	// ---------------------------------------------//
+	
+	private static boolean validAccessToken(String accessToken, String facebookId) {
+
+		try{
+			String response= HttpHelper.get("https://graph.facebook.com/debug_token?access_token="+accessToken+"&input_token="+accessToken);
+			JsonNode fbAnswer = Json.parse(response);
+			
+			String appId 		= fbAnswer.get("data").get("app_id").asText();
+			Boolean isValid 	= fbAnswer.get("data").get("is_valid").asBoolean();
+			String userId 		= fbAnswer.get("data").get("user_id").asText();
+
+			if(!appId.equals(FACEBOOK_APP_ID)){
+				System.out.println("ACCESS_TOKEN FOR WRONG APP_ID");
+				return false;
+			}
+			
+			if(!facebookId.equals(userId)){
+				System.out.println("ACCESS_TOKEN FOR WRONG USER_ID");
+				return false;
+			}
+
+			// timeout / logout
+			if(!isValid){
+				return false;
+			}
+		}
+		catch(Exception e){
+			System.out.println("COULDNT VALIDATE ACCESS_TOKEN WITH FACEBOOK");
+			return false;
+		}
+
+		return true;
+   }
 }

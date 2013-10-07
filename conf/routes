@@ -33,16 +33,12 @@ POST    /playerFromFB               controllers.SecurityController.getPlayerFrom
 #---------------------------------------------------------------------------
 #   AccountService 
 
-POST    /player                     controllers.AccountService.getPlayer()
+POST    /player                     controllers.AccountService.fetchPlayer()
 
 #---------------------------------------------------------------------------
-#  	DrawService 
+#  	LotteryService 
 
-POST    /nextDraw                	controllers.DrawService.getNextDraw()
-
-#---------------------------------------------------------------------------
-# deprecated
-#POST /login						controllers.AccountService.logIn()
-#POST /autoLogIn					controllers.AccountService.autoLogIn()
+POST    /nextLottery                controllers.LotteryService.getNextLottery()
+POST    /storeLotteryTicket         controllers.LotteryService.storeLotteryTicket()
 
 #---------------------------------------------------------------------------

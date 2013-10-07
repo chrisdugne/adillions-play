@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 
 import play.db.ebean.Model;
 
+import com.avaje.ebean.FetchConfig;
 import com.google.gson.annotations.Expose;
 
 @Entity
@@ -54,11 +55,11 @@ public class Player extends Model {
 
 	@OneToMany
 	@Expose
-	private List<LotteryTicket> drawTickets;
+	private List<LotteryTicket> lotteryTickets;
 	
 	@OneToMany
 	@Expose
-	private List<RaffleTicket> lotteryTickets;
+	private List<RaffleTicket> raffleTickets;
 
 	// -----------------------------------------------------------------------------------------------//
 
@@ -92,12 +93,16 @@ public class Player extends Model {
 		}
 
 		try  {
-			return find
-					.fetch("drawTickets")
-					.fetch("drawTickets.draw")
+			Player p = find
+//					.fetch("lotteryTickets", new FetchConfig().queryFirst(3).lazy(0))
+//					.fetch("lotteryTickets.lottery")
 					.where().eq("authToken", authToken).findUnique();
+			
+			System.out.println("ppp " + p.getLotteryTickets().size());
+			return p;
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -111,8 +116,8 @@ public class Player extends Model {
 		
 		try  {
 			return find
-					.fetch("drawTickets")
-					.fetch("drawTickets.draw")
+//					.fetch("lotteryTickets")
+//					.fetch("lotteryTickets.lottery")
 					.where().eq("facebookId", facebookId).findUnique();
 		}
 		catch (Exception e) {
@@ -193,28 +198,28 @@ public class Player extends Model {
 		this.facebookId = facebookId;
 	}
 
+	public List<LotteryTicket> getLotteryTickets() {
+		return lotteryTickets;
+	}
+
+	public void setLotteryTickets(List<LotteryTicket> lotteryTickets) {
+		this.lotteryTickets = lotteryTickets;
+	}
+
+	public List<RaffleTicket> getRaffleTickets() {
+		return raffleTickets;
+	}
+
+	public void setRaffleTickets(List<RaffleTicket> raffleTickets) {
+		this.raffleTickets = raffleTickets;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-
-	public List<LotteryTicket> getDrawTickets() {
-		return drawTickets;
-	}
-
-	public void setDrawTickets(List<LotteryTicket> drawTickets) {
-		this.drawTickets = drawTickets;
-	}
-
-	public List<RaffleTicket> getLotteryTickets() {
-		return lotteryTickets;
-	}
-
-	public void setLotteryTickets(List<RaffleTicket> lotteryTickets) {
-		this.lotteryTickets = lotteryTickets;
 	}
 
 	public int getCurrentPoints() {

@@ -101,4 +101,58 @@ public class HttpHelper {
 		
 		return response;
 	}
+	
+	
+
+	public static String get(String url)
+	{
+		//--------------------------------------------------------------------------------//
+		// Set parameters
+		
+		String charset = "UTF-8";
+		
+		//--------------------------------------------------------------------------------//
+		// Post Request
+		
+		HttpURLConnection connection = null;
+		
+		try {
+			connection = (HttpURLConnection) new URL(url).openConnection();
+			connection.setRequestMethod("GET");
+			connection.setRequestProperty("Accept-Charset", charset);
+			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
+		} 
+		catch (MalformedURLException e) {
+			e.printStackTrace();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+			
+		} finally {
+		}
+		
+		//--------------------------------------------------------------------------------//
+		// Get Response
+		
+		InputStream httpResponse = null;
+		String response = "";
+		
+		try {
+			httpResponse = connection.getInputStream();
+			
+			BufferedReader rd = new BufferedReader(new InputStreamReader(httpResponse));
+         String line;
+			while ((line = rd.readLine()) != null) {
+				response += line;
+         }
+         
+         rd.close();
+         
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return response;
+	}
 }

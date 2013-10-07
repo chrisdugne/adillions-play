@@ -75,7 +75,6 @@ public class AccountManager {
 	//------------------------------------------------------------------------------------//
 
 	public static Player getPlayerByFacebookId(String facebookId) {
-
 		return Player.findByFacebookId(facebookId);
    }
 
@@ -125,8 +124,8 @@ public class AccountManager {
 		player.setBirthDate	(birthDate);
 		player.setFacebookId	(facebookId);
 		player.setUserName	(userName);
-		player.setDrawTickets(new ArrayList<LotteryTicket>());
-		player.setLotteryTickets(new ArrayList<RaffleTicket>());
+		player.setLotteryTickets(new ArrayList<LotteryTicket>());
+		player.setRaffleTickets(new ArrayList<RaffleTicket>());
 
 		player.setCreationDate(now);
 

@@ -8,6 +8,7 @@ import hashlib
 #--------------------------------------------------------------------
 
 def getNum(numsChosen):
+    random.seed()
     num = random.randint(1,49)
     alreadyChosen = False
     
@@ -58,7 +59,7 @@ def main():
         # 5 sur 49 : 1 906 884     * 6 = 11 441 304      * 8 = 15 255 072
         # 4 sur 49 :   211 876     * 6 =  1 271 256      * 8 =  1 695 008
         
-        for i in range(1,10):
+        for i in range(0,10):
             uid = utils.generateUID()
             numbers = []
             
