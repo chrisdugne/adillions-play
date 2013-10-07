@@ -4,6 +4,9 @@ import json
 import utils
 import random
 import hashlib
+
+#--------------------------------------------------------------------
+
 def getNum(numsChosen):
     num = random.randint(1,49)
     alreadyChosen = False
@@ -18,19 +21,20 @@ def getNum(numsChosen):
     else : 
         return getNum(numsChosen)
         
+#--------------------------------------------------------------------
     
 def main():
     
     #--------------------------------------------------------------------
 
-    conn_string = "host='localhost' dbname='adillions' user='mad'"
+    conn_string = utils.getDBConfig()
     conn = psycopg2.connect(conn_string)
     cursor = conn.cursor()
 
     #--------------------------------------------------------------------
 
-    drawUID = "1418dee0d8da5ccb450"
-    nbPlayers = 150000
+    lotteryUID  = raw_input("lotteryUID ? \n> ")
+    nbPlayers   = int(raw_input("nbPlayers ? \n> "))
     
     #--------------------------------------------------------------------
 
@@ -66,7 +70,7 @@ def main():
             numbers.append(random.randint(1,6))
             jsonNums = json.dumps(numbers)
             
-            cursor.execute("INSERT INTO draw_ticket (uid, numbers, draw_uid, player_uid) VALUES (%s, %s, %s, %s)", (uid, jsonNums, drawUID, playerUID))
+            cursor.execute("INSERT INTO lottery_ticket (uid, numbers, lottery_uid, player_uid) VALUES (%s, %s, %s, %s)", (uid, jsonNums, lotteryUID, playerUID))
         
     
             utils.printPercentage(player, nbPlayers)  
@@ -82,7 +86,7 @@ def main():
     
     #--------------------------------------------------------------------
 
-    print "Inserted !\n"
+    print "\nInserted !"
  
 if __name__ == "__main__":
     main()

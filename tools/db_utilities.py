@@ -4,13 +4,14 @@ import time
 import json
 import math
 import hashlib
+import utils
 
  
 def main():
     
     #--------------------------------------------------------------------
     #Define our connection string
-    conn_string = "host='localhost' dbname='adillions' user='mad'"
+    conn_string = utils.getDBConfig()
  
     # print the connection string we will use to connect
     print "Connecting to database\n    ->%s" % (conn_string)

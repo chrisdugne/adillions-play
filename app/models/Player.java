@@ -54,11 +54,11 @@ public class Player extends Model {
 
 	@OneToMany
 	@Expose
-	private List<DrawTicket> drawTickets;
+	private List<LotteryTicket> drawTickets;
 	
 	@OneToMany
 	@Expose
-	private List<LotteryTicket> lotteryTickets;
+	private List<RaffleTicket> lotteryTickets;
 
 	// -----------------------------------------------------------------------------------------------//
 
@@ -201,19 +201,19 @@ public class Player extends Model {
 		this.userName = userName;
 	}
 
-	public List<DrawTicket> getDrawTickets() {
+	public List<LotteryTicket> getDrawTickets() {
 		return drawTickets;
 	}
 
-	public void setDrawTickets(List<DrawTicket> drawTickets) {
+	public void setDrawTickets(List<LotteryTicket> drawTickets) {
 		this.drawTickets = drawTickets;
 	}
 
-	public List<LotteryTicket> getLotteryTickets() {
+	public List<RaffleTicket> getLotteryTickets() {
 		return lotteryTickets;
 	}
 
-	public void setLotteryTickets(List<LotteryTicket> lotteryTickets) {
+	public void setLotteryTickets(List<RaffleTicket> lotteryTickets) {
 		this.lotteryTickets = lotteryTickets;
 	}
 

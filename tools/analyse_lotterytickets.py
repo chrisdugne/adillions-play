@@ -11,56 +11,60 @@ def main():
     
     #--------------------------------------------------------------------
     
-    conn_string = "host='localhost' dbname='adillions' user='mad'"
+    conn_string = utils.getDBConfig()
     conn = psycopg2.connect(conn_string)
     database = conn.cursor()
 
     #--------------------------------------------------------------------
-    
-    drawUID = "1418dee0d8da5ccb450"
+
+    lotteryUID  = raw_input("lotteryUID ? \n> ")
     
     #--------------------------------------------------------------------
 
-    print "Fetching result..."
+    print "\nFetching lottery..."
     
-    database.execute("SELECT * FROM draw where uid='"+drawUID+"'")
-    draw            = database.fetchone()
-    winningNumbers  = json.loads(draw[8])
+    database.execute("SELECT * FROM lottery where uid='"+lotteryUID+"'")
+    lottery         = database.fetchone()
+    winningNumbers  = json.loads(lottery[9])
     winningTickets  = []
     nbRang1         = 0
     nbRang2         = 0
     nbRang3         = 0
     nbRang4         = 0
     
-    print "Result    : ",  winningNumbers
+    #--------------------------------------------------------------------
+
+    print "Fetching tickets...\n"
+  
+    database.execute("SELECT * FROM lottery_ticket where lottery_uid='"+lotteryUID+"' ORDER BY uid DESC")
+    tickets = database.fetchall()
+      
     
     #--------------------------------------------------------------------
 
-    nbPlayers   = draw[4]
-    ratio       = draw[6]
-    cagnotte    = round(nbPlayers/ratio, 2)
+    date        = utils.toReadableDate(lottery[1])
+    nbPlayers   = lottery[4]
+    minPrice    = lottery[5]
+    maxPrice    = lottery[6]
+    CPM         = lottery[7]
+    price       = round(len(tickets)/1000*CPM, 2)
       
-    print "Players   : "          , nbPlayers
-    print "Ratio     : "          , ratio
-    print "Cagnotte  : "          , cagnotte
-     
+    print date + " Lottery"
+    print ""
+    print "Winning numbers    : "          , winningNumbers
+    print "Players            : "          , nbPlayers
+    print "Tickets            : "          , len(tickets)
+    print "CPM                : "          , CPM
+    print "Price              : "          , price
+      
     #--------------------------------------------------------------------
 
-    print "Fetching tickets..."
-  
-    database.execute("SELECT * FROM draw_ticket where draw_uid='"+drawUID+"' ORDER BY uid DESC")
-    tickets = database.fetchall()
-      
-    print len(tickets), " tickets"
-
-    #--------------------------------------------------------------------
-
-    print "Analysing tickets..."
+    print "\nAnalysing tickets..."
 
     for t in range(0, len(tickets)):
         ticket = tickets[t]
         
-        #ticket[1] is column draw_ticket.numbers 
+        #ticket[1] is column lottery_ticket.numbers 
         numbers = json.loads(ticket[1])
         nbWinning = 0
         additional = 0
@@ -75,7 +79,7 @@ def main():
         
         if (isWinningTicket(nbWinning, additional, winningNumbers)) :
             
-            winningTicket = WinningTicket(ticket[0], ticket[3], nbWinning, additional, numbers)
+            winningTicket = WinningTicket(ticket[0], ticket[4], nbWinning, additional, numbers)
             
             if isRang1(nbWinning,additional,winningNumbers) :
                 winningTicket.rang = 1
@@ -105,53 +109,74 @@ def main():
 
     #--------------------------------------------------------------------
 
-    print("")
-    print("Nb Winners :" + str(len(winningTickets)))
+    print("\nNb Winners :" + str(len(winningTickets)))
     prices = []
     toPay = 0
     
     if nbRang1 > 0:
-        prices.append((0.50 * cagnotte)/nbRang1)
-        toPay = toPay + 0.50 * cagnotte
+        share =  round((0.50 * price)/nbRang1, 2)
+        prices.append(share)
+        toPay = toPay + share
     else:
         prices.append(0) 
 
     if nbRang2 > 0:
-        prices.append((0.20 * cagnotte)/nbRang2)
-        toPay = toPay + 0.20 * cagnotte
+        share =  round((0.20 * price)/nbRang2, 2)
+        prices.append(share)
+        toPay = toPay + share
     else:
         prices.append(0) 
     
     if nbRang3 > 0:
-        prices.append((0.10 * cagnotte)/nbRang3)
-        toPay = toPay + 0.10 * cagnotte
+        share =  round((0.10 * price)/nbRang3, 2)
+        prices.append(share)
+        toPay = toPay + share
     else:
         prices.append(0) 
     
     if nbRang4 > 0:
-        prices.append((0.05 * cagnotte)/nbRang4) 
-        toPay = toPay + 0.05 * cagnotte
+        share =  round((0.05 * price)/nbRang4, 2)
+        prices.append(share)
+        toPay = toPay + share
     else:
         prices.append(0) 
 
     print("To pay :" , toPay)
-
     print("Nb Rang 1 :" + str(nbRang1), " price: " , prices[0])
     print("Nb Rang 2 :" + str(nbRang2), " price: " , prices[1])
     print("Nb Rang 3 :" + str(nbRang3), " price: " , prices[2])
     print("Nb Rang 4 :" + str(nbRang4), " price: " , prices[3])
-
-    
-    for ticket in winningTickets :
-        getWinnerData(database, ticket)
-        print "Name : ", ticket.player[2], "playerUID:", ticket.player[0], ticket.numbers, "rang:", ticket.rang, "numbers:", "price :", prices[ticket.rang-1]
 
     #---------------------------------
 
     requireRecord = raw_input("Record data ? (y/N) \n>") == 'y'
        
     if requireRecord:
-        print("recording data do DB...")
+        recordToDB(database, winningTickets, prices)
+        
+    #--------------------------------------------------------------------
+    
+    conn.commit()
+
+    #--------------------------------------------------------------------
+    
+    conn.close()
+    database.close()
+        
+#----------------------------------------------------------------------------------
+
+def recordToDB(database, winningTickets, prices):
+    print("Recording prizes in DB")
+    
+    for ticket in winningTickets :
+        getWinnerData(database, ticket)
+        price = prices[ticket.rang-1]
+        playerUID = ticket.player[0]
+        
+        print "Name : ", ticket.player[2], "numbers:", ticket.numbers, "rang:", ticket.rang,"price :", price
+        
+        database.execute("UPDATE lottery_ticket SET price='"+str(prices[ticket.rang-1])+"' WHERE uid='"+ticket.uid+"';") 
+    
         
 #----------------------------------------------------------------------------------
 

@@ -9,7 +9,7 @@ import play.db.ebean.Model;
 import com.google.gson.annotations.Expose;
 
 @Entity
-public class DrawTicket extends Model { 
+public class RaffleTicket extends Model { 
 
 	// -----------------------------------------------------------------------------------------------//
 
@@ -18,11 +18,11 @@ public class DrawTicket extends Model {
 	private String uid;
 
 	@Expose
-	private String numbers; // {[12,34,45,6,33,31]}
+	private String number;
 
 	@ManyToOne
 	@Expose
-	private Draw draw;
+	private Raffle raffle;
 	
 	// -----------------------------------------------------------------------------------------------//
 	
@@ -32,7 +32,7 @@ public class DrawTicket extends Model {
 	// -----------------------------------------------------------------------------------------------//
 	// -- Queries
 
-	public static Model.Finder<String, DrawTicket> find = new Finder<String, DrawTicket>(String.class, DrawTicket.class);
+	public static Model.Finder<String, RaffleTicket> find = new Finder<String, RaffleTicket>(String.class, RaffleTicket.class);
 
 	// -----------------------------------------------------------------------------------------------//
 	
@@ -43,21 +43,21 @@ public class DrawTicket extends Model {
 	public void setUid(String accountUID) {
 		this.uid = accountUID;
 	}
-	
-	public Draw getDraw() {
-		return draw;
+
+	public String getNumber() {
+		return number;
 	}
 
-	public void setDraw(Draw draw) {
-		this.draw = draw;
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
-	public String getNumbers() {
-		return numbers;
+	public Raffle getRaffle() {
+		return raffle;
 	}
 
-	public void setNumbers(String numbers) {
-		this.numbers = numbers;
+	public void setRaffle(Raffle raffle) {
+		this.raffle = raffle;
 	}
 
 	public Player getPlayer() {
@@ -67,6 +67,7 @@ public class DrawTicket extends Model {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
+
 
 	// -----------------------------------------------------------------------------------------------//
 

@@ -3,15 +3,32 @@ import json
 import random 
 import math
 import time 
+import datetime 
 from time import sleep
  
+#------------------------------------------------------------------------------------
+
+def getDBConfig():
+
+#   DEV
+    return "host='localhost' dbname='adillions' user='mad'"
+    
+#   PROD
+#   return "host='localhost' dbname='adillions' user='mad'"
+ 
+#------------------------------------------------------------------------------------
+
 def generateUID():
     timestamp   = "%x"   % math.trunc(round(time.time() * 1000))
     rand        = "%08x" % math.trunc(random.random() * math.pow(2, 32))
     return timestamp + rand
 
+#------------------------------------------------------------------------------------
+
 def now():
     return math.trunc(time.time()*1000) 
+
+#------------------------------------------------------------------------------------
 
 def printPercentage(num, total):
     p = percent(num, total)
@@ -21,5 +38,19 @@ def printPercentage(num, total):
 def percent(num, total):
     return math.trunc(float(num)/total * 100) + 1
 
+#------------------------------------------------------------------------------------
+
 def tprint(object):
     print json.dumps((object.__dict__),sort_keys=True, indent=3)
+
+#------------------------------------------------------------------------------------
+# yyyy-mm-dd to millis  (2013-10-20 -> 1382220000000) 
+def toTimestamp(date):
+    return math.trunc(time.mktime(datetime.datetime.strptime(date, "%Y-%m-%d").timetuple())*1000)
+
+def toReadableDate(timestamp):
+    return datetime.datetime.fromtimestamp(int(timestamp/1000)).strftime('%B %d, %Y')
+
+# millis to yyyy-mm-dd (1382220000000 -> 2013-10-20) 
+def toDate(timestamp):
+    return datetime.datetime.fromtimestamp(int(timestamp/1000)).strftime('%Y-%m-%d')

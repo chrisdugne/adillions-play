@@ -1,0 +1,51 @@
+import psycopg2
+import utils
+
+def main():
+    
+    #--------------------------------------------------------------------
+    
+    lotteryUID    = utils.generateUID()
+    maxPicks      = raw_input("Nb to pick ? \n> ")
+    maxNumbers    = raw_input("How many numbers ? \n> ")
+    cpm           = raw_input("CPM ? \n> ")
+    maxPrice      = raw_input("Max price ? \n> ")
+    minPrice      = raw_input("Min price ? \n> ")
+    date          = raw_input("data ? (yyyy-mm-dd) \n> ")
+    dateMillis    = utils.toTimestamp(date)
+
+    if(not maxPicks 
+    or not maxPrice    
+    or not minPrice    
+    or not cpm    
+    or not maxNumbers):    
+        print "Try again"
+        return
+
+    #--------------------------------------------------------------------
+
+    conn_string = utils.getDBConfig()
+    conn = psycopg2.connect(conn_string)
+    cursor = conn.cursor()
+
+    #--------------------------------------------------------------------
+
+    cursor.execute("INSERT INTO lottery (uid, date, max_picks, max_numbers, nb_players, max_price, min_price, cpm) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", 
+                   (lotteryUID, dateMillis, maxPicks, maxNumbers, 0, maxPrice, minPrice, cpm))
+
+    
+    #--------------------------------------------------------------------
+
+    conn.commit()
+
+    #--------------------------------------------------------------------
+    
+    conn.close()
+    cursor.close()
+    
+    #--------------------------------------------------------------------
+
+    print "\nLottery created: " + lotteryUID
+ 
+if __name__ == "__main__":
+    main()

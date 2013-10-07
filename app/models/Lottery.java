@@ -1,10 +1,8 @@
 package models;
 
-import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import play.db.ebean.Model;
 
@@ -19,11 +17,30 @@ public class Lottery extends Model {
 
 	@Expose
 	private Long date;
+   
+	
+	@Expose
+	private Integer maxPicks; 			// 5
+	@Expose
+	private Integer maxNumbers; 		// 35
 
 	@Expose
-	@OneToMany
-	private List<LotteryTicket> winningNumbers;
-   
+	private Integer nbPlayers;
+	
+	@Expose
+	private Integer minPrice; 			 
+	@Expose
+	private Integer maxPrice; 			// lottery.price = min ( max (lottery.minPrice, nbPlayers/ratio) , lottery.maxPrice)
+	@Expose
+	private Double cpm; 					// nbTickes/1000 * CPM = price
+
+	@Expose
+	@Column(columnDefinition = "TEXT")
+	private String theme; 	// {"A":"urlA", "B":"urlB", ...}
+
+	@Expose
+	private String result; 				// {[34,65,2,5,65,7]}
+
 	// -----------------------------------------------------------------------------------------------//
 	// -- Queries
 
@@ -39,12 +56,68 @@ public class Lottery extends Model {
 		this.uid = accountUID;
 	}
 
-	public List<LotteryTicket> getWinningNumbers() {
-		return winningNumbers;
+	public Integer getMaxPicks() {
+		return maxPicks;
 	}
 
-	public void setWinningNumbers(List<LotteryTicket> winningNumbers) {
-		this.winningNumbers = winningNumbers;
+	public void setMaxPicks(Integer maxPicks) {
+		this.maxPicks = maxPicks;
+	}
+
+	public Integer getNbPlayers() {
+		return nbPlayers;
+	}
+
+	public void setNbPlayers(Integer nbPlayers) {
+		this.nbPlayers = nbPlayers;
+	}
+
+	public Integer getMaxNumbers() {
+		return maxNumbers;
+	}
+
+	public void setMaxNumbers(Integer maxNumbers) {
+		this.maxNumbers = maxNumbers;
+	}
+
+	public Integer getMinPrice() {
+		return minPrice;
+	}
+
+	public void setMinPrice(Integer minPrice) {
+		this.minPrice = minPrice;
+	}
+
+	public Double getCpm() {
+		return cpm;
+	}
+
+	public void setCpm(Double cpm) {
+		this.cpm = cpm;
+	}
+
+	public String getTheme() {
+		return theme;
+	}
+
+	public void setTheme(String additionalIcons) {
+		this.theme = additionalIcons;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public Integer getMaxPrice() {
+		return maxPrice;
+	}
+
+	public void setMaxPrice(Integer maxPrice) {
+		this.maxPrice = maxPrice;
 	}
 
 	public Long getDate() {
@@ -61,7 +134,6 @@ public class Lottery extends Model {
 	/**
 	 * 
 	 */
-   private static final long serialVersionUID = 1L;	
-   
-   
+   private static final long serialVersionUID = 1L;
+
 }

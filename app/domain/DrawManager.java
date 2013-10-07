@@ -2,16 +2,16 @@ package domain;
 
 import java.util.Date;
 
-import models.Draw;
+import models.Lottery;
 
 public class DrawManager {
 
 	//------------------------------------------------------------------------------------//
 
-	public static Draw getNextDraw()
+	public static Lottery getNextDraw()
 	{
 		Long now = new Date().getTime();
-		return Draw.find
+		return Lottery.find
 				.where().gt("date", now)
 				.orderBy("date asc")
 				.findList().get(0);

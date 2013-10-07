@@ -18,11 +18,14 @@ public class LotteryTicket extends Model {
 	private String uid;
 
 	@Expose
-	private String number;
+	private String numbers; // [12,34,45,6,33,31]
 
 	@ManyToOne
 	@Expose
 	private Lottery lottery;
+
+	@Expose
+	private Double price;
 	
 	// -----------------------------------------------------------------------------------------------//
 	
@@ -43,21 +46,29 @@ public class LotteryTicket extends Model {
 	public void setUid(String accountUID) {
 		this.uid = accountUID;
 	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
+	
 	public Lottery getLottery() {
 		return lottery;
 	}
 
 	public void setLottery(Lottery lottery) {
 		this.lottery = lottery;
+	}
+
+	public String getNumbers() {
+		return numbers;
+	}
+
+	public void setNumbers(String numbers) {
+		this.numbers = numbers;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	public Player getPlayer() {
@@ -67,7 +78,6 @@ public class LotteryTicket extends Model {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-
 
 	// -----------------------------------------------------------------------------------------------//
 

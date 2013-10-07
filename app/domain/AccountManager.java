@@ -3,8 +3,8 @@ package domain;
 import java.util.ArrayList;
 import java.util.Date;
 
-import models.DrawTicket;
 import models.LotteryTicket;
+import models.RaffleTicket;
 import models.Player;
 
 import org.codehaus.jackson.JsonNode;
@@ -125,8 +125,8 @@ public class AccountManager {
 		player.setBirthDate	(birthDate);
 		player.setFacebookId	(facebookId);
 		player.setUserName	(userName);
-		player.setDrawTickets(new ArrayList<DrawTicket>());
-		player.setLotteryTickets(new ArrayList<LotteryTicket>());
+		player.setDrawTickets(new ArrayList<LotteryTicket>());
+		player.setLotteryTickets(new ArrayList<RaffleTicket>());
 
 		player.setCreationDate(now);
 
