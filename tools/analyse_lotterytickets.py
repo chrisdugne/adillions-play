@@ -41,12 +41,12 @@ def main():
 #     print str(nbtickets) + " tickets\n"
 #     return
 
-    print "Counting players...\n"
-    
-    database.execute("SELECT count(DISTINCT player_uid) FROM lottery_ticket where lottery_uid='"+lotteryUID+"'")
-    nbplayers = int(database.fetchone()[0])
-    print str(nbplayers) + " players\n"
-    return
+#     print "Counting players...\n"
+#     
+#     database.execute("SELECT count(DISTINCT player_uid) FROM lottery_ticket where lottery_uid='"+lotteryUID+"'")
+#     nbplayers = int(database.fetchone()[0])
+#     print str(nbplayers) + " players\n"
+#     return
 
     #--------------------------------------------------------------------
 
