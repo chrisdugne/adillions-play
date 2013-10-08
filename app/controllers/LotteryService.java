@@ -1,7 +1,5 @@
 package controllers;
 
-import models.Player;
-
 import org.codehaus.jackson.JsonNode;
 
 import play.mvc.Result;
@@ -18,17 +16,12 @@ public class LotteryService extends Application
 
 	public static Result storeLotteryTicket()
 	{
-		System.out.println("storeLotteryTicket proceed");
-		Player player = Application.player();
-		
-		System.out.println(player.getEmail());
-		System.out.println(player.getUid());
-		
 		JsonNode params = request().body().asJson();
-		String ticket = params.get("ticket").toString();
-				
-		System.out.println(ticket);
+		String numbers = params.get("numbers").toString();
 		
-		return ok();
+		if(LotteryManager.storeLotteryTicket(numbers))
+			return ok();
+		else
+			return unauthorized();
 	}
 }

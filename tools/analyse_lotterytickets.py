@@ -34,6 +34,22 @@ def main():
     
     #--------------------------------------------------------------------
 
+#     print "Counting tickets...\n"
+#    
+#     database.execute("SELECT count(*) FROM lottery_ticket where lottery_uid='"+lotteryUID+"'")
+#     nbtickets = int(database.fetchone()[0])
+#     print str(nbtickets) + " tickets\n"
+#     return
+
+    print "Counting players...\n"
+    
+    database.execute("SELECT count(DISTINCT player_uid) FROM lottery_ticket where lottery_uid='"+lotteryUID+"'")
+    nbplayers = int(database.fetchone()[0])
+    print str(nbplayers) + " players\n"
+    return
+
+    #--------------------------------------------------------------------
+
     print "Fetching tickets...\n"
   
     database.execute("SELECT * FROM lottery_ticket where lottery_uid='"+lotteryUID+"' ORDER BY uid DESC")
@@ -116,28 +132,28 @@ def main():
     if nbRang1 > 0:
         share =  round((0.50 * price)/nbRang1, 2)
         prices.append(share)
-        toPay = toPay + share
+        toPay = toPay + share*nbRang1
     else:
         prices.append(0) 
 
     if nbRang2 > 0:
         share =  round((0.20 * price)/nbRang2, 2)
         prices.append(share)
-        toPay = toPay + share
+        toPay = toPay + share*nbRang2
     else:
         prices.append(0) 
     
     if nbRang3 > 0:
         share =  round((0.10 * price)/nbRang3, 2)
         prices.append(share)
-        toPay = toPay + share
+        toPay = toPay + share*nbRang3
     else:
         prices.append(0) 
     
     if nbRang4 > 0:
         share =  round((0.05 * price)/nbRang4, 2)
         prices.append(share)
-        toPay = toPay + share
+        toPay = toPay + share*nbRang4
     else:
         prices.append(0) 
 

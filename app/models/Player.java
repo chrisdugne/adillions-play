@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 
 import play.db.ebean.Model;
 
-import com.avaje.ebean.FetchConfig;
+import com.avaje.ebean.Query;
 import com.google.gson.annotations.Expose;
 
 @Entity
@@ -36,8 +36,6 @@ public class Player extends Model {
 	@Expose
 	private String lastName;
 	
-	@Expose
-	private String referrerId;
 
 	@Expose
 	private String birthDate;
@@ -50,6 +48,14 @@ public class Player extends Model {
 
 	@Expose
 	private int totalPoints;
+
+	@Expose
+	private int availableTickets;
+
+	@Expose
+	private String referrerId;
+	@Expose
+	private boolean giftToReferrer;
 
 	// -----------------------------------------------------------------------------------------------//
 
@@ -88,18 +94,15 @@ public class Player extends Model {
 	// -----------------------------------------------------------------------------------------------//
 
 	public static Player findByAuthToken(String authToken) {
+		
 		if (authToken == null) {
 			return null;
 		}
 
 		try  {
-			Player p = find
-//					.fetch("lotteryTickets", new FetchConfig().queryFirst(3).lazy(0))
-//					.fetch("lotteryTickets.lottery")
-					.where().eq("authToken", authToken).findUnique();
-			
-			System.out.println("ppp " + p.getLotteryTickets().size());
-			return p;
+			return playerQuery()
+					.where().eq("authToken", authToken)
+					.findUnique();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -115,14 +118,35 @@ public class Player extends Model {
 		}
 		
 		try  {
-			return find
-//					.fetch("lotteryTickets")
-//					.fetch("lotteryTickets.lottery")
-					.where().eq("facebookId", facebookId).findUnique();
+			return playerQuery()
+					.where().eq("facebookId", facebookId)
+					.findUnique();
 		}
 		catch (Exception e) {
 			return null;
 		}
+	}
+	
+	// -----------------------------------------------------------------------------------------------//
+	
+	public static Player findByUID(String playerUID) {
+		try  {
+			return playerQuery()
+					.where().eq("uid", playerUID)
+					.findUnique();
+		}
+		catch (Exception e) {
+			return null;
+		}
+	}
+	
+	// -----------------------------------------------------------------------------------------------//
+	
+	private static Query<Player> playerQuery() {
+		return find
+				.fetch("lotteryTickets")
+				.fetch("lotteryTickets.lottery")
+				.orderBy("lotteryTickets.lottery.date desc, lotteryTickets.uid desc");
 	}
 	
 	// -----------------------------------------------------------------------------------------------//
@@ -175,6 +199,14 @@ public class Player extends Model {
 		this.referrerId = referrerId;
 	}
 
+	public boolean hasGivenToReferrer() {
+		return giftToReferrer;
+	}
+
+	public void setGiftToReferrer(boolean giftToReferrer) {
+		this.giftToReferrer = giftToReferrer;
+	}
+
 	public String getBirthDate() {
 		return birthDate;
 	}
@@ -220,6 +252,14 @@ public class Player extends Model {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public int getAvailableTickets() {
+		return availableTickets;
+	}
+
+	public void setAvailableTickets(int availableTickets) {
+		this.availableTickets = availableTickets;
 	}
 
 	public int getCurrentPoints() {

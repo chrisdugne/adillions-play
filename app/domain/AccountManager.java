@@ -19,6 +19,10 @@ import com.avaje.ebean.ExpressionList;
 public class AccountManager {
 
 	//------------------------------------------------------------------------------------//
+	
+	public static final int START_AVAILABLE_TICKETS = 10;
+	
+	//------------------------------------------------------------------------------------//
 
 	public static boolean existEmail(JsonNode userJson)
 	{
@@ -77,6 +81,12 @@ public class AccountManager {
 	public static Player getPlayerByFacebookId(String facebookId) {
 		return Player.findByFacebookId(facebookId);
    }
+	
+	//------------------------------------------------------------------------------------//
+	
+	public static Player getPlayerByUID(String playerUID) {
+		return Player.findByUID(playerUID);
+	}
 
 	//------------------------------------------------------------------------------------//
 
@@ -115,17 +125,18 @@ public class AccountManager {
 			
 		Player player = new Player();
 
-		player.setUid			(Utils.generateUID());
-		player.setEmail		(email);
-		player.setFirstName	(firstName);
-		player.setLastName	(lastName);
-		player.setSecret		(secret);
-		player.setReferrerId	(referrerId);
-		player.setBirthDate	(birthDate);
-		player.setFacebookId	(facebookId);
-		player.setUserName	(userName);
-		player.setLotteryTickets(new ArrayList<LotteryTicket>());
-		player.setRaffleTickets(new ArrayList<RaffleTicket>());
+		player.setUid					(Utils.generateUID());
+		player.setEmail				(email);
+		player.setFirstName			(firstName);
+		player.setLastName			(lastName);
+		player.setSecret				(secret);
+		player.setReferrerId			(referrerId);
+		player.setBirthDate			(birthDate);
+		player.setFacebookId			(facebookId);
+		player.setUserName			(userName);
+		player.setLotteryTickets	(new ArrayList<LotteryTicket>());
+		player.setRaffleTickets		(new ArrayList<RaffleTicket>());
+		player.setAvailableTickets	(START_AVAILABLE_TICKETS);
 
 		player.setCreationDate(now);
 
