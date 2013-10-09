@@ -3,6 +3,9 @@ package managers;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.avaje.ebean.Ebean;
+import com.avaje.ebean.SqlRow;
+
 import models.Lottery;
 import models.LotteryTicket;
 import models.Player;
@@ -21,21 +24,36 @@ public class LotteryManager {
 
 	public static Lottery getNextLottery()
 	{
+		//-------------------------------------
+		
 		Long now = new Date().getTime();
-		return Lottery.find
+		Lottery lottery = Lottery.find
 				.where().gt("date", now)
 				.orderBy("date asc")
 				.findList().get(0);
+
+		//-------------------------------------
+
+		String sql = "SELECT count(*) FROM lottery_ticket where lottery_uid='"+lottery.getUid()+"'";
+		SqlRow row =   
+				Ebean.createSqlQuery(sql)  
+				.findUnique();  
+
+		
+		lottery.setNbTickets(row.getInteger("count"));
+
+		//-------------------------------------
+
+		return lottery;
 	}
 
 	//------------------------------------------------------------------------------------//
-	
-	public static boolean storeLotteryTicket(String numbers){
-		
-		System.out.println("storeLotteryTicket proceed");
+
+	public static Player storeLotteryTicket(String numbers){
+
 		Player player = Application.player();
 		Lottery lottery = LotteryManager.getNextLottery();
-		
+
 		// -----------------------------------------------------//
 		// A - securite : on check cote server si le nb de tickets est ok
 		// coté client cest deja fait, mais un post 'dev tricheur' peut arriver ici sans pb
@@ -56,11 +74,8 @@ public class LotteryManager {
 			}
 		}
 		
-		System.out.println("nbLotteriesPlayed : " + playedLotteries.size());
-		System.out.println("nbTicketsPlayed : " + nbTicketsPlayed);
-		
 		if(nbTicketsPlayed >= player.getAvailableTickets())
-			return false;
+			return null;
 		
 		// -----------------------------------------------------//
 		// New player / First ticket
@@ -95,13 +110,16 @@ public class LotteryManager {
 		lotteryTicket.setNumbers(numbers);
 		lotteryTicket.setLottery(lottery);
 		lotteryTicket.setPlayer(player);
+		lotteryTicket.setCreationDate(new Date().getTime());
+		
 		
 		lotteryTicket.save();
 		player.save();
 		
 		// -----------------------------------------------------//
 		
-		return true;
+		player.getLotteryTickets().add(0, lotteryTicket);
+		return player;
 	}
 
 	//------------------------------------------------------------------------------------//

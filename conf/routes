@@ -44,4 +44,4 @@ POST    /storeLotteryTicket         controllers.LotteryService.storeLotteryTicke
 #---------------------------------------------------------------------------
 #  	PublicService 
 
-POST    /incTest                	controllers.PublicService.incTest()
+#POST    /incTest                	controllers.PublicService.incTest()

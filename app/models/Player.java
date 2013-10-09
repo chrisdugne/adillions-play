@@ -146,7 +146,7 @@ public class Player extends Model {
 		return find
 				.fetch("lotteryTickets")
 				.fetch("lotteryTickets.lottery")
-				.orderBy("lotteryTickets.lottery.date desc, lotteryTickets.uid desc");
+				.orderBy("lotteryTickets.lottery.date desc, lotteryTickets.creationDate desc");
 	}
 	
 	// -----------------------------------------------------------------------------------------------//

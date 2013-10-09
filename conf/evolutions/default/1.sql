@@ -24,6 +24,7 @@ create table lottery_ticket (
   lottery_uid               varchar(255),
   price                     float,
   player_uid                varchar(255),
+  creation_date             bigint,
   constraint pk_lottery_ticket primary key (uid))
 ;
 

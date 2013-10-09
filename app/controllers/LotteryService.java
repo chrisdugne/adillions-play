@@ -1,6 +1,7 @@
 package controllers;
 
 import managers.LotteryManager;
+import models.Player;
 
 import org.codehaus.jackson.JsonNode;
 
@@ -24,10 +25,14 @@ public class LotteryService extends Application
 	{
 		JsonNode params = request().body().asJson();
 		String numbers = params.get("numbers").toString();
-		
-		if(LotteryManager.storeLotteryTicket(numbers))
-			return ok();
-		else
+
+		Player player = LotteryManager.storeLotteryTicket(numbers);
+
+		if(player != null){
+			return ok(gson.toJson(player));
+		}
+		else{
 			return unauthorized();
+		}
 	}
 }

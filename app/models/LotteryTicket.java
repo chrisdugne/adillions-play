@@ -31,6 +31,10 @@ public class LotteryTicket extends Model {
 	
 	@ManyToOne
 	private Player player;
+
+	// -----------------------------------------------------------------------------------------------//
+	
+	private Long creationDate;
 	
 	// -----------------------------------------------------------------------------------------------//
 	// -- Queries
@@ -69,6 +73,14 @@ public class LotteryTicket extends Model {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public Long getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Long creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public Player getPlayer() {

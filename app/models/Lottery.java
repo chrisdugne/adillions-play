@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import play.db.ebean.Model;
@@ -29,6 +30,7 @@ public class Lottery extends Model {
 
 	@Expose
 	private Integer nbPlayers;
+
 	
 	@Expose
 	private Integer minPrice; 			 
@@ -44,6 +46,12 @@ public class Lottery extends Model {
 	@Expose
 	private String result; 				// {[34,65,2,5,65,7]}
 
+	// -----------------------------------------------------------------------------------------------//
+
+	@Transient
+	@Expose
+	private Integer nbTickets;
+	
 	// -----------------------------------------------------------------------------------------------//
 	
 	@Version
@@ -78,6 +86,14 @@ public class Lottery extends Model {
 
 	public void setNbPlayers(Integer nbPlayers) {
 		this.nbPlayers = nbPlayers;
+	}
+
+	public Integer getNbTickets() {
+		return nbTickets;
+	}
+
+	public void setNbTickets(Integer nbTickets) {
+		this.nbTickets = nbTickets;
 	}
 
 	public Integer getMaxNumbers() {
