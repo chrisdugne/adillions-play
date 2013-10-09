@@ -1,4 +1,4 @@
-package domain;
+package managers;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,10 +1,11 @@
 package controllers;
 
+import managers.LotteryManager;
+
 import org.codehaus.jackson.JsonNode;
 
 import play.mvc.Result;
 import play.mvc.With;
-import domain.LotteryManager;
 
 @With(SecurityController.class)
 public class LotteryService extends Application 

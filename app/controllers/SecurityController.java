@@ -2,6 +2,7 @@ package controllers;
 
 import static play.mvc.Controller.request;
 import static play.mvc.Controller.response;
+import managers.AccountManager;
 import models.Player;
 
 import org.codehaus.jackson.JsonNode;
@@ -16,7 +17,6 @@ import utils.HttpHelper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import domain.AccountManager;
 
 public class SecurityController extends Action.Simple {
 
