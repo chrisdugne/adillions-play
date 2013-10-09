@@ -3,11 +3,10 @@ package managers;
 import java.util.ArrayList;
 import java.util.Date;
 
-import utils.Utils;
-
 import models.Lottery;
 import models.LotteryTicket;
 import models.Player;
+import utils.Utils;
 import controllers.Application;
 
 public class LotteryManager {
@@ -64,6 +63,12 @@ public class LotteryManager {
 			return false;
 		
 		// -----------------------------------------------------//
+		// New player / First ticket
+		
+		if(nbTicketsPlayed == 0)
+			incrementNbPlayers(lottery);
+		
+		// -----------------------------------------------------//
 		// referring
 		
 		if(playedLotteries.size() >= NB_LOTTERIES_TO_PLAY_TO_BE_REFERRED 
@@ -93,11 +98,30 @@ public class LotteryManager {
 		
 		lotteryTicket.save();
 		player.save();
-
+		
 		// -----------------------------------------------------//
 		
 		return true;
 	}
 
+	//------------------------------------------------------------------------------------//
+
+	private static void incrementNbPlayers(Lottery lottery){
+		lottery.setNbPlayers(lottery.getNbPlayers()+1);
+		tryToSaveLottery(lottery);
+	}
+
+	private static void tryToSaveLottery(Lottery lottery) {
+
+		try{
+			lottery.save();
+		}
+		catch(Exception e){
+			Utils.sleepMillis(250);
+			incrementNbPlayers(lottery);
+		}
+		
+   }
+	
 	//------------------------------------------------------------------------------------//
 }

@@ -14,6 +14,7 @@ create table lottery (
   cpm                       float,
   theme                     TEXT,
   result                    varchar(255),
+  last_update               timestamp not null,
   constraint pk_lottery primary key (uid))
 ;
 

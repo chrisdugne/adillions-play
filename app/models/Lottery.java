@@ -1,8 +1,11 @@
 package models;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 import play.db.ebean.Model;
 
@@ -40,6 +43,11 @@ public class Lottery extends Model {
 
 	@Expose
 	private String result; 				// {[34,65,2,5,65,7]}
+
+	// -----------------------------------------------------------------------------------------------//
+	
+	@Version
+   public Timestamp lastUpdate;
 
 	// -----------------------------------------------------------------------------------------------//
 	// -- Queries

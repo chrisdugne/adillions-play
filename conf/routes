@@ -42,3 +42,6 @@ POST    /nextLottery                controllers.LotteryService.getNextLottery()
 POST    /storeLotteryTicket         controllers.LotteryService.storeLotteryTicket()
 
 #---------------------------------------------------------------------------
+#  	PublicService 
+
+POST    /incTest                	controllers.PublicService.incTest()

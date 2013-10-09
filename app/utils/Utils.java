@@ -22,6 +22,14 @@ public class Utils {
 			e.printStackTrace();
 		}
 	}
+
+	public static void sleepMillis(long nbMillis){
+		try {
+			Thread.sleep(nbMillis);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 	
 
 	//======================================================================================//

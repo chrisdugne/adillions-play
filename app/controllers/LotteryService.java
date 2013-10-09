@@ -10,11 +10,16 @@ import play.mvc.With;
 @With(SecurityController.class)
 public class LotteryService extends Application 
 {
+
+	//------------------------------------------------------------------------------------//
+	
 	public static Result getNextLottery()
 	{
 		return ok(gson.toJson(LotteryManager.getNextLottery()));
 	}
 
+	//------------------------------------------------------------------------------------//
+	
 	public static Result storeLotteryTicket()
 	{
 		JsonNode params = request().body().asJson();
