@@ -157,6 +157,10 @@ def main():
     else:
         prices.append(0) 
 
+    #---------------------------------
+    
+    toPay = round(toPay, 2)
+    
     print("To pay :" , toPay)
     print("Nb Rang 1 :" + str(nbRang1), " price: " , prices[0])
     print("Nb Rang 2 :" + str(nbRang2), " price: " , prices[1])

@@ -1,5 +1,5 @@
 import psycopg2
-import utils
+from .. import utils
 
 def main():
     
