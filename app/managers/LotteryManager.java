@@ -2,6 +2,7 @@ package managers;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.SqlRow;
@@ -34,19 +35,53 @@ public class LotteryManager {
 
 		//-------------------------------------
 
-		String sql = "SELECT count(*) FROM lottery_ticket where lottery_uid='"+lottery.getUid()+"'";
-		SqlRow row =   
-				Ebean.createSqlQuery(sql)  
-				.findUnique();  
-
-		
-		lottery.setNbTickets(row.getInteger("count"));
+		findNbTicketsForLottery(lottery);
 
 		//-------------------------------------
 
 		return lottery;
 	}
 
+	//------------------------------------------------------------------------------------//
+	
+	public static List<Lottery> getFinishedLotteries()
+	{
+		//-------------------------------------
+		
+		List<Lottery> lotteries = Lottery.find
+				.orderBy("date asc")
+				.where().isNotNull("result")
+				.findList();
+		
+		//-------------------------------------
+		
+		for(Lottery lottery : lotteries){
+			findNbTicketsForLottery(lottery);
+			findNbWinnersForLottery(lottery);
+		}
+		
+		//-------------------------------------
+		
+		return lotteries;
+	}
+
+	//------------------------------------------------------------------------------------//
+	
+	private static void findNbTicketsForLottery(Lottery lottery) {
+		String sql 		= "SELECT count(*) FROM lottery_ticket where lottery_uid='"+lottery.getUid()+"'";
+		SqlRow result	= Ebean.createSqlQuery(sql).findUnique();  
+		
+		lottery.setNbTickets(result.getInteger("count"));
+   }
+
+	
+	private static void findNbWinnersForLottery(Lottery lottery) {
+		String sql 		= "select count(*)  from lottery_ticket where lottery_uid='"+lottery.getUid()+"' and \"price\" IS NOT NULL;";
+		SqlRow result	= Ebean.createSqlQuery(sql).findUnique();  
+		
+		lottery.setNbWinners(result.getInteger("count"));
+	}
+	
 	//------------------------------------------------------------------------------------//
 
 	public static Player storeLotteryTicket(String numbers){

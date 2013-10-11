@@ -37,20 +37,24 @@ public class Lottery extends Model {
 	@Expose
 	private Integer maxPrice; 			// lottery.price = min ( max (lottery.minPrice, nbPlayers/ratio) , lottery.maxPrice)
 	@Expose
-	private Double cpm; 					// nbTickes/1000 * CPM = price
+	private Double cpm; 					// nbTickets/1000 * cpm = price
 
 	@Expose
 	@Column(columnDefinition = "TEXT")
-	private String theme; 	// {"A":"urlA", "B":"urlB", ...}
+	private String theme; 				// ["urlA","urlB",...]
 
 	@Expose
-	private String result; 				// {[34,65,2,5,65,7]}
+	private String result; 				// [34,65,2,5,65,7]
 
 	// -----------------------------------------------------------------------------------------------//
 
 	@Transient
 	@Expose
 	private Integer nbTickets;
+
+	@Transient
+	@Expose
+	private Integer nbWinners;
 	
 	// -----------------------------------------------------------------------------------------------//
 	
@@ -90,6 +94,14 @@ public class Lottery extends Model {
 
 	public Integer getNbTickets() {
 		return nbTickets;
+	}
+
+	public Integer getNbWinners() {
+		return nbWinners;
+	}
+
+	public void setNbWinners(Integer nbWinners) {
+		this.nbWinners = nbWinners;
 	}
 
 	public void setNbTickets(Integer nbTickets) {

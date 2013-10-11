@@ -40,6 +40,7 @@ POST    /player                     controllers.AccountService.fetchPlayer()
 
 POST    /nextLottery                controllers.LotteryService.getNextLottery()
 POST    /storeLotteryTicket         controllers.LotteryService.storeLotteryTicket()
+POST    /finishedLotteries          controllers.LotteryService.getFinishedLotteries()
 
 #---------------------------------------------------------------------------
 #  	PublicService 

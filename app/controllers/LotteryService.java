@@ -18,6 +18,13 @@ public class LotteryService extends Application
 	{
 		return ok(gson.toJson(LotteryManager.getNextLottery()));
 	}
+	
+	//------------------------------------------------------------------------------------//
+	
+	public static Result getFinishedLotteries()
+	{
+		return ok(gson.toJson(LotteryManager.getFinishedLotteries()));
+	}
 
 	//------------------------------------------------------------------------------------//
 	

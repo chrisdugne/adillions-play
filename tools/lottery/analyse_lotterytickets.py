@@ -25,6 +25,17 @@ def main():
     
     database.execute("SELECT * FROM lottery where uid='"+lotteryUID+"'")
     lottery         = database.fetchone()
+
+    if(not lottery):
+        print "Check the lotteryUID"
+        return
+    
+    if(not lottery[9]):
+        print "No winningNumbers set"
+        return
+    
+    #--------------------------------------------------------------------
+    
     winningNumbers  = json.loads(lottery[9])
     winningTickets  = []
     nbRang1         = 0
@@ -96,6 +107,7 @@ def main():
         if (isWinningTicket(nbWinning, additional, winningNumbers)) :
             
             winningTicket = WinningTicket(ticket[0], ticket[4], nbWinning, additional, numbers)
+            winningTicket.lotteryUID = lotteryUID
             
             if isRang1(nbWinning,additional,winningNumbers) :
                 winningTicket.rang = 1
@@ -193,7 +205,7 @@ def recordToDB(database, winningTickets, prices):
         price = prices[ticket.rang-1]
         playerUID = ticket.player[0]
         
-        print "Name : ", ticket.player[2], "numbers:", ticket.numbers, "rang:", ticket.rang,"price :", price
+        print "Name : ", ticket.player[2], "numbers:", ticket.numbers, "rang:", ticket.rang,"price :", price, "nbTickets : " , ticket.nbTicketsPlayed 
         
         database.execute("UPDATE lottery_ticket SET price='"+str(prices[ticket.rang-1])+"' WHERE uid='"+ticket.uid+"';") 
     
@@ -204,6 +216,10 @@ def getWinnerData(database, ticket):
     database.execute("SELECT * FROM player where uid='"+ticket.playerUID+"'")
     player = database.fetchone()
     ticket.addPlayer(player)
+
+    database.execute("select count(*) from lottery_ticket where player_uid = '"+ticket.playerUID+"' and lottery_uid='"+ticket.lotteryUID+"'")
+    ticket.nbTicketsPlayed = int(database.fetchone()[0])
+
         
 #----------------------------------------------------------------------------------
 
