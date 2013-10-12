@@ -62,6 +62,8 @@ UserManager.getPlayer = function()
 
 UserManager.getPlayerByFacebookId = function()
 {
+   console.log("--> getPlayerByFacebookId")
+   
    var params = new Object();
    params["facebookData"] = Facebook.data
    params["accessToken"] = Facebook.accessToken
@@ -80,15 +82,22 @@ UserManager.getPlayerByFacebookId = function()
          UserManager.receivedPlayer(result.player)
       },
       error:function(){
-         
+
+         console.log("--> unauthorized")
          UserManager.setupForms()
          
-         try{
-            $("#signinFBWindow").reveal({
-               animation: 'fade',
-               animationspeed: 100, 
-            });
-         }catch(e){}
+         if(App.Globals && App.Globals.signinRequested){
+            try{
+
+               $("#signinWindow").trigger("reveal:close");
+               $("#loginWindow").trigger("reveal:close");
+               
+               $("#signinFBWindow").reveal({
+                  animation: 'fade',
+                  animationspeed: 100, 
+               });
+            }catch(e){}
+         }
          
          $("#fbForm_title").text("Welcome " + Facebook.data.name + " !" )
          $("#fbForm_firstName").val(Facebook.data.first_name)

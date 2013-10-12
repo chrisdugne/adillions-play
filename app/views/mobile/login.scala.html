@@ -7,54 +7,66 @@
 <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/favicon.png")'>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/bootstrap.min.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/responsive.min.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/footer.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/global.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/header.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/mobile.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/classic/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/classic/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/classic/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/medium/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/medium/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/medium/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/facebook/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/facebook/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/facebook/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/small/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/small/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/small/home.css")' />
 </head>
 
-<body id="body" class="mobile">
-	<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
-		
-	<div class="row-fluid">
-		<div class="offset4">
-			<p class="popuptitle">Log In</p>
+@import views.html.mobile.header;
+
+<body>
+	@header()
+
+	<div class="content">
+		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
+
+		<div class="row-fluid">
+			<div class="offset4">
+				<p class="popuptitle">Log In</p>
+			</div>
 		</div>
-	</div>
 
-	<div id="login" class="row-fluid">
+		<div id="login" class="row-fluid">
 
-		<form id="loginForm">
+			<form id="loginForm">
 
-			<div class="clearfix  " id="email_field">
-				<label for="loginemail">E-mail</label>
-				<div class="input">
-					<input type="text" id="loginemail" name="loginemail" value="">
+				<div class="clearfix  " id="email_field">
+					<label for="loginemail">E-mail</label>
+					<div class="input">
+						<input type="text" id="loginemail" name="loginemail" value="">
+					</div>
 				</div>
-			</div>
 
-			<div class="clearfix  " id="password_field">
-				<label for="loginpassword">Password</label>
-				<div class="input">
-					<input type="password" id="loginpassword" name="loginpassword">
+				<div class="clearfix  " id="password_field">
+					<label for="loginpassword">Password</label>
+					<div class="input">
+						<input type="password" id="loginpassword" name="loginpassword">
+					</div>
 				</div>
-			</div>
 
-		</form>
+			</form>
 
-		<div id="validateButton" class="btn-large btn-primary headerButton">Log in</div>
+			<div id="validateButton" class="btn-large button">Log in</div>
 
-	</div>
+		</div>
 
-	<br />
-	<br />
-	<br />
-	<br />
+		<br /> <br /> <br /> <br />
 
-	<div class="offset1">
-		or login with Facebook : 
-		<img onclick="Facebook.popupLogin()" alt="facebook icon" title="facebook"	src='@routes.Assets.at("images/icons/facebook-24x24.png")'></img>
+		<div class="offset1">
+			or login with Facebook : <img onclick="Facebook.popupLogin()" alt="facebook icon" title="facebook"
+				src='@routes.Assets.at("images/icons/facebook-24x24.png")'></img>
+		</div>
 	</div>
 
 </body>
@@ -79,14 +91,20 @@
 
 <script type="text/javascript">
    UserManager.setupForms()
-   Facebook.init(function(){})
+
+   var failure = function() {
+   }
+   var finalize = function() {
+   }
+
+   Facebook.init(finalize, failure)
 
    $("#validateButton").click(function() {
       UserManager.mobileLogin(function(result) {
          if (result) {
-   			var url = "/loggedin"
-            url += "?authToken=" 	+ result.authToken
-            url += "&email=" 		+ $("#loginemail").val()
+            var url = "/loggedin"
+            url += "?authToken=" + result.authToken
+            url += "&email=" + $("#loginemail").val()
             window.location.href = url
 
          } else {
@@ -95,7 +113,6 @@
       })
    });
 
-   
    $("#closeButton").click(function() {
       window.location.href = "/backToMobile"
    });

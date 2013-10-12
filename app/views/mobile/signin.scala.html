@@ -7,80 +7,95 @@
 <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/favicon.png")'>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/bootstrap.min.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/responsive.min.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/footer.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/global.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/header.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/mobile.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/classic/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/classic/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/classic/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/medium/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/medium/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/medium/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/facebook/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/facebook/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/facebook/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/small/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/small/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/small/home.css")' />
 </head>
 
-<body id="body" class="mobile">
-	<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
-		
-	<div class="offset1">
-		<p class="popuptitle">Sign In</p>
-	</div>
+@import views.html.mobile.header;
+
+<body>
+	@header()
 	
-	<div class="offset1">
-		or login with Facebook : 
-		<img onclick="Facebook.popupLogin()" alt="facebook icon" title="facebook"	src='@routes.Assets.at("images/icons/facebook-24x24.png")'></img>
+	<div class="content">
+		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
+
+		<div class="row-fluid">
+			<div class="offset1 span3">
+				<p class="popuptitle">Sign In</p>
+			</div>
+
+			<div class="offset1 span4">
+				or login with Facebook <img onclick="Facebook.popupLogin()" alt="facebook icon" title="facebook"
+					src='@routes.Assets.at("images/icons/facebook-24x24.png")'></img>
+			</div>
+		</div>
+
+		<br /> <br />
+
+		<form id="signinForm1">
+
+			<div class="clearfix  " id="name_field">
+				<label for="firstName">First name</label>
+				<div class="input">
+					<input type="text" id="firstName" name="firstName" value="">
+				</div>
+			</div>
+
+			<div class="clearfix  " id="name_field">
+				<label for="lastName">Last name</label>
+				<div class="input">
+					<input type="text" id="lastName" name="lastName" value="">
+				</div>
+			</div>
+
+			<div class="clearfix  " id="email_field">
+				<label for="email">E-mail</label>
+				<div class="input">
+					<input type="text" id="email" name="email" value="">
+				</div>
+			</div>
+		</form>
+		<form id="signinForm2">
+			<div class="clearfix  " id="password_field">
+				<label for="password">Password</label>
+				<div class="input">
+					<input type="password" id="password" name="password">
+				</div>
+			</div>
+
+			<div class="clearfix  " id="repeatPassword_field">
+				<label for="repeatPassword">Repeat password</label>
+				<div class="input">
+					<input type="password" id="repeatPassword" name="repeatPassword">
+				</div>
+			</div>
+
+			<label for="birthDate">Birth date</label> <input type="text" id="birthDate" name="birthDate" readonly
+				style="cursor: pointer !important;" />
+
+			<div class="clearfix  " id="name_field">
+				<label for="referrerId">Referrer Id</label>
+				<div class="input">
+					<input type="text" id="referrerId" name="referrerId" value="">
+				</div>
+			</div>
+		</form>
+
+		<div id="validateButton" class="btn-large button">Sign in</div>
+
 	</div>
-
-	<br />
-	<br />
-
-	<form id="signinForm1">
-
-		<div class="clearfix  " id="name_field">
-			<label for="firstName">First name</label>
-			<div class="input">
-				<input type="text" id="firstName" name="firstName" value=""> 
-			</div>
-		</div>
-
-		<div class="clearfix  " id="name_field">
-			<label for="lastName">Last name</label>
-			<div class="input">
-				<input type="text" id="lastName" name="lastName" value=""> 
-			</div>
-		</div>
-
-		<div class="clearfix  " id="email_field">
-			<label for="email">E-mail</label>
-			<div class="input">
-				<input type="text" id="email" name="email" value="">
-			</div>
-		</div>
-	</form>
-	<form id="signinForm2">
-		<div class="clearfix  " id="password_field">
-			<label for="password">Password</label>
-			<div class="input">
-				<input type="password" id="password" name="password">
-			</div>
-		</div>
-
-		<div class="clearfix  " id="repeatPassword_field">
-			<label for="repeatPassword">Repeat password</label>
-			<div class="input">
-				<input type="password" id="repeatPassword" name="repeatPassword"> 
-			</div>
-		</div>
-		
-		<label for="birthDate">Birth date</label>
-		<input type="text" id="birthDate" name="birthDate" readonly style="cursor:pointer!important;"/>
-
-		<div class="clearfix  " id="name_field">
-			<label for="referrerId">Referrer Id</label>
-			<div class="input">
-				<input type="text" id="referrerId" name="referrerId" value=""> 
-			</div>
-		</div>
-	</form>
-
-	<div id="validateButton" class="btn-large btn-primary headerButton">Sign in</div>
-
-
 
 </body>
 
@@ -106,15 +121,20 @@
 
 <script type="text/javascript">
    UserManager.setupForms()
-   Facebook.init(function(){})
+
+   var failure = function() {
+   }
+   var finalize = function() {
+   }
+
+   Facebook.init(finalize, failure)
 
    $("#validateButton").click(function() {
       UserManager.mobileSignin(function() {
-          window.location.href = "/signedIn"
+         window.location.href = "/signedIn"
       })
    });
 
-   
    $("#closeButton").click(function() {
       window.location.href = "/backToMobile"
    });

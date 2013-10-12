@@ -1,0 +1,100 @@
+#header {
+	position: fixed;
+	top: 0px;
+	background: #eee;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff),
+		to(#eee) ); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, #fff, #eee);
+	/* Chrome 10+, Saf5.1+ */
+	background-image: -moz-linear-gradient(top, #fff, #eee); /* FF3.6+ */
+	background-image: -ms-linear-gradient(top, #fff, #eee); /* IE10 */
+	background-image: -o-linear-gradient(top, #fff, #eee);
+	/* Opera 11.10+ */
+	background-image: linear-gradient(top, #fff, #eee);
+	height: 67px;
+	width: 100%;
+	z-index: 500;
+	-moz-box-shadow: 0px 2px 15px #333;
+	-webkit-box-shadow: 0px 2px 15px #333;
+}
+
+#header h1 {
+	color: #eee;
+	margin-top: 7px;
+	font-size: 45px;
+	font-weight: 200;
+	line-height: 1;
+	letter-spacing: -1px;
+}
+
+#logo {
+	width: 220px;
+	margin-top: 10px;
+}
+
+/*--------------------------------*/
+.headerTitle {
+	z-index: 2;
+	position: fixed;
+	color: #fff;
+	margin-left: 47%;
+	margin-top: -6px;
+}
+
+.headerTitle h1 {
+	font-size: 28px;
+	font-weight: normal;
+	color: #eee;
+	margin-top: -18px;
+}
+
+.headerTitle p {
+	padding-left: 3px;
+	font-size: 17px;
+	color: #aaa;
+	margin-top: -13px;
+	margin-left: 30px;
+}
+
+/*--------------------------------*/
+
+#headerButtons {
+	float: right;
+	margin-top: 22px;
+	margin-right: 95px;
+}
+
+#headerButtons .btn-large {
+	display: inline;
+}
+
+/*--------------------------------*/
+
+.headerWaitingSpin {
+	top: 19px;
+	right: 65px;
+	cursor: pointer;
+	cursor: hand;
+	position: fixed;
+	z-index: 2;
+}
+
+.googleUser {
+	margin-top: 21px;
+	right: 120px;
+	color: #bbb;
+	background:
+		url(http://static.maperial.localhost/images/global/arrow_down.png)
+		no-repeat right 8px;
+	cursor: pointer;
+	position: fixed;
+	padding-right: 15px;
+	z-index: 2;
+}
+
+#waitingSpin {
+	z-index: 999;
+	position: fixed;
+	margin-left: 47%;
+	margin-top: 155px;
+}

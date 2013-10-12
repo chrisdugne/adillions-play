@@ -1,0 +1,151 @@
+/***** [ medium ] *****/
+@media screen and ( max-width : 1100px) {
+
+	/*--------------------------------*/
+	.centered {
+		float: none;
+		margin: 0 auto;
+	}
+
+	/*--------------------------------*/
+	#homeContent {
+		padding: 0;
+		z-index: 1;
+	}
+	.reveal-modal {
+		width: 600px; !important;
+	}
+	#homeImage {
+		background:
+			url('http://static.maperial.localhost/images/home/home.top.jpg');
+		background-repeat: repeat-x;
+		background-position-x: 0px;
+		height: 300px;
+		-moz-box-shadow: 0px 2px 15px #333;
+		-webkit-box-shadow: 0px 2px 15px #333;
+	}
+	#videoWindow {
+		width: 843px;
+		height: 480px;
+	}
+	.presentation {
+		font-size: 18px;
+	}
+
+	/*--------------------------------*/
+	.gallery li {
+		display: inline;
+	}
+
+	/* This rule is read by Galleria to define the gallery height: */
+	#galleria {
+		height: 620px
+	}
+	/*--------------------------------*/
+	.creditimage {
+		margin-left: 30px;
+		margin-right: 30px;
+	}
+	.creditlink {
+		margin-bottom: 15px;
+		font-size: 16px;
+		font-weight: normal;
+	}
+
+	/*--------------------------------*/
+	#titleNews {
+		font-size: 40px;
+		margin-bottom: 30px;
+	}
+	.subtitleNews {
+		margin-left: 45px;
+	}
+	.titleNew {
+		color: #217E03;
+		font-size: 25px;
+		margin-bottom: 20px;
+		margin-top: 40px;
+	}
+	.moreNew {
+		color: #217E03;
+		text-align: right;
+		cursor: pointer;
+		cursor: hand;
+	}
+	.dateNew {
+		font-size: 20px;
+		color: #217E03;
+		margin-top: 40px;
+	}
+
+	/*--------------------------------*/
+	#moreWhatButton {
+		position: fixed;
+		right: 20px;
+		top: 360px;
+	}
+	#moreTryButton {
+		position: fixed;
+		left: 20px;
+		top: 360px;
+	}
+
+	/*--------------------------------*/
+	#playImage {
+		margin-top: -215px;
+		opacity: 0.85;
+	}
+	#playImage:hover {
+		opacity: 1;
+	}
+	#part1 {
+		margin-top: -153px;
+	}
+	.miniarrow {
+		margin-top: 21px !important;
+		margin-left: -4px !important;
+	}
+	@media ( max-width : 767px) {
+		.miniarrow {
+			margin-top: -48px !important;
+		}
+	}
+
+	/*--------------------------------*/
+	.websiteContent {
+		padding-top: 50px;
+	}
+
+	/*--------------------------------*/
+	.homeIcon {
+		margin-top: 35px !important;
+		margin-bottom: -3px !important;
+		width: 60px;
+	}
+	.homeTitle {
+		color: #fff;
+		font-size: 19px;
+		margin-bottom: 14px;
+		margin-top: 32px !important;
+		text-shadow: black 0.1em 0.1em 0.2em
+	}
+	.homeSubtitle {
+		margin-bottom: 40px;
+		font-size: 20px;
+		font-weight: 300;
+		line-height: 1.25;
+		color: #fff;
+		text-shadow: black 0.2em 0.2em 0.6em
+	}
+	.homeAction {
+		font-size: 20px;
+		margin-top: 45px;
+	}
+	.homeActionSeparator {
+		margin-top: 0px;
+		margin-bottom: -1px;
+	}
+	#workflow {
+		margin-top: -30px;
+	}
+}

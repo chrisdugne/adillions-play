@@ -9,7 +9,6 @@
 			// Common actions to all views
 
 			openHome       : Ember.Route.transitionTo('home'),
-			openPrezi      : function(){ App.openPrezi() },
 
 			//-------------------------------------------------------//
 
@@ -19,7 +18,9 @@
 			//-------------------------------------------------------//
 			
 			openLogin         : function(){
-
+			   
+			   App.Globals.signinRequested = true
+			   
 			   $("#loginWindow").reveal({
 			      animation: 'fade',
 			      animationspeed: 100, 
@@ -29,12 +30,18 @@
 			
 			openSignin         : function(){
 			   
+			   App.Globals.signinRequested = true
+			   
 			   $("#signinWindow").reveal({
 			      animation: 'fade',
 			      animationspeed: 100, 
 			   });
 			   
 			},
+			
+			//-------------------------------------------------------//
+			
+			openGame         : Ember.Route.transitionTo('game'),
 
 			//-------------------------------------------------------//
 			
@@ -64,20 +71,14 @@
 			},
 
 			//-------------------------------------------------------//
-			
-			play         : function(){
-			   
-			},
-			
-			//-------------------------------------------------------//
 			// Routes used when calling Ember.Route.transitionTo
 			//-------------------//
 			
 			home           : App.HomeRouting,
+			game           : App.GameRouting,
 			team           : App.TeamRouting,
 			credits        : App.CreditsRouting,
 			blog           : App.BlogRouting,
-			presentation   : App.PresentationRouting,
 			
 		})
 	})
@@ -109,22 +110,13 @@
 	   console.log("-------------> ") 
       console.log("openPage " + page);
 		if(webappPage
-	   && (page != "mapCreation" && page != "styleEditor" && !App.Globals.isTryscreen) 
 		&& !App.user.loggedIn)
 		{
 			console.log("Not connected ! Redirected to the home page");
 			router.transitionTo('home');
 		}
 		else{
-
-         if(webappPage  
-            && navigator.appName == "Microsoft Internet Explorer"){
-            App.get('router').transitionTo('usechrome');
-            return;
-         }
-         
-		   if(webappPage  
-	      && !App.Globals.APP_READY){
+		   if(webappPage && !App.Globals.APP_READY){
 		      console.log("Not loaded properly ! Redirected to the home page");
 		      window.location.href="/"
 		   }
@@ -181,18 +173,10 @@
 
    Router.isWebappPage = function(page){
       return (page != "home" && 
-            page != "more" && 
             page != "team" && 
             page != "credits" && 
-            page != "jobs" && 
             page != "blog" && 
-            page != "features" && 
-            page != "presentation" && 
-            page != "prices" && 
-            page != "screenshots" && 
-            page != "allNews" && 
-            page != "cartotheque" && 
-            page != "usechrome");
+            page != "game");
    }
    
    //-----------------------------------------------------------------------------------------//

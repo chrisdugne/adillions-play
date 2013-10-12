@@ -2,11 +2,12 @@ package controllers;
 
 import static play.mvc.Controller.request;
 import static play.mvc.Controller.response;
-import managers.AccountManager;
-import models.Player;
 
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.node.ObjectNode;
+
+import managers.AccountManager;
+import models.Player;
 
 import play.libs.Json;
 import play.mvc.Action;
@@ -16,6 +17,7 @@ import utils.HttpHelper;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 
 public class SecurityController extends Action.Simple {
@@ -60,10 +62,10 @@ public class SecurityController extends Action.Simple {
 
 		if(player != null){
 			String authToken = player.createToken();
-			ObjectNode authTokenJson = Json.newObject();
-			authTokenJson.put(AUTH_TOKEN, authToken);
-			response().setCookie(AUTH_TOKEN, authToken);
-			return ok(authTokenJson);
+			
+			JsonObject authTokenJson = new JsonObject();
+			authTokenJson.addProperty(AUTH_TOKEN, authToken);
+			return ok(gson.toJson(authTokenJson));
 		}
 		else{
 			return unauthorized();
@@ -118,10 +120,10 @@ public class SecurityController extends Action.Simple {
 			String authToken = player.createToken();
 			response().setCookie(AUTH_TOKEN, authToken);
 
-			ObjectNode responseJson = Json.newObject();
-			responseJson.put(AUTH_TOKEN, authToken);
-			responseJson.put("player", Json.toJson(player));
-			return ok(responseJson);
+			JsonObject response = new JsonObject();
+			response.addProperty(AUTH_TOKEN, authToken);
+			response.addProperty("player", gson.toJson(player));
+			return ok(gson.toJson(response));
 		}
 		else{
 			// require signinFromFB
@@ -156,10 +158,11 @@ public class SecurityController extends Action.Simple {
 			String authToken = player.createToken();
 			response().setCookie(AUTH_TOKEN, authToken);
 
-			ObjectNode responseJson = Json.newObject();
-			responseJson.put(AUTH_TOKEN, authToken);
-			responseJson.put("player", Json.toJson(player));
-			return ok(responseJson);
+
+			JsonObject response = new JsonObject();
+			response.addProperty(AUTH_TOKEN, authToken);
+			response.addProperty("player", gson.toJson(player));
+			return ok(gson.toJson(response));
 		}
 		else{
 			return ok(gson.toJson(null));
@@ -173,6 +176,7 @@ public class SecurityController extends Action.Simple {
 
 		try{
 			String response= HttpHelper.get("https://graph.facebook.com/debug_token?access_token="+accessToken+"&input_token="+accessToken);
+			
 			JsonNode fbAnswer = Json.parse(response);
 			
 			String appId 		= fbAnswer.get("data").get("app_id").asText();

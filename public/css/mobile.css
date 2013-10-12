@@ -1,12 +1,18 @@
-#body{
-	margin-top:20px;
+.content{
+	margin-left:35px;
+	margin-right:35px;
+	margin-top:90px;
+	margin-bottom: 100px;
+	min-height:650px;
 }
 
 .mobilecloser{
+	top:20px;
 	width: 30px;
 	right: 40px;
 	cursor: pointer;
-	position: absolute;
+	position: fixed;
+	z-index:1000;
 }
 
 .ui-widget {

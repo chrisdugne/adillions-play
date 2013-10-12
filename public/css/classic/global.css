@@ -1,3 +1,27 @@
+
+/*--------------------------------*/
+
+.button {
+	cursor: pointer;
+	cursor: hand;
+	z-index: 2;
+	font-size: 17px;
+	font-weight: 200;
+	background: #eee;
+	color: #222;
+	-webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px
+		0px 0px rgba(255, 255, 255, 0.2);
+	-moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 0px
+		0px rgba(255, 255, 255, 0.2);
+	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 0px 0px
+		rgba(255, 255, 255, 0.2);
+}
+
+.button:hover {
+	background: #fff;
+	color: #111;
+}
+
 /*--------------------------------*/
 
 .videocloser{
@@ -10,10 +34,13 @@
 
 /*--------------------------------*/
 body{
-	background-image: url(/assets/images/mooning_@2X.png);
-	background-size: 400px;
-	background-position: initial initial;
-	background-repeat: initial initial;
+	background: #eee;
+	background-image:  -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee)); /* Saf4+, Chrome */
+	background-image:  -webkit-linear-gradient(top, #fff, #eee); /* Chrome 10+, Saf5.1+ */
+	background-image:  -moz-linear-gradient(top, #fff, #eee); /* FF3.6+ */
+	background-image:  -ms-linear-gradient(top, #fff, #eee); /* IE10 */
+	background-image:  -o-linear-gradient(top, #fff, #eee); /* Opera 11.10+ */
+	background-image:  linear-gradient(top, #fff, #eee);
 }
 
 .row-fluid.touchable:hover {
@@ -21,7 +48,7 @@ body{
 }
 
 .langButton{
-	color: #eee;
+	color: #111;
 	cursor: pointer;
 	cursor: hand;
 	background: transparent;
@@ -33,13 +60,6 @@ body{
 	right: 17px;
 	position: fixed;
 	z-index: 2;
-}
-
-
-@media (max-width: 767px) {
-	#langButtons {
-		margin-top: -53px;
-	}
 }
 
 .rounded {
@@ -397,108 +417,6 @@ body{
 
 .link:hover {
 	color: #217E03;
-}
-/*--------------------------------*/
-#header h1 {
-	color: #eee;
-	margin-top: 7px;
-	font-size: 45px;
-	font-weight: 200;
-	line-height: 1;
-	letter-spacing: -1px;
-}
-
-#logo {
-	width: 300px;
-	margin-top: 10px;
-}
-
-/*--------------------------------*/
-.headerTitle {
-	z-index: 2;
-	position: fixed;
-	color: #fff;
-	margin-left: 47%;
-	margin-top: -6px;
-}
-
-.headerTitle h1 {
-	font-size: 28px;
-	font-weight: normal;
-	color: #eee;
-	margin-top: -18px;
-}
-
-.headerTitle p {
-	padding-left: 3px;
-	font-size: 17px;
-	color: #aaa;
-	margin-top: -13px;
-	margin-left: 30px;
-}
-
-/*--------------------------------*/
-#headerButtons {
-	float: right;
-	margin-top: 10px;
-	margin-right: 75px;
-}
-
-#headerButtons .btn-large {
-	display: inline;
-}
-
-@media (max-width: 767px) {
-	#headerButtons {
-		margin-top: -40px;
-	}
-}
-
-.headerButton {
-	cursor: pointer;
-	cursor: hand;
-	z-index: 2;
-	background: transparent;
-	font-size : 17px;
-	font-weight: 200;
-}
-
-.headerButton:hover {
-	background: #eee;
-	color: #222;
-	-webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px
-		0px 0px rgba(255, 255, 255, 0.2);
-	-moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 0px
-		0px rgba(255, 255, 255, 0.2);
-	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 0px 0px
-		rgba(255, 255, 255, 0.2);
-}
-
-.headerWaitingSpin {
-	top: 19px;
-	right: 65px;
-	cursor: pointer;
-	cursor: hand;
-	position: fixed;
-	z-index: 2;
-}
-
-.googleUser {
-	margin-top: 21px;
-	right: 120px;
-	color: #bbb;
-	background: url(http://static.maperial.localhost/images/global/arrow_down.png) no-repeat right 8px;
-	cursor: pointer;
-	position: fixed;
-	padding-right: 15px;
-	z-index: 2;
-}
-
-#waitingSpin {
-	z-index: 999;
-	position: fixed;
-	margin-left: 47%;
-	margin-top: 155px;
 }
 
 /*--------------------------------------------------*/

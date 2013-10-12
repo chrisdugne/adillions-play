@@ -14,22 +14,27 @@
 
       //-------------------------------------------//
 
-      isDev    : window.location.hostname == "maperial.localhost",
-      isLocal  : (window.location.hostname == "maperial.localhost" || window.location.hostname == "maperial.localhost.deploy") ,
+//      isDev    : window.location.hostname == "maperial.localhost",
+//      isLocal  : (window.location.hostname == "maperial.localhost" || window.location.hostname == "maperial.localhost.deploy") ,
       debug    : false,
 
       //-------------------------------------------//
+
+      // if login/signin clicked -> set true -> fb.init may open signinFromFB popup.
+      // default : home -> false
+      signinRequested    : false,
 
    });
 
    //------------------------------------------------------//
 
    App.Globals = Globals.create();
-   App.youtubeManager = new YoutubeManager();
+//   App.youtubeManager = new YoutubeManager();
    
-   Facebook.init(function(){
-      UserManager.getPlayer()
-   })
+   var failure    = function(){  UserManager.getPlayer()  }
+   var finalize   = function(){  console.log("Facebook.init. finalize "); App.Globals.APP_READY = true }
+   
+   Facebook.init(finalize, failure)
    
    //------------------------------------------------------//
    // create footer email

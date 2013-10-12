@@ -26,20 +26,6 @@
 	margin-bottom: 25px;
 }
 
-/***** [ ecrans etroits ] *****/
-@media (max-width: 1100px) {
-	.homepage_top .widget_sp_image h4 {
-		font-size: 1.2em;
-	}
-}
-
-/***** [ ecrans mobiles ] *****/
-@media (max-width: 767px) {
-	.homepage_top .widget_sp_image h4 {
-		font-size: 1.6em;
-	}
-}
-
 .homepage_top .widget_sp_image P {
 	text-align: center;
 	line-height: 1.4;
@@ -159,10 +145,8 @@
 	z-index: 1;
 }
 
-#maperialAuthFrame {
-	width: 532px;
-	height: 423px;
-	border: 0px;
+.reveal-modal {
+	width: 720px;
 }
 	
 #homeImage {
@@ -261,12 +245,6 @@
 .miniarrow {
 	margin-top: 21px!important;
 	margin-left: -4px!important;
-}
-
-@media (max-width: 767px) {
-	.miniarrow {
-		margin-top: -48px!important;
-	}
 }
 
 /*--------------------------------*/
