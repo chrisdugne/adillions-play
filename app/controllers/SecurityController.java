@@ -2,12 +2,10 @@ package controllers;
 
 import static play.mvc.Controller.request;
 import static play.mvc.Controller.response;
-
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.node.ObjectNode;
-
 import managers.AccountManager;
 import models.Player;
+
+import org.codehaus.jackson.JsonNode;
 
 import play.libs.Json;
 import play.mvc.Action;
@@ -157,7 +155,6 @@ public class SecurityController extends Action.Simple {
 
 			String authToken = player.createToken();
 			response().setCookie(AUTH_TOKEN, authToken);
-
 
 			JsonObject response = new JsonObject();
 			response.addProperty(AUTH_TOKEN, authToken);

@@ -70,4 +70,9 @@ public class Application extends Controller {
 	{
 		return ok(views.html.mobile.video.render());
 	}
+	
+	public static Result mobileInvite()
+	{
+		return ok(views.html.mobile.invite.render());
+	}
 }

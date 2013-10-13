@@ -12,7 +12,8 @@ def main():
     maxPrice      = raw_input("Max price ? \n> ")
     minPrice      = raw_input("Min price ? \n> ")
     date          = raw_input("data ? (yyyy-mm-dd) \n> ")
-    dateMillis    = utils.toTimestamp(date)
+    
+    dateMillis    = utils.toTimestamp(date) + 22 * 60 * 60 * 1000  # 22h00
 
     if(not maxPicks 
     or not maxPrice    
@@ -30,8 +31,8 @@ def main():
 
     #--------------------------------------------------------------------
 
-    cursor.execute("INSERT INTO lottery (uid, date, max_picks, max_numbers, nb_players, max_price, min_price, cpm) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", 
-                   (lotteryUID, dateMillis, maxPicks, maxNumbers, 0, maxPrice, minPrice, cpm))
+    cursor.execute("INSERT INTO lottery (uid, date, max_picks, max_numbers, nb_players, max_price, min_price, cpm, last_update) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+                   (lotteryUID, dateMillis, maxPicks, maxNumbers, 0, maxPrice, minPrice, cpm, "2012-10-18 11:35:21"))
 
     
     #--------------------------------------------------------------------

@@ -8,8 +8,8 @@
 
 .mobilecloser{
 	top:20px;
-	width: 30px;
-	right: 40px;
+	width: 15px;
+	right: 20px;
 	cursor: pointer;
 	position: fixed;
 	z-index:1000;
