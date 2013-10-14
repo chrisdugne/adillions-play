@@ -32,16 +32,20 @@
 		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
 
 		<div class="row-fluid">
-			<div class="span3 offset1">
-				<img title="icon" id="facebookPicture"></img>
-			</div>
-			<div class="span2">
-				<div id="changeAccountButton" class="btn-large btn-primary headerButton">_change account</div>
-			</div>
-			<div class="span5">
+			<div class="span12">
 				<p id="fbForm_title" class="popuptitle"></p>
 			</div>
 		</div>
+		<div class="row-fluid">
+			<div class="span3 offset1">
+				<img title="icon" id="facebookPicture"></img>
+			</div>
+			<div class="span5 offset2">
+				<div id="changeAccountButton" class="btn-large button">_change account</div>
+			</div>
+		</div>
+		<br />
+		<br />
 
 		<div class="row-fluid">
 			<p>_Obviously we will always use your Facebook names everywhere.</p>
@@ -75,7 +79,7 @@
 				</div>
 			</div>
 
-			<div id="validateButton" class="btn-large btn-primary headerButton">Sign in</div>
+			<div id="validateButton" class="btn-large button">Sign in</div>
 		</form>
 
 	</div>
@@ -106,6 +110,7 @@
 
    var failure = function() {
       window.location.href = "/backToMobile"
+      Facebook.logout()
    }
    var finalize = function() {
    }

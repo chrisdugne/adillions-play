@@ -35,6 +35,7 @@ POST    /playerFromFB               controllers.SecurityController.getPlayerFrom
 #   AccountService 
 
 POST    /player                     controllers.AccountService.fetchPlayer()
+POST    /updatePlayer               controllers.AccountService.updatePlayer()
 
 #---------------------------------------------------------------------------
 #  	LotteryService 

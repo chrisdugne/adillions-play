@@ -20,6 +20,9 @@ public class LotteryManager {
 	public static final int NB_POINTS_PER_TICKET	 						= 1;
 	public static final int NB_POINTS_PER_REFERRING 					= 4;
 	public static final int NB_LOTTERIES_TO_PLAY_TO_BE_REFERRED 	= 2;
+
+	public static final int FACEBOOK_FAN_TICKETS 						= 4;
+	public static final int TWITTER_FAN_TICKETS 							= 4;
 	
 	//------------------------------------------------------------------------------------//
 
@@ -93,7 +96,7 @@ public class LotteryManager {
 		// A - securite : on check cote server si le nb de tickets est ok
 		// coté client cest deja fait, mais un post 'dev tricheur' peut arriver ici sans pb
 		// ou meme plusieurs connections sur plusieurs devices ! les coquins.
-		//
+		
 		// B - on compte le nbre de lotteries jouees pour eventuel gift to referrer
 		
 		int nbTicketsPlayed = 0;
@@ -109,11 +112,17 @@ public class LotteryManager {
 			}
 		}
 		
-		if(nbTicketsPlayed >= player.getAvailableTickets())
+		int facebookFanBonus = player.isFacebookFan() ? FACEBOOK_FAN_TICKETS : 0;
+		int twitterFanBonus 	= player.isTwitterFan() ? TWITTER_FAN_TICKETS : 0;
+
+		// -----------------------------------------------------//
+
+		if(player.getAvailableTickets() + facebookFanBonus + twitterFanBonus - player.getPlayedBonusTickets() <= 0) 
 			return null;
 		
 		// -----------------------------------------------------//
 		// New player / First ticket
+		// on ne check pas simplement avec getAvailableTickets car availableTickets peut avoir eu des bonus
 		
 		if(nbTicketsPlayed == 0)
 			incrementNbPlayers(lottery);
@@ -136,6 +145,14 @@ public class LotteryManager {
 		
 		player.setCurrentPoints(player.getCurrentPoints() + NB_POINTS_PER_TICKET);
 		player.setTotalPoints(player.getTotalPoints() + NB_POINTS_PER_TICKET);
+
+		// -----------------------------------------------------//
+		// count down availble/played tickets
+		
+		if(player.getAvailableTickets() > 0)
+			player.setAvailableTickets	(player.getAvailableTickets() - 1);
+		else
+			player.setPlayedBonusTickets (player.getPlayedBonusTickets() + 1);
 
 		// -----------------------------------------------------//
 		// Store ticket

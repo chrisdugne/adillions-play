@@ -21,6 +21,7 @@ Facebook.init = function(finalizeInit, notConnectedCallback)
    
    this.FACEBOOK_APP_ID      = "170148346520274"
    this.FACEBOOK_APP_SECRET  = "887e8f7abb9b1cb9238a097e06585ae2"
+   this.finalizeInit         = finalizeInit
    
    FB.init({
       appId      : this.FACEBOOK_APP_ID, // App ID
@@ -39,8 +40,8 @@ Facebook.init = function(finalizeInit, notConnectedCallback)
          // request, and the time the access token 
          // and signed request each expire
          
-         finalizeInit()
-         Facebook.checkPermissions(response, finalizeInit);
+         Facebook.finalizeInit()
+         Facebook.checkPermissions(response);
       } 
       else if (response.status === 'not_authorized') 
       {
@@ -50,7 +51,7 @@ Facebook.init = function(finalizeInit, notConnectedCallback)
          //Facebook.popupLogin();
 //         UserManager.getPlayer()
          
-         finalizeInit()
+         Facebook.finalizeInit()
          notConnectedCallback()
       }
       else 
@@ -61,7 +62,7 @@ Facebook.init = function(finalizeInit, notConnectedCallback)
          // then try Application autologin
 //         UserManager.getPlayer()
 
-         finalizeInit()
+         Facebook.finalizeInit()
          notConnectedCallback()
       }
    });
@@ -70,7 +71,7 @@ Facebook.init = function(finalizeInit, notConnectedCallback)
 
 //----------------------------------------------------------------//
 
-Facebook.checkPermissions = function(responseConnection, finalizeInit)
+Facebook.checkPermissions = function(responseConnection)
 {
    Facebook.facebookId     = responseConnection.authResponse.userID;
    Facebook.accessToken    = responseConnection.authResponse.accessToken;
@@ -80,7 +81,7 @@ Facebook.checkPermissions = function(responseConnection, finalizeInit)
       if(response.data == undefined)
       {
          Facebook.popupLogin();
-         finalizeInit()
+         Facebook.finalizeInit()
          return;
       }
 
@@ -89,18 +90,21 @@ Facebook.checkPermissions = function(responseConnection, finalizeInit)
       if(perms.publish_stream
             && perms.email 
             && perms.user_birthday 
+            && perms.user_likes
             && perms.friends_birthday 
             && perms.publish_actions) 
       {
-         // permission publish_stream OK
-         Facebook.openApp(finalizeInit);
+         // permissios OK
+         Facebook.openApp();
       }
       else
       {                
-         // User DOESN'T have publish_stream permission.
-         // ask him again, them check if he said yes to publish_stream again
-         Facebook.popupLogin();
-         finalizeInit()
+         // User DOESN'T have all permissions.
+         // force Logout then ask him again
+
+         Facebook.logout(function(){
+            Facebook.popupLogin()
+         })
       }                                            
    } );
 }
@@ -110,24 +114,25 @@ Facebook.popupLogin = function()
    FB.login(function (response) {
       if(response.authResponse)
          Facebook.checkPermissions(response);
-   }, { scope: 'publish_stream, email, user_birthday, friends_birthday, publish_actions' });
+   }, { scope: 'publish_stream, email, user_likes, user_birthday, friends_birthday, publish_actions' });
 }
 
-Facebook.logout = function()
+Facebook.logout = function(next)
 {
    FB.logout(function () {
-      
+      if(next)
+         next()
    })
 }
 
 //----------------------------------------------------------------//
 
-Facebook.openApp = function(finalizeInit)
+Facebook.openApp = function()
 {
    Facebook.getAppAccessToken();
 
    Facebook.getMe( function (){
-      UserManager.getPlayerByFacebookId(finalizeInit)
+      UserManager.getPlayerByFacebookId()
    }); 
 
    // passage par controller/register pour mettre facebookUID en session

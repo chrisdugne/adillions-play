@@ -38,7 +38,7 @@
 
 			<div class="offset1 span4">
 				or login with Facebook <img onclick="Facebook.popupLogin()" alt="facebook icon" title="facebook"
-					src='@routes.Assets.at("images/icons/facebook-24x24.png")'></img>
+					src='@routes.Assets.at("images/icons/facebook-64x64.png")'></img>
 			</div>
 		</div>
 
@@ -123,6 +123,7 @@
    UserManager.setupForms()
 
    var failure = function() {
+      Facebook.logout()
    }
    var finalize = function() {
    }

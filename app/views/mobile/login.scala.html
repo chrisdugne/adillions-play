@@ -32,8 +32,13 @@
 		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
 
 		<div class="row-fluid">
-			<div class="offset4">
+			<div class="offset1 span4">
 				<p class="popuptitle">Log In</p>
+			</div>
+
+			<div class="offset1 span4">
+				or login with Facebook <img onclick="Facebook.popupLogin()" alt="facebook icon" title="facebook"
+					src='@routes.Assets.at("images/icons/facebook-64x64.png")'></img>
 			</div>
 		</div>
 
@@ -61,12 +66,6 @@
 
 		</div>
 
-		<br /> <br /> <br /> <br />
-
-		<div class="offset1">
-			or login with Facebook : <img onclick="Facebook.popupLogin()" alt="facebook icon" title="facebook"
-				src='@routes.Assets.at("images/icons/facebook-24x24.png")'></img>
-		</div>
 	</div>
 
 </body>
@@ -93,6 +92,7 @@
    UserManager.setupForms()
 
    var failure = function() {
+      Facebook.logout()
    }
    var finalize = function() {
    }

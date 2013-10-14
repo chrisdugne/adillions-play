@@ -7,11 +7,9 @@ import models.Player;
 
 import org.codehaus.jackson.JsonNode;
 
-import play.libs.Json;
 import play.mvc.Action;
 import play.mvc.Http;
 import play.mvc.Result;
-import utils.HttpHelper;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -102,13 +100,13 @@ public class SecurityController extends Action.Simple {
 		//----------------------
 
 		String facebookId = facebookData.get("id").asText();
-		String accessToken = params.get("accessToken").asText();
 		
 		//----------------------
 		// verify token
 		
-		if(!validAccessToken(accessToken, facebookId))
-			return unauthorized();
+//		String accessToken = params.get("accessToken").asText();
+//		if(!validAccessToken(accessToken, facebookId))
+//			return unauthorized();
 		
 		//----------------------
 		
@@ -139,14 +137,14 @@ public class SecurityController extends Action.Simple {
 		//----------------------
 
 		JsonNode userJson = params.get("user");
-		String facebookId = userJson.get("facebookId").asText();
-		String accessToken = params.get("accessToken").asText();
 		
 		//----------------------
 		// verify token
 		
-		if(!validAccessToken(accessToken, facebookId))
-			return unauthorized();
+//		String facebookId = userJson.get("facebookId").asText();
+//		String accessToken = params.get("accessToken").asText();
+//		if(!validAccessToken(accessToken, facebookId))
+//			return unauthorized();
 		
 		//----------------------
 		
@@ -169,37 +167,40 @@ public class SecurityController extends Action.Simple {
 	
 	// ---------------------------------------------//
 	
-	private static boolean validAccessToken(String accessToken, String facebookId) {
-
-		try{
-			String response= HttpHelper.get("https://graph.facebook.com/debug_token?access_token="+accessToken+"&input_token="+accessToken);
-			
-			JsonNode fbAnswer = Json.parse(response);
-			
-			String appId 		= fbAnswer.get("data").get("app_id").asText();
-			Boolean isValid 	= fbAnswer.get("data").get("is_valid").asBoolean();
-			String userId 		= fbAnswer.get("data").get("user_id").asText();
-
-			if(!appId.equals(FACEBOOK_APP_ID)){
-				System.out.println("ACCESS_TOKEN FOR WRONG APP_ID");
-				return false;
-			}
-			
-			if(!facebookId.equals(userId)){
-				System.out.println("ACCESS_TOKEN FOR WRONG USER_ID");
-				return false;
-			}
-
-			// timeout / logout
-			if(!isValid){
-				return false;
-			}
-		}
-		catch(Exception e){
-			System.out.println("COULDNT VALIDATE ACCESS_TOKEN WITH FACEBOOK");
-			return false;
-		}
-
-		return true;
-   }
+//	private static boolean validAccessToken(String accessToken, String facebookId) {
+//
+//		// A REVOIR : You must provide an app access token or a user access token that is an owner or developer of the app
+//		// surement app_access_token
+//		
+//		try{
+//			String response= HttpHelper.get("https://graph.facebook.com/debug_token?access_token="+accessToken+"&input_token="+accessToken);
+//			
+//			JsonNode fbAnswer = Json.parse(response);
+//			
+//			String appId 		= fbAnswer.get("data").get("app_id").asText();
+//			Boolean isValid 	= fbAnswer.get("data").get("is_valid").asBoolean();
+//			String userId 		= fbAnswer.get("data").get("user_id").asText();
+//
+//			if(!appId.equals(FACEBOOK_APP_ID)){
+//				System.out.println("ACCESS_TOKEN FOR WRONG APP_ID");
+//				return false;
+//			}
+//			
+//			if(!facebookId.equals(userId)){
+//				System.out.println("ACCESS_TOKEN FOR WRONG USER_ID");
+//				return false;
+//			}
+//
+//			// timeout / logout
+//			if(!isValid){
+//				return false;
+//			}
+//		}
+//		catch(Exception e){
+//			System.out.println("COULDNT VALIDATE ACCESS_TOKEN WITH FACEBOOK");
+//			return false;
+//		}
+//
+//		return true;
+//   }
 }

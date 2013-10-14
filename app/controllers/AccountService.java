@@ -1,5 +1,8 @@
 package controllers;
 
+import org.codehaus.jackson.JsonNode;
+
+import managers.AccountManager;
 import models.Player;
 import play.mvc.Result;
 import play.mvc.With;
@@ -21,5 +24,20 @@ public class AccountService extends Application
 		
 	}
 
+	// ---------------------------------------------//
+
+	public static Result updatePlayer()
+	{
+		JsonNode params = request().body().asJson();
+		JsonNode newUserJson = params.get("user");
+		
+		Player player = Application.player();
+		
+		AccountManager.updatePlayer(player, newUserJson);
+		
+		return ok(gson.toJson(player));
+		
+	}
+	
 	// ---------------------------------------------//
 }

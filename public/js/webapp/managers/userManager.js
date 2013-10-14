@@ -28,7 +28,14 @@ UserManager.receivedPlayer = function(player)
    App.user.set("loggedIn",         true)   
 
    App.message("Welcome back " + player.userName + " !", true)
-   
+
+   //----------------------------------
+
+   if(Facebook && Facebook.finalizeInit)
+      Facebook.finalizeInit();
+
+   //----------------------------------
+
    $.ajax({
       type: "POST",  
       url: "/nextLottery",

@@ -20,7 +20,9 @@ public class AccountManager {
 
 	//------------------------------------------------------------------------------------//
 	
-	public static final int START_AVAILABLE_TICKETS = 10;
+	public static final int START_AVAILABLE_TICKETS 		= 10;
+	public static final int FACEBOOK_ACCOUNT_POINTS 		= 8;
+	public static final int TWITTER_ACCOUNT_POINTS 			= 8;
 	
 	//------------------------------------------------------------------------------------//
 
@@ -98,18 +100,34 @@ public class AccountManager {
 		String email 			= userJson.get("email").asText();
 		String firstName 		= userJson.get("firstName").asText();
 		String lastName 		= userJson.get("lastName").asText();
-		String referrerId 	= userJson.get("referrerId").asText();
 		String birthDate 		= userJson.get("birthDate").asText();
 
 		String userName 		= firstName + " " + lastName;
+
+		int points 				= 0;
+		
+		//-------------------------------------//
+		
+		String referrerId = null;
+		if(userJson.get("referrerId").asText().length() > 0){
+			referrerId 	= userJson.get("referrerId").asText();
+		}
 		
 		//-------------------------------------//
 		
 		String facebookId = null;
 		if(userJson.get("facebookId") != null){
-			System.out.println("fb id " + userJson.get("facebookId").asText());
 			facebookId 	= userJson.get("facebookId").asText();
 			userName 	= userJson.get("facebookName").asText();
+			points		+= FACEBOOK_ACCOUNT_POINTS;
+		}
+		
+		//-------------------------------------//
+		
+		String twitterId = null;
+		if(userJson.get("twitterId") != null){
+			twitterId 	= userJson.get("twitterId").asText();
+			points		+= TWITTER_ACCOUNT_POINTS;
 		}
 
 		//-------------------------------------//
@@ -125,18 +143,32 @@ public class AccountManager {
 			
 		Player player = new Player();
 
-		player.setUid					(Utils.generateUID());
-		player.setEmail				(email);
-		player.setFirstName			(firstName);
-		player.setLastName			(lastName);
-		player.setSecret				(secret);
-		player.setReferrerId			(referrerId);
-		player.setBirthDate			(birthDate);
-		player.setFacebookId			(facebookId);
-		player.setUserName			(userName);
-		player.setLotteryTickets	(new ArrayList<LotteryTicket>());
-		player.setRaffleTickets		(new ArrayList<RaffleTicket>());
-		player.setAvailableTickets	(START_AVAILABLE_TICKETS);
+		player.setUid						(Utils.generateUID());
+		player.setEmail					(email);
+		player.setFirstName				(firstName);
+		player.setLastName				(lastName);
+		player.setSecret					(secret);
+		player.setReferrerId				(referrerId);
+		player.setBirthDate				(birthDate);
+		player.setFacebookId				(facebookId);
+		player.setTwitterId				(twitterId);
+		player.setUserName				(userName);
+		player.setLotteryTickets		(new ArrayList<LotteryTicket>());
+		player.setRaffleTickets			(new ArrayList<RaffleTicket>());
+		
+		player.setCurrentLotteryUID	("");
+		player.setTweet					(false);
+		player.setPostOnFacebook		(false);
+
+		player.setAvailableTickets		(START_AVAILABLE_TICKETS);
+		player.setPlayedBonusTickets	(0);
+
+		player.setFacebookFan			(false);
+		player.setTwitterFan				(false);
+		
+		player.setCurrentPoints			(0);
+		player.setTotalPoints			(0);
+		player.setIdlePoints				(points);
 
 		player.setCreationDate(now);
 
@@ -146,6 +178,64 @@ public class AccountManager {
 
 		return player;
 	}
+
+	//------------------------------------------------------------------------------------//
+	
+	public static Player updatePlayer(Player player, JsonNode newUserJson) {
+
+		//-------------------------------------//
+
+		String facebookId = null;
+		String twitterId 	= null;
+		String userName 	= newUserJson.get("userName").asText();
+		int idlePoints 	= newUserJson.get("idlePoints").asInt();
+		
+		//-------------------------------------//
+
+		if(newUserJson.get("facebookId") != null && player.getFacebookId() == null){
+			facebookId 	= newUserJson.get("facebookId").asText();
+			userName 	= newUserJson.get("facebookName").asText();
+			idlePoints	+= FACEBOOK_ACCOUNT_POINTS;
+
+			player.setFacebookId			(facebookId);
+			player.setUserName			(userName);
+		}
+
+		//-------------------------------------//
+		
+		if(newUserJson.get("twitterId") != null && player.getTwitterId() == null){
+			twitterId 	= newUserJson.get("facebookId").asText();
+			idlePoints	+= TWITTER_ACCOUNT_POINTS;
+			
+			player.setTwitterId			(twitterId);
+		}
+		
+		//-------------------------------------//
+		
+		player.setCurrentPoints			(newUserJson.get("currentPoints").asInt());
+		player.setTotalPoints			(newUserJson.get("totalPoints").asInt());
+		player.setIdlePoints				(idlePoints);
+
+		//-------------------------------------//
+		
+		if(newUserJson.get("facebookFan") != null)
+			player.setFacebookFan (newUserJson.get("facebookFan").asBoolean());
+
+		if(newUserJson.get("twitterFan") != null)
+			player.setTwitterFan (newUserJson.get("twitterFan").asBoolean());
+
+		//-------------------------------------//
+		
+		player.setCurrentLotteryUID	(newUserJson.get("currentLotteryUID").asText());
+		player.setAvailableTickets		(newUserJson.get("availableTickets").asInt());
+		player.setPlayedBonusTickets	(newUserJson.get("playedBonusTickets").asInt());
+
+		//-------------------------------------//
+
+		Ebean.save(player);  
+
+		return player;
+   }
 
 	//------------------------------------------------------------------------------------//
 }

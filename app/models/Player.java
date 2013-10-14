@@ -24,6 +24,9 @@ public class Player extends Model {
 	@Expose
 	private String facebookId;
 
+	@Expose
+	private String twitterId;
+
 	// FB : facebookData.name
 	// A	: firstName + lastName 
 	@Expose
@@ -39,6 +42,8 @@ public class Player extends Model {
 
 	@Expose
 	private String birthDate;
+
+	// -----------------------------------------------------------------------------------------------//
 	
 	@Expose
 	private int currentPoints;
@@ -49,13 +54,38 @@ public class Player extends Model {
 	@Expose
 	private int totalPoints;
 
+	// -----------------------------------------------------------------------------------------------//
+
 	@Expose
 	private int availableTickets;
+
+	@Expose
+	private int playedBonusTickets;
+
+	// -----------------------------------------------------------------------------------------------//
 
 	@Expose
 	private String referrerId;
 	@Expose
 	private boolean giftToReferrer;
+	
+	// -----------------------------------------------------------------------------------------------//
+
+	@Expose
+	private String currentLotteryUID;
+	@Expose
+	private Boolean hasPostOnFacebook;
+	@Expose
+	private Boolean hasTweet;
+
+	// -----------------------------------------------------------------------------------------------//
+	// utiliser normalement que coté client
+	// mais bon a savoir coté server pour eviter la triche (availableTickets + nbTickets de fans acceddible coté server)
+
+	@Expose
+	private Boolean isFacebookFan;
+	@Expose
+	private Boolean isTwitterFan;
 
 	// -----------------------------------------------------------------------------------------------//
 
@@ -207,6 +237,22 @@ public class Player extends Model {
 		this.giftToReferrer = giftToReferrer;
 	}
 
+	public String getTwitterId() {
+		return twitterId;
+	}
+
+	public void setTwitterId(String twitterId) {
+		this.twitterId = twitterId;
+	}
+
+	public String getCurrentLotteryUID() {
+		return currentLotteryUID;
+	}
+
+	public void setCurrentLotteryUID(String currentLotteryUID) {
+		this.currentLotteryUID = currentLotteryUID;
+	}
+
 	public String getBirthDate() {
 		return birthDate;
 	}
@@ -246,6 +292,30 @@ public class Player extends Model {
 		this.raffleTickets = raffleTickets;
 	}
 
+	public int getPlayedBonusTickets() {
+		return playedBonusTickets;
+	}
+
+	public void setPlayedBonusTickets(int playedBonusTickets) {
+		this.playedBonusTickets = playedBonusTickets;
+	}
+
+	public Boolean hasPostOnFacebook() {
+		return hasPostOnFacebook;
+	}
+
+	public void setPostOnFacebook(Boolean hasPostOnFacebook) {
+		this.hasPostOnFacebook = hasPostOnFacebook;
+	}
+
+	public Boolean hasTweet() {
+		return hasTweet;
+	}
+
+	public void setTweet(Boolean hasTweet) {
+		this.hasTweet = hasTweet;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
@@ -276,6 +346,22 @@ public class Player extends Model {
 
 	public void setIdlePoints(int idlePoints) {
 		this.idlePoints = idlePoints;
+	}
+
+	public Boolean isFacebookFan() {
+		return isFacebookFan;
+	}
+
+	public void setFacebookFan(Boolean isFacebookFan) {
+		this.isFacebookFan = isFacebookFan;
+	}
+
+	public Boolean isTwitterFan() {
+		return isTwitterFan;
+	}
+
+	public void setTwitterFan(Boolean isTwitterFan) {
+		this.isTwitterFan = isTwitterFan;
 	}
 
 	public int getTotalPoints() {
