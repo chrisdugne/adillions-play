@@ -1,110 +1,27 @@
-@(appNamespace:String, 
-  appId:String,
-  title:String, 
-  description:String, 
-  imageURL:String, 
-  objectPageURL:String,
-  locale:String)
+@(appNamespace:String, appId:String, title:String, description:String, imageURL:String, objectPageURL:String, locale:String)
 
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"> 
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
 
-  <meta property="fb:app_id" content="@appId" /> 
-  <meta property="og:type" content="@appNamespace:theme" /> 
-  <meta property="og:url" content="@objectPageURL">
-  <meta property="og:title" content="@title" /> 
-  <meta property="og:image" content="@imageURL" /> 
-  <meta property="og:description" content="@description" /> 
-  
-	<meta property="og:locale" content="@locale" />
-	<meta property="og:locale:alternate" content="en_US" />
-	<meta property="og:locale:alternate" content="en_GB" />
-	<meta property="og:locale:alternate" content="fr_FR" />
-	<meta property="og:locale:alternate" content="fr_CA" />
+<meta property="fb:app_id" content="@appId" />
+<meta property="og:type" content="@appNamespace:theme" />
+<meta property="og:url" content="@objectPageURL">
+<meta property="og:title" content="@title" />
+<meta property="og:image" content="@imageURL" />
+<meta property="og:description" content="@description" />
 
- <meta http-equiv="refresh" content="0.01;URL=http://www.uralys.com/">
- 
- <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# @appNamespace: http://ogp.me/ns/fb/@appNamespace#">
-  
-  <title>@title</title>
+<meta property="og:locale" content="@locale" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:locale:alternate" content="en_GB" />
+<meta property="og:locale:alternate" content="fr_FR" />
+<meta property="og:locale:alternate" content="fr_CA" />
 
-  <style type="text/css">
-	.btn {
-		cursor: pointer;
-		display: inline-block;
-		padding: 5px 12px 6px;
-		color: #ffffff;
-		font-size: 11px;
-		font-weight: bold;
-		line-height: 14px;
-		border: 1px solid #555555;
-		border-bottom-color: #999999;
-		-webkit-border-radius: 0px;
-		-moz-border-radius: 0px;
-		border-radius: 0px;
-		-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-		-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-		background-color: #3b5998;
-		background-image: -moz-linear-gradient(top, #3b5998, #3b5998);
-		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3b5998), to(#3b5998));
-		background-image: -webkit-linear-gradient(top, #3b5998, #3b5998);
-		background-image: -o-linear-gradient(top, #3b5998, #3b5998);
-		background-image: linear-gradient(to bottom, #3b5998, #3b5998);
-		background-repeat: repeat-x;
-		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3b5998', endColorstr='#ff3b5998', GradientType=0);
-		border-color: #3b5998 #3b5998 #263961;
-		border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-		margin-left:97px;
-	}
-	a {
-		color: #3b5998;
-		text-decoration: none;
-	}
-	.footer {
-		margin-left:38%;
-	}
-	.wishlistButton {
-		margin-left:38%;
-	}
-	.img {
-		margin-left:38%;
-	}
-  </style>
+<meta http-equiv="refresh" content="0.01;URL=http://apps.facebook.com/adillions/">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# @appNamespace: http://ogp.me/ns/fb/@appNamespace#">
+
+<title>@title</title>
+
 </head>
 <body>
-  <div id="fb-root"></div>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '@appId', // App ID
-        status     : true, // check login status
-        cookie     : true, // enable cookies to allow the server to access the session
-        xfbml      : true  // parse XFBML
-      });
-    };
-
-    // Load the SDK Asynchronously
-    (function(d){
-      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-      js = d.createElement('script'); js.id = id; js.async = true;
-      js.src = "//connect.facebook.net/en_US/all.js";
-      d.getElementsByTagName('head')[0].appendChild(js);
-    }(document));
-  </script>
-
-  <p class="img">
-  	<a href="http://">
-    <img title="@title" 
-         src="@imageURL" 
-         width="250"/>
-     </a>
-     
-  </p>
-  <p class="button">
-  	<a class="btn" href="http://apps.facebook.com/adillions">Adillions</a>
-  </p>
-  <p class="footer">Adillions on Facebook &copy; Adillions 2013</p>
-  
 </body>
 </html>
