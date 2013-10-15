@@ -39,7 +39,7 @@ UserManager.receivedPlayer = function(player)
    $.ajax({
       type: "POST",  
       url: "/nextLottery",
-      headers: {"X-AUTH-TOKEN": App.authToken},
+      headers: {"X-Auth-Token": App.authToken},
       dataType: "json",
       success: function (lottery, textStatus, jqXHR)
       {
@@ -56,7 +56,7 @@ UserManager.getPlayer = function()
    $.ajax({
       type: "POST",  
       url: "/player",
-      headers: {"X-AUTH-TOKEN": App.authToken},
+      headers: {"X-Auth-Token": App.authToken},
       dataType: "json",
       success: function (player, textStatus, jqXHR)
       {

@@ -20,7 +20,7 @@ public class SecurityController extends Action.Simple {
 
 	//----------------------------------------------------------------------------//
 	
-	public final static String AUTH_TOKEN_HEADER 	= "X-AUTH-TOKEN";
+	public final static String AUTH_TOKEN_HEADER 	= "X-Auth-Token";
 	public static final String AUTH_TOKEN 				= "authToken";
 
 	//----------------------------------------------------------------------------//
