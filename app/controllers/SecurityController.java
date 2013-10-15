@@ -23,8 +23,6 @@ public class SecurityController extends Action.Simple {
 	public final static String AUTH_TOKEN_HEADER 	= "X-AUTH-TOKEN";
 	public static final String AUTH_TOKEN 				= "authToken";
 
-	public static final String FACEBOOK_APP_ID 		= "170148346520274";
-
 	//----------------------------------------------------------------------------//
 	
 	protected static Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
