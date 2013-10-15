@@ -34,8 +34,14 @@ public class SecurityController extends Action.Simple {
 		String[] authTokenHeaderValues = ctx.request().headers().get(AUTH_TOKEN_HEADER);
 
 		System.out.println("--------");
+		for(String k : ctx.request().headers().keySet()){
+			System.out.println("k : " + k);
+			System.out.println("v : " + ctx.request().headers().get(k));
+		}
+		System.out.println("--------");
 		System.out.println("authTokenHeaderValues.length " + authTokenHeaderValues.length);
 		System.out.println("authTokenHeaderValues[0] " + authTokenHeaderValues[0]);
+		System.out.println("--------");
 		
 		if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
 			player = models.Player.findByAuthToken(authTokenHeaderValues[0]);
