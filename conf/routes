@@ -18,6 +18,11 @@ GET     /mlogin           			controllers.Application.mobileLogin()
 GET     /mvideo           			controllers.Application.mobileVideo()
 GET     /minvite           			controllers.Application.mobileInvite()
 
+###################
+# Facebook Objects
+
+GET     /theme            			controllers.OpenGraph.theme()
+
 ####################################################################################
 # Services
 
