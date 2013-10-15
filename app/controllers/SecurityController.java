@@ -32,6 +32,10 @@ public class SecurityController extends Action.Simple {
 	public Result call(Http.Context ctx) throws Throwable {
 		Player player = null;
 		String[] authTokenHeaderValues = ctx.request().headers().get(AUTH_TOKEN_HEADER);
+
+		System.out.println("--------");
+		System.out.println("authTokenHeaderValues.length " + authTokenHeaderValues.length);
+		System.out.println("authTokenHeaderValues[0] " + authTokenHeaderValues[0]);
 		
 		if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
 			player = models.Player.findByAuthToken(authTokenHeaderValues[0]);
@@ -56,6 +60,7 @@ public class SecurityController extends Action.Simple {
 
 		if(player != null){
 			String authToken = player.createToken();
+			response().setCookie(AUTH_TOKEN, authToken);
 			
 			JsonObject authTokenJson = new JsonObject();
 			authTokenJson.addProperty(AUTH_TOKEN, authToken);
