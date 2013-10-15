@@ -1,10 +1,12 @@
 package models;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 import play.db.ebean.Model;
 
@@ -23,7 +25,12 @@ public class Raffle extends Model {
 	@Expose
 	@OneToMany
 	private List<RaffleTicket> winningNumbers;
-   
+
+	// -----------------------------------------------------------------------------------------------//
+	
+	@Version
+   public Timestamp lastUpdate;
+	
 	// -----------------------------------------------------------------------------------------------//
 	// -- Queries
 

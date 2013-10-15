@@ -1,11 +1,13 @@
 package models;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 import play.db.ebean.Model;
 
@@ -97,6 +99,11 @@ public class Player extends Model {
 	@Expose
 	private List<RaffleTicket> raffleTickets;
 
+	// -----------------------------------------------------------------------------------------------//
+	
+	@Version
+   public Timestamp lastUpdate;
+	
 	// -----------------------------------------------------------------------------------------------//
 
 	private String authToken;

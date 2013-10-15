@@ -52,12 +52,14 @@ create table player (
   auth_token                varchar(255),
   secret                    varchar(255),
   creation_date             bigint,
+  last_update               timestamp not null,
   constraint pk_player primary key (uid))
 ;
 
 create table raffle (
   uid                       varchar(255) not null,
   date                      bigint,
+  last_update               timestamp not null,
   constraint pk_raffle primary key (uid))
 ;
 

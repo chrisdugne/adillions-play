@@ -3,7 +3,6 @@ package controllers;
 import java.util.Map;
 
 import models.Player;
-
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -11,12 +10,12 @@ import play.mvc.Result;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import views.html.mobile.login;
+import views.html.main;
 import views.html.mobile.signin;
 import views.html.mobile.signinFB;
-import views.html.mobile.video;
+import views.html.mobile.login;
 import views.html.mobile.invite;
-import views.html.main;
+import views.html.mobile.video;
 
 public class Application extends Controller {
 
