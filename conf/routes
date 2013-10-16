@@ -17,6 +17,7 @@ GET     /msigninFB         			controllers.Application.mobileSigninFromFacebook()
 GET     /mlogin           			controllers.Application.mobileLogin()
 GET     /mvideo           			controllers.Application.mobileVideo()
 GET     /minvite           			controllers.Application.mobileInvite()
+GET     /mlogout           			controllers.Application.mobileLogout()
 
 ###################
 # Facebook Objects

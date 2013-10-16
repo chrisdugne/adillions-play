@@ -21,12 +21,12 @@ Facebook.init = function(finalizeInit, notConnectedCallback)
    
    //---------------------------------------------------------------
    // PROD
-   this.FACEBOOK_APP_ID          = "170148346520274";
-   this.FACEBOOK_APP_SECRET      = "887e8f7abb9b1cb9238a097e06585ae2";
+//   this.FACEBOOK_APP_ID          = "170148346520274";
+//   this.FACEBOOK_APP_SECRET      = "887e8f7abb9b1cb9238a097e06585ae2";
       
    // DEV
-//   this.FACEBOOK_APP_ID          = "534196239997712";
-//   this.FACEBOOK_APP_SECRET      = "46383d827867d50ef5d87b66c81f1a8e";
+   this.FACEBOOK_APP_ID          = "534196239997712";
+   this.FACEBOOK_APP_SECRET      = "46383d827867d50ef5d87b66c81f1a8e";
 
    //---------------------------------------------------------------
 
@@ -135,6 +135,8 @@ Facebook.popupLogin = function()
 
 Facebook.logout = function(next)
 {
+   print("logout")   
+   
    FB.logout(function () {
       if(next)
          next()

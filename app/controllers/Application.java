@@ -16,6 +16,7 @@ import views.html.mobile.signinFB;
 import views.html.mobile.login;
 import views.html.mobile.invite;
 import views.html.mobile.video;
+import views.html.mobile.logout;
 
 public class Application extends Controller {
 
@@ -23,16 +24,16 @@ public class Application extends Controller {
 	// facebook
 
 	// PROD
-	protected static final String FACEBOOK_APP_ID 				= "170148346520274";
-	protected static final String FACEBOOK_API_SECRET 			= "887e8f7abb9b1cb9238a097e06585ae2";
-	protected static final String FACEBOOK_APP_NAMESPACE 		= "adillions";
-	protected static final String APP_HOSTNAME 					= "https://adillions.herokuapp.com";
+//	protected static final String FACEBOOK_APP_ID 				= "170148346520274";
+//	protected static final String FACEBOOK_API_SECRET 			= "887e8f7abb9b1cb9238a097e06585ae2";
+//	protected static final String FACEBOOK_APP_NAMESPACE 		= "adillions";
+//	protected static final String APP_HOSTNAME 					= "https://adillions.herokuapp.com";
 
 	// DEV
-//	protected static final String FACEBOOK_APP_ID 				= "534196239997712";
-//	protected static final String FACEBOOK_API_SECRET 			= "46383d827867d50ef5d87b66c81f1a8e";
-//	protected static final String FACEBOOK_APP_NAMESPACE 		= "adillions-dev";
-//	protected static final String APP_HOSTNAME 					= "http://192.168.0.9:9000";
+	protected static final String FACEBOOK_APP_ID 				= "534196239997712";
+	protected static final String FACEBOOK_API_SECRET 			= "46383d827867d50ef5d87b66c81f1a8e";
+	protected static final String FACEBOOK_APP_NAMESPACE 		= "adillions-dev";
+	protected static final String APP_HOSTNAME 					= "http://192.168.0.9:9000";
 
 
 	// -----------------------------------------------------------------------------------//
@@ -96,5 +97,10 @@ public class Application extends Controller {
 	public static Result mobileInvite()
 	{
 		return ok(views.html.mobile.invite.render());
+	}
+	
+	public static Result mobileLogout()
+	{
+		return ok(views.html.mobile.logout.render());
 	}
 }
