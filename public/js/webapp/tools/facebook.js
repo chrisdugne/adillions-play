@@ -15,18 +15,18 @@ window.Facebook = window.Facebook || {}
 
 //----------------------------------------------------------------//
 
-Facebook.init = function(finalizeInit, notConnectedCallback) 
+Facebook.init = function(finalizeInit, notConnectedCallback, openApp) 
 {
    console.log("Connection to FB")
    
    //---------------------------------------------------------------
    // PROD
-//   this.FACEBOOK_APP_ID          = "170148346520274";
-//   this.FACEBOOK_APP_SECRET      = "887e8f7abb9b1cb9238a097e06585ae2";
+   this.FACEBOOK_APP_ID          = "170148346520274";
+   this.FACEBOOK_APP_SECRET      = "887e8f7abb9b1cb9238a097e06585ae2";
       
    // DEV
-   this.FACEBOOK_APP_ID          = "534196239997712";
-   this.FACEBOOK_APP_SECRET      = "46383d827867d50ef5d87b66c81f1a8e";
+//   this.FACEBOOK_APP_ID          = "534196239997712";
+//   this.FACEBOOK_APP_SECRET      = "46383d827867d50ef5d87b66c81f1a8e";
 
    //---------------------------------------------------------------
 
@@ -36,6 +36,11 @@ Facebook.init = function(finalizeInit, notConnectedCallback)
    //---------------------------------------------------------------
 
    this.finalizeInit         = finalizeInit
+   
+   if(openApp === undefined)
+      Facebook.openApp = Facebook.defaultOpenApp;
+   else
+      Facebook.openApp = openApp
    
    //---------------------------------------------------------------
    
@@ -110,7 +115,7 @@ Facebook.checkPermissions = function(responseConnection)
             && perms.friends_birthday 
             && perms.publish_actions) 
       {
-         // permissios OK
+         // permissions OK
          Facebook.openApp();
       }
       else
@@ -145,7 +150,7 @@ Facebook.logout = function(next)
 
 //----------------------------------------------------------------//
 
-Facebook.openApp = function()
+Facebook.defaultOpenApp = function()
 {
    Facebook.getAppAccessToken();
 

@@ -95,13 +95,12 @@
    var failure = function() {
       Facebook.logout()
    }
-   var finalize = function() {
-   }
+   var finalize 		= function() {}
+   var loginSuccess 	= function() {}
 
-   Facebook.init(finalize, failure)
+   Facebook.init(finalize, failure, loginSuccess)
 
    $("#facebookButton").click(function() {
-      alert("plop")
       Facebook.popupLogin()  
    })
    
