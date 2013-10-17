@@ -66,8 +66,10 @@
 			//-------------------------------------------------------//
 			   
 			logout         : function(){
-			   if(Facebook.accessToken)
+			   if(Facebook.accessToken){
 			      Facebook.logout()
+			      $.removeCookie('facebookId');
+			   }
 			      
             $.removeCookie('authToken');
 			   App.user.set("loggedIn", false)

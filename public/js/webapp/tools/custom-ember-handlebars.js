@@ -4,8 +4,12 @@
 //---------------------------------------------------------------------------------------//
 
 Ember.Handlebars.registerBoundHelper('lotteryPrice', function(lottery) {
-   console.log(lottery.minPrice, lottery.maxPrice, lottery.nbTickets, lottery.cpm)
     return Math.min(lottery.maxPrice, Math.max(lottery.minPrice, lottery.nbTickets/1000 * lottery.cpm))  +  "  $"
+});
+
+Ember.Handlebars.registerBoundHelper('themeImage', function(lottery) {
+   console.log(lottery.theme.image)
+   return new Handlebars.SafeString("<img src=\""+lottery.theme.image+"\"/>")
 });
 
 //---------------------------------------------------------------------------------------//

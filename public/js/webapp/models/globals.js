@@ -36,30 +36,22 @@
    //------------------------------------------------------//
 
    var failure    = function(){
-
-      if(!$.cookie('facebookId'))
-         UserManager.getPlayer()
-         else{
-            // le authToken est lié à un compte FB : ne pas logguer le mec, il est deco de FB ! (donc pas de getPlayer)
-            // delete authToken
-            $.removeCookie('authToken');
-         } 
+      if(!$.cookie('facebookId')){
+         UserManager.getPlayer();
+      }
+      else{
+         // le authToken est lié à un compte FB : ne pas logguer le mec, il est deco de FB ! (donc pas de getPlayer)
+         // delete authToken
+         $.removeCookie('authToken');
+      } 
    }
 
-   var finalize   = function(){  App.Globals.APP_READY = true }
+   var finalize   = function(){  
+      App.Globals.APP_READY = true 
+   }
 
    Facebook.init(finalize, failure)
 
    //------------------------------------------------------//
-   // create footer email
-
-   var guymal_enc= "ncjjiFkgvho`(eik";
-   var email = "";
-   for(var i=0;i<guymal_enc.length;++i)
-   {
-      email += String.fromCharCode(6^guymal_enc.charCodeAt(i));
-   }
-
-   App.Globals.set("contactEmail", email);
   
 })( App);

@@ -576,9 +576,9 @@ body{
 }
 
 /*------------------------------------------------*/
-
 #gameTabs {
-	margin-top: 422px;
+	bottom: 100px;
+	position: absolute;
 }
 
 #gameHomeButton 			{background: url(/assets/images/icons/friends.png) no-repeat center center;height:50px}

@@ -10,12 +10,12 @@ Handlebars.registerHelper('email', function(options) {
    switch(options.hash.name){
 
       case "chris":
-         guymal_enc= "entou(bsahcFkgvctogj(eik";
+         guymal_enc= "entou(bsahcFgbojjoihu(eik";
          break;
 
       case "contact":
       default:
-         guymal_enc= "eihrgerFkgvctogj(eik";
+         guymal_enc= "eihrgerFgbojjoihu(eik";
       break;
 
    }

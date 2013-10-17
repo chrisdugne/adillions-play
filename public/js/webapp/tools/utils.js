@@ -119,7 +119,17 @@ Utils.formatDate = function(timestamp)
    var day = Utils.zeroPad(now.getDate(), 2);
    var month = Utils.zeroPad(now.getMonth() + 1, 2); //Months are zero based
    var year = now.getFullYear();
-
+   
+   if(App.translator){
+      console.log(App.translator)
+      
+      if(App.translator.lang == "fr")
+         return day + "/" + month + "/" + year;
+      
+      if(App.translator.lang == "en")
+         return year + "," + month + " " + day;
+   }
+   
    return day + "/" + month + "/" + year;
 }
 

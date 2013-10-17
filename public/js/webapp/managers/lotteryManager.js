@@ -25,10 +25,10 @@ LotteryManager.refreshNextLottery = function()
          App.nextLottery.set("minPrice",     lottery.minPrice)   
          App.nextLottery.set("maxPrice",     lottery.maxPrice)   
          App.nextLottery.set("cpm",          lottery.cpm)   
-         App.nextLottery.set("theme",        lottery.theme)   
+         App.nextLottery.set("theme",        $.parseJSON(lottery.theme))  
          App.nextLottery.set("result",       lottery.result)
 
-         console.log(App.nextLottery)
+         odump(App.nextLottery)
          
       }
    });

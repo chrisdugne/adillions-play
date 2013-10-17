@@ -22,7 +22,7 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
    //---------------------------------------------------------------
    // PROD
    
-   var prod = 1
+   var prod = 0
    
    if(prod){
       this.FACEBOOK_APP_ID          = "170148346520274";
@@ -36,7 +36,7 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
    //---------------------------------------------------------------
 
    this.FACEBOOK_APP_NAMESPACE   = "adillions";
-   this.SERVER_OG_URL            = "http://adillions.herokuapp.com/"
+   this.SERVER_OG_URL            = "http://www.adillions.com/"
    
    //---------------------------------------------------------------
 
