@@ -103,6 +103,7 @@
 <script src='@routes.Assets.at("js/webapp/app-common.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/webapp/tools/facebook.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/webapp/tools/utils.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/libs/jquery.cookie.js")' type="text/javascript"></script>
 
 
 <script type="text/javascript">
@@ -112,10 +113,10 @@
       window.location.href = "/backToMobile"
       Facebook.logout()
    }
-   var finalize = function() {
-   }
+   var finalize = function() {}
+   var loginSuccess = function() {}
 
-   Facebook.init(finalize, failure)
+   Facebook.init(finalize, failure, loginSuccess)
 
    $("#validateButton").click(
          function() {

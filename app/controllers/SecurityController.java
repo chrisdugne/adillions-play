@@ -117,7 +117,7 @@ public class SecurityController extends Action.Simple {
 
 			JsonObject response = new JsonObject();
 			response.addProperty(AUTH_TOKEN, authToken);
-			response.addProperty("player", gson.toJson(player));
+			response.add("player", gson.toJsonTree(player));
 			return ok(gson.toJson(response));
 		}
 		else{

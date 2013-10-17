@@ -21,12 +21,17 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
    
    //---------------------------------------------------------------
    // PROD
-   this.FACEBOOK_APP_ID          = "170148346520274";
-   this.FACEBOOK_APP_SECRET      = "887e8f7abb9b1cb9238a097e06585ae2";
-      
-   // DEV
-//   this.FACEBOOK_APP_ID          = "534196239997712";
-//   this.FACEBOOK_APP_SECRET      = "46383d827867d50ef5d87b66c81f1a8e";
+   
+   var prod = 1
+   
+   if(prod){
+      this.FACEBOOK_APP_ID          = "170148346520274";
+      this.FACEBOOK_APP_SECRET      = "887e8f7abb9b1cb9238a097e06585ae2";
+   }
+   else{
+      this.FACEBOOK_APP_ID          = "534196239997712";
+      this.FACEBOOK_APP_SECRET      = "46383d827867d50ef5d87b66c81f1a8e";
+   }
 
    //---------------------------------------------------------------
 
@@ -96,6 +101,7 @@ Facebook.checkPermissions = function(responseConnection)
 {
    Facebook.facebookId     = responseConnection.authResponse.userID;
    Facebook.accessToken    = responseConnection.authResponse.accessToken;
+   $.cookie('facebookId', Facebook.facebookId);
 
    FB.api('/me/permissions', function (response) {
 
@@ -140,12 +146,12 @@ Facebook.popupLogin = function()
 
 Facebook.logout = function(next)
 {
-   print("logout")   
-   
-   FB.logout(function () {
-      if(next)
-         next()
-   })
+   if(Facebook.accessToken){
+      FB.logout(function () {
+         if(next)
+            next()
+      })
+   }
 }
 
 //----------------------------------------------------------------//

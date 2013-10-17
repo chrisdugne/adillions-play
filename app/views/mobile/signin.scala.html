@@ -32,17 +32,13 @@
 		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
 
 		<div class="row-fluid">
-			<div class="offset1 span4">
-				<p class="popuptitle">Sign In</p>
-			</div>
-
-			<div class="offset1 span4">
-				or login with Facebook <img onclick="Facebook.popupLogin()" alt="facebook icon" title="facebook"
-					src='@routes.Assets.at("images/icons/facebook-64x64.png")'></img>
-			</div>
+			<div id="facebookButton" class="btn-large button-facebook">Connect with Facebook</div>
 		</div>
-
-		<br /> <br />
+		<div class="row-fluid">
+			<p class="auth-method-separator">
+            	<i>or</i>
+        	</p>
+		</div>
 
 		<form id="signinForm1">
 
@@ -117,6 +113,7 @@
 <script src='@routes.Assets.at("js/webapp/app-common.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/webapp/tools/facebook.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/webapp/tools/utils.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/libs/jquery.cookie.js")' type="text/javascript"></script>
 
 
 <script type="text/javascript">
@@ -125,10 +122,10 @@
    var failure = function() {
       Facebook.logout()
    }
-   var finalize = function() {
-   }
+   var finalize = function() {}
+   var loginSuccess = function() {}
 
-   Facebook.init(finalize, failure)
+   Facebook.init(finalize, failure, loginSuccess)
 
    $("#validateButton").click(function() {
       UserManager.mobileSignin(function() {

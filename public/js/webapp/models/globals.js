@@ -31,8 +31,21 @@
    App.Globals = Globals.create();
 //   App.youtubeManager = new YoutubeManager();
    
-   var failure    = function(){  UserManager.getPlayer()  }
-   var finalize   = function(){  console.log("Facebook.init. finalize "); App.Globals.APP_READY = true }
+   var failure    = function(){
+      console.log("failure :", $.cookie('facebookId'))
+      
+      if(!$.cookie('facebookId'))
+         UserManager.getPlayer()
+      else{
+         // le authToken est lié à un compte FB : ne pas logguer le mec, il est deco de FB ! (donc pas de getPlayer)
+         // delete authToken
+         
+         console.log("removing :", $.cookie('authToken'))
+         $.removeCookie('authToken');
+      } 
+   }
+
+   var finalize   = function(){  App.Globals.APP_READY = true }
    
    Facebook.init(finalize, failure)
    

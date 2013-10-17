@@ -10,8 +10,9 @@
     "Contact"			: "Contact",
     "Demos"				: "Démos",
     "Try"				: "Essayer",
-  	"LogIn"				: "Se logguer",
-  	"SignIn"			: "S'enregistrer",
+  	"LogIn"				: "Connection",
+  	"Logout"			: "Déconnection",
+  	"SignIn"			: "Créer un compte",
 
     "TryNow"			: "Essayez !",
     "FindOutMore"		: "En savoir plus",

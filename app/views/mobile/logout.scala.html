@@ -13,20 +13,28 @@
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="https://connect.facebook.net/en_US/all.js" type="text/javascript"></script>
 <script src='@routes.Assets.at("js/webapp/tools/facebook.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/libs/jquery.cookie.js")' type="text/javascript"></script>
 
 
 <script type="text/javascript">
 
 	var failure = function() {
+	   console.log("failure")
 	   window.location.href = "/backToMobile"
 	}
 	var finalize = function() {
+	   console.log("finalize")
+	}
+	   
+	var loginSuccess = function() {
+	   console.log("loginSuccess")
+
 	   Facebook.logout(function(){
 		   window.location.href = "/backToMobile"
 	   })
 	}
 
-	Facebook.init(finalize, failure)
+	Facebook.init(finalize, failure, loginSuccess)
 
 </script>
 
