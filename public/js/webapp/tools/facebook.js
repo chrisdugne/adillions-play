@@ -22,7 +22,7 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
    //---------------------------------------------------------------
    // PROD
    
-   var prod = 0
+   var prod = 1
    
    if(prod){
       this.FACEBOOK_APP_ID          = "170148346520274";
