@@ -1,7 +1,17 @@
 
-/**
- * data contains the file to upload
- */
+//---------------------------------------------------------------------------------------//
+// Lottery
+//---------------------------------------------------------------------------------------//
+
+Ember.Handlebars.registerBoundHelper('lotteryPrice', function(lottery) {
+   console.log(lottery.minPrice, lottery.maxPrice, lottery.nbTickets, lottery.cpm)
+    return Math.min(lottery.maxPrice, Math.max(lottery.minPrice, lottery.nbTickets/1000 * lottery.cpm))  +  "  $"
+});
+
+//---------------------------------------------------------------------------------------//
+// Utils
+//---------------------------------------------------------------------------------------//
+
 Ember.Handlebars.registerHelper('date', function(options) {
    var date = options.hash.value.split("-");
    var year = date[0];
@@ -108,101 +118,3 @@ Ember.Handlebars.registerBoundHelper('textInput',
 );
 
 //---------------------------------------------------------------------------------------//
-
-/**
- * Display a style thumb from its styleUID 
- */ 
-Ember.Handlebars.registerBoundHelper('stylethumb', 
-      function(styleUID, options) 
-      {
-   return new Handlebars.SafeString("<img class=\"selectable\" src=\""+Utils.styleThumbURL(styleUID, "m")+"\"></img>");
-      }
-);
-
-/**
- * Display a style thumb from its styleUID 
- */ 
-Ember.Handlebars.registerBoundHelper('ministylethumb', 
-      function(styleUID, options) 
-      {
-//   return new Handlebars.SafeString("<img class=\"selectable\" src=\""+Utils.styleThumbURL(styleUID)+"\" width=\"60\"></img>");
-   return new Handlebars.SafeString("<img class=\"selectable\" src=\""+Utils.styleThumbURL(styleUID, "l")+"\"></img>");
-      }
-);
-
-
-/**
- * Display a colorbar thumb from its colorbarUID 
- */ 
-Ember.Handlebars.registerBoundHelper('colorbarthumb', 
-      function(colorbarUID, options) 
-      {
-   return new Handlebars.SafeString("<img class=\"selectable\" src=\""+Utils.colorbarThumbURL(colorbarUID)+"\"></img>");
-      }
-);
-
-/**
- * Display a colorbar thumb from its colorbarUID 
- */ 
-Ember.Handlebars.registerBoundHelper('minicolorbarthumb', 
-      function(colorbarUID, options) 
-      {
-   return new Handlebars.SafeString("<img src=\""+Utils.colorbarThumbURL(colorbarUID)+"\" width=\"60\"></img>");
-      }
-);
-
-
-/**
- * Display a map thumb from its config.layers.source.types 
- */ 
-Ember.Handlebars.registerBoundHelper('mapthumb', 
-      function(layers, options) 
-      {
-   var images = "";
-
-   for (var i =0; i< layers.length; i++)
-      images += "<div class=\"span1 mapthumb "+(i>0?"top":"")+"\"><img class=\"minithumb\" "+Utils.getSourceThumb(layers[i])+"></img></div>";
-
-   return new Handlebars.SafeString(images);
-      }
-);
-
-//---------------------------------------------------------------------------------------//
-
-/**
- * Display a specific html template whether the data is set or not 
- * This helper can evaluate Javascript functions. Use {function(params)}.
- * 
- * Examples : 
-    {{isset container.data
-      yes='<div>OK</div>'
-      no='<div>Null</div>'}}
-
-    {{isset controllerData.style
-      yes='<div><img src="{Utils.thumbURL(App.controllerData.style)}"></img></div>'
-      no='<div>select the sytle !</div>'}}
-
-      http://map.x-ray.fr/wiki/display/IDEES/Custom+Handlebars?focusedCommentId=1736712#comment-1736712
- */
-Ember.Handlebars.registerBoundHelper('isset', 
-      function(data, options) 
-      {
-   if(data != undefined && data != null){
-      return new Handlebars.SafeString(Utils.toHtml(options.hash.yes));
-   }
-   else{
-      return new Handlebars.SafeString(Utils.toHtml(options.hash.no));
-   }
-      }
-);
-
-//---------------------------------------------------------------------------------------//
-
-/**
- *
- */
-Ember.Handlebars.registerBoundHelper('maperialtag', 
-      function(mapUID, options) {
-   return new Handlebars.SafeString("<textarea id=\"maperialTag\"><maperial uid=\""+mapUID+"\"/></textarea>");
-}
-);

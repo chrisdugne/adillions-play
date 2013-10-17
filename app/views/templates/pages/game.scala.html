@@ -11,12 +11,18 @@
 	<div class="marketing home-container">
 
 		<!-- -------------------------------------------------------------- -->
+		
+    	{{outlet}}
 
-		<div class="row-fluid">
-		 <h1>Game</h1>
+		<!-- -------------------------------------------------------------- -->
+
+		<div id="gameTabs" class="row-fluid">
+			<div id="gameHomeButton" {{action openGameHome}} class="span1 offset4 btn-large button"></div>
+			<div id="myTicketsButton" {{action openMyTickets}} class="span1 btn-large button"></div>
+			<div id="resultsButton" {{action openResults}} class="span1 btn-large button"></div>
+			<div id="profileButton" {{action openProfile}} class="span1 btn-large button"></div>
 		</div>
 
-		
 	</div>
 
 </div>

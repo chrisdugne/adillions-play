@@ -46,11 +46,11 @@ POST    /updatePlayer               controllers.AccountService.updatePlayer()
 #---------------------------------------------------------------------------
 #  	LotteryService 
 
-POST    /nextLottery                controllers.LotteryService.getNextLottery()
 POST    /storeLotteryTicket         controllers.LotteryService.storeLotteryTicket()
 POST    /finishedLotteries          controllers.LotteryService.getFinishedLotteries()
 
 #---------------------------------------------------------------------------
 #  	PublicService 
 
+POST    /nextLottery                controllers.PublicService.getNextLottery()
 #POST    /incTest                	controllers.PublicService.incTest()

@@ -9,6 +9,7 @@
 	font-weight: 200;
 	background: #eee;
 	color: #222;
+	text-align:center;
 	-webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px
 		0px 0px rgba(255, 255, 255, 0.2);
 	-moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 0px
@@ -18,8 +19,8 @@
 }
 
 .button:hover {
-	background: #fff;
-	color: #111;
+	background-color: #fff!important;
+	color: #111!important;
 }
 
 .button-facebook {
@@ -28,7 +29,11 @@
 	z-index: 2;
 	font-size: 17px;
 	font-weight: 200;
-	background: #39579a;
+	background: url(/assets/images/icons/facebook-64x64.png) no-repeat center center;
+	background-size: 30px 30px;
+	background-color: #39579a;
+	background-position: 10px;
+	padding-left:65px;
 	color: #eee;
 	-webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px
 		0px 0px rgba(255, 255, 255, 0.2);
@@ -39,7 +44,7 @@
 }
 
 .button-facebook:hover {
-	background: #3957aa;
+	background-color: #3957aa;
 	color: #fff;
 }
 
@@ -564,28 +569,27 @@ body{
     font-size: 16px!important;
 }
 
-/*------------------------------------------------
+/*------------------------------------------------*/
 
-::-webkit-scrollbar {
-	width: 12px;
+.gameView {
+	margin-top: 122px;
 }
 
- Track 
-::-webkit-scrollbar-track {
-	-webkit-border-radius: 20px;
-	background: rgba(255, 255, 255, 1);
-	border-radius: 20px;
+/*------------------------------------------------*/
+
+#gameTabs {
+	margin-top: 422px;
 }
 
- Handle 
-::-webkit-scrollbar-thumb {
-	-webkit-border-radius: 20px;
-	border-radius: 20px;
-	background: rgba(34, 34, 34, 0.6);
-	-webkit-box-shadow: inset 0 0 6px rgba(34, 34, 34, 0.7);
-}
+#gameHomeButton 			{background: url(/assets/images/icons/friends.png) no-repeat center center;height:50px}
+#gameHomeButton.selected 	{background: url(/assets/images/icons/friends.selected.png) no-repeat center center;height:50px}
 
-::-webkit-scrollbar-thumb:window-inactive {
-	background: rgba(34, 34, 34, 0.4);
-}
---*/
+#myTicketsButton 			{background: url(/assets/images/icons/friends.png) no-repeat center center;height:50px}
+#myTicketsButton.selected 	{background: url(/assets/images/icons/friends.selected.png) no-repeat center center;height:50px}
+
+#resultsButton 				{background: url(/assets/images/icons/friends.png) no-repeat center center;height:50px}
+#resultsButton.selected 	{background: url(/assets/images/icons/friends.selected.png) no-repeat center center;height:50px}
+
+#profileButton 				{background: url(/assets/images/icons/friends.png) no-repeat center center;height:50px}
+#profileButton.selected 	{background: url(/assets/images/icons/friends.selected.png) no-repeat center center;height:50px}
+

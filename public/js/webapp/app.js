@@ -20,7 +20,21 @@
           window.scrollTo(0, 0);
        }
    });
+   
+   //------------------------------------------------------//
 
+   App.fillView = function(){
+      if(($("#webappDiv").height() + App.Globals.FOOTER_HEIGHT) <= $(window).height()){
+         $("#webappDiv").css({ "height" : ($(window).height() - App.Globals.FOOTER_HEIGHT) +"px" });
+      }
+   }
+
+   //------------------------------------------------------//
+
+   $(window).on("resize", function(){
+      App.fillView()
+   });
+   
    //------------------------------------------------------//
 
    App.authToken = $.cookie("authToken")

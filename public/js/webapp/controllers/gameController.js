@@ -9,12 +9,27 @@
 	GameController.renderUI = function(){
 	   App.Globals.signinRequested = true // reach /game directly : FB landing page, must use signinFBWindow
 	   UserManager.setupForms()
+	   
+      App.get('router').transitionTo('game.gameHome');
 	}
 
 	GameController.cleanUI = function()	{
 
 	}
 	
+	//==================================================================//
+	
+	GameController.setSelectedButton = function()	{
+	   
+	   $("#gameHomeButton").removeClass("selected")
+	   $("#myTicketsButton").removeClass("selected")
+	   $("#resultsButton").removeClass("selected")
+	   $("#profileButton").removeClass("selected")
+	   
+	   var view = App.get('router').currentState.name
+	   $("#"+view+"Button").addClass("selected")
+	}
+
 	//==================================================================//
 	// Controls
 
@@ -24,12 +39,54 @@
 	// Routing
 
 	App.GameRouting = App.Page.extend({
-		route: '/game',
+		
+	   //---------------------------------
+	   
+	   route: '/game',
+		
+	   //---------------------------------
+	   
+	   gameHome: Ember.Route.extend({
+         connectOutlets: function(router) {
+            App.Router.openComponent(router, "game");
+            GameController.setSelectedButton()
+         }
+      }),
+      
+      myTickets: Ember.Route.extend({
+         connectOutlets: function(router) {
+            App.Router.openComponent(router, "game");
+            GameController.setSelectedButton()
+         }
+      }),
+      
+      results: Ember.Route.extend({
+         connectOutlets: function(router) {
+            App.Router.openComponent(router, "game");
+            GameController.setSelectedButton()
+         }
+      }),
+      
+      profile: Ember.Route.extend({
+         connectOutlets: function(router) {
+            App.Router.openComponent(router, "game");
+            GameController.setSelectedButton()
+         }
+      }),
+
+      //---------------------------------
 		
 		connectOutlets: function(router){
 			App.Router.openPage(router, "game");
 		},
-		
+
+      //-----------------------------------//
+      // actions
+      
+      openGameHome            : Ember.Route.transitionTo('game.gameHome'),		
+      openMyTickets           : Ember.Route.transitionTo('game.myTickets'),		
+      openResults             : Ember.Route.transitionTo('game.results'),		
+      openProfile             : Ember.Route.transitionTo('game.profile'),		
 		
 	});
 

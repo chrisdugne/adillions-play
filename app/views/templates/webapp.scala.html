@@ -11,6 +11,11 @@
 
 <!-- Components -->
 
+@import views.html.templates.pages.gameViews.gameHome;
+@import views.html.templates.pages.gameViews.myTickets;
+@import views.html.templates.pages.gameViews.results;
+@import views.html.templates.pages.gameViews.profile;
+
 
 <!-- ------------------------------------------------------------------- -->
 
@@ -22,8 +27,13 @@
 
 <!-- --- Pages --- -->
 @pageTemplate("home", true){@home()}
-@pageTemplate("game", true){@game()}
-
-<!-- --- Components --- -->
+@pageTemplate("game", false){@game()}
 
 <!-- ------------------------------------------------------------------- -->
+<!-- --- Components --- -->
+
+
+@componentTemplate("gameHome"){@gameHome()}
+@componentTemplate("myTickets"){@myTickets()}
+@componentTemplate("results"){@results()}
+@componentTemplate("profile"){@profile()}

@@ -28,6 +28,8 @@ UserManager.receivedPlayer = function(player)
    App.user.set("loggedIn",         true)   
 
    App.message("Welcome back " + player.userName + " !", true)
+   
+   console.log(App.user)
 
    //----------------------------------
 
@@ -35,17 +37,17 @@ UserManager.receivedPlayer = function(player)
       Facebook.finalizeInit();
 
    //----------------------------------
-
-   $.ajax({
-      type: "POST",  
-      url: "/nextLottery",
-      headers: {"X-Auth-Token": App.authToken},
-      dataType: "json",
-      success: function (lottery, textStatus, jqXHR)
-      {
-         console.log(lottery)
-      }
-   });
+//
+//   $.ajax({
+//      type: "POST",  
+//      url: "/nextLottery",
+//      headers: {"X-Auth-Token": App.authToken},
+//      dataType: "json",
+//      success: function (lottery, textStatus, jqXHR)
+//      {
+//         console.log(lottery)
+//      }
+//   });
 }
 
 

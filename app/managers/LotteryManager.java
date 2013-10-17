@@ -39,6 +39,7 @@ public class LotteryManager {
 		//-------------------------------------
 
 		findNbTicketsForLottery(lottery);
+		System.out.println("tickets : " + lottery.getNbTickets());
 
 		//-------------------------------------
 

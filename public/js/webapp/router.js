@@ -66,8 +66,12 @@
 			//-------------------------------------------------------//
 			   
 			logout         : function(){
-			   Facebook.logout()
+			   if(Facebook.accessToken)
+			      Facebook.logout()
+			      
+            $.removeCookie('authToken');
 			   App.user.set("loggedIn", false)
+		      App.get('router').transitionTo('home');
 			},
 
 			//-------------------------------------------------------//
@@ -135,7 +139,7 @@
 
    /**
     * Load a component with the parentController as context
-    * context : alike Router.openPage
+    * context : same as Router.openPage
     */
    Router.openComponent = function (router, parentView, customContext)
    {
@@ -175,8 +179,7 @@
       return (page != "home" && 
             page != "team" && 
             page != "credits" && 
-            page != "blog" && 
-            page != "game");
+            page != "blog");
    }
    
    //-----------------------------------------------------------------------------------------//
