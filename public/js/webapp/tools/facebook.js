@@ -20,11 +20,8 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
    console.log("Connection to FB")
    
    //---------------------------------------------------------------
-   // PROD
    
-   var prod = 1
-   
-   if(prod){
+   if(window.prod){
       this.FACEBOOK_APP_ID          = "170148346520274";
       this.FACEBOOK_APP_SECRET      = "887e8f7abb9b1cb9238a097e06585ae2";
    }

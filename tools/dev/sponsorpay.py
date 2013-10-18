@@ -9,17 +9,17 @@ def main():
     
     hostname            = "http://api.sponsorpay.com/feed/v1/offers.json?"
     apiKey              = "101de242db7d23dc9d5134b3e98a82cfccd893b2"
-    appId               = "16913"
-#     appId               = "16796"
-    locale              = "en"
-    offerTypes          = "113" 
+#     appId               = "16913"
+    appId               = "16796"
+    locale              = "fr"
+    offerTypes          = "110,111,112,113" 
     timestamp           = str(utils.now()/1000) 
     uid                 = "1417d5dcf5aca576ce8"
 
     #---------------------------------------------------------
     
-    params = "appid="+appId+"&locale="+locale+"&offer_types="+offerTypes+"&timestamp="+timestamp+"&uid="+uid+"&"+apiKey+""
-    hashkey = hashlib.sha1(params).hexdigest()
+    params = "appid="+appId+"&locale="+locale+"&offer_types="+offerTypes+"&timestamp="+timestamp+"&uid="+uid
+    hashkey = hashlib.sha1(params+"&"+apiKey+"").hexdigest()
 
     url = hostname + params + "&hashkey=" + hashkey
     print url

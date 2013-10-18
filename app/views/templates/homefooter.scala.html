@@ -1,9 +1,9 @@
 @()
 
-	<!-- -------------------------------------------------------------- -->
-	<!-- Footer -->
-
+	
 	<div id="footerHome" class="snapper">
+	{{#if App.prod}}
+	{{else}}
 		<div class="row-fluid">
 			<div class="span2 offset3 footerContent">
 				<div class="footerTitle">{{App.translations.messages.AboutUs}}</div>
@@ -30,4 +30,5 @@
 				<div class="link">{{email name='contact'}}</div>
 			</div>
 		</div>
+	{{/if}}
 	</div>
