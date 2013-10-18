@@ -17,7 +17,7 @@ window.Facebook = window.Facebook || {}
 
 Facebook.init = function(finalizeInit, notConnectedCallback, openApp) 
 {
-   console.log("Connection to FB")
+   console.log("Connection to FB", App.prod)
    
    //---------------------------------------------------------------
    
@@ -29,6 +29,8 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
       this.FACEBOOK_APP_ID          = "534196239997712";
       this.FACEBOOK_APP_SECRET      = "46383d827867d50ef5d87b66c81f1a8e";
    }
+
+   console.log("Connection to FB", this.FACEBOOK_APP_ID)
 
    //---------------------------------------------------------------
 
