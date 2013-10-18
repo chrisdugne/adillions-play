@@ -21,7 +21,7 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
    
    //---------------------------------------------------------------
    
-   if(window.prod){
+   if(App && App.prod){
       this.FACEBOOK_APP_ID          = "170148346520274";
       this.FACEBOOK_APP_SECRET      = "887e8f7abb9b1cb9238a097e06585ae2";
    }

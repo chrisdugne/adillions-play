@@ -9,7 +9,7 @@
 	<!-- --------------------------- -->
 	<!-- Language buttons -->
 	
-	{{#if App.prod}}
+	{{#if App.Globals.isProd}}
 	{{else}}
 	<div id="langButtons">
 		<div id="enButton" {{action translateEn}} class="langButton">{{App.translations.messages.en}}</div>
