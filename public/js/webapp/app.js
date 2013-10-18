@@ -23,11 +23,6 @@
    
    //------------------------------------------------------//
    
-//   App.prod = 0
-   App.prod = 1
-   
-   //------------------------------------------------------//
-   
    App.fillView = function(){
       if(($("#webappDiv").height() + App.Globals.FOOTER_HEIGHT) <= $(window).height()){
          $("#webappDiv").css({ "height" : ($(window).height() - App.Globals.FOOTER_HEIGHT) +"px" });
