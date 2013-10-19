@@ -31,6 +31,15 @@
 	}
 
 	//==================================================================//
+
+	GameController.drawMyTickets = function()	{
+	   var canvas = document.getElementById("myTicketsCanvas");
+	   var ctx = canvas.getContext("2d");
+	   
+	   
+	}
+	
+	//==================================================================//
 	// Controls
 
 	App.GameController = GameController;
@@ -57,6 +66,7 @@
          connectOutlets: function(router) {
             App.Router.openComponent(router, "game");
             GameController.setSelectedButton()
+            GameController.drawMyTickets()
          }
       }),
       
