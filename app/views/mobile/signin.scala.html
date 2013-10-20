@@ -101,9 +101,6 @@
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script type="text/javascript" src='@routes.Assets.at("js/libs/jquery.ui.touch-punch.min.js")'></script>
 
-<!-- Facebook --->
-<script src="https://connect.facebook.net/en_US/all.js" type="text/javascript"></script>
-
 <script src='@routes.Assets.at("js/libs/jquery.blockUI.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/libs/sha512.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/libs/jquery.validate.min.js")' type="text/javascript"></script>
@@ -111,27 +108,37 @@
 
 <script src='@routes.Assets.at("js/webapp/managers/userManager.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/webapp/app-common.js")' type="text/javascript"></script>
-<script src='@routes.Assets.at("js/webapp/tools/facebook.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/webapp/tools/utils.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/libs/jquery.cookie.js")' type="text/javascript"></script>
 
 
 <script type="text/javascript">
+   //-------------------------------------------// 
+
+   $(".input").on('focus', function() {
+      header.css({
+         position : 'absolute'
+      })
+   })
+   $(".input").on('blur', function() {
+      header.css({
+         position : 'fixed'
+      })
+   })
+
+   //-------------------------------------------// 
+
    UserManager.setupForms()
-
-   var failure = function() {
-      Facebook.logout()
-   }
-   var finalize = function() {}
-   var loginSuccess = function() {}
-
-   Facebook.init(finalize, failure, loginSuccess)
 
    $("#validateButton").click(function() {
       UserManager.mobileSignin(function() {
          window.location.href = "/signedIn"
       })
    });
+   
+   $("#facebookButton").click(function() {
+      window.location.href = "/connectWithFB"
+   })
 
    $("#closeButton").click(function() {
       window.location.href = "/backToMobile"
