@@ -133,6 +133,7 @@ public class LotteryManager {
 		
 		if(playedLotteries.size() >= NB_LOTTERIES_TO_PLAY_TO_BE_REFERRED 
 		&& !player.hasGivenToReferrer()
+		&& player.getReferrerId() != null
 		&& player.getReferrerId().length() > 0){
 			System.out.println("---------->  gift to referrer !");
 			Player referrer = AccountManager.getPlayerByUID(player.getReferrerId());

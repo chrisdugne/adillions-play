@@ -9,12 +9,18 @@ from time import sleep
 #------------------------------------------------------------------------------------
 
 def getDBConfig():
-
-#   DEV
-    return "host='localhost' dbname='adillions' user='mad'"
     
-#   PROD
-#   return "host='localhost' dbname='adillions' user='mad'"
+#     env = "PROD"
+    env = "DEV"
+    
+    print "DATABASE : " + env
+    
+    if env == "DEV":
+        return "host='localhost' dbname='adillions' user='mad'"
+    
+    if env == "PROD":
+        return "host='ec2-54-228-224-127.eu-west-1.compute.amazonaws.com' dbname='d4pq9slihvgnns' user='oubcukdgrmjfrz' password='Yepe_9jrgK0yIVuyhpan-JrWH5'"
+    
  
 #------------------------------------------------------------------------------------
 
