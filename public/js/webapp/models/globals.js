@@ -37,7 +37,11 @@
    //------------------------------------------------------//
 
    var failure    = function(){
+       
+      console.log("FB failure")
       if(!$.cookie('facebookId')){
+
+         console.log("getplayer")
          UserManager.getPlayer();
       }
       else{

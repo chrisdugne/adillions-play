@@ -16,6 +16,9 @@
 @import views.html.templates.pages.gameViews.results;
 @import views.html.templates.pages.gameViews.profile;
 
+@import views.html.templates.pages.gameViews.fillLotteryTicket;
+@import views.html.templates.pages.gameViews.selectAdditionalNumber;
+@import views.html.templates.pages.gameViews.confirmation;
 
 <!-- ------------------------------------------------------------------- -->
 
@@ -26,14 +29,17 @@
 <!-- ------------------------------------------------------------------- -->
 
 <!-- --- Pages --- -->
-@pageTemplate("home", true){@home()}
-@pageTemplate("game", false){@game()}
+@pageTemplate("home", true)						{ @home()	}
+@pageTemplate("game", false)					{ @game()	}
 
 <!-- ------------------------------------------------------------------- -->
 <!-- --- Components --- -->
 
+@componentTemplate("gameHome")					{ @gameHome()				}
+@componentTemplate("myTickets")					{ @myTickets()				}
+@componentTemplate("results")					{ @results()				}
+@componentTemplate("profile")					{ @profile()				}
 
-@componentTemplate("gameHome"){@gameHome()}
-@componentTemplate("myTickets"){@myTickets()}
-@componentTemplate("results"){@results()}
-@componentTemplate("profile"){@profile()}
+@componentTemplate("fillLotteryTicket")			{ @fillLotteryTicket()		}
+@componentTemplate("selectAdditionalNumber")	{ @selectAdditionalNumber()	}
+@componentTemplate("confirmation")				{ @confirmation()			}

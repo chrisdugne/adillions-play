@@ -8,11 +8,14 @@ def main():
     #---------------------------------------------------------
     
     hostname            = "http://api.sponsorpay.com/feed/v1/offers.json?"
-    apiKey              = "101de242db7d23dc9d5134b3e98a82cfccd893b2"
-#     appId               = "16913"
-    appId               = "16796"
-    locale              = "fr"
-    offerTypes          = "110,111,112,113" 
+#     apiKey              = "101de242db7d23dc9d5134b3e98a82cfccd893b2"
+#     appId               = "16796"
+    
+    apiKey              = "3bf371e6a19aa52912e22a21691e89eb11b6255e"
+    appId               = "16913"
+
+    locale              = "en"
+    offerTypes          = "113" 
     timestamp           = str(utils.now()/1000) 
     uid                 = "1417d5dcf5aca576ce8"
 

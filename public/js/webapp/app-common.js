@@ -34,6 +34,12 @@
       App.spinner = new Spinner(App.spinOpts).spin(target);
       $(".blockMsg").css("border","0px")
    }
+   
+   App.lock = function() {
+      $.blockUI({ message: '<div id="waitingDiv"></div>' });
+      var target = document.getElementById("waitingDiv");
+      $(".blockMsg").css("border","0px")
+   }
 
    App.free = function() {
       $.unblockUI() 

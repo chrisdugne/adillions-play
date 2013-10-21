@@ -17,11 +17,10 @@ window.Facebook = window.Facebook || {}
 
 Facebook.init = function(finalizeInit, notConnectedCallback, openApp) 
 {
-   console.log("Connection to FB")
-   
    //---------------------------------------------------------------
    
-   this.prod = 1
+//   this.prod = 0
+   this.prod = 1  
 
    //---------------------------------------------------------------
    
@@ -43,7 +42,7 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
    
    //---------------------------------------------------------------
 
-   this.finalizeInit         = finalizeInit
+   this.finalizeInit             = finalizeInit
    
    if(openApp === undefined)
       Facebook.openApp = Facebook.defaultOpenApp;
@@ -90,7 +89,7 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
 
          // then try Application autologin
 //         UserManager.getPlayer()
-
+         
          Facebook.finalizeInit()
          notConnectedCallback()
       }
