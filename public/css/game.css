@@ -5,12 +5,34 @@
 	position: relative;
 }
 
+#numbersSelected{
+	height:80px;
+	position: relative;
+}
+
 .ball{
 	width:40px;
 	position: absolute;
+	opacity:0.3;
 }
 
-.num{
-	width:40px;
+.ball.selected{
+	opacity:1;
+}
+
+.num {
+	width: 40px;
 	position: absolute;
+	color: #333;
+	font-size: 23px !important;
+}
+
+.num.selected {
+	color: #eee;
+}
+
+.unselectable {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }

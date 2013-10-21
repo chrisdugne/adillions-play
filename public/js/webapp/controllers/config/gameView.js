@@ -25,10 +25,7 @@
 	
 	App.MyTicketsController = Ember.ObjectController.extend({});
 	App.MyTicketsView = Ember.View.extend({
-	   templateName: 'myTickets',
-      didInsertElement: function(){
-         App.GameController.drawMyTickets()
-      },
+	   templateName: 'myTickets'
 	});
 	
 	App.ResultsController = Ember.ObjectController.extend({});
@@ -45,7 +42,10 @@
 	
 	App.FillLotteryTicketController = Ember.ObjectController.extend({});
 	App.FillLotteryTicketView = Ember.View.extend({
-	   templateName: 'fillLotteryTicket'
+	   templateName: 'fillLotteryTicket',
+      didInsertElement: function(){
+         GameManager.drawMyTickets()
+      },
 	});
 
 	App.SelectAdditionalNumberController = Ember.ObjectController.extend({});
