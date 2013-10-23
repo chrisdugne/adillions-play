@@ -124,9 +124,11 @@ public class AccountManager {
 		
 		//-------------------------------------//
 		
-		String twitterId = null;
+		String twitterId 		= null;
+		String twitterName 	= null;
 		if(userJson.get("twitterId") != null){
 			twitterId 	= userJson.get("twitterId").asText();
+			twitterName = userJson.get("twitterName").asText();
 			points		+= TWITTER_ACCOUNT_POINTS;
 		}
 
@@ -152,6 +154,7 @@ public class AccountManager {
 		player.setBirthDate				(birthDate);
 		player.setFacebookId				(facebookId);
 		player.setTwitterId				(twitterId);
+		player.setTwitterName			(twitterName);
 		player.setUserName				(userName);
 		player.setLotteryTickets		(new ArrayList<LotteryTicket>());
 		player.setRaffleTickets			(new ArrayList<RaffleTicket>());
@@ -183,10 +186,12 @@ public class AccountManager {
 	
 	public static Player updatePlayer(Player player, JsonNode newUserJson) {
 
+		System.out.println("updatePlayer");
 		//-------------------------------------//
 
 		String facebookId = null;
 		String twitterId 	= null;
+		String twitterName= null;
 		String userName 	= newUserJson.get("userName").asText();
 		int idlePoints 	= newUserJson.get("idlePoints").asInt();
 		
@@ -203,11 +208,19 @@ public class AccountManager {
 
 		//-------------------------------------//
 		
+		System.out.println(newUserJson.get("twitterId"));
 		if(newUserJson.get("twitterId") != null && player.getTwitterId() == null){
-			twitterId 	= newUserJson.get("facebookId").asText();
+			twitterId 	= newUserJson.get("twitterId").asText();
+			twitterName = newUserJson.get("twitterName").asText();
+			
+
+			System.out.println(twitterId);
+			System.out.println(twitterName);
+			
 			idlePoints	+= TWITTER_ACCOUNT_POINTS;
 			
 			player.setTwitterId			(twitterId);
+			player.setTwitterName		(twitterName);
 		}
 		
 		//-------------------------------------//

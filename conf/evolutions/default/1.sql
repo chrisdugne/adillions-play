@@ -32,6 +32,7 @@ create table player (
   uid                       varchar(255) not null,
   facebook_id               varchar(255),
   twitter_id                varchar(255),
+  twitter_name              varchar(255),
   user_name                 varchar(255),
   email                     varchar(255),
   first_name                varchar(255),

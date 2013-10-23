@@ -28,6 +28,8 @@ public class Player extends Model {
 
 	@Expose
 	private String twitterId;
+	@Expose
+	private String twitterName;
 
 	// FB : facebookData.name
 	// A	: firstName + lastName 
@@ -226,6 +228,14 @@ public class Player extends Model {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getTwitterName() {
+		return twitterName;
+	}
+
+	public void setTwitterName(String twitterName) {
+		this.twitterName = twitterName;
 	}
 
 	public String getReferrerId() {
