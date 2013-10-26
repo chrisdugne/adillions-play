@@ -343,19 +343,18 @@ UserManager.mobileSigninFB = function(callback)
 {
    if($("#fbForm").valid()){
       var user = {}
-      user.email                = Facebook.data.email
-      user.facebookName         = Facebook.data.name
-      user.facebookId           = Facebook.data.id
+      user.email                = Utils.getURLParameter("email")
+      user.facebookName         = Utils.getURLParameter("facebookName")
+      user.facebookId           = Utils.getURLParameter("facebookId")
       user.firstName            = $("#fbForm_firstName").val() 
       user.lastName             = $("#fbForm_lastName").val() 
       user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
       user.referrerId           = $("#fbForm_referrerId").val() 
 
       App.wait()
-
+      
       var params = new Object();
       params["user"] = user;
-      params["accessToken"] = Facebook.accessToken;
 
       $.ajax({
          type: "POST",  

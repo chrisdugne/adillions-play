@@ -44,8 +44,7 @@
 				<div id="changeAccountButton" class="btn-large button">_change account</div>
 			</div>
 		</div>
-		<br />
-		<br />
+		<br /> <br />
 
 		<div class="row-fluid">
 			<p id="FBText1"></p>
@@ -104,25 +103,40 @@
 
 
 <script type="text/javascript">
+
+   //-----------------------------------// 
+   // setup 
+
    window.translator = new Translator(true);
-   
    UserManager.setupForms()
+
+   //-----------------------------------// 
+   // read url params 
 
    var firstName = Utils.getURLParameter("first_name")
    var lastName = Utils.getURLParameter("last_name")
    var pictureUrl = decodeURIComponent(Utils.getURLParameter("picture_url"))
    var birthday = Utils.getURLParameter("birth_date")
-  	
-   $("#fbForm_title").text(Translator.messages["Welcome"] + " " + firstName + " " + lastName + " !")
+
+   //-----------------------------------// 
+   // fill form 
+
+   $("#fbForm_title").text(
+         Translator.messages["Welcome"] + " "
+               + Utils.getURLParameter("facebookName") + " !")
+               
    $("#fbForm_firstName").val(firstName)
    $("#fbForm_lastName").val(lastName)
    $("#facebookPicture").attr("src", pictureUrl)
    $("#fbForm_birthDate").datepicker('setDate', birthday);
+
+   //-----------------------------------// 
+   // locale/ translations 
    
-   if(translator.lang == "fr"){
-   		$("#fbForm_birthDate").datepicker( "option", "dateFormat", 'dd/mm/yy' );
+   if (translator.lang == "fr") {
+      $("#fbForm_birthDate").datepicker("option", "dateFormat", 'dd/mm/yy');
    }
-   
+
    $("#labelFirstName").text(Translator.messages["FirstName"])
    $("#labelLastName").text(Translator.messages["LastName"])
    $("#labelBirthDate").text(Translator.messages["BirthDate"])
@@ -132,7 +146,10 @@
    $("#FBText2").text(Translator.messages["FBText2"])
 
    $("#validateButton").text(Translator.messages["SignIn"])
-   
+
+   //-----------------------------------// 
+   // controls  
+
    $("#validateButton").click(
          function() {
             UserManager.mobileSigninFB(function(result) {
@@ -154,6 +171,7 @@
    $("#changeAccountButton").click(function() {
       window.location.href = "/requireLogout"
    });
+   
 </script>
 
 </html>
