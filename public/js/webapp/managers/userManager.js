@@ -383,19 +383,17 @@ UserManager.mobileSigninFB = function(callback)
 
 UserManager.setupForms = function() 
 {
-   $(function() {
-      $( "#birthDate" ).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        yearRange: "-100:-12"
-      });
+   $( "#birthDate" ).datepicker({
+     changeMonth: true,
+     changeYear: true,
+     yearRange: "-100:-12"
+   });
 
-      $( "#fbForm_birthDate" ).datepicker({
-         changeMonth: true,
-         changeYear: true,
-         yearRange: "-100:-12"
-      });
-    });
+   $( "#fbForm_birthDate" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "-100:-12"
+   });
    
    $.validator.addMethod(
       "same",

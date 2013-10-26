@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------//
 
-function Translator(storeMessagesHere){
+function Translator(standAlone){
 
-   this.storeMessagesHere = storeMessagesHere;
+   this.standAlone = standAlone;
    this.lang = 'en';
    this.defaultLang = 'en';
    this.cookievalid = 1000*60*60*24;
@@ -61,6 +61,9 @@ Translator.prototype.initLang = function() {
       }
    }
 
+   if(lang != 'en' && lang != 'fr')
+      lang = this.defaultLang
+   
    console.log("setlang",lang)
    this.setLang(lang);
 }
@@ -84,6 +87,7 @@ Translator.prototype.setLang = function(lang, dontStoreCookie) {
    this.load();
 }
 
+
 //---------------------------------------------------------------------//
 
 Translator.prototype.load = function() {
@@ -97,7 +101,7 @@ Translator.prototype.load = function() {
       dataType:'json',
       async : false,
       success: function(data){
-         if(me.storeMessagesHere){
+         if(me.standAlone){
             Translator.messages = data;
             $(window).trigger(Translator.LANG_CHANGED);
          }
@@ -107,3 +111,5 @@ Translator.prototype.load = function() {
       }
    });
 }
+
+//---------------------------------------------------------------------//

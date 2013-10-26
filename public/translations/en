@@ -2,11 +2,18 @@
     "en"				: "En",
     "fr"				: "Fr",
     
+    "Welcome"			: "Welcome",
     "Play"				: "Play !",
-    
-    "AwesomeMaps"		: "Awesome maps",
-    "Everywhere"		: "In the Cloud",
 
+    "FirstName"			: "First name",
+    "LastName"			: "Last name",
+    "BirthDate"			: "Birth date",
+    "ReferrerCode"		: "Referrer code",
+    "ChangeAccount"		: "Change account",
+
+    "FBText1"			: "Obviously we will always use your Facebook nickname everywhere.",
+    "FBText2"			: "That being said, you must provide us with real names and birthdates in order to get paid.",
+    
   	"Contact"			: "Contact",
     "Demos"				: "Demos",
     "Try"				: "Try",

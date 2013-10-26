@@ -229,6 +229,14 @@ Utils.randomRotate = function (element) {
 
 //----------------------------------------------------------------------------------------//
 
+Utils.getURLParameter = function (name) {
+   return decodeURI(
+       (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+   );
+}
+
+//----------------------------------------------------------------------------------------//
+
 Utils.cloneJsonObject = function (jsonObject) {
    return $.parseJSON(JSON.stringify(jsonObject));
 }

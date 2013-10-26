@@ -48,38 +48,38 @@
 		<br />
 
 		<div class="row-fluid">
-			<p>_Obviously we will always use your Facebook names everywhere.</p>
-			<p>_That being said, you must provide us with real names and birthdates in order to get paid.</p>
+			<p id="FBText1"></p>
+			<p id="FBText2"></p>
 		</div>
 		<br />
 
 		<form id="fbForm">
 
 			<div class="clearfix  " id="name_field">
-				<label for="firstName">First name</label>
+				<label id="labelFirstName" for="firstName"></label>
 				<div class="input">
 					<input type="text" id="fbForm_firstName" name="firstName" value="">
 				</div>
 			</div>
 
 			<div class="clearfix  " id="name_field">
-				<label for="lastName">Last name</label>
+				<label id="labelLastName" for="lastName"></label>
 				<div class="input">
 					<input type="text" id="fbForm_lastName" name="lastName" value="">
 				</div>
 			</div>
 
-			<label for="birthDate">Birth date</label> <input type="text" id="fbForm_birthDate" name="birthDate" readonly
+			<label id="labelBirthDate" for="birthDate"></label> <input type="text" id="fbForm_birthDate" name="birthDate" readonly
 				style="cursor: pointer !important;" />
 
 			<div class="clearfix  " id="name_field">
-				<label for="referrerId">Referrer Id</label>
+				<label id="labelReferrerCode" for="referrerId"></label>
 				<div class="input">
 					<input type="text" id="fbForm_referrerId" name="referrerId" value="">
 				</div>
 			</div>
 
-			<div id="validateButton" class="btn-large button">Sign in</div>
+			<div id="validateButton" class="btn-large button"></div>
 		</form>
 
 	</div>
@@ -99,12 +99,40 @@
 <script src='@routes.Assets.at("js/webapp/managers/userManager.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/webapp/app-common.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/webapp/tools/utils.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/webapp/tools/translator.js")' type="text/javascript"></script>
 <script src='@routes.Assets.at("js/libs/jquery.cookie.js")' type="text/javascript"></script>
 
 
 <script type="text/javascript">
+   window.translator = new Translator(true);
+   
    UserManager.setupForms()
 
+   var firstName = Utils.getURLParameter("first_name")
+   var lastName = Utils.getURLParameter("last_name")
+   var pictureUrl = decodeURIComponent(Utils.getURLParameter("picture_url"))
+   var birthday = Utils.getURLParameter("birth_date")
+  	
+   $("#fbForm_title").text(Translator.messages["Welcome"] + " " + firstName + " " + lastName + " !")
+   $("#fbForm_firstName").val(firstName)
+   $("#fbForm_lastName").val(lastName)
+   $("#facebookPicture").attr("src", pictureUrl)
+   $("#fbForm_birthDate").datepicker('setDate', birthday);
+   
+   if(translator.lang == "fr"){
+   		$("#fbForm_birthDate").datepicker( "option", "dateFormat", 'dd/mm/yy' );
+   }
+   
+   $("#labelFirstName").text(Translator.messages["FirstName"])
+   $("#labelLastName").text(Translator.messages["LastName"])
+   $("#labelBirthDate").text(Translator.messages["BirthDate"])
+   $("#labelReferrerCode").text(Translator.messages["ReferrerCode"])
+   $("#changeAccountButton").text(Translator.messages["ChangeAccount"])
+   $("#FBText1").text(Translator.messages["FBText1"])
+   $("#FBText2").text(Translator.messages["FBText2"])
+
+   $("#validateButton").text(Translator.messages["SignIn"])
+   
    $("#validateButton").click(
          function() {
             UserManager.mobileSigninFB(function(result) {

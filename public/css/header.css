@@ -30,8 +30,8 @@
 /*--------------------------------*/
 
 #logo {
-	width: 220px;
-	margin-top: 10px;
+	width: 140px;
+	margin-top: 20px;
 }
 
 @media screen and ( max-width : 600px) {
