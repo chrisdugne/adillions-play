@@ -35,7 +35,7 @@ public class SecurityController extends Action.Simple {
 
 		if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
 			player = models.Player.findByAuthToken(authTokenHeaderValues[0]);
-			if (player != null) {
+			if (player != null && player.getStatus() == Player.ON) {
 				System.out.println("player : " + player.getLotteryTickets().size() + " lottery tickets");
 				ctx.args.put("player", player);
 				return delegate.call(ctx);
@@ -54,7 +54,7 @@ public class SecurityController extends Action.Simple {
 
 		Player player = AccountManager.getPlayerWithCredentials(userJson);
 
-		if(player != null){
+		if(player != null && player.getStatus() == Player.ON){
 			String authToken = player.createToken();
 			response().setCookie(AUTH_TOKEN, authToken);
 			
@@ -93,6 +93,7 @@ public class SecurityController extends Action.Simple {
 	
 	public static Result getPlayerFromFB()
 	{
+		System.out.println("getPlayerFromFB");
 		JsonNode params = request().body().asJson();
 		JsonNode facebookData = params.get("facebookData");
 
@@ -110,8 +111,10 @@ public class SecurityController extends Action.Simple {
 		//----------------------
 		
 		Player player = AccountManager.getPlayerByFacebookId(facebookId);
+
+		System.out.println(player);
 		
-		if(player != null){
+		if(player != null && player.getStatus() == Player.ON){
 			String authToken = player.createToken();
 			response().setCookie(AUTH_TOKEN, authToken);
 
@@ -122,6 +125,8 @@ public class SecurityController extends Action.Simple {
 		}
 		else{
 			// require signinFromFB
+
+			System.out.println("require signinFromFB");
 			return unauthorized();
 		}
 		

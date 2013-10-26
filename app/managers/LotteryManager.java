@@ -53,7 +53,7 @@ public class LotteryManager {
 		//-------------------------------------
 		
 		List<Lottery> lotteries = Lottery.find
-				.orderBy("date asc")
+				.orderBy("date desc")
 				.where().isNotNull("result")
 				.findList();
 		
@@ -156,6 +156,8 @@ public class LotteryManager {
 		else
 			player.setPlayedBonusTickets (player.getPlayedBonusTickets() + 1);
 
+		player.setTotalPlayedTickets	(player.getTotalPlayedTickets() + 1);
+		
 		// -----------------------------------------------------//
 		// Store ticket
 		

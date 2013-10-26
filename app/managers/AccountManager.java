@@ -36,14 +36,14 @@ public class AccountManager {
 
 	public static boolean existNames(JsonNode userJson)
 	{
-		String firstName 		= userJson.get("firstName").asText();
-		String lastName 		= userJson.get("lastName").asText();
+		String firstName 		= userJson.get("firstName").asText().toUpperCase();
+		String lastName 		= userJson.get("lastName").asText().toUpperCase();
 
 		System.out.println(firstName);
 		System.out.println(lastName);
 		
 		ExpressionList<Player> accounts = Player.find.where()
-				.and(Expr.eq("firstName", firstName), Expr.eq("lastName", lastName));
+				.and(Expr.eq("upper(firstName)", firstName), Expr.eq("upper(lastName)", lastName));
 		
 		return accounts.findRowCount() == 1;
 	}
@@ -88,6 +88,12 @@ public class AccountManager {
 	
 	public static Player getPlayerByUID(String playerUID) {
 		return Player.findByUID(playerUID);
+	}
+	
+	//------------------------------------------------------------------------------------//
+	
+	private static boolean existSponsorCode(String code) {
+		return Player.findBySponsorCode(code) != null;
 	}
 
 	//------------------------------------------------------------------------------------//
@@ -146,6 +152,7 @@ public class AccountManager {
 		Player player = new Player();
 
 		player.setUid						(Utils.generateUID());
+		player.setSponsorCode			(generateSponsorCode());
 		player.setEmail					(email);
 		player.setFirstName				(firstName);
 		player.setLastName				(lastName);
@@ -162,9 +169,12 @@ public class AccountManager {
 		player.setCurrentLotteryUID	("");
 		player.setTweet					(false);
 		player.setPostOnFacebook		(false);
+		player.setTweetAnInvite			(false);
+		player.setInvitedOnFacebook	(false);
 
 		player.setAvailableTickets		(START_AVAILABLE_TICKETS);
 		player.setPlayedBonusTickets	(0);
+		player.setTotalPlayedTickets	(0);
 
 		player.setFacebookFan			(false);
 		player.setTwitterFan				(false);
@@ -173,7 +183,9 @@ public class AccountManager {
 		player.setTotalPoints			(0);
 		player.setIdlePoints				(points);
 
-		player.setCreationDate(now);
+		player.setCreationDate			(now);
+		player.setStatus					(Player.ON);
+		player.setAcceptEmails			(true);
 
 		//-------------------------------------//
 
@@ -183,10 +195,23 @@ public class AccountManager {
 	}
 
 	//------------------------------------------------------------------------------------//
+
+	private static String generateSponsorCode() {
+	   
+		String code = Utils.generateSponsorCode();
+	   
+	   if(existSponsorCode(code))
+	   	return generateSponsorCode();
+	   else
+	   	return code;
+   }
+
+	//------------------------------------------------------------------------------------//
 	
 	public static Player updatePlayer(Player player, JsonNode newUserJson) {
 
 		System.out.println("updatePlayer");
+	
 		//-------------------------------------//
 
 		String facebookId = null;
@@ -242,6 +267,13 @@ public class AccountManager {
 		player.setCurrentLotteryUID	(newUserJson.get("currentLotteryUID").asText());
 		player.setAvailableTickets		(newUserJson.get("availableTickets").asInt());
 		player.setPlayedBonusTickets	(newUserJson.get("playedBonusTickets").asInt());
+
+		//-------------------------------------//
+
+		player.setTweet					(newUserJson.get("hasTweet").asBoolean());
+		player.setPostOnFacebook		(newUserJson.get("hasPostOnFacebook").asBoolean());
+		player.setTweetAnInvite			(newUserJson.get("hasTweetAnInvite").asBoolean());
+		player.setInvitedOnFacebook	(newUserJson.get("hasInvitedOnFacebook").asBoolean());
 
 		//-------------------------------------//
 

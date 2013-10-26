@@ -38,6 +38,8 @@ public class Lottery extends Model {
 	private Integer maxPrice; 			// lottery.price = min ( max (lottery.minPrice, nbPlayers/ratio) , lottery.maxPrice)
 	@Expose
 	private Double cpm; 					// nbTickets/1000 * cpm = price
+	@Expose
+	private Double charity; 			// 
 
 	@Expose
 	@Column(columnDefinition = "TEXT")
@@ -45,6 +47,8 @@ public class Lottery extends Model {
 
 	@Expose
 	private String result; 				// [34,65,2,5,65,7]
+	@Expose
+	private Double finalPrice; 			// 
 
 	// -----------------------------------------------------------------------------------------------//
 
@@ -146,6 +150,22 @@ public class Lottery extends Model {
 
 	public void setResult(String result) {
 		this.result = result;
+	}
+
+	public Double getCharity() {
+		return charity;
+	}
+
+	public void setCharity(Double charity) {
+		this.charity = charity;
+	}
+
+	public Double getFinalPrice() {
+		return finalPrice;
+	}
+
+	public void setFinalPrice(Double finalPrice) {
+		this.finalPrice = finalPrice;
 	}
 
 	public Integer getMaxPrice() {

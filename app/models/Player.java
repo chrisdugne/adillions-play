@@ -18,6 +18,13 @@ import com.google.gson.annotations.Expose;
 public class Player extends Model { 
 
 	// -----------------------------------------------------------------------------------------------//
+	// Status
+	
+	public static final int ON 			= 1;
+	public static final int OFF 			= -1;
+	public static final int BLOCKED 		= -2;
+	
+	// -----------------------------------------------------------------------------------------------//
 
 	@Id
 	@Expose
@@ -42,10 +49,12 @@ public class Player extends Model {
 	private String firstName;
 	@Expose
 	private String lastName;
-	
 
 	@Expose
 	private String birthDate;
+	
+	@Expose
+	private Boolean acceptEmails;
 
 	// -----------------------------------------------------------------------------------------------//
 	
@@ -66,8 +75,13 @@ public class Player extends Model {
 	@Expose
 	private int playedBonusTickets;
 
+	@Expose
+	private int totalPlayedTickets;
+
 	// -----------------------------------------------------------------------------------------------//
 
+	@Expose
+	private String sponsorCode;
 	@Expose
 	private String referrerId;
 	@Expose
@@ -81,6 +95,10 @@ public class Player extends Model {
 	private Boolean hasPostOnFacebook;
 	@Expose
 	private Boolean hasTweet;
+	@Expose
+	private Boolean hasTweetAnInvite;
+	@Expose
+	private Boolean hasInvitedOnFacebook;
 
 	// -----------------------------------------------------------------------------------------------//
 	// utiliser normalement que coté client
@@ -111,6 +129,7 @@ public class Player extends Model {
 	private String authToken;
 	private String secret;
 	private Long creationDate;
+	private Integer status;
 
 	// -----------------------------------------------------------------------------------------------//
 
@@ -168,6 +187,23 @@ public class Player extends Model {
 	
 	// -----------------------------------------------------------------------------------------------//
 	
+	public static Player findBySponsorCode(String code) {
+		if (code == null) {
+			return null;
+		}
+		
+		try  {
+			return playerQuery()
+					.where().eq("sponsorCode", code)
+					.findUnique();
+		}
+		catch (Exception e) {
+			return null;
+		}
+	}
+	
+	// -----------------------------------------------------------------------------------------------//
+	
 	public static Player findByUID(String playerUID) {
 		try  {
 			return playerQuery()
@@ -206,12 +242,36 @@ public class Player extends Model {
 		this.email = email;
 	}
 
+	public String getSponsorCode() {
+		return sponsorCode;
+	}
+
+	public void setSponsorCode(String sponsorCode) {
+		this.sponsorCode = sponsorCode;
+	}
+
 	public String getSecret() {
 		return secret;
 	}
 
 	public void setSecret(String secret) {
 		this.secret = secret;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public int getTotalPlayedTickets() {
+		return totalPlayedTickets;
+	}
+
+	public void setTotalPlayedTickets(int totalPlayedTickets) {
+		this.totalPlayedTickets = totalPlayedTickets;
 	}
 
 	public String getFirstName() {
@@ -285,6 +345,15 @@ public class Player extends Model {
 	public void setCreationDate(Long creationDate) {
 		this.creationDate = creationDate;
 	}
+	
+	public Boolean getAcceptEmails() {
+		return acceptEmails;
+	}
+
+	public void setAcceptEmails(Boolean acceptEmails) {
+		this.acceptEmails = acceptEmails;
+	}
+
 	public String getFacebookId() {
 		return facebookId;
 	}
@@ -331,6 +400,22 @@ public class Player extends Model {
 
 	public void setTweet(Boolean hasTweet) {
 		this.hasTweet = hasTweet;
+	}
+
+	public Boolean hasTweetAnInvite() {
+		return hasTweetAnInvite;
+	}
+
+	public void setTweetAnInvite(Boolean hasTweetAnInvite) {
+		this.hasTweetAnInvite = hasTweetAnInvite;
+	}
+
+	public Boolean hasInvitedOnFacebook() {
+		return hasInvitedOnFacebook;
+	}
+
+	public void setInvitedOnFacebook(Boolean hasInvitedOnFacebook) {
+		this.hasInvitedOnFacebook = hasInvitedOnFacebook;
 	}
 
 	public String getUserName() {

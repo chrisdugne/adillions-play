@@ -75,6 +75,18 @@ public class Utils {
 		}
 		return new String(pw);
 	}
+	
+	public static String generateSponsorCode() {
+		
+		char[] code = new char[6];
+		
+		for (int i=0; i < 5; i++)
+			code[i] = (char)('A' +  (int)(Math.random() * 26));
+		
+		code[5] = (char)('0' +  (int)(Math.random() * 10));
+
+		return new String(code);
+	}
 
 
 	//======================================================================================//
