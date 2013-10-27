@@ -31,7 +31,7 @@ def main():
 
     #--------------------------------------------------------------------
 
-    cursor.execute("INSERT INTO lottery (uid, date, max_picks, max_numbers, nb_players, max_price, min_price, cpm, charity, final_price, last_update) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+    cursor.execute("INSERT INTO lottery (uid, date, max_picks, max_numbers, nb_players, max_price, min_price, cpm, charity, final_price, last_update) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", 
                    (lotteryUID, dateMillis, maxPicks, maxNumbers, 0, maxPrice, minPrice, cpm, 0, 0, "2012-10-18 11:35:21"))
 
     

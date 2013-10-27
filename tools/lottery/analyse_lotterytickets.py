@@ -74,13 +74,14 @@ def main():
     minPrice    = lottery[5]
     maxPrice    = lottery[6]
     CPM         = lottery[7]
-    price       = round(len(tickets)/1000*CPM, 2)
+    price       = round(float(len(tickets))/1000*CPM, 2)
+    nbTickets   = len(tickets)
       
     print date + " Lottery"
     print ""
     print "Winning numbers    : "          , winningNumbers
     print "Players            : "          , nbPlayers
-    print "Tickets            : "          , len(tickets)
+    print "Tickets            : "          , nbTickets
     print "CPM                : "          , CPM
     print "Price              : "          , price
       
@@ -171,9 +172,9 @@ def main():
 
     #---------------------------------
     
-    toPay = round(toPay, 2)
+    finalPrice = round(toPay, 2)
     
-    print("To pay :" , toPay)
+    print("To pay :" , finalPrice)
     print("Nb Rang 1 :" + str(nbRang1), " price: " , prices[0])
     print("Nb Rang 2 :" + str(nbRang2), " price: " , prices[1])
     print("Nb Rang 3 :" + str(nbRang3), " price: " , prices[2])
@@ -184,7 +185,7 @@ def main():
     requireRecord = raw_input("Record data ? (y/N) \n>") == 'y'
        
     if requireRecord:
-        recordToDB(database, winningTickets, prices)
+        recordToDB(database, winningTickets, prices, finalPrice)
         
     #--------------------------------------------------------------------
     
@@ -197,7 +198,7 @@ def main():
         
 #----------------------------------------------------------------------------------
 
-def recordToDB(database, winningTickets, prices):
+def recordToDB(database, winningTickets, prices, finalPrice):
     print("Recording prizes in DB")
     
     for ticket in winningTickets :
@@ -208,6 +209,8 @@ def recordToDB(database, winningTickets, prices):
         print "Name : ", ticket.player[2], "numbers:", ticket.numbers, "rang:", ticket.rang,"price :", price, "nbTickets : " , ticket.nbTicketsPlayed 
         
         database.execute("UPDATE lottery_ticket SET price='"+str(prices[ticket.rang-1])+"' WHERE uid='"+ticket.uid+"';") 
+
+    database.execute("UPDATE lottery SET final_price='"+str(finalPrice)+"' WHERE uid='"+ticket.lotteryUID+"';") 
     
         
 #----------------------------------------------------------------------------------

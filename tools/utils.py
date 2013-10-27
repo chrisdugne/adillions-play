@@ -10,8 +10,8 @@ from time import sleep
 
 def getDBConfig():
     
-#     env = "PROD"
-    env = "DEV"
+    env = "PROD"
+#     env = "DEV"
     
     print "DATABASE : " + env
     
