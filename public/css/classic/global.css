@@ -569,27 +569,3 @@ body{
     font-size: 16px!important;
 }
 
-/*------------------------------------------------*/
-
-.gameView {
-	margin-top: 122px;
-}
-
-/*------------------------------------------------*/
-#gameTabs {
-	bottom: 100px;
-	position: absolute;
-}
-
-#gameHomeButton 			{background: url(/assets/images/icons/friends.png) no-repeat center center;height:50px}
-#gameHomeButton.selected 	{background: url(/assets/images/icons/friends.selected.png) no-repeat center center;height:50px}
-
-#myTicketsButton 			{background: url(/assets/images/icons/friends.png) no-repeat center center;height:50px}
-#myTicketsButton.selected 	{background: url(/assets/images/icons/friends.selected.png) no-repeat center center;height:50px}
-
-#resultsButton 				{background: url(/assets/images/icons/friends.png) no-repeat center center;height:50px}
-#resultsButton.selected 	{background: url(/assets/images/icons/friends.selected.png) no-repeat center center;height:50px}
-
-#profileButton 				{background: url(/assets/images/icons/friends.png) no-repeat center center;height:50px}
-#profileButton.selected 	{background: url(/assets/images/icons/friends.selected.png) no-repeat center center;height:50px}
-

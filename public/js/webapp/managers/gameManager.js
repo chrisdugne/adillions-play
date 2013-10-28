@@ -34,14 +34,15 @@ GameManager.clickOn = function(num) {
 
    if($("#"+ballId).hasClass("selected")){
       GameManager.removeFromSelection(num)
-      $("#"+textId).removeClass("selected")
-      $("#"+ballId).removeClass("selected")
+      
+      $("#"+ballId).attr('src', "/assets/images/balls/ball.small.white.png")
+      $("#"+textId).attr('color', "#000")
    }
    else{
       var added = GameManager.addToSelection(num)
       if(added){
-         $("#"+textId).addClass("selected")
-         $("#"+ballId).addClass("selected")
+         $("#"+ballId).attr('src', "/assets/images/balls/ball.small.green.png")
+         $("#"+textId).attr('color', "#fff!important")
       }
    }
    
@@ -57,7 +58,7 @@ GameManager.drawBallToPick = function(ballNum, left, top)   {
    var ballId = "ball_"+ballNum
    var textId = "text_"+ballNum
    
-   var ball   = "<img id='"+ballId+"' src='/assets/images/game/ball.png' class='ball'></img>"
+   var ball   = "<img id='"+ballId+"' src='/assets/images/balls/ball.small.white.png' class='ball'></img>"
    var num    = "<p id='"+textId+"' class='num'>"+ballNum+"</p>"
    
    //----------------------------------------------------//

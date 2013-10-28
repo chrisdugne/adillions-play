@@ -1,4 +1,43 @@
+/*---------------------------------------------*/
 
+.gameView {
+	margin-top: 102px;
+}
+
+
+/*------------------------------------------------*/
+
+#gameTabs {
+	bottom: 100px;
+	position: absolute;
+	width:100%;
+}
+
+#gameHomeButton 			{
+	background: url(/assets/images/bylang/en/OFF1.png) no-repeat center center;height:50px;width:50px;background-size: 90px;
+	position: absolute;
+}
+#gameHomeButton.selected 	{background: url(/assets/images/bylang/en/ON1.png) no-repeat center center;height:50px;width:50px;background-size: 90px;}
+
+#myTicketsButton 			{
+	background: url(/assets/images/bylang/en/OFF2.png) no-repeat center center;height:50px;width:50px;background-size: 90px;
+	position: absolute;
+}
+#myTicketsButton.selected 	{background: url(/assets/images/bylang/en/ON2.png) no-repeat center center;height:50px;width:50px;background-size: 90px;}
+
+#resultsButton 				{
+	background: url(/assets/images/bylang/en/OFF3.png) no-repeat center center;height:50px;width:50px;background-size: 90px;
+	position: absolute;
+}
+#resultsButton.selected 	{background: url(/assets/images/bylang/en/ON3.png) no-repeat center center;height:50px;width:50px;background-size: 90px;}
+
+#profileButton 				{
+	background: url(/assets/images/bylang/en/OFF4.png) no-repeat center center;height:50px;width:50px;background-size: 90px;
+	position: absolute;
+}
+#profileButton.selected 	{background: url(/assets/images/bylang/en/ON4.png) no-repeat center center;height:50px;width:50px;background-size: 90px;}
+
+/*---------------------------------------------*/
 
 #numbersToSelect{
 	height:400px;
@@ -10,14 +49,15 @@
 	position: relative;
 }
 
+/*---------------------------------------------*/
+
 .ball{
 	width:40px;
 	position: absolute;
-	opacity:0.3;
 }
 
-.ball.selected{
-	opacity:1;
+.ball.lost{
+	opacity:0.34;
 }
 
 .num {
@@ -35,4 +75,85 @@
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+}
+
+/*---------------------------------------------*/
+
+.huge {
+	font-size: 50px;
+	margin-top: 10px;
+}
+
+.medium {
+	font-size: 35px;
+	font-weight: bold;
+	margin-bottom: 6px;
+}
+
+.mobileIcon {
+	max-width: 35px;
+}
+
+/*---------------------------------------------*/
+#fillOutTicket {
+	width: 250px;
+	cursor: hand;
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+#fillOutTicket:hover {
+	opacity: 1;
+}
+
+/*---------------------------------------------*/
+#pointsImage {
+	margin-left: 30px;
+	margin-top: -6px;
+}
+
+#menuBG {
+	width: 500px;
+}
+
+/*---------------------------------------------*/
+.free {
+	position: relative;
+}
+
+#playersIcon {
+	top: -25px;
+	position: absolute;
+	left: 10px;
+}
+
+#playersText {
+	top: 6px;
+	position: absolute;
+}
+
+#playersNumber {
+	top: 24px;
+	position: absolute;
+	font-size: 26px;
+	left: -6px;
+	text-align: center;
+	width: 66px;
+}
+
+/*---------------------------------------------*/
+#themeImageContainer {
+	position: relative;
+}
+
+.themeImage {
+	width: 450px;
+}
+
+#themeImageOver {
+	width:280px;
+	left:50%;
+	margin-left:-140px;
+	top:175px;
+	position: absolute;
 }

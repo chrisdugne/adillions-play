@@ -30,6 +30,12 @@
     "Blog"				: "Le Blog",
 
     "Founders"			: "Les fondateurs",
+    
+    "NextDrawing"		: "Prochain tirage",
+    "Players"			: "Joueurs",
+    "Days"				: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+    "Months"			: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+    
        
     "":""
 }

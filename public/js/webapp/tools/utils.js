@@ -115,10 +115,10 @@ Utils.formatFileSize = function (bytes)
  */
 Utils.formatDate = function(timestamp) 
 {
-   var now = timestamp == undefined ? new Date() : new Date(timestamp);
-   var day = Utils.zeroPad(now.getDate(), 2);
-   var month = Utils.zeroPad(now.getMonth() + 1, 2); //Months are zero based
-   var year = now.getFullYear();
+   var now     = timestamp == undefined ? new Date() : new Date(timestamp);
+   var day     = Utils.zeroPad(now.getDate(), 2);
+   var month   = Utils.zeroPad(now.getMonth() + 1, 2); //Months are zero based
+   var year    = now.getFullYear();
    
    if(App.translator){
       console.log(App.translator)
@@ -127,10 +127,53 @@ Utils.formatDate = function(timestamp)
          return day + "/" + month + "/" + year;
       
       if(App.translator.lang == "en")
-         return year + "," + month + " " + day;
+         return month + "/" + day + "/" + year ;
    }
    
    return day + "/" + month + "/" + year;
+}
+
+Utils.readableFullDate = function(timestamp) 
+{
+   var now        = timestamp == undefined ? new Date() : new Date(timestamp);
+   var day        = Utils.zeroPad(now.getDate(), 2);
+   var month      = Utils.zeroPad(now.getMonth() + 1, 2); //Months are zero based
+   var year       = now.getFullYear();
+   var dayName    = App.translations.messages.Days[now.getDay()];
+   var monthName  = App.translations.messages.Months[month-1];
+   
+   if(App.translator){
+      
+      if(App.translator.lang == "fr")
+         return dayName + " " + day + " " + monthName + " " + year;
+      
+      if(App.translator.lang == "en"){
+         var suffix = Utils.getNumberSuffix(now.getDate())
+         return dayName+ ", " + monthName + " " + day + suffix + ", " + year ;
+      }
+            
+   }
+   
+   return day + "/" + month + "/" + year;
+}
+
+//----------------------------------------------------------------------------------------//
+
+Utils.getNumberSuffix = function(num){
+
+   var suffix = "";
+
+   if(num == 1) 
+      suffix = "st";
+   else if(num == 2)
+      suffix = "nd";
+   else if(num == 3)
+      suffix = "rd";
+   else
+      suffix = "th";
+
+   return suffix;
+
 }
 
 //----------------------------------------------------------------------------------------//

@@ -4,12 +4,25 @@
 //---------------------------------------------------------------------------------------//
 
 Ember.Handlebars.registerBoundHelper('lotteryPrice', function(lottery) {
-    return Math.min(lottery.maxPrice, Math.max(lottery.minPrice, lottery.nbTickets/1000 * lottery.cpm))  +  "  $"
+    return "$ " + Math.min(lottery.maxPrice, Math.max(lottery.minPrice, lottery.nbTickets/1000 * lottery.cpm))
 });
 
 Ember.Handlebars.registerBoundHelper('themeImage', function(lottery) {
    console.log(lottery.theme.image)
-   return new Handlebars.SafeString("<img src=\""+lottery.theme.image+"\"/>")
+   return new Handlebars.SafeString("<img class='themeImage' src=\""+lottery.theme.image+"\"/>")
+});
+
+Ember.Handlebars.registerHelper('langImage', function(options) {
+   var customclass = options.hash.customclass
+   var path = "/assets/images/bylang/" + App.translator.lang + "/" + options.hash.png
+   var img = "<div class='"+customclass+"'><img id='"+options.hash.id+"' src='"+path+"'></img></div>"
+   return new Handlebars.SafeString(img)
+});
+
+Ember.Handlebars.registerBoundHelper('pointsImage', function(user) {
+   var path = "/assets/images/points/points." + user.currentPoints + ".png"
+   var img = "<img class=\"mobileIcon\" id='pointsImage' src='"+path+"'></img>"
+   return new Handlebars.SafeString(img)
 });
 
 //---------------------------------------------------------------------------------------//
@@ -31,6 +44,20 @@ Ember.Handlebars.registerHelper('date', function(options) {
          return year + "." + month + "." + day;
       
    }
+});
+
+/**
+* transform 1356095267229 ==> 21/12/2012
+*/
+Ember.Handlebars.registerBoundHelper('formatDate', function(uploadTime, options) {
+ return Utils.formatDate(uploadTime);
+});
+
+/**
+* transform 1356095267229 ==> 21/12/2012
+*/
+Ember.Handlebars.registerBoundHelper('readableFullDate', function(uploadTime, options) {
+ return Utils.readableFullDate(uploadTime);
 });
 
 //---------------------------------------------------------------------------------------//
@@ -69,15 +96,6 @@ Ember.Handlebars.registerBoundHelper('progressBar', function(percentage, options
  */
 Ember.Handlebars.registerBoundHelper('fileSize', function(size, options) {
    return Utils.formatFileSize(size);
-});
-
-//---------------------------------------------------------------------------------------//
-
-/**
- * transform 1356095267229 ==> 21/12/2012
- */
-Ember.Handlebars.registerBoundHelper('formatDate', function(uploadTime, options) {
-   return Utils.formatDate(uploadTime);
 });
 
 //---------------------------------------------------------------------------------------//

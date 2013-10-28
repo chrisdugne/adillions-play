@@ -1,33 +1,45 @@
 
 <div class="gameView">
 	<div class="row-fluid">
-	_Prochain tirage : {{lotteryPrice App.nextLottery}}
+		<div class="medium">
+			{{App.translations.messages.Welcome}} {{App.user.firstName}} !
+		</div>
 	</div>
 	<div class="row-fluid">
-	_date : {{formatDate App.nextLottery.date}}
+		<div class="span5 offset3">
+			{{App.translations.messages.NextDrawing}} {{readableFullDate App.nextLottery.date}}
+		</div>
 	</div>
+	<br/>
 	<div class="row-fluid">
-	_nbPlayers : {{App.nextLottery.nbPlayers}}
-	</div>
-	
-	<br/>
-	<br/>
-	
-	<div class="row-fluid">
-		<div {{action requireNewTicket}} class="span4 offset4 btn-large button">{{App.translations.messages.Play}}</div>
-	</div>
-	
-	<br/>
-	<br/>
+		<div class="span3 offset3 huge">
+			{{lotteryPrice App.nextLottery}}
+		</div>
+		<div class="span1">
+			<img class="mobileIcon" src='@routes.Assets.at("images/icons/cagnotte.png")'></img>
+		</div>
 
-	<div class="row-fluid">
-	theme : {{App.nextLottery.theme.title}}
+		<div class="span1">
+			<img class="mobileIcon" src='@routes.Assets.at("images/icons/separateur.png")'></img>
+		</div>
+
+		<div class="span4 free">
+			<img id="playersIcon" class="mobileIcon" src='@routes.Assets.at("images/icons/players.png")'></img>
+			<p id="playersText">{{App.translations.messages.Players}} : 	</p>
+			<p id="playersNumber"> {{App.nextLottery.nbPlayers}}</p>
+		</div>
 	</div>
+	
+	
 	<div class="row-fluid">
-	desc : {{App.nextLottery.theme.description}}
+		<div {{action requireNewTicket}}>{{langImage png='filloutticket.button.png' id='fillOutTicket'}}</div>
 	</div>
-	<div class="row-fluid">
+	
+	<div id="themeImageContainer" class="row-fluid">
+		<div class="span8 offset2">
 		{{themeImage App.nextLottery}}
+		</div>
+		{{langImage png='theme.png' id='themeImageOver' customclass='touchable'}}
 	</div>
 </div>
 

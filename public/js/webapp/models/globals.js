@@ -14,7 +14,7 @@
 
       //-------------------------------------------//
 
-//      isDev    : window.location.hostname == "maperial.localhost",
+      isDev    : window.location.hostname == "maperial.localhost" || window.location.hostname == "192.168.0.9",
 //      isLocal  : (window.location.hostname == "maperial.localhost" || window.location.hostname == "maperial.localhost.deploy") ,
       isProd    : window.location.hostname == "www.adillions.com",
       debug    : false,

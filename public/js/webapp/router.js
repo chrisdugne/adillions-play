@@ -12,8 +12,12 @@
 
 			//-------------------------------------------------------//
 
-			translateEn    : function(){ App.translator.setLang('en') },
-			translateFr    : function(){ App.translator.setLang('fr') },
+			translateEn    : function(){
+			    App.changeLang("en")
+			},
+			translateFr    : function(){
+			    App.changeLang("fr")
+			},
 
 			//-------------------------------------------------------//
 			

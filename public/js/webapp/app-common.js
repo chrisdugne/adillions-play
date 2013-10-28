@@ -28,6 +28,17 @@
    
    //------------------------------------------------------//
    
+   App.changeLang = function(lang) {
+      App.wait()
+      App.translator.setLang(lang);
+      var currentPage = App.Globals.currentPage
+      App.get('router').transitionTo('home');
+      App.get('router').transitionTo(currentPage);
+      App.free()
+   }
+   
+   //------------------------------------------------------//
+   
    App.wait = function() {
       $.blockUI({ message: '<div id="waitingDiv"></div>' });
       var target = document.getElementById("waitingDiv");

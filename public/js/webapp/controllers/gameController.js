@@ -12,6 +12,11 @@
 	   
       App.get('router').transitionTo('game.gameHome');
 	   GameManager.init()
+	   
+	   $("#gameHomeButton").css("left", ($(window).width()/2 - 195 - 70) + "px")
+	   $("#myTicketsButton").css("left", ($(window).width()/2 - 70 - 70) + "px")
+	   $("#resultsButton").css("left", ($(window).width()/2 + 70 - 70) + "px")
+	   $("#profileButton").css("left", ($(window).width()/2 + 195 - 70) + "px")
 	}
 
 	GameController.cleanUI = function()	{
@@ -21,6 +26,11 @@
 	//==================================================================//
 
 	GameController.requireVideo = function(afterVideoSeen)	{
+	   
+	   if(App.Globals.isDev){
+	      afterVideoSeen()
+	      return
+	   }
 	   
 	   GameController.sponsorpay = new SPONSORPAY.Video.Iframe({
 	      
