@@ -19,6 +19,7 @@ public class OpenGraph extends Application
 
 		Map<String, String[]> queryParameters = request().queryString();
 
+		String id 				= null;
 		String title 			= null;
 		String description 	= null;
 		String imageURL 		= null;
@@ -27,11 +28,12 @@ public class OpenGraph extends Application
 
 		try
 		{
-			description = queryParameters.get("description")[0];
-			title = queryParameters.get("title")[0];
-			imageURL = queryParameters.get("imageURL")[0];
-			locale = queryParameters.get("locale")[0];
-			objectPageURL = APP_HOSTNAME + request().uri();
+			id 						= queryParameters.get("id")[0];
+			description	 			= queryParameters.get("description")[0];
+			title 					= queryParameters.get("title")[0];
+			imageURL 				= queryParameters.get("imageURL")[0];
+			locale 					= queryParameters.get("locale")[0];
+			objectPageURL 			= APP_HOSTNAME + request().uri();
 		}
 		catch (Exception e)
 		{
@@ -44,6 +46,7 @@ public class OpenGraph extends Application
 		return ok(theme.render(
 				FACEBOOK_APP_NAMESPACE,
 				FACEBOOK_APP_ID,
+				id,
 				title,
 				description,
 				imageURL,
