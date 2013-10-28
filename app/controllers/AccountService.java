@@ -40,4 +40,19 @@ public class AccountService extends Application
 	}
 	
 	// ---------------------------------------------//
+	
+	public static Result updateFanStatus()
+	{
+		JsonNode params = request().body().asJson();
+		JsonNode newUserJson = params.get("user");
+		
+		Player player = Application.player();
+		
+		AccountManager.updateFanStatus(player, newUserJson);
+		
+		return ok();
+		
+	}
+	
+	// ---------------------------------------------//
 }

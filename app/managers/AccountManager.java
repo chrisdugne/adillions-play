@@ -256,14 +256,6 @@ public class AccountManager {
 
 		//-------------------------------------//
 		
-		if(newUserJson.get("facebookFan") != null)
-			player.setFacebookFan (newUserJson.get("facebookFan").asBoolean());
-
-		if(newUserJson.get("twitterFan") != null)
-			player.setTwitterFan (newUserJson.get("twitterFan").asBoolean());
-
-		//-------------------------------------//
-		
 		player.setCurrentLotteryUID	(newUserJson.get("currentLotteryUID").asText());
 		player.setAvailableTickets		(newUserJson.get("availableTickets").asInt());
 		player.setPlayedBonusTickets	(newUserJson.get("playedBonusTickets").asInt());
@@ -281,6 +273,27 @@ public class AccountManager {
 
 		return player;
    }
+
+	//------------------------------------------------------------------------------------//
+	
+	public static Player updateFanStatus(Player player, JsonNode newUserJson) {
+		
+		System.out.println("updateFanStatus");
+		
+		//-------------------------------------//
+
+		if(newUserJson.get("facebookFan") != null)
+			player.setFacebookFan (newUserJson.get("facebookFan").asBoolean());
+		
+		if(newUserJson.get("twitterFan") != null)
+			player.setTwitterFan (newUserJson.get("twitterFan").asBoolean());
+		
+		//-------------------------------------//
+		
+		Ebean.save(player);  
+		
+		return player;
+	}
 
 	//------------------------------------------------------------------------------------//
 }
