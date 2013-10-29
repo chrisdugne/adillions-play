@@ -44,13 +44,16 @@
 	App.FillLotteryTicketView = Ember.View.extend({
 	   templateName: 'fillLotteryTicket',
       didInsertElement: function(){
-         GameManager.drawMyTickets()
+         GameManager.initFillLotteryTicket()
       },
 	});
 
 	App.SelectAdditionalNumberController = Ember.ObjectController.extend({});
 	App.SelectAdditionalNumberView = Ember.View.extend({
-	   templateName: 'selectAdditionalNumber'
+	   templateName: 'selectAdditionalNumber',
+      didInsertElement: function(){
+         GameManager.initSelectAdditionalNumber()
+      },
 	});
 	
 	App.ConfirmationController = Ember.ObjectController.extend({});

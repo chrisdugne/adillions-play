@@ -54,6 +54,9 @@
 	
 	"Welcome"			: "Bienvenue",
     "Play"				: "Jouez !",
+
+    "Random"			: "Aléatoire",
+    "Restart"			: "Effacer",
     
     "FirstName"			: "Prénom",
     "LastName"			: "Nom",
@@ -72,6 +75,8 @@
     "Players"			: "Joueurs",
     "Days"				: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
     "Months"			: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+
+    "SelectLuckyBall"	: "Choisissez votre Boule Chance : ",
     
        
     "":""

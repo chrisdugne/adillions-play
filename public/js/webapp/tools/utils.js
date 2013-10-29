@@ -190,6 +190,17 @@ Utils.random0 = function(i){
 
 //----------------------------------------------------------------------------------------//
 
+Utils.compareNumbers = function (a, b)
+{
+    return a - b;
+}
+
+Utils.sortNumbers = function(array){
+   array.sort(Utils.compareNumbers)
+}
+
+//----------------------------------------------------------------------------------------//
+
 Utils.generateGuid = function() 
 {
    var result, i, j;

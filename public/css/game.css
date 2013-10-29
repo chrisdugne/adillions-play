@@ -54,12 +54,34 @@
 }
 
 #selectorNumbers {
-	width:250px;
+	width:230px;
 	margin-bottom: 10px;
 	margin-top: -15px;
 }
 
 #numbersSelected {
+}
+
+/*---------------------------------------------*/
+
+#ballsToSelect{
+	height:400px;
+	position: relative;
+	margin-top: -120px;
+}
+
+#selectorLuckyBall {
+	width:290px;
+	height:55px;
+	margin-bottom: 10px;
+	margin-top: -15px;
+}
+
+#finalSelection  {
+	height: 115px;
+	position: relative;
+	margin-bottom: 10px;
+	margin-top: 50px;
 }
 
 /*---------------------------------------------*/
@@ -70,6 +92,31 @@
 }
 
 .ball.lost{
+	opacity:0.34;
+}
+
+.themeBall{
+	width: 80px;
+	position: absolute;
+	opacity:0.8;
+}
+
+.themeBall.selected{
+	opacity:1;
+}
+
+.smallThemeBall{
+	width: 40px;
+	position: absolute;
+}
+
+.themeText{
+	width: 160px;
+	position: absolute;
+	font-size:28px;
+}
+
+.themeBall.lost{
 	opacity:0.34;
 }
 
@@ -95,21 +142,36 @@
 
 .unselectable {
 	-moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
 }
 
 /*---------------------------------------------*/
-
 .huge {
 	font-size: 50px;
 	margin-top: 10px;
 }
 
-.medium {
+.big {
 	font-size: 35px;
 	font-weight: bold;
 	margin-bottom: 6px;
+}
+
+.medium {
+	font-size: 25px;
+}
+
+.alignLeft {
+	text-align: left;
+}
+
+.alignRight {
+	text-align: right;
+}
+
+.small {
+	font-size: 15px;
 }
 
 .mobileIcon {
@@ -118,7 +180,7 @@
 
 /*---------------------------------------------*/
 #fillOutTicket {
-	width: 250px;
+	width: 225px;
 	cursor: hand;
 	cursor: pointer;
 	opacity: 0.8;
@@ -137,7 +199,32 @@
 	opacity: 1;
 	cursor: hand;
 	cursor: pointer;
-	opacity: 0.8;
+}
+
+/*---------------------------------------------*/
+
+#actions {
+	z-index:100;
+	height: 30px;
+	margin-bottom: 10px;
+	margin-top: -10px;
+}
+
+#randomButton {
+	position:absolute;
+	width: 100px;
+}
+
+#restartButton {
+	position: absolute;
+	width: 100px;
+}
+
+#actionSeparator {
+	width: 1px;
+	height: 20px;
+	position: absolute;
+	margin-left: -16px;
 }
 
 /*---------------------------------------------*/
