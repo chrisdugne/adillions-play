@@ -126,6 +126,10 @@ public class LotteryManager {
 		// -----------------------------------------------------//
 		// Triches 
 		
+		System.out.println("---------------");
+		System.out.println(player.getAvailableTickets() + facebookFanBonus + twitterFanBonus - player.getPlayedBonusTickets());
+		System.out.println(player.getExtraTickets());
+		System.out.println(isExtraTicket);
 		if(player.getAvailableTickets() + facebookFanBonus + twitterFanBonus - player.getPlayedBonusTickets() <= 0) 
 			return null;
 

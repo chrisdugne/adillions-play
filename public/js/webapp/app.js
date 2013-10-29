@@ -32,18 +32,7 @@
       //------------------------------------------------------//
 
       var failure    = function(){
-          
-         console.log("FB failure")
-         if(!$.cookie('facebookId')){
-
-            console.log("getplayer")
-            UserManager.getPlayer();
-         }
-         else{
-            // le authToken est lié à un compte FB : ne pas logguer le mec, il est deco de FB ! (donc pas de getPlayer)
-            // delete authToken
-            $.removeCookie('authToken');
-         } 
+          App.loginAdillions()
       }
 
       var finalize   = function(){  
@@ -52,6 +41,21 @@
 
       Facebook.init(finalize, failure)
       
+   }
+
+   //------------------------------------------------------//
+
+   App.loginAdillions = function(force){
+
+      if(!$.cookie('facebookId') || force){
+         $.removeCookie('facebookId')  
+         UserManager.getPlayer();
+      }
+      else{
+         // le authToken est lié à un compte FB : ne pas logguer le mec, il est deco de FB ! (donc pas de getPlayer)
+         // delete authToken
+         $.removeCookie('authToken');
+      } 
    }
    
    //------------------------------------------------------//

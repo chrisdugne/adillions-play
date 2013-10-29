@@ -479,7 +479,7 @@ GameManager.refreshThemeSelectionDisplay = function(){
       $("#validateButton").attr("src","/assets/images/bylang/"+App.translator.lang+"/ValidateON.png");
       $("#validateButton").addClass("enabled");
       $("#validateButton").click(function(){
-           alert("store ticket")
+         LotteryManager.storeLotteryTicket()
       })
       
    }

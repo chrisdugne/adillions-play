@@ -96,14 +96,17 @@ UserManager.getPlayerByFacebookId = function()
                   animation: 'fade',
                   animationspeed: 100, 
                });
+               
+               $("#fbForm_title").text("Welcome " + Facebook.data.name + " !" )
+               $("#fbForm_firstName").val(Facebook.data.first_name)
+               $("#fbForm_lastName").val(Facebook.data.last_name)
+               $("#fbForm_birthDate").val(Facebook.data.birthday)
+               $("#facebookPicture").attr('src', Facebook.data.picture.data.url)
             }catch(e){}
          }
-         
-         $("#fbForm_title").text("Welcome " + Facebook.data.name + " !" )
-         $("#fbForm_firstName").val(Facebook.data.first_name)
-         $("#fbForm_lastName").val(Facebook.data.last_name)
-         $("#fbForm_birthDate").val(Facebook.data.birthday)
-         $("#facebookPicture").attr('src', Facebook.data.picture.data.url)
+         else{
+            App.loginAdillions(true)
+         }
       }
    });
 }
