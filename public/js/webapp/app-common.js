@@ -58,29 +58,28 @@
 
    App.message = function(message, ok) {
 
-      $.blockUI({ message: '<h1>'+message+'</h1>', 
+      $.blockUI({ message: '<p>'+message+'</p>', 
          fadeIn: 700, 
          fadeOut: 700, 
          timeout: 2000, 
          showOverlay: false, 
          centerY: false, 
          css: { 
-            width: '350px', 
-            top: '70px', 
-            left: '', 
-            right: '10px', 
+            width: '100%', 
+            top: '67px', 
+            left: '0px', 
+            height:'25px',
             border: 'none', 
             padding: '5px', 
             backgroundColor: '#000', 
-            '-webkit-border-radius': '10px', 
-            '-moz-border-radius': '10px', 
-            opacity: .6, 
-            color: '#fff' 
+            opacity: 0.6, 
+            color: '#fff', 
+            fontSize: '25px', 
          } 
       }); 
 
-      $(".blockUI h1").css("background","url(/assets/images/"+(ok ? "ok" : "ko")+".png) no-repeat 10px 10px")
-      $(".blockUI h1").css("background-size","15%")
+//      $(".blockUI h1").css("background","url(/assets/images/"+(ok ? "ok" : "ko")+".png) no-repeat 10px 10px")
+//      $(".blockUI h1").css("background-size","15%")
    }
 
    //------------------------------------------------------//
