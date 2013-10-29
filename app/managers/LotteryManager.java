@@ -88,7 +88,14 @@ public class LotteryManager {
 	
 	//------------------------------------------------------------------------------------//
 
-	public static Player storeLotteryTicket(String numbers){
+	/**
+	 * 
+	 * @param numbers
+	 * @param isExtraTicket utilise uniquement pour check de triche de joueur (multi connection) 
+	 * 	pour le decompte on utilise la donnee server player.getExtraTickets(), au cas ou l'appel serait une triche de developpeur (set isExtraTicket = false) 
+	 * @return
+	 */
+	public static Player storeLotteryTicket(String numbers, Boolean isExtraTicket){
 
 		Player player = Application.player();
 		Lottery lottery = LotteryManager.getNextLottery();
@@ -117,9 +124,14 @@ public class LotteryManager {
 		int twitterFanBonus 	= player.isTwitterFan() ? TWITTER_FAN_TICKETS : 0;
 
 		// -----------------------------------------------------//
-
+		// Triches 
+		
 		if(player.getAvailableTickets() + facebookFanBonus + twitterFanBonus - player.getPlayedBonusTickets() <= 0) 
 			return null;
+
+		if(isExtraTicket && player.getExtraTickets() <= 0){
+			return null;
+		}
 		
 		// -----------------------------------------------------//
 		// New player / First ticket
@@ -145,8 +157,10 @@ public class LotteryManager {
 		// -----------------------------------------------------//
 		// give points
 		
-		player.setCurrentPoints(player.getCurrentPoints() + NB_POINTS_PER_TICKET);
-		player.setTotalPoints(player.getTotalPoints() + NB_POINTS_PER_TICKET);
+		if(player.getExtraTickets() <= 0){
+			player.setCurrentPoints(player.getCurrentPoints() + NB_POINTS_PER_TICKET);
+			player.setTotalPoints(player.getTotalPoints() + NB_POINTS_PER_TICKET);
+		}
 
 		// -----------------------------------------------------//
 		// count down availble/played tickets
@@ -156,6 +170,10 @@ public class LotteryManager {
 		else
 			player.setPlayedBonusTickets (player.getPlayedBonusTickets() + 1);
 
+		if(player.getExtraTickets() > 0){
+			player.setExtraTickets(player.getExtraTickets() - 1);
+		}
+			
 		player.setTotalPlayedTickets	(player.getTotalPlayedTickets() + 1);
 		
 		// -----------------------------------------------------//
@@ -175,6 +193,7 @@ public class LotteryManager {
 		// -----------------------------------------------------//
 		
 		player.getLotteryTickets().add(0, lotteryTicket);
+		
 		return player;
 	}
 

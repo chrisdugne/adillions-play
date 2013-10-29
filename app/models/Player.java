@@ -70,6 +70,9 @@ public class Player extends Model {
 	// -----------------------------------------------------------------------------------------------//
 
 	@Expose
+	private int extraTickets;
+	
+	@Expose
 	private int availableTickets;
 
 	@Expose
@@ -264,6 +267,14 @@ public class Player extends Model {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public int getExtraTickets() {
+		return extraTickets;
+	}
+
+	public void setExtraTickets(int extraTickets) {
+		this.extraTickets = extraTickets;
 	}
 
 	public int getTotalPlayedTickets() {

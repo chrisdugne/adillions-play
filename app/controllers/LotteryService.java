@@ -22,10 +22,11 @@ public class LotteryService extends Application
 	
 	public static Result storeLotteryTicket()
 	{
-		JsonNode params = request().body().asJson();
-		String numbers = params.get("numbers").toString();
+		JsonNode params 			= request().body().asJson();
+		String numbers 			= params.get("numbers").toString();
+		Boolean isExtraTicket 	= params.get("extraTicket").asBoolean();
 
-		Player player = LotteryManager.storeLotteryTicket(numbers);
+		Player player = LotteryManager.storeLotteryTicket(numbers, isExtraTicket);
 
 		if(player != null){
 			return ok(gson.toJson(player));

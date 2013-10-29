@@ -44,6 +44,7 @@ create table player (
   current_points            integer,
   idle_points               integer,
   total_points              integer,
+  extra_tickets             integer,
   available_tickets         integer,
   played_bonus_tickets      integer,
   total_played_tickets      integer,
