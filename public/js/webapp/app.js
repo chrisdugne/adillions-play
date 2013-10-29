@@ -67,9 +67,16 @@
    }
 
    //------------------------------------------------------//
-
-   $(window).on("resize", function(){
+   
+   App.applyResize = function (){
+      // Haven't resized in 100ms!
       App.fillView()
+   }   
+
+   var doit
+   $(window).on("resize", function(){
+      clearTimeout(doit);
+      doit = setTimeout(App.applyResize, 100);   
    });
    
    //------------------------------------------------------//

@@ -13,14 +13,17 @@
          App.GameController.cleanUI();
       }
    });
-   
    App.GameView = GameView;
 
    //------------------------------------------------//
 
 	App.GameHomeController = Ember.ObjectController.extend({});
 	App.GameHomeView = Ember.View.extend({
-		templateName: 'gameHome'
+		templateName: 'gameHome',
+      didInsertElement: function(){
+         App.GameController.gameHomeReady()
+         App.fillView()
+      },
 	});
 	
 	App.MyTicketsController = Ember.ObjectController.extend({});
@@ -45,6 +48,7 @@
 	   templateName: 'fillLotteryTicket',
       didInsertElement: function(){
          GameManager.initFillLotteryTicket()
+         App.fillView()
       },
 	});
 
@@ -53,13 +57,18 @@
 	   templateName: 'selectAdditionalNumber',
       didInsertElement: function(){
          GameManager.initSelectAdditionalNumber()
+         App.fillView()
       },
 	});
-	
+
 	App.ConfirmationController = Ember.ObjectController.extend({});
 	App.ConfirmationView = Ember.View.extend({
-	   templateName: 'confirmation'
+	   templateName: 'confirmation',
+	   didInsertElement: function(){
+	      GameManager.initConfirmation()
+	      App.fillView()
+	   },
 	});
-	
+
 
 })( App);

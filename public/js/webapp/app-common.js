@@ -31,10 +31,16 @@
    App.changeLang = function(lang) {
       App.wait()
       App.translator.setLang(lang);
+      
+      var currentView = App.Globals.currentView
       var currentPage = App.Globals.currentPage
       App.get('router').transitionTo('home');
-      App.get('router').transitionTo(currentPage);
-      App.free()
+      
+      setTimeout(function(){
+         App.get('router').transitionTo(currentPage + "." + currentView);
+         App.free()
+      },20)
+      
    }
    
    //------------------------------------------------------//

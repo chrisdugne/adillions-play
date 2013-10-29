@@ -479,6 +479,7 @@ GameManager.refreshThemeSelectionDisplay = function(){
       $("#validateButton").attr("src","/assets/images/bylang/"+App.translator.lang+"/ValidateON.png");
       $("#validateButton").addClass("enabled");
       $("#validateButton").click(function(){
+         GameManager.currentSelection[GameManager.currentSelection.length] = GameManager.luckyBall
          LotteryManager.storeLotteryTicket()
       })
       
@@ -493,6 +494,15 @@ GameManager.refreshThemeSelectionDisplay = function(){
       $("#validateButton").off("click")
    }
    
+//==================================================================//
+//SelectLuckyNumber
+//==================================================================//
+
+ GameManager.initConfirmation = function(){
+    App.message("+1 point " + App.Globals.wasExtraTicket)
+ }
+   
 }
+
 
 

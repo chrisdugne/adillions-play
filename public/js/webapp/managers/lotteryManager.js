@@ -6,6 +6,13 @@ this.LotteryManager = {};
 
 //-------------------------------------------//
 
+LotteryManager.isGameAvailable = function(){
+   var nbTickets = (App.user.availableTickets + App.user.totalBonusTickets - App.user.playedBonusTickets)
+   return nbTickets > 0;
+}
+
+//-------------------------------------------//
+
 LotteryManager.refreshNextLottery = function()
 {
 
@@ -59,22 +66,17 @@ LotteryManager.storeLotteryTicket = function(){
       dataType: "json",
       headers: {"X-Auth-Token": App.authToken},
       contentType: "application/json; charset=utf-8",
-      success: function (result)
+      success: function (player)
       {
          App.free()
          console.log("-----> storeLotteryTicket response")
-         console.log(result.response)
-
-         var player = $.parseJSON(result.response)
-
-         console.log("-----> player")
          console.log(player)
 
-         if(player) 
+         if(player) {
             App.Globals.wasExtraTicket = extraTicket
-//          userManager:receivedPlayer(player, router.openConfirmation)
-//          else 
-//          userManager:logout()
+            App.get('router').transitionTo('game.confirmation');
+         }
+         
       }
    });
 }

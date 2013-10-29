@@ -18,21 +18,52 @@
 	   $("#myTicketsButton").css("left", ($(window).width()/2 - 1.8*menuButtonSize) + "px")
 	   $("#resultsButton").css("left", ($(window).width()/2 ) - 0.2*menuButtonSize + "px")
 	   $("#profileButton").css("left", ($(window).width()/2 + 1.4*menuButtonSize) + "px")
+	   
+	   
+	   $("#pointsImage").click(function(){
+         $("#pointsWindow").reveal({
+            animation: 'fade',
+            animationspeed: 100, 
+         });	      
+	   })
 	}
 
 	GameController.cleanUI = function()	{
 
 	}
-      
+	
+	//==================================================================//
+
+	GameController.gameHomeReady = function()	{
+	   var nbTickets = (App.user.availableTickets + App.user.totalBonusTickets - App.user.playedBonusTickets)
+	   $("#fillOutContainer").append("<p id='ticketsRemainingHome' class='small'>("+ nbTickets + ")</p>")
+	   $("#ticketsRemainingHome").css("top", "43px")
+	   $("#ticketsRemainingHome").css("left", ($(window).width()/2 - 98) + "px")
+	}
+
+	//==================================================================//
+
+	GameController.startTicket = function()	{
+
+	   if(App.user.extraTickets > 0){
+	      App.message(App.translations.messages.ExtraTicket + "!")
+	   }
+
+	   GameController.requireVideo( function(){
+	      App.get('router').transitionTo('game.fillLotteryTicket')
+	   }) 
+
+	}
+
 	//==================================================================//
 
 	GameController.requireVideo = function(afterVideoSeen)	{
-	   
+
 	   if(App.Globals.isDev){
 	      afterVideoSeen()
 	      return
 	   }
-	   
+
 	   GameController.sponsorpay = new SPONSORPAY.Video.Iframe({
 	      
 	      appid:           '16913', 
@@ -83,6 +114,7 @@
 	   //---------------------------------
 	   
 	   gameHome: Ember.Route.extend({
+	      route: '/lottery',
          connectOutlets: function(router) {
             App.Router.openComponent(router, "game");
             GameManager.setSelectedButton()
@@ -90,6 +122,7 @@
       }),
       
       myTickets: Ember.Route.extend({
+         route: '/tickets',
          connectOutlets: function(router) {
             App.Router.openComponent(router, "game");
             GameManager.setSelectedButton()
@@ -97,6 +130,7 @@
       }),
       
       results: Ember.Route.extend({
+         route: '/results',
          connectOutlets: function(router) {
             App.Router.openComponent(router, "game");
             GameManager.setSelectedButton()
@@ -104,6 +138,7 @@
       }),
       
       profile: Ember.Route.extend({
+         route: '/profile',
          connectOutlets: function(router) {
             App.Router.openComponent(router, "game");
             GameManager.setSelectedButton()
@@ -113,6 +148,7 @@
       //---------------------------------
       
       fillLotteryTicket: Ember.Route.extend({
+         route: '/numbers',
          connectOutlets: function(router) {
             App.Router.openComponent(router, "game");
             GameManager.setSelectedButton()
@@ -120,6 +156,7 @@
       }),
       
       selectAdditionalNumber: Ember.Route.extend({
+         route: '/luckyball',
          connectOutlets: function(router) {
             App.Router.openComponent(router, "game");
             GameManager.setSelectedButton()
@@ -127,6 +164,7 @@
       }),
       
       confirmation: Ember.Route.extend({
+         route: '/confirmation',
          connectOutlets: function(router) {
             App.Router.openComponent(router, "game");
             GameManager.setSelectedButton()
@@ -142,10 +180,18 @@
       //-----------------------------------//
       // actions
 		
-		requireNewTicket        : function() { 
-		   GameController.requireVideo( function(){
-		      App.get('router').transitionTo('game.fillLotteryTicket')
-		   }) 
+		requireNewTicket        : function() {
+		   
+	      if(LotteryManager.isGameAvailable()){
+	         GameController.startTicket()
+	      }
+	      else{
+            $("#noMoreTicketsWindow").reveal({
+               animation: 'fade',
+               animationspeed: 100, 
+            });         
+	      }
+		   
 		},		
       
       openGameHome            : Ember.Route.transitionTo('game.gameHome'),		

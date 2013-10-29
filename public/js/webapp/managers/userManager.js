@@ -22,8 +22,12 @@ UserManager.receivedPlayer = function(player)
 
    App.user.set("facebookId",       player.facebookId);
 
-   App.user.set("drawTickets",      player.drawTickets);
    App.user.set("lotteryTickets",   player.lotteryTickets);
+
+   App.user.set("availableTickets", player.availableTickets);
+   App.user.set("playedBonusTickets", player.playedBonusTickets);
+   App.user.set("totalBonusTickets", 0);
+   App.user.set("extraTickets",     player.extraTickets);
    
    App.user.set("loggedIn",         true)   
 

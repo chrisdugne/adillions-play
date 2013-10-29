@@ -15,13 +15,13 @@ Ember.Handlebars.registerBoundHelper('themeImage', function(lottery) {
 Ember.Handlebars.registerHelper('langImage', function(options) {
    var customclass = options.hash.customclass
    var path = "/assets/images/bylang/" + App.translator.lang + "/" + options.hash.png
-   var img = "<div class='"+customclass+"'><img id='"+options.hash.id+"' src='"+path+"'></img></div>"
+   var img = "<div><img id='"+options.hash.id+"' class='"+customclass+"' src='"+path+"'></img></div>"
    return new Handlebars.SafeString(img)
 });
 
 Ember.Handlebars.registerBoundHelper('pointsImage', function(user) {
    var path = "/assets/images/points/points." + user.currentPoints + ".png"
-   var img = "<img class=\"mobileIcon\" id='pointsImage' src='"+path+"'></img>"
+   var img = "<img class=\"mobileIcon touchable\" id='pointsImage' src='"+path+"'></img>"
    return new Handlebars.SafeString(img)
 });
 
