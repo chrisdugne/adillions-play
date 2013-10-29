@@ -11,6 +11,9 @@ GameManager.init = function()   {
 
 //==================================================================//
 
+/**
+ *    Menu selection
+ */
 GameManager.setSelectedButton = function()   {
    
    $("#gameHomeButton").removeClass("selected")
@@ -36,13 +39,17 @@ GameManager.clickOn = function(num) {
       GameManager.removeFromSelection(num)
       
       $("#"+ballId).attr('src', "/assets/images/balls/ball.small.white.png")
-      $("#"+textId).attr('color', "#000")
+      $("#"+ballId).removeClass("selected")
+      $("#"+textId).addClass("numblack")
+      $("#"+textId).removeClass("numwhite")
    }
    else{
       var added = GameManager.addToSelection(num)
       if(added){
          $("#"+ballId).attr('src', "/assets/images/balls/ball.small.green.png")
-         $("#"+textId).attr('color', "#fff!important")
+         $("#"+ballId).addClass("selected")
+         $("#"+textId).addClass("numwhite")
+         $("#"+textId).removeClass("numblack")
       }
    }
    
@@ -59,7 +66,7 @@ GameManager.drawBallToPick = function(ballNum, left, top)   {
    var textId = "text_"+ballNum
    
    var ball   = "<img id='"+ballId+"' src='/assets/images/balls/ball.small.white.png' class='ball'></img>"
-   var num    = "<p id='"+textId+"' class='num'>"+ballNum+"</p>"
+   var num    = "<p id='"+textId+"' class='numblack'>"+ballNum+"</p>"
    
    //----------------------------------------------------//
    
@@ -94,8 +101,8 @@ GameManager.drawBallSelected = function(ballNum, left, top) {
    var ballId = "ballSelected_"+ballNum
    var textId = "textSelected_"+ballNum
    
-   var ball   = "<img id='"+ballId+"' src='/assets/images/game/ball.png' class='ball'></img>"
-   var num    = "<p id='"+textId+"' class='num'>"+ballNum+"</p>"
+   var ball   = "<img id='"+ballId+"' src='/assets/images/balls/ball.small.green.png' class='ball'></img>"
+   var num    = "<p id='"+textId+"' class='numwhite'>"+ballNum+"</p>"
    
    //----------------------------------------------------//
    
@@ -125,16 +132,22 @@ GameManager.drawBallSelected = function(ballNum, left, top) {
 
 GameManager.drawMyTickets = function() {
    
+   //-----------------------------------//
+   
    var xGap            =  45;
    var yGap            =  45;
+   
+   //-----------------------------------//
 
    var totalNums       = App.nextLottery.maxNumbers;  
    var nbNumPerLine    = GameManager.nbNumPerLine;
    
-   var marginLeft      = $("#numbersToSelect").width()/2 - (nbNumPerLine+1)/2 * xGap
+   var marginLeft      = $("#numbersToSelect").width()/2 - (nbNumPerLine+1)/2 * xGap - 17
 
    var nbLines         =  Math.floor(totalNums/nbNumPerLine);
    var nbOnlastLine    =  totalNums - Math.floor(nbLines)*nbNumPerLine;
+
+   //-----------------------------------//
    
    for(var i = 0; i < nbNumPerLine; i++){
       for(var j = 0; j < nbLines; j++){
@@ -148,7 +161,20 @@ GameManager.drawMyTickets = function() {
       GameManager.drawBallToPick(ballNum, marginLeft + (i+1)*xGap, (nbLines+1)*yGap)
    }
 
+   //-----------------------------------//
+   
    GameManager.startSelection()
+   
+   //-----------------------------------//
+   
+   var selector  = "<img id='selectorNumbers' src='/assets/images/hud/selector.green.png'></img>"
+   $("#selectionTools").append(selector)
+
+   //-----------------------------------//
+   
+   var validateButton  = "<img id='validateButton' src='/assets/images/bylang/"+App.translator.lang+"/ValidateOFF.png'></img>"
+   $("#selectionTools").append(validateButton)
+   
 }
 
 //==================================================================//
@@ -166,21 +192,20 @@ GameManager.refreshNumberSelectionDisplay = function()   {
       GameManager.drawBallSelected(GameManager.currentSelection[i], marginLeft + xGap*i, 0);
    }
    
-   // OK Button
 
    if(GameManager.currentSelection.length == App.nextLottery.maxPicks){
-      
-      var okButton = "<div id='okButton' class='btn-large button'>Ok<div>"
-      
-      $("#numbersSelected").append(okButton)
-      $("#okButton").css("left", (marginLeft + (App.nextLottery.maxPicks+2) * xGap) + "px")
-      $("#okButton").css("position", "absolute")
-
-      $("#okButton").click(function(){
+      $("#validateButton").attr("src","/assets/images/bylang/"+App.translator.lang+"/ValidateON.png");
+      $("#validateButton").addClass("enabled");
+      $("#validateButton").click(function(){
          App.GameController.requireVideo( function(){
             App.get('router').transitionTo('game.selectAdditionalNumber')
          }) 
       })
+   }
+   else{
+      $("#validateButton").removeClass("enabled");
+      $("#validateButton").attr("src","/assets/images/bylang/"+App.translator.lang+"/ValidateOFF.png");
+      $("#validateButton").off("click")
    }
 
 }

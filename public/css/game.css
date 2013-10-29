@@ -42,11 +42,24 @@
 #numbersToSelect{
 	height:400px;
 	position: relative;
+	margin-top: -50px;
 }
 
-#numbersSelected{
-	height:80px;
+#selection {
+	height:115px;
 	position: relative;
+}
+
+#selectionTools {
+}
+
+#selectorNumbers {
+	width:250px;
+	margin-bottom: 10px;
+	margin-top: -15px;
+}
+
+#numbersSelected {
 }
 
 /*---------------------------------------------*/
@@ -60,19 +73,28 @@
 	opacity:0.34;
 }
 
-.num {
+.numwhite {
+	width: 40px;
+	position: absolute;
+	color: #eee;
+	font-size: 17px !important;
+	font-weight: bold;
+	font-family: "gillsans", "arial";
+	padding-top: 7px;
+}
+
+.numblack {
 	width: 40px;
 	position: absolute;
 	color: #333;
-	font-size: 23px !important;
-}
-
-.num.selected {
-	color: #eee;
+	font-size: 17px !important;
+	font-weight: bold;
+	font-family: "gillsans", "arial";
+	padding-top: 7px;
 }
 
 .unselectable {
-  -moz-user-select: none;
+	-moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
 }
@@ -104,6 +126,18 @@
 
 #fillOutTicket:hover {
 	opacity: 1;
+}
+
+/*---------------------------------------------*/
+#validateButton {
+	width: 170px;
+}
+
+#validateButton.enabled:hover {
+	opacity: 1;
+	cursor: hand;
+	cursor: pointer;
+	opacity: 0.8;
 }
 
 /*---------------------------------------------*/

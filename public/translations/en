@@ -1,40 +1,74 @@
 {
-    "en"				: "En",
+ 	"##########################################" : "Website",
+
+	"en"				: "En",
     "fr"				: "Fr",
     
+	"LogIn"				: "Log In",
+  	"Logout"			: "Log Out",
+  	"SignIn"			: "Sign Up",
+	
+	"NextDrawing"		: "Next Drawing",
+	
+	"Title"				: "Adillions is a free lottery with real cash prizes",
+	
+	"Work"				: "How it works?",
+	"WorkAd"			: "Watch an ad",
+	"WorkTicket"		: "Get your lottery ticket",
+	"WorkResult"		: "Win the prize Draw every Saturday live on ",		
+
+	"Fun"				: "Fun",
+	"FunText"			: "Discover a new theme each week",
+	"Easy"				: "Simple",
+	"EasyText"			: "Pick 5 numbers and your lucky ball",
+	"Viral"				: "Viral",
+	"ViralText"			: "Invite your friends to increase the jackpot",
+	
+	"Multi"				: "Multi-plateform",
+	"MultiText"			: "Play on a whole range of platforms",
+	"MultiNow"			: "Now on Adillions: www.adillions.com or on Facebook: www.facebook.com/adillions",
+	
+	"Responsible"		: "Responsible",
+	"ResponsibleText"	: "Dedicate few seconds of your time to charitable organizations each time you participate",
+	
+	"Global"			: "Global",
+	"GlobalText"		: "Join an international community of players",
+	
+	"Media"				: "Adillions in the media",
+	
+	"Advertisers"		: "Advertisers",
+	"AdvertisersBoost"	: "Boost brand awareness",
+	"AdvertisersImplement"	: "Implement a multi-screen strategy",
+	"AdvertisersReach"	: "Reach a global engaged audience",
+	
+	"About"				: "About",
+	"Reward"			: "Reward",
+	"Press"				: "Press",
+	"FAQ"				: "FAQ",
+	"Jobs"				: "Jobs",
+	"Privacy"			: "Privacy",
+	"Terms"				: "Terms",
+	
+	
+ 	"##########################################" : "APP",
+ 		
     "Welcome"			: "Welcome",
     "Play"				: "Play !",
 
     "FirstName"			: "First name",
     "LastName"			: "Last name",
+	"Email"				: "Email",
     "BirthDate"			: "Birth date",
-    "ReferrerCode"		: "Referrer code",
+    "ReferrerCode"		: "Sponsor code",
     "ChangeAccount"		: "Change account",
 
-    "FBText1"			: "Obviously we will always use your Facebook nickname everywhere.",
-    "FBText2"			: "That being said, you must provide us with real names and birthdates in order to get paid.",
+    "FBText1"			: "Adillions uses your Facebook username on the platform.",
+    "FBText2"			: "Important, you must give us your real full name for prize payments (cf. the Terms).",
     
-  	"Contact"			: "Contact",
-    "Demos"				: "Demos",
-    "Try"				: "Try",
-  	"LogIn"				: "Log In",
-  	"Logout"			: "Logout",
-  	"SignIn"			: "Sign In",
-
-    "AboutUs"			: "About us",
-    "RecentPosts"		: "Recent blog posts",
-    "Team"				: "Team",
-    "Credits"			: "Credits",
-    "Jobs"				: "Jobs",
-    "Features"			: "Features",
-    "Blog"				: "Blog",
-
-    "Founders"			: "The founders",
-
-    "NextDrawing"		: "Next drawing",
     "Players"			: "Players",
     "Days"				: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     "Months"			: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November"],
-
+    
+    
     "":""
 }

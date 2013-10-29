@@ -1,41 +1,79 @@
 {
-    "en"				: "En",
+   
+ 	"##########################################" : "Website",
+   
+	"en"				: "En",
     "fr"				: "Fr",
 
-    "Welcome"			: "Bienvenue",
-    "Play"				: "Jouer !",
+    "LogIn"				: "S'identifier",
+  	"Logout"			: "Déconnexion",
+  	"SignIn"			: "S'inscrire",
+	
+	"NextDrawing"		: "Prochain tirage",
+	
+	"Title"				: "Adillions est une loterie gratuite avec des gains d'argent réel",
+	
+	"Work"				: "Comment ça marche?",
+	"WorkAd"			: "Visionnez une pub",
+	"WorkTicket"		: "Remplissez votre ticket de loterie",
+	"WorkResult"		: "Gagnez le jackpot Tirage tous les Samedi sur",
+	
+	"Fun"				: "Fun",
+	"FunText"			: "Découvrez un nouveau thème par semaine",
+	"Easy"				: "Simple",
+	"EasyText"			: "Sélectionnez 5 numéros et une boule chance",
+	"Viral"				: "Social",
+	"ViralText"			: "Invitez vos amis pour faire grossir la cagnotte",
+	
+	"Multi"				: "Multi-plateforme",
+	"MultiText"			: "Vous pouvez jouer sur plusieurs plateformes",
+	"MultiNow"			: "Maintenant sur : www.adillions.com ou sur Facebook : www.facebook.com/adillions",
+	
+	"Responsible"		: "Responsable",
+	"ResponsibleText"	: "A chaque fois que vous jouez, vous donnez un peu de votre temps à des oeuvres caritatives",
+	
+	"Global"			: "International",
+	"GlobalText"		: "Vous faîtes partie d'une communauté internationale de joueurs",
+	
+	"Media"				: "Adillions dans les médias",
+	
+	"Advertisers"		: "Annonceurs",
+	"AdvertisersBoost"	: "Boostez votre notoriété",
+	"AdvertisersImplement"	: "Mettez en place une stratégie digitale multi-supports",
+	"AdvertisersReach"	: "Accédez à une large audience",
+	
+	"About"				: "A propos",
+	"Reward"			: "Récompenses",
+	"Press"				: "Presse",
+	"FAQ"				: "FAQ",
+	"Jobs"				: "Recrutement",
+	"Privacy"			: "Confidentialité",
+	"Terms"				: "Règlement",
+
+ 	"##########################################" : "APP",
+	
+	"Welcome"			: "Bienvenue",
+    "Play"				: "Jouez !",
     
     "FirstName"			: "Prénom",
     "LastName"			: "Nom",
+	"Email"				: "Email",
     "BirthDate"			: "Date de naissance",
-    "ReferrerCode"		: "Code de votre parrain",
+    "ReferrerCode"		: "Code parrain",
     "ChangeAccount"		: "Changer de compte",
 
-    "FBText1"			: "Bien entendu c'est votre identifiant Facebook que nous utiliseront dans Adillions.",
-    "FBText2"			: "Cela dit, nous devons connaître vos vrais noms et prénoms pour pouvoir vous payer !",
+    "FBText1"			: "Adillions utilise vos identifiants Facebook sur la plateforme",
+    "FBText2"			: "Attention, il est important de fournir vos vrais noms et prénoms pour recevoir vos gains (cf. le Règlement) !",
     
-    "Contact"			: "Contact",
-    "Demos"				: "Démos",
-    "Try"				: "Essayer",
-  	"LogIn"				: "Connection",
-  	"Logout"			: "Déconnection",
-  	"SignIn"			: "Créer un compte",
+    "Players"			: "Players",
+    "Days"				: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "Months"			: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November"],
 
-    "AboutUs"			: "A propos",
-    "RecentPosts"		: "Posts récents",
-    "Team"				: "L'équipe",
-    "Credits"			: "Crédits",
-    "Jobs"				: "Recrutement",
-    "Features"			: "Fonctionnalités",
-    "Blog"				: "Le Blog",
-
-    "Founders"			: "Les fondateurs",
-    
-    "NextDrawing"		: "Prochain tirage",
     "Players"			: "Joueurs",
     "Days"				: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
     "Months"			: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
     
        
     "":""
+	
 }

@@ -13,10 +13,11 @@
       App.get('router').transitionTo('game.gameHome');
 	   GameManager.init()
 	   
-	   $("#gameHomeButton").css("left", ($(window).width()/2 - 195 - 70) + "px")
-	   $("#myTicketsButton").css("left", ($(window).width()/2 - 70 - 70) + "px")
-	   $("#resultsButton").css("left", ($(window).width()/2 + 70 - 70) + "px")
-	   $("#profileButton").css("left", ($(window).width()/2 + 195 - 70) + "px")
+	   var menuButtonSize = 67;
+	   $("#gameHomeButton").css("left", ($(window).width()/2 - 3.4*menuButtonSize) + "px")
+	   $("#myTicketsButton").css("left", ($(window).width()/2 - 1.8*menuButtonSize) + "px")
+	   $("#resultsButton").css("left", ($(window).width()/2 ) - 0.2*menuButtonSize + "px")
+	   $("#profileButton").css("left", ($(window).width()/2 + 1.4*menuButtonSize) + "px")
 	}
 
 	GameController.cleanUI = function()	{
