@@ -78,7 +78,7 @@
          } 
       }); 
 
-//      $(".blockUI h1").css("background","url(/assets/images/"+(ok ? "ok" : "ko")+".png) no-repeat 10px 10px")
+//      $(".blockUI h1").css("background","url(/assets/images/"+(ok ? "ok" : "ko")+".png) no-repeat 100px 0px")
 //      $(".blockUI h1").css("background-size","15%")
    }
 

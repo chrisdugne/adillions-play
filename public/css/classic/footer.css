@@ -3,7 +3,8 @@
 #footerClassic{
 	bottom:0px;
 	position:absolute;
-	min-height:67px;
+	height:30px;
+	padding-top: 5px;
 	width: 100%;
 	border-top: 1px solid #fff;
 	opacity:0.9;
@@ -13,6 +14,10 @@
 	background-image:  -ms-linear-gradient(top, #fff, #eee); /* IE10 */
 	background-image:  -o-linear-gradient(top, #fff, #eee); /* Opera 11.10+ */
 	background-image:  linear-gradient(top, #fff, #eee);
+}
+
+#footerClassic p {
+  color: #777;
 }
 
 #footerHome{
@@ -27,14 +32,6 @@
 	background-image:  -ms-linear-gradient(top, #fff, #eee); /* IE10 */
 	background-image:  -o-linear-gradient(top, #fff, #eee); /* Opera 11.10+ */
 	background-image:  linear-gradient(top, #fff, #eee);
-}
-
-#footerClassic p {
-  color: #fff;
-  margin-left: 43%;
-  margin-top: 20px;
-  margin-bottom: 0;
-  color: #777;
 }
 
 .footer-links {

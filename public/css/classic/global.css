@@ -563,13 +563,9 @@ body{
 /*------------------------------------------------*/
 /* blockUI css */ 
 
-.blockUI {
-	height:50px;
-}
-
-.blockUI h1, .blockUI h2 {
+/* .blockUI h1, .blockUI h2 {
     color: #222; padding: 5px 5px 5px 5px; text-align: right;
     font-weight: normal!important;
     font-size: 16px!important;
-}
+} */
 
