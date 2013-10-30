@@ -6,45 +6,133 @@ this.UserManager = {};
 
 //-------------------------------------------//
 
-UserManager.receivedPlayer = function(player)
+UserManager.receivedPlayer = function(player, next)
 {
-   App.user.set("uid",              player.uid);
-   App.user.set("email",            player.email);
-   App.user.set("userName",         player.userName);
-   App.user.set("firstName",        player.firstName);
-   App.user.set("lastName",         player.lastName);
-   App.user.set("birthDate",        player.birthDate);
-   App.user.set("referrerId",       player.referrerId);
-
-   App.user.set("currentPoints",    player.currentPoints);
-   App.user.set("idlePoints",       player.idlePoints);
-   App.user.set("totalPoints",      player.totalPoints);
-
-   App.user.set("facebookId",       player.facebookId);
-
-   App.user.set("lotteryTickets",   player.lotteryTickets);
-
-   App.user.set("availableTickets", player.availableTickets);
-   App.user.set("playedBonusTickets", player.playedBonusTickets);
-   App.user.set("totalBonusTickets", 0);
-   App.user.set("extraTickets",     player.extraTickets);
-   
-   App.user.set("loggedIn",         true)   
-
+   console.log("receivedPlayer")
+   App.user.set("loggedIn", true)   
    App.message("Welcome back " + player.userName + " !", true)
    
-   console.log(App.user)
-   
-   App.get('router').transitionTo('game');
-
-   //----------------------------------
+   UserManager.updatedPlayer(player, next)
 
    if(Facebook && Facebook.finalizeInit)
       Facebook.finalizeInit();
+   
 
-   //----------------------------------
+   UserManager.checkUserCurrentLottery()
 }
 
+//-------------------------------------------//
+
+UserManager.checkUserCurrentLottery = function(){
+   console.log("checkUserCurrentLottery")
+   if(App.user.currentLotteryUID != App.nextLottery.uid){
+      console.log("new Lottery settings")
+      
+      App.user.currentLotteryUID         = App.nextLottery.uid
+      App.user.availableTickets          = App.Globals.START_AVAILABLE_TICKETS 
+      App.user.playedBonusTickets        = 0
+      
+      App.user.hasTweet                  = false
+      App.user.hasPostOnFacebook         = false
+      App.user.hasTweetAnInvite          = false
+      App.user.hasInvitedOnFacebook      = false
+      
+      UserManager.updatePlayer()
+   }
+   
+}
+
+//-------------------------------------------//
+
+UserManager.updatedPlayer = function(player, next){
+   
+   App.user.set("uid",                 player.uid);
+   App.user.set("email",               player.email);
+   App.user.set("userName",            player.userName);
+   App.user.set("firstName",           player.firstName);
+   App.user.set("lastName",            player.lastName);
+   App.user.set("birthDate",           player.birthDate);
+   App.user.set("referrerId",          player.referrerId);
+   App.user.set("sponsorCode",         player.sponsorCode);
+   App.user.set("giftToReferrer",      player.giftToReferrer);
+
+   App.user.set("isFacebookFan",        player.isFacebookFan);
+   App.user.set("isTwitterFan",        player.isTwitterFan);
+   
+   App.user.set("currentLotteryUID",   player.currentLotteryUID);
+   App.user.set("hasPostOnFacebook",   player.hasPostOnFacebook);
+   App.user.set("hasTweet",            player.hasTweet);
+   App.user.set("hasTweetAnInvite",    player.hasTweetAnInvite);
+   App.user.set("hasInvitedOnFacebook", player.hasInvitedOnFacebook);
+   
+   App.user.set("currentPoints",       player.currentPoints);
+   App.user.set("idlePoints",          player.idlePoints);
+   App.user.set("totalPoints",         player.totalPoints);
+
+   App.user.set("facebookId",          player.facebookId);
+   App.user.set("twitterId",           player.twitterId);
+   App.user.set("twitterName",         player.twitterName);
+
+   App.user.set("lotteryTickets",      player.lotteryTickets);
+
+   App.user.set("extraTickets",        player.extraTickets);
+   App.user.set("availableTickets",    player.availableTickets);
+   App.user.set("playedBonusTickets",  player.playedBonusTickets);
+   App.user.set("totalPaidTickets",    player.totalPaidTickets);
+   App.user.set("totalBonusTickets",   0);
+
+   App.user.set("acceptEmails",        player.acceptEmails);
+   
+   console.log("updatedPlayer")
+   odump(App.user)
+   
+   //----------------------------------------------//
+
+   UserManager.checkIdlePoints()
+//   
+//   viewManager.refreshHeaderPoints(player.currentPoints)
+//   lotteryManager:sumPrices()
+//
+//   UserManager.checkFanStatus(next)   
+   
+   //----------------------------------------------//
+   
+   if(next)
+      next()
+}
+
+
+//-------------------------------------------//
+
+UserManager.updatePlayer = function(next)
+{
+   console.log("updatePlayer")
+   var params = new Object();
+   params["user"] = App.user
+   
+   App.wait()
+
+   $.ajax({
+      type: "POST",  
+      url: "/updatePlayer",
+      data: JSON.stringify(params),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      headers: {"X-Auth-Token": App.authToken},
+      success: function (player)
+      {
+         if(player){
+            UserManager.updatedPlayer(player, next)
+         }
+         else{
+            if(next)
+               next()
+         }
+
+         App.free()
+      }
+   });
+}
 
 //-------------------------------------------//
 
@@ -57,7 +145,9 @@ UserManager.getPlayer = function()
       dataType: "json",
       success: function (player, textStatus, jqXHR)
       {
-         UserManager.receivedPlayer(player)
+         UserManager.receivedPlayer(player, function(){
+            App.get('router').transitionTo('game');
+         })
       }
    });
 }
@@ -83,36 +173,43 @@ UserManager.getPlayerByFacebookId = function()
          console.log("---> getPlayerByFacebookId ok")
          console.log(result)
          App.authToken = result.authToken
-         UserManager.receivedPlayer(result.player)
+         UserManager.receivedPlayer(result.player, function(){
+            App.get('router').transitionTo('game');
+         })
       },
       error:function(){
-
          console.log("--> unauthorized")
          UserManager.setupForms()
+   
+         $("#signinWindow").trigger("reveal:close");
+         $("#loginWindow").trigger("reveal:close");
          
-         if(App.Globals && App.Globals.signinRequested){
-            try{
+         $("#signinFBWindow").reveal({
+            animation: 'fade',
+            animationspeed: 100, 
+         });
+         
+         $("#fbForm_title").text("Welcome " + Facebook.data.name + " !" )
+         $("#fbForm_firstName").val(Facebook.data.first_name)
+         $("#fbForm_lastName").val(Facebook.data.last_name)
+         $("#fbForm_birthDate").val(Facebook.data.birthday)
+         $("#facebookPicture").attr('src', Facebook.data.picture.data.url)
 
-               $("#signinWindow").trigger("reveal:close");
-               $("#loginWindow").trigger("reveal:close");
-               
-               $("#signinFBWindow").reveal({
-                  animation: 'fade',
-                  animationspeed: 100, 
-               });
-               
-               $("#fbForm_title").text("Welcome " + Facebook.data.name + " !" )
-               $("#fbForm_firstName").val(Facebook.data.first_name)
-               $("#fbForm_lastName").val(Facebook.data.last_name)
-               $("#fbForm_birthDate").val(Facebook.data.birthday)
-               $("#facebookPicture").attr('src', Facebook.data.picture.data.url)
-            }catch(e){}
-         }
-         else{
-            App.loginAdillions(true)
-         }
       }
    });
+}
+
+//-------------------------------------------//
+
+UserManager.logout = function(){
+   if(Facebook.accessToken){
+      Facebook.logout()
+      $.removeCookie('facebookId');
+   }
+      
+   $.removeCookie('authToken');
+   App.user.set("loggedIn", false)
+   App.get('router').transitionTo('home');
 }
 
 //-------------------------------------------//
@@ -498,4 +595,77 @@ UserManager.setupForms = function()
          },
       }
    });
+}
+
+//-------------------------------------------------------------------//
+
+UserManager.checkIdlePoints = function() {
+
+   console.log("checkIdlePoints")
+   if(App.user.idlePoints > 0){
+      var points = App.user.idlePoints + App.user.currentPoints
+      var nbTickets = Math.floor(points/App.Globals.POINTS_TO_EARN_A_TICKET)
+      
+      var message = App.translations.messages.YouHaveEarned + " : ";
+      message += points + " pts";
+      
+      if(nbTickets > 0){
+         
+         var plural = ""
+         if(nbTickets > 1) { plural = "s" }
+         
+         message += " = " + nbTickets + " " + App.translations.messages.Ticket + plural
+      }
+      
+      App.message(message);
+      UserManager.convertIdlePoints()
+   }
+
+   else if(App.user.currentPoints >= App.Globals.POINTS_TO_EARN_A_TICKET){
+
+      var message = App.translations.messages.YouHaveEarnedExtra;
+      message += " (" + App.Globals.POINTS_TO_EARN_A_TICKET + " pts = 1 " + App.translations.messages.Ticket + ")";
+
+      App.Globals.confirmationMessage = message;
+
+      console.log("convertCurrentPoints", message)
+      odump(App.Globals)
+      
+      UserManager.convertCurrentPoints()
+   }
+}
+
+
+//-------------------------------------------------------------------//
+
+UserManager.convertIdlePoints = function() {
+
+   App.user.set("currentPoints", App.user.currentPoints + App.user.idlePoints)
+   App.user.set("totalPoints", App.user.totalPoints + App.user.idlePoints)
+   App.user.set("idlePoints", 0)
+
+   UserManager.convertCurrentPoints()
+}
+
+//-------------------------------------------------------------------//
+
+UserManager.convertCurrentPoints = function() {
+   UserManager.convertPointsToTickets()
+   UserManager.updatePlayer()
+}
+
+//-----------------------------------------------------------------------------------------
+
+UserManager.convertPointsToTickets = function() {
+
+   var conversion = 0
+
+   while (App.user.currentPoints >= App.Globals.POINTS_TO_EARN_A_TICKET) {
+      App.user.set("currentPoints", App.user.currentPoints - App.Globals.POINTS_TO_EARN_A_TICKET)
+      App.user.set("extraTickets", App.user.extraTickets + 1)
+      
+      conversion++
+   }
+
+   return conversion
 }

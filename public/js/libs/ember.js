@@ -18666,7 +18666,8 @@ Ember.Routable = Ember.Mixin.create({
     @param path {String}
   */
   unroutePath: function(router, path) {
-    var parentState = get(this, 'parentState');
+
+     var parentState = get(this, 'parentState');
 
     // If we're at the root state, we're done
     if (parentState === router) {
@@ -18677,6 +18678,16 @@ Ember.Routable = Ember.Mixin.create({
     var absolutePath = this.absoluteRoute(router);
 
     var route = get(this, 'route');
+
+    /**
+     * ADILLIONS : force back to lottery
+     */
+    
+    route = "/"
+
+    /**
+     * /ADILLIONS : force back to lottery
+     */
 
     // If the current path is empty, move up one state,
     // because the index ('/') state must be a leaf node.

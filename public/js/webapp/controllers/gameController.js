@@ -35,10 +35,6 @@
 	//==================================================================//
 
 	GameController.gameHomeReady = function()	{
-	   var nbTickets = (App.user.availableTickets + App.user.totalBonusTickets - App.user.playedBonusTickets)
-	   $("#fillOutContainer").append("<p id='ticketsRemainingHome' class='small'>("+ nbTickets + ")</p>")
-	   $("#ticketsRemainingHome").css("top", "43px")
-	   $("#ticketsRemainingHome").css("left", ($(window).width()/2 - 98) + "px")
 	}
 
 	//==================================================================//

@@ -14,6 +14,23 @@
 
       //-------------------------------------------//
 
+      FACEBOOK_PAGE_ID              : "379432705492888",
+      TWITTER_ID                    : "1922939570",
+
+      POINTS_TO_EARN_A_TICKET       : 8,
+      NB_POINTS_PER_TICKET          : 1,
+      NB_POINTS_PER_TWEET           : 2,
+      NB_POINTS_PER_POST            : 2,
+      NB_POINTS_PER_LIKE            : 2,
+      NB_POINTS_PER_FB_INVITATION   : 2,
+      NB_POINTS_PER_THEME_LIKED     : 2,
+      START_AVAILABLE_TICKETS       : 10,
+
+      FACEBOOK_FAN_TICKETS          : 4,
+      TWITTER_FAN_TICKETS           : 4,
+      
+      //-------------------------------------------//
+
       isDev    : window.location.hostname == "maperial.localhost" || window.location.hostname == "192.168.0.9",
 //      isLocal  : (window.location.hostname == "maperial.localhost" || window.location.hostname == "maperial.localhost.deploy") ,
       isProd    : window.location.hostname == "www.adillions.com",

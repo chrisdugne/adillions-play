@@ -1,14 +1,13 @@
 
 //---------------------------------------------------------------------------------------//
-// Lottery
+//Lottery
 //---------------------------------------------------------------------------------------//
 
 Ember.Handlebars.registerBoundHelper('lotteryPrice', function(lottery) {
-    return "$ " + Math.min(lottery.maxPrice, Math.max(lottery.minPrice, lottery.nbTickets/1000 * lottery.cpm))
+   return "$ " + Math.min(lottery.maxPrice, Math.max(lottery.minPrice, lottery.nbTickets/1000 * lottery.cpm))
 });
 
 Ember.Handlebars.registerBoundHelper('themeImage', function(lottery) {
-   console.log(lottery.theme.image)
    return new Handlebars.SafeString("<img class='themeImage' src=\""+lottery.theme.image+"\"/>")
 });
 
@@ -19,14 +18,65 @@ Ember.Handlebars.registerHelper('langImage', function(options) {
    return new Handlebars.SafeString(img)
 });
 
-Ember.Handlebars.registerBoundHelper('pointsImage', function(user) {
-   var path = "/assets/images/points/points." + user.currentPoints + ".png"
+Ember.Handlebars.registerBoundHelper('pointsImage', function(points) {
+   var path = "/assets/images/points/points." + points + ".png"
    var img = "<img class=\"mobileIcon touchable\" id='pointsImage' src='"+path+"'></img>"
    return new Handlebars.SafeString(img)
 });
 
+
+Ember.Handlebars.registerBoundHelper('newticket', function(numbers) {
+
+   //-------------------------------------------------------//
+
+   if(App.nextLottery.theme.icons[numbers.length-1] == null)
+      return "";
+   
+   //-------------------------------------------------------//
+   
+   var div = "<div class='free' style='height:70px'>";
+
+   //-------------------------------------------------------//
+   // balls
+  
+   for(var n = 0; n < numbers.length-1; n++){
+
+      var ballId = "ballSelected_"+numbers[n]
+      var textId = "textSelected_"+numbers[n]
+
+      var ball   = "<img id='"+ballId+"' src='/assets/images/balls/ball.small.green.png' class='ball' style='left:"+(n*50)+"px; top:10px; position:absolute'></img>"
+      var num    = "<p id='"+textId+"' class='numwhite' style='left:"+(n*50)+"px; top:10px; position:absolute'>"+numbers[n]+"</p>"
+
+      div += ball
+      div += num
+   }
+   
+   //-------------------------------------------------------//
+   // theme
+
+   var ballId = "ballSelected_"+numbers[numbers.length-1]
+   var maskId = "maskId_"+numbers[numbers.length-1]
+
+   var ball   = "<img id='"+ballId+"' src='"+App.nextLottery.theme.icons[numbers.length-1].image+"' class='smallThemeBall' style='left:"+(n*50)+"px; top:10px; position:absolute'></img>"
+   var mask   = "<img id='"+maskId+"' src='/assets/images/balls/ball.mask.png' class='smallThemeBall' style='left:"+(n*50)+"px; top:10px; position:absolute'></img>"
+
+   div += ball
+   div += num
+
+   //-------------------------------------------------------//
+
+   div += "</div>";
+   
+   return new Handlebars.SafeString(div)
+});
+
+
+Ember.Handlebars.registerBoundHelper('availableTickets', function(user) {
+   return new Handlebars.SafeString(user.availableTickets + user.totalBonusTickets - user.playedBonusTickets)
+});
+
 //---------------------------------------------------------------------------------------//
-// Utils
+//Utils
 //---------------------------------------------------------------------------------------//
 
 Ember.Handlebars.registerHelper('date', function(options) {
@@ -42,22 +92,22 @@ Ember.Handlebars.registerHelper('date', function(options) {
       case "en":
       default:
          return year + "." + month + "." + day;
-      
+
    }
 });
 
 /**
-* transform 1356095267229 ==> 21/12/2012
-*/
+ * transform 1356095267229 ==> 21/12/2012
+ */
 Ember.Handlebars.registerBoundHelper('formatDate', function(uploadTime, options) {
- return Utils.formatDate(uploadTime);
+   return Utils.formatDate(uploadTime);
 });
 
 /**
-* transform 1356095267229 ==> 21/12/2012
-*/
+ * transform 1356095267229 ==> 21/12/2012
+ */
 Ember.Handlebars.registerBoundHelper('readableFullDate', function(uploadTime, options) {
- return Utils.readableFullDate(uploadTime);
+   return Utils.readableFullDate(uploadTime);
 });
 
 //---------------------------------------------------------------------------------------//

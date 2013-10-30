@@ -48,6 +48,31 @@
 	color: #fff;
 }
 
+.button-twitter {
+	cursor: pointer;
+	cursor: hand;
+	z-index: 2;
+	font-size: 17px;
+	font-weight: 200;
+	background: url(/assets/images/icons/twitter.png) no-repeat center center;
+	background-size: 30px 30px;
+	background-color: #18a8d4;
+	background-position: 10px;
+	padding-left:65px;
+	color: #eee;
+	-webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px
+		0px 0px rgba(255, 255, 255, 0.2);
+	-moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 0px
+		0px rgba(255, 255, 255, 0.2);
+	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 0px 0px
+		rgba(255, 255, 255, 0.2);
+}
+
+.button-twitter:hover {
+	background-color: #7ad7f4;
+	color: #fff;
+}
+
 /*--------------------------------*/
 .auth-method-separator {
 	border-top: 1px solid #e1e1e1;

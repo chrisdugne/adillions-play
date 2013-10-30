@@ -65,6 +65,9 @@
     "ReferrerCode"		: "Code parrain",
     "ChangeAccount"		: "Changer de compte",
 
+    "MaxTickets1"		: "Vous avez atteint le nombre maximal de tickets pour ce tirage.",
+    "MaxTickets2"		: "Vous pouvez gagner des tickets bonus en aimant notre page Facebook ou en nous suivant sur Twitter.",
+    
     "FBText1"			: "Adillions utilise vos identifiants Facebook sur la plateforme",
     "FBText2"			: "Attention, il est important de fournir vos vrais noms et prénoms pour recevoir vos gains (cf. le Règlement) !",
     
@@ -78,6 +81,12 @@
 
     "SelectLuckyBall"	: "Choisissez votre Boule Chance : ",
     "ExtraTicket"		: "Extra Ticket",
+    
+    "YourSelection"		: "Votre sélection !",
+    "TicketsToPlay"		: "Tickets restants",
+    "Ticket"			: "Ticket",
+    "YouHaveEarned"		: "Vous avez gagné",
+    "YouHaveEarnedExtra": "Vous avez gagné un Extra Ticket",
     
        
     "":""

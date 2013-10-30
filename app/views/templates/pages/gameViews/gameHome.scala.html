@@ -19,17 +19,17 @@
 			<img class="mobileIcon" src='@routes.Assets.at("images/icons/cagnotte.png")'></img>
 		</div>
 
+		{{#if App.nextLottery.enoughPlayers}}
 		<div class="span1">
 			<img class="mobileIcon" src='@routes.Assets.at("images/icons/separateur.png")'></img>
 		</div>
-
 		<div class="span4 free">
 			<img id="playersIcon" class="mobileIcon" src='@routes.Assets.at("images/icons/players.png")'></img>
-			<p id="playersText">{{App.translations.messages.Players}} : 	</p>
+			<p id="playersText">{{App.translations.messages.Players}} : </p>
 			<p id="playersNumber"> {{App.nextLottery.nbPlayers}}</p>
 		</div>
+		{{/if}}
 	</div>
-	
 	
 	<div id="fillOutContainer" class="row-fluid free">
 		<div {{action requireNewTicket}}>{{langImage png='filloutticket.button.png' id='fillOutTicket'}}</div>

@@ -15,12 +15,11 @@
 		<div id="frButton" {{action translateFr}} class="langButton">{{App.translations.messages.fr}}</div>
 	</div>
 	
-	
 	<ul id="headerButtons">
 		{{#if user.loggedIn}}
 			<li {{action openGame}} class="btn-large button">{{App.translations.messages.Play}}</li>
 			<li {{action logout}} class="btn-large button">{{App.translations.messages.Logout}}</li>
-			{{pointsImage App.user}}
+			{{pointsImage App.user.currentPoints}}
 		{{else}}
 			<li {{action openSignin}} class="btn-large button">{{App.translations.messages.SignIn}}</li>
 			<li {{action openLogin}} class="btn-large button">{{App.translations.messages.LogIn}}</li>

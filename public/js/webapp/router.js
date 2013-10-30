@@ -70,17 +70,7 @@
 			//-------------------------------------------------------//
 			   
 			logout         : function(){
-
-			   App.message("Welcome back  !", true)
-			   return
-			   if(Facebook.accessToken){
-			      Facebook.logout()
-			      $.removeCookie('facebookId');
-			   }
-			      
-            $.removeCookie('authToken');
-			   App.user.set("loggedIn", false)
-		      App.get('router').transitionTo('home');
+			   UserManager.logout()
 			},
 
 			//-------------------------------------------------------//
@@ -194,6 +184,8 @@
    //-----------------------------------------------------------------------------------------//
 
 	App.Router = Router;
+	window.location.hash = "/"      // landing forced on homepage + login 
+	   
 	App.init()
 
 	//-----------------------------------------------------------------------------------------//

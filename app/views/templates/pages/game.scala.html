@@ -5,6 +5,8 @@
 @import views.html.popups.noMoreTicketsWindow;
 @import views.html.popups.pointsWindow;
 
+@import views.html.templates.footer;
+
 <div class="container-fluid" id="gameContent">
 
 	<!-- ----------------------------------------------------------------------------- -->
@@ -20,7 +22,7 @@
 		<!-- -------------------------------------------------------------- -->
 	
 		<br/>
-		<div class="row-fluid">
+		<div class="row-fluid noMargin">
 			<div class="free">
 				<div id="gameHomeButton" {{action openGameHome}} class="btn-large button"></div>
 				<div id="myTicketsButton" {{action openMyTickets}} class="btn-large button"></div>
@@ -38,7 +40,10 @@ il faut une image adaptee au web
  -->
 	</div>
 
+	@footer()
+
 </div>
+
 
 @signinWindow()
 @signinFBWindow()

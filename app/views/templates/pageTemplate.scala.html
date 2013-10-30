@@ -1,22 +1,12 @@
 @(templateName:String, specialFooter:Boolean = false)(content:Html)
 
 @import views.html.templates.header;
-@import views.html.templates.footer;
-@import views.html.templates.homefooter;
 
 <!-- ------------------------------------------------------------------- -->
 
 <script type="text/x-handlebars" data-template-name="@templateName">
 	@header()
-
 	@content
-
-	@if(specialFooter){
-		@homefooter()
-	}else{
-		@footer()
-	}
-	
 </script>
 
 <!-- ------------------------------------------------------------------- -->

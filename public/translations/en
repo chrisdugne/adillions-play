@@ -65,6 +65,9 @@
     "ReferrerCode"		: "Sponsor code",
     "ChangeAccount"		: "Change account",
 
+    "MaxTickets1"		: "You have reached the maximum number of tickets for this draw.",
+    "MaxTickets2"		: "You can gain bonus tickets by liking our Facebook page or following us on Twitter.",
+    
     "FBText1"			: "Adillions uses your Facebook username on the platform.",
     "FBText2"			: "Important, you must give us your real full name for prize payments (cf. the Terms).",
     
@@ -74,6 +77,12 @@
     
     "SelectLuckyBall"	: "Select your Lucky Ball : ",
     "ExtraTicket"		: "Extra Ticket",
+
+    "YourSelection"		: "Your selection !",
+    "TicketsToPlay"		: "Tickets to play",
+    "Ticket"			: "Ticket",
+    "YouHaveEarned"		: "You have earned",
+    "YouHaveEarnedExtra": "You have earned an Extra Ticket",
     
     "":""
 }

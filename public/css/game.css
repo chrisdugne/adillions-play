@@ -4,6 +4,44 @@
 	margin-top: 102px;
 }
 
+.free {
+	position: relative;
+}
+
+.noMargin {
+	margin-top: -15px;
+}
+/*------------------------------------------------*/
+
+.verticalElements {
+	position:relative;
+	left: -34px;
+	margin-top: 20px;
+	height: 40px;
+	margin-bottom: 40px;
+}
+
+.topIcon {
+	top: -25px;
+	position: absolute;
+	left: 10px;
+}
+
+.centerText {
+	top: 6px;
+	width: 100%;
+	left: -45%;
+	position: absolute;
+}
+
+.bottomText  {
+	top: 33px;
+	position: absolute;
+	font-size: 26px;
+	left: -6px;
+	text-align: center;
+	width: 66px;
+}
 
 /*------------------------------------------------*/
 
@@ -178,7 +216,9 @@
 	max-width: 35px;
 }
 
-/*---------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------*/
+/*  Buttons																								 */
+/*-------------------------------------------------------------------------------------------------------*/
 #fillOutTicket {
 	width: 225px;
 	cursor: hand;
@@ -192,6 +232,29 @@
 
 #ticketsRemainingHome {
 	position: absolute;
+}
+
+/*---------------------------------------------*/
+#inviteButton {
+	width: 100px;
+	cursor: hand;
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+#inviteButton:hover {
+	opacity: 1;
+}
+
+#shareButton {
+	width: 100px;
+	cursor: hand;
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+#shareButton:hover {
+	opacity: 1;
 }
 
 /*---------------------------------------------*/
@@ -242,9 +305,6 @@
 }
 
 /*---------------------------------------------*/
-.free {
-	position: relative;
-}
 
 #playersIcon {
 	top: -25px;

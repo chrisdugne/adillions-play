@@ -10,6 +10,7 @@
 	   maxPicks:     "",
 	   maxNumbers:   "",
 	   nbPlayers:    "",
+	   toolPlayers:  "",
 	   minPrice:     "",
 	   maxPrice:     "",
 	   cpm:          "",
@@ -17,7 +18,11 @@
 	   result:       "",
 		
 		//---------------------------//
-		
+
+	   enoughPlayers: function() {
+	     return this.get('toolPlayers') <= this.get('nbPlayers');
+	   }.property('nbPlayers', 'toolPlayers')
+	   
 	});
 	
 	App.nextLottery = NextLottery.create();

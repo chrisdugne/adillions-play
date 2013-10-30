@@ -495,11 +495,25 @@ GameManager.refreshThemeSelectionDisplay = function(){
    }
    
 //==================================================================//
-//SelectLuckyNumber
+// Confirmation
 //==================================================================//
 
  GameManager.initConfirmation = function(){
-    App.message("+1 point " + App.Globals.wasExtraTicket)
+    
+    console.log("initConfirmation")
+    odump(App.Globals)
+    console.log(App.Globals.confirmationMessage)
+    
+    if(App.Globals.confirmationMessage != null){
+       console.log("display")
+       App.message(App.Globals.confirmationMessage)
+    }
+    else if(!App.Globals.wasExtraTicket){
+       App.message("+1 point")
+    }
+       
+    App.Globals.wasExtraTicket      = false
+    App.Globals.confirmationMessage = null
  }
    
 }
