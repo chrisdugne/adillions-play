@@ -260,6 +260,7 @@ public class AccountManager {
 		player.setCurrentLotteryUID	(newUserJson.get("currentLotteryUID").asText());
 		player.setAvailableTickets		(newUserJson.get("availableTickets").asInt());
 		player.setPlayedBonusTickets	(newUserJson.get("playedBonusTickets").asInt());
+		player.setExtraTickets			(newUserJson.get("extraTickets").asInt());
 
 		//-------------------------------------//
 
