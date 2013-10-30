@@ -31,6 +31,9 @@ public class Lottery extends Model {
 	@Expose
 	private Integer nbPlayers;
 
+	@Expose
+	private Integer toolPlayers; 		// seuil pour afficher les players
+
 	
 	@Expose
 	private Integer minPrice; 			 
@@ -158,6 +161,14 @@ public class Lottery extends Model {
 
 	public void setCharity(Double charity) {
 		this.charity = charity;
+	}
+
+	public Integer getToolPlayers() {
+		return toolPlayers;
+	}
+
+	public void setToolPlayers(Integer toolPlayers) {
+		this.toolPlayers = toolPlayers;
 	}
 
 	public Double getFinalPrice() {

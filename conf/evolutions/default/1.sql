@@ -9,6 +9,7 @@ create table lottery (
   max_picks                 integer,
   max_numbers               integer,
   nb_players                integer,
+  tool_players              integer,
   min_price                 integer,
   max_price                 integer,
   cpm                       float,
