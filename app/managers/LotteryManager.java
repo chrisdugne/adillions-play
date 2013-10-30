@@ -177,6 +177,9 @@ public class LotteryManager {
 		if(player.getExtraTickets() > 0){
 			player.setExtraTickets(player.getExtraTickets() - 1);
 		}
+		else{
+			player.setTotalPaidTickets (player.getTotalPaidTickets() + 1);
+		}
 			
 		player.setTotalPlayedTickets	(player.getTotalPlayedTickets() + 1);
 		

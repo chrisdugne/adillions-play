@@ -175,6 +175,7 @@ public class AccountManager {
 		player.setAvailableTickets		(START_AVAILABLE_TICKETS);
 		player.setPlayedBonusTickets	(0);
 		player.setTotalPlayedTickets	(0);
+		player.setTotalPaidTickets		(0);
 
 		player.setFacebookFan			(false);
 		player.setTwitterFan				(false);

@@ -81,6 +81,9 @@ public class Player extends Model {
 	@Expose
 	private int totalPlayedTickets;
 
+	@Expose
+	private int totalPaidTickets;
+
 	// -----------------------------------------------------------------------------------------------//
 
 	@Expose
@@ -283,6 +286,14 @@ public class Player extends Model {
 
 	public void setTotalPlayedTickets(int totalPlayedTickets) {
 		this.totalPlayedTickets = totalPlayedTickets;
+	}
+
+	public int getTotalPaidTickets() {
+		return totalPaidTickets;
+	}
+
+	public void setTotalPaidTickets(int totalPaidTickets) {
+		this.totalPaidTickets = totalPaidTickets;
 	}
 
 	public String getFirstName() {
