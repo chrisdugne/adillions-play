@@ -16,7 +16,8 @@
 	"Work"				: "Comment ça marche?",
 	"WorkAd"			: "Visionnez une pub",
 	"WorkTicket"		: "Remplissez votre ticket de loterie",
-	"WorkResult"		: "Gagnez le jackpot Tirage tous les Samedi sur",
+	"WinThePrize"		: "Gagnez le jackpot",
+	"DrawSaturday"		: "Tirage tous les Samedi sur",
 	
 	"Fun"				: "Fun",
 	"FunText"			: "Découvrez un nouveau thème par semaine",
@@ -27,7 +28,8 @@
 	
 	"Multi"				: "Multi-plateforme",
 	"MultiText"			: "Vous pouvez jouer sur plusieurs plateformes",
-	"MultiNow"			: "Maintenant sur : www.adillions.com ou sur Facebook : www.facebook.com/adillions",
+	"MultiNow1"			: "Maintenant sur : www.adillions.com",
+	"MultiNow2"			: "ou sur Facebook : www.facebook.com/adillions",
 	
 	"Responsible"		: "Responsable",
 	"ResponsibleText"	: "A chaque fois que vous jouez, vous donnez un peu de votre temps à des oeuvres caritatives",
@@ -88,6 +90,7 @@
     "YouHaveEarned"		: "Vous avez gagné",
     "YouHaveEarnedExtra": "Vous avez gagné un Extra Ticket",
     
+    "Points"			: "Points",
        
     "":""
 	

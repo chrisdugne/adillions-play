@@ -70,15 +70,21 @@
 #headerButtons {
 	float: right;
 	margin-top: 22px;
-	margin-right: 95px;
+	margin-right: 155px;
 }
 
 #headerButtons .btn-large {
 	display: inline;
 }
 
-/*--------------------------------*/
+#headerPoints {
+	position: relative;
+	width: 100px;
+	left: 180px;
+	top: -20px;
+}
 
+/*--------------------------------*/
 .headerWaitingSpin {
 	top: 19px;
 	right: 65px;

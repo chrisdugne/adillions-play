@@ -15,7 +15,8 @@
 	"Work"				: "How it works?",
 	"WorkAd"			: "Watch an ad",
 	"WorkTicket"		: "Get your lottery ticket",
-	"WorkResult"		: "Win the prize Draw every Saturday live on ",		
+	"WinThePrize"		: "Win the prize",		
+	"DrawSaturday"		: "Draw every Saturday live on ",		
 
 	"Fun"				: "Fun",
 	"FunText"			: "Discover a new theme each week",
@@ -26,7 +27,8 @@
 	
 	"Multi"				: "Multi-plateform",
 	"MultiText"			: "Play on a whole range of platforms",
-	"MultiNow"			: "Now on Adillions: www.adillions.com or on Facebook: www.facebook.com/adillions",
+	"MultiNow1"			: "Now on Adillions: www.adillions.com",
+	"MultiNow2"			: "or on Facebook: www.facebook.com/adillions",
 	
 	"Responsible"		: "Responsible",
 	"ResponsibleText"	: "Dedicate few seconds of your time to charitable organizations each time you participate",
@@ -83,6 +85,8 @@
     "Ticket"			: "Ticket",
     "YouHaveEarned"		: "You have earned",
     "YouHaveEarnedExtra": "You have earned an Extra Ticket",
+
+    "Points"			: "Points",
     
     "":""
 }

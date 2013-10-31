@@ -7,8 +7,7 @@ this.LotteryManager = {};
 //-------------------------------------------//
 
 LotteryManager.isGameAvailable = function(){
-   var nbTickets = (App.user.availableTickets + App.user.totalBonusTickets - App.user.playedBonusTickets)
-   return nbTickets > 0;
+   return App.user.get("ticketsToPlay") > 0;
 }
 
 //-------------------------------------------//
@@ -60,11 +59,12 @@ LotteryManager.storeLotteryTicket = function(){
       contentType: "application/json; charset=utf-8",
       success: function (player)
       {
+         App.free()
+
          if(player) {
             App.Globals.wasExtraTicket = extraTicket
             UserManager.updatedPlayer(player, function(){
                App.get('router').transitionTo('game.confirmation');
-               App.free()
             })
          }
          else{

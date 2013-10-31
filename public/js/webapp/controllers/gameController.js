@@ -18,14 +18,6 @@
 	   $("#myTicketsButton").css("left", ($(window).width()/2 - 1.8*menuButtonSize) + "px")
 	   $("#resultsButton").css("left", ($(window).width()/2 ) - 0.2*menuButtonSize + "px")
 	   $("#profileButton").css("left", ($(window).width()/2 + 1.4*menuButtonSize) + "px")
-	   
-	   
-	   $("#pointsImage").click(function(){
-         $("#pointsWindow").reveal({
-            animation: 'fade',
-            animationspeed: 100, 
-         });	      
-	   })
 	}
 
 	GameController.cleanUI = function()	{

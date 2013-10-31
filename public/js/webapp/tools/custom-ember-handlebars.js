@@ -24,6 +24,12 @@ Ember.Handlebars.registerBoundHelper('pointsImage', function(points) {
    return new Handlebars.SafeString(img)
 });
 
+Ember.Handlebars.registerBoundHelper('staticPointsImage', function(points) {
+   var path = "/assets/images/points/points." + points + ".png"
+   var img = "<img class=\"mobileIcon upper\" src='"+path+"'></img>"
+   return new Handlebars.SafeString(img)
+});
+
 
 Ember.Handlebars.registerBoundHelper('newticket', function(numbers) {
 

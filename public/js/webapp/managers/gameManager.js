@@ -500,13 +500,11 @@ GameManager.refreshThemeSelectionDisplay = function(){
 
  GameManager.initConfirmation = function(){
     
-    console.log("initConfirmation")
-    odump(App.Globals)
-    console.log(App.Globals.confirmationMessage)
-    
     if(App.Globals.confirmationMessage != null){
        console.log("display")
-       App.message(App.Globals.confirmationMessage)
+       console.log(App.Globals.confirmationMessage)
+//       App.message(App.Globals.confirmationMessage)
+       App.message("youpi")
     }
     else if(!App.Globals.wasExtraTicket){
        App.message("+1 point")

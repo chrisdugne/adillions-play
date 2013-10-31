@@ -3,6 +3,41 @@
 		class="icon icon-ex-white-outline"></i></a> <br />
 	
 		
-	Points
+	<div class="row-fluid">
+		<div class="span2 offset3">
+			<p>{{App.translations.messages.Points}} : </p>
+		</div>
+		<div class="span1">
+			<p>{{App.user.currentPoints}} pts</p>
+		</div>
+		<div class="span1">
+			{{staticPointsImage App.user.currentPoints}}
+		</div>
+	</div>
+		
+	<div class="row-fluid">
+		<div class="span2 offset3">
+			<p>{{App.translations.messages.TicketsToPlay}} : </p>
+		</div>
+		<div class="span1">
+			<p>{{App.user.ticketsToPlay}} </p>
+		</div>
+		<div class="span1">
+			<img class="mobileIcon upper" src='@routes.Assets.at("images/icons/ticket.png")'></img>
+		</div>
+	</div>
+		
+	<div class="row-fluid">
+		<div class="span2 offset3">
+			<p>{{App.translations.messages.ExtraTicket}} : </p>
+		</div>
+		<div class="span1">
+			<p>{{App.user.extraTickets}} </p>
+		</div>
+		<div class="span1">
+			<img class="mobileIcon upper" src='@routes.Assets.at("images/icons/ticket.png")'></img>
+		</div>
+	</div>
+		
 	
 </div>

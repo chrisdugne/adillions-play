@@ -68,6 +68,15 @@
 			},
 			
 			//-------------------------------------------------------//
+
+			openPoints     : function(){
+		      $("#pointsWindow").reveal({
+		         animation: 'fade',
+		         animationspeed: 100, 
+		      });         
+			},
+	      
+			//-------------------------------------------------------//
 			   
 			logout         : function(){
 			   UserManager.logout()
