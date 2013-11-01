@@ -20,21 +20,21 @@
 			<form id="signinForm1">
 
 				<div class="clearfix  " id="name_field">
-					<label for="firstName">First name</label>
+					<label for="firstName">{{App.translations.messages.FirstName}}</label>
 					<div class="input">
 						<input type="text" id="firstName" name="firstName" value=""> 
 					</div>
 				</div>
 
 				<div class="clearfix  " id="name_field">
-					<label for="lastName">Last name</label>
+					<label for="lastName">{{App.translations.messages.LastName}}</label>
 					<div class="input">
 						<input type="text" id="lastName" name="lastName" value=""> 
 					</div>
 				</div>
 
 				<div class="clearfix  " id="email_field">
-					<label for="email">E-mail</label>
+					<label for="email">{{App.translations.messages.Email}}</label>
 					<div class="input">
 						<input type="text" id="email" name="email" value="">
 					</div>
@@ -47,24 +47,24 @@
 			<form id="signinForm2">
 
 				<div class="clearfix  " id="password_field">
-					<label for="password">Password</label>
+					<label for="password">{{App.translations.messages.Password}}</label>
 					<div class="input">
 						<input type="password" id="password" name="password">
 					</div>
 				</div>
 
 				<div class="clearfix  " id="repeatPassword_field">
-					<label for="repeatPassword">Repeat password</label>
+					<label for="repeatPassword">{{App.translations.messages.RepeatPassword}}</label>
 					<div class="input">
 						<input type="password" id="repeatPassword" name="repeatPassword"> 
 					</div>
 				</div>
 				
-				<label for="birthDate">Birth date</label>
+				<label for="birthDate">{{App.translations.messages.BirthDate}}</label>
 				<input type="text" id="birthDate" name="birthDate" readonly style="cursor:pointer!important;"/>
 
 				<div class="clearfix  " id="name_field">
-					<label for="referrerId">Referrer Id</label>
+					<label for="referrerId">{{App.translations.messages.ReferrerCode}}</label>
 					<div class="input">
 						<input type="text" id="referrerId" name="referrerId" value=""> 
 					</div>
@@ -76,7 +76,7 @@
 	</div>
 	
 	<div class="row-fluid">
-		<div {{action signin}} class="span10 offset1 btn-large button">{{App.translations.messages.SignIn}}</div>
+		<div {{action openConfirm}} class="span10 offset1 btn-large button">{{App.translations.messages.SignIn}}</div>
 	</div>
 
 	<br />

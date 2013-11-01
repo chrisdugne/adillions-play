@@ -67,6 +67,15 @@
     "ReferrerCode"		: "Code parrain",
     "ChangeAccount"		: "Changer de compte",
 
+    "AccountEmailExists": "Un compte avec cet email existe déjà",
+    "AccountNamesExist" : "Un compte avec ce nom et prénom existe déjà",
+    
+    "Password"			: "Mot de passe",
+    "RepeatPassword"	: "Confirmer le mot de passe",
+    
+    "GoBack"			: "Revenir",
+    "Continue"			: "Continuer",
+    
     "MaxTickets1"		: "Vous avez atteint le nombre maximal de tickets pour ce tirage.",
     "MaxTickets2"		: "Vous pouvez gagner des tickets bonus en aimant notre page Facebook ou en nous suivant sur Twitter.",
     

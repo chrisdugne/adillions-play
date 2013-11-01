@@ -33,7 +33,8 @@
 			},
 			
 			openSignin         : function(){
-			   
+
+            $("#confirmWindow").trigger("reveal:close");
 			   App.Globals.signinRequested = true
 			   
 			   $("#signinWindow").reveal({
@@ -41,6 +42,48 @@
 			      animationspeed: 100, 
 			   });
 			   
+			},
+			
+			//-------------------------------------------------------//
+			
+			openConfirm         : function(){
+
+			   if(UserManager.signinFormReady()){
+			      $("#signinWindow").trigger("reveal:close");
+			      $("#signinFBWindow").trigger("reveal:close");
+			      
+			      $("#confirmWindow").reveal({
+			         animation: 'fade',
+			         animationspeed: 100, 
+			      });
+
+               $("#confirmFirstName").text($("#firstName").val())
+               $("#confirmLastName").text($("#lastName").val())
+               $("#confirmBirthDate").text($("#birthDate").val())
+			   }
+			   
+			},
+
+			openConfirmFB         : function(){
+			   
+			   if(UserManager.signinFormFBReady()){
+			      $("#signinWindow").trigger("reveal:close");
+			      $("#signinFBWindow").trigger("reveal:close");
+			      
+			      $("#confirmFBWindow").reveal({
+			         animation: 'fade',
+			         animationspeed: 100, 
+			      });
+			      
+		         $("#confirmFBFirstName").text($("#fbForm_firstName").val())
+		         $("#confirmFBLastName").text($("#fbForm_lastName").val())
+		         $("#confirmFBBirthDate").text($("#fbForm_birthDate").val())
+			   }
+			   
+			},
+
+			openSigninFB         : function(){
+			   UserManager.openSigninFB()
 			},
 			
 			//-------------------------------------------------------//
@@ -60,10 +103,12 @@
 			},
 			
 			signin         : function(){
+            $("#confirmWindow").trigger("reveal:close");
 		      UserManager.signin()
 			},
 			
 			signinFB       : function(){
+			   $("#confirmFBWindow").trigger("reveal:close");
 			   UserManager.signinFB()
 			},
 			

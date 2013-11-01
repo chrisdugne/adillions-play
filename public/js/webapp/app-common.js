@@ -37,7 +37,8 @@
       App.get('router').transitionTo('home');
       
       setTimeout(function(){
-         App.get('router').transitionTo(currentPage + "." + currentView);
+         if(currentPage != "home")
+            App.get('router').transitionTo(currentPage + "." + currentView);
          App.free()
       },20)
       

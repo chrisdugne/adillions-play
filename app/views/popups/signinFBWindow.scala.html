@@ -20,24 +20,24 @@
 			<form id="fbForm">
 
 				<div class="clearfix  " id="name_field">
-					<label for="firstName">First name</label>
+					<label for="firstName">{{App.translations.messages.FirstName}}</label>
 					<div class="input">
 						<input type="text" id="fbForm_firstName" name="firstName" > 
 					</div>
 				</div>
 
 				<div class="clearfix  " id="name_field">
-					<label for="lastName">Last name</label>
+					<label for="lastName">{{App.translations.messages.LastName}}</label>
 					<div class="input">
 						<input type="text" id="fbForm_lastName" name="lastName" > 
 					</div>
 				</div>
 
-				<label for="birthDate">Birth date</label>
+				<label for="birthDate">{{App.translations.messages.BirthDate}}</label>
 				<input type="text" id="fbForm_birthDate" name="birthDate" readonly style="cursor:pointer!important;"/>
 				
 				<div class="clearfix  " id="name_field">
-					<label for="referrerId">Referrer Id</label>
+					<label for="referrerId">{{App.translations.messages.ReferrerCode}}</label>
 					<div class="input">
 						<input type="text" id="fbForm_referrerId" name="referrerId" > 
 					</div>
@@ -46,13 +46,13 @@
 		</div>
 
 		<div class="span5">
-			<p>_Obviously we will always use your Facebook names everywhere.</p>
-			<p>_That being said, you must provide us with real names and birthdates in order to get paid.</p>
+			<p>{{App.translations.messages.FBText1}}</p>
+			<p>{{App.translations.messages.FBText2}}</p>
 			<br/>
 			<br/>
 			<br/>
 			<form id="signinForm2">
-				<div {{action signinFB}} class="btn-large button">{{App.translations.messages.SignIn}}</div>
+				<div {{action openConfirmFB}} class="btn-large button">{{App.translations.messages.SignIn}}</div>
 			</form>
 		</div>
 

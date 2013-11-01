@@ -27,13 +27,13 @@ def main():
     
     #--------------------------------------------------------------------
 
-    cursor.execute("SHOW data_directory;")
-    history            = cursor.fetchone()
-    print "history: " , history
+#     cursor.execute("SHOW data_directory;")
+#     history            = cursor.fetchone()
+#     print "history: " , history
 
-    cursor.execute("SELECT pg_size_pretty(pg_database_size('adillions'));")
-    size            = cursor.fetchone()
-    print "database size : " , size
+#     cursor.execute("SELECT pg_size_pretty(pg_database_size('adillions'));")
+#     size            = cursor.fetchone()
+#     print "database size : " , size
 
     #--------------------------------------------------------------------
 

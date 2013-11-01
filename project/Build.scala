@@ -17,7 +17,8 @@ object ApplicationBuild extends Build {
   		javaCore, 
   		javaEbean, 
   		"postgresql" % "postgresql" % "9.1-901.jdbc4", 
-  		"com.google.code.gson" % "gson" % "2.2.2"
+  		"com.google.code.gson" % "gson" % "2.2.2",
+  		"com.typesafe" %% "play-plugins-mailer" % "2.1.0"
     )
 
     val main = play.Project(appName, appVersion, appDependencies).settings(

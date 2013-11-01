@@ -11,12 +11,12 @@ UserManager.receivedPlayer = function(player, next)
    console.log("receivedPlayer")
    App.user.set("loggedIn", true)   
    App.message("Welcome back " + player.userName + " !", true)
-   
+
    UserManager.updatedPlayer(player, next)
 
    if(Facebook && Facebook.finalizeInit)
       Facebook.finalizeInit();
-   
+
 
    UserManager.checkUserCurrentLottery()
 }
@@ -27,25 +27,25 @@ UserManager.checkUserCurrentLottery = function(){
    console.log("checkUserCurrentLottery")
    if(App.user.currentLotteryUID != App.nextLottery.uid){
       console.log("new Lottery settings")
-      
+
       App.user.currentLotteryUID         = App.nextLottery.uid
       App.user.availableTickets          = App.Globals.START_AVAILABLE_TICKETS 
       App.user.playedBonusTickets        = 0
-      
+
       App.user.hasTweet                  = false
       App.user.hasPostOnFacebook         = false
       App.user.hasTweetAnInvite          = false
       App.user.hasInvitedOnFacebook      = false
-      
+
       UserManager.updatePlayer()
    }
-   
+
 }
 
 //-------------------------------------------//
 
 UserManager.updatedPlayer = function(player, next){
-   
+
    App.user.set("uid",                 player.uid);
    App.user.set("email",               player.email);
    App.user.set("userName",            player.userName);
@@ -58,13 +58,13 @@ UserManager.updatedPlayer = function(player, next){
 
    App.user.set("isFacebookFan",        player.isFacebookFan);
    App.user.set("isTwitterFan",        player.isTwitterFan);
-   
+
    App.user.set("currentLotteryUID",   player.currentLotteryUID);
    App.user.set("hasPostOnFacebook",   player.hasPostOnFacebook);
    App.user.set("hasTweet",            player.hasTweet);
    App.user.set("hasTweetAnInvite",    player.hasTweetAnInvite);
    App.user.set("hasInvitedOnFacebook", player.hasInvitedOnFacebook);
-   
+
    App.user.set("currentPoints",       player.currentPoints);
    App.user.set("idlePoints",          player.idlePoints);
    App.user.set("totalPoints",         player.totalPoints);
@@ -82,21 +82,21 @@ UserManager.updatedPlayer = function(player, next){
    App.user.set("totalBonusTickets",   0);
 
    App.user.set("acceptEmails",        player.acceptEmails);
-   
+
    console.log("updatedPlayer")
    odump(App.user)
-   
+
    //----------------------------------------------//
 
    UserManager.checkIdlePoints()
-//   
-//   viewManager.refreshHeaderPoints(player.currentPoints)
-//   lotteryManager:sumPrices()
-//
-//   UserManager.checkFanStatus(next)   
-   
+
+// viewManager.refreshHeaderPoints(player.currentPoints)
+// lotteryManager:sumPrices()
+
+// UserManager.checkFanStatus(next)   
+
    //----------------------------------------------//
-   
+
    if(next)
       next()
 }
@@ -109,7 +109,7 @@ UserManager.updatePlayer = function(next)
    console.log("updatePlayer")
    var params = new Object();
    params["user"] = App.user
-   
+
    App.wait()
 
    $.ajax({
@@ -157,7 +157,7 @@ UserManager.getPlayer = function()
 UserManager.getPlayerByFacebookId = function()
 {
    console.log("--> getPlayerByFacebookId")
-   
+
    var params = new Object();
    params["facebookData"] = Facebook.data
    params["accessToken"] = Facebook.accessToken
@@ -180,23 +180,27 @@ UserManager.getPlayerByFacebookId = function()
       error:function(){
          console.log("--> unauthorized")
          UserManager.setupForms()
-   
-         $("#signinWindow").trigger("reveal:close");
-         $("#loginWindow").trigger("reveal:close");
-         
-         $("#signinFBWindow").reveal({
-            animation: 'fade',
-            animationspeed: 100, 
-         });
-         
-         $("#fbForm_title").text("Welcome " + Facebook.data.name + " !" )
-         $("#fbForm_firstName").val(Facebook.data.first_name)
-         $("#fbForm_lastName").val(Facebook.data.last_name)
-         $("#fbForm_birthDate").val(Facebook.data.birthday)
-         $("#facebookPicture").attr('src', Facebook.data.picture.data.url)
-
+         UserManager.openSigninFB()
       }
    });
+}
+
+UserManager.openSigninFB = function(){
+
+   $("#signinWindow").trigger("reveal:close");
+   $("#loginWindow").trigger("reveal:close");
+   $("#confirmFBWindow").trigger("reveal:close");
+
+   $("#signinFBWindow").reveal({
+      animation: 'fade',
+      animationspeed: 100, 
+   });
+
+   $("#fbForm_title").text("Welcome " + Facebook.data.name + " !" )
+   $("#fbForm_firstName").val(Facebook.data.first_name)
+   $("#fbForm_lastName").val(Facebook.data.last_name)
+   $("#fbForm_birthDate").val(Facebook.data.birthday)
+   $("#facebookPicture").attr('src', Facebook.data.picture.data.url)
 }
 
 //-------------------------------------------//
@@ -206,7 +210,7 @@ UserManager.logout = function(){
       Facebook.logout()
       $.removeCookie('facebookId');
    }
-      
+
    $.removeCookie('authToken');
    App.user.set("loggedIn", false)
    App.get('router').transitionTo('home');
@@ -214,61 +218,71 @@ UserManager.logout = function(){
 
 //-------------------------------------------//
 
-UserManager.signin = function()
-{
+UserManager.signinFormReady = function(){
+
    var form1Ready = $("#signinForm1").valid()
    var form2Ready = $("#signinForm2").valid()
    var formReady = form1Ready && form2Ready
-   
-   if(formReady){
-      App.user.email       = $("#email").val() 
-      App.user.firstName   = $("#firstName").val() 
-      App.user.lastName    = $("#lastName").val() 
-      App.user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
-      App.user.referrerId  = $("#referrerId").val() 
-      
-      delete App.user.facebookId
-      delete App.user.facebookName 
-      
-      var passwordHash  = CryptoJS.SHA512($("#password").val());
-      var password512   = passwordHash.toString(CryptoJS.enc.Hex)
-      App.user.password = password512
-      
-      $("#signinWindow").trigger("reveal:close");
-      App.wait()
-      
-      var params = new Object();
-      params["user"] = App.user;
 
-      $.ajax({
-         type: "POST",  
-         url: "/signin",
-         data: JSON.stringify(params),  
-         contentType: "application/json; charset=utf-8",
-         dataType: "json",
-         success: function (response){
-            App.free()
+   return formReady
+}
 
-            $("#loginWindow").reveal({
-               animation: 'fade',
-               animationspeed: 100, 
-            });
+UserManager.signinFormFBReady = function(){
+   return $("#fbForm").valid()
+}
 
-            $("#loginemail").val(App.user.email)
-         },
-         error: function (data){
-            //no json returned -> reach error
-            App.free()
-            if(data.responseText == "email"){
-               App.message("_An account with this email exists", false)
-            }
-            else if(data.responseText == "names"){
-               App.message("_An account with these names exists", false)
-            }
+
+//-------------------------------------------//
+
+UserManager.signin = function()
+{
+   App.user.email       = $("#email").val() 
+   App.user.firstName   = $("#firstName").val() 
+   App.user.lastName    = $("#lastName").val() 
+   App.user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
+   App.user.referrerId  = $("#referrerId").val() 
+
+   delete App.user.facebookId
+   delete App.user.facebookName 
+
+   var passwordHash  = CryptoJS.SHA512($("#password").val());
+   var password512   = passwordHash.toString(CryptoJS.enc.Hex)
+   App.user.password = password512
+
+   $("#signinWindow").trigger("reveal:close");
+   App.wait()
+
+   var params = new Object();
+   params["user"] = App.user;
+
+   $.ajax({
+      type: "POST",  
+      url: "/signin",
+      data: JSON.stringify(params),  
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (response){
+         App.free()
+
+         $("#loginWindow").reveal({
+            animation: 'fade',
+            animationspeed: 100, 
+         });
+
+         $("#loginemail").val(App.user.email)
+      },
+      error: function (data){
+         //no json returned -> reach error
+         App.free()
+         if(data.responseText == "email"){
+            App.message(App.translations.messages.AccountEmailExists, false)
          }
-      });
+         else if(data.responseText == "names"){
+            App.message(App.translations.messages.AccountNamesExist, false)
+         }
+      }
+   });
 
-   }
 }
 
 
@@ -276,44 +290,42 @@ UserManager.signin = function()
 
 UserManager.signinFB = function()
 {
-   if($("#fbForm").valid()){
-      App.user.email                = Facebook.data.email
-      App.user.facebookName         = Facebook.data.name
-      App.user.facebookId           = Facebook.data.id
-      App.user.firstName            = $("#fbForm_firstName").val() 
-      App.user.lastName             = $("#fbForm_lastName").val() 
-      App.user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
-      App.user.referrerId           = $("#fbForm_referrerId").val() 
-      
-      $("#signinFBWindow").trigger("reveal:close");
-      App.wait()
-      
-      var params = new Object();
-      params["user"] = App.user;
-      params["accessToken"] = Facebook.accessToken;
-      
-      $.ajax({
-         type: "POST",  
-         url: "/signinFromFacebook",
-         data: JSON.stringify(params),  
-         contentType: "application/json; charset=utf-8",
-         dataType: "json",
-         success: function (response){
-            if(response){
-               console.log("---> signinFB ok")
-               console.log(response)
-               App.free()
-               App.authToken = response.authToken
-               UserManager.receivedPlayer(response.player)
-            }
-            else{
-               // todo merge
-               App.message("_An account with these names exists", false)
-            }
+   App.user.email                = Facebook.data.email
+   App.user.facebookName         = Facebook.data.name
+   App.user.facebookId           = Facebook.data.id
+   App.user.firstName            = $("#fbForm_firstName").val() 
+   App.user.lastName             = $("#fbForm_lastName").val() 
+   App.user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
+   App.user.referrerId           = $("#fbForm_referrerId").val() 
+
+   $("#signinFBWindow").trigger("reveal:close");
+   App.wait()
+
+   var params = new Object();
+   params["user"] = App.user;
+   params["accessToken"] = Facebook.accessToken;
+
+   $.ajax({
+      type: "POST",  
+      url: "/signinFromFacebook",
+      data: JSON.stringify(params),  
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (response){
+         if(response){
+            console.log("---> signinFB ok")
+            console.log(response)
+            App.free()
+            App.authToken = response.authToken
+            UserManager.receivedPlayer(response.player)
          }
-      });
-      
-   }
+         else{
+            // todo merge
+            App.message(App.translations.messages.AccountNamesExist, false)
+         }
+      }
+   });
+
 }
 
 //-------------------------------------------//
@@ -323,17 +335,17 @@ UserManager.login = function()
    if($("#loginForm").valid()){
       var user = {}
       user.email       = $("#loginemail").val() 
-      
+
       var passwordHash  = CryptoJS.SHA512($("#loginpassword").val());
       var password512   = passwordHash.toString(CryptoJS.enc.Hex)
       user.password = password512
-      
+
       $("#loginWindow").trigger("reveal:close");
       App.wait()
-      
+
       var params = new Object();
       params["user"] = user;
-      
+
       $.ajax({
          type: "POST",  
          url: "/login",
@@ -352,7 +364,7 @@ UserManager.login = function()
             App.message("Wrong login/password", false)
          }
       });
-      
+
    }
 }
 
@@ -363,16 +375,16 @@ UserManager.mobileLogin = function(callback)
    if($("#loginForm").valid()){
       var user = {}
       user.email       = $("#loginemail").val() 
-      
+
       var passwordHash  = CryptoJS.SHA512($("#loginpassword").val());
       var password512   = passwordHash.toString(CryptoJS.enc.Hex)
       user.password = password512
-      
+
       App.wait()
-      
+
       var params = new Object();
       params["user"] = user;
-      
+
       $.ajax({
          type: "POST",  
          url: "/login",
@@ -388,7 +400,7 @@ UserManager.mobileLogin = function(callback)
             App.message("Wrong login/password", false)
          }
       });
-      
+
    }
 }
 
@@ -399,25 +411,25 @@ UserManager.mobileSignin = function(callback)
    var form1Ready = $("#signinForm1").valid()
    var form2Ready = $("#signinForm2").valid()
    var formReady = form1Ready && form2Ready
-   
+
    if(formReady){
       var user = {}
-      
+
       user.email       = $("#email").val() 
       user.firstName   = $("#firstName").val() 
       user.lastName    = $("#lastName").val() 
       user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
       user.referrerId  = $("#referrerId").val() 
-      
+
       var passwordHash  = CryptoJS.SHA512($("#password").val());
       var password512   = passwordHash.toString(CryptoJS.enc.Hex)
       user.password = password512
-      
+
       App.wait()
-      
+
       var params = new Object();
       params["user"] = user;
-      
+
       $.ajax({
          type: "POST",  
          url: "/signin",
@@ -447,7 +459,7 @@ UserManager.mobileSigninFB = function(callback)
       user.referrerId           = $("#fbForm_referrerId").val() 
 
       App.wait()
-      
+
       var params = new Object();
       params["user"] = user;
 
@@ -465,7 +477,7 @@ UserManager.mobileSigninFB = function(callback)
             }
             else{
                // todo merge
-               App.message("_An account with these names exists", false)
+               App.message(App.translations.messages.AccountNamesExist, false)
             }
          }
       });
@@ -478,9 +490,9 @@ UserManager.mobileSigninFB = function(callback)
 UserManager.setupForms = function() 
 {
    $( "#birthDate" ).datepicker({
-     changeMonth: true,
-     changeYear: true,
-     yearRange: "-100:-12"
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "-100:-12"
    });
 
    $( "#fbForm_birthDate" ).datepicker({
@@ -488,15 +500,15 @@ UserManager.setupForms = function()
       changeYear: true,
       yearRange: "-100:-12"
    });
-   
+
    $.validator.addMethod(
-      "same",
-      function(value, element, params) {
-         var target = $(params).val();
-         return target == value
-      }
+         "same",
+         function(value, element, params) {
+            var target = $(params).val();
+            return target == value
+         }
    );
-   
+
    $("#signinForm1").validate({
       rules: {
          firstName: {
@@ -522,7 +534,7 @@ UserManager.setupForms = function()
          },
       }
    });
-   
+
    $("#signinForm2").validate({
       rules: {
          birthDate: {
@@ -549,7 +561,7 @@ UserManager.setupForms = function()
          }
       }
    });
-   
+
 
    $("#fbForm").validate({
       rules: {
@@ -575,7 +587,7 @@ UserManager.setupForms = function()
          }
       }
    });
-   
+
    $("#loginForm").validate({
       rules: {
          loginemail: {
@@ -605,18 +617,18 @@ UserManager.checkIdlePoints = function() {
    if(App.user.idlePoints > 0){
       var points = App.user.idlePoints + App.user.currentPoints
       var nbTickets = Math.floor(points/App.Globals.POINTS_TO_EARN_A_TICKET)
-      
+
       var message = App.translations.messages.YouHaveEarned + " : ";
       message += points + " pts";
-      
+
       if(nbTickets > 0){
-         
+
          var plural = ""
-         if(nbTickets > 1) { plural = "s" }
-         
+            if(nbTickets > 1) { plural = "s" }
+
          message += " = " + nbTickets + " " + App.translations.messages.Ticket + plural
       }
-      
+
       App.message(message);
       UserManager.convertIdlePoints()
    }
@@ -630,7 +642,7 @@ UserManager.checkIdlePoints = function() {
 
       console.log("convertCurrentPoints", message)
       odump(App.Globals)
-      
+
       UserManager.convertCurrentPoints()
    }
 }
@@ -663,7 +675,7 @@ UserManager.convertPointsToTickets = function() {
    while (App.user.currentPoints >= App.Globals.POINTS_TO_EARN_A_TICKET) {
       App.user.set("currentPoints", App.user.currentPoints - App.Globals.POINTS_TO_EARN_A_TICKET)
       App.user.set("extraTickets", App.user.extraTickets + 1)
-      
+
       conversion++
    }
 

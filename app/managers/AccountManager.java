@@ -15,6 +15,8 @@ import utils.Utils;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
+import com.typesafe.plugin.MailerAPI;
+import com.typesafe.plugin.MailerPlugin;
 
 public class AccountManager {
 
@@ -191,6 +193,17 @@ public class AccountManager {
 		//-------------------------------------//
 
 		Ebean.save(player);  
+
+		//-------------------------------------//
+
+		MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
+		mail.setSubject("Adillions - Welcome !");
+		mail.addRecipient("chris.dugne@gmail.com");
+		mail.addFrom("noreply@adillions.com");
+		//sends text/text
+		mail.send( "Welcome to Adillions !\nYou can now login with your Account :\nChris\nDugne\nemail\n\n\nwww.adillions.com" );
+
+		//-------------------------------------//
 
 		return player;
 	}

@@ -67,6 +67,15 @@
     "ReferrerCode"		: "Sponsor code",
     "ChangeAccount"		: "Change account",
 
+    "AccountEmailExists": "An account with this email exists yet",
+    "AccountNamesExist" : "An account with these names exists yet",
+
+    "Password"			: "Password",
+    "RepeatPassword"	: "Repeat password",
+
+    "GoBack"			: "Go back",
+    "Continue"			: "Continue",
+
     "MaxTickets1"		: "You have reached the maximum number of tickets for this draw.",
     "MaxTickets2"		: "You can gain bonus tickets by liking our Facebook page or following us on Twitter.",
     
