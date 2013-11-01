@@ -408,40 +408,44 @@ UserManager.mobileLogin = function(callback)
 
 UserManager.mobileSignin = function(callback)
 {
-   var form1Ready = $("#signinForm1").valid()
-   var form2Ready = $("#signinForm2").valid()
-   var formReady = form1Ready && form2Ready
+   var user = {}
 
-   if(formReady){
-      var user = {}
+   user.email       = $("#email").val() 
+   user.firstName   = $("#firstName").val() 
+   user.lastName    = $("#lastName").val() 
+   user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
+   user.referrerId  = $("#referrerId").val() 
 
-      user.email       = $("#email").val() 
-      user.firstName   = $("#firstName").val() 
-      user.lastName    = $("#lastName").val() 
-      user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
-      user.referrerId  = $("#referrerId").val() 
+   var passwordHash  = CryptoJS.SHA512($("#password").val());
+   var password512   = passwordHash.toString(CryptoJS.enc.Hex)
+   user.password = password512
 
-      var passwordHash  = CryptoJS.SHA512($("#password").val());
-      var password512   = passwordHash.toString(CryptoJS.enc.Hex)
-      user.password = password512
+   App.wait()
 
-      App.wait()
+   var params = new Object();
+   params["user"] = user;
 
-      var params = new Object();
-      params["user"] = user;
-
-      $.ajax({
-         type: "POST",  
-         url: "/signin",
-         data: JSON.stringify(params),  
-         contentType: "application/json; charset=utf-8",
-         dataType: "json",
-         success: function (){
-            App.free()
-            callback()
+   $.ajax({
+      type: "POST",  
+      url: "/signin",
+      data: JSON.stringify(params),  
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (){
+         App.free()
+         callback()
+      },
+      error: function (data){
+         //no json returned -> reach error
+         App.free()
+         if(data.responseText == "email"){
+            App.message(Translator.messages["AccountEmailExists"], false)
          }
-      });
-   }
+         else if(data.responseText == "names"){
+            App.message(Translator.messages["AccountNamesExist"], false)
+         }
+      }
+   });
 }
 
 //-------------------------------------------//
