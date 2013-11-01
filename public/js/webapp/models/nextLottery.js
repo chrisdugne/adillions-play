@@ -21,7 +21,11 @@
 
 	   enoughPlayers: function() {
 	     return this.get('toolPlayers') <= this.get('nbPlayers');
-	   }.property('nbPlayers', 'toolPlayers')
+	   }.property('nbPlayers', 'toolPlayers'),
+	   
+	   price: function() {
+	      return Math.min(this.get('maxPrice'), Math.max(this.get('minPrice'), this.get('nbTickets')/1000 * this.get('cpm')));
+	   }.property('maxPrice', 'minPrice', 'nbTickets', 'cpm')
 	   
 	});
 	

@@ -15,50 +15,77 @@
 	<div class="marketing home-container">
 
 		<!-- -------------------------------------------------------------- -->
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
 
 		{{#if App.Globals.isProd}}
 
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		
 		<div class="row-fluid">
 		 <h1>Coming Soon</h1>
 		</div>
+		
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 
 		{{else}}
+
+		<!-- -------------------------------------------------------------- -->
+
 		
-		<div class="row-fluid">
-		 <h1>Dev</h1>
+		<div class="row-fluid" id="topHeader">
+			{{themeWeb App.nextLottery.theme}}
+			{{langImage png='theme.text.png' id='themeText'}}
+			
+			<div id="headerNextDrawing"> {{App.translations.messages.NextDrawing}}	</div>
+			<div id="headerDate">		 {{readableFullDate App.nextLottery.date}}	</div>
+			<div id="headerPrice">		 {{price App.nextLottery.price}}			</div>
+			<img id="cagnotteIconHome" src='@routes.Assets.at("images/website/home.cagnotte.png")'></img>
+			<div {{action openLogin}}>{{langImage png='button.seeresults.png' id='seeResultsHome'}}</div>
 		</div>
+		
+		<!-- -------------------------------------------------------------- -->
+		
+		<div class="row-fluid" id="partAdillionIs">
+		 	<div id="partAdillionIsText">{{App.translations.messages.Title}} {{App.translations.messages.TitleBold}}</div>
+		</div>
+		
+		<!-- 
+		<div class="row-fluid" id="partAdillionIs">
+		 	<div id="partAdillionIsText">{{App.translations.messages.Title}} </div>
+		 	<div id="partAdillionIsTextBold">{{App.translations.messages.TitleBold}}</div>
+		</div>
+		 -->
+		
+		<!-- -------------------------------------------------------------- -->
 		
 		{{/if}}
 		
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
 
 		<!-- -------------------------------------------------------------- -->
 

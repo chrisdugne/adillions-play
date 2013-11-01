@@ -164,13 +164,13 @@ Utils.getNumberSuffix = function(num){
    var suffix = "";
 
    if(num == 1) 
-      suffix = "st";
+      suffix = "<sup>st</sup>";
    else if(num == 2)
-      suffix = "nd";
+      suffix = "<sup>nd</sup>";
    else if(num == 3)
-      suffix = "rd";
+      suffix = "<sup>rd</sup>";
    else
-      suffix = "th";
+      suffix = "<sup>th</sup>";
 
    return suffix;
 

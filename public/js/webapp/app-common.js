@@ -65,23 +65,24 @@
 
    App.message = function(message, ok) {
 
+      var width = $(".container").css("width").split("px")[0]
+      
       $.blockUI({ message: '<p>'+message+'</p>', 
          fadeIn: 700, 
          fadeOut: 700, 
          timeout: 2000, 
          showOverlay: false, 
-         centerY: false, 
          css: { 
-            width: '100%', 
+            width: width+'px', 
             top: '67px', 
-            left: '0px', 
-            height:'25px',
+            left:'',
+            height:'45px',
             border: 'none', 
-            padding: '5px', 
+            paddingTop:'18px',
             backgroundColor: '#000', 
             opacity: 0.6, 
             color: '#fff', 
-            fontSize: '25px', 
+            fontSize: '22px', 
          } 
       }); 
 

@@ -1,6 +1,8 @@
+.container {
+	width:1430px;	
+}
 
 /*--------------------------------*/
-
 .button {
 	cursor: pointer;
 	cursor: hand;
@@ -9,7 +11,7 @@
 	font-weight: 200;
 	background: #eee;
 	color: #222;
-	text-align:center;
+	text-align: center;
 	-webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px
 		0px 0px rgba(255, 255, 255, 0.2);
 	-moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 0px
@@ -19,8 +21,8 @@
 }
 
 .button:hover {
-	background-color: #fff!important;
-	color: #111!important;
+	background-color: #fff !important;
+	color: #111 !important;
 }
 
 .button-facebook {
@@ -29,11 +31,12 @@
 	z-index: 2;
 	font-size: 17px;
 	font-weight: 200;
-	background: url(/assets/images/icons/facebook-64x64.png) no-repeat center center;
+	background: url(/assets/images/icons/facebook-64x64.png) no-repeat
+		center center;
 	background-size: 30px 30px;
 	background-color: #39579a;
 	background-position: 10px;
-	padding-left:65px;
+	padding-left: 65px;
 	color: #eee;
 	-webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px
 		0px 0px rgba(255, 255, 255, 0.2);
@@ -54,11 +57,12 @@
 	z-index: 2;
 	font-size: 17px;
 	font-weight: 200;
-	background: url(/assets/images/icons/twitter.png) no-repeat center center;
+	background: url(/assets/images/icons/twitter.png) no-repeat center
+		center;
 	background-size: 30px 30px;
 	background-color: #18a8d4;
 	background-position: 10px;
-	padding-left:65px;
+	padding-left: 65px;
 	color: #eee;
 	-webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), inset 0px 1px
 		0px 0px rgba(255, 255, 255, 0.2);
@@ -107,21 +111,24 @@
 }
 
 /*--------------------------------*/
-body{
+body {
 	background: #eee;
-	background-image:  -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee)); /* Saf4+, Chrome */
-	background-image:  -webkit-linear-gradient(top, #fff, #eee); /* Chrome 10+, Saf5.1+ */
-	background-image:  -moz-linear-gradient(top, #fff, #eee); /* FF3.6+ */
-	background-image:  -ms-linear-gradient(top, #fff, #eee); /* IE10 */
-	background-image:  -o-linear-gradient(top, #fff, #eee); /* Opera 11.10+ */
-	background-image:  linear-gradient(top, #fff, #eee);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff),
+		to(#eee) ); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, #fff, #eee);
+	/* Chrome 10+, Saf5.1+ */
+	background-image: -moz-linear-gradient(top, #fff, #eee); /* FF3.6+ */
+	background-image: -ms-linear-gradient(top, #fff, #eee); /* IE10 */
+	background-image: -o-linear-gradient(top, #fff, #eee);
+	/* Opera 11.10+ */
+	background-image: linear-gradient(top, #fff, #eee);
 }
 
 .row-fluid.touchable:hover {
 	background-color: #DDEDDD;
 }
 
-.langButton{
+.langButton {
 	color: #111;
 	cursor: pointer;
 	cursor: hand;
@@ -129,10 +136,10 @@ body{
 	width: 40px;
 }
 
-#langButtons{
+#langButtons {
 	margin-top: 10px;
-	right: 17px;
-	position: fixed;
+	right: 10px;
+	position: absolute;
 	z-index: 2;
 }
 
@@ -143,22 +150,91 @@ body{
 }
 
 /*--------------------------------*/
+.no-close .ui-dialog-titlebar-close {
+	display: none
+}
 
+.pointerCursor {
+	cursor: pointer;
+	cursor: hand;
+}
+
+.page {
+	margin-top: 80px;
+}
+
+.popuptitle {
+	font-size: 24px !important;
+	font-weight: bold !important;
+	line-height: 26px !important;
+	margin: 0 0 30px 0 !important;
+	color: #000;
+}
+
+/*--------------------------------*/
+.marketing {
+	text-align: center;
+	color: #5a5a5a;
+}
+
+.marketing h1 {
+	margin: 60px 0 10px;
+	font-size: 60px;
+	font-weight: 200;
+	line-height: 1;
+	letter-spacing: -1px;
+	text-align: center;
+}
+
+.marketing h2 {
+	font-weight: 200;
+	margin-bottom: 5px;
+}
+
+.marketing h3 {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.marketing p {
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.marketing .marketing-byline {
+	margin-bottom: 40px;
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 1.25;
+	color: #999;
+}
+
+.marketing img {
+	display: block;
+	margin: 0 auto 30px;
+}
+
+/*--------------------------------*/
 .tooltip-theme {
-	border-radius: 5px; 
+	border-radius: 5px;
 	border: 1px solid #111;
 	-moz-box-shadow: 0px 2px 15px #333;
 	-webkit-box-shadow: 0px 2px 15px #333;
-    background-color: #000;
-    /* For WebKit (Safari, Chrome, etc) */
-    background: #ddd -webkit-gradient(linear, left top, left bottom, from(#000), to(#111)) no-repeat;
-    /* Mozilla,Firefox/Gecko */
-    background: #fff -moz-linear-gradient(top, #000, #111) no-repeat;
-    /* IE 5.5 - 7 */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#000, endColorstr=#111) no-repeat;
-    /* IE 8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#000, endColorstr=#111)" no-repeat;
-	
+	background-color: #000;
+	/* For WebKit (Safari, Chrome, etc) */
+	background: #ddd
+		-webkit-gradient(linear, left top, left bottom, from(#000), to(#111) )
+		no-repeat;
+	/* Mozilla,Firefox/Gecko */
+	background: #fff -moz-linear-gradient(top, #000, #111) no-repeat;
+	/* IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#000,
+		endColorstr=#111 ) no-repeat;
+	/* IE 8 */
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorstr=#000, endColorstr=#111)"
+		no-repeat;
 	color: #eee;
 }
 
@@ -435,7 +511,8 @@ body{
 	width: 16px;
 	height: 16px;
 	vertical-align: text-top;
-	background-image: url(http://static.maperial.localhost/images/global/icons-16x16.png?v=1);
+	background-image:
+		url(http://static.maperial.localhost/images/global/icons-16x16.png?v=1);
 	background-repeat: no-repeat;
 	*margin-right: .3em;
 }
@@ -449,18 +526,17 @@ body{
 }
 
 /*--------------------------------*/
-
 .popup {
 	padding-left: 20px;
 }
 
 /*--------------------------------*/
 .marginbottom {
-	margin-bottom: 20px!important;
+	margin-bottom: 20px !important;
 }
 
 .hugemarginbottom {
-	margin-bottom: 65px!important;
+	margin-bottom: 65px !important;
 }
 
 .error {
@@ -485,7 +561,7 @@ body{
 .link {
 	cursor: hand;
 	cursor: pointer;
-	text-decoration: none!important;
+	text-decoration: none !important;
 	color: #000;
 }
 
@@ -546,15 +622,15 @@ body{
 .touchable {
 	cursor: hand;
 	cursor: pointer;
-	opacity:0.8;
+	opacity: 0.8;
 }
 
 .touchable:hover {
-	opacity:1;
+	opacity: 1;
 }
 
 .movable {
-	cursor: move!important;
+	cursor: move !important;
 }
 
 .selectable {
@@ -569,7 +645,6 @@ body{
 
 /*------------------------------------------------
 	overidding jquery-ui 		*/
-
 .ui-state-default {
 	background: #fff
 }
@@ -586,11 +661,10 @@ body{
 }
 
 /*------------------------------------------------*/
-/* blockUI css */ 
+/* blockUI css */
 
 /* .blockUI h1, .blockUI h2 {
     color: #222; padding: 5px 5px 5px 5px; text-align: right;
     font-weight: normal!important;
     font-size: 16px!important;
 } */
-

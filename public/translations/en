@@ -8,9 +8,10 @@
   	"Logout"			: "Log Out",
   	"SignIn"			: "Sign Up",
 	
-	"NextDrawing"		: "Next Drawing",
+	"NextDrawing"		: "Next drawing",
 	
-	"Title"				: "Adillions is a free lottery with real cash prizes",
+	"Title"				: "Adillions is a",
+	"TitleBold"			: "free lottery with real cash prizes",
 	
 	"Work"				: "How it works?",
 	"WorkAd"			: "Watch an ad",

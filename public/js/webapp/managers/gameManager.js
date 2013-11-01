@@ -234,13 +234,13 @@ GameManager.randomSelection = function() {
 GameManager.refreshNumberSelectionDisplay = function()   {
 
    var xGap       = 44
-   var marginLeft = $(window).width()/2 - 128 
+   var marginLeft = $(window).width()/2 - 101 
    $("#numbersSelected").empty()
 
    Utils.sortNumbers(GameManager.currentSelection)
 
    for(var i = 0; i < GameManager.currentSelection.length; i++){
-      GameManager.drawBallSelected(GameManager.currentSelection[i], marginLeft + xGap*i, -8);
+      GameManager.drawBallSelected(GameManager.currentSelection[i], marginLeft + xGap*i, -9);
    }
 
    if(GameManager.currentSelection.length == App.nextLottery.maxPicks){
@@ -349,7 +349,7 @@ GameManager.drawSelectAdditionalNumber = function() {
    //-----------------------------------//
    
    xGap = 45;
-   var marginLeft = $(window).width()/2 - 153 
+   var marginLeft = $(window).width()/2 - 126 
    
    for(var i = 0; i < GameManager.currentSelection.length; i++){
       GameManager.drawBallSelected(GameManager.currentSelection[i], marginLeft + xGap*i, -8);
@@ -452,7 +452,7 @@ GameManager.refreshThemeSelectionDisplay = function(){
    
    if(GameManager.luckyBall){
 
-      var left    = $(window).width()/2 + 75; 
+      var left    = $(window).width()/2 + 101; 
       var top   = -8;
          
       

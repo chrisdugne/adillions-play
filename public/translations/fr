@@ -11,7 +11,8 @@
 	
 	"NextDrawing"		: "Prochain tirage",
 	
-	"Title"				: "Adillions est une loterie gratuite avec des gains d'argent réel",
+	"Title"				: "Adillions est une",
+	"TitleBold"			: "loterie gratuite avec des gains d'argent réel",
 	
 	"Work"				: "Comment ça marche?",
 	"WorkAd"			: "Visionnez une pub",

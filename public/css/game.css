@@ -1,7 +1,7 @@
 /*---------------------------------------------*/
 
 .gameView {
-	margin-top: 102px;
+	margin-top: 87px;
 }
 
 .free {
@@ -10,7 +10,11 @@
 
 /*------------------------------------------------*/
 
-.twiceUpper {
+.upper4 {
+	margin-top: -32px;
+}
+
+.upper2 {
 	margin-top: -15px;
 }
 
@@ -59,28 +63,28 @@
 }
 
 #gameHomeButton 			{
-	background: url(/assets/images/bylang/en/OFF1.png) no-repeat center center;height:50px;width:50px;background-size: 90px;
-	position: absolute;
+	background: url(/assets/images/bylang/en/OFF1.png) no-repeat center center;height:70px;width: 70px;background-size: 90px;
+	position:absolute;
 }
-#gameHomeButton.selected 	{background: url(/assets/images/bylang/en/ON1.png) no-repeat center center;height:50px;width:50px;background-size: 90px;}
+#gameHomeButton.selected 	{background: url(/assets/images/bylang/en/ON1.png) no-repeat center center;background-size: 90px}
 
 #myTicketsButton 			{
-	background: url(/assets/images/bylang/en/OFF2.png) no-repeat center center;height:50px;width:50px;background-size: 90px;
-	position: absolute;
+	background: url(/assets/images/bylang/en/OFF2.png) no-repeat center center;height:70px;width: 70px;background-size: 90px;
+	position:absolute;
 }
-#myTicketsButton.selected 	{background: url(/assets/images/bylang/en/ON2.png) no-repeat center center;height:50px;width:50px;background-size: 90px;}
+#myTicketsButton.selected 	{background: url(/assets/images/bylang/en/ON2.png) no-repeat center center;background-size: 90px}
 
 #resultsButton 				{
-	background: url(/assets/images/bylang/en/OFF3.png) no-repeat center center;height:50px;width:50px;background-size: 90px;
-	position: absolute;
+	background: url(/assets/images/bylang/en/OFF3.png) no-repeat center center;height:70px;width: 70px;background-size: 90px;
+	position:absolute;
 }
-#resultsButton.selected 	{background: url(/assets/images/bylang/en/ON3.png) no-repeat center center;height:50px;width:50px;background-size: 90px;}
+#resultsButton.selected 	{background: url(/assets/images/bylang/en/ON3.png) no-repeat center center;background-size: 90px}
 
 #profileButton 				{
-	background: url(/assets/images/bylang/en/OFF4.png) no-repeat center center;height:50px;width:50px;background-size: 90px;
-	position: absolute;
+	background: url(/assets/images/bylang/en/OFF4.png) no-repeat center center;height:70px;width: 70px;background-size: 90px;
+	position:absolute;
 }
-#profileButton.selected 	{background: url(/assets/images/bylang/en/ON4.png) no-repeat center center;height:50px;width:50px;background-size: 90px;}
+#profileButton.selected 	{background: url(/assets/images/bylang/en/ON4.png) no-repeat center center;background-size: 90px}
 
 /*---------------------------------------------*/
 
@@ -141,7 +145,7 @@
 }
 
 .themeBall{
-	width: 80px;
+	width: 70px;
 	position: absolute;
 	opacity:0.8;
 }
@@ -266,7 +270,7 @@
 
 /*---------------------------------------------*/
 #validateButton {
-	width: 170px;
+	width: 126px;
 }
 
 #validateButton.enabled:hover {

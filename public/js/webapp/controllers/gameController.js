@@ -13,7 +13,7 @@
       App.get('router').transitionTo('game.gameHome');
 	   GameManager.init()
 	   
-	   var menuButtonSize = 67;
+	   var menuButtonSize = 80;
 	   $("#gameHomeButton").css("left", ($(window).width()/2 - 3.4*menuButtonSize) + "px")
 	   $("#myTicketsButton").css("left", ($(window).width()/2 - 1.8*menuButtonSize) + "px")
 	   $("#resultsButton").css("left", ($(window).width()/2 ) - 0.2*menuButtonSize + "px")

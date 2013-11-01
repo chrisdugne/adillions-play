@@ -1,10 +1,19 @@
 
 //---------------------------------------------------------------------------------------//
+//Website
+//---------------------------------------------------------------------------------------//
+
+Ember.Handlebars.registerBoundHelper('themeWeb', function(theme) {
+   var img = "<img id=\"themeWeb\" src='"+theme.webImage+"'></img>"
+   return new Handlebars.SafeString(img)
+});
+
+//---------------------------------------------------------------------------------------//
 //Lottery
 //---------------------------------------------------------------------------------------//
 
-Ember.Handlebars.registerBoundHelper('lotteryPrice', function(lottery) {
-   return "$ " + Math.min(lottery.maxPrice, Math.max(lottery.minPrice, lottery.nbTickets/1000 * lottery.cpm))
+Ember.Handlebars.registerBoundHelper('price', function(price) {
+   return "$ " + price
 });
 
 Ember.Handlebars.registerBoundHelper('themeImage', function(lottery) {
@@ -113,7 +122,7 @@ Ember.Handlebars.registerBoundHelper('formatDate', function(uploadTime, options)
  * transform 1356095267229 ==> 21/12/2012
  */
 Ember.Handlebars.registerBoundHelper('readableFullDate', function(uploadTime, options) {
-   return Utils.readableFullDate(uploadTime);
+   return new Handlebars.SafeString(Utils.readableFullDate(uploadTime));
 });
 
 //---------------------------------------------------------------------------------------//
