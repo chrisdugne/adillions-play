@@ -19,8 +19,8 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
 {
    //---------------------------------------------------------------
    
-   this.prod = 0
-//   this.prod = 1  
+//   this.prod = 0
+   this.prod = 1  
 
    //---------------------------------------------------------------
    
