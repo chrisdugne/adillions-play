@@ -8,6 +8,7 @@
 
 @import views.html.templates.pages.home;
 @import views.html.templates.pages.game;
+@import views.html.templates.pages.realhome;
 
 <!-- Components -->
 
@@ -29,6 +30,7 @@
 <!-- ------------------------------------------------------------------- -->
 
 <!-- --- Pages --- -->
+@pageTemplate("realhome", true)					{ @realhome()	}
 @pageTemplate("home", true)						{ @home()	}
 @pageTemplate("game", false)					{ @game()	}
 

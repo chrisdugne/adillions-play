@@ -36,6 +36,7 @@
 	//----------------------------------------------------//
 
 	App.HomeController = HomeController;
+	App.RealhomeController = HomeController;
 
 	//==================================================================//
 	// Routing
@@ -64,6 +65,30 @@
 	});
 
 	//==================================================================//
+	// TO REMOVE
+	
+	App.RealHomeRouting = App.Page.extend({
+	   route: '/ytrew',
+	   
+	   connectOutlets: function(router){
+	      App.Router.openPage(router, "realhome");
+	   },
+	   
+	   //--------------------------------------//
+	   // actions
+	   
+	   playOnAdillions    : function(){
+	      if(App.user.loggedIn){
+	         App.get('router').transitionTo('game');
+	      }
+	      else{
+	         App.HomeController.openLoginWindow()
+	      }
+	   },
+	   openLoginWindow    : function(){App.HomeController.openLoginWindow()},
+	   showVideo          : function(){App.HomeController.openVideoWindow()},
+	   
+	});
 
 })();
 

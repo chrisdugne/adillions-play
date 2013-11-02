@@ -18,6 +18,8 @@
 /*--------------------------------*/
 #topHeader {
 	margin-top: 67px;
+	margin-bottom: -100px;
+	padding-top: 100px;
 	background: url(/assets/images/website/header.bg.jpg) no-repeat;
 	background-color: #0c4a58;
 	height: 500px;
@@ -25,70 +27,52 @@
 }
 
 #themeWeb {
-	top: 74px;
-	position: relative;
-	left: 363px;
+	margin-top: -86px;
+	margin-left: -63px;
 }
 
 #themeText {
-	position: relative;
-	left: 363px;
-	top: -30px;
-}
+	margin-top: -104px;
+	margin-left: -46px;
+} 
 
 #headerNextDrawing {
-	font-size: 24px;
+	font-size: 29px;
 	color: #fff;
-	position: absolute;
-	left: 200px;
-	top: 180px;
 	text-align: left;
 }
 
 #headerDate {
 	color: #fff;
-	font-size: 28px;
-	position: absolute;
-	left: 200px;
-	top: 212px;
+	font-size: 35px;
 	text-align: left;
+	margin-top: 4px;
 }
 
 #headerPrice  {
 	color: #fff;
 	font-size: 60px;
-	position: absolute;
-	left: 200px;
-	top: 305px;
-	text-align: left;
+	text-align: right;
+	margin-top: 90px;
 }
 
 #seeResultsHome {
-	position: absolute;
-	top: 420px;
-	left: 197px;
 	width: 187px;
 	cursor: hand;
 	cursor: pointer;
 	opacity: 0.9;
+	margin-left: -40px;
+	margin-top: -65px;
 }
 
 #seeResultsHome:hover {
 	opacity: 1;
 }
 
-#playersIconHome {
-	z-index: 100;
-	position: absolute;
-	left: 438px;
-	top: 285px;
+#cagnotteIconHome { 
+	margin-top: 60px;
 }
 
-#cagnotteIconHome {
-	position: absolute;
-	left: 449px;
-	top: 274px;
-}
 
 /*--------------------------------*/
 #partAdillionIs {
@@ -242,20 +226,81 @@
 	background-color: #fff;
 }
 
+.responsibleTitle {
+	font-size: 28px;
+	color: #1b5c64;
+	padding-top: 90px;
+	padding-bottom: 30px;
+}
+
+.responsibleText {
+	font-size: 22px;
+	color: #1b5c64;
+}
+
+#responsibleImage {
+	padding-top: 31px;
+}
+
 /*--------------------------------*/
 #partGlobal {
 	height: 680px;
 	background-color: #188785;
 }
 
+.globalTitle {
+	color: #fff;
+	font-size: 40px;
+	padding-bottom: 30px;
+	padding-top: 50px;
+}
+
+.globalText {
+	color: #fff;
+	font-size: 25px;
+	padding-bottom: 30px;
+}
+
 /*--------------------------------*/
 #partMedia {
-	height: 215px;
+	height: 235px;
 	background-color: #fff;
 }
+
+.mediaTitle {
+	color: #1b5c64;
+	font-size: 40px;
+	padding-bottom: 30px;
+	padding-top: 50px;
+}
+
 
 /*--------------------------------*/
 #partAdvertisers {
 	height: 275px;
 	background-color: #1c5d64;
+}
+
+.advertisersTitle {
+	font-size: 28px;
+	color: #fff;
+	padding-top: 40px;
+	padding-bottom: 20px;
+}
+
+.advertisersText {
+	font-size: 22px;
+	color: #fff;
+}
+
+#advertisingButton {
+	width: 218px;
+	padding-top: 25px;
+	cursor: hand;
+	cursor: pointer;
+	opacity: 0.9;
+}
+
+#advertisingButton:hover {
+	opacity: 1;
 }

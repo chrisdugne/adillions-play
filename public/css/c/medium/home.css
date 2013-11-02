@@ -18,14 +18,13 @@
 	}
 
 	/*--------------------------------*/
+
 	#themeWeb {
-		top: 74px;
-		position: relative;
-		left: 115px;
+		margin-top: 10px;
+		margin-left: -107px;
 	}
 	#themeText {
-		position: relative;
-		left: 115px;
-		top: -30px;
+		margin-top: -104px;
+		margin-left: -155px;
 	}
 }

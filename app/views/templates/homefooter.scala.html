@@ -1,33 +1,40 @@
 @()
-
 	
-	<div id="footerHome" class="snapper">
+	<div id="footerHome">
 	{{#if App.Globals.isProd}}
 	{{else}}
 		<div class="row-fluid">
-			<div class="span2 offset3 footerContent">
-				<div class="footerTitle">{{App.translations.messages.AboutUs}}</div>
-				<div class="link">{{App.translations.messages.Team}}</div>
-				<div class="link">{{App.translations.messages.Blog}}</div>
-				<div class="link" {{action openGame}}>game.{{App.translations.messages.Game}}</div>
+			<div class="span5 offset1">
+				<div class="row-fluid">
+					<div class="link span4">{{App.translations.messages.About}}</div>
+					<div class="link span4">{{App.translations.messages.Reward}}</div>
+					<div class="link span4">{{App.translations.messages.Press}}</div>
+				</div>
+				<div class="row-fluid">
+					<div class="link span4">{{App.translations.messages.FAQ}}</div>
+					<div class="link span4">{{App.translations.messages.Jobs}}</div>
+					<div class="link span4">{{App.translations.messages.Privacy}}</div>
+				</div>
+				<div class="row-fluid">
+					<div class="link span4">{{App.translations.messages.Terms}}</div>
+				</div>
 			</div>
-			<div class="span2 footerContent">
+			<div class="span4">
 				<div class="SocialIconsWidget">
 					<ul class="widget_socials">
-						<li><a href="http://blog.adillions.com/" class="rss" target="_blank"></a></li>
+						<li><a href="https://www.facebook.com/pages/Adillions/379432705492888" class="facebook" target="_blank"></a></li>
 						<li><a href="https://twitter.com/adillions" class="twitter" target="_blank"></a></li>
 						<li><a href="https://plus.google.com/112607508051344203881/posts" class="googleplus" target="_blank"></a></li>
-						<li><a href="mailto:{{email name='contact'}}" class="mail"></a></li>
+						<li><a href="https://youtube.com" class="youtube" target="_blank"></a></li>
+						<li><a href="http://blog.adillions.com/" class="rss" target="_blank"></a></li>
 						<li><a href="http://www.linkedin.com/company/adillions" class="linkedin" target="_blank"></a></li>
-						<li><a href="http://www.slideshare.net/Adillions/" class="slideshare" target="_blank"></a></li>
 						<li><a href="http://pinterest.com/adillions/" class="pinterest" target="_blank"></a></li>
+						<li><a href="mailto:{{email name='contact'}}" class="mail"></a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="span2 footerContent">
+			<div class="span2">
 				<div class="link">&copy; 2013 Adillions</div>
-				<br/>
-				<div class="link">{{email name='contact'}}</div>
 			</div>
 		</div>
 	{{/if}}

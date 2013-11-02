@@ -8,7 +8,8 @@
 			//-------------------------------------------------------//
 			// Common actions to all views
 
-			openHome       : Ember.Route.transitionTo('home'),
+		   openHome       : Ember.Route.transitionTo('home'),
+		   openRealHome       : Ember.Route.transitionTo('realhome'),
 
 			//-------------------------------------------------------//
 
@@ -130,6 +131,9 @@
 			team           : App.TeamRouting,
 			credits        : App.CreditsRouting,
 			blog           : App.BlogRouting,
+
+			// to remove !
+			realhome       : App.RealHomeRouting,
 			
 		})
 	})
@@ -223,7 +227,7 @@
    //-----------------------------------------------------------------------------------------//
 
    Router.isWebappPage = function(page){
-      return (page != "home" && 
+      return (page != "home" && page != "realhome" &&
             page != "team" && 
             page != "credits" && 
             page != "blog");

@@ -125,8 +125,8 @@ Ember.Handlebars.registerBoundHelper('formatDate', function(uploadTime, options)
 /**
  * transform 1356095267229 ==> 21/12/2012
  */
-Ember.Handlebars.registerBoundHelper('readableFullDate', function(uploadTime, options) {
-   return new Handlebars.SafeString(Utils.readableFullDate(uploadTime));
+Ember.Handlebars.registerBoundHelper('readableFullDate', function(lang, options) {
+   return new Handlebars.SafeString(Utils.readableFullDate(options.hash.date, lang));
 });
 
 //---------------------------------------------------------------------------------------//

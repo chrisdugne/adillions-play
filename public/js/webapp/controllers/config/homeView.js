@@ -14,4 +14,20 @@
 	
 	App.HomeView = HomeView;
 
+	//---------------------------
+	// dummy to remove 
+	
+	var RealhomeView = Ember.View.extend({
+	   templateName: 'realhome',
+	   didInsertElement: function(){
+	      App.fillView()
+	      App.RealhomeController.renderUI();
+	   },
+	   willDestroyElement: function(){
+	      App.RealhomeController.cleanUI();
+	   }
+	});
+	
+	App.RealhomeView = RealhomeView;
+
 })( App);

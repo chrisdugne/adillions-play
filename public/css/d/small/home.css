@@ -19,18 +19,13 @@
 	}
 
 	/*--------------------------------*/
+	
 	#themeWeb {
-		top: 74px;
-		position: absolute;
-		right: -289px;
-		left: 0px;
-		width: 200px;
+		margin-top: 40px;
+		margin-left: -5px;
 	}
 	#themeText {
-		position: absolute;
-		right: -289px;
-		left: 0px;
-		width: 200px;
-		top: 232px;
+		margin-top: -81px;
+		margin-left: -42px;
 	}
 }

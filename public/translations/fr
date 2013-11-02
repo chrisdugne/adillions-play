@@ -39,16 +39,16 @@
 	"OnFacebookTitle"	: "ou sur",
 	"OnFacebookLink"	: "Facebook",
 	
-	"Responsible"		: "Responsable",
+	"Responsible"		: "RESPONSABLE",
 	"ResponsibleFew"	: "A chaque fois que vous jouez, vous donnez", 
 	"ResponsibleEach"	: "un peu de votre temps à des oeuvres caritatives",
 	
-	"Global"			: "International",
+	"Global"			: "INTERNATIONAL",
 	"GlobalText"		: "Vous faîtes partie d'une communauté internationale de joueurs",
 	
-	"Media"				: "Adillions dans les médias",
+	"Media"				: "ADILLIONS DANS LES MÉDIAS",
 	
-	"Advertisers"		: "Annonceurs",
+	"Advertisers"		: "ANNONCEURS",
 	"AdvertisersBoost"	: "Boostez votre notoriété",
 	"AdvertisersImplement"	: "Mettez en place une stratégie digitale multi-supports",
 	"AdvertisersReach"	: "Accédez à une large audience",

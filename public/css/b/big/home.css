@@ -18,14 +18,20 @@
 	}
 
 	/*--------------------------------*/
+	#seeResultsHome {
+		width: 187px;
+		cursor: hand;
+		cursor: pointer;
+		opacity: 0.9;
+		margin-left: -60px;
+		margin-top: -45px;
+	}
 	#themeWeb {
-		top: 74px;
-		position: relative;
-		left: 246px;
+		margin-top: -50px;
+		margin-left: -107px;
 	}
 	#themeText {
-		position: relative;
-		left: 246px;
-		top: -30px;
+		margin-top: -104px;
+		margin-left: -122px;
 	}
 }

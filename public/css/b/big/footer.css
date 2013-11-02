@@ -1,5 +1,10 @@
 /***** [ big ] *****/
 @media screen and ( max-width : 1280px) {
+		
+	.row-fluid .spanFooterLink{
+		width:14%;
+	}
+
 	/*--------------------------------*/
 	#footerClassic {
 		bottom: 0px;
@@ -76,72 +81,4 @@
 		margin-top: 26px;
 	}
 
-	/************************************************
-*	18.	Socials Widget 	       			     	* 
-************************************************/
-	.SocialIconsWidget {
-		margin-top: 35px;
-	}
-	.SocialIconsWidget ul {
-		margin: 0;
-		padding: 0;
-		float: right;
-	}
-	.SocialIconsWidget ul li {
-		list-style-type: none;
-		display: block;
-		float: left;
-		margin: 0 5px 5px 0;
-		padding: 0;
-	}
-	.SocialIconsWidget ul li a {
-		height: 30px;
-		width: 30px;
-		display: block;
-	}
-	.SocialIconsWidget ul li a.rss {
-		background: url(/assets/images/icons/social/social_rss.png) no-repeat
-			center center;
-		background-size: 30px 30px;
-	}
-	.SocialIconsWidget ul li a.twitter {
-		background: url(/assets/images/icons/social/social_twitter.png)
-			no-repeat center center;
-		background-size: 30px 30px;
-	}
-	.SocialIconsWidget ul li a.mail {
-		background: url(/assets/images/icons/social/social_mail.png) no-repeat
-			center center;
-		background-size: 30px 30px;
-	}
-	.SocialIconsWidget ul li a.googleplus {
-		background: url(/assets/images/icons/social/social_googleplus.png)
-			no-repeat center center;
-		background-size: 30px 30px;
-	}
-	.SocialIconsWidget ul li a.linkedin {
-		background: url(/assets/images/icons/social/social_linkedin.png)
-			no-repeat center center;
-		background-size: 30px 30px;
-	}
-	.SocialIconsWidget ul li a.slideshare {
-		background: url(/assets/images/icons/social/social_slideshare.png)
-			no-repeat center center;
-		background-size: 30px 30px;
-	}
-	.SocialIconsWidget ul li a.pinterest {
-		background: url(/assets/images/icons/social/social_pinterest.png)
-			no-repeat center center;
-		background-size: 30px 30px;
-	}
-	.SocialIconsWidget ul li a.github {
-		background: url(/assets/images/icons/social/social_github.png) no-repeat
-			center center;
-		background-size: 30px 30px;
-	}
-	.SocialIconsWidget ul li a.angellist {
-		background: url(/assets/images/icons/social/social_angellist.png)
-			no-repeat center center;
-		background-size: 30px 30px;
-	}
 }
