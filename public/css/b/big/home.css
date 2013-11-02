@@ -1,0 +1,31 @@
+/***** [ big ] *****/
+@media screen and ( max-width : 1280px) {
+	/************************************************/
+	.centered {
+		float: none;
+		margin: 0 auto;
+	}
+
+	/*--------------------------------*/
+	#homeContent {
+		padding: 0;
+		z-index: 1;
+	}
+
+	/*--------------------------------*/
+	.websiteContent {
+		padding-top: 50px;
+	}
+
+	/*--------------------------------*/
+	#themeWeb {
+		top: 74px;
+		position: relative;
+		left: 246px;
+	}
+	#themeText {
+		position: relative;
+		left: 246px;
+		top: -30px;
+	}
+}

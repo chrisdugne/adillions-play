@@ -1,12 +1,12 @@
-/***** [ medium ] *****/
-@media screen and ( max-width : 992px) {
+/***** [ big ] *****/
+@media screen and ( max-width : 1280px) {
 	/*--------------------------------*/
 	#footerClassic {
 		bottom: 0px;
 		position:fixed;
 		height:30px;
 		padding-top: 5px;
-		width: 1430px;
+		width: 1200px;
 		border-top: 1px solid #fff;
 		opacity: 0.9;
 		background-image: -webkit-gradient(linear, left top, left bottom, from(#fff),

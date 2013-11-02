@@ -1,3 +1,5 @@
+
+
 #header {
 	position: fixed;
 	top: 0px;
@@ -16,6 +18,18 @@
 	z-index: 500;
 	-moz-box-shadow: 0px 2px 15px #333;
 	-webkit-box-shadow: 0px 2px 15px #333;
+}
+
+@media screen and ( max-width : 1280px) {
+	#header {
+		width: 1200px;
+	}
+}
+
+@media screen and ( max-width : 992px) {
+	#header {
+		width: 940pxpx;
+	}
 }
 
 @media screen and ( max-width : 768px) {
