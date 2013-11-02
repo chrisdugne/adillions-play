@@ -8,8 +8,6 @@
 	<!-- --------------------------- -->
 	<!-- Language buttons -->
 	
-	{{#if App.Globals.isProd}}
-	{{else}}
 	<div id="langButtons">
 		<div id="enButton" {{action translateEn}} class="langButton">{{App.translations.messages.en}}</div>
 		<div id="frButton" {{action translateFr}} class="langButton">{{App.translations.messages.fr}}</div>
@@ -25,7 +23,6 @@
 			<li {{action openLogin}} class="btn-large button">{{App.translations.messages.LogIn}}</li>
 		{{/if}}
 	</ul>
-	{{/if}}
 
 	<!-- --------------------------- -->
 
