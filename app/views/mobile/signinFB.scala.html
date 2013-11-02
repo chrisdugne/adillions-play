@@ -9,18 +9,18 @@
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/bootstrap.min.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/header.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/mobile.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/classic/footer.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/classic/global.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/classic/home.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/medium/footer.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/medium/global.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/medium/home.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/facebook/footer.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/facebook/global.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/facebook/home.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/small/footer.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/small/global.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/small/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/c/medium/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/c/medium/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/c/medium/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/d/small/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/d/small/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/d/small/home.css")' />
 </head>
 
 @import views.html.mobile.header;
@@ -47,8 +47,10 @@
 		<br /> <br />
 
 		<div class="row-fluid">
-			<p id="FBText1"></p>
-			<p id="FBText2"></p>
+			<p id="FBUsername"></p>
+			<p id="FBImportant"></p>
+			<p id="FBRealName"></p>
+			<p id="FBReceive"></p>
 		</div>
 		<br />
 
@@ -186,12 +188,14 @@
    
    $("#labelReferrerCode").text(Translator.messages["ReferrerCode"])
    $("#changeAccountButton").text(Translator.messages["ChangeAccount"])
-   $("#FBText1").text(Translator.messages["FBText1"])
-   $("#FBText2").text(Translator.messages["FBText2"])
+   $("#FBUsername").text(Translator.messages["FBUsername"])
+   $("#FBImportant").text(Translator.messages["FBImportant"])
+   $("#FBRealName").text(Translator.messages["FBRealName"])
+   $("#FBReceive").text(Translator.messages["FBReceive"])
 
    $("#validateButton").text(Translator.messages["SignIn"])
 
-   $("#questionText").text(Translator.messages["FBText2"])
+   $("#questionText").text(Translator.messages["FBAttention"])
    $("#yes").text(Translator.messages["Continue"])
    $("#no").text(Translator.messages["GoBack"])
    

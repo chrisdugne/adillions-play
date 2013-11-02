@@ -21,19 +21,23 @@
 	"DrawSaturday"		: "Tirage tous les Samedi sur",
 	
 	"Fun"				: "Fun",
-	"FunText"			: "Découvrez un nouveau thème par semaine",
+	"FunDiscover"		: "Découvrez un nouveau thème",
+	"FunWeek"			: "par semaine",
 	"Easy"				: "Simple",
-	"EasyText"			: "Sélectionnez 5 numéros et une boule chance",
+	"EasyNumbers"		: "Sélectionnez 5 numéros et",
+	"EasyLucky"			: "une boule chance",
 	"Viral"				: "Social",
-	"ViralText"			: "Invitez vos amis pour faire grossir la cagnotte",
+	"ViralInvite"		: "Invitez vos amis pour fare", 
+	"ViralIncrease"		: "grossir la cagnotte",
 	
 	"Multi"				: "Multi-plateforme",
-	"MultiText"			: "Vous pouvez jouer sur plusieurs plateformes",
-	"MultiNow1"			: "Maintenant sur : www.adillions.com",
-	"MultiNow2"			: "ou sur Facebook : www.facebook.com/adillions",
+	"MultiRange"		: "Vous pouvez jouer sur plusieurs plateformes",
+	"MultiNow"			: "Maintenant sur : www.adillions.com", 
+	"MultiFacebook"		: "ou sur Facebook : www.facebook.com/adillions",
 	
 	"Responsible"		: "Responsable",
-	"ResponsibleText"	: "A chaque fois que vous jouez, vous donnez un peu de votre temps à des oeuvres caritatives",
+	"ResponsibleFew"	: "A chaque fois que vous jouez, vous donnez", 
+	"ResponsibleEach"	: "un peu de votre temps à des oeuvres caritatives",
 	
 	"Global"			: "International",
 	"GlobalText"		: "Vous faîtes partie d'une communauté internationale de joueurs",
@@ -80,9 +84,12 @@
     "MaxTickets1"		: "Vous avez atteint le nombre maximal de tickets pour ce tirage.",
     "MaxTickets2"		: "Vous pouvez gagner des tickets bonus en aimant notre page Facebook ou en nous suivant sur Twitter.",
     
-    "FBText1"			: "Adillions utilise vos identifiants Facebook sur la plateforme",
-    "FBText2"			: "Attention, il est important de fournir vos vrais noms et prénoms pour recevoir vos gains (cf. le Règlement) !",
-    
+    "FBUsername"		: "Adillions utilise vos identifiants Facebook sur la plateforme",
+    "FBImportant"		: "Attention :",
+	"FBRealName"		: "Il est important de nous fournir vos vrais noms et prénoms",
+	"FBReceive"			: "pour recevoir vos gains (cf. le Règlement) !",
+	"FBAttention"		: "Il est important de nous fournir vos vrais noms et prénoms pour recevoir vos gains (cf. le Règlement) !",
+	
     "Players"			: "Players",
     "Days"				: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     "Months"			: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November"],
