@@ -7,32 +7,36 @@
 	"LogIn"				: "Log In",
   	"Logout"			: "Log Out",
   	"SignIn"			: "Sign Up",
+	"NoAccount"			: "No account ?",
 	
 	"NextDrawing"		: "Next drawing",
 	
 	"Title"				: "Adillions is a",
 	"TitleBold"			: "free lottery with real cash prizes",
 	
-	"Work"				: "How it works?",
+	"Work"				: "How it works ?",
 	"WatchAd"			: "Watch an ad",
 	"LotteryTicket"		: "Get your lottery ticket",
 	"WinPrize"			: "Win the prize",
 	"Draw"				: "Draw every Saturday live on ",		
 
-	"Fun"				: "Fun",
+	"Fun"				: "FUN",
 	"FunDiscover"		: "Discover a new theme",
 	"FunWeek"			: "each week",
-	"Easy"				: "Simple",
+	"Easy"				: "SIMPLE",
 	"EasyNumbers"		: "Pick 5 numbers and",
 	"EasyLucky"			: "your lucky ball",
-	"Viral"				: "Viral",
+	"Viral"				: "VIRAL",
 	"ViralInvite"		: "Invite your friends to",
 	"ViralIncrease"		: "increase the jackpot",
 	
-	"Multi"				: "Multi-plateform",
+	"Multi"				: "MULTI-PLATEFORM",
 	"MultiRange"		: "Play on a whole range of platforms",
-	"MultiNow"			: "Now on Adillions: www.adillions.com", 
-	"MultiFacebook"		: "or on Facebook: www.facebook.com/adillions",
+	
+	"OnAdillionsTitle"	: "Now on", 
+	"OnAdillionsLink"	: "Adillions", 
+	"OnFacebookTitle"	: "or on",
+	"OnFacebookLink"	: "Facebook",
 	
 	"Responsible"		: "Responsible",
 	"ResponsibleFew"	: "Dedicate few seconds of your time", 

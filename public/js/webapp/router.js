@@ -22,18 +22,12 @@
 			//-------------------------------------------------------//
 			
 			openLogin         : function(){
-			   
-			   App.Globals.signinRequested = true
-			   
-			   $("#loginWindow").reveal({
-			      animation: 'fade',
-			      animationspeed: 100, 
-			   });
-			   
+			   App.HomeController.openLoginWindow()
 			},
 			
 			openSignin         : function(){
 
+			   $("#loginWindow").trigger("reveal:close");
             $("#confirmWindow").trigger("reveal:close");
 			   App.Globals.signinRequested = true
 			   

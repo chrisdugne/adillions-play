@@ -55,5 +55,6 @@
 	});
 	
 	App.user = User.create();
+   App.user.set("lang", App.translator.lang);
 	
 })( App);

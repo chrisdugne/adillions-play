@@ -558,15 +558,16 @@ body {
 }
 
 /*--------------------------------*/
+
 .link {
 	cursor: hand;
 	cursor: pointer;
-	text-decoration: none !important;
-	color: #000;
+	color: #1b5c64;
+	text-decoration: underline;
 }
 
 .link:hover {
-	color: #217E03;
+	color: #188785;
 }
 
 /*--------------------------------------------------*/

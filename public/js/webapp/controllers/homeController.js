@@ -18,7 +18,16 @@
 	//==================================================================//
 	// Controls
 	
-	
+	HomeController.openLoginWindow = function() 
+	{
+      App.Globals.signinRequested = true
+      
+      $("#loginWindow").reveal({
+         animation: 'fade',
+         animationspeed: 100, 
+      });
+	}
+
 	HomeController.openVideoWindow = function() 
 	{
 	   window.youtubeManager.openVideoWindow();
@@ -41,6 +50,14 @@
 		//--------------------------------------//
 		// actions
 		
+		playOnAdillions    : function(){
+		   if(App.user.loggedIn){
+		      App.get('router').transitionTo('game');
+		   }
+		   else{
+		      App.HomeController.openLoginWindow()
+		   }
+		},
 		openLoginWindow    : function(){App.HomeController.openLoginWindow()},
 		showVideo          : function(){App.HomeController.openVideoWindow()},
 		

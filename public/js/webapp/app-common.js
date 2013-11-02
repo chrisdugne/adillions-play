@@ -31,6 +31,7 @@
    App.changeLang = function(lang) {
       App.wait()
       App.translator.setLang(lang);
+      App.user.set("lang", lang);
       
       var currentView = App.Globals.currentView
       var currentPage = App.Globals.currentPage

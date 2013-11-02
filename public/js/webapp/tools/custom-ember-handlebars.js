@@ -20,9 +20,13 @@ Ember.Handlebars.registerBoundHelper('themeImage', function(lottery) {
    return new Handlebars.SafeString("<img class='themeImage' src=\""+lottery.theme.image+"\"/>")
 });
 
-Ember.Handlebars.registerHelper('langImage', function(options) {
+Ember.Handlebars.registerBoundHelper('langImage', function(lang, options) {
+   
+   if(lang == null)
+      lang = "en"
+   
    var customclass = options.hash.customclass
-   var path = "/assets/images/bylang/" + App.translator.lang + "/" + options.hash.png
+   var path = "/assets/images/bylang/" + lang + "/" + options.hash.png
    var img = "<div><img id='"+options.hash.id+"' class='"+customclass+"' src='"+path+"'></img></div>"
    return new Handlebars.SafeString(img)
 });

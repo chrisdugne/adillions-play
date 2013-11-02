@@ -92,16 +92,16 @@
 
 /*--------------------------------*/
 #partAdillionIs {
-	height: 125px;
-	background-color: #1b5c63;
+	height: 195px;
+	background-color: #1b5c64;
 }
 
 
 #partAdillionIsText {
 	color: #fff;
 	position: relative;
-	top: 50px;
-	font-size: 30px;
+	top: 80px;
+	font-size: 40px;
 }
 
 
@@ -126,3 +126,136 @@
 	top: 36px;
 	font-size: 34px;
 } */
+
+
+/*--------------------------------*/
+#partHowItWorks {
+	height: 300px;
+	background-color: #ededed;
+}
+
+#howItWorksTitle {
+	font-size: 38px;
+	color: #1b5c64;
+	height: 100px;
+	padding-top: 45px;
+	text-align:left;
+}
+
+#howItWorksWorkflow {
+	padding-top: 26px;
+}
+
+#prizeIconHome {
+	margin-bottom: 15px;
+}
+
+.howItWorksText {
+	font-size: 25px;
+	color: #1b5c64;
+	padding-top: 5px;
+}
+
+#arrow1Home {
+	position: absolute;
+	margin-top: -77px;
+	margin-left: 340px; /* huge only */
+}
+
+#arrow2Home {
+	position: absolute;
+	margin-top: -77px;
+	margin-left: 440px; /* huge only */
+}
+
+/*--------------------------------*/
+#partFunEasyViral {
+	height: 300px;
+	background-color: #fff;
+}
+
+.funEasyViralTitle {
+	font-size: 28px;
+	color: #1b5c64;
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+
+.funEasyViralText {
+	font-size: 22px;
+	color: #1b5c64;
+}
+
+.funEasyViralImage {
+	padding-top: 35px;
+}
+
+#easyImage {
+	margin-top:-15px;
+}
+
+/*--------------------------------*/
+#partMultiPlatforms {
+	height: 315px;
+	background-color: #188785;
+}
+
+.multiPlatformsTitle {
+	font-size: 28px;
+	color: #fff;
+	padding-top: 90px;
+	padding-bottom: 30px;
+}
+
+.multiPlatformsText {
+	font-size: 22px;
+	color: #fff;
+}
+
+.multiPlatformsImage {
+	padding-top: 60px;
+}
+
+/*--------------------------------*/
+#partDownload {
+	height: 530px;
+	background-color: #ededed;
+}
+
+#mobilesImage {
+	margin-top:-75px;
+}
+
+.downloadText {
+	font-size: 25px;
+	margin-bottom: 15px;
+	color: #1b5c64;
+}
+
+#downloadHome {
+	padding-top: 20px;
+}
+
+/*--------------------------------*/
+#partResponsible {
+	height: 320px;
+	background-color: #fff;
+}
+
+/*--------------------------------*/
+#partGlobal {
+	height: 680px;
+	background-color: #188785;
+}
+
+/*--------------------------------*/
+#partMedia {
+	height: 215px;
+	background-color: #fff;
+}
+
+/*--------------------------------*/
+#partAdvertisers {
+	height: 275px;
+	background-color: #1c5d64;
+}
