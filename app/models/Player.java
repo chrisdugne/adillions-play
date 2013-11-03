@@ -32,7 +32,7 @@ public class Player extends Model {
 
 	@Expose
 	private String facebookId;
-
+	
 	@Expose
 	private String twitterId;
 	@Expose

@@ -1,6 +1,35 @@
 
 <div class="row-fluid gameView">
-	results
+	
+	
+	
+	{{#each lottery in App.Globals.lotteries}} 
+		{{#with lottery}}
+			
+			<div class="row-fluid">
+				<div class="span8 offset2 lotteryTickets">
+					<div class="row-fluid">
+						<div class="medium span10 offset1 alignLeft">
+							{{readableFullDate App.user.lang date=date}}
+						</div>
+					</div>
+					
+					<br/>
+					
+					<div class="row-fluid margintop">
+						<div class="span6 offset3">
+							{{oldticket result lotteryNumbers=result}}
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<br/>
+			<br/>
+		{{/with}} 
+	{{/each}}
+	
+	
 </div>
 
 		

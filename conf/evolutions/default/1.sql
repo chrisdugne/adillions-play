@@ -49,6 +49,7 @@ create table player (
   available_tickets         integer,
   played_bonus_tickets      integer,
   total_played_tickets      integer,
+  total_paid_tickets        integer,
   sponsor_code              varchar(255),
   referrer_id               varchar(255),
   gift_to_referrer          boolean,

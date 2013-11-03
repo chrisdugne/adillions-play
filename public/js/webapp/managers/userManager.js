@@ -132,7 +132,12 @@ UserManager.sortLotteryTickets = function(next){
    for(var i = 0; i < App.user.lotteryTickets.length; i++){
       var ticket = App.user.lotteryTickets[i]
       if(!currentLottery || (currentLottery.uid != ticket.lottery.uid)){
-         lotteries.push(ticket.lottery)
+         var lottery = {}
+         lottery.uid       = ticket.lottery.uid
+         lottery.result    = ticket.lottery.result
+         lottery.date      = ticket.lottery.date
+         
+         lotteries.push(lottery)
          currentLottery = lotteries[lotteries.length - 1]
          currentLottery.tickets = []
       }
@@ -141,7 +146,6 @@ UserManager.sortLotteryTickets = function(next){
    }
 
    App.user.set("lotteries", lotteries)
-   console.log(App.user.lotteries)
 }
 
 //-------------------------------------------//
@@ -152,7 +156,7 @@ UserManager.updatePlayer = function(next)
    var params = new Object();
    params["user"] = App.user
 
-   App.wait()
+   console.log(App.user)
 
    $.ajax({
       type: "POST",  
@@ -171,7 +175,6 @@ UserManager.updatePlayer = function(next)
                next()
          }
 
-         App.free()
       }
    });
 }
@@ -685,9 +688,8 @@ UserManager.checkIdlePoints = function() {
       message += " (" + App.Globals.POINTS_TO_EARN_A_TICKET + " pts = 1 " + App.translations.messages.Ticket + ")";
 
       App.Globals.confirmationMessage = message;
-
-      console.log("convertCurrentPoints", message)
-      odump(App.Globals)
+      App.message(message);
+      console.log("----> TICKET |  " + message)
 
       UserManager.convertCurrentPoints()
    }

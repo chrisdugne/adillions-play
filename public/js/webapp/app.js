@@ -28,6 +28,7 @@
       //------------------------------------------------------//
       //   App.youtubeManager = new YoutubeManager();
       LotteryManager.refreshNextLottery()
+      LotteryManager.getFinishedLotteries()
       
       //------------------------------------------------------//
 

@@ -31,8 +31,10 @@ public class LotteryManager {
 		//-------------------------------------
 		
 		Long now = new Date().getTime();
+		Long nowPlus2h = now + 2 * 60 * 60 * 1000;
+		
 		Lottery lottery = Lottery.find
-				.where().gt("date", now)
+				.where().gt("date", nowPlus2h)
 				.orderBy("date asc")
 				.findList().get(0);
 

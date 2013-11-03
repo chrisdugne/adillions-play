@@ -502,10 +502,7 @@ GameManager.refreshThemeSelectionDisplay = function(){
  GameManager.initConfirmation = function(){
     
     if(App.Globals.confirmationMessage != null){
-       console.log("display")
-       console.log(App.Globals.confirmationMessage)
-//       App.message(App.Globals.confirmationMessage)
-       App.message("youpi")
+       App.message(App.Globals.confirmationMessage)
     }
     else if(!App.Globals.wasExtraTicket){
        App.message("+1 point")

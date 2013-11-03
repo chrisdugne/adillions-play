@@ -8,7 +8,7 @@
 			//-------------------------------------------------------//
 			// Common actions to all views
 
-		   openHome       : Ember.Route.transitionTo('home'),
+		   openHome           : Ember.Route.transitionTo('home'),
 		   openRealHome       : Ember.Route.transitionTo('realhome'),
 
 			//-------------------------------------------------------//
@@ -182,6 +182,7 @@
             App.Globals.set("parentView", "root");
             
             router.get('applicationController').connectOutlet(page, context);
+            $(window).scrollTop(0)
 		   }
 		}
 	}
@@ -202,6 +203,7 @@
       App.Globals.set("parentView", parentView);
       
       router.get(parentView+"Controller").connectOutlet(view, context);
+      $(window).scrollTop(0)
    }
 
    //-----------------------------------------------------------------------------------------//

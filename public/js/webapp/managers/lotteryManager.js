@@ -35,7 +35,26 @@ LotteryManager.refreshNextLottery = function()
       }
    });
 
+}
 
+//-------------------------------------------//
+
+LotteryManager.getFinishedLotteries = function()
+{
+   $.ajax({
+      type: "POST",  
+      url: "/finishedLotteries",
+      dataType: "json",
+      success: function (lotteries)
+      {
+         App.Globals.set("lotteries", lotteries)   
+         
+         console.log("finishedLotteries")
+         console.log(App.Globals.lotteries)
+      }
+   });
+   
+   
 }
 
 //-------------------------------------------//

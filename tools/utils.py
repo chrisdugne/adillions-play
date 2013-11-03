@@ -10,11 +10,14 @@ from time import sleep
 
 def getDBConfig():
     
-    env = "PROD"
-#     env = "DEV"
+    env = "DEV"
+    envChosen = raw_input("env ? (DEV/prod)\n> ")
     
+    if(envChosen == "prod"):
+        env = "PROD"
+    
+
     print "DATABASE : " + env
-    
     if env == "DEV":
         return "host='localhost' dbname='adillions' user='mad'"
     

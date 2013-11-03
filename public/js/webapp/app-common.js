@@ -68,6 +68,7 @@
 
       var width = $(".container").css("width").split("px")[0]
       
+      $.unblockUI();
       $.blockUI({ message: '<p>'+message+'</p>', 
          fadeIn: 700, 
          fadeOut: 700, 

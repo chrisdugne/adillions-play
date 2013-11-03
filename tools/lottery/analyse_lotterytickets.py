@@ -30,13 +30,13 @@ def main():
         print "Check the lotteryUID"
         return
     
-    if(not lottery[9]):
+    if(not lottery[11]):
         print "No winningNumbers set"
         return
     
     #--------------------------------------------------------------------
     
-    winningNumbers  = json.loads(lottery[9])
+    winningNumbers  = json.loads(lottery[11])
     winningTickets  = []
     nbRang1         = 0
     nbRang2         = 0
@@ -71,9 +71,10 @@ def main():
 
     date        = utils.toReadableDate(lottery[1])
     nbPlayers   = lottery[4]
-    minPrice    = lottery[5]
-    maxPrice    = lottery[6]
-    CPM         = lottery[7]
+    minPrice    = lottery[6]
+    maxPrice    = lottery[7]
+    CPM         = lottery[8]
+    charity     = lottery[9]
     price       = round(float(len(tickets))/1000*CPM, 2)
     nbTickets   = len(tickets)
       
@@ -83,6 +84,7 @@ def main():
     print "Players            : "          , nbPlayers
     print "Tickets            : "          , nbTickets
     print "CPM                : "          , CPM
+    print "charity            : "          , charity
     print "Price              : "          , price
       
     #--------------------------------------------------------------------
@@ -185,7 +187,7 @@ def main():
     requireRecord = raw_input("Record data ? (y/N) \n>") == 'y'
        
     if requireRecord:
-        recordToDB(database, winningTickets, prices, finalPrice)
+        recordToDB(database, lotteryUID, winningTickets, prices, finalPrice)
         
     #--------------------------------------------------------------------
     
@@ -198,7 +200,7 @@ def main():
         
 #----------------------------------------------------------------------------------
 
-def recordToDB(database, winningTickets, prices, finalPrice):
+def recordToDB(database, lotteryUID, winningTickets, prices, finalPrice):
     print("Recording prizes in DB")
     
     for ticket in winningTickets :
@@ -210,7 +212,7 @@ def recordToDB(database, winningTickets, prices, finalPrice):
         
         database.execute("UPDATE lottery_ticket SET price='"+str(prices[ticket.rang-1])+"' WHERE uid='"+ticket.uid+"';") 
 
-    database.execute("UPDATE lottery SET final_price='"+str(finalPrice)+"' WHERE uid='"+ticket.lotteryUID+"';") 
+    database.execute("UPDATE lottery SET final_price='"+str(finalPrice)+"' WHERE uid='"+lotteryUID+"';") 
     
         
 #----------------------------------------------------------------------------------
