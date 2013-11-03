@@ -98,6 +98,12 @@
 	padding: 0;	
 	float: right;
 }
+
+.widget_socials_center {
+	margin-top: 3px!important;
+	float: left!important;
+}
+
 .SocialIconsWidget ul li {
 	list-style-type: none;
 	display: block;

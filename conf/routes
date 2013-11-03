@@ -48,10 +48,10 @@ POST    /updateFanStatus            controllers.AccountService.updateFanStatus()
 #  	LotteryService 
 
 POST    /storeLotteryTicket         controllers.LotteryService.storeLotteryTicket()
-POST    /finishedLotteries          controllers.LotteryService.getFinishedLotteries()
 
 #---------------------------------------------------------------------------
 #  	PublicService 
 
 POST    /nextLottery                controllers.PublicService.getNextLottery()
+POST    /finishedLotteries          controllers.PublicService.getFinishedLotteries()
 #POST    /incTest                	controllers.PublicService.incTest()

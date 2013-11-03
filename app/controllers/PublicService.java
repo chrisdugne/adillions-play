@@ -10,7 +10,13 @@ import play.mvc.Result;
  */
 public class PublicService extends Application 
 {
+	//-----------------------------------------------------------//
 
+	public static Result getFinishedLotteries()
+	{
+		return ok(gson.toJson(LotteryManager.getFinishedLotteries()));
+	}
+	
 	//-----------------------------------------------------------//
 	
 	public static Result getNextLottery()

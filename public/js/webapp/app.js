@@ -36,7 +36,13 @@
       }
 
       var finalize   = function(){  
-         App.Globals.APP_READY = true 
+         App.Globals.APP_READY = true
+         
+         // TO REMOVE AFTER REALHOME IS REMOVEED
+         if(App.user.loggedIn)
+            App.get('router').transitionTo('game');
+         else
+            App.get('router').transitionTo('realhome');
       }
 
       Facebook.init(finalize, failure)
@@ -62,7 +68,7 @@
    
    App.fillView = function(){
       if(($("#webappDiv").height() + App.Globals.FOOTER_HEIGHT) <= $(window).height()){
-         $("#webappDiv").css({ "height" : ($(window).height() - App.Globals.FOOTER_HEIGHT) +"px" });
+         $("#webappDiv").css({ "height" : ($(window).height() - App.Globals.FOOTER_HEIGHT - App.Globals.HEADER_HEIGHT) +"px" });
       }
    }
 

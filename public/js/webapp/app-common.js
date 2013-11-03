@@ -29,19 +29,19 @@
    //------------------------------------------------------//
    
    App.changeLang = function(lang) {
-      App.wait()
       App.translator.setLang(lang);
       App.user.set("lang", lang);
       
-      var currentView = App.Globals.currentView
-      var currentPage = App.Globals.currentPage
-      App.get('router').transitionTo('home');
-      
-      setTimeout(function(){
-         if(currentPage != "home")
-            App.get('router').transitionTo(currentPage + "." + currentView);
-         App.free()
-      },20)
+//      App.wait()
+//      var currentView = App.Globals.currentView
+//      var currentPage = App.Globals.currentPage
+//      App.get('router').transitionTo('home');
+//      
+//      setTimeout(function(){
+//         if(currentPage != "home")
+//            App.get('router').transitionTo(currentPage + "." + currentView);
+//         App.free()
+//      },20)
       
    }
    

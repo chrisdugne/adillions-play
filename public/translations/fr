@@ -11,6 +11,7 @@
 	"NoAccount"			: "Pas de compte ?",
 	
 	"NextDrawing"		: "Prochain tirage",
+	"Drawing"			: "Tirage du",
 	
 	"Title"				: "Adillions est une",
 	"TitleBold"			: "loterie gratuite avec des gains d'argent réel",
@@ -112,6 +113,7 @@
     "YouHaveEarnedExtra": "Vous avez gagné un Extra Ticket",
     
     "Points"			: "Points",
+    "Gain"				: "Gain",
        
     "":""
 	

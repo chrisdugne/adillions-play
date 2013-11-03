@@ -1,5 +1,10 @@
 /*---------------------------------------------*/
 
+#menu {
+	position: fixed;
+	z-index: 1000;
+}
+
 .gameView {
 	margin-top: 87px;
 }
@@ -8,19 +13,59 @@
 	position: relative;
 }
 
+.lotteryTickets {
+	background-color: rgba(236,238,237,0.4);
+	padding: 30px;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+}
+
 /*------------------------------------------------*/
-
-.upper4 {
-	margin-top: -32px;
-}
-
-.upper2 {
-	margin-top: -15px;
-}
 
 .upper {
 	margin-top: -7px;
 }
+.upper2 {
+	margin-top: -15px;
+}
+.upper4 {
+	margin-top: -32px;
+}
+
+.marginbottom {
+	margin-bottom: 20px !important;
+}
+
+.marginbottom2 {
+	margin-bottom: 40px !important;
+}
+
+.marginbottom3 {
+	margin-bottom: 60px !important;
+}
+
+.marginbottom4 {
+	margin-bottom: 80px !important;
+}
+
+
+.margintop {
+	margin-top: 20px !important;
+}
+
+.margintop2 {
+	margin-top: 40px !important;
+}
+
+.margintop3 {
+	margin-top: 60px !important;
+}
+
+.margintop4 {
+	margin-top: 80px !important;
+}
+
 
 /*------------------------------------------------*/
 
@@ -63,35 +108,32 @@
 }
 
 #gameHomeButton 			{
-	background: url(/assets/images/bylang/en/OFF1.png) no-repeat center center;height:70px;width: 70px;background-size: 90px;
-	position:absolute;
+	background: url(/assets/images/bylang/en/OFF1.png) no-repeat center center;height:65px;background-size: 70px;margin:10px;
 }
-#gameHomeButton.selected 	{background: url(/assets/images/bylang/en/ON1.png) no-repeat center center;background-size: 90px}
+#gameHomeButton.selected 	{background: url(/assets/images/bylang/en/ON1.png) no-repeat center center;background-size: 70px}
 
 #myTicketsButton 			{
-	background: url(/assets/images/bylang/en/OFF2.png) no-repeat center center;height:70px;width: 70px;background-size: 90px;
-	position:absolute;
+	background: url(/assets/images/bylang/en/OFF2.png) no-repeat center center;height:65px;background-size: 70px;margin:10px;
 }
-#myTicketsButton.selected 	{background: url(/assets/images/bylang/en/ON2.png) no-repeat center center;background-size: 90px}
+#myTicketsButton.selected 	{background: url(/assets/images/bylang/en/ON2.png) no-repeat center center;background-size: 70px}
 
 #resultsButton 				{
-	background: url(/assets/images/bylang/en/OFF3.png) no-repeat center center;height:70px;width: 70px;background-size: 90px;
-	position:absolute;
+	background: url(/assets/images/bylang/en/OFF3.png) no-repeat center center;height:65px;background-size: 70px;margin:10px;
 }
-#resultsButton.selected 	{background: url(/assets/images/bylang/en/ON3.png) no-repeat center center;background-size: 90px}
+#resultsButton.selected 	{background: url(/assets/images/bylang/en/ON3.png) no-repeat center center;background-size: 70px}
 
 #profileButton 				{
-	background: url(/assets/images/bylang/en/OFF4.png) no-repeat center center;height:70px;width: 70px;background-size: 90px;
-	position:absolute;
+	background: url(/assets/images/bylang/en/OFF4.png) no-repeat center center;height:65px;background-size: 70px;margin:10px;
 }
-#profileButton.selected 	{background: url(/assets/images/bylang/en/ON4.png) no-repeat center center;background-size: 90px}
+#profileButton.selected 	{background: url(/assets/images/bylang/en/ON4.png) no-repeat center center;background-size: 70px}
 
 /*---------------------------------------------*/
 
 #numbersToSelect{
 	height:400px;
 	position: relative;
-	margin-top: -50px;
+	margin-top: -10px;
+	margin-bottom: -50px;
 }
 
 #selection {
@@ -144,10 +186,17 @@
 	opacity:0.34;
 }
 
+.checkIcon {
+	position: absolute;
+	width: 25px;
+	padding-left: 22px;
+	margin-top: -5px!important;
+}
+
 .themeBall{
 	width: 70px;
 	position: absolute;
-	opacity:0.8;
+	opacity:0.5;
 }
 
 .themeBall.selected{
@@ -157,6 +206,10 @@
 .smallThemeBall{
 	width: 40px;
 	position: absolute;
+}
+
+.smallThemeBall.lost{
+	opacity:0.34;
 }
 
 .themeText{
@@ -271,44 +324,32 @@
 /*---------------------------------------------*/
 #validateButton {
 	width: 126px;
+	cursor: hand;
+	cursor: pointer;
+	opacity: 0.8;
 }
 
 #validateButton.enabled:hover {
 	opacity: 1;
-	cursor: hand;
-	cursor: pointer;
 }
 
 /*---------------------------------------------*/
 
-#actions {
-	z-index:100;
-	height: 30px;
-	margin-bottom: 10px;
-	margin-top: -10px;
-}
-
 #randomButton {
-	position:absolute;
-	width: 100px;
 }
 
 #restartButton {
-	position: absolute;
-	width: 100px;
 }
 
 #actionSeparator {
 	width: 1px;
 	height: 20px;
-	position: absolute;
-	margin-left: -16px;
 }
 
 /*---------------------------------------------*/
 #pointsImage {
-	margin-left: 30px;
-	margin-top: -6px;
+	margin-left: 55px;
+	margin-top: -3px;
 }
 
 #menuBG {
@@ -347,9 +388,18 @@
 }
 
 #themeImageOver {
-	width:280px;
-	left:50%;
-	margin-left:-140px;
-	top:175px;
-	position: absolute;
+	margin-top: -61px;
+	margin-bottom: 10px;
+	max-width: 228px;
+}
+
+/*---------------------------------------------*/
+
+.priceTicket {
+	text-align: right;
+}
+
+.priceTicketIcon {
+	margin-left: 0px!important;
+	margin-top: -8px;
 }

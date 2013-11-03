@@ -36,18 +36,6 @@
 	}
 
 	/*--------------------------------*/
-	body {
-		background: #eee;
-		background-image: -webkit-gradient(linear, left top, left bottom, from(#fff),
-			to(#eee) ); /* Saf4+, Chrome */
-		background-image: -webkit-linear-gradient(top, #fff, #eee);
-		/* Chrome 10+, Saf5.1+ */
-		background-image: -moz-linear-gradient(top, #fff, #eee); /* FF3.6+ */
-		background-image: -ms-linear-gradient(top, #fff, #eee); /* IE10 */
-		background-image: -o-linear-gradient(top, #fff, #eee);
-		/* Opera 11.10+ */
-		background-image: linear-gradient(top, #fff, #eee);
-	}
 	.row-fluid.touchable:hover {
 		background-color: #DDEDDD;
 	}
@@ -414,12 +402,6 @@
 	}
 
 	/*--------------------------------*/
-	.marginbottom {
-		margin-bottom: 20px !important;
-	}
-	.hugemarginbottom {
-		margin-bottom: 65px !important;
-	}
 	.error {
 		color: #d33;
 		width: 170px;

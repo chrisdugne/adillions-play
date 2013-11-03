@@ -1,6 +1,70 @@
 
 <div class="row-fluid gameView unselectable">
-	my tickets
+	
+	
+	
+	{{#each lottery in App.user.lotteries}} 
+		{{#with lottery}}
+			
+			<div class="row-fluid">
+				<div class="span8 offset2 lotteryTickets">
+					<div class="row-fluid">
+						<div class="medium span10 offset1 alignLeft">
+							{{#if result}}
+								{{readableFullDate App.user.lang date=date}}
+							{{else}}			
+								{{App.translations.messages.NextDrawing}} 
+							{{/if}}			
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span10 offset1 alignLeft">
+							{{#if result}}
+							{{else}}			
+								{{readableFullDate App.user.lang date=date}}
+							{{/if}}			
+						</div>
+					</div>
+					
+					<br/>
+					
+					{{#each ticket in tickets}} 
+						{{#with ticket}}
+							{{#if lottery.result}}
+							<div class="row-fluid margintop">
+								<div class="span6 offset3">
+									{{oldticket numbers lotteryNumbers=lottery.result}}
+								</div>
+							</div>
+							<div class="row-fluid">
+								<div class="span2 offset3">
+									{{App.translations.messages.Gain}}  : 		
+								</div>
+								<div class="span2 offset1 priceTicket">
+									{{ticketPrice price}} 		
+								</div>
+								<div class="span1 priceTicketIcon">
+									<img class="mobileIcon" src='@routes.Assets.at("images/icons/money.png")'></img>
+								</div>
+							</div>
+							{{else}}			
+							<div class="row-fluid">
+								<div class="span6 offset3">
+									{{newticket numbers}}
+								</div>
+							</div>
+							{{/if}}			
+						{{/with}} 
+					{{/each}}
+				</div>
+			</div>
+			
+			<br/>
+			<br/>
+		{{/with}} 
+	{{/each}}
+	
+	
 </div>
 
 		

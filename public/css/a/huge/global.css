@@ -538,13 +538,6 @@ body {
 }
 
 /*--------------------------------*/
-.marginbottom {
-	margin-bottom: 20px !important;
-}
-
-.hugemarginbottom {
-	margin-bottom: 65px !important;
-}
 
 .error {
 	color: #d33;

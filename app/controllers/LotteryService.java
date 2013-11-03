@@ -13,13 +13,6 @@ public class LotteryService extends Application
 {
 	//------------------------------------------------------------------------------------//
 	
-	public static Result getFinishedLotteries()
-	{
-		return ok(gson.toJson(LotteryManager.getFinishedLotteries()));
-	}
-
-	//------------------------------------------------------------------------------------//
-	
 	public static Result storeLotteryTicket()
 	{
 		JsonNode params 			= request().body().asJson();

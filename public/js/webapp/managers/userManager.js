@@ -83,15 +83,35 @@ UserManager.updatedPlayer = function(player, next){
 
    App.user.set("acceptEmails",        player.acceptEmails);
 
-   console.log("updatedPlayer")
-   odump(App.user)
-
    //----------------------------------------------//
 
+   UserManager.sortLotteryTickets()
+   
+   //----------------------------------------------//
+
+   console.log("updatedPlayer")
+
+   //----------------------------------------------//
+   
    UserManager.checkIdlePoints()
 
-// viewManager.refreshHeaderPoints(player.currentPoints)
 // lotteryManager:sumPrices()
+   /*
+    * 
+      function LotteryManager:sumPrices()
+      
+         userManager.user.totalGains = 0
+      
+         if(userManager.user.lotteryTickets) then
+            for i = 1,#userManager.user.lotteryTickets do
+               local ticket = userManager.user.lotteryTickets[i]
+               userManager.user.totalGains = userManager.user.totalGains + (ticket.price or 0)
+            end
+         end
+      
+      end
+    * 
+    */
 
 // UserManager.checkFanStatus(next)   
 
@@ -101,6 +121,28 @@ UserManager.updatedPlayer = function(player, next){
       next()
 }
 
+
+//-------------------------------------------//
+
+UserManager.sortLotteryTickets = function(next){
+
+   var lotteries = []
+   var currentLottery = null
+   
+   for(var i = 0; i < App.user.lotteryTickets.length; i++){
+      var ticket = App.user.lotteryTickets[i]
+      if(!currentLottery || (currentLottery.uid != ticket.lottery.uid)){
+         lotteries.push(ticket.lottery)
+         currentLottery = lotteries[lotteries.length - 1]
+         currentLottery.tickets = []
+      }
+      
+      currentLottery.tickets.push(ticket)
+   }
+
+   App.user.set("lotteries", lotteries)
+   console.log(App.user.lotteries)
+}
 
 //-------------------------------------------//
 

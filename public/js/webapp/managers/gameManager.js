@@ -73,7 +73,7 @@ GameManager.drawFillLotteryTicket = function() {
    for(var i = 0; i < nbNumPerLine; i++){
       for(var j = 0; j < nbLines; j++){
          var ballNum = j*nbNumPerLine + i + 1
-         GameManager.drawBallToPick(ballNum, marginLeft + (i+1)*xGap, (j+1)*yGap)
+         GameManager.drawBallToPick(ballNum, marginLeft + (i+1)*xGap, (j)*yGap)
       }
    }
 
@@ -234,7 +234,7 @@ GameManager.randomSelection = function() {
 GameManager.refreshNumberSelectionDisplay = function()   {
 
    var xGap       = 44
-   var marginLeft = $(window).width()/2 - 101 
+   var marginLeft = $(".container").width()/2 - $("#selectorNumbers").width()/2 + 7 
    $("#numbersSelected").empty()
 
    Utils.sortNumbers(GameManager.currentSelection)
@@ -330,7 +330,7 @@ GameManager.drawSelectAdditionalNumber = function() {
    var nbRows =  totalNums/nbLines
    var nbOnlastLine = totalNums - Math.floor(nbLines)*nbRows
 
-   var marginLeft      = $("#ballsToSelect").width()/2 - (nbNumPerLine+1)/2 * xGap - 34
+   var marginLeft = $(".container").width()/2 - 275 
    
    //------------------
 
@@ -349,7 +349,7 @@ GameManager.drawSelectAdditionalNumber = function() {
    //-----------------------------------//
    
    xGap = 45;
-   var marginLeft = $(window).width()/2 - 126 
+   var marginLeft = $(".container").width()/2 - 132 
    
    for(var i = 0; i < GameManager.currentSelection.length; i++){
       GameManager.drawBallSelected(GameManager.currentSelection[i], marginLeft + xGap*i, -8);
@@ -452,7 +452,8 @@ GameManager.refreshThemeSelectionDisplay = function(){
    
    if(GameManager.luckyBall){
 
-      var left    = $(window).width()/2 + 101; 
+      
+      var left = $(".container").width()/2 + 93 
       var top   = -8;
          
       

@@ -43,55 +43,152 @@ Ember.Handlebars.registerBoundHelper('staticPointsImage', function(points) {
    return new Handlebars.SafeString(img)
 });
 
+//==========================================================================================//
 
 Ember.Handlebars.registerBoundHelper('newticket', function(numbers) {
-
+   
    //-------------------------------------------------------//
-
+   
+   if(!jQuery.isArray(numbers))
+      numbers = $.parseJSON(numbers)
+   
    if(App.nextLottery.theme.icons[numbers.length-1] == null)
       return "";
    
    //-------------------------------------------------------//
    
-   var div = "<div class='free' style='height:70px'>";
-
+   var div = "<div class='row-fluid marginbottom'>";
+   
    //-------------------------------------------------------//
    // balls
-  
+   
    for(var n = 0; n < numbers.length-1; n++){
-
-      var ballId = "ballSelected_"+numbers[n]
-      var textId = "textSelected_"+numbers[n]
-
-      var ball   = "<img id='"+ballId+"' src='/assets/images/balls/ball.small.green.png' class='ball' style='left:"+(n*50)+"px; top:10px; position:absolute'></img>"
-      var num    = "<p id='"+textId+"' class='numwhite' style='left:"+(n*50)+"px; top:10px; position:absolute'>"+numbers[n]+"</p>"
-
+      var ball   = "<div class='span2'><img src='/assets/images/balls/ball.small.green.png' class='ball'></img>"
+      var num    = "<p class='numwhite'>"+numbers[n]+"</p></div>"
+      
       div += ball
       div += num
    }
    
    //-------------------------------------------------------//
    // theme
-
-   var ballId = "ballSelected_"+numbers[numbers.length-1]
-   var maskId = "maskId_"+numbers[numbers.length-1]
-
-   var ball   = "<img id='"+ballId+"' src='"+App.nextLottery.theme.icons[numbers.length-1].image+"' class='smallThemeBall' style='left:"+(n*50)+"px; top:10px; position:absolute'></img>"
-   var mask   = "<img id='"+maskId+"' src='/assets/images/balls/ball.mask.png' class='smallThemeBall' style='left:"+(n*50)+"px; top:10px; position:absolute'></img>"
-
-   div += ball
-   div += num
-
+   
+   var luckyball   = "<div class='span2'><img src='"+App.nextLottery.theme.icons[numbers.length-1].image+"' class='smallThemeBall'></img>"
+   var mask   = "<img src='/assets/images/balls/ball.mask.png' class='smallThemeBall'></img></div>"
+   
+   div += luckyball
+   div += mask
+   
    //-------------------------------------------------------//
-
+   
    div += "</div>";
    
    return new Handlebars.SafeString(div)
 });
 
 
+//==========================================================================================//
+
+Ember.Handlebars.registerBoundHelper('oldticket', function(numbers, options) {
+   
+   //-------------------------------------------------------//
+
+   var lotteryNumbers = options.hash.lotteryNumbers;
+   
+   console.log("===")
+   console.log(numbers, lotteryNumbers)
+   
+   if(!jQuery.isArray(numbers))
+      numbers = $.parseJSON(numbers);
+
+   if(!jQuery.isArray(lotteryNumbers))
+      lotteryNumbers = $.parseJSON(lotteryNumbers);
+   
+   console.log(numbers, lotteryNumbers)
+
+
+   if(App.nextLottery.theme.icons[numbers.length-1] == null)
+      return "";
+   
+   //-------------------------------------------------------//
+
+   var div = "<div class='row-fluid marginbottom'>";
+   
+   //-------------------------------------------------------//
+   // balls
+   
+   for(var n = 0; n < numbers.length-1; n++){
+      
+      var imageClass = "ball lost";
+      var won  = false;
+      for(var w = 0; w < lotteryNumbers.length-1; w++){
+         if(numbers[n] == lotteryNumbers[w]){
+            imageClass = "ball";
+            won = true;
+            break;
+         }
+      }
+      
+      
+      var ball   = "<div class='span2'><img src='/assets/images/balls/ball.small.green.png' class='"+imageClass+"'></img>";
+      var num    = "<p class='numwhite'>"+numbers[n]+"</p>";
+
+      if(!won)
+         num += "</div>"
+      
+      div += ball;
+      div += num;
+      
+      if(won){
+         var check   = "<img src='/assets/images/icons/check.png' class='checkIcon'></img></div>";
+         div += check;
+      }
+      
+   }
+   
+   //-------------------------------------------------------//
+   // theme
+   
+   var imageClass = "smallThemeBall lost";
+   var won  = numbers[numbers.length-1] == lotteryNumbers[lotteryNumbers.length-1];
+   if(won){
+      imageClass = "smallThemeBall";
+   }
+   
+   var luckyball     = "<div class='span2'><img src='"+App.nextLottery.theme.icons[numbers.length-1].image+"' class='"+imageClass+"'></img>"
+   var mask          = "<img src='/assets/images/balls/ball.mask.png' class='"+imageClass+"'></img>";
+
+   if(!won)
+      mask += "</div>";
+
+   div += luckyball;
+   div += mask;
+
+   //-------------------------------------------------------//
+
+   if(won){
+      var check   = "<img src='/assets/images/icons/check.png' class='checkIcon'></img></div>";
+      div += check;
+   }
+
+   //-------------------------------------------------------//
+
+   div += "</div>";
+
+   return new Handlebars.SafeString(div)
+});
+
+//==========================================================================================//
+
+
 Ember.Handlebars.registerBoundHelper('availableTickets', function(user) {
    return new Handlebars.SafeString(user.availableTickets + user.totalBonusTickets - user.playedBonusTickets)
+});
+
+Ember.Handlebars.registerBoundHelper('ticketPrice', function(price) {
+   if(price == null)
+      price = 0
+   return new Handlebars.SafeString("$ " + price)
 });
 
 //---------------------------------------------------------------------------------------//
@@ -127,6 +224,14 @@ Ember.Handlebars.registerBoundHelper('formatDate', function(uploadTime, options)
  */
 Ember.Handlebars.registerBoundHelper('readableFullDate', function(lang, options) {
    return new Handlebars.SafeString(Utils.readableFullDate(options.hash.date, lang));
+});
+
+/**
+ * transform 1356095267229 ==> 21/12/2012
+ */
+Ember.Handlebars.registerBoundHelper('readableFullDate2', function(date, options) {
+//   return new Handlebars.SafeString(Utils.readableFullDate(date, App.user.lang));
+   return new Handlebars.SafeString(Utils.readableFullDate(date, options.hash.lang));
 });
 
 //---------------------------------------------------------------------------------------//
