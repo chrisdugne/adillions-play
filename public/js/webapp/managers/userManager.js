@@ -19,6 +19,8 @@ UserManager.receivedPlayer = function(player, next)
 
 
    UserManager.checkUserCurrentLottery()
+
+   console.log(App.user)
 }
 
 //-------------------------------------------//
@@ -191,7 +193,7 @@ UserManager.getPlayer = function()
       success: function (player, textStatus, jqXHR)
       {
          UserManager.receivedPlayer(player, function(){
-            App.get('router').transitionTo('game');
+            App.get('router').transitionTo('game.gameHome');
          })
       }
    });
@@ -219,7 +221,7 @@ UserManager.getPlayerByFacebookId = function()
          console.log(result)
          App.authToken = result.authToken
          UserManager.receivedPlayer(result.player, function(){
-            App.get('router').transitionTo('game');
+            App.get('router').transitionTo('game.gameHome');
          })
       },
       error:function(){

@@ -109,6 +109,9 @@ Utils.formatFileSize = function (bytes)
  * timestamp = 1355342389711
  * return 12/12/2012
  * 
+ * timestamp = yyyy-mm-dd 
+ * return mm/dd/yyyy according to lang
+ * 
  * timestamp = undefined => use today.
  * 
  * @Improve #MAP-12
@@ -133,18 +136,53 @@ Utils.formatDate = function(timestamp)
    return day + "/" + month + "/" + year;
 }
 
-Utils.readableFullDate = function(timestamp, lang) 
+
+/**
+ * entry :
+ *   - yyyy-mm-dd
+ *   - timestampMillis
+ * type : 
+ *   - full
+ *   - large
+ *   - numbers
+ */
+Utils.readableFullDate = function(entry, lang, type) 
 {
+   console.log("readableFullDate ---->", entry,lang, type)
+
+   if(entry === undefined)
+      return "-";
+
+   var buildTimestamp = false 
+   if(typeof entry=="string" && entry.indexOf("-") != -1)
+      buildTimestamp = true
+   
+   if(buildTimestamp){
+      console.log("buildTimestamp")
+      var date       = entry.split("-");
+      var year       = date[0];
+      var month      = date[1];
+      var day        = date[2];
+      
+      var newDate = month+","+day+","+year;
+      var timestamp = new Date(newDate).getTime();
+   }
+   else{
+      var timestamp = entry;
+   }
+
+   console.log(timestamp)
+   
    if(lang === undefined)
-      lang = "en"
-         
-   var now        = timestamp == undefined ? new Date() : new Date(timestamp);
+      lang = "en";
+   
+   var now        = new Date(timestamp);
    var day        = Utils.zeroPad(now.getDate(), 2);
    var month      = Utils.zeroPad(now.getMonth() + 1, 2); //Months are zero based
    var year       = now.getFullYear();
    var dayName    = App.translations.messages.Days[now.getDay()];
    var monthName  = App.translations.messages.Months[month-1];
-      
+   
    if(lang == "fr")
       return dayName + " " + day + " " + monthName + " " + year;
    

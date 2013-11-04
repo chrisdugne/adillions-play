@@ -70,10 +70,12 @@
     "Random"			: "Aléatoire",
     "Restart"			: "Effacer",
     
+    "Username"			: "Nom d'utilisateur",
     "FirstName"			: "Prénom",
     "LastName"			: "Nom",
 	"Email"				: "Email",
     "BirthDate"			: "Date de naissance",
+    "Birthday"			: "Date de naissance",
     "ReferrerCode"		: "Code parrain",
     "ChangeAccount"		: "Changer de compte",
 
@@ -105,6 +107,7 @@
 
     "SelectLuckyBall"	: "Choisissez votre Boule Chance : ",
     "ExtraTicket"		: "Extra Ticket",
+    "BonusTickets"		: "Tickets bonus",
     
     "YourSelection"		: "Votre sélection !",
     "TicketsToPlay"		: "Tickets restants",
@@ -117,6 +120,9 @@
     "Winners"			: "Gagnants",
     "Charity"			: "Charité",
        
+    "TotalPoints"		: "Points",
+    "TotalGains"		: "Total des gains",
+    
     "":""
 	
 }

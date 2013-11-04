@@ -1,7 +1,52 @@
 
 <div class="row-fluid gameView">
-	profile
-	
+	<div class="row-fluid">
+		<div class="span6 offset3 lotteryTickets">
+			<div class="row-fluid">
+				<div class="span5 offset1 alignLeft">
+					{{App.translations.messages.Username}} :
+				</div>
+				<div class="span5 alignRight">
+					{{App.user.userName}}
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span5 offset1 alignLeft">
+					{{App.translations.messages.FirstName}} :
+				</div>
+				<div class="span5 alignRight">
+					{{App.user.firstName}}
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span5 offset1 alignLeft">
+					{{App.translations.messages.LastName}} :
+				</div>
+				<div class="span5 alignRight">
+					{{App.user.lastName}}
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span5 offset1 alignLeft">
+					{{App.translations.messages.Email}} :
+				</div>
+				<div class="span5 alignRight">
+					{{App.user.email}}
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span5 offset1 alignLeft">
+					{{App.translations.messages.Birthday}} : {{App.user.birthDate}}
+				</div>
+				<div class="span5 alignRight">
+					{{#with App.user}}
+						{{readableFullDate lang date=birthDate type='full'}}
+					{{/with}}
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
 
-		
+

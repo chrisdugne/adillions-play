@@ -1,4 +1,11 @@
-@import views.html.templates.dummyfooter;
+@import views.html.popups.loginWindow;
+@import views.html.popups.signinWindow;
+@import views.html.popups.signinFBWindow;
+@import views.html.popups.confirmWindow;
+@import views.html.popups.confirmFBWindow;
+@import views.html.popups.pointsWindow;
+
+@import views.html.templates.homefooter;
 
 <div class="container-fluid" id="homeContent">
 
@@ -10,42 +17,220 @@
 
 		<!-- -------------------------------------------------------------- -->
 
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		
-		<div class="row-fluid">
-		 <h1>Coming Soon</h1>
+		<div class="row-fluid" id="topHeader">
+			<div class="row-fluid">
+				<div class="span8 offset2">
+					<div id="headerNextDrawing"> {{App.translations.messages.NextDrawing}}	</div>
+				</div>	
+			</div>
+			<div class="row-fluid">
+				<div class="span8 offset2">
+					{{#with App.nextLottery}}
+						<div id="headerDate">	 {{readableFullDate App.user.lang date=date  type='full'}}	</div>
+					{{/with}}
+				</div>	
+			</div>
+			<div class="row-fluid">
+				<div class="span3 offset2">
+					<div id="headerPrice">		 {{price App.nextLottery.price}}			</div>
+				</div>	
+				<div class="span1">
+					<div id="cagnotteIconHome">
+						<img src='@routes.Assets.at("images/website/home.cagnotte.png")'></img>
+					</div>
+				</div>	
+				<div class="span3 offset2">
+					<div>
+						{{themeWeb App.nextLottery.theme}}
+					</div>
+				</div>	
+			</div>
+			<div class="row-fluid">
+				<div class="span4 offset4">
+					<div {{action openResults}}>{{langImage App.user.lang png='button.seeresults.png' id='seeResultsHome'}}</div>
+				</div>
+				<div class="span4">
+					{{langImage App.user.lang png='theme.text.png' id='themeText'}}
+				</div>
+			</div>
+			
+			
 		</div>
 		
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
+		<!-- -------------------------------------------------------------- -->
+		
+		<div class="row-fluid" id="partAdillionIs">
+		 	<div id="partAdillionIsText">{{App.translations.messages.Title}} <i>{{App.translations.messages.TitleBold}}</i></div>
+		</div>
+		
+		<!-- 
+		<div class="row-fluid" id="partAdillionIs">
+		 	<div id="partAdillionIsText">{{App.translations.messages.Title}} </div>
+		 	<div id="partAdillionIsTextBold">{{App.translations.messages.TitleBold}}</div>
+		</div>
+		 -->
+		
+		<!-- -------------------------------------------------------------- -->
+		
+		<div class="row-fluid" id="partHowItWorks">
+			<div class="row-fluid">
+		 		<div id="howItWorksTitle" class="span8 offset2"><b>{{App.translations.messages.Work}}</b></div>
+			</div>
+			<!-- span2 offset3 , 2, 2 (reste3) -->
+			<!-- span3 offset1 , 4, 3 (reste1)-->
+			<div class="row-fluid" id="howItWorksWorkflow">
+		 		<div class="span3 offset1">
+		 			<img id="watchIconHome" src='@routes.Assets.at("images/website/watch.png")'></img>
+		 			<img id="arrow1Home" src='@routes.Assets.at("images/website/arrow.png")'></img>
+			 		<div class="howItWorksText">
+		 			{{App.translations.messages.WatchAd}}
+			 		</div>
+		 		</div>
+		 		<div class="span4">
+		 			<img id="ticketIconHome" src='@routes.Assets.at("images/website/ticket.png")'></img>
+		 			<img id="arrow2Home" src='@routes.Assets.at("images/website/arrow.png")'></img>
+			 		<div class="howItWorksText">
+		 			{{App.translations.messages.LotteryTicket}}
+			 		</div>
+		 		</div>
+		 		<div class="span3">
+		 			<img id="prizeIconHome" src='@routes.Assets.at("images/website/prize.png")'></img>
+			 		<div class="howItWorksText">
+		 			{{App.translations.messages.WinPrize}}
+			 		</div>
+		 		</div>
+			</div>
+		</div>
+		
+		<!-- -------------------------------------------------------------- -->
+		
+		<div class="row-fluid" id="partFunEasyViral">
+	 		<div class="span3 offset1">
+		 		<div class="funEasyViralTitle">{{App.translations.messages.Fun}}</div>
+	 			<img src='@routes.Assets.at("images/website/separator.png")'></img>
+		 		<div class="funEasyViralText">{{App.translations.messages.FunDiscover}}</div>
+		 		<div class="funEasyViralText">{{App.translations.messages.FunWeek}}</div>
+	 			<img class="funEasyViralImage" src='@routes.Assets.at("images/website/themes.png")'></img>
+	 		</div>
+	 		<div class="span4">
+		 		<div class="funEasyViralTitle">{{App.translations.messages.Easy}}</div>
+	 			<img src='@routes.Assets.at("images/website/separator.png")'></img>
+		 		<div class="funEasyViralText">{{App.translations.messages.EasyNumbers}}</div>
+		 		<div class="funEasyViralText">{{App.translations.messages.EasyLucky}}</div>
+	 			<img class="funEasyViralImage" id="easyImage" src='@routes.Assets.at("images/website/play.png")'></img>
+	 		</div>
+	 		<div class="span3">
+		 		<div class="funEasyViralTitle">{{App.translations.messages.Viral}}</div>
+	 			<img src='@routes.Assets.at("images/website/separator.png")'></img>
+		 		<div class="funEasyViralText">{{App.translations.messages.ViralInvite}}</div>
+		 		<div class="funEasyViralText">{{App.translations.messages.ViralIncrease}}</div>
+	 			<img class="funEasyViralImage" src='@routes.Assets.at("images/website/networks.png")'></img>
+	 		</div>
+		</div>
+		
+		<!-- -------------------------------------------------------------- -->
+		
+		<div class="row-fluid" id="partMultiPlatforms">
+	 		<div class="span4 offset1">
+		 		<div class="multiPlatformsTitle">{{App.translations.messages.Multi}}</div>
+	 			<img src='@routes.Assets.at("images/website/separator.big.png")'></img>
+		 		<div class="multiPlatformsText">{{App.translations.messages.MultiRange}}</div>
+	 		</div>
+	 		<div class="span5">
+	 			<img class="multiPlatformsImage" src='@routes.Assets.at("images/website/laptop.png")'></img>
+	 		</div>
+		</div>
 
 		<!-- -------------------------------------------------------------- -->
 
+		<div class="row-fluid" id="partDownload">
+	 		<div class="span4 offset1">
+	 			<img id="mobilesImage" src='@routes.Assets.at("images/website/mobiles.png")'></img>
+	 		</div>
+	 		<div class="span5">
+		 		<div {{action playOnAdillions}} class="downloadText">{{App.translations.messages.OnAdillionsTitle}} <a class="link">{{App.translations.messages.OnAdillionsLink}}</a></div>
+		 		<div class="downloadText">{{App.translations.messages.OnFacebookTitle}} <a class="link" href="http://apps.facebook.com/adillions/">{{App.translations.messages.OnFacebookLink}}</a></div>
+				<div>{{langImage App.user.lang png='download.now.png' id='downloadHome'}}</div>
+	 			<img id="arrowDownDownload" src='@routes.Assets.at("images/website/arrow.down.png")'></img>
+	 			
+				<div class="row-fluid">
+					<div class="span6 touchable">{{langImage App.user.lang png='available.apple.png' id='availableApple'}}</div>
+					<div class="span6 touchable">{{langImage App.user.lang png='available.google.png' id='availableGoogle'}}</div>
+				</div>
+	 		</div>
+		</div>
+
+		<!-- -------------------------------------------------------------- -->
+
+		<div class="row-fluid" id="partResponsible">
+	 		<div class="span4 offset1">
+		 		<div class="responsibleTitle">{{App.translations.messages.Responsible}}</div>
+	 			<img src='@routes.Assets.at("images/website/separator.big.png")'></img>
+		 		<div class="responsibleText">{{App.translations.messages.ResponsibleFew}}</div>
+		 		<div class="responsibleText">{{App.translations.messages.ResponsibleEach}}</div>
+	 		</div>
+	 		<div class="span6">
+	 			<div>{{langImage App.user.lang png='responsible.png' id='responsibleImage'}}</div>
+	 		</div>
+		</div>
+
+		<!-- -------------------------------------------------------------- -->
+
+		<div class="row-fluid" id="partGlobal">
+	 		<div class="span10 offset1">
+		 		<div class="globalTitle">{{App.translations.messages.Global}}</div>
+	 			<img src='@routes.Assets.at("images/website/separator.huge.png")'></img>
+		 		<div class="globalText">{{App.translations.messages.GlobalText}}</div>
+	 			<img id="globapMap" src='@routes.Assets.at("images/website/map.png")'></img>
+	 		</div>
+		</div>
+
+		<!-- -------------------------------------------------------------- -->
+
+		<div class="row-fluid" id="partMedia">
+	 		<div class="span10 offset1">
+		 		<div class="mediaTitle">{{App.translations.messages.Media}}</div>
+	 			<img src='@routes.Assets.at("images/website/separator.huge.dark.png")'></img>
+				<div class="row-fluid">
+			 		<div class="span2 offset1"><img src='@routes.Assets.at("images/website/logo.media1.png")'></img></div>
+			 		<div class="span2"><img src='@routes.Assets.at("images/website/logo.media2.png")'></img></div>
+			 		<div class="span2"><img src='@routes.Assets.at("images/website/logo.media3.png")'></img></div>
+			 		<div class="span2"><img src='@routes.Assets.at("images/website/logo.media4.png")'></img></div>
+			 		<div class="span2"><img src='@routes.Assets.at("images/website/logo.media5.png")'></img></div>
+	 			
+		 		</div>
+	 		</div>
+		</div>
+
+		<!-- -------------------------------------------------------------- -->
+
+		<div class="row-fluid" id="partAdvertisers">
+	 		<div class="span10 offset1">
+		 		<div class="advertisersTitle">{{App.translations.messages.Advertisers}}</div>
+	 			<img src='@routes.Assets.at("images/website/separator.big.png")'></img>
+				<div class="row-fluid">
+			 		<div class="span3 offset1 advertisersText">{{App.translations.messages.AdvertisersBoost}}</div>
+			 		<div class="span4 advertisersText">{{App.translations.messages.AdvertisersImplement}}</div>
+			 		<div class="span3 advertisersText">{{App.translations.messages.AdvertisersReach}}</div>
+		 		</div>
+				<div class="row-fluid">
+			 		<div class="span4 offset4">
+	 					{{langImage App.user.lang png='advertising.png' id='advertisingButton'}}</div>
+		 			</div>
+	 		</div>
+		</div>
+
+		<!-- -------------------------------------------------------------- -->
+		
 		
 	</div>
 </div>
 
-@dummyfooter()
+@homefooter()
+
+@signinWindow()
+@signinFBWindow()
+@loginWindow()
+@confirmWindow()
+@confirmFBWindow()
+@pointsWindow()

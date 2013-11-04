@@ -38,14 +38,6 @@
 
       var finalize   = function(){  
          App.Globals.APP_READY = true
-
-         // TO REMOVE
-         if(App.Globals.isDev){
-            if(App.user.loggedIn)
-               App.get('router').transitionTo('game.gameHome');
-            else 
-               App.get('router').transitionTo('realhome');
-         }
       }
 
       Facebook.init(finalize, failure)

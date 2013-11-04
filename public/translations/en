@@ -70,10 +70,12 @@
     "Random"			: "Random",
     "Restart"			: "Clear",
     
+    "Username"			: "User name",
     "FirstName"			: "First name",
     "LastName"			: "Last name",
 	"Email"				: "Email",
     "BirthDate"			: "Birth date",
+    "Birthday"			: "Birthday",
     "ReferrerCode"		: "Sponsor code",
     "ChangeAccount"		: "Change account",
 
@@ -101,6 +103,7 @@
     
     "SelectLuckyBall"	: "Select your Lucky Ball : ",
     "ExtraTicket"		: "Extra Ticket",
+    "BonusTickets"		: "Bonus tickets",
 
     "YourSelection"		: "Your selection !",
     "TicketsToPlay"		: "Tickets to play",
@@ -112,6 +115,9 @@
     "Gain"				: "Gain",
     "Winners"			: "Winners",
     "Charity"			: "Charity",
+
+    "TotalPoints"		: "Total points",
+    "TotalGains"		: "Total gains",
     
     "":""
 }

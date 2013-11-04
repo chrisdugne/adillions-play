@@ -188,45 +188,39 @@ Ember.Handlebars.registerBoundHelper('ticketPrice', function(price) {
 //---------------------------------------------------------------------------------------//
 //Utils
 //---------------------------------------------------------------------------------------//
-
-Ember.Handlebars.registerHelper('date', function(options) {
-   var date = options.hash.value.split("-");
-   var year = date[0];
-   var month = date[1];
-   var day = date[2];
-
-   switch (App.translator.lang) {
-      case "fr":
-         return day + "/" + month + "/" + year;
-
-      case "en":
-      default:
-         return year + "." + month + "." + day;
-
-   }
-});
+//
+//Ember.Handlebars.registerBoundHelper('date', function(lang, options) {
+//   
+//   console.log(options)
+//   if(options.hash.date === undefined)
+//      return "-"
+//   
+//   var date = options.hash.date.split("-");
+//   var year = date[0];
+//   var month = date[1];
+//   var day = date[2];
+//
+//   var newDate = month+","+day+","+year;
+//   var timestamp = new Date(newDate).getTime()
+//
+//   new Handlebars.SafeString(Utils.readableFullDate(timestamp, lang))
+//});
+//
+///**
+// * transform 1356095267229 ==> 21/12/2012
+// */
+//Ember.Handlebars.registerBoundHelper('formatDate', function(uploadTime, options) {
+//   console.log("formatDate", uploadTime)
+//   return Utils.formatDate(uploadTime);
+//});
 
 /**
- * transform 1356095267229 ==> 21/12/2012
- */
-Ember.Handlebars.registerBoundHelper('formatDate', function(uploadTime, options) {
-   return Utils.formatDate(uploadTime);
-});
-
-/**
- * transform 1356095267229 ==> 21/12/2012
+ * transform 1356095267229 ==> Monday....2012
  */
 Ember.Handlebars.registerBoundHelper('readableFullDate', function(lang, options) {
-   return new Handlebars.SafeString(Utils.readableFullDate(options.hash.date, lang));
+   return new Handlebars.SafeString(Utils.readableFullDate(options.hash.date, lang, options.hash.type));
 });
 
-/**
- * transform 1356095267229 ==> 21/12/2012
- */
-Ember.Handlebars.registerBoundHelper('readableFullDate2', function(date, options) {
-//   return new Handlebars.SafeString(Utils.readableFullDate(date, App.user.lang));
-   return new Handlebars.SafeString(Utils.readableFullDate(date, options.hash.lang));
-});
 
 //---------------------------------------------------------------------------------------//
 

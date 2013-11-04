@@ -7,7 +7,9 @@
 	</div>
 	<div class="row-fluid">
 		<div class="span5 offset3 alignLeft">
-			{{App.translations.messages.NextDrawing}} {{readableFullDate App.user.lang date=App.nextLottery.date}}
+			{{#with App.nextLottery}}
+				{{App.translations.messages.NextDrawing}} {{readableFullDate App.user.lang date=date type='full'}}
+			{{/with}}
 		</div>
 	</div>
 	<br/>
