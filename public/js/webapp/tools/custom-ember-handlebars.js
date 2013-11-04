@@ -57,7 +57,7 @@ Ember.Handlebars.registerBoundHelper('newticket', function(numbers) {
    
    //-------------------------------------------------------//
    
-   var div = "<div class='row-fluid marginbottom'>";
+   var div = "<div class='row-fluid marginbottom2'>";
    
    //-------------------------------------------------------//
    // balls
@@ -106,7 +106,7 @@ Ember.Handlebars.registerBoundHelper('oldticket', function(numbers, options) {
    
    //-------------------------------------------------------//
 
-   var div = "<div class='row-fluid marginbottom'>";
+   var div = "<div class='row-fluid marginbottom2'>";
    
    //-------------------------------------------------------//
    // balls

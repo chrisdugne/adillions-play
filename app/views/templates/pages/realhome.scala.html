@@ -3,6 +3,7 @@
 @import views.html.popups.signinFBWindow;
 @import views.html.popups.confirmWindow;
 @import views.html.popups.confirmFBWindow;
+@import views.html.popups.pointsWindow;
 
 @import views.html.templates.homefooter;
 
@@ -44,7 +45,7 @@
 			</div>
 			<div class="row-fluid">
 				<div class="span4 offset4">
-					<div {{action openLogin}}>{{langImage App.user.lang png='button.seeresults.png' id='seeResultsHome'}}</div>
+					<div {{action openResults}}>{{langImage App.user.lang png='button.seeresults.png' id='seeResultsHome'}}</div>
 				</div>
 				<div class="span4">
 					{{langImage App.user.lang png='theme.text.png' id='themeText'}}
@@ -230,3 +231,4 @@
 @loginWindow()
 @confirmWindow()
 @confirmFBWindow()
+@pointsWindow()

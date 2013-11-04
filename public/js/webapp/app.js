@@ -39,10 +39,10 @@
       var finalize   = function(){  
          App.Globals.APP_READY = true
          
-         // TO REMOVE AFTER REALHOME IS REMOVEED
          if(App.user.loggedIn)
-            App.get('router').transitionTo('game');
+            App.get('router').transitionTo('game.gameHome');
          else
+            // change to home !!
             App.get('router').transitionTo('realhome');
       }
 

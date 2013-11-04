@@ -10,8 +10,8 @@
 	   App.Globals.signinRequested = true // reach /game directly : FB landing page, must use signinFBWindow
 	   UserManager.setupForms()
 	   
-      App.get('router').transitionTo('game.gameHome');
 	   GameManager.init()
+      GameManager.setSelectedButton()
 	}
 
 	GameController.cleanUI = function()	{
@@ -110,14 +110,6 @@
          }
       }),
       
-      results: Ember.Route.extend({
-         route: '/results',
-         connectOutlets: function(router) {
-            App.Router.openComponent(router, "game");
-            GameManager.setSelectedButton()
-         }
-      }),
-      
       profile: Ember.Route.extend({
          route: '/profile',
          connectOutlets: function(router) {
@@ -177,7 +169,6 @@
       
       openGameHome            : Ember.Route.transitionTo('game.gameHome'),		
       openMyTickets           : Ember.Route.transitionTo('game.myTickets'),		
-      openResults             : Ember.Route.transitionTo('game.results'),		
       openProfile             : Ember.Route.transitionTo('game.profile'),		
 		
 	});

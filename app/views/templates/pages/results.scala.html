@@ -1,0 +1,132 @@
+@import views.html.popups.loginWindow;
+@import views.html.popups.signinWindow;
+@import views.html.popups.signinFBWindow;
+@import views.html.popups.pointsWindow;
+
+@import views.html.templates.homefooter;
+
+@import views.html.templates.components.menu;
+
+<div id="gameContent">
+
+	<!-- ----------------------------------------------------------------------------- -->
+	<!-- Content 																	   -->
+	<!-- ----------------------------------------------------------------------------- -->
+
+	<!-- -------------------------------------------------------------- -->
+
+	{{#if App.user.loggedIn}}
+		@menu()
+	{{/if}}
+
+	<!-- -------------------------------------------------------------- -->
+
+	<div class="marketing unselectable">
+		
+		{{#each lottery in App.Globals.lotteries}} 
+			{{#with lottery}}
+				
+				<div class="row-fluid">
+					<div class="span8 offset2 lotteryTickets">
+					
+						<!-- -----------------  Date    ---------------------->
+						
+						<div class="row-fluid">
+							<div class="medium span10 offset1 alignLeft">
+								{{readableFullDate App.user.lang date=date}}
+							</div>
+						</div>
+						
+						<br/>
+						
+						<!-- -----------------  Result    ---------------------->
+						
+						<div class="row-fluid margintop">
+							<div class="span6 offset3">
+								{{oldticket result lotteryNumbers=result}}
+							</div>
+						</div>
+	
+						<!-- -----------------  Data  ---------------------->
+	
+						<div class="row-fluid margintop">
+							<div class="span8 offset2">
+								<div class="row-fluid">
+									
+									<!-- -----------------  LEFT  ---------------------->
+									
+									<div class="span5">
+					
+										<!-- -----------------  Winners  ---------------------->
+					
+										<div class="row-fluid marginbottom3 margintop3">
+											<div class="span1 resultIcon">
+												<img class="mobileIcon" src='@routes.Assets.at("images/icons/winners.png")'></img>
+											</div>
+											<div class="span4 offset2 big alignLeft">
+												{{nbWinners}}
+											</div>
+											<div class="span1 small alignLeft">
+												{{App.translations.messages.Winners}}
+											</div>
+										</div>
+	
+										<!-- -----------------  Data  ---------------------->
+	
+										<div class="row-fluid">
+											<div class="span1 resultIcon">
+												<img class="mobileIcon" src='@routes.Assets.at("images/icons/money.png")'></img>
+											</div>
+											<div class="span9 offset2 big alignLeft">
+												{{ticketPrice finalPrice}}
+											</div>
+										</div>
+									</div>
+	
+									<!-- -----------------  separator---------------------->
+	
+									<div class="span1">
+										<img id="actionSeparatorBig" class="mobileIcon" src='@routes.Assets.at("images/icons/separateur.big.png")'></img>
+									</div>
+	
+									<!-- -----------------  RIGHT/Charity  ---------------------->
+	
+									<div class="span4 offset1 margintop5">
+										<div class="span1 resultIcon margintop">
+											<img class="mobileIcon" src='@routes.Assets.at("images/icons/charity.png")'></img>
+										</div>
+										<div class="span8 offset3 alignLeft">
+											<div class="row-fluid small">
+												{{App.translations.messages.Charity}}
+											</div>
+											<div class="row-fluid big margintop">
+												{{ticketPrice finalPrice}}
+											</div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<br/>
+				<br/>
+			{{/with}} 
+		{{/each}}
+		
+		
+	</div>
+</div>
+		
+<!-- ---------------------------------------------- -->
+
+@homefooter()
+
+<!-- ----------------  POPUPS --------------------- -->
+
+@signinWindow()
+@signinFBWindow()
+@loginWindow()
+@pointsWindow()

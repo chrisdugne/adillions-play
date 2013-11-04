@@ -10,6 +10,7 @@
 
 		   openHome           : Ember.Route.transitionTo('home'),
 		   openRealHome       : Ember.Route.transitionTo('realhome'),
+		   openResults        : Ember.Route.transitionTo('results'),
 
 			//-------------------------------------------------------//
 
@@ -128,6 +129,7 @@
 			
 			home           : App.HomeRouting,
 			game           : App.GameRouting,
+			results        : App.ResultsRouting,
 			team           : App.TeamRouting,
 			credits        : App.CreditsRouting,
 			blog           : App.BlogRouting,
@@ -230,6 +232,7 @@
 
    Router.isWebappPage = function(page){
       return (page != "home" && page != "realhome" &&
+            page != "results" && 
             page != "team" && 
             page != "credits" && 
             page != "blog");

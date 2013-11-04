@@ -31,11 +31,6 @@
 	   templateName: 'myTickets'
 	});
 	
-	App.ResultsController = Ember.ObjectController.extend({});
-	App.ResultsView = Ember.View.extend({
-	   templateName: 'results'
-	});
-	
 	App.ProfileController = Ember.ObjectController.extend({});
 	App.ProfileView = Ember.View.extend({
 	   templateName: 'profile'

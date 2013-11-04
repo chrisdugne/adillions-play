@@ -5,8 +5,12 @@
 	z-index: 1000;
 }
 
+#gameContent {
+	margin-top: 95px;
+}
+
 .gameView {
-	margin-top: 87px;
+	margin-top: 20px;
 }
 
 .free {
@@ -34,35 +38,67 @@
 }
 
 .marginbottom {
-	margin-bottom: 20px !important;
+	margin-bottom: 10px !important;
 }
 
 .marginbottom2 {
-	margin-bottom: 40px !important;
+	margin-bottom: 20px !important;
 }
 
 .marginbottom3 {
-	margin-bottom: 60px !important;
+	margin-bottom: 30px !important;
 }
 
 .marginbottom4 {
+	margin-bottom: 40px !important;
+}
+
+.marginbottom5 {
+	margin-bottom: 50px !important;
+}
+
+.marginbottom6 {
+	margin-bottom: 60px !important;
+}
+
+.marginbottom7 {
+	margin-bottom: 70px !important;
+}
+
+.marginbottom8 {
 	margin-bottom: 80px !important;
 }
 
 
 .margintop {
-	margin-top: 20px !important;
+	margin-top: 10px !important;
 }
 
 .margintop2 {
-	margin-top: 40px !important;
+	margin-top: 20px !important;
 }
 
 .margintop3 {
-	margin-top: 60px !important;
+	margin-top: 30px !important;
 }
 
 .margintop4 {
+	margin-top: 40px !important;
+}
+
+.margintop5 {
+	margin-top: 50px !important;
+}
+
+.margintop6 {
+	margin-top: 60px !important;
+}
+
+.margintop7 {
+	margin-top: 70px !important;
+}
+
+.margintop8 {
 	margin-top: 80px !important;
 }
 
@@ -254,9 +290,14 @@
 	margin-top: 10px;
 }
 
-.big {
+.bigger {
 	font-size: 35px;
 	font-weight: bold;
+	margin-bottom: 6px;
+}
+
+.big {
+	font-size: 35px;
 	margin-bottom: 6px;
 }
 
@@ -264,16 +305,22 @@
 	font-size: 25px;
 }
 
+.small {
+	font-size: 16px!important;
+}
+
+.xsmall {
+	font-size: 12px!important;
+}
+
+/*---------------------------------------------*/
+
 .alignLeft {
 	text-align: left;
 }
 
 .alignRight {
 	text-align: right;
-}
-
-.small {
-	font-size: 12px!important;
 }
 
 .mobileIcon {
@@ -346,6 +393,11 @@
 	height: 20px;
 }
 
+#actionSeparatorBig {
+	width: 1px;
+	height: 145px;
+}
+
 /*---------------------------------------------*/
 #pointsImage {
 	margin-left: 55px;
@@ -402,4 +454,10 @@
 .priceTicketIcon {
 	margin-left: 0px!important;
 	margin-top: -8px;
+}
+
+.resultIcon {
+	margin-left: 0px!important;
+	margin-top: -5px;
+	max-height: 20px;
 }

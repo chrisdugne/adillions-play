@@ -7,6 +7,8 @@
 
 @import views.html.templates.footer;
 
+@import views.html.templates.components.menu;
+
 <div id="gameContent">
 
 	<!-- ----------------------------------------------------------------------------- -->
@@ -16,31 +18,8 @@
 	<div class="marketing unselectable">
 
 		<!-- -------------------------------------------------------------- -->
-
-		<div id="menu">
-			<div class="span2">
-				<div class="row-fluid">
-					<div class="span10">
-						<div id="gameHomeButton" {{action openGameHome}} class="btn-large button"></div>
-					</div>
-				</div>
-				<div class="row-fluid">
-					<div class="span10">
-						<div id="myTicketsButton" {{action openMyTickets}} class="btn-large button"></div>
-					</div>
-				</div>
-				<div class="row-fluid">
-					<div class="span10">
-						<div id="resultsButton" {{action openResults}} class="btn-large button"></div>
-					</div>
-				</div>
-				<div class="row-fluid">
-					<div class="span10">
-						<div id="profileButton" {{action openProfile}} class="btn-large button"></div>
-					</div>
-				</div>
-			</div>
-		</div>
+	
+		@menu()
 
 		<!-- -------------------------------------------------------------- -->
 		
@@ -87,12 +66,13 @@ il faut une image adaptee au web
 		<img id="menuBG" src='@routes.Assets.at("images/game/menu.bg.png")'></img>	
 	</div>
  -->
-	</div>
-
-	@footer()
-
 </div>
 
+<!-- ---------------------------------------------- -->
+
+@footer()
+
+<!-- ----------------  POPUPS --------------------- -->
 
 @signinWindow()
 @signinFBWindow()
