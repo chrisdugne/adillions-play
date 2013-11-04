@@ -95,7 +95,7 @@
 	   //---------------------------------
 	   
 	   gameHome: Ember.Route.extend({
-	      route: '/lottery',
+	      route: '/',
          connectOutlets: function(router) {
             App.Router.openComponent(router, "game");
             GameManager.setSelectedButton()

@@ -6,10 +6,11 @@
 
 <!-- Pages -->
 
+@import views.html.templates.pages.realhome;
 @import views.html.templates.pages.home;
 @import views.html.templates.pages.game;
 @import views.html.templates.pages.results;
-@import views.html.templates.pages.realhome;
+@import views.html.templates.pages.about;
 
 <!-- Components -->
 
@@ -21,6 +22,14 @@
 @import views.html.templates.pages.gameViews.selectAdditionalNumber;
 @import views.html.templates.pages.gameViews.confirmation;
 
+@import views.html.templates.pages.aboutViews.aboutHome;
+@import views.html.templates.pages.aboutViews.faq;
+@import views.html.templates.pages.aboutViews.terms;
+@import views.html.templates.pages.aboutViews.rewards;
+@import views.html.templates.pages.aboutViews.jobs;
+@import views.html.templates.pages.aboutViews.press;
+@import views.html.templates.pages.aboutViews.privacy;
+
 <!-- ------------------------------------------------------------------- -->
 
 <script type="text/x-handlebars" data-template-name="application">
@@ -31,9 +40,10 @@
 
 <!-- --- Pages --- -->
 @pageTemplate("realhome", true)					{ @realhome()	}
-@pageTemplate("home", true)						{ @home()	}
-@pageTemplate("game", false)					{ @game()	}
+@pageTemplate("home", true)						{ @home()		}
+@pageTemplate("game", false)					{ @game()		}
 @pageTemplate("results", true)					{ @results()	}
+@pageTemplate("about", true)					{ @about()		}
 
 <!-- ------------------------------------------------------------------- -->
 <!-- --- Components --- -->
@@ -45,3 +55,15 @@
 @componentTemplate("fillLotteryTicket")			{ @fillLotteryTicket()		}
 @componentTemplate("selectAdditionalNumber")	{ @selectAdditionalNumber()	}
 @componentTemplate("confirmation")				{ @confirmation()			}
+
+@componentTemplate("aboutHome")					{ @aboutHome()				}
+@componentTemplate("faq")						{ @faq()					}
+@componentTemplate("terms")						{ @terms()					}
+@componentTemplate("rewards")					{ @rewards()				}
+@componentTemplate("jobs")						{ @jobs()					}
+@componentTemplate("press")						{ @press()					}
+@componentTemplate("privacy")					{ @privacy()				}
+
+
+
+

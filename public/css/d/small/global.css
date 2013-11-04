@@ -1,5 +1,5 @@
 /***** [ small ] *****/
-@media ( max-width : 768px) {
+@media ( max-width : 910px) {
 	
 	.container {
 		width:760px;	
@@ -38,19 +38,6 @@
 	/*--------------------------------*/
 	.row-fluid.touchable:hover {
 		background-color: #DDEDDD;
-	}
-	.langButton {
-		color: #111;
-		cursor: pointer;
-		cursor: hand;
-		background: transparent;
-		width: 40px;
-	}
-	#langButtons {
-		margin-top: 10px;
-		right: 17px;
-		position: fixed;
-		z-index: 2;
 	}
 	.rounded {
 		border-radius: 8px;

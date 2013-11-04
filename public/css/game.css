@@ -5,6 +5,41 @@
 	z-index: 1000;
 }
 
+/*---------------------------------------------*/
+#aboutContent {
+	margin-top: 95px;
+}
+
+.aboutTab {
+	background-color: #eee;
+	height: 40px;
+	padding-top: 10px;
+	text-align: left;
+	padding-left: 20px;
+}
+
+.aboutTab.selected{
+	background-color: #fff;
+	color:#1b5c64;
+	font-weight:bold;
+}
+
+.aboutTab:hover {
+	background-color: #ebedec;
+	color:#188785;
+}
+
+#accordion {
+	text-align: left;
+}
+
+.ui-accordion-header.ui-state-active {
+	background: #188785;
+	border: solid 1px #1b5c64;
+	color: #eee;
+}
+/*---------------------------------------------*/
+
 #gameContent {
 	margin-top: 95px;
 }

@@ -1,3 +1,4 @@
+
 #header {
 	position: fixed;
 	top: 0px;
@@ -14,29 +15,27 @@
 	height: 67px;
 	width: 1430px;
 	z-index: 500;
-	-moz-box-shadow: 0px 2px 15px #333;
-	-webkit-box-shadow: 0px 2px 15px #333;
+	-moz-box-shadow: 0px 4px 19px -8px #333;
+	-webkit-box-shadow: 0px 4px 19px -8px #333;
 }
 
-@media screen and ( max-width : 1280px) {
+@media screen and ( max-width : 1400px) {
 	#header {
 		width: 1200px;
 	}
 }
 
-@media screen and ( max-width : 992px) {
+@media screen and ( max-width : 1170px) {
 	#header {
-		width: 940pxpx;
+		width: 940px;
 	}
 }
 
-@media screen and ( max-width : 768px) {
+@media screen and ( max-width : 910px) {
 	#header {
 		width: 760px;
 	}
 }
-
-
 
 #header h1 {
 	color: #eee;
@@ -88,7 +87,7 @@
 /*--------------------------------*/
 
 #headerButtons {
-	right: 250px;
+	right: 130px;
 	top: 22px;
 	position: absolute;
 	width: 250px;
@@ -110,7 +109,7 @@
 #headerPoints {
 	position: relative;
 	width: 100px;
-	left: 185px;
+	left: 170px;
 	top: -23px;
 }
 

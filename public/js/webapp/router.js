@@ -2,6 +2,7 @@
 	'use strict';
 	
 	var Router = Ember.Router.extend({
+	   
 		enableLogging: true,
 		root: Ember.Route.extend({
 			
@@ -13,6 +14,16 @@
 		   openResults        : Ember.Route.transitionTo('results'),
 
 			//-------------------------------------------------------//
+
+		   openAboutHome      : Ember.Route.transitionTo('about.aboutHome'),
+		   openFaq            : Ember.Route.transitionTo('about.faq'),
+		   openTerms          : Ember.Route.transitionTo('about.terms'),
+		   openRewards        : Ember.Route.transitionTo('about.rewards'),
+		   openJobs           : Ember.Route.transitionTo('about.jobs'),
+		   openPress          : Ember.Route.transitionTo('about.press'),
+		   openPrivacy        : Ember.Route.transitionTo('about.privacy'),
+		   
+		   //-------------------------------------------------------//
 
 			translateEn    : function(){
 			    App.changeLang("en")
@@ -84,7 +95,7 @@
 			
 			//-------------------------------------------------------//
 			
-			openGame         : Ember.Route.transitionTo('game'),
+			openGame         : Ember.Route.transitionTo('game.gameHome'),
 
 			//-------------------------------------------------------//
 			
@@ -133,6 +144,8 @@
 			team           : App.TeamRouting,
 			credits        : App.CreditsRouting,
 			blog           : App.BlogRouting,
+
+			about          : App.AboutRouting,
 
 			// to remove !
 			realhome       : App.RealHomeRouting,
@@ -233,6 +246,7 @@
    Router.isWebappPage = function(page){
       return (page != "home" && page != "realhome" &&
             page != "results" && 
+            page != "about" && 
             page != "team" && 
             page != "credits" && 
             page != "blog");
