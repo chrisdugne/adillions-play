@@ -200,8 +200,15 @@ public class AccountManager {
 		mail.setSubject("Adillions - Welcome !");
 		mail.addRecipient("chris.dugne@gmail.com");
 		mail.addFrom("noreply@adillions.com");
-		//sends text/text
-		mail.send( "Welcome to Adillions !\nYou can now login with your Account :\nChris\nDugne\nemail\n\n\nwww.adillions.com" );
+
+		String content = "<p>Welcome Christophe !" +
+				"<br/><br/>Your account is now ready" +
+				"<br/>Christophe Dugne-Esquevin" +
+				"<br/>chris.dugne@uralys.com</p>" +
+				"<span style=\"color: #888888;\"><img id=\"logo\" style=\"width: 180px;\" src=\"http://www.adillions.com/assets/images/logo.png\" alt=\"\" /></span>" +
+				"<p style=\"padding-left: 20px;margin-top:2px\"><span style=\"color: #888888;\">www.adillions.com</span></p>";
+		
+		mail.sendHtml("<html>"+content+"</html>" );
 
 		//-------------------------------------//
 
