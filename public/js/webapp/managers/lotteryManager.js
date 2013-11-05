@@ -14,6 +14,8 @@ LotteryManager.isGameAvailable = function(){
 
 LotteryManager.refreshNextLottery = function()
 {
+   App.wait()
+   
    $.ajax({
       type: "POST",  
       url: "/nextLottery",
@@ -32,6 +34,9 @@ LotteryManager.refreshNextLottery = function()
          App.nextLottery.set("cpm",          lottery.cpm)   
          App.nextLottery.set("theme",        $.parseJSON(lottery.theme))  
          App.nextLottery.set("result",       lottery.result)
+         
+         App.free()
+         App.get('router').transitionTo('home.lottery')
       }
    });
 

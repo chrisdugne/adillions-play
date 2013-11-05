@@ -61,14 +61,11 @@
 <script type="text/javascript">
    UserManager.setupForms()
 
-   var failure = function() {
-   }
-   var finalize = function() {
-   }
-   var loginSuccess = function() {
-   }
-
-   Facebook.init(finalize, failure, loginSuccess)
+   Facebook.init({
+	   finalizeInit 				: function() {},
+	   notConnectedCallback 		: function() {}, 
+	   openApp 						: function() {}
+   })
 
    $("#closeButton").click(function() {
       window.location.href = "/backToMobile"

@@ -20,28 +20,33 @@
           window.scrollTo(0, 0);
        }
    });
-   
+
    //------------------------------------------------------//
-   
-   App.init = function(){
+
+   App.init = function(sponsorRequestId){
+
+      window.location.hash = "/";      // landing forced on homepage + login 
 
       //------------------------------------------------------//
       //   App.youtubeManager = new YoutubeManager();
       LotteryManager.refreshNextLottery()
       LotteryManager.getFinishedLotteries()
-      
+
       //------------------------------------------------------//
 
       var failure    = function(){
-          App.loginAdillions()
+         App.loginAdillions()
       }
 
       var finalize   = function(){  
          App.Globals.APP_READY = true
       }
 
-      Facebook.init(finalize, failure)
-      
+      Facebook.init({
+         finalizeInit            : finalize,
+         notConnectedCallback    : failure, 
+         sponsorRequestId        : sponsorRequestId
+      })
    }
 
    //------------------------------------------------------//

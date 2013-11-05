@@ -6,10 +6,10 @@
 			
 			<div class="row-fluid">
 				<div class="span8 offset2 lotteryTickets">
-					<div class="row-fluid">
+					<div class="row-fluid margintop">
 						<div class="medium span10 offset1 alignLeft">
 							{{#if result}}
-								{{readableFullDate App.user.lang date=date}}
+								{{readableFullDate App.user.lang date=date type='full'}}
 							{{else}}			
 								{{App.translations.messages.NextDrawing}} 
 							{{/if}}			
@@ -19,7 +19,7 @@
 						<div class="span10 offset1 alignLeft">
 							{{#if result}}
 							{{else}}			
-								{{readableFullDate App.user.lang date=date}}
+								{{readableFullDate App.user.lang date=date type='full'}}
 							{{/if}}			
 						</div>
 					</div>
@@ -39,7 +39,7 @@
 									{{App.translations.messages.Gain}}  : 		
 								</div>
 								<div class="span2 offset1 priceTicket">
-									{{ticketPrice price}} 		
+									{{price price}} 		
 								</div>
 								<div class="span1 priceTicketIcon">
 									<img class="mobileIcon" src='@routes.Assets.at("images/icons/money.png")'></img>

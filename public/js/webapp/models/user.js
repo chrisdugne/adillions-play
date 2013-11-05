@@ -4,6 +4,7 @@
 	var User = Ember.Object.extend({
 
 	   //---------------------------//
+	   // from back end
 
 	   uid                    : "",
 	   email                  : "",
@@ -38,11 +39,14 @@
 	   availableTickets       : "",
 	   playedBonusTickets     : "",
 	   totalPaidTickets       : "",
-	   totalBonusTickets      : "",  
 	   
 	   acceptEmails           : "",
 
 	   //---------------------------//
+	   // set on front end
+	   
+	   totalBonusTickets      : "",  
+	   totalGains             : "",  
 
 	   lotteries              : "",
 	   loggedIn               :    false,

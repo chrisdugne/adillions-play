@@ -1,7 +1,100 @@
 
 <div class="row-fluid gameView">
-	<div class="row-fluid">
+		
+	<!----------------------  Status ------------------------------>
+		
+	<div class="row-fluid marginbottom2">
 		<div class="span6 offset3 lotteryTickets">
+			<div class="row-fluid">
+				<div class="span10" id="statusImage">
+					{{langImage App.user.lang png='status.png' id='statusImage'}}
+				</div>
+			</div>
+
+			<!----------------------  Line 1 ------------------------------>
+
+			<div class="row-fluid marginbottom2">
+			
+				<!----------------------  Total Points ------------------------------>
+				
+				<div class="span3 offset1 alignLeft">
+					<div class="row-fluid marginbottom">
+						{{App.translations.messages.TotalPoints}} :
+					</div>
+					<div class="row-fluid">
+						{{App.user.totalPoints}} Pts
+					</div>
+				</div>
+				
+				<!----------------------  Total Gains ------------------------------>
+				
+				<div class="span3 offset4 alignRight">
+					<div class="row-fluid marginbottom">
+						{{App.translations.messages.TotalGains}} :
+					</div>
+					<div class="row-fluid">
+						<div class="span8 offset1 priceTicket">
+						{{price App.user.totalGains}}
+						</div>
+						<div class="span3 priceTicketIcon">
+							<img class="mobileIcon" src='@routes.Assets.at("images/icons/money.png")'></img>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!----------------------  Line 2 ------------------------------>
+
+			<div class="row-fluid">
+				
+				<!----------------------  Charity ------------------------------>
+				
+				<div class="span3 offset1 alignLeft">
+					<div class="row-fluid marginbottom">
+						{{App.translations.messages.Charity}} :
+					</div>
+					<div class="row-fluid">
+						<div class="span4">
+							<img class="mobileIcon" src='@routes.Assets.at("images/icons/charity.png")'></img>
+						</div>
+					</div>
+					<div class="row-fluid upper2">
+						<div class="span10 alignLeft upper2">
+							{{charityName App.user.charity}}
+						</div>
+					</div>
+				</div>
+
+				<!----------------------  Bonus tickets ------------------------------>
+				
+				<div class="span3 offset4 alignRight">
+					<div class="row-fluid marginbottom">
+						{{App.translations.messages.BonusTickets}} :
+					</div>
+					<div class="row-fluid">
+						<div class="span4 offset8">
+							<img class="mobileIcon" src='@routes.Assets.at("images/icons/ticket.png")'></img>
+						</div>
+					</div>
+					<div class="row-fluid ">
+						<div class="span12 alignRight upper2">
+						+ {{App.user.totalBonusTickets}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	<!----------------------  Personal details ------------------------------>
+		
+	<div class="row-fluid marginbottom2">
+		<div class="span6 offset3 lotteryTickets">
+			<div class="row-fluid">
+				<div class="span10" id="detailsImage">
+					{{langImage App.user.lang png='details.png' id='detailsImage'}}
+				</div>
+			</div>
 			<div class="row-fluid">
 				<div class="span5 offset1 alignLeft">
 					{{App.translations.messages.Username}} :
@@ -36,11 +129,11 @@
 			</div>
 			<div class="row-fluid">
 				<div class="span5 offset1 alignLeft">
-					{{App.translations.messages.Birthday}} : {{App.user.birthDate}}
+					{{App.translations.messages.Birthday}} :
 				</div>
 				<div class="span5 alignRight">
 					{{#with App.user}}
-						{{readableFullDate lang date=birthDate type='full'}}
+						{{readableFullDate lang date=birthDate type='long'}}
 					{{/with}}
 				</div>
 			</div>

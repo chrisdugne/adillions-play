@@ -116,6 +116,8 @@
     "Winners"			: "Winners",
     "Charity"			: "Charity",
 
+    "Charities"			: ["Starter","Level2","Level3","Level4","Level5","Level6","Level7"],
+
     "TotalPoints"		: "Total points",
     "TotalGains"		: "Total gains",
     

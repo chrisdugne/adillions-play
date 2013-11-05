@@ -148,14 +148,18 @@ Utils.formatDate = function(timestamp)
  */
 Utils.readableFullDate = function(entry, lang, type) 
 {
-   console.log("readableFullDate ---->", entry,lang, type)
+   //------------------------------------------------------//
 
    if(entry === undefined)
       return "-";
 
+   //------------------------------------------------------//
+   
    var buildTimestamp = false 
    if(typeof entry=="string" && entry.indexOf("-") != -1)
       buildTimestamp = true
+
+   //------------------------------------------------------//
    
    if(buildTimestamp){
       console.log("buildTimestamp")
@@ -171,11 +175,13 @@ Utils.readableFullDate = function(entry, lang, type)
       var timestamp = entry;
    }
 
-   console.log(timestamp)
-   
+   //------------------------------------------------------//
+
    if(lang === undefined)
       lang = "en";
    
+   //------------------------------------------------------//
+
    var now        = new Date(timestamp);
    var day        = Utils.zeroPad(now.getDate(), 2);
    var month      = Utils.zeroPad(now.getMonth() + 1, 2); //Months are zero based
@@ -183,13 +189,49 @@ Utils.readableFullDate = function(entry, lang, type)
    var dayName    = App.translations.messages.Days[now.getDay()];
    var monthName  = App.translations.messages.Months[month-1];
    
-   if(lang == "fr")
-      return dayName + " " + day + " " + monthName + " " + year;
+   //------------------------------------------------------//
    
-   if(lang == "en"){
-      var suffix = Utils.getNumberSuffix(now.getDate())
-      return dayName+ ", " + monthName + " " + day + suffix + ", " + year ;
+   if(type == "full"){
+
+      if(lang == "fr")
+         return dayName + " " + day + " " + monthName + " " + year;
+      
+      if(lang == "en"){
+         var suffix = Utils.getNumberSuffix(now.getDate())
+         return dayName+ ", " + monthName + " " + day + suffix + ", " + year ;
+      }
+      
    }
+   
+   //------------------------------------------------------//
+   
+   if(type == "long"){
+      
+      if(lang == "fr")
+         return day + " " + monthName + " " + year;
+      
+      if(lang == "en"){
+         var suffix = Utils.getNumberSuffix(now.getDate())
+         return monthName + " " + day + suffix + ", " + year ;
+      }
+      
+   }
+   
+   //------------------------------------------------------//
+   
+   if(type == "numbers"){
+      
+      if(lang == "fr")
+         return day + "/" + month + "/" + year;
+      
+      if(lang == "en"){
+         var suffix = Utils.getNumberSuffix(now.getDate())
+         return month + "/" + day + "/" + year;
+      }
+      
+   }
+
+   //------------------------------------------------------//
    
    return day + "/" + month + "/" + year;
 }

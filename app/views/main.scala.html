@@ -1,4 +1,4 @@
-@(popupLoginWindow:Boolean) @import views.html.templates.webapp;
+@(requestId:String) @import views.html.templates.webapp;
 
 <!doctype html>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -104,6 +104,19 @@
 
 	<script src='@routes.Assets.at("js/webapp/router.js")' type="text/javascript"></script>
 
+	<!-- -------------   Facebook request -------------------->
+	
+	<script type="text/javascript">
+		
+		@if(requestId != null){
+		   var sponsorRequestId = @requestId
+		}else{
+		   var sponsorRequestId = null
+		}
+		
+		App.init(sponsorRequestId)
+	</script>
+	
 	<!-- -------------   Webapp -------------------->
  
 	<!-- Analytics

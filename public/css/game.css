@@ -54,7 +54,7 @@
 
 .lotteryTickets {
 	background-color: rgba(236,238,237,0.4);
-	padding: 30px;
+	padding: 20px;
 	border-radius: 25px;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
@@ -495,4 +495,14 @@
 	margin-left: 0px!important;
 	margin-top: -5px;
 	max-height: 20px;
+}
+
+/*---------------------------------------------*/
+
+#statusImage {
+	width: 75px;
+}
+
+#detailsImage {
+	width: 180px;
 }

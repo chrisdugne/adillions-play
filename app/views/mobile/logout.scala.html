@@ -34,7 +34,11 @@
 	   })
 	}
 
-	Facebook.init(finalize, failure, loginSuccess)
+	Facebook.init({
+	   finalizeInit 				: finalize,
+	   notConnectedCallback 		: failure, 
+	   openApp 						: loginSuccess
+	})
 
 </script>
 

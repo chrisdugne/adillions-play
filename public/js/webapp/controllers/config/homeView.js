@@ -14,4 +14,11 @@
 	
 	App.HomeView = HomeView;
 
+	//---------------------------------------------------//
+	
+   App.LotteryController = Ember.ObjectController.extend({});
+   App.LotteryView = Ember.View.extend({
+      templateName: 'homeLottery'
+   });
+   
 })( App);

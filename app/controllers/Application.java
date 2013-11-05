@@ -24,16 +24,17 @@ public class Application extends Controller {
 	// facebook
 
 	// PROD
-//	protected static final String FACEBOOK_APP_ID 				= "170148346520274";
-//	protected static final String FACEBOOK_API_SECRET 			= "887e8f7abb9b1cb9238a097e06585ae2";
-//	protected static final String FACEBOOK_APP_NAMESPACE 		= "adillions";
-//	protected static final String APP_HOSTNAME 					= "http://www.adillions.com";
+	public static final String FACEBOOK_APP_ID 				= "170148346520274";
+	public static final String FACEBOOK_API_SECRET 			= "887e8f7abb9b1cb9238a097e06585ae2";
+	public static final String FACEBOOK_APP_NAMESPACE 		= "adillions";
+	public static final String APP_HOSTNAME 					= "http://www.watchtocash.com";
+//	public static final String APP_HOSTNAME 					= "http://www.adillions.com";
 
 	// DEV
-	protected static final String FACEBOOK_APP_ID 				= "534196239997712";
-	protected static final String FACEBOOK_API_SECRET 			= "46383d827867d50ef5d87b66c81f1a8e";
-	protected static final String FACEBOOK_APP_NAMESPACE 		= "adillions-dev";
-	protected static final String APP_HOSTNAME 					= "http://192.168.0.9:9000";
+//	public static final String FACEBOOK_APP_ID 				= "534196239997712";
+//	public static final String FACEBOOK_API_SECRET 			= "46383d827867d50ef5d87b66c81f1a8e";
+//	public static final String FACEBOOK_APP_NAMESPACE 		= "adillions-dev";
+//	public static final String APP_HOSTNAME 					= "http://192.168.0.9:9000";
 
 	// -----------------------------------------------------------------------------------//
 
@@ -51,13 +52,19 @@ public class Application extends Controller {
 
 	public static Result home()
 	{
+		System.out.println("home");
 		Map<String, String[]> queryParameters = request().queryString();
-		String[] login = queryParameters.get("login");
+		String requestIds[] = queryParameters.get("request_ids");
 		
-		Boolean popupLoginWindow = login != null;
-		
-		// prod
-		return ok(main.render(popupLoginWindow));
+		if(requestIds != null){
+			String requestId = queryParameters.get("request_ids")[0].split(",")[0];
+			System.out.println("requestId " + requestId);
+			
+			return ok(main.render(requestId));
+		}
+		else{
+			return ok(main.render(null));
+		}
 	}
 
 	

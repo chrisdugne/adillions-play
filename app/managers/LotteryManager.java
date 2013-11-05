@@ -18,11 +18,13 @@ public class LotteryManager {
 	//------------------------------------------------------------------------------------//
 
 	public static final int NB_POINTS_PER_TICKET	 						= 1;
-	public static final int NB_POINTS_PER_REFERRING 					= 4;
+	public static final int NB_POINTS_PER_REFERRING 					= 1;
 	public static final int NB_LOTTERIES_TO_PLAY_TO_BE_REFERRED 	= 2;
 
-	public static final int FACEBOOK_FAN_TICKETS 						= 4;
-	public static final int TWITTER_FAN_TICKETS 							= 4;
+	public static final int FACEBOOK_FAN_TICKETS 						= 2;
+	public static final int FACEBOOK_CONNECTION_TICKETS 				= 2;
+	public static final int TWITTER_FAN_TICKETS 							= 2;
+	public static final int TWITTER_CONNECTION_TICKETS 				= 2;
 	
 	//------------------------------------------------------------------------------------//
 
@@ -121,9 +123,23 @@ public class LotteryManager {
 				playedLotteries.add(t.getLottery().getUid());
 			}
 		}
+
+		// -----------------------------------------------------//
 		
-		int facebookFanBonus = player.isFacebookFan() ? FACEBOOK_FAN_TICKETS : 0;
-		int twitterFanBonus 	= player.isTwitterFan() ? TWITTER_FAN_TICKETS : 0;
+		int facebookFanBonus = 0;
+		int twitterFanBonus = 0;
+		
+		if(player.getFacebookId() != null)
+			facebookFanBonus += FACEBOOK_CONNECTION_TICKETS;
+
+		if(player.isFacebookFan())
+			facebookFanBonus += FACEBOOK_FAN_TICKETS;
+
+		if(player.getTwitterId() != null)
+			twitterFanBonus += TWITTER_CONNECTION_TICKETS;
+		
+		if(player.isTwitterFan())
+			twitterFanBonus += TWITTER_FAN_TICKETS;
 
 		// -----------------------------------------------------//
 		// Triches 
@@ -156,6 +172,7 @@ public class LotteryManager {
 			System.out.println("---------->  gift to referrer !");
 			Player referrer = AccountManager.getPlayerByUID(player.getReferrerId());
 			player.setGiftToReferrer(true);
+			player.setIdlePoints(player.getIdlePoints() + NB_POINTS_PER_REFERRING);
 			referrer.setIdlePoints(referrer.getIdlePoints() + NB_POINTS_PER_REFERRING);
 			referrer.save();
 		}

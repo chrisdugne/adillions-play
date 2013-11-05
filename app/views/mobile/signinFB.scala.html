@@ -56,24 +56,31 @@
 
 		<form id="fbForm">
 
-			<div class="clearfix  " id="name_field">
+			<div class="clearfix">
 				<label id="labelFirstName" for="firstName"></label>
 				<div class="input">
 					<input type="text" id="fbForm_firstName" name="firstName" value="">
 				</div>
 			</div>
 
-			<div class="clearfix  " id="name_field">
+			<div class="clearfix">
 				<label id="labelLastName" for="lastName"></label>
 				<div class="input">
 					<input type="text" id="fbForm_lastName" name="lastName" value="">
 				</div>
 			</div>
 
+			<div class="clearfix">
+				<label id="labelEmail" for="email"></label>
+				<div class="input">
+					<input type="text" id="fbForm_email" name="email" value="">
+				</div>
+			</div>
+
 			<label id="labelBirthDate" for="birthDate"></label> <input type="text" id="fbForm_birthDate" name="birthDate" readonly
 				style="cursor: pointer !important;" />
 
-			<div class="clearfix  " id="name_field">
+			<div class="clearfix">
 				<label id="labelReferrerCode" for="referrerId"></label>
 				<div class="input">
 					<input type="text" id="fbForm_referrerId" name="referrerId" value="">
@@ -106,7 +113,7 @@
 			<div class="span4 offset1" id="confirmLastNameLabel"></div>
 			<div class="span4 offset1"><p id="confirmLastName"></p></div>
 		</div>
-	
+
 		<div class="row-fluid">
 			<div class="span4 offset1" id="confirmBirthDateLabel"></div>
 			<div class="span4 offset1"><p id="confirmBirthDate"></p></div>
@@ -156,10 +163,11 @@
    //-----------------------------------// 
    // read url params 
 
-   var firstName = Utils.getURLParameter("first_name")
-   var lastName = Utils.getURLParameter("last_name")
-   var pictureUrl = decodeURIComponent(Utils.getURLParameter("picture_url"))
-   var birthday = Utils.getURLParameter("birth_date")
+   var firstName 	= Utils.getURLParameter("first_name")
+   var lastName 	= Utils.getURLParameter("last_name")
+   var pictureUrl 	= decodeURIComponent(Utils.getURLParameter("picture_url"))
+   var birthday 	= Utils.getURLParameter("birth_date")
+   var email 		= Utils.getURLParameter("email")
 
    //-----------------------------------// 
    // fill form 
@@ -168,6 +176,7 @@
                
    $("#fbForm_firstName").val(firstName)
    $("#fbForm_lastName").val(lastName)
+   $("#fbForm_email").val(email)
    $("#facebookPicture").attr("src", pictureUrl)
    $("#fbForm_birthDate").datepicker('setDate', birthday);
 
@@ -180,6 +189,7 @@
 
    $("#labelFirstName").text(Translator.messages["FirstName"])
    $("#labelLastName").text(Translator.messages["LastName"])
+   $("#labelEmail").text(Translator.messages["Email"])
    $("#labelBirthDate").text(Translator.messages["BirthDate"])
 
    $("#confirmFirstNameLabel").text(Translator.messages["FirstName"] + " :")

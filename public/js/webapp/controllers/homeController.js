@@ -8,6 +8,10 @@
 
 	HomeController.renderUI = function(){
 	   UserManager.setupForms()
+	   
+	   if(App.nextLottery.date){
+         App.get('router').transitionTo('home.lottery')
+	   }
 	}
 
 	HomeController.cleanUI = function()	{
@@ -46,6 +50,21 @@
 		connectOutlets: function(router){
 			App.Router.openPage(router, "home");
 		},
+		
+		//--------------------------------------//
+
+		startWithoutLottery: Ember.Route.extend({
+         route: '/'
+      }),
+      
+      //--------------------------------------//
+      
+      lottery: Ember.Route.extend({
+         route: '/welcome',
+         connectOutlets: function(router) {
+            App.Router.openComponent(router, "home");
+         }
+      }),
 		
 		//--------------------------------------//
 		// actions

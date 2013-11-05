@@ -8,6 +8,14 @@ Ember.Handlebars.registerBoundHelper('themeWeb', function(theme) {
    return new Handlebars.SafeString(img)
 });
 
+Ember.Handlebars.registerBoundHelper('charityName', function(level) {
+   
+   if(!level)
+      level = 0
+      
+   return App.translations.messages.Charities[level]
+});
+
 //---------------------------------------------------------------------------------------//
 //Lottery
 //---------------------------------------------------------------------------------------//
@@ -32,6 +40,8 @@ Ember.Handlebars.registerBoundHelper('langImage', function(lang, options) {
 });
 
 Ember.Handlebars.registerBoundHelper('pointsImage', function(points) {
+   if(!points)
+      points = 0
    var path = "/assets/images/points/points." + points + ".png"
    var img = "<img class=\"mobileIcon touchable\" id='pointsImage' src='"+path+"'></img>"
    return new Handlebars.SafeString(img)
@@ -179,7 +189,7 @@ Ember.Handlebars.registerBoundHelper('availableTickets', function(user) {
    return new Handlebars.SafeString(user.availableTickets + user.totalBonusTickets - user.playedBonusTickets)
 });
 
-Ember.Handlebars.registerBoundHelper('ticketPrice', function(price) {
+Ember.Handlebars.registerBoundHelper('price', function(price) {
    if(price == null)
       price = 0
    return new Handlebars.SafeString("$ " + price)

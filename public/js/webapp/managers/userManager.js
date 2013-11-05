@@ -4,26 +4,9 @@
 
 this.UserManager = {};
 
-//-------------------------------------------//
-
-UserManager.receivedPlayer = function(player, next)
-{
-   console.log("receivedPlayer")
-   App.user.set("loggedIn", true)   
-   App.message("Welcome back " + player.userName + " !", true)
-
-   UserManager.updatedPlayer(player, next)
-
-   if(Facebook && Facebook.finalizeInit)
-      Facebook.finalizeInit();
-
-
-   UserManager.checkUserCurrentLottery()
-
-   console.log(App.user)
-}
-
-//-------------------------------------------//
+//-------------------------------------------------------------------------------------//
+//User setup
+//-------------------------------------------------------------------------------------//
 
 UserManager.checkUserCurrentLottery = function(){
    console.log("checkUserCurrentLottery")
@@ -88,34 +71,16 @@ UserManager.updatedPlayer = function(player, next){
    //----------------------------------------------//
 
    UserManager.sortLotteryTickets()
-   
+   UserManager.setTotalGains()
+
    //----------------------------------------------//
 
    console.log("updatedPlayer")
 
    //----------------------------------------------//
-   
+
    UserManager.checkIdlePoints()
-
-// lotteryManager:sumPrices()
-   /*
-    * 
-      function LotteryManager:sumPrices()
-      
-         userManager.user.totalGains = 0
-      
-         if(userManager.user.lotteryTickets) then
-            for i = 1,#userManager.user.lotteryTickets do
-               local ticket = userManager.user.lotteryTickets[i]
-               userManager.user.totalGains = userManager.user.totalGains + (ticket.price or 0)
-            end
-         end
-      
-      end
-    * 
-    */
-
-// UserManager.checkFanStatus(next)   
+   UserManager.checkFanStatus()   
 
    //----------------------------------------------//
 
@@ -123,14 +88,13 @@ UserManager.updatedPlayer = function(player, next){
       next()
 }
 
-
 //-------------------------------------------//
 
 UserManager.sortLotteryTickets = function(next){
 
    var lotteries = []
    var currentLottery = null
-   
+
    for(var i = 0; i < App.user.lotteryTickets.length; i++){
       var ticket = App.user.lotteryTickets[i]
       if(!currentLottery || (currentLottery.uid != ticket.lottery.uid)){
@@ -138,16 +102,143 @@ UserManager.sortLotteryTickets = function(next){
          lottery.uid       = ticket.lottery.uid
          lottery.result    = ticket.lottery.result
          lottery.date      = ticket.lottery.date
-         
+
          lotteries.push(lottery)
          currentLottery = lotteries[lotteries.length - 1]
          currentLottery.tickets = []
       }
-      
+
       currentLottery.tickets.push(ticket)
    }
 
    App.user.set("lotteries", lotteries)
+}
+
+//-------------------------------------------//
+
+UserManager.setTotalGains = function(){
+
+   var totalGains = 0
+
+   if(App.user.lotteryTickets){
+      for (var i = 0; i < App.user.lotteryTickets.length; i++){
+         var ticket = App.user.lotteryTickets[i]
+         totalGains += ticket.price || 0
+      }
+   }
+
+   App.user.set("totalGains", totalGains);
+}
+
+//-------------------------------------------//
+
+UserManager.checkFanStatus = function(){
+
+}
+
+
+//-------------------------------------------------------------------//
+
+UserManager.checkIdlePoints = function() {
+
+   console.log("checkIdlePoints")
+   if(App.user.idlePoints > 0){
+      var points = App.user.idlePoints + App.user.currentPoints
+      var nbTickets = Math.floor(points/App.Globals.POINTS_TO_EARN_A_TICKET)
+
+      var message = App.translations.messages.YouHaveEarned + " : ";
+      message += points + " pts";
+
+      if(nbTickets > 0){
+
+         var plural = ""
+            if(nbTickets > 1) { plural = "s" }
+
+         message += " = " + nbTickets + " " + App.translations.messages.Ticket + plural
+      }
+
+      App.message(message);
+      UserManager.convertIdlePoints()
+   }
+
+   else if(App.user.currentPoints >= App.Globals.POINTS_TO_EARN_A_TICKET){
+
+      var message = App.translations.messages.YouHaveEarnedExtra;
+      message += " (" + App.Globals.POINTS_TO_EARN_A_TICKET + " pts = 1 " + App.translations.messages.Ticket + ")";
+
+      App.Globals.confirmationMessage = message;
+      App.message(message);
+      console.log("----> TICKET |  " + message)
+
+      UserManager.convertCurrentPoints()
+   }
+}
+
+
+//-------------------------------------------------------------------//
+
+UserManager.convertIdlePoints = function() {
+
+   App.user.set("currentPoints", App.user.currentPoints + App.user.idlePoints)
+   App.user.set("totalPoints", App.user.totalPoints + App.user.idlePoints)
+   App.user.set("idlePoints", 0)
+
+   UserManager.convertCurrentPoints()
+}
+
+//-------------------------------------------------------------------//
+
+UserManager.convertCurrentPoints = function() {
+   UserManager.convertPointsToTickets()
+   UserManager.updatePlayer()
+}
+
+//-----------------------------------------------------------------------------------------
+
+UserManager.convertPointsToTickets = function() {
+
+   var conversion = 0
+
+   while (App.user.currentPoints >= App.Globals.POINTS_TO_EARN_A_TICKET) {
+      App.user.set("currentPoints", App.user.currentPoints - App.Globals.POINTS_TO_EARN_A_TICKET)
+      App.user.set("extraTickets", App.user.extraTickets + 1)
+
+      conversion++
+   }
+
+   return conversion
+}
+
+
+//-------------------------------------------------------------------------------------//
+//Calls to Back End
+//-------------------------------------------------------------------------------------//
+
+
+UserManager.receivedPlayer = function(player, next)
+{
+   console.log("receivedPlayer")
+   App.user.set("loggedIn", true)   
+   
+   var userName = ""
+   if(player.userName != undefined){
+      userName = player.userName
+   }
+   else{
+      userName = player.fistName // --> arrivee de FB
+   }
+   
+   App.message("Welcome back " + userName + " !", true)
+
+   UserManager.updatedPlayer(player, next)
+
+   if(Facebook && Facebook.finalizeInit)
+      Facebook.finalizeInit();
+
+
+   UserManager.checkUserCurrentLottery()
+
+   console.log(App.user)
 }
 
 //-------------------------------------------//
@@ -246,8 +337,14 @@ UserManager.openSigninFB = function(){
    $("#fbForm_title").text("Welcome " + Facebook.data.name + " !" )
    $("#fbForm_firstName").val(Facebook.data.first_name)
    $("#fbForm_lastName").val(Facebook.data.last_name)
-   $("#fbForm_birthDate").val(Facebook.data.birthday)
+   $("#fbForm_birthDate").val(Facebook.data.birthday || "")
+   $("#fbForm_email").val(Facebook.data.email || "")
    $("#facebookPicture").attr('src', Facebook.data.picture.data.url)
+
+   console.log("GRABBED ?  " + App.Globals.sponsorCodeToUse)
+   if(App.Globals.sponsorCodeToUse != undefined){
+         $("#fbForm_referrerId").val(App.Globals.sponsorCodeToUse)
+   }
 }
 
 //-------------------------------------------//
@@ -337,7 +434,7 @@ UserManager.signin = function()
 
 UserManager.signinFB = function()
 {
-   App.user.email                = Facebook.data.email
+   App.user.email                = $("#fbForm_email").val()
    App.user.facebookName         = Facebook.data.name
    App.user.facebookId           = Facebook.data.id
    App.user.firstName            = $("#fbForm_firstName").val() 
@@ -501,7 +598,7 @@ UserManager.mobileSigninFB = function(callback)
 {
    if($("#fbForm").valid()){
       var user = {}
-      user.email                = Utils.getURLParameter("email")
+      user.email                = $("#fbForm_email").val()
       user.facebookName         = Utils.getURLParameter("facebookName")
       user.facebookId           = Utils.getURLParameter("facebookId")
       user.firstName            = $("#fbForm_firstName").val() 
@@ -622,6 +719,10 @@ UserManager.setupForms = function()
          lastName: {
             required: true,
          },
+         email: {
+            required: true,
+            email: true
+         },
          birthDate: {
             required: true,
          },
@@ -631,6 +732,9 @@ UserManager.setupForms = function()
             required: "Required",
          },
          lastName: {
+            required: "Required",
+         },
+         email: {
             required: "Required",
          },
          birthDate: {
@@ -658,76 +762,4 @@ UserManager.setupForms = function()
          },
       }
    });
-}
-
-//-------------------------------------------------------------------//
-
-UserManager.checkIdlePoints = function() {
-
-   console.log("checkIdlePoints")
-   if(App.user.idlePoints > 0){
-      var points = App.user.idlePoints + App.user.currentPoints
-      var nbTickets = Math.floor(points/App.Globals.POINTS_TO_EARN_A_TICKET)
-
-      var message = App.translations.messages.YouHaveEarned + " : ";
-      message += points + " pts";
-
-      if(nbTickets > 0){
-
-         var plural = ""
-            if(nbTickets > 1) { plural = "s" }
-
-         message += " = " + nbTickets + " " + App.translations.messages.Ticket + plural
-      }
-
-      App.message(message);
-      UserManager.convertIdlePoints()
-   }
-
-   else if(App.user.currentPoints >= App.Globals.POINTS_TO_EARN_A_TICKET){
-
-      var message = App.translations.messages.YouHaveEarnedExtra;
-      message += " (" + App.Globals.POINTS_TO_EARN_A_TICKET + " pts = 1 " + App.translations.messages.Ticket + ")";
-
-      App.Globals.confirmationMessage = message;
-      App.message(message);
-      console.log("----> TICKET |  " + message)
-
-      UserManager.convertCurrentPoints()
-   }
-}
-
-
-//-------------------------------------------------------------------//
-
-UserManager.convertIdlePoints = function() {
-
-   App.user.set("currentPoints", App.user.currentPoints + App.user.idlePoints)
-   App.user.set("totalPoints", App.user.totalPoints + App.user.idlePoints)
-   App.user.set("idlePoints", 0)
-
-   UserManager.convertCurrentPoints()
-}
-
-//-------------------------------------------------------------------//
-
-UserManager.convertCurrentPoints = function() {
-   UserManager.convertPointsToTickets()
-   UserManager.updatePlayer()
-}
-
-//-----------------------------------------------------------------------------------------
-
-UserManager.convertPointsToTickets = function() {
-
-   var conversion = 0
-
-   while (App.user.currentPoints >= App.Globals.POINTS_TO_EARN_A_TICKET) {
-      App.user.set("currentPoints", App.user.currentPoints - App.Globals.POINTS_TO_EARN_A_TICKET)
-      App.user.set("extraTickets", App.user.extraTickets + 1)
-
-      conversion++
-   }
-
-   return conversion
 }

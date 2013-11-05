@@ -18,13 +18,13 @@ import com.avaje.ebean.ExpressionList;
 import com.typesafe.plugin.MailerAPI;
 import com.typesafe.plugin.MailerPlugin;
 
+import controllers.Application;
+
 public class AccountManager {
 
 	//------------------------------------------------------------------------------------//
 	
 	public static final int START_AVAILABLE_TICKETS 		= 10;
-	public static final int FACEBOOK_ACCOUNT_POINTS 		= 8;
-	public static final int TWITTER_ACCOUNT_POINTS 			= 8;
 	
 	//------------------------------------------------------------------------------------//
 
@@ -40,9 +40,6 @@ public class AccountManager {
 	{
 		String firstName 		= userJson.get("firstName").asText().toUpperCase();
 		String lastName 		= userJson.get("lastName").asText().toUpperCase();
-
-		System.out.println(firstName);
-		System.out.println(lastName);
 		
 		ExpressionList<Player> accounts = Player.find.where()
 				.and(Expr.eq("upper(firstName)", firstName), Expr.eq("upper(lastName)", lastName));
@@ -112,8 +109,6 @@ public class AccountManager {
 
 		String userName 		= firstName + " " + lastName;
 
-		int points 				= 0;
-		
 		//-------------------------------------//
 		
 		String referrerId = null;
@@ -127,7 +122,6 @@ public class AccountManager {
 		if(userJson.get("facebookId") != null){
 			facebookId 	= userJson.get("facebookId").asText();
 			userName 	= userJson.get("facebookName").asText();
-			points		+= FACEBOOK_ACCOUNT_POINTS;
 		}
 		
 		//-------------------------------------//
@@ -137,7 +131,6 @@ public class AccountManager {
 		if(userJson.get("twitterId") != null){
 			twitterId 	= userJson.get("twitterId").asText();
 			twitterName = userJson.get("twitterName").asText();
-			points		+= TWITTER_ACCOUNT_POINTS;
 		}
 
 		//-------------------------------------//
@@ -184,7 +177,7 @@ public class AccountManager {
 		
 		player.setCurrentPoints			(0);
 		player.setTotalPoints			(0);
-		player.setIdlePoints				(points);
+		player.setIdlePoints				(0);
 
 		player.setCreationDate			(now);
 		player.setStatus					(Player.ON);
@@ -198,15 +191,16 @@ public class AccountManager {
 
 		MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
 		mail.setSubject("Adillions - Welcome !");
+		mail.addRecipient(email);
 		mail.addRecipient("chris.dugne@gmail.com");
 		mail.addFrom("noreply@adillions.com");
 
-		String content = "<p>Welcome Christophe !" +
+		String content = "<p>Welcome "+player.getFirstName()+" !" +
 				"<br/><br/>Your account is now ready" +
-				"<br/>Christophe Dugne-Esquevin" +
-				"<br/>chris.dugne@uralys.com</p>" +
-				"<span style=\"color: #888888;\"><img id=\"logo\" style=\"width: 180px;\" src=\"http://www.adillions.com/assets/images/logo.png\" alt=\"\" /></span>" +
-				"<p style=\"padding-left: 20px;margin-top:2px\"><span style=\"color: #888888;\">www.adillions.com</span></p>";
+				"<br/>"+player.getFirstName() + " " + player.getLastName() +
+				"<br/>"+email+"</p>" +
+				"<span style=\"color: #888888;\"><img id=\"logo\" style=\"width: 180px;\" src=\""+Application.APP_HOSTNAME+"/assets/images/logo.png\" alt=\"\" /></span>" +
+				"<p style=\"padding-left: 20px;margin-top:2px\"><span style=\"color: #888888;\">"+Application.APP_HOSTNAME+"</span></p>";
 		
 		mail.sendHtml("<html>"+content+"</html>" );
 
@@ -239,14 +233,12 @@ public class AccountManager {
 		String twitterId 	= null;
 		String twitterName= null;
 		String userName 	= newUserJson.get("userName").asText();
-		int idlePoints 	= newUserJson.get("idlePoints").asInt();
 		
 		//-------------------------------------//
 
 		if(newUserJson.get("facebookId") != null && player.getFacebookId() == null){
 			facebookId 	= newUserJson.get("facebookId").asText();
 			userName 	= newUserJson.get("facebookName").asText();
-			idlePoints	+= FACEBOOK_ACCOUNT_POINTS;
 
 			player.setFacebookId			(facebookId);
 			player.setUserName			(userName);
@@ -254,16 +246,9 @@ public class AccountManager {
 
 		//-------------------------------------//
 		
-		System.out.println(newUserJson.get("twitterId"));
 		if(newUserJson.get("twitterId") != null && player.getTwitterId() == null){
 			twitterId 	= newUserJson.get("twitterId").asText();
 			twitterName = newUserJson.get("twitterName").asText();
-			
-
-			System.out.println(twitterId);
-			System.out.println(twitterName);
-			
-			idlePoints	+= TWITTER_ACCOUNT_POINTS;
 			
 			player.setTwitterId			(twitterId);
 			player.setTwitterName		(twitterName);
@@ -273,7 +258,7 @@ public class AccountManager {
 		
 		player.setCurrentPoints			(newUserJson.get("currentPoints").asInt());
 		player.setTotalPoints			(newUserJson.get("totalPoints").asInt());
-		player.setIdlePoints				(idlePoints);
+		player.setIdlePoints				(newUserJson.get("idlePoints").asInt());
 
 		//-------------------------------------//
 		

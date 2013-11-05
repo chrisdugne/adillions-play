@@ -13,6 +13,8 @@
 
 <!-- Components -->
 
+@import views.html.templates.components.homeLottery;
+
 @import views.html.templates.pages.gameViews.gameHome;
 @import views.html.templates.pages.gameViews.myTickets;
 @import views.html.templates.pages.gameViews.profile;
@@ -45,6 +47,8 @@
 
 <!-- ------------------------------------------------------------------- -->
 <!-- --- Components --- -->
+
+@componentTemplate("homeLottery")				{ @homeLottery()			}
 
 @componentTemplate("gameHome")					{ @gameHome()				}
 @componentTemplate("myTickets")					{ @myTickets()				}

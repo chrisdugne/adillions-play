@@ -15,12 +15,18 @@ window.Facebook = window.Facebook || {}
 
 //----------------------------------------------------------------//
 
-Facebook.init = function(finalizeInit, notConnectedCallback, openApp) 
+/**
+ * options.finalizeInit, 
+ * options.notConnectedCallback
+ * options.openApp
+ * options.sponsorCodeToUse
+ */
+Facebook.init = function(options) 
 {
    //---------------------------------------------------------------
    
-   this.prod = 0
-//   this.prod = 1  
+//   this.prod = 0
+   this.prod = 1  
 
    //---------------------------------------------------------------
    
@@ -33,7 +39,7 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
       this.FACEBOOK_APP_SECRET      = "46383d827867d50ef5d87b66c81f1a8e";
    }
 
-   console.log("Connection to FB", this.FACEBOOK_APP_ID)
+   console.log("Facebook.init : Connection to FB", this.FACEBOOK_APP_ID)
 
    //---------------------------------------------------------------
 
@@ -42,12 +48,15 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
    
    //---------------------------------------------------------------
 
-   this.finalizeInit             = finalizeInit
+   this.finalizeInit             = options.finalizeInit
+   this.sponsorRequestId         = options.sponsorRequestId
    
-   if(openApp === undefined)
+   //---------------------------------------------------------------
+   
+   if(options.openApp === undefined)
       Facebook.openApp = Facebook.defaultOpenApp;
    else
-      Facebook.openApp = openApp
+      Facebook.openApp = options.openApp
    
    //---------------------------------------------------------------
    
@@ -67,31 +76,24 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
          // the user's ID, a valid access token, a signed
          // request, and the time the access token 
          // and signed request each expire
-         
          Facebook.finalizeInit()
-         Facebook.checkPermissions(response);
+         Facebook.storePermissions(response);
       } 
       else if (response.status === 'not_authorized') 
       {
          // the user is logged in to Facebook, 
          // but has not authenticated your app
-         // the user isn't logged in to Facebook.
-         //Facebook.popupLogin();
-//         UserManager.getPlayer()
+         Facebook.popupLogin();
          
-         Facebook.finalizeInit()
-         notConnectedCallback()
+//         console.log("not_authorized")
+//         Facebook.finalizeInit()
+//         notConnectedCallback()
       }
       else 
       {
          // the user isn't logged in to Facebook.
-         //         Facebook.popupLogin(); -- force popup to login
-
-         // then try Application autologin
-//         UserManager.getPlayer()
-         
          Facebook.finalizeInit()
-         notConnectedCallback()
+         options.notConnectedCallback()
       }
    });
 
@@ -99,42 +101,32 @@ Facebook.init = function(finalizeInit, notConnectedCallback, openApp)
 
 //----------------------------------------------------------------//
 
-Facebook.checkPermissions = function(responseConnection)
+/**
+ *    App.Globals.facebookPermissions.publish_stream
+      App.Globals.facebookPermissions.email 
+      App.Globals.facebookPermissions.user_birthday 
+      App.Globals.facebookPermissions.user_likes
+      App.Globals.facebookPermissions.friends_birthday 
+      App.Globals.facebookPermissions.publish_actions
+ */
+Facebook.storePermissions = function(responseConnection)
 {
    Facebook.facebookId     = responseConnection.authResponse.userID;
    Facebook.accessToken    = responseConnection.authResponse.accessToken;
+   
+   console.log(Facebook.accessToken)
+   
    $.cookie('facebookId', Facebook.facebookId);
 
    FB.api('/me/permissions', function (response) {
 
-      if(response.data == undefined)
-      {
+      if(response.data == undefined) {
          Facebook.popupLogin();
-         Facebook.finalizeInit()
-         return;
       }
-
-      var perms = response.data[0];
-
-      if(perms.publish_stream
-            && perms.email 
-            && perms.user_birthday 
-            && perms.user_likes
-            && perms.friends_birthday 
-            && perms.publish_actions) 
-      {
-         // permissions OK
+      else{
+         App.Globals.facebookPermissions = response.data[0];
          Facebook.openApp();
       }
-      else
-      {                
-         // User DOESN'T have all permissions.
-         // force Logout then ask him again
-
-         Facebook.logout(function(){
-            Facebook.popupLogin()
-         })
-      }                                            
    } );
 }
 
@@ -142,7 +134,7 @@ Facebook.popupLogin = function()
 {
    FB.login(function (response) {
       if(response.authResponse)
-         Facebook.checkPermissions(response);
+         Facebook.storePermissions(response);
    }, { scope: 'publish_stream, email, user_likes, user_birthday, friends_birthday, publish_actions' });
 }
 
@@ -160,19 +152,48 @@ Facebook.logout = function(next)
 
 Facebook.defaultOpenApp = function()
 {
-   Facebook.getAppAccessToken();
-
-   Facebook.getMe( function (){
-      UserManager.getPlayerByFacebookId()
-   }); 
-
-   // passage par controller/register pour mettre facebookUID en session
-   // redirection sur dashboard au retour.
-   //register("myFacebookId", myFacebookId);
-
-
-//   _gaq.push(['_setCustomVar', 1, 'VISITOR_ID', myFacebookId, 1]); 
+   Facebook.getSponsor(function(){
+      
+      Facebook.getAppAccessToken();
+      
+      Facebook.getMe( function (){
+         UserManager.getPlayerByFacebookId()
+      }); 
+      
+      //   _gaq.push(['_setCustomVar', 1, 'VISITOR_ID', myFacebookId, 1]); 
+   })
 }
+
+//----------------------------------------------------------------//
+
+Facebook.getSponsor = function(next){
+
+   
+   console.log("getSponsor")
+   console.log(Facebook.accessToken)
+   console.log(this.accessToken)
+   
+   var url = "https://graph.facebook.com/" + this.sponsorRequestId + "?access_token="+ this.accessToken;
+
+   console.log(url)
+   
+   if(this.sponsorRequestId){
+      $.ajax({  
+         type: "GET",  
+         url: url,
+         success: function (data, textStatus, jqXHR){
+            App.Globals.sponsorCodeToUse = data.data
+            next()
+         },
+         error: function(jqXHR, textStatus, errorThrown){
+            next()
+         }
+      });
+   }
+   else{
+      next()
+   }
+} 
 
 //----------------------------------------------------------------//
 
