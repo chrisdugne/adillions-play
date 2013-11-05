@@ -459,10 +459,9 @@ UserManager.signinFB = function()
       success: function (response){
          if(response){
             console.log("---> signinFB ok")
-            console.log(response)
             App.free()
             App.authToken = response.authToken
-            UserManager.receivedPlayer(response.player)
+            UserManager.receivedPlayer($.parseJSON(response.player))
          }
          else{
             // todo merge
