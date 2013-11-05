@@ -217,7 +217,8 @@ UserManager.convertPointsToTickets = function() {
 
 UserManager.receivedPlayer = function(player, next)
 {
-   console.log("receivedPlayer")
+   console.log("receivedPlayer", player)
+
    App.user.set("loggedIn", true)   
    
    var userName = ""
