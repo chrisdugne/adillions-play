@@ -2,6 +2,12 @@
 	width:1430px;	
 }
 
+.backgroundImage {
+	position:fixed;	
+	z-index: -3000;
+}
+
+
 /*--------------------------------*/
 .button {
 	cursor: pointer;
@@ -151,9 +157,9 @@ body {
 }
 
 .rounded {
-	border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
+	border-radius: 17px;
+	-moz-border-radius: 17px;
+	-webkit-border-radius: 17px;
 }
 
 /*--------------------------------*/

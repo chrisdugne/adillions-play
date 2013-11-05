@@ -5,6 +5,9 @@
 @import views.html.popups.noMoreTicketsWindow;
 @import views.html.popups.pointsWindow;
 
+@import views.html.popups.inviteFriendsWindow;
+@import views.html.popups.shareWindow;
+
 @import views.html.templates.footer;
 
 @import views.html.templates.components.menu;
@@ -17,6 +20,8 @@
 
 	<div class="marketing unselectable">
 
+		<img class="backgroundImage" src='@routes.Assets.at("images/hud/biglogo.png")'></img>
+
 		<!-- -------------------------------------------------------------- -->
 	
 		@menu()
@@ -26,6 +31,7 @@
     	{{outlet}}
 
 		<!-- -------------------------------------------------------------- -->
+		
 	</div>
 
 <!--
@@ -48,3 +54,6 @@ il faut une image adaptee au web
 
 @noMoreTicketsWindow()
 @pointsWindow()
+
+@inviteFriendsWindow()
+@shareWindow()

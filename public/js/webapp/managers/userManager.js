@@ -13,14 +13,14 @@ UserManager.checkUserCurrentLottery = function(){
    if(App.user.currentLotteryUID != App.nextLottery.uid){
       console.log("new Lottery settings")
 
-      App.user.currentLotteryUID         = App.nextLottery.uid
-      App.user.availableTickets          = App.Globals.START_AVAILABLE_TICKETS 
-      App.user.playedBonusTickets        = 0
+      App.user.set("currentLotteryUID",      App.nextLottery.uid)
+      App.user.set("availableTickets",       App.Globals.START_AVAILABLE_TICKETS )
+      App.user.set("playedBonusTickets",     0)
 
-      App.user.hasTweet                  = false
-      App.user.hasPostOnFacebook         = false
-      App.user.hasTweetAnInvite          = false
-      App.user.hasInvitedOnFacebook      = false
+      App.user.set("hasTweet",               false)
+      App.user.set("hasPostOnFacebook",      false)
+      App.user.set("hasTweetAnInvite",       false)
+      App.user.set("hasInvitedOnFacebook",   false)
 
       UserManager.updatePlayer()
    }

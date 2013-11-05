@@ -25,8 +25,10 @@ Ember.Handlebars.registerBoundHelper('price', function(price) {
 });
 
 Ember.Handlebars.registerBoundHelper('themeImage', function(lottery) {
-   return new Handlebars.SafeString("<img class='themeImage' src=\""+lottery.theme.image+"\"/>")
+   return new Handlebars.SafeString("<img class='themeImage rounded' src=\""+lottery.theme.image+"\"/>")
 });
+
+//--------------------------------------//
 
 Ember.Handlebars.registerBoundHelper('langImage', function(lang, options) {
    
@@ -39,17 +41,29 @@ Ember.Handlebars.registerBoundHelper('langImage', function(lang, options) {
    return new Handlebars.SafeString(img)
 });
 
+//--------------------------------------//
+
 Ember.Handlebars.registerBoundHelper('pointsImage', function(points) {
+ 
    if(!points)
       points = 0
+   
    var path = "/assets/images/points/points." + points + ".png"
    var img = "<img class=\"mobileIcon touchable\" id='pointsImage' src='"+path+"'></img>"
+  
    return new Handlebars.SafeString(img)
 });
 
+//--------------------------------------//
+
 Ember.Handlebars.registerBoundHelper('staticPointsImage', function(points) {
+   
+   if(!points)
+      points = 0
+      
    var path = "/assets/images/points/points." + points + ".png"
    var img = "<img class=\"mobileIcon upper\" src='"+path+"'></img>"
+   
    return new Handlebars.SafeString(img)
 });
 

@@ -39,8 +39,7 @@
 			
 			openSignin         : function(){
 
-			   $("#loginWindow").trigger("reveal:close");
-            $("#confirmWindow").trigger("reveal:close");
+            Router.closePopup();
 			   App.Globals.signinRequested = true
 			   
 			   $("#signinWindow").reveal({
@@ -55,8 +54,7 @@
 			openConfirm         : function(){
 
 			   if(UserManager.signinFormReady()){
-			      $("#signinWindow").trigger("reveal:close");
-			      $("#signinFBWindow").trigger("reveal:close");
+	            Router.closePopup();
 			      
 			      $("#confirmWindow").reveal({
 			         animation: 'fade',
@@ -73,8 +71,7 @@
 			openConfirmFB         : function(){
 			   
 			   if(UserManager.signinFormFBReady()){
-			      $("#signinWindow").trigger("reveal:close");
-			      $("#signinFBWindow").trigger("reveal:close");
+	            Router.closePopup();
 			      
 			      $("#confirmFBWindow").reveal({
 			         animation: 'fade',
@@ -99,8 +96,7 @@
 			//-------------------------------------------------------//
 			
 			facebookLogin         : function(){
-			   $("#signinWindow").trigger("reveal:close");
-			   $("#loginWindow").trigger("reveal:close");
+            Router.closePopup();
 			   Facebook.popupLogin()
 			},
 			
@@ -109,12 +105,12 @@
 			},
 			
 			signin         : function(){
-            $("#confirmWindow").trigger("reveal:close");
+            Router.closePopup();
 		      UserManager.signin()
 			},
 			
 			signinFB       : function(){
-			   $("#confirmFBWindow").trigger("reveal:close");
+			   Router.closePopup();
 			   UserManager.signinFB()
 			},
 			
@@ -132,6 +128,12 @@
 			logout         : function(){
 			   UserManager.logout()
 			},
+			
+			//-------------------------------------------------------//
+			
+			closeModal         : function(){
+			   Router.closePopup()
+			},
 
 			//-------------------------------------------------------//
 			// Routes used when calling Ember.Route.transitionTo
@@ -147,6 +149,12 @@
 			
 		})
 	})
+	
+	//-----------------------------------------------------------------------------------------//
+
+	Router.closePopup = function (){
+      $(".reveal-modal").trigger("reveal:close");
+	}
 	
 	//-----------------------------------------------------------------------------------------//
 	

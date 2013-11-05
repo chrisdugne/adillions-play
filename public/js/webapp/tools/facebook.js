@@ -33,19 +33,19 @@ Facebook.init = function(options)
    if(this.prod){
       this.FACEBOOK_APP_ID          = "170148346520274";
       this.FACEBOOK_APP_SECRET      = "887e8f7abb9b1cb9238a097e06585ae2";
+      this.FACEBOOK_APP_NAMESPACE   = "adillions";
+      this.SERVER_OG_URL            = "http://www.watchtocash.com/"
+//    this.SERVER_OG_URL            = "http://www.adillions.com/"
    }
    else{
       this.FACEBOOK_APP_ID          = "534196239997712";
       this.FACEBOOK_APP_SECRET      = "46383d827867d50ef5d87b66c81f1a8e";
+      this.FACEBOOK_APP_NAMESPACE   = "adillions-dev";
+      this.SERVER_OG_URL            = "http://192.168.0.9:9000/"
    }
 
-   console.log("Facebook.init : Connection to FB", this.FACEBOOK_APP_ID)
+   console.log("Facebook.init : Connection to FB", this.FACEBOOK_APP_NAMESPACE)
 
-   //---------------------------------------------------------------
-
-   this.FACEBOOK_APP_NAMESPACE   = "adillions";
-   this.SERVER_OG_URL            = "http://www.adillions.com/"
-   
    //---------------------------------------------------------------
 
    this.finalizeInit             = options.finalizeInit
@@ -237,4 +237,22 @@ Facebook.getMe = function(next)
          alert(textStatus);
       }
    });
+}
+
+
+//----------------------------------------------------------------//
+
+Facebook.inviteFriends = function()
+{
+   App.Router.closePopup()
+   
+   var title          = "Join me on Adillions !"
+   var message        = "Watch ads, and win real money, it's free !"
+   
+   FB.ui({
+     method: 'apprequests',
+     message: message,
+     title: title
+  });
+
 }

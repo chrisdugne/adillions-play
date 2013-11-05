@@ -169,7 +169,27 @@
       
       openGameHome            : Ember.Route.transitionTo('game.gameHome'),		
       openMyTickets           : Ember.Route.transitionTo('game.myTickets'),		
-      openProfile             : Ember.Route.transitionTo('game.profile'),		
+      openProfile             : Ember.Route.transitionTo('game.profile'),
+      
+
+      inviteFacebook         : function(){
+         Facebook.inviteFriends()
+      },
+
+      openInvite         : function(){
+         $("#inviteFriendsWindow").reveal({
+            animation: 'fade',
+            animationspeed: 100, 
+         });
+      },
+
+      
+      openShare         : function(){
+         $("#shareWindow").reveal({
+            animation: 'fade',
+            animationspeed: 100, 
+         });
+      },
 		
 	});
 

@@ -32,7 +32,8 @@
       //-------------------------------------------//
 
       isDev          : window.location.hostname == "192.168.0.9",
-      isProd         : window.location.hostname == "www.adillions.com",
+//      isProd         : window.location.hostname == "www.adillions.com",
+      isProd         : window.location.hostname == "www.watchtocash.com",
       debug          : false,
       
       //-------------------------------------------//

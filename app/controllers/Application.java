@@ -52,7 +52,6 @@ public class Application extends Controller {
 
 	public static Result home()
 	{
-		System.out.println("home");
 		Map<String, String[]> queryParameters = request().queryString();
 		String requestIds[] = queryParameters.get("request_ids");
 		
