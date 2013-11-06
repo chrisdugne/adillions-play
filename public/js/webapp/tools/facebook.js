@@ -98,8 +98,12 @@ Facebook.init = function(options)
    });
    
    FB.Event.subscribe('edge.create', function(href, widget) {
-      alert('You just liked the page!');
+      UserManager.refreshFanStatus()
     });
+   
+   FB.Event.subscribe('edge.remove', function(href, widget) {
+      UserManager.refreshFanStatus()
+   });
 
 };
 
@@ -134,8 +138,11 @@ Facebook.storePermissions = function(responseConnection)
    } );
 }
 
-Facebook.popupLogin = function()
+Facebook.popupLogin = function(loginSuccess)
 {
+   if(loginSuccess)
+      Facebook.openApp = loginSuccess
+      
    FB.login(function (response) {
       if(response.authResponse)
          Facebook.storePermissions(response);
@@ -293,23 +300,39 @@ Facebook.postOnWall = function(message, next)
 
 Facebook.isFacebookFan = function(next){
 
-   App.user.set("isFacebookFan", false);
-   var url = "https://graph.facebook.com/me/likes/"+App.Globals.FACEBOOK_PAGE_ID+"?access_token=" + this.accessToken
-
-   $.ajax({  
-      type: "GET",  
-      url: url,
-      dataType: "jsonp",
-      success: function (response)
-      {
-         App.free()
-         console.log("isFacebookFan ? " , response)
-         if(!response.error && response.data[0]){
-            App.user.set("isFacebookFan", true);
+   if(this.accessToken){
+      App.user.set("isFacebookFan", false);
+      var url = "https://graph.facebook.com/me/likes/"+App.Globals.FACEBOOK_PAGE_ID+"?access_token=" + this.accessToken
+      
+      $.ajax({  
+         type: "GET",  
+         url: url,
+         dataType: "jsonp",
+         success: function (response)
+         {
+            console.log("isFacebookFan ? " , response)
+            if(!response.error && response.data[0]){
+               App.user.set("isFacebookFan", true);
+            }
+            
+            next();
          }
-
-         next();
-      }
-   });
+      });
+   }
+   else{
+      next()
+   }
 
 }
+
+//----------------------------------------------------------------//
+
+Facebook.mergeMe = function(next){
+   App.wait()
+   Facebook.getMe( function (){
+      next()
+      App.free()
+   }); 
+}
+
+//-----------------------------------------------------------------------------------------

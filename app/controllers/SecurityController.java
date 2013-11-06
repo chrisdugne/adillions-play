@@ -10,6 +10,7 @@ import org.codehaus.jackson.JsonNode;
 import play.mvc.Action;
 import play.mvc.Http;
 import play.mvc.Result;
+import utils.Twitter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -167,6 +168,14 @@ public class SecurityController extends Action.Simple {
 			return ok(gson.toJson(null));
 		}
 		
+	}
+	
+	// ---------------------------------------------//
+
+	public static Result signinWithTwitter()
+	{
+		Twitter.getRequestToken();
+		return ok();
 	}
 	
 	// ---------------------------------------------//

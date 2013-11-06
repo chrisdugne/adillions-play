@@ -34,6 +34,7 @@ POST 	/signin						controllers.SecurityController.signIn()
 POST 	/signinFromFacebook			controllers.SecurityController.signinFromFacebook()
 POST    /login                      controllers.SecurityController.login()
 POST    /playerFromFB               controllers.SecurityController.getPlayerFromFB()
+POST    /signinWithTwitter          controllers.SecurityController.signinWithTwitter()
 
 #POST   /logout                    controllers.SecurityController.logout()
 

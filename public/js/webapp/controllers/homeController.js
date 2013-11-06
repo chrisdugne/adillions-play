@@ -12,11 +12,13 @@
 	   if(App.nextLottery.date){
          App.get('router').transitionTo('home.lottery')
 	   }
-	}
+	   
+      App.showSocialButtons()
+   }
 
-	HomeController.cleanUI = function()	{
-
-	}
+	HomeController.cleanUI = function() {
+      App.hideSocialButtons()
+   }
 
 	
 	//==================================================================//

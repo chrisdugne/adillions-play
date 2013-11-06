@@ -127,6 +127,8 @@
     
     "HasPostOnFacebook"	: "Vous avez déjå partagé sur FB pour ce tirage",
     "HasTweet"			: "Vous avez déjå twitté pour ce tirage",
+    "TwoMoreBonusTickets" : "Vous avez gagné 2 tickets bonus supplémentaires!",
+    "TwoLostBonusTickets" : "Vous avez perdu 2 tickets bonus...",
     
     "":""
 	

@@ -70,26 +70,25 @@
       
       $.unblockUI();
       $.blockUI({ message: '<p>'+message+'</p>', 
-         fadeIn: 700, 
-         fadeOut: 700, 
+         fadeIn: 400, 
+         fadeOut: 100, 
          timeout: 2000, 
          showOverlay: false, 
          css: { 
             width: width+'px', 
             top: '67px', 
             left:'',
-            height:'45px',
+            height:'35px',
             border: 'none', 
             paddingTop:'18px',
-            backgroundColor: '#000', 
-            opacity: 0.6, 
-            color: '#fff', 
-            fontSize: '22px', 
+            backgroundColor: '#fff', 
+            opacity: 1, 
+            color: '#333', 
+            fontSize: '20px', 
          } 
       }); 
-
-//      $(".blockUI h1").css("background","url(/assets/images/"+(ok ? "ok" : "ko")+".png) no-repeat 100px 0px")
-//      $(".blockUI h1").css("background-size","15%")
+      
+      $('.blockUI').click($.unblockUI)
    }
 
    //------------------------------------------------------//

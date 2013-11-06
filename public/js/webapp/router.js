@@ -33,6 +33,33 @@
 
 			//-------------------------------------------------------//
 			
+			openTutorial1         : function(){
+            Router.closePopup();
+            
+            $("#tutorial1Window").reveal({
+               animation: 'none',
+            });
+            
+			},
+			
+			openTutorial2         : function(){
+			   Router.closePopup();
+			   
+			   $("#tutorial2Window").reveal({
+			      animation: 'none',
+			   });
+			},
+			
+			openTutorial3         : function(){
+			   Router.closePopup();
+			   
+			   $("#tutorial3Window").reveal({
+			      animation: 'none',
+			   });
+			},
+			
+			//-------------------------------------------------------//
+			
 			openLogin         : function(){
 			   App.HomeController.openLoginWindow()
 			},
@@ -100,6 +127,17 @@
 			   Facebook.popupLogin()
 			},
 			
+			facebookMerge         : function(){
+			   Router.closePopup();
+			   Facebook.popupLogin(function(){
+			      Facebook.mergeMe(function(){
+			         UserManager.mergePlayerWithFacebook();
+			      })
+			   })
+			},
+
+			//-------------------------------------------------------//
+			
 			login         : function(){
             UserManager.login()
 			},
@@ -116,11 +154,17 @@
 			
 			//-------------------------------------------------------//
 
+			signinWithTwitter   : function(){
+			   UserManager.signinWithTwitter()
+			},
+			
+			//-------------------------------------------------------//
+			
 			openPoints     : function(){
-		      $("#pointsWindow").reveal({
-		         animation: 'fade',
-		         animationspeed: 100, 
-		      });         
+			   $("#pointsWindow").reveal({
+			      animation: 'fade',
+			      animationspeed: 100, 
+			   });         
 			},
 	      
 			//-------------------------------------------------------//

@@ -12,9 +12,12 @@
 	   
 	   GameManager.init()
       GameManager.setSelectedButton()
+      
+      App.showSocialButtons()
 	}
 
 	GameController.cleanUI = function()	{
+	   App.hideSocialButtons()
 	}
 	
 	//==================================================================//

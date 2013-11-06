@@ -74,7 +74,7 @@ UserManager.updatedPlayer = function(player, next){
    UserManager.setTotalGains()
 
    UserManager.checkIdlePoints()
-   UserManager.checkFanStatus(next)   
+   UserManager.refreshFanStatus(next)   
 
    //----------------------------------------------//
 
@@ -124,58 +124,47 @@ UserManager.setTotalGains = function(){
 
 //-------------------------------------------//
 
-UserManager.checkFanStatus = function(next){
-
-   console.log("----> checkFanStatus")
+UserManager.refreshFanStatus = function(next){
    
-   var facebookFan    = App.user.isFacebookFan
-   var twitterFan     = App.user.isTwitterFan
+   var totalBonusTickets = 0
 
-   if(App.user.hasFacebookAccount){
-      App.user.set("totalBonusTickets", App.user.totalBonusTickets + App.Globals.FACEBOOK_CONNECTION_TICKETS);
+   if(App.user.get("hasFacebookAccount")){
+      totalBonusTickets += App.Globals.FACEBOOK_CONNECTION_TICKETS;
    }
    
-   if(App.user.hasTwitterAccount){
-      App.user.set("totalBonusTickets", App.user.totalBonusTickets + App.Globals.TWITTER_CONNECTION_TICKETS);
+   if(App.user.get("hasTwitterAccount")){
+      totalBonusTickets += App.Globals.TWITTER_CONNECTION_TICKETS;
    }
 
+   var wasFacebookFan = App.user.isFacebookFan
+   console.log("wasFacebookFan : " + wasFacebookFan)
+   
    Facebook.isFacebookFan(function(){
-      Twitter.isTwitterFan(function(response){
 
-         console.log("----> social calls done")
-         
-         //---------------------------------------------------------
+      //---------------------------------------------------------
 
-         if(response) {
-            console.log(response)
-            App.user.set("isTwitterFan", response.relationship.source.following);
-         }
+      if(App.user.isTwitterFan){
+         totalBonusTickets += App.Globals.TWITTER_FAN_TICKETS;
+      }
 
-         //---------------------------------------------------------
+      if(App.user.isFacebookFan){
+         totalBonusTickets += App.Globals.FACEBOOK_FAN_TICKETS;
 
-         if(App.user.isTwitterFan){
-            App.user.set("totalBonusTickets", App.user.totalBonusTickets + App.Globals.TWITTER_FAN_TICKETS);
-         }
+         if(!wasFacebookFan)
+            App.message(App.translations.messages.TwoMoreBonusTickets)
+      }
+      else if(wasFacebookFan){
+         App.message(App.translations.messages.TwoLostBonusTickets)
+      }
+      
 
-         if(App.user.isFacebookFan){
-            App.user.set("totalBonusTickets", App.user.totalBonusTickets + App.Globals.FACEBOOK_FAN_TICKETS);
-         }
+      App.user.set("totalBonusTickets", totalBonusTickets);
+      
+      //---------------------------------------------------------
 
-         //---------------------------------------------------------
+      UserManager.updateFanStatus(next);
 
-         var statusChanged = ((App.user.isFacebookFan != facebookFan) || (App.user.isTwitterFan != twitterFan)) ;
-
-         //---------------------------------------------------------
-
-         if(statusChanged){
-            UserManager.updateFanStatus(next);
-         }
-         else if(next){
-            next()
-         }
-
-         //---------------------------------------------------------
-      })
+      //---------------------------------------------------------
    })
 
 }
@@ -250,6 +239,19 @@ UserManager.convertPointsToTickets = function() {
    return conversion
 }
 
+//-------------------------------------------------------------------------------------//
+//Twitter TESTS
+//-------------------------------------------------------------------------------------//
+
+UserManager.signinWithTwitter = function(){
+
+   $.ajax({
+      type: "POST",  
+      url: "/signinWithTwitter"
+   });
+   
+}
+
 
 //-------------------------------------------------------------------------------------//
 //Calls to Back End
@@ -322,8 +324,6 @@ UserManager.updatePlayer = function(next)
 UserManager.updateFanStatus = function(next){
    console.log("updateFanStatus")
 
-   App.wait()
-   
    App.user.facebookFan = App.user.isFacebookFan
    App.user.twitterFan = App.user.isTwitterFan
    
@@ -339,12 +339,21 @@ UserManager.updateFanStatus = function(next){
       headers: {"X-Auth-Token": App.authToken},
       success: function (player)
       {
-         App.free()
          if(next)
             next()
       }
    });
    
+}
+
+//-------------------------------------------//
+
+UserManager.mergePlayerWithFacebook = function(){
+
+   App.user.set("facebookId", Facebook.data.id);
+   App.user.set("facebookName", Facebook.data.name);
+
+   UserManager.updatePlayer()
 }
 
 //-------------------------------------------//

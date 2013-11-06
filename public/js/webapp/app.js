@@ -86,6 +86,20 @@
    });
    
    //------------------------------------------------------//
+   
+   App.showSocialButtons = function (){
+      $("#twitterFollowButtonContainer").append( $("#twitterFollowButton") );
+      $("#facebookFollowButtonContainer").append( $("#facebookFollowButton") );
+      $("#twitterShareButtonContainer").append( $("#twitterShareButton") );
+   }
+   
+   App.hideSocialButtons = function (){
+      $("#socialContainer").append( $("#twitterFollowButton") );
+      $("#socialContainer").append( $("#facebookFollowButton") );   
+      $("#socialContainer").append( $("#twitterShareButton") );
+   }
+   
+   //------------------------------------------------------//
 
    App.authToken = $.cookie("authToken")
 

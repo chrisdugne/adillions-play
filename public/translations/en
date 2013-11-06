@@ -123,6 +123,8 @@
 
     "HasPostOnFacebook"	: "You have already shared on FB for this draw",
     "HasTweet"			: "You have already tweet for this draw",
+    "TwoMoreBonusTickets" : "You have won 2 more Bonus Tickets !",
+    "TwoLostBonusTickets" : "You have lost 2 Bonus Tickets...",
     
     "":""
 }
