@@ -120,6 +120,9 @@
 
     "TotalPoints"		: "Total points",
     "TotalGains"		: "Total gains",
+
+    "HasPostOnFacebook"	: "You have already shared on FB for this draw",
+    "HasTweet"			: "You have already tweet for this draw",
     
     "":""
 }

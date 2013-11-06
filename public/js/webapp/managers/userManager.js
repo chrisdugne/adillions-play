@@ -41,7 +41,7 @@ UserManager.updatedPlayer = function(player, next){
    App.user.set("sponsorCode",         player.sponsorCode);
    App.user.set("giftToReferrer",      player.giftToReferrer);
 
-   App.user.set("isFacebookFan",        player.isFacebookFan);
+   App.user.set("isFacebookFan",       player.isFacebookFan);
    App.user.set("isTwitterFan",        player.isTwitterFan);
 
    App.user.set("currentLotteryUID",   player.currentLotteryUID);
@@ -73,19 +73,11 @@ UserManager.updatedPlayer = function(player, next){
    UserManager.sortLotteryTickets()
    UserManager.setTotalGains()
 
-   //----------------------------------------------//
-
-   console.log("updatedPlayer")
-
-   //----------------------------------------------//
-
    UserManager.checkIdlePoints()
-   UserManager.checkFanStatus()   
+   UserManager.checkFanStatus(next)   
 
    //----------------------------------------------//
 
-   if(next)
-      next()
 }
 
 //-------------------------------------------//
@@ -132,10 +124,61 @@ UserManager.setTotalGains = function(){
 
 //-------------------------------------------//
 
-UserManager.checkFanStatus = function(){
+UserManager.checkFanStatus = function(next){
+
+   console.log("----> checkFanStatus")
+   
+   var facebookFan    = App.user.isFacebookFan
+   var twitterFan     = App.user.isTwitterFan
+
+   if(App.user.hasFacebookAccount){
+      App.user.set("totalBonusTickets", App.user.totalBonusTickets + App.Globals.FACEBOOK_CONNECTION_TICKETS);
+   }
+   
+   if(App.user.hasTwitterAccount){
+      App.user.set("totalBonusTickets", App.user.totalBonusTickets + App.Globals.TWITTER_CONNECTION_TICKETS);
+   }
+
+   Facebook.isFacebookFan(function(){
+      Twitter.isTwitterFan(function(response){
+
+         console.log("----> social calls done")
+         
+         //---------------------------------------------------------
+
+         if(response) {
+            console.log(response)
+            App.user.set("isTwitterFan", response.relationship.source.following);
+         }
+
+         //---------------------------------------------------------
+
+         if(App.user.isTwitterFan){
+            App.user.set("totalBonusTickets", App.user.totalBonusTickets + App.Globals.TWITTER_FAN_TICKETS);
+         }
+
+         if(App.user.isFacebookFan){
+            App.user.set("totalBonusTickets", App.user.totalBonusTickets + App.Globals.FACEBOOK_FAN_TICKETS);
+         }
+
+         //---------------------------------------------------------
+
+         var statusChanged = ((App.user.isFacebookFan != facebookFan) || (App.user.isTwitterFan != twitterFan)) ;
+
+         //---------------------------------------------------------
+
+         if(statusChanged){
+            UserManager.updateFanStatus(next);
+         }
+         else if(next){
+            next()
+         }
+
+         //---------------------------------------------------------
+      })
+   })
 
 }
-
 
 //-------------------------------------------------------------------//
 
@@ -166,9 +209,7 @@ UserManager.checkIdlePoints = function() {
       var message = App.translations.messages.YouHaveEarnedExtra;
       message += " (" + App.Globals.POINTS_TO_EARN_A_TICKET + " pts = 1 " + App.translations.messages.Ticket + ")";
 
-      App.Globals.confirmationMessage = message;
       App.message(message);
-      console.log("----> TICKET |  " + message)
 
       UserManager.convertCurrentPoints()
    }
@@ -231,15 +272,18 @@ UserManager.receivedPlayer = function(player, next)
    
    App.message("Welcome back " + userName + " !", true)
 
-   UserManager.updatedPlayer(player, next)
+   UserManager.updatedPlayer(player, function(){
+      
+      if(Facebook && Facebook.finalizeInit)
+         Facebook.finalizeInit();
+      
+      UserManager.checkUserCurrentLottery()
+      
+      console.log(App.user)
+      next()
+      
+   })
 
-   if(Facebook && Facebook.finalizeInit)
-      Facebook.finalizeInit();
-
-
-   UserManager.checkUserCurrentLottery()
-
-   console.log(App.user)
 }
 
 //-------------------------------------------//
@@ -271,6 +315,36 @@ UserManager.updatePlayer = function(next)
 
       }
    });
+}
+
+//-------------------------------------------//
+
+UserManager.updateFanStatus = function(next){
+   console.log("updateFanStatus")
+
+   App.wait()
+   
+   App.user.facebookFan = App.user.isFacebookFan
+   App.user.twitterFan = App.user.isTwitterFan
+   
+   var params = new Object();
+   params["user"] = App.user
+
+   $.ajax({
+      type: "POST",  
+      url: "/updateFanStatus",
+      data: JSON.stringify(params),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      headers: {"X-Auth-Token": App.authToken},
+      success: function (player)
+      {
+         App.free()
+         if(next)
+            next()
+      }
+   });
+   
 }
 
 //-------------------------------------------//

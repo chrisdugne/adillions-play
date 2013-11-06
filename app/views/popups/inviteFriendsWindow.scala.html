@@ -2,13 +2,13 @@
 	
 	<div class="row-fluid">
 		<div class="span3 offset3">
-			<div class="btn-large button">sponsor code : UYTRS4</div>
+			<div class="btn-large button">sponsor code : {{App.user.sponsorCode}}</div>
 		</div>
 	</div>
 	
 	<div class="row-fluid">
-		<div class="span3 offset3">
-			<div class="btn-large button">email</div>
+		<div onclick="alert({{App.user.sponsorCode}})" class="span3 offset3">
+			<a href="mailto:?subject='The subject of the mail'&body='body text'" class="btn-large button link">Email</a>
 		</div>
 	</div>
 	
@@ -26,6 +26,17 @@
 		<div class="span3">
 			{{#if App.user.hasFacebookAccount}}
 			<div {{action inviteFacebook}} class="btn-large button">Invite on Facebook</div>
+			{{else}}
+			<div class="btn-large button">Connect to Facebook</div>
+			{{/if}}
+		</div>
+		
+		<div class="span3 offset2">
+			{{#if App.user.hasFacebookAccount}}
+				{{#if App.user.hasPostOnFacebook}}
+				{{else}}
+				<div {{action shareFacebook}} class="btn-large button">Share on Facebook</div>
+				{{/if}}
 			{{else}}
 			<div class="btn-large button">Connect to Facebook</div>
 			{{/if}}

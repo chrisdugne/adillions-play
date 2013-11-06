@@ -125,6 +125,9 @@
     "TotalPoints"		: "Points",
     "TotalGains"		: "Total des gains",
     
+    "HasPostOnFacebook"	: "Vous avez déjå partagé sur FB pour ce tirage",
+    "HasTweet"			: "Vous avez déjå twitté pour ce tirage",
+    
     "":""
 	
 }

@@ -451,11 +451,9 @@ GameManager.refreshThemeSelectionDisplay = function(){
    var maskId = "luckyBallMask";
    
    if(GameManager.luckyBall){
-
       
       var left = $(".container").width()/2 + 93 
       var top   = -8;
-         
       
       var ball   = "<img id='"+ballId+"' src='"+App.nextLottery.theme.icons[GameManager.luckyBall - 1].image+"' class='smallThemeBall'></img>"
       var mask   = "<img id='"+maskId+"' src='/assets/images/balls/ball.mask.png' class='smallThemeBall'></img>"
@@ -501,15 +499,12 @@ GameManager.refreshThemeSelectionDisplay = function(){
 
  GameManager.initConfirmation = function(){
     
-    if(App.Globals.confirmationMessage != null){
-       App.message(App.Globals.confirmationMessage)
-    }
-    else if(!App.Globals.wasExtraTicket){
+    // if App.user.currentPoints == 0 -> conversion + message extra ticket.
+    if(!App.Globals.wasExtraTicket && App.user.currentPoints > 0){
        App.message("+1 point")
     }
        
     App.Globals.wasExtraTicket      = false
-    App.Globals.confirmationMessage = null
  }
    
 }

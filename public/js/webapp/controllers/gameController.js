@@ -35,6 +35,27 @@
 	   }) 
 
 	}
+	
+	//==================================================================//
+	
+	GameController.shareFacebook = function(afterVideoSeen)	{
+	   if(!App.user.hasPostOnFacebook){
+	      
+	      var message = App.user.sponsorCode; 
+         
+	      Facebook.postOnWall(message, function(){
+            
+            App.message("+ " + App.Globals.NB_POINTS_PER_POST + " Pts !");
+            App.user.set("currentPoints", App.user.currentPoints + App.Globals.NB_POINTS_PER_POST)
+            App.user.set("hasPostOnFacebook", true)
+            
+            UserManager.updatePlayer()
+         })
+      }
+	   else{
+	      App.message(App.translations.messages.HasPostOnFacebook)
+	   }
+	}
 
 	//==================================================================//
 
@@ -174,6 +195,10 @@
 
       inviteFacebook         : function(){
          Facebook.inviteFriends()
+      },
+      
+      shareFacebook         : function(){
+         GameController.shareFacebook()
       },
 
       openInvite         : function(){
