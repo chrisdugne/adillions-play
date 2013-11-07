@@ -16,7 +16,7 @@ Twitter.tweet = function(){
    App.user.set("currentPoints", App.user.currentPoints + App.Globals.NB_POINTS_PER_TWEET)
    App.user.set("hasTweet", true);
    
-   UserManager.updatePlayer()
+   UserManager.updatePlayer();
 }
 
 Twitter.follow = function(){

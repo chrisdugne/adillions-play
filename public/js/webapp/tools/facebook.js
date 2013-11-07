@@ -336,3 +336,108 @@ Facebook.mergeMe = function(next){
 }
 
 //-----------------------------------------------------------------------------------------
+
+Facebook.showLikeThemeButton = function(){
+   console.log("showLikeThemeButton")
+//   hud.likeThemeButton     = display.newImage( hud, "assets/images/icons/like.png")  
+//   hud.likeThemeButton.x   = display.contentWidth*0.1
+//   hud.likeThemeButton.y   = display.contentHeight*0.85
+//
+//   utils.onTouch(hud.likeThemeButton, function()
+//      facebook.likeTheme()
+//      display.remove(hud.likeThemeButton)
+//   end)
+}
+
+Facebook.checkThemeLiked = function(){
+
+   console.log("=========> checkThemeLiked")
+   if(this.accessToken){
+
+      var theme = App.nextLottery.theme
+      var url = "https://graph.facebook.com/me/"+this.FACEBOOK_APP_NAMESPACE+":enjoy?access_token=" + this.accessToken;
+      App.wait()
+      console.log(url)
+      
+      $.ajax({  
+         type: "GET",  
+         url: url,
+         dataType: "jsonp",
+         success: function (response)
+         {
+            App.free()
+            var liked = false
+            console.log("=========> response", response)
+
+            if(response.data.length > 0){
+               for(var i = 1; i < response.data.length; i++){
+                  //-- FB.OG BUG pas possible de rajouter uid today+. check title pour linstant
+                  //--          if(response.data[i].data.theme.uid == theme.uid) then
+                  
+                  if(response.data[i].data.theme.title == theme.title){
+                     liked = true;
+                     break;
+                  }
+               }
+            }
+
+            if(!liked){
+               console.log("theme Not liked")
+               App.user.set("themeLiked", false);
+            }
+            else
+               console.log("themeAlreadyLiked")
+               
+         }
+      });
+   }
+}
+      
+//-----------------------------------------------------------------------------------------
+
+Facebook.likeTheme = function(){
+
+   var theme = App.nextLottery.theme
+   App.wait()
+
+   var locale         = Facebook.data.locale
+
+   var themeURL =  this.SERVER_OG_URL + 'theme'
+   + '?title='         + theme.title
+   + '&uid='           + theme.uid
+   + '&description='   + theme.description
+   + '&imageURL='      + theme.image 
+   + '&locale='        + locale
+
+   themeURL = encodeURIComponent(themeURL)
+   console.log(themeURL)
+
+   var url = "https://graph.facebook.com/me/"+this.FACEBOOK_APP_NAMESPACE+":enjoy?method=post"
+   +  "&theme=" + themeURL
+   +  "&access_token=" + this.accessToken;
+
+   console.log("-----");
+   console.log(themeURL);
+
+   $.ajax({  
+      type: "GET",  
+      url: url,
+      dataType: "jsonp",
+      success: function (response)
+      {
+         App.free();
+         console.log(response)
+         
+         if(response.id){
+            App.message("+ " + App.Globals.NB_POINTS_PER_THEME_LIKED + " Pts !");
+            App.user.set("currentPoints", App.user.currentPoints + App.Globals.NB_POINTS_PER_THEME_LIKED)
+            App.user.set("themeLiked", true);
+            
+            UserManager.updatePlayer()
+         }
+         else if(response.error.code == 200){
+            Facebook.popupLogin();
+         }
+      }
+   });
+}

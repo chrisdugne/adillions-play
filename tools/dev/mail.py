@@ -13,7 +13,7 @@ def main():
 
     #--------------------------------------------------------------------
 
-#     url         = "http://www.uralys.com/adillions/newsletters/newsletter1"
+#   url         = "http://www.uralys.com/adillions/newsletters/newsletter1"
     url         = "http://media.wow-europe.com/email/2013/sc2/hots/live_stream/en/index_en-gb.html"
     
     #--------------------------------------------------------------------
@@ -27,6 +27,7 @@ def main():
     me          = "noreply@adillions.com"
         
     #--------------------------------------------------------------------
+    print("init smtplib")    
     
     # Send the message via local SMTP server.
     server = smtplib.SMTP('mail.gandi.net:587')
@@ -36,6 +37,7 @@ def main():
 
     #--------------------------------------------------------------------
     
+    print("database connection")    
     conn_string             = utils.getDBConfig()
     conn                    = psycopg2.connect(conn_string)
     database                = conn.cursor()

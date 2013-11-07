@@ -49,7 +49,8 @@
 	   totalGains             : "",  
 
 	   lotteries              : "",
-	   loggedIn               :    false,
+	   themeLiked             : false,
+	   loggedIn               : false,
 
 	   //---------------------------//
 

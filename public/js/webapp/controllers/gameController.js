@@ -14,6 +14,8 @@
       GameManager.setSelectedButton()
       
       App.showSocialButtons()
+      
+      Facebook.checkThemeLiked()
 	}
 
 	GameController.cleanUI = function()	{
@@ -196,6 +198,10 @@
       openProfile             : Ember.Route.transitionTo('game.profile'),
       
 
+      likeTheme               : function(){
+         Facebook.likeTheme()
+      },
+      
       inviteFacebook         : function(){
          Facebook.inviteFriends()
       },

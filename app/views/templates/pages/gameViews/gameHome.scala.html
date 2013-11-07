@@ -46,6 +46,11 @@
 		{{langImage App.user.lang png='theme.png' id='themeImageOver' customclass='touchable'}}
 		</div>
 	</div>
+
+	{{#if App.user.themeLiked}}
+	{{else}}
+		<div {{action likeTheme}}>{{langImage App.user.lang png='filloutticket.button.png' id='fillOutTicket'}}</div>
+	{{/if}}
 </div>
 
 		

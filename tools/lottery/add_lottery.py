@@ -4,6 +4,12 @@ import utils
 def main():
     
     #--------------------------------------------------------------------
+
+    conn_string = utils.getDBConfig()
+    conn = psycopg2.connect(conn_string)
+    cursor = conn.cursor()
+    
+    #--------------------------------------------------------------------
     
     lotteryUID    = utils.generateUID()
     maxPicks      = raw_input("Nb to pick ? \n> ")
@@ -22,12 +28,6 @@ def main():
     or not maxNumbers):    
         print "Try again"
         return
-
-    #--------------------------------------------------------------------
-
-    conn_string = utils.getDBConfig()
-    conn = psycopg2.connect(conn_string)
-    cursor = conn.cursor()
 
     #--------------------------------------------------------------------
 
