@@ -263,6 +263,7 @@ Facebook.inviteFriends = function()
    FB.ui({
       method: 'apprequests',
       message: message,
+      data: App.user.sponsorCode,
       title: title
    });
 
@@ -385,9 +386,10 @@ Facebook.checkThemeLiked = function(){
                console.log("theme Not liked")
                App.user.set("themeLiked", false);
             }
-            else
+            else{
                console.log("themeAlreadyLiked")
-               
+               App.user.set("themeLiked", true);
+            }
          }
       });
    }
