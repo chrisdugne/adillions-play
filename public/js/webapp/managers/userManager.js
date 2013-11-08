@@ -757,6 +757,12 @@ UserManager.setupForms = function()
             required: true,
             email: true
          },
+         check1: {
+            required: true,
+         },
+         check2: {
+            required: true,
+         },
       },
       messages: {
          firstName: {

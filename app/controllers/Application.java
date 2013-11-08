@@ -24,17 +24,17 @@ public class Application extends Controller {
 	// facebook
 
 	// PROD
-	public static final String FACEBOOK_APP_ID 				= "170148346520274";
-	public static final String FACEBOOK_API_SECRET 			= "887e8f7abb9b1cb9238a097e06585ae2";
-	public static final String FACEBOOK_APP_NAMESPACE 		= "adillions";
-	public static final String APP_HOSTNAME 					= "http://www.watchtocash.com";
+//	public static final String FACEBOOK_APP_ID 				= "170148346520274";
+//	public static final String FACEBOOK_API_SECRET 			= "887e8f7abb9b1cb9238a097e06585ae2";
+//	public static final String FACEBOOK_APP_NAMESPACE 		= "adillions";
+//	public static final String APP_HOSTNAME 					= "http://www.watchtocash.com";
 //	public static final String APP_HOSTNAME 					= "http://www.adillions.com";
 
 	// DEV
-//	public static final String FACEBOOK_APP_ID 				= "534196239997712";
-//	public static final String FACEBOOK_API_SECRET 			= "46383d827867d50ef5d87b66c81f1a8e";
-//	public static final String FACEBOOK_APP_NAMESPACE 		= "adillions-dev";
-//	public static final String APP_HOSTNAME 					= "http://192.168.0.9:9000";
+	public static final String FACEBOOK_APP_ID 				= "534196239997712";
+	public static final String FACEBOOK_API_SECRET 			= "46383d827867d50ef5d87b66c81f1a8e";
+	public static final String FACEBOOK_APP_NAMESPACE 		= "adillions-dev";
+	public static final String APP_HOSTNAME 					= "http://192.168.0.9:9000";
 
 	// -----------------------------------------------------------------------------------//
 

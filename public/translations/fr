@@ -62,6 +62,9 @@
 	"Privacy"			: "Confidentialité",
 	"Terms"				: "Règlement",
 
+	"AcceptTerms"		: "J'ai lu et j'accepte la Politique de Confidentialité et le Règlement d'Adillions",
+	"AcceptOffers"		: "J'accepte de recevoir des offres d'Adillions et/ou de ses partenaires",
+	
  	"##########################################" : "APP",
 	
 	"Welcome"			: "Bienvenue",
