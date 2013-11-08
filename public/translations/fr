@@ -78,6 +78,7 @@
     "Birthday"			: "Date de naissance",
     "ReferrerCode"		: "Code parrain",
     "ChangeAccount"		: "Changer de compte",
+    "NotYou"			: "Changer de compte ?",
 
     "AccountEmailExists": "Un compte avec cet email existe déjà",
     "AccountNamesExist" : "Un compte avec ce nom et prénom existe déjà",

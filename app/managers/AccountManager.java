@@ -192,7 +192,6 @@ public class AccountManager {
 		MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
 		mail.setSubject("Adillions - Welcome !");
 		mail.addRecipient(email);
-		mail.addRecipient("chris.dugne@gmail.com");
 		mail.addFrom("noreply@adillions.com");
 
 		String content = "<p>Welcome "+player.getFirstName()+" !" +

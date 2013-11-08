@@ -78,6 +78,7 @@
     "Birthday"			: "Birthday",
     "ReferrerCode"		: "Sponsor code",
     "ChangeAccount"		: "Change account",
+    "NotYou"			: "Not you ?",
 
     "AccountEmailExists": "An account with this email exists yet",
     "AccountNamesExist" : "An account with these names exists yet",
