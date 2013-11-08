@@ -163,8 +163,8 @@
    //-----------------------------------// 
    // read url params 
 
-   var firstName 	= Utils.getURLParameter("first_name")
-   var lastName 	= Utils.getURLParameter("last_name")
+   var firstName 	= decodeURIComponent(Utils.getURLParameter("first_name"))
+   var lastName 	= decodeURIComponent(Utils.getURLParameter("last_name"))
    var pictureUrl 	= decodeURIComponent(Utils.getURLParameter("picture_url"))
    var birthday 	= Utils.getURLParameter("birth_date")
    var email 		= Utils.getURLParameter("email")
@@ -172,7 +172,7 @@
    //-----------------------------------// 
    // fill form 
 
-   $("#fbForm_title").text(Translator.messages["Welcome"] + " " + Utils.getURLParameter("facebookName") + " !")
+   $("#fbForm_title").text(Translator.messages["Welcome"] + " " + decodeURIComponent(Utils.getURLParameter("facebookName")) + " !")
                
    $("#fbForm_firstName").val(firstName)
    $("#fbForm_lastName").val(lastName)
