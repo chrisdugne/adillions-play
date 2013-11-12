@@ -268,6 +268,11 @@ public class AccountManager {
 
 		//-------------------------------------//
 
+		System.out.println("hasTweet : " + newUserJson.get("hasTweet"));
+		System.out.println("hasPostOnFacebook : " + newUserJson.get("hasPostOnFacebook"));
+		System.out.println("hasTweetAnInvite : " + newUserJson.get("hasTweetAnInvite"));
+		System.out.println("hasInvitedOnFacebook : " + newUserJson.get("hasInvitedOnFacebook"));
+		
 		player.setTweet					(newUserJson.get("hasTweet").asBoolean());
 		player.setPostOnFacebook		(newUserJson.get("hasPostOnFacebook").asBoolean());
 		player.setTweetAnInvite			(newUserJson.get("hasTweetAnInvite").asBoolean());
