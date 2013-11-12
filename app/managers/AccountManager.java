@@ -239,6 +239,12 @@ public class AccountManager {
 			facebookId 	= newUserJson.get("facebookId").asText();
 			userName 	= newUserJson.get("facebookName").asText();
 
+			Player playerExisting = getPlayerByFacebookId(facebookId);
+			
+			if(playerExisting != null){
+				return null; // merge with an existing FB account
+			}
+			
 			player.setFacebookId			(facebookId);
 			player.setUserName			(userName);
 		}
