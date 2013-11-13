@@ -1,0 +1,36 @@
+@import views.html.popups.loginWindow;
+@import views.html.popups.signinWindow;
+@import views.html.popups.signinFBWindow;
+@import views.html.popups.pointsWindow;
+
+@import views.html.popups.tutorial1Window;
+@import views.html.popups.tutorial2Window;
+@import views.html.popups.tutorial3Window;
+
+@import views.html.templates.homefooter;
+
+@import views.html.templates.components.menu;
+
+<div id="homeContent">
+
+	<!-- ----------------------------------------------------------------------------- -->
+
+	<div class="marketing unselectable">
+				
+	</div>
+</div>
+		
+<!-- ---------------------------------------------- -->
+
+@homefooter()
+
+<!-- ----------------  POPUPS --------------------- -->
+
+@signinWindow()
+@signinFBWindow()
+@loginWindow()
+@pointsWindow()
+
+@tutorial1Window()
+@tutorial2Window()
+@tutorial3Window()

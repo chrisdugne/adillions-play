@@ -37,6 +37,8 @@ public class Player extends Model {
 	private String twitterId;
 	@Expose
 	private String twitterName;
+	@Expose
+	private String lang;
 
 	// FB : facebookData.name
 	// A	: firstName + lastName 
@@ -246,6 +248,14 @@ public class Player extends Model {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getLang() {
+		return lang;
+	}
+
+	public void setLang(String lang) {
+		this.lang = lang;
 	}
 
 	public String getSponsorCode() {

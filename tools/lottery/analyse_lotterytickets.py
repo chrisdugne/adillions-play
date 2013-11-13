@@ -38,11 +38,15 @@ def main():
     
     winningNumbers  = json.loads(lottery[11])
     winningTickets  = []
-    nbRang1         = 0
-    nbRang2         = 0
-    nbRang3         = 0
-    nbRang4         = 0
-    
+    rangs           = []
+     
+    rangs.append(Rang(0, 0, 0.40))
+    rangs.append(Rang(0, 0, 0.10))
+    rangs.append(Rang(0, 0, 0.20))
+    rangs.append(Rang(0, 0, 0.40))
+    rangs.append(Rang(0, 0, 0.10))
+    rangs.append(Rang(0, 0, 0.10))
+
     #--------------------------------------------------------------------
 
 #     print "Counting tickets...\n"
@@ -75,7 +79,7 @@ def main():
     maxPrice    = lottery[7]
     CPM         = lottery[8]
     charity     = lottery[9]
-    price       = round(float(len(tickets))/1000*CPM, 2)
+    price       = min(maxPrice, max(minPrice, round(float(len(tickets))/1000*CPM, 2)))
     nbTickets   = len(tickets)
       
     print date + " Lottery"
@@ -114,80 +118,66 @@ def main():
             
             if isRang1(nbWinning,additional,winningNumbers) :
                 winningTicket.rang = 1
-                nbRang1 = nbRang1 + 1
+                rangs[0].winners = rangs[0].winners + 1
                 winningTickets.append(winningTicket)
     
             elif isRang2(nbWinning,additional,winningNumbers) :
                 winningTicket.rang = 2
-                nbRang2 = nbRang2 + 1
+                rangs[1].winners = rangs[1].winners + 1
                 winningTickets.append(winningTicket)
                 
             elif isRang3(nbWinning,additional,winningNumbers) :
                 winningTicket.rang = 3
-                nbRang3 = nbRang3 + 1
+                rangs[2].winners = rangs[2].winners + 1
                 winningTickets.append(winningTicket)
 
             elif isRang4(nbWinning,additional,winningNumbers) :
                 winningTicket.rang = 4
-                nbRang4 = nbRang4 + 1
+                rangs[3].winners = rangs[3].winners + 1
+                winningTickets.append(winningTicket)
+
+            elif isRang5(nbWinning,additional,winningNumbers) :
+                winningTicket.rang = 5
+                rangs[4].winners = rangs[4].winners + 1
+                winningTickets.append(winningTicket)
+
+            elif isRang6(nbWinning,additional,winningNumbers) :
+                winningTicket.rang = 6
+                rangs[5].winners = rangs[5].winners + 1
                 winningTickets.append(winningTicket)
                 
         utils.printPercentage(t, len(tickets))
      
     #--------------------------------------------------------------------
-
+    
     winningTickets = sorted(winningTickets, key=operator.attrgetter('rang'))
-
+    
     #--------------------------------------------------------------------
 
     print("\nNb Winners :" + str(len(winningTickets)))
-    prices = []
     toPay = 0
     
-    if nbRang1 > 0:
-        share =  round((0.50 * price)/nbRang1, 2)
-        prices.append(share)
-        toPay = toPay + share*nbRang1
-    else:
-        prices.append(0) 
-
-    if nbRang2 > 0:
-        share =  round((0.20 * price)/nbRang2, 2)
-        prices.append(share)
-        toPay = toPay + share*nbRang2
-    else:
-        prices.append(0) 
+    for i in range(0,len(rangs)):
+        if rangs[i].winners > 0:
+            rangs[i].share =  round((rangs[i].percentage * price)/rangs[i].winners, 2)
+            toPay = toPay + rangs[i].percentage * price
+        else:
+            rangs[i].share = 0 
     
-    if nbRang3 > 0:
-        share =  round((0.10 * price)/nbRang3, 2)
-        prices.append(share)
-        toPay = toPay + share*nbRang3
-    else:
-        prices.append(0) 
-    
-    if nbRang4 > 0:
-        share =  round((0.05 * price)/nbRang4, 2)
-        prices.append(share)
-        toPay = toPay + share*nbRang4
-    else:
-        prices.append(0) 
-
     #---------------------------------
     
     finalPrice = round(toPay, 2)
     
     print("To pay :" , finalPrice)
-    print("Nb Rang 1 :" + str(nbRang1), " price: " , prices[0])
-    print("Nb Rang 2 :" + str(nbRang2), " price: " , prices[1])
-    print("Nb Rang 3 :" + str(nbRang3), " price: " , prices[2])
-    print("Nb Rang 4 :" + str(nbRang4), " price: " , prices[3])
+    for i in range(0,len(rangs)):
+        print("Winners Rang "+str(i+1)+" :" + str(rangs[i].winners), " share : " , str(rangs[i].share))
 
     #---------------------------------
 
     requireRecord = raw_input("Record data ? (y/N) \n>") == 'y'
        
     if requireRecord:
-        recordToDB(database, lotteryUID, winningTickets, prices, finalPrice)
+        recordToDB(database, lotteryUID, winningTickets, rangs, finalPrice)
         
     #--------------------------------------------------------------------
     
@@ -200,24 +190,32 @@ def main():
         
 #----------------------------------------------------------------------------------
 
-def recordToDB(database, lotteryUID, winningTickets, prices, finalPrice):
+def recordToDB(database, lotteryUID, winningTickets, rangs, finalPrice):
     print("Recording prizes in DB")
     
     for ticket in winningTickets :
         getWinnerData(database, ticket)
-        price = prices[ticket.rang-1]
+        price = rangs[ticket.rang-1]
         playerUID = ticket.player[0]
         
-        print "Name : ", ticket.player[2], "numbers:", ticket.numbers, "rang:", ticket.rang,"price :", price, "nbTickets : " , ticket.nbTicketsPlayed 
+        print "Name : ", ticket.player[4], "numbers:", ticket.numbers, "rang:", ticket.rang, "share :", rangs[ticket.rang-1].share, "nbTickets : " , ticket.nbTicketsPlayed 
         
-        database.execute("UPDATE lottery_ticket SET price='"+str(prices[ticket.rang-1])+"' WHERE uid='"+ticket.uid+"';") 
+        database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"' WHERE uid='"+ticket.uid+"';") 
 
-    database.execute("UPDATE lottery SET final_price='"+str(finalPrice)+"' WHERE uid='"+lotteryUID+"';") 
+    pricesJSON = "["
+    for rang in rangs :
+        pricesJSON = pricesJSON + "{\"winners\":\"" + str(rang.winners) + "\", \"share\":\"" + str(rang.share) + "\"}," 
+        
+    pricesJSON = pricesJSON[:-1]
+    pricesJSON = pricesJSON + "]"
+    
+    database.execute("UPDATE lottery SET final_price='"+str(finalPrice)+"', prizes='"+pricesJSON+"' WHERE uid='"+lotteryUID+"';") 
     
         
 #----------------------------------------------------------------------------------
 
 def getWinnerData(database, ticket):
+    
     database.execute("SELECT * FROM player where uid='"+ticket.playerUID+"'")
     player = database.fetchone()
     ticket.addPlayer(player)
@@ -229,7 +227,12 @@ def getWinnerData(database, ticket):
 #----------------------------------------------------------------------------------
 
 def isWinningTicket(nbWinning, additional, winningNumbers):
-    return isRang1(nbWinning,additional,winningNumbers) or isRang2(nbWinning,additional,winningNumbers) or isRang3(nbWinning,additional,winningNumbers) or isRang4(nbWinning,additional,winningNumbers)
+    return isRang1(nbWinning,additional,winningNumbers) \
+    or isRang2(nbWinning,additional,winningNumbers)  \
+    or isRang3(nbWinning,additional,winningNumbers)  \
+    or isRang4(nbWinning,additional,winningNumbers)  \
+    or isRang5(nbWinning,additional,winningNumbers)  \
+    or isRang6(nbWinning,additional,winningNumbers)  \
     
 def isRang1(nbWinning, additional, winningNumbers):
     return nbWinning == len(winningNumbers)-1 and additional == 1
@@ -243,18 +246,32 @@ def isRang3(nbWinning, additional, winningNumbers):
 def isRang4(nbWinning, additional, winningNumbers):
     return nbWinning == len(winningNumbers)-2 and additional == 0
             
+def isRang5(nbWinning, additional, winningNumbers):
+    return nbWinning == len(winningNumbers)-3 and additional == 1
+            
+def isRang6(nbWinning, additional, winningNumbers):
+    return nbWinning == len(winningNumbers)-3 and additional == 0
+            
 #----------------------------------------------------------------------------------
              
 class WinningTicket:
     def __init__(self, uid, playerUID, nbWinning, additional, numbers):
         self.uid = uid
-        self.playerUID = playerUID
-        self.nbWinning = nbWinning
-        self.additional = additional
-        self.numbers = numbers
+        self.playerUID      = playerUID
+        self.nbWinning      = nbWinning
+        self.additional     = additional
+        self.numbers        = numbers
         
     def addPlayer(self, player):
         self.player = player
+
+#----------------------------------------------------------------------------------
+             
+class Rang:
+    def __init__(self, winners, share, percentage):
+        self.winners        = winners
+        self.share          = share
+        self.percentage     = percentage
             
 #----------------------------------------------------------------------------------
 

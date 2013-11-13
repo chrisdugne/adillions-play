@@ -51,7 +51,9 @@ public class Lottery extends Model {
 	@Expose
 	private String result; 				// [34,65,2,5,65,7]
 	@Expose
-	private Double finalPrice; 			// 
+	private Double finalPrice; 		// 
+	@Expose
+	private String prizes; 				// [{"winners" : "2", "share" : "3.45"},{"winners" : "0", "share" : "0"},...]
 
 	// -----------------------------------------------------------------------------------------------//
 

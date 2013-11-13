@@ -170,11 +170,16 @@ public class LotteryManager {
 		&& player.getReferrerId() != null
 		&& player.getReferrerId().length() > 0){
 			System.out.println("---------->  gift to referrer !");
-			Player referrer = AccountManager.getPlayerByUID(player.getReferrerId());
 			player.setGiftToReferrer(true);
-			player.setIdlePoints(player.getIdlePoints() + NB_POINTS_PER_REFERRING);
-			referrer.setIdlePoints(referrer.getIdlePoints() + NB_POINTS_PER_REFERRING);
-			referrer.save();
+
+			Player referrer = AccountManager.getPlayerBySponsorCode(player.getReferrerId());
+			
+			if(referrer != null){
+				player.setIdlePoints(player.getIdlePoints() + NB_POINTS_PER_REFERRING);
+				referrer.setIdlePoints(referrer.getIdlePoints() + NB_POINTS_PER_REFERRING);
+				referrer.save();
+			}
+			// else : referrerId doesnt exist
 		}
 		
 		// -----------------------------------------------------//

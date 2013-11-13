@@ -17,6 +17,7 @@ create table lottery (
   theme                     TEXT,
   result                    varchar(255),
   final_price               float,
+  prizes                    varchar(255),
   last_update               timestamp not null,
   constraint pk_lottery primary key (uid))
 ;
@@ -26,6 +27,7 @@ create table lottery_ticket (
   numbers                   varchar(255),
   lottery_uid               varchar(255),
   price                     float,
+  status                    integer,
   player_uid                varchar(255),
   creation_date             bigint,
   constraint pk_lottery_ticket primary key (uid))
@@ -36,6 +38,7 @@ create table player (
   facebook_id               varchar(255),
   twitter_id                varchar(255),
   twitter_name              varchar(255),
+  lang                      varchar(255),
   user_name                 varchar(255),
   email                     varchar(255),
   first_name                varchar(255),

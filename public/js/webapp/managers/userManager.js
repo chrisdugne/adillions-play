@@ -474,6 +474,8 @@ UserManager.signin = function()
    App.user.lastName    = $("#lastName").val() 
    App.user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
    App.user.referrerId  = $("#referrerId").val() 
+   
+   console.log("signin ", App.user.lang)
 
    delete App.user.facebookId
    delete App.user.facebookName 
@@ -647,7 +649,8 @@ UserManager.mobileSignin = function(callback)
    user.lastName    = $("#lastName").val() 
    user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
    user.referrerId  = $("#referrerId").val() 
-
+   user.lang        = translator.lang; 
+   
    var passwordHash  = CryptoJS.SHA512($("#password").val());
    var password512   = passwordHash.toString(CryptoJS.enc.Hex)
    user.password = password512

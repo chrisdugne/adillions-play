@@ -248,9 +248,11 @@ GameManager.refreshNumberSelectionDisplay = function()   {
       $("#validateButton").attr("src","/assets/images/bylang/"+App.translator.lang+"/ValidateON.png");
       $("#validateButton").addClass("enabled");
       $("#validateButton").click(function(){
-         App.GameController.requireVideo( function(){
-            App.get('router').transitionTo('game.selectAdditionalNumber')
-         }) 
+//         App.GameController.requireVideo( function(){
+//            App.get('router').transitionTo('game.selectAdditionalNumber')
+//         }) 
+
+         App.get('router').transitionTo('game.selectAdditionalNumber')
       })
    }
    else{

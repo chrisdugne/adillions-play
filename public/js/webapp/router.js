@@ -11,6 +11,7 @@
 
 		   openHome           : Ember.Route.transitionTo('home'),
 		   openResults        : Ember.Route.transitionTo('results'),
+		   openAdvertisers    : Ember.Route.transitionTo('advertisers'),
 
 			//-------------------------------------------------------//
 
@@ -187,6 +188,7 @@
 			game           : App.GameRouting,
 			about          : App.AboutRouting,
 			results        : App.ResultsRouting,
+			advertisers    : App.AdvertisersRouting,
 			team           : App.TeamRouting,
 			credits        : App.CreditsRouting,
 			blog           : App.BlogRouting,
@@ -293,6 +295,7 @@
    Router.isWebappPage = function(page){
       return (page != "home" &&
             page != "results" && 
+            page != "advertisers" && 
             page != "about" && 
             page != "team" && 
             page != "credits" && 

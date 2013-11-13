@@ -91,6 +91,12 @@ public class AccountManager {
 	
 	//------------------------------------------------------------------------------------//
 	
+	public static Player getPlayerBySponsorCode(String code) {
+		return Player.findBySponsorCode(code);
+	}
+	
+	//------------------------------------------------------------------------------------//
+	
 	private static boolean existSponsorCode(String code) {
 		return Player.findBySponsorCode(code) != null;
 	}
@@ -106,6 +112,7 @@ public class AccountManager {
 		String firstName 		= userJson.get("firstName").asText();
 		String lastName 		= userJson.get("lastName").asText();
 		String birthDate 		= userJson.get("birthDate").asText();
+		String lang 			= userJson.get("lang").asText();
 
 		String userName 		= firstName + " " + lastName;
 
@@ -152,6 +159,7 @@ public class AccountManager {
 		player.setFirstName				(firstName);
 		player.setLastName				(lastName);
 		player.setSecret					(secret);
+		player.setLang						(lang);
 		player.setReferrerId				(referrerId);
 		player.setBirthDate				(birthDate);
 		player.setFacebookId				(facebookId);
@@ -189,24 +197,107 @@ public class AccountManager {
 
 		//-------------------------------------//
 
+		String subject = getSignupSubject(lang);
+		String content = getSignupEmail(lang, player);
+		
 		MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
-		mail.setSubject("Adillions - Welcome !");
+		mail.setSubject(subject);
 		mail.addRecipient(email);
 		mail.addFrom("noreply@adillions.com");
-
-		String content = "<p>Welcome "+player.getFirstName()+" !" +
-				"<br/><br/>Your account is now ready" +
-				"<br/>"+player.getFirstName() + " " + player.getLastName() +
-				"<br/>"+email+"</p>" +
-				"<span style=\"color: #888888;\"><img id=\"logo\" style=\"width: 180px;\" src=\""+Application.APP_HOSTNAME+"/assets/images/logo.png\" alt=\"\" /></span>" +
-				"<p style=\"padding-left: 20px;margin-top:2px\"><span style=\"color: #888888;\">"+Application.APP_HOSTNAME+"</span></p>";
 		
-		mail.sendHtml("<html>"+content+"</html>" );
+		try{
+			mail.sendHtml("<html>"+content+"</html>" );
+		}
+		catch(Exception e){
+			System.out.println("couldn't email " + player.getEmail());
+		}
 
 		//-------------------------------------//
 
 		return player;
 	}
+
+	//------------------------------------------------------------------------------------//
+
+	private static String getSignupSubject(String lang) {
+
+		String subject = "";
+		if(lang.equals("fr")){
+			subject = "Welcome to Adillions !";
+		}
+		else{
+			subject = "Bienvenue sur Adillions !";
+		}
+
+		return subject;
+	}
+
+	private static String getSignupEmail(String lang, Player player) {
+
+		String welcome = "";
+		String text1 = "";
+		String text2 = "";
+
+		String titleList = "";
+		String list1 = "";
+		String list2 = "";
+		String list3 = "";
+		String list4 = "";
+		
+		String final1 = "";
+		String final2 = "";
+		String final3 = "";
+		
+		
+		if(lang.equals("fr")){
+			welcome = "Bonjour "+player.getFirstName()+" !";
+			text1 = "Bienvenue sur Adillions, la loterie gratuite avec des gains d’argent réel financés par la publicité !";
+			text2 = "Félicitations ! Vous venez de rejoindre notre communauté internationale de joueurs, vous pouvez dorénavant jouer à Adillions sur votre smartphone (iOS et Android) ou sur internet à l'adresse : www.adillions.com ou directement sur Facebook";
+
+			titleList = "Chaque semaine sur Adillions, ce sont:";
+			list1 = "plusieurs tickets de loterie à remplir";
+			list2 = "un nouveau thème à découvrir";
+			list3 = "un tirage en direct sur Youtube";
+			list4 = "des gains d'argent réel à gagner";
+
+			final1 = "Invitez vos amis pour faire augmenter la cagnotte !";
+			final2 = "Bonne chance,";
+			final3 = "L’équipe d’Adillions";
+		}
+		else{
+			welcome = "Hi "+player.getFirstName()+" !";
+			text1 = "Welcome to Adillions, the free lottery with real cash prizes funded by advertising !";
+			text2 = "Congratulations! You have now joined our international community of players. You can now play Adillions on your smartphone (iOS and Android), on the web at www.adillions.com or directly on Facebook.";
+			
+			titleList = "Each week on Adillions, it is:";
+			list1 = "Several lottery tickets to fill out";
+			list2 = "A new theme to discover";
+			list3 = "Draw results live on Youtube";
+			list4 = "Prizes to win";
+			
+			final1 = "Invite your friends to increase the jackpot !";
+			final2 = "Good luck,";
+			final3 = "The Adillions Team.";
+		}
+
+		String content = "<p>" + welcome + "</p>" + 
+				"<br/><p>" + text1 + "</p>" +
+				"<br/><p>" + text2 + "</p>" +
+				"<br/><ul>" + titleList +
+				"<li>" + list1 + "</li>" +
+				"<li>" + list2 + "</li>" +
+				"<li>" + list3 + "</li>" +
+				"<li>" + list4 + "</li></ul>" +
+
+				"<br/><br/><p>" + final1 + "</p>" +
+				"<br/><br/><p>" + final2 + "</p>" +
+				"<br/><br/><p>" + final3 + "</p>" +
+				
+				"<span style=\"color: #888888;\"><img id=\"logo\" style=\"width: 180px;\" src=\""+Application.APP_HOSTNAME+"/assets/images/logo.png\" alt=\"\" /></span>" +
+				"<p style=\"padding-left: 20px;margin-top:2px\"><span style=\"color: #888888;\">"+Application.APP_HOSTNAME+"</span></p>";
+
+		return content;
+   }
 
 	//------------------------------------------------------------------------------------//
 
