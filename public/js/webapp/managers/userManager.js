@@ -792,6 +792,12 @@ UserManager.setupForms = function()
             required: true,
             same: "#password"
          },
+         check1: {
+            required: true,
+         },
+         check2: {
+            required: true,
+         },
       },
       messages: {
          birthDate: {
@@ -821,6 +827,12 @@ UserManager.setupForms = function()
             email: true
          },
          birthDate: {
+            required: true,
+         },
+         check1: {
+            required: true,
+         },
+         check2: {
             required: true,
          },
       },

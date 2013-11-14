@@ -15,9 +15,8 @@
 
 	<div id="signin" class="row-fluid">
 
-		<div class="span5 offset1">
-			
-			<form id="fbForm">
+		<form id="fbForm">
+			<div class="span5 offset1">
 
 				<div class="clearfix  " id="name_field">
 					<label for="firstName">{{App.translations.messages.FirstName}}</label>
@@ -49,21 +48,31 @@
 						<input type="text" id="fbForm_referrerId" name="referrerId" > 
 					</div>
 				</div>
-			</form>
-		</div>
-
-		<div class="span5">
-			<p>{{App.translations.messages.FBUsername}}</p>
-			<p>{{App.translations.messages.FBImportant}}</p>
-			<p>{{App.translations.messages.FBRealName}}</p>
-			<p>{{App.translations.messages.FBReceive}}</p>
-			<br/>
-			<br/>
-			<br/>
-			<form id="signinForm2">
+			</div>
+	
+			<div class="span5">
+				<p>{{App.translations.messages.FBUsername}}</p>
+				<p>{{App.translations.messages.FBImportant}}</p>
+				<p>{{App.translations.messages.FBRealName}}</p>
+				<p>{{App.translations.messages.FBReceive}}</p>
+	
+				<br/>
+	
+				<div class="clearfix">
+					<input type="checkbox" name="check1" id="check1"/>
+					<label for="email">{{App.translations.messages.AcceptTerms}}</label>
+				</div>
+	
+				<div class="clearfix" id="check2">
+					<input type="checkbox" name="check2" id="check2"/>
+					<label for="email">{{App.translations.messages.AcceptOffers}}</label>
+				</div>
+				
+				<br/>
+				
 				<div {{action openConfirmFB}} class="btn-large button">{{App.translations.messages.SignIn}}</div>
-			</form>
-		</div>
+			</div>
+		</form>
 
 	</div>
 

@@ -18,6 +18,7 @@ create table lottery (
   result                    varchar(255),
   final_price               float,
   prizes                    varchar(255),
+  rate_usdto_eur            float,
   last_update               timestamp not null,
   constraint pk_lottery primary key (uid))
 ;

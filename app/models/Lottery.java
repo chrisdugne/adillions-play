@@ -55,6 +55,9 @@ public class Lottery extends Model {
 	@Expose
 	private String prizes; 				// [{"winners" : "2", "share" : "3.45"},{"winners" : "0", "share" : "0"},...]
 
+	@Expose
+	private Float rateUSDtoEUR; 		// 1.34
+
 	// -----------------------------------------------------------------------------------------------//
 
 	@Transient
@@ -197,6 +200,13 @@ public class Lottery extends Model {
 		this.date = date;
 	}
 
+	public Float getRateUSDtoEUR() {
+		return rateUSDtoEUR;
+	}
+
+	public void setRateUSDtoEUR(Float rateUSDtoEUR) {
+		this.rateUSDtoEUR = rateUSDtoEUR;
+	}
 
 	// -----------------------------------------------------------------------------------------------//
 

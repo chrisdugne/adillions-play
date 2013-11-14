@@ -370,6 +370,66 @@ Utils.getURLParameter = function (name) {
 
 //----------------------------------------------------------------------------------------//
 
+Utils.isEuroCountry = function(country) 
+{
+   var isEuro = country == "AT"
+      ||  country == "BE"
+      ||  country == "CY"
+      ||  country == "EE"
+      ||  country == "FI"
+      ||  country == "FR"
+      ||  country == "DE"
+      ||  country == "GR"
+      ||  country == "IE"
+      ||  country == "IT"
+      ||  country == "LU"
+      ||  country == "MT"
+      ||  country == "NL"
+      ||  country == "PT"
+      ||  country == "SK"
+      ||  country == "SI"
+      ||  country == "ES"
+      ||  country == "BG"
+      ||  country == "HR"
+      ||  country == "CZ"
+      ||  country == "DK"
+      ||  country == "HU"
+      ||  country == "LV"
+      ||  country == "LT"
+      ||  country == "PL"
+      ||  country == "RO"
+      ||  country == "SE"
+      ||  country == "GB"
+      ||  country == "IS"
+      ||  country == "LI"
+      ||  country == "NO"
+      ||  country == "CH"
+      ||  country == "MC"
+      ||  country == "AL"
+      ||  country == "MK"
+      ||  country == "ME"
+      ||  country == "RS"
+      ||  country == "BA";
+
+      return isEuro;
+}
+
+
+Utils.displayPrice = function(dollars, country){
+   
+   if(isNaN(dollars))
+      dollars = 0
+   
+   if(Utils.isEuroCountry(country)){
+      return Math.round(dollars/1.4*10)/10 + " €";
+   }
+   else{
+      return "$ " + dollars;
+   }
+}
+
+//----------------------------------------------------------------------------------------//
+
 Utils.cloneJsonObject = function (jsonObject) {
    return $.parseJSON(JSON.stringify(jsonObject));
 }

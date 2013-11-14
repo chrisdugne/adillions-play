@@ -28,25 +28,32 @@
       window.location.hash = "/";      // landing forced on homepage + login 
 
       //------------------------------------------------------//
-      //   App.youtubeManager = new YoutubeManager();
-      LotteryManager.refreshNextLottery()
-      LotteryManager.getFinishedLotteries()
+      
+      $.get("http://ipinfo.io", function(response) {
+         App.Globals.set("country", response.country);
 
-      //------------------------------------------------------//
+         //------------------------------------------------------//
+         //   App.youtubeManager = new YoutubeManager();
+         LotteryManager.refreshNextLottery()
+         LotteryManager.getFinishedLotteries()
 
-      var failure    = function(){
-         App.loginAdillions()
-      }
+         //------------------------------------------------------//
 
-      var finalize   = function(){  
-         App.Globals.APP_READY = true
-      }
+         var failure    = function(){
+            App.loginAdillions()
+         }
 
-      Facebook.init({
-         finalizeInit            : finalize,
-         notConnectedCallback    : failure, 
-         sponsorRequestId        : sponsorRequestId
-      })
+         var finalize   = function(){  
+            App.Globals.APP_READY = true
+         }
+
+         Facebook.init({
+            finalizeInit            : finalize,
+            notConnectedCallback    : failure, 
+            sponsorRequestId        : sponsorRequestId
+         })
+      }, "jsonp");
+      
    }
 
    //------------------------------------------------------//

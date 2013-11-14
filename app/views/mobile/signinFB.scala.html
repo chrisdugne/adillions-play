@@ -86,6 +86,17 @@
 					<input type="text" id="fbForm_referrerId" name="referrerId" value="">
 				</div>
 			</div>
+			
+			<div class="clearfix">
+				<input type="checkbox" name="check1" id="check1"/>
+				<label id="check1Label" for="email"></label>
+			</div>
+
+			<div class="clearfix" id="check2">
+				<input type="checkbox" name="check2" id="check2"/>
+				<label id="check2Label" for="email"></label>
+			</div>
+				
 
 			<div id="validateButton" class="btn-large button"></div>
 		</form>
@@ -203,6 +214,9 @@
    $("#FBRealName").text(Translator.messages["FBRealName"])
    $("#FBReceive").text(Translator.messages["FBReceive"])
 
+   $("#check1Label").text(Translator.messages["AcceptTerms"])
+   $("#check2Label").text(Translator.messages["AcceptOffers"])
+   
    $("#validateButton").text(Translator.messages["SignIn"])
 
    $("#questionText").text(Translator.messages["FBAttention"])

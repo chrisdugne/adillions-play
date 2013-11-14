@@ -16,6 +16,7 @@ public class LotteryTicket extends Model {
 	public static final int blocked 	= 1;
 	public static final int pending 	= 2;
 	public static final int payed 	= 3;
+	public static final int gift 		= 4;
 
 	// -----------------------------------------------------------------------------------------------//
 

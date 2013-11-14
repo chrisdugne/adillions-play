@@ -21,7 +21,8 @@ Ember.Handlebars.registerBoundHelper('charityName', function(level) {
 //---------------------------------------------------------------------------------------//
 
 Ember.Handlebars.registerBoundHelper('price', function(price) {
-   return "$ " + price
+   console.log("--------> ", App.Globals.country)
+   return Utils.displayPrice(price, App.Globals.country)
 });
 
 Ember.Handlebars.registerBoundHelper('themeImage', function(lottery) {
@@ -201,12 +202,6 @@ Ember.Handlebars.registerBoundHelper('oldticket', function(numbers, options) {
 
 Ember.Handlebars.registerBoundHelper('availableTickets', function(user) {
    return new Handlebars.SafeString(user.availableTickets + user.totalBonusTickets - user.playedBonusTickets)
-});
-
-Ember.Handlebars.registerBoundHelper('price', function(price) {
-   if(price == null)
-      price = 0
-   return new Handlebars.SafeString("$ " + price)
 });
 
 //---------------------------------------------------------------------------------------//
