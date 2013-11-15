@@ -441,12 +441,12 @@ public class AccountManager {
 		String subject = "[Adillions - Cashout request]";
 
 		String content = "<p>Cashout</p>" + 
-				"<br/><p>date : " + new Date().toString()  + "</p>" +
-				"<br/><p>player : " + player.getUid() + "</p>" + 
-				"<br/><p>firstName : " + player.getFirstName() + "</p>" + 
-				"<br/><p>lastName : " + player.getLastName() + "</p>" + 
-				"<br/><p>birthdate : " + player.getBirthDate() + "</p>" + 
-				"<br/><p>amount : " + amount + " euros</p>" ; 
+				"<p>date : " + new Date().toString()  + "</p>" +
+				"<p>player : " + player.getUid() + "</p>" + 
+				"<p>firstName : " + player.getFirstName() + "</p>" + 
+				"<p>lastName : " + player.getLastName() + "</p>" + 
+				"<p>birthdate : " + player.getBirthDate() + "</p>" + 
+				"<p>amount : " + amount + " euros</p>" ; 
 		
 		MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
 		mail.setSubject(subject);
