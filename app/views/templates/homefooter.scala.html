@@ -9,12 +9,13 @@
 					<div {{action openPress}} class="link span4">{{App.translations.messages.Press}}</div>
 				</div>
 				<div class="row-fluid">
-					<div class="link span4">{{App.translations.messages.FAQ}}</div>
-					<div class="link span4">{{App.translations.messages.Jobs}}</div>
-					<div class="link span4">{{App.translations.messages.Privacy}}</div>
+					<div {{action openFaq}}  class="link span4">{{App.translations.messages.FAQ}}</div>
+					<div {{action openJobs}}  class="link span4">{{App.translations.messages.Jobs}}</div>
+					<div {{action openPrivacy}} class="link span4">{{App.translations.messages.Privacy}}</div>
 				</div>
 				<div class="row-fluid">
-					<div class="link span4">{{App.translations.messages.Terms}}</div>
+					<div {{action openTerms}} class="link span4">{{App.translations.messages.Terms}}</div>
+					<div {{action openAdvertisers}} class="link span4">{{App.translations.messages.Advertisers_s}}</div>
 				</div>
 			</div>
 			<div class="span4">
