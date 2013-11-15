@@ -407,6 +407,10 @@ public class AccountManager {
 	
 	public static void giveToCharity(Player player) {
 	   for(LotteryTicket ticket : player.getLotteryTickets()){
+	   	
+	   	if(ticket.getPrice() == null)
+	   		continue;
+	   	
 	   	if(ticket.getStatus() == LotteryTicket.blocked){
 	   		ticket.setStatus(LotteryTicket.gift);
 	   	}
@@ -422,6 +426,10 @@ public class AccountManager {
 		Double amount = 0d;
 		
 		for(LotteryTicket ticket : player.getLotteryTickets()){
+
+			if(ticket.getPrice() == null)
+				continue;
+			
 			if(ticket.getStatus() == LotteryTicket.blocked){
 				ticket.setStatus(LotteryTicket.pending);
 				amount += ticket.getPrice();
