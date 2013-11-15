@@ -404,4 +404,57 @@ public class AccountManager {
 	}
 
 	//------------------------------------------------------------------------------------//
+	
+	public static void giveToCharity(Player player) {
+	   for(LotteryTicket ticket : player.getLotteryTickets()){
+	   	if(ticket.getStatus() == LotteryTicket.blocked){
+	   		ticket.setStatus(LotteryTicket.gift);
+	   	}
+	   }
+	   
+	   Ebean.save(player);  
+   }
+
+	//------------------------------------------------------------------------------------//
+	
+	public static void cashout(Player player) {
+
+		Double amount = 0d;
+		
+		for(LotteryTicket ticket : player.getLotteryTickets()){
+			if(ticket.getStatus() == LotteryTicket.blocked){
+				ticket.setStatus(LotteryTicket.pending);
+				amount += ticket.getPrice();
+			}
+		}
+
+		//-------------------------------------//
+
+		String subject = "[Adillions - Cashout request]";
+
+		String content = "<p>Cashout</p>" + 
+				"<br/><p>date : " + new Date().toString()  + "</p>" +
+				"<br/><p>player : " + player.getUid() + "</p>" + 
+				"<br/><p>firstName : " + player.getFirstName() + "</p>" + 
+				"<br/><p>lastName : " + player.getLastName() + "</p>" + 
+				"<br/><p>birthdate : " + player.getBirthDate() + "</p>" + 
+				"<br/><p>amount : " + amount + " euros</p>" ; 
+		
+		MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
+		mail.setSubject(subject);
+		mail.addRecipient("chris.dugne@gmail.com");
+		mail.addFrom(player.getEmail());
+		
+		try{
+			mail.sendHtml("<html>"+content+"</html>" );
+		}
+		catch(Exception e){
+			System.out.println("couldn't cashout " + player.getEmail() + " | amount : " + amount);
+		}
+		
+		Ebean.save(player);  
+	   
+   }
+
+	//------------------------------------------------------------------------------------//
 }

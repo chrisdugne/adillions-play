@@ -55,4 +55,21 @@ public class AccountService extends Application
 	}
 	
 	// ---------------------------------------------//
+	
+	public static Result giveToCharity(){
+		Player player = Application.player();
+		AccountManager.giveToCharity(player);
+		return ok();
+	}
+	
+	// ---------------------------------------------//
+	
+	public static Result cashout(){
+		Player player = Application.player();
+		AccountManager.cashout(player);
+		return ok();
+	}
+	
+	
+	// ---------------------------------------------//
 }
