@@ -446,7 +446,8 @@ public class AccountManager {
 				"<p>firstName : " + player.getFirstName() + "</p>" + 
 				"<p>lastName : " + player.getLastName() + "</p>" + 
 				"<p>birthdate : " + player.getBirthDate() + "</p>" + 
-				"<p>amount : " + Utils.roundOneDecimals(amount) + " euros (player's country : "+country+")</p>" ; 
+				"<p>amount : " + Utils.roundOneDecimals(amount) + "</p>" + 
+				"<p>country : " +country+"</p>" ; 
 		
 		MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
 		mail.setSubject(subject);
