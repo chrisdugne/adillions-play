@@ -65,8 +65,11 @@ public class AccountService extends Application
 	// ---------------------------------------------//
 	
 	public static Result cashout(){
+		JsonNode params = request().body().asJson();
+		String country = params.get("country").asText();
+		
 		Player player = Application.player();
-		AccountManager.cashout(player);
+		AccountManager.cashout(player, country);
 		return ok();
 	}
 	

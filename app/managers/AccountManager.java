@@ -420,7 +420,7 @@ public class AccountManager {
 
 	//------------------------------------------------------------------------------------//
 	
-	public static void cashout(Player player) {
+	public static void cashout(Player player, String country) {
 
 		Double amount = 0d;
 		
@@ -446,11 +446,11 @@ public class AccountManager {
 				"<p>firstName : " + player.getFirstName() + "</p>" + 
 				"<p>lastName : " + player.getLastName() + "</p>" + 
 				"<p>birthdate : " + player.getBirthDate() + "</p>" + 
-				"<p>amount : " + amount + " euros</p>" ; 
+				"<p>amount : " + amount + " euros (player's country : "+country+")</p>" ; 
 		
 		MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
 		mail.setSubject(subject);
-		mail.addRecipient("chris.dugne@gmail.com");
+		mail.addRecipient("winners@adillions.com");
 		mail.addFrom(player.getEmail());
 		
 		try{
