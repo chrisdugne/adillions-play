@@ -412,11 +412,11 @@ public class AccountManager {
 	   		continue;
 	   	
 	   	if(ticket.getStatus() == LotteryTicket.blocked){
+				System.out.println("gift : " + ticket.getPrice());
 	   		ticket.setStatus(LotteryTicket.gift);
+	   		Ebean.save(ticket);  
 	   	}
 	   }
-	   
-	   Ebean.save(player);  
    }
 
 	//------------------------------------------------------------------------------------//
