@@ -1,0 +1,57 @@
+/************************************************/
+#partAdvertisersTitle {
+	height: 215px;
+	background-color: #1b5c64;
+}
+
+
+#partAdvertisersTitleSubLine {
+	height: 15px;
+	background-color: #188785;
+}
+
+
+#partAdvertisersTitleText1 {
+	position: relative;
+	font-size: 38px;
+	color: #fff;
+	padding-top: 116px;
+	padding-bottom: 12px;
+}
+
+#partAdvertisersTitleText2 {
+	
+	position: relative;
+	font-size: 23px;
+	color: #fff;
+	padding-bottom: 20px;
+}
+
+.circle {
+	height: 80px;
+	width: 80px !important;
+	margin-top: 50px;
+	background-color: #1b5c64;
+	border-radius: 40px;
+	-moz-border-radius: 40px;
+	-webkit-border-radius: 40px;
+	color: #fff;
+	font-size: 30px;
+	padding-top: 30px;
+}
+
+.advertisersSubTitle {
+	position: relative;
+	font-size: 25px;
+	color: #1b5c64;
+	padding-bottom: 40px;
+	padding-top: 40px;
+	line-height:27px;
+}
+
+.advertisersSubText {
+	position: relative;
+	font-size: 18px;
+	color: #1b5c64;
+	padding-bottom: 50px;
+}

@@ -8,6 +8,7 @@
 
 	AdvertisersController.renderUI = function(){
       GameManager.setSelectedButton()
+      App.fillView()
 	}
 
 	AdvertisersController.cleanUI = function()	{
