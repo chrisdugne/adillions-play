@@ -412,7 +412,6 @@ public class AccountManager {
 	   		continue;
 	   	
 	   	if(ticket.getStatus() == LotteryTicket.blocked){
-				System.out.println("gift : " + ticket.getPrice());
 	   		ticket.setStatus(LotteryTicket.gift);
 	   		Ebean.save(ticket);  
 	   	}
@@ -432,6 +431,7 @@ public class AccountManager {
 			
 			if(ticket.getStatus() == LotteryTicket.blocked){
 				ticket.setStatus(LotteryTicket.pending);
+				Ebean.save(ticket);  
 				amount += ticket.getPrice();
 			}
 		}
