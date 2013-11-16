@@ -443,6 +443,7 @@ public class AccountManager {
 		String content = "<p>Cashout</p>" + 
 				"<p>date : " + new Date().toString()  + "</p>" +
 				"<p>player : " + player.getUid() + "</p>" + 
+				"<p>email : " + player.getEmail() + "</p>" + 
 				"<p>firstName : " + player.getFirstName() + "</p>" + 
 				"<p>lastName : " + player.getLastName() + "</p>" + 
 				"<p>birthdate : " + player.getBirthDate() + "</p>" + 
