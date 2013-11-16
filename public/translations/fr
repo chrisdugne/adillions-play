@@ -22,13 +22,13 @@
 	"WinPrize"			: "Gagnez le jackpot",
 	"Draw"				: "Tirage tous les Samedi sur",
 	
-	"Fun"				: "FUN",
+	"FunHome"			: "FUN",
 	"FunDiscover"		: "Découvrez un nouveau thème",
 	"FunWeek"			: "par semaine",
-	"Easy"				: "SIMPLE",
+	"EasyHome"			: "SIMPLE",
 	"EasyNumbers"		: "Sélectionnez 5 numéros et",
 	"EasyLucky"			: "une boule chance",
-	"Viral"				: "SOCIAL",
+	"ViralHome"			: "SOCIAL",
 	"ViralInvite"		: "Invitez vos amis pour faire", 
 	"ViralIncrease"		: "grossir la cagnotte",
 	

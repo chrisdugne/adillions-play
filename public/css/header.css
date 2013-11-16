@@ -39,7 +39,7 @@
 
 @media screen and ( max-width : 680px) {
 	#header {
-		width: 490px;
+		width: 100%;
 	}
 }
 

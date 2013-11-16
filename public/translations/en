@@ -21,13 +21,13 @@
 	"WinPrize"			: "Win the prize",
 	"Draw"				: "Draw every Saturday live on ",		
 
-	"Fun"				: "FUN",
+	"FunHome"			: "FUN",
 	"FunDiscover"		: "Discover a new theme",
 	"FunWeek"			: "each week",
-	"Easy"				: "SIMPLE",
+	"EasyHome"			: "SIMPLE",
 	"EasyNumbers"		: "Pick 5 numbers and",
 	"EasyLucky"			: "your lucky ball",
-	"Viral"				: "VIRAL",
+	"ViralHome"			: "SOCIAL",
 	"ViralInvite"		: "Invite your friends to",
 	"ViralIncrease"		: "increase the jackpot",
 	
