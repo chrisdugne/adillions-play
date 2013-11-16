@@ -84,6 +84,64 @@
 	
 	"AdNote"			: "If you're interested in finding out what Adillions can do for your brand, or your client's brand, please contact us",
 	
+ 	"##########################################" : "About",
+ 	 
+	"WhatIs"			: "What is Adillions?",
+	
+	"AdillionsDesc"		: "Adillions is a simple and free lottery game with real cash prizes funded by video advertising",
+	
+	"AdillionsWords"	: "In a few words, Adillions is:",
+	"EasyTitle"			: "Easy",
+	"FunTitle"			: "Fun",
+	"ViralTitle"		: "Viral",
+	"GlobalTitle"		: "Global",
+	"ResponsibleTitle"	: "Responsible",
+
+	"Easy"				: " : Watch an ad to get your free lottery ticket",
+	"Fun"				: " : Pick 5 numbers and choose your Lucky Ball",
+	"Viral"				: " : Invite your friends to increase the jackpot",
+	"Global"			: " : Join an international community of players",
+	"Responsible"		: " : Whether there are winners or not, a part of each video ad finances the Adillions Solidarity & Sustainable Development Fund",
+	
+	"DrawAmount"		: "The lottery is drawn every Saturday at XXX p.m. (PST) and it is broadcast live online on Youtube. Like any traditional lottery, if nobody wins, the amount accumulates and is added to the next draw (do not hesitate to read our Terms of Use)",
+	
+	"EachPlay"			: "Each time you play on Adillions, you have a chance to win the jackpot and you dedicate few seconds of your day to charitable organizations",
+	
+	"Adillions"			: "Adillions",
+	"AdillionsCatch"	: "Much more than a game",
+	
+	"VisionValues"		: "Our Vision and Values",
+	
+	"Innovation"		: "Innovation",
+	"InnovDisrupt"		: "We believe that it is possible to innovate in the gambling market and to disrupt traditional domestic lotteries with a global, social and free game",
+	"InnovOriginal"		: "Lotteries can be fun and original. With Adillions, you play your favorite lotto numbers and a new item each week depending on the draw theme",
+	"InnovSimple"		: "We are eager to develop a simple and user-friendly product used by millions of users across the globe",
+	
+	"Responsibility"	: "Social responsibility",
+	"RespoBefore"		: "Since long before Christ, lotteries have helped to finance major public projects (build the Great Wall of China, help the poor, finance public school systems, etc.)",
+	"RespoPublic"		: "Public interests were part of the game as much as the gambling itself. Today, Adillions brings back lottery game to its true origins",
+	"RespoProud"		: "Adillions and the internet make it possible to gamble and to contribute to a global charitable project at the same time. We want our users to be proud members of Adillions community",
+	"RespoPeport"		: "The Adillions team is committed to publish each year a report about Adillions Solidarity & Sustainable Development Fund. Moreover, our final objective is to let our users choose the charitable projects they want to fund",
+	
+	"Fairness"			: "Fairness",
+	"FairTransparent"	: "The Adillions team pays a special attention to treat all Adillions players with fairness and equity and to be as transparent as possible with our users and public regulatory agencies",
+	"FairRules"			: "Adillions defined clear and fair rules:",
+	"FairRules1"		: "One account per individual",
+	"FairRules2"		: "No prize payment for winners with inaccurate personal information",
+	"FairRules3"		: "A limited number of tickets per draw per player",
+	"FairRules4"		: "A series of technical procedures to prevent fraud",
+	"FairRules5"		: "...",
+	
+	"Conclusion"		: "Conclusion",
+	"ConclTime"			: "Our ambition is to develop a game of chance thriving to gather in one place the unique common currency worldwide - Time - and to maximize its value for our players and our charity partners",
+	
+	"Team"				: "Team",
+	"TeamIntro"			: "Adillions is based in Paris, France and the team is led by two experienced professionals with complementary skills:",
+	"CEO"				: "Timothée de COURLON - Co-founder and CEO",
+	"CEODesc"			: "Timothée brainstormed the original idea for Adillions. He worked in the banking and strategy consulting industries for several years. Today, in his role as CEO, he manages all the business aspects of the project from legal and finance to marketing and communication. Timothée holds a MBA in Finance and Private Equity from ESSEC Business School",
+	"CTO"				: "Christophe DUGNE ESQUEVIN - Co-founder and CTO",
+	"CTODesc"			: "Christophe started to work as a software developer for a start-up, a provider of search and contextual advertising. He already co-founded several start-ups in the mobile and gaming markets as well as an innovative GIS in the cloud, Maperial. Christophe is dedicated to design and develop the best products for Adillions players. Christophe graduated from ENSEIRB where he studied Computer Science and Software Engineering",
+ 	
 	
  	"##########################################" : "APP",
  		

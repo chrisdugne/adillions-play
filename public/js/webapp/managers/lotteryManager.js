@@ -36,7 +36,11 @@ LotteryManager.refreshNextLottery = function()
          App.nextLottery.set("result",       lottery.result)
          
          App.free()
-         App.get('router').transitionTo('home.lottery')
+         
+         if(App.Globals.currentPage == "home"){
+            window.location.hash = "/"; //-> pour force refresh les handlebars 
+            App.get('router').transitionTo('home.lottery')
+         }
       }
    });
 

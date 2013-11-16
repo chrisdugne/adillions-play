@@ -1,0 +1,35 @@
+/***** [ tiniest ] *****/
+@media ( max-width : 680px) {
+	
+	.centered {
+		float: none;
+		margin: 0 auto;
+	}
+
+	/*--------------------------------*/
+	#homeContent {
+		padding: 0;
+		z-index: 1;
+	}
+
+	/*--------------------------------*/
+	.websiteContent {
+		padding-top: 50px;
+	}
+
+	/*--------------------------------*/
+	
+	#themeWeb {
+		margin-top: 40px;
+		margin-left: -5px;
+	}
+	#themeText {
+		margin-top: -81px;
+		margin-left: -42px;
+	}
+	/*--------------------------------*/
+	
+	#partAdillionIsText {
+		font-size: 27px;
+	}
+}

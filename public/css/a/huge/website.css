@@ -1,9 +1,31 @@
 /************************************************/
+.classictext {
+	font-size: 18px;
+	color: #333;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: justify;
+	line-height: 22px;
+}
+
+.subtitleText {
+	font-size: 24px;
+	color: #1b5c64;
+	padding-top: 30px;
+	padding-bottom: 10px;
+	line-height: 22px;
+}
+
+.textli {
+	line-height: 35px;
+}
+
+/************************************************/
+
 #partAdvertisersTitle {
 	height: 215px;
 	background-color: #1b5c64;
 }
-
 
 #partAdvertisersTitleSubLine {
 	height: 15px;
@@ -54,4 +76,21 @@
 	font-size: 18px;
 	color: #1b5c64;
 	padding-bottom: 50px;
+}
+
+
+
+/****************************/
+
+#aboutIntro {
+	height: 130px;
+	background-color: #1b5c64;
+}
+
+#aboutIntroText {
+	position: relative;
+	font-size: 38px;
+	color: #fff;
+	padding-top: 55px;
+	padding-bottom: 12px;
 }

@@ -37,6 +37,12 @@
 	}
 }
 
+@media screen and ( max-width : 680px) {
+	#header {
+		width: 490px;
+	}
+}
+
 #header h1 {
 	color: #eee;
 	margin-top: 7px;
@@ -53,10 +59,11 @@
 	margin-top: 20px;
 }
 
-@media screen and ( max-width : 600px) {
+@media screen and ( max-width : 680px) {
 	#logo {
-		width: 160px;
+		width: 100px;
 		margin-top: 15px;
+		margin-left: -90px;
 	}
 }
 
@@ -99,6 +106,13 @@
 		right: 150px;
 		top: 22px;
 		position: fixed;
+	}
+}
+
+
+@media ( max-width : 680px) {
+	#headerButtons {
+		right: 90px;
 	}
 }
 	

@@ -25,7 +25,9 @@
 
    App.init = function(sponsorRequestId){
 
-      window.location.hash = "/";      // landing forced on homepage + login 
+      console.log("---------> App.init")
+      console.log("---------> " +  window.location.hash)
+//      window.location.hash = "/";      // landing forced on homepage + login 
 
       //------------------------------------------------------//
       
@@ -60,6 +62,7 @@
 
    App.loginAdillions = function(force){
 
+      console.log("---------> App.loginAdillions")
       if(!$.cookie('facebookId') || force){
          $.removeCookie('facebookId')  
          UserManager.getPlayer();
