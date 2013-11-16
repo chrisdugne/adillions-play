@@ -82,9 +82,11 @@
 
 /****************************/
 
-#aboutIntro {
+.aboutIntro {
 	height: 130px;
 	background-color: #1b5c64;
+	margin-top: 45px;
+	margin-bottom: 32px;
 }
 
 #aboutIntroText {
