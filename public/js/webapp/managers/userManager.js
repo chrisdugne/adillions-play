@@ -94,6 +94,7 @@ UserManager.sortLotteryTickets = function(next){
          lottery.uid       = ticket.lottery.uid
          lottery.result    = ticket.lottery.result
          lottery.date      = ticket.lottery.date
+         lottery.theme     = ticket.lottery.theme
 
          lotteries.push(lottery)
          currentLottery = lotteries[lotteries.length - 1]

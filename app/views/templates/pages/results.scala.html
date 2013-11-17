@@ -47,7 +47,7 @@
 						
 						<div class="row-fluid margintop">
 							<div class="span6 offset3">
-								{{oldticket result lotteryNumbers=result}}
+								{{oldticket result lotteryNumbers=result theme=theme}}
 							</div>
 						</div>
 	
@@ -75,7 +75,7 @@
 											</div>
 										</div>
 	
-										<!-- -----------------  Data  ---------------------->
+										<!-- -----------------  Price  ---------------------->
 	
 										<div class="row-fluid">
 											<div class="span1 resultIcon">
@@ -104,7 +104,7 @@
 												{{App.translations.messages.Charity}}
 											</div>
 											<div class="row-fluid big margintop">
-												{{price finalPrice}}
+												{{price charity}}
 											</div>
 										</div>
 									</div>
@@ -112,8 +112,40 @@
 								</div>
 							</div>
 						</div>
+						
+						<!-- -----------------  more---------------------->
+
+						<div class="row-fluid">
+							<div class="span1 offset5 small">
+								{{App.translations.messages.Winners}}
+							</div>
+							<div class="span2 offset2 small">
+								{{App.translations.messages.Prizes}} _trad
+							</div>
+						</div>
+
+						{{#each rang in prizes}} 
+							{{#with rang}}
+								<div class="row-fluid">
+									<div class="span2 offset2 small">
+										{{rangImage num}}
+									</div>
+									<div class="span1 offset1 small">
+										{{winners}}
+									</div>
+									<div class="span1 offset2 alignRight">
+										{{price share}}
+									</div>
+									<div class="span1 resultIcon">
+										<img class="mobileIcon" src='@routes.Assets.at("images/icons/money.png")'></img>
+									</div>
+								</div>
+								
+							{{/with}} 
+						{{/each}}
 					</div>
 				</div>
+				
 				
 				<br/>
 				<br/>

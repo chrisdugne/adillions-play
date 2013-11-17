@@ -21,12 +21,15 @@ Ember.Handlebars.registerBoundHelper('charityName', function(level) {
 //---------------------------------------------------------------------------------------//
 
 Ember.Handlebars.registerBoundHelper('price', function(price) {
-   console.log("--------> ", App.Globals.country)
    return Utils.displayPrice(price, App.Globals.country)
 });
 
 Ember.Handlebars.registerBoundHelper('themeImage', function(lottery) {
    return new Handlebars.SafeString("<img class='themeImage rounded' src=\""+lottery.theme.image+"\"/>")
+});
+
+Ember.Handlebars.registerBoundHelper('rangImage', function(num) {
+   return new Handlebars.SafeString("<img class='mobileIcon' src='/assets/images/icons/rangs/Rang"+num+".png'></img>")
 });
 
 //--------------------------------------//
@@ -118,15 +121,10 @@ Ember.Handlebars.registerBoundHelper('oldticket', function(numbers, options) {
    
    //-------------------------------------------------------//
 
-   var lotteryNumbers = options.hash.lotteryNumbers;
+   var lotteryNumbers   = options.hash.lotteryNumbers;
+   var theme            = options.hash.theme;
    
-   if(!jQuery.isArray(numbers))
-      numbers = $.parseJSON(numbers);
-
-   if(!jQuery.isArray(lotteryNumbers))
-      lotteryNumbers = $.parseJSON(lotteryNumbers);
-   
-   if(App.nextLottery.theme.icons[numbers.length-1] == null)
+   if(theme.icons[numbers.length-1] == null)
       return "";
    
    //-------------------------------------------------------//
@@ -174,7 +172,7 @@ Ember.Handlebars.registerBoundHelper('oldticket', function(numbers, options) {
       imageClass = "smallThemeBall";
    }
    
-   var luckyball     = "<div class='span2'><img src='"+App.nextLottery.theme.icons[numbers.length-1].image+"' class='"+imageClass+"'></img>"
+   var luckyball     = "<div class='span2'><img src='"+theme.icons[numbers.length-1].image+"' class='"+imageClass+"'></img>"
    var mask          = "<img src='/assets/images/balls/ball.mask.png' class='"+imageClass+"'></img>";
 
    if(!won)

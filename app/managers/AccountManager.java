@@ -281,17 +281,18 @@ public class AccountManager {
 		}
 
 		String content = "<p>" + welcome + "</p>" + 
-				"<br/><p>" + text1 + "</p>" +
-				"<br/><p>" + text2 + "</p>" +
-				"<br/><ul>" + titleList +
+				"<p>" + text1 + "</p>" +
+				"<p>" + text2 + "</p>" +
+				"<p>" + titleList + "</p>" +
+				"<ul>" + 
 				"<li>" + list1 + "</li>" +
 				"<li>" + list2 + "</li>" +
 				"<li>" + list3 + "</li>" +
 				"<li>" + list4 + "</li></ul>" +
 
-				"<br/><br/><p>" + final1 + "</p>" +
-				"<br/><br/><p>" + final2 + "</p>" +
-				"<br/><br/><p>" + final3 + "</p>" +
+				"<br/><p>" + final1 + "</p>" +
+				"<br/><p>" + final2 + "</p>" +
+				"<br/><p>" + final3 + "</p>" +
 				
 				"<span style=\"color: #888888;\"><img id=\"logo\" style=\"width: 180px;\" src=\""+Application.APP_HOSTNAME+"/assets/images/logo.png\" alt=\"\" /></span>" +
 				"<p style=\"padding-left: 20px;margin-top:2px\"><span style=\"color: #888888;\">"+Application.APP_HOSTNAME+"</span></p>";

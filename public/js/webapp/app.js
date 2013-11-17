@@ -25,10 +25,6 @@
 
    App.init = function(sponsorRequestId){
 
-      console.log("---------> App.init")
-      console.log("---------> " +  window.location.hash)
-//      window.location.hash = "/";      // landing forced on homepage + login 
-
       //------------------------------------------------------//
       
       $.get("http://ipinfo.io", function(response) {

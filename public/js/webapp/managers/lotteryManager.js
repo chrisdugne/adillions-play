@@ -33,6 +33,7 @@ LotteryManager.refreshNextLottery = function()
          App.nextLottery.set("maxPrice",     lottery.maxPrice)   
          App.nextLottery.set("cpm",          lottery.cpm)   
          App.nextLottery.set("theme",        $.parseJSON(lottery.theme))  
+         App.nextLottery.set("prizes",       $.parseJSON(lottery.prizes))  
          App.nextLottery.set("result",       lottery.result)
          
          App.free()
@@ -56,6 +57,12 @@ LotteryManager.getFinishedLotteries = function()
       dataType: "json",
       success: function (lotteries)
       {
+         for(var i=0; i<lotteries.length; i++){
+            lotteries[i].result = $.parseJSON(lotteries[i].result);
+            lotteries[i].theme = $.parseJSON(lotteries[i].theme);
+            lotteries[i].prizes = $.parseJSON(lotteries[i].prizes);
+         }
+         
          App.Globals.set("lotteries", lotteries)   
          
          console.log("finishedLotteries")

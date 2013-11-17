@@ -40,12 +40,12 @@ def main():
     winningTickets  = []
     rangs           = []
      
-    rangs.append(Rang(0, 0, 0.40))
-    rangs.append(Rang(0, 0, 0.10))
-    rangs.append(Rang(0, 0, 0.20))
-    rangs.append(Rang(0, 0, 0.40))
-    rangs.append(Rang(0, 0, 0.10))
-    rangs.append(Rang(0, 0, 0.10))
+    rangs.append(Rang(1, 0, 0, 0.40))
+    rangs.append(Rang(2, 0, 0, 0.20))
+    rangs.append(Rang(3, 0, 0, 0.15))
+    rangs.append(Rang(4, 0, 0, 0.10))
+    rangs.append(Rang(5, 0, 0, 0.5))
+    rangs.append(Rang(6, 0, 0, 0.10))
 
     #--------------------------------------------------------------------
 
@@ -204,7 +204,7 @@ def recordToDB(database, lotteryUID, winningTickets, rangs, finalPrice):
 
     pricesJSON = "["
     for rang in rangs :
-        pricesJSON = pricesJSON + "{\"winners\":\"" + str(rang.winners) + "\", \"share\":\"" + str(rang.share) + "\"}," 
+        pricesJSON = pricesJSON + "{\"num\":\"" + str(rang.num) + "\", \"winners\":\"" + str(rang.winners) + "\", \"share\":\"" + str(rang.share) + "\"}," 
         
     pricesJSON = pricesJSON[:-1]
     pricesJSON = pricesJSON + "]"
@@ -268,7 +268,8 @@ class WinningTicket:
 #----------------------------------------------------------------------------------
              
 class Rang:
-    def __init__(self, winners, share, percentage):
+    def __init__(self, num, winners, share, percentage):
+        self.num            = num
         self.winners        = winners
         self.share          = share
         self.percentage     = percentage

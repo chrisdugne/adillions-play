@@ -415,16 +415,16 @@ Utils.isEuroCountry = function(country)
 }
 
 
-Utils.displayPrice = function(dollars, country){
+Utils.displayPrice = function(euros, country){
    
-   if(isNaN(dollars))
-      dollars = 0
+   if(isNaN(euros))
+      euros = 0
    
    if(Utils.isEuroCountry(country)){
-      return Math.round(dollars/1.4*10)/10 + " €";
+      return euros + " €";
    }
    else{
-      return "$ " + dollars;
+      return "$ " + Math.round(euros*1.4);
    }
 }
 
