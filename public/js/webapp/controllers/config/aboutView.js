@@ -32,7 +32,9 @@
 
          $(function() {
             $( "#accordion" ).accordion({
-               collapsible: false
+               collapsible: true,
+               active: false,
+               heightStyle: "content"
             });
          });
       },

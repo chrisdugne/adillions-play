@@ -108,4 +108,9 @@ public class Application extends Controller {
 	{
 		return ok(views.html.mobile.logout.render());
 	}
+
+	public static Result mobileFaq()
+	{
+		return ok(views.html.mobile.faq.render());
+	}
 }

@@ -44,7 +44,7 @@
 	"ResponsibleEach"	: "to charitable organizations each time you participate",
 	
 	"Global"			: "GLOBAL",
-	"GlobalText"		: "Join an international community of players",
+	"GlobalHome"		: "Join an international community of players",
 	
 	"Media"				: "ADILLIONS IN THE MEDIA",
 	
@@ -97,11 +97,11 @@
 	"GlobalTitle"		: "Global",
 	"ResponsibleTitle"	: "Responsible",
 
-	"Easy"				: " : Watch an ad to get your free lottery ticket",
-	"Fun"				: " : Pick 5 numbers and choose your Lucky Ball",
-	"Viral"				: " : Invite your friends to increase the jackpot",
-	"Global"			: " : Join an international community of players",
-	"Responsible"		: " : Whether there are winners or not, a part of each video ad finances the Adillions Solidarity & Sustainable Development Fund",
+	"EasyText"			: " : Watch an ad to get your free lottery ticket",
+	"FunText"			: " : Pick 5 numbers and choose your Lucky Ball",
+	"ViralText"			: " : Invite your friends to increase the jackpot",
+	"GlobalText"		: " : Join an international community of players",
+	"ResponsibleText"	: " : Whether there are winners or not, a part of each video ad finances the Adillions Solidarity & Sustainable Development Fund",
 	
 	"DrawAmount"		: "The lottery is drawn every Saturday at XXX p.m. (PST) and it is broadcast live online on Youtube. Like any traditional lottery, if nobody wins, the amount accumulates and is added to the next draw (do not hesitate to read our Terms of Use)",
 	
@@ -137,11 +137,62 @@
 	
 	"Team"				: "Team",
 	"TeamIntro"			: "Adillions is based in Paris, France and the team is led by two experienced professionals with complementary skills:",
-	"CEO"				: "Timothée de COURLON - Co-founder and CEO",
+	"Cofounder"			: "Co-founder",
+	"CEOName"			: "Timothée de COURLON",
+	"CEOStatus"			: "CEO",
 	"CEODesc"			: "Timothée brainstormed the original idea for Adillions. He worked in the banking and strategy consulting industries for several years. Today, in his role as CEO, he manages all the business aspects of the project from legal and finance to marketing and communication. Timothée holds a MBA in Finance and Private Equity from ESSEC Business School",
-	"CTO"				: "Christophe DUGNE ESQUEVIN - Co-founder and CTO",
+	"CTOName"			: "Christophe DUGNE-ESQUEVIN",
+	"CTOStatus"			: "CTO",
 	"CTODesc"			: "Christophe started to work as a software developer for a start-up, a provider of search and contextual advertising. He already co-founded several start-ups in the mobile and gaming markets as well as an innovative GIS in the cloud, Maperial. Christophe is dedicated to design and develop the best products for Adillions players. Christophe graduated from ENSEIRB where he studied Computer Science and Software Engineering",
  	
+ 	
+ 	"##########################################" : "FAQ",
+	
+	
+	"Q1"				: "I forgot my password",
+	"A1"				: "If you lost/forgot your password, go to the login page and click on the \"Lost password\" button, send us an email to contact@adillions.com and specify your full name and date of birth. The Adillions team will answer you within the best delays",
+	
+	"Q2"				: "How do I change my password and personal details?",
+	"A2"				: "Please send us an email to contact@adillions.com and specify your full name and date of birth",
+	
+	"Q3"				: "Can I create several Adillions accounts?",
+	"A3"				: "In order to prevent potential frauds and to guarantee equality of opportunities and treatment for all players, Adillions only allows one account per individual. All gains obtained in a unfair manner will be lost (see the Terms)",
+	
+	"Q4"				: "How do I permanently delete my account?",
+	"A4"				: "Please send us an email to delete@adillions.com and specify \"Delete my account\" in the subject line and in the mail your full name and date of birth",
+	
+	"Q5"				: "I am having a connection problem",
+	"A5"				: "First, make sure you have a good access to the internet. If it is still not working, send us an email to support@adillions.com. Be sure to include details about your setup (which browser, internet connection, device you have, etc.) and a description of what's happening exactly. We are here to help you connect to the platform",
+	
+	"Q6"				: "Is there a maximum number of tickets I am allowed to fill out for each draw?",
+	"A6"				: "Yes. Adillions allows a maximum number of tickets per user per draw to preserve equality of opportunities for all participants. You can gain Bonus Tickets by liking our Facebook Page, following us on Twitter, etc. (see Rewards)",
+	
+	"Q7"				: "Do I receive an alert/email if I win a prize?",
+	"A7"				: "At the end of each draw, if you are a winner, you will receive an email informing you about your gain",
+	
+	"Q8"				: "Do I need to provide my bank account details?",
+	"A8"				: "No. Adillions does not require any bank account details to submit your registration",
+	
+	"Q9"				: "When will I receive my payment? And How?",
+	"A9"				: "You will receive your gains 4 weeks after your gains have reached a minimum total balance of 10 euros and maximum 8 weeks after. They will be paid by bank transfer for winners inside the SEPA/EU zone and via PayPal for other countries (for more details please read our Terms)",
+	
+	"Q10"				: "When do I need to give my bank account details?",
+	"A10"				: "Adillions only asks for your bank account details once it will proceed to your prize payment",
+	
+	"Q11"				: "Does Adillions publish the real names / identities of the winners?",
+	"A11"				: "In accordance with our Privacy Policy, Adillions does not release the real full name of winning players on its platform but only publishes their first name and the first letter of their last name as well as their home address (at \"country\" or \"city\" level)",
+	
+	"Q12"				: "Where can I find the results of previous draws?",
+	"A12"				: "All previous results are available on www.adillions.com",
+	
+	"Q13"				: "How does Adillions prevent game cheating and fraud?",
+	"A13"				: "Adillions is committed to guarantee equality of opportunities to all users and to prevent potential frauds through a series of measures:",
+	"A13a"				: "1. Adillions checks that each user has only one account",
+	"A13b"				: "2. Adillions asks for a probing ID document for winning players with gains above €2,000",
+	"A13c"				: "3. Before each draw, Adillions secures the whole database of tickets",
+	"A13d"				: "4. Adillions uses multiple anti-fraud softwares to protect the gaming experience",
+	"A13e"				: "5. Etc.",
+	
 	
  	"##########################################" : "APP",
  		

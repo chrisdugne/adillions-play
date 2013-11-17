@@ -45,7 +45,7 @@
 	"ResponsibleEach"	: "un peu de votre temps à des oeuvres caritatives",
 	
 	"Global"			: "INTERNATIONAL",
-	"GlobalText"		: "Vous faîtes partie d'une communauté internationale de joueurs",
+	"GlobalHome"		: "Vous faites partie d'une communauté internationale de joueurs",
 	
 	"Media"				: "ADILLIONS DANS LES MÉDIAS",
 	
@@ -99,11 +99,11 @@
 	"GlobalTitle"		: "Global",
 	"ResponsibleTitle"	: "Responsable",
 	
-	"Easy"				: " : Visionnez une publicité pour obtenir votre ticket gratuit de loterie ",
-	"Fun"				: " : Choisissez 5 numéros et votre Boule Chance",
-	"Viral"				: " : Invitez vos amis pour faire augmenter la cagnotte",
-	"Global"			: " : Rejoignez une communauté internationale de joueurs",
-	"Responsible"		: " : Qu'il y ait des gagnants ou non, une part de chaque spot publicitaire alimente le Fonds de Solidarité et de Développement Durable d'Adillions",
+	"EasyText"			: " : Visionnez une publicité pour obtenir votre ticket gratuit de loterie ",
+	"FunText"			: " : Choisissez 5 numéros et votre Boule Chance",
+	"ViralText"			: " : Invitez vos amis pour faire augmenter la cagnotte",
+	"GlobalText"		: " : Rejoignez une communauté internationale de joueurs",
+	"ResponsibleText"	: " : Qu'il y ait des gagnants ou non, une part de chaque spot publicitaire alimente le Fonds de Solidarité et de Développement Durable d'Adillions",
 	
 	"DrawAmount"		: "Les tirages ont lieu chaque samedi à XXX pm (PST) et ils sont diffusés en direct en ligne sur Youtube. Comme toutes les loteries traditionnelles, si personne ne gagne alors la cagnotte s'ajoute à celle du prochain tirage (n'hésitez pas à consulter notre Règlement)",
 	
@@ -139,11 +139,60 @@
 	
 	"Team"				: "L'équipe",
 	"TeamIntro"			: "L'équipe d'Adillions est basée à Paris (France) et elle est dirigée par:",
-	"CEO"				: "Timothée de COURLON - Co-fondateur et Président-Directeur Général",
+	"CEOName"			: "Timothée de COURLON",
+	"Cofounder"			: "Co-fondateur",
+	"CEOStatus"			: "Président-Directeur Général",
 	"CEODesc"			: "Timothée a initié le projet Adillions. Il a travaillé dans le secteur bancaire puis dans le conseil en stratégie pendant plusieurs années. Aujourd'hui, il supervise les aspects business et opérationnels du projet tels que le business développement, le marketing et la communication. Timothée est diplômé de l'ESSEC avec une spécialisation en Finance et Private Equity",
-	"CTO"				: "Christophe DUGNE ESQUEVIN - Co-fondateur et Directeur Technique",
+	"CTOName"			: "Christophe DUGNE-ESQUEVIN",
+	"CTOStatus"			: "Directeur Technique",
 	"CTODesc"			: "Christophe a commencé sa carrière en tant que développeur au sein d'une start-up dans le domaine du marketing web. Il a participé à la création de plusieurs start-ups dans l'univers du gaming et du mobile ainsi qu'un outil cartographique sur le cloud, Maperial. Christophe est en charge du développement technique des produits d'Adillions. Christophe est diplômé de l'ENSEIRB à Bordeaux où il a étudié l'informatique",
  	
+ 	
+ 	"##########################################" : "FAQ",
+ 	
+	"Q1"				: "Vous avez oublié votre mot de passe",
+	"A1"				: "Si vous avez perdu ou oublié votre mot de passe, allez sur la page d'identification puis cliquez sur le bouton \"Mot de passe oublié\". Vous serez redirigé vers un mail automatique à envoyer à contact@adillions.com, vous devrez alors spécifiez votre prénom, nom et date de naissance. L'équipe d'Adillions s'engage à vous répondre dans les meilleurs délais",
+	
+	"Q2"				: "Vous souhaitez modifier votre mot de passe ou vos informations personnelles",
+	"A2"				: "Envoyez nous un email à contact@adillions.com en spécifiant votre prénom, nom et date de naissance",
+	
+	"Q3"				: "Vous souhaitez créer un autre compte utilisateur",
+	"A3"				: "Dans un souci de garantir l'égalité des chances et d'éviter tout usage frauduleux de la plateforme, Adillions autorise uniquement un seul compte Adillions par utilisateur",
+	
+	"Q4"				: "Vous souhaitez fermer votre compte définitivement",
+	"A4"				: "Pour procéder à la fermeture définitive de votre compte, veuillez nous envoyer un mail à delete@adillions.com en précisant en objet \"Fermeture de compte\" et en spécifiant votre prénom, nom et date de naissance",
+	
+	"Q5"				: "Vous rencontrez des problèmes de connexion",
+	"A5"				: "Vérifiez tout d'abord qu'il ne s'agit pas d'un problème avec votre connexion internet. Si le problème persiste, contactez nous en adressant un mail à support@adillions.com, en précisant votre identifiant, le type de plateforme que vous utilisez (app, web, etc.) et une description du problème. Nous serons heureux de vous aider à le résoudre",
+	
+	"Q6"				: "Le nombre de tickets par utilisateur est-il limité par tirage ?",
+	"A6"				: "Oui. Un nombre maximum de tickets est fixé pour chaque joueur par tirage afin de préserver l'égalité des chances entre les participants. Vous pouvez gagner des Tickets Bonus en likant notre page Facebook, en nous suivant sur Twitter, etc. (cf. Récompenses)",
+	
+	"Q7"				: "Est-ce que je suis averti quand j'ai remporté un gain ?",
+	"A7"				: "Oui. A l'issue du tirage, si vous êtes parmi les gagnants, un mail vous est adressé pour vous informer du montant de votre gain",
+	
+	"Q8"				: "Est-ce que je dois renseigner mes coordonnées bancaires à l'inscription ?",
+	"A8"				: "Non. L'inscription sur Adillions ne requiert, à aucun moment, l'obligation de communiquer vos coordonnées bancaires",
+	
+	"Q9"				: "Quand et comment est-ce que je reçois mes gains ?",
+	"A9"				: "Les gains des joueurs sont versés au minimum 4 semaines après qu'ils aient atteint un solde global minimum de 10 euros et au maximum huit 8 semaines après. Le versement des gains s'effectue par virement bancaire pour les gagnants de la zone SEPA / Euro et via PayPal pour les autres gagnants (consultez le Règlement pour plus de détails)",
+	
+	"Q10"				: "A quel moment dois-je transmettre mes coordonnées bancaires / PayPal ?",
+	"A10"				: "Adillions vous demande de fournir vos coordonnées bancaires / PayPal uniquement lors du versement de vos gains",
+	
+	"Q11"				: "Est-ce que l'identité du / des vainqueur(s) est publiée sur la plateforme ?",
+	"A11"				: "Non. Adillions s'engage à respecter la confidentialité de vos données personnelles. En accord avec notre Règlement et notre Politique de Confidentialité, seuls votre prénom, la première lettre de votre nom de famille ainsi que votre lieu de résidence (ville / pays) seront potentiellement affichés sur la plateforme",
+	
+	"Q12"				: "Où consulter les résultats des précédents tirages ?",
+	"A12"				: "Vous pouvez consulter les résultats de tous les précédents tirages sur le site www.adillions.com/results",
+	
+	"Q13"				: "Comment la plateforme se prémunit-elle contre de potentielles fraudes / triches ?",
+	"A13"				: "Adillions s'engage à limiter les risques de triche et de fraude et à protéger l'intégrité des tirages grâce à plusieurs mesures et notamment :",
+	"A13a"				: "1. Adillions vérifie l'unicité des comptes",
+	"A13b"				: "2. Pour les gains supérieurs à 2000 euros, il est demandé de fournir un document attestant de l'identité exacte du gagnant",
+	"A13c"				: "3. Avant chaque tirage, la base de données des tickets est sécurisée",
+	"A13d"				: "4. Des logiciels anti-fraude ont été développés afin de préserver l'intégrité du jeu",
+	"A13e"				: "5. Etc.",
  	
  	"##########################################" : "APP",
 	

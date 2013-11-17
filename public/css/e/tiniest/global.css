@@ -2,9 +2,17 @@
 @media ( max-width : 680px) {
 	
 	.container {
-		width:490px;	
+		width:300px;	
 	}
 	
+	#menu {
+		position:absolute;
+		margin-top:-350px;
+	}
+	
+	.gameView {
+		margin-top:450px;
+	}
 	
 	.videocloser {
 		width: 50px;

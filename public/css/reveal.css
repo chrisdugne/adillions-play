@@ -31,6 +31,12 @@
 		-box-shadow: 0 0 10px rgba(0,0,0,.4);
 		}
 		
+	@media ( max-width : 680px) {
+		.reveal-modal {
+			width:300px;	
+		}
+	}	
+	
 	.reveal-modal.small 		{ width: 200px; margin-left: -140px;}
 	.reveal-modal.medium 		{ width: 400px; margin-left: -240px;}
 	.reveal-modal.large 		{ width: 600px; margin-left: -340px;}

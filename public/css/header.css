@@ -40,6 +40,7 @@
 @media screen and ( max-width : 680px) {
 	#header {
 		width: 100%;
+		position:absolute;
 	}
 }
 
@@ -57,14 +58,6 @@
 #logo {
 	width: 140px;
 	margin-top: 20px;
-}
-
-@media screen and ( max-width : 680px) {
-	#logo {
-		width: 100px;
-		margin-top: 15px;
-		margin-left: -90px;
-	}
 }
 
 /*--------------------------------*/
@@ -112,7 +105,7 @@
 
 @media ( max-width : 680px) {
 	#headerButtons {
-		right: 90px;
+		display:none;
 	}
 }
 	

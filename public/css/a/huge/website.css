@@ -1,4 +1,21 @@
 /************************************************/
+
+.polaroid {
+	padding: 5px;
+	-moz-box-shadow: 0px 2px 15px #333;
+	-webkit-box-shadow: 0px 2px 15px #333;
+    background-color: #ddd;
+    /* For WebKit (Safari, Chrome, etc) */
+    background: #ddd -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#fff)) no-repeat;
+    /* Mozilla,Firefox/Gecko */
+    background: #fff -moz-linear-gradient(top, #4A2602, #E3B98F) no-repeat;
+    /* IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ddd, endColorstr=#fff) no-repeat;
+    /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#000, endColorstr=#000)" no-repeat;
+	
+}
+
 .classictext {
 	font-size: 18px;
 	color: #333;
@@ -6,6 +23,7 @@
 	padding-bottom: 20px;
 	text-align: justify;
 	line-height: 22px;
+	font-family: "gillsans-light","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .subtitleText {
@@ -85,7 +103,6 @@
 .aboutIntro {
 	height: 130px;
 	background-color: #1b5c64;
-	margin-top: 45px;
 	margin-bottom: 32px;
 }
 
@@ -95,4 +112,10 @@
 	color: #fff;
 	padding-top: 55px;
 	padding-bottom: 12px;
+}
+
+#catchMiddle {
+	background-color: #fff;
+	padding-bottom: 50px;
+	padding-top: 20px;
 }
