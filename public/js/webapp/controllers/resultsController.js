@@ -8,6 +8,7 @@
 
 	ResultsController.renderUI = function(){
       GameManager.setSelectedButton()
+      UserManager.setupForms()
 	}
 
 	ResultsController.cleanUI = function()	{

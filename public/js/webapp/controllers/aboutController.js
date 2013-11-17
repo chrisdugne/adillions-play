@@ -8,6 +8,7 @@
 
 	AboutController.renderUI = function(){
       App.AboutController.setSelectedTab()
+      UserManager.setupForms()
 	}
 
 	AboutController.cleanUI = function()	{
