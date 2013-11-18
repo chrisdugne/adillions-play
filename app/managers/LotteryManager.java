@@ -81,7 +81,6 @@ public class LotteryManager {
 		
 		lottery.setNbTickets(result.getInteger("count"));
    }
-
 	
 	private static void findNbWinnersForLottery(Lottery lottery) {
 		String sql 		= "select count(*)  from lottery_ticket where lottery_uid='"+lottery.getUid()+"' and \"price\" IS NOT NULL;";

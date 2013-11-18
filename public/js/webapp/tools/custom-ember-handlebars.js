@@ -25,7 +25,7 @@ Ember.Handlebars.registerBoundHelper('price', function(price) {
 });
 
 Ember.Handlebars.registerBoundHelper('themeImage', function(lottery) {
-   return new Handlebars.SafeString("<img class='themeImage rounded' src=\""+lottery.theme.image+"\"/>")
+   return new Handlebars.SafeString("<img class='themeImage rounded polaroid' src=\""+lottery.theme.image+"\"/>")
 });
 
 Ember.Handlebars.registerBoundHelper('rangImage', function(num) {

@@ -196,6 +196,10 @@
       openGameHome            : Ember.Route.transitionTo('game.gameHome'),		
       openMyTickets           : Ember.Route.transitionTo('game.myTickets'),		
       openProfile             : Ember.Route.transitionTo('game.profile'),
+      upgradeProfile          : function(){
+         App.Router.closePopup()
+         App.get('router').transitionTo('game.profile')
+      },
       
 
       likeTheme               : function(){

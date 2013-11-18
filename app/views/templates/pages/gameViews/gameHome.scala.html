@@ -42,15 +42,18 @@
 	
 	<div id="themeImageContainer" class="row-fluid">
 		<div class="span6 offset3">
-		{{themeImage App.nextLottery}}
-		{{langImage App.user.lang png='theme.png' id='themeImageOver' customclass='touchable'}}
+			{{themeImage App.nextLottery}}
+			{{langImage App.user.lang png='theme.png' id='themeImageOver' customclass='touchable'}}
+	
+			{{#if App.user.themeLiked}}
+			{{else}}
+				<div {{action likeTheme}}>
+					<img id="likeThemeIcon" class="touchable" src='@routes.Assets.at("images/icons/like.png")'></img>
+				</div>
+			{{/if}}
 		</div>
 	</div>
 
-	{{#if App.user.themeLiked}}
-	{{else}}
-		<div {{action likeTheme}}>{{langImage App.user.lang png='filloutticket.button.png' id='fillOutTicket'}}</div>
-	{{/if}}
 </div>
 
 		

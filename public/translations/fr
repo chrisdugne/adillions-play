@@ -69,7 +69,7 @@
  	"##########################################" : "ADVERTISERS",
     
 	"AdTitle"			: "Vos annonces publicitaires avec Adillions",
-	"AdLottery"			: "La loterie – Le jeux de hasard le plus célèbre dans le monde",
+	"AdLottery"			: "La loterie – Le jeu de hasard le plus célèbre dans le monde",
 	
 	"AdSub1"			: "BOOSTEZ VOTRE NOTORIÉTÉ",
 	
@@ -239,7 +239,8 @@
     "Months"			: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
 
     "SelectLuckyBall"	: "Choisissez votre Boule Chance : ",
-    "ExtraTicket"		: "Extra Ticket",
+    "ExtraTicket"		: "Ticket Instantané",
+    "ExtraTickets"		: "Tickets Instantanés",
     "BonusTickets"		: "Tickets bonus",
     
     "YourSelection"		: "Votre sélection !",

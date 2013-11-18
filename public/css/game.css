@@ -321,23 +321,23 @@
 
 /*---------------------------------------------*/
 .huge {
-	font-size: 50px;
+	font-size: 50px!important;
 	margin-top: 10px;
 }
 
 .bigger {
-	font-size: 35px;
-	font-weight: bold;
+	font-size: 35px!important;
+	font-weight: bold!important;
 	margin-bottom: 6px;
 }
 
 .big {
-	font-size: 35px;
+	font-size: 35px!important;
 	margin-bottom: 6px;
 }
 
 .medium {
-	font-size: 25px;
+	font-size: 25px!important;
 }
 
 .small {
@@ -475,9 +475,22 @@
 }
 
 #themeImageOver {
-	margin-top: -61px;
+	margin-top: -67px;
 	margin-bottom: 10px;
 	max-width: 228px;
+}
+
+#likeThemeIcon {
+	position: relative;
+	top: -212px;
+	left: 175px;
+}
+
+@media screen and ( max-width : 910px) {
+	#likeThemeIcon {
+		top: -180px;
+		left: 145px;
+	}
 }
 
 /*---------------------------------------------*/

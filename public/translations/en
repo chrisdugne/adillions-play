@@ -235,11 +235,12 @@
     "Months"			: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November"],
     
     "SelectLuckyBall"	: "Select your Lucky Ball : ",
-    "ExtraTicket"		: "Extra Ticket",
+    "ExtraTicket"		: "Instant Ticket",
+    "ExtraTickets"		: "Instant Tickets",
     "BonusTickets"		: "Bonus tickets",
 
     "YourSelection"		: "Your selection !",
-    "TicketsToPlay"		: "Tickets to play",
+    "TicketsToPlay"		: "Remaining tickets",
     "Ticket"			: "Ticket",
     "YouHaveEarned"		: "You have earned",
     "YouHaveEarnedExtra": "You have earned an Extra Ticket",
