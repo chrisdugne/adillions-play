@@ -33,10 +33,14 @@ public class AccountService extends Application
 		
 		Player player = Application.player();
 		
-		AccountManager.updatePlayer(player, newUserJson);
+		player = AccountManager.updatePlayer(player, newUserJson);
 		
-		return ok(gson.toJson(player));
-		
+		if(player != null){
+			return ok(gson.toJson(player));
+		}
+		else{
+			return ok(gson.toJson(null));
+		}
 	}
 	
 	// ---------------------------------------------//
