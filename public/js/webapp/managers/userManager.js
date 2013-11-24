@@ -697,6 +697,7 @@ UserManager.mobileSigninFB = function(callback)
       user.lastName             = $("#fbForm_lastName").val() 
       user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
       user.referrerId           = $("#fbForm_referrerId").val() 
+      user.lang                 = translator.lang 
 
       App.wait()
 

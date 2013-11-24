@@ -31,18 +31,6 @@
    App.changeLang = function(lang) {
       App.translator.setLang(lang);
       App.user.set("lang", lang);
-      
-//      App.wait()
-//      var currentView = App.Globals.currentView
-//      var currentPage = App.Globals.currentPage
-//      App.get('router').transitionTo('home');
-//      
-//      setTimeout(function(){
-//         if(currentPage != "home")
-//            App.get('router').transitionTo(currentPage + "." + currentView);
-//         App.free()
-//      },20)
-      
    }
    
    //------------------------------------------------------//
@@ -65,8 +53,13 @@
    }
 
    App.message = function(message, ok) {
-
-      var width = $(".container").css("width").split("px")[0]
+      
+      if($(".container").length > 0){
+         console.log($(".container").length)
+         var width = $(".container").css("width").split("px")[0]
+      }
+      else
+         var width = $(window).width()
       
       $.unblockUI();
       $.blockUI({ message: '<p>'+message+'</p>', 

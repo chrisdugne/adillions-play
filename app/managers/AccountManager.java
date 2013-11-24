@@ -334,6 +334,7 @@ public class AccountManager {
 			Player playerExisting = getPlayerByFacebookId(facebookId);
 			
 			if(playerExisting != null){
+				System.out.println("playerExisting !");
 				return null; // merge with an existing FB account
 			}
 			
