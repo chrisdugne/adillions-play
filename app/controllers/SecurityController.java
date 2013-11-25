@@ -172,6 +172,28 @@ public class SecurityController extends Action.Simple {
 	
 	// ---------------------------------------------//
 
+	public static Result existFBPlayer()
+	{
+		System.out.println("existFBPlayer ? ");
+		JsonNode params = request().body().asJson();
+		JsonNode facebookData = params.get("facebookData");
+
+		//----------------------
+
+		String facebookId = facebookData.get("id").asText();
+		Player player = AccountManager.getPlayerByFacebookId(facebookId);
+
+		Boolean existPlayer = player != null;
+
+		System.out.println(existPlayer);
+		
+		JsonObject response = new JsonObject();
+		response.addProperty("existPlayer", existPlayer);
+		return ok(gson.toJson(response));
+	}
+	
+	// ---------------------------------------------//
+	
 	public static Result signinWithTwitter()
 	{
 		Twitter.getRequestToken();
