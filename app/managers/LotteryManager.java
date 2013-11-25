@@ -43,11 +43,30 @@ public class LotteryManager {
 		//-------------------------------------
 
 		findNbTicketsForLottery(lottery);
-		System.out.println("tickets : " + lottery.getNbTickets());
 
 		//-------------------------------------
 
 		return lottery;
+	}
+
+	
+	public static Lottery getNextDrawing()
+	{
+		//-------------------------------------
+		
+		Long now = new Date().getTime();
+		
+		Lottery nextDrawing = Lottery.find
+				.where().gt("date", now)
+				.orderBy("date asc")
+				.findList().get(0);
+		
+		
+		findNbTicketsForLottery(nextDrawing);
+		
+		//-------------------------------------
+		
+		return nextDrawing;
 	}
 
 	//------------------------------------------------------------------------------------//
