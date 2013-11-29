@@ -25,7 +25,7 @@ Facebook.init = function(options)
 {
    //---------------------------------------------------------------
 
-//   this.prod = 0
+// this.prod = 0
    this.prod = 1  
 
    //---------------------------------------------------------------
@@ -34,8 +34,7 @@ Facebook.init = function(options)
       this.FACEBOOK_APP_ID          = "170148346520274";
       this.FACEBOOK_APP_SECRET      = "887e8f7abb9b1cb9238a097e06585ae2";
       this.FACEBOOK_APP_NAMESPACE   = "adillions";
-      this.SERVER_OG_URL            = "http://www.watchtocash.com/"
-//       this.SERVER_OG_URL            = "http://www.adillions.com/"
+      this.SERVER_OG_URL            = "http://www.adillions.com/"
    }
    else{
       this.FACEBOOK_APP_ID          = "534196239997712";
@@ -258,7 +257,7 @@ Facebook.inviteFriends = function()
    App.Router.closePopup();
 
    var title          = "Join me on Adillions !";
-   var message        = "Watch ads, and win real money, it's free !";
+   var message        = App.translations.messages.GetAChance
 
    FB.ui({
       method: 'apprequests',

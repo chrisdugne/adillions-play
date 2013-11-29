@@ -89,6 +89,10 @@ UserManager.sortLotteryTickets = function(next){
 
    for(var i = 0; i < App.user.lotteryTickets.length; i++){
       var ticket = App.user.lotteryTickets[i]
+      ticket.numbers = $.parseJSON(ticket.numbers)
+      ticket.lottery.theme = $.parseJSON(ticket.lottery.theme)
+      ticket.lottery.result = $.parseJSON(ticket.lottery.result)
+      
       if(!currentLottery || (currentLottery.uid != ticket.lottery.uid)){
          var lottery = {}
          lottery.uid       = ticket.lottery.uid
@@ -105,6 +109,9 @@ UserManager.sortLotteryTickets = function(next){
    }
 
    App.user.set("lotteries", lotteries)
+
+   console.log("----------- user.lotteries")
+   console.log(App.user.lotteries)
 }
 
 //-------------------------------------------//

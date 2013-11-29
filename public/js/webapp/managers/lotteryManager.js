@@ -20,21 +20,38 @@ LotteryManager.refreshNextLottery = function()
       type: "POST",  
       url: "/nextLottery",
       dataType: "json",
-      success: function (lottery, textStatus, jqXHR)
+      success: function (result)
       {
-         App.nextLottery.set("uid",          lottery.uid)   
-         App.nextLottery.set("date",         lottery.date)   
-         App.nextLottery.set("maxPicks",     lottery.maxPicks)   
-         App.nextLottery.set("maxNumbers",   lottery.maxNumbers)   
-         App.nextLottery.set("nbPlayers",    lottery.nbPlayers)   
-         App.nextLottery.set("toolPlayers",  lottery.toolPlayers)   
-         App.nextLottery.set("nbTickets",    lottery.nbTickets)   
-         App.nextLottery.set("minPrice",     lottery.minPrice)   
-         App.nextLottery.set("maxPrice",     lottery.maxPrice)   
-         App.nextLottery.set("cpm",          lottery.cpm)   
-         App.nextLottery.set("theme",        $.parseJSON(lottery.theme))  
-         App.nextLottery.set("prizes",       $.parseJSON(lottery.prizes))  
-         App.nextLottery.set("result",       lottery.result)
+         var nextLottery = result.nextLottery
+         var nextDrawing = result.nextDrawing
+         
+         App.nextLottery.set("uid",          nextLottery.uid)   
+         App.nextLottery.set("date",         nextLottery.date)   
+         App.nextLottery.set("maxPicks",     nextLottery.maxPicks)
+         App.nextLottery.set("maxNumbers",   nextLottery.maxNumbers)   
+         App.nextLottery.set("nbPlayers",    nextLottery.nbPlayers)   
+         App.nextLottery.set("toolPlayers",  nextLottery.toolPlayers)   
+         App.nextLottery.set("nbTickets",    nextLottery.nbTickets)   
+         App.nextLottery.set("minPrice",     nextLottery.minPrice)   
+         App.nextLottery.set("maxPrice",     nextLottery.maxPrice)   
+         App.nextLottery.set("cpm",          nextLottery.cpm)   
+         App.nextLottery.set("theme",        $.parseJSON(nextLottery.theme))  
+         App.nextLottery.set("prizes",       $.parseJSON(nextLottery.prizes))  
+         App.nextLottery.set("result",       $.parseJSON(nextLottery.result))
+         
+         App.nextDrawing.set("uid",          nextDrawing.uid)   
+         App.nextDrawing.set("date",         nextDrawing.date)   
+         App.nextDrawing.set("maxPicks",     nextDrawing.maxPicks)   
+         App.nextDrawing.set("maxNumbers",   nextDrawing.maxNumbers)   
+         App.nextDrawing.set("nbPlayers",    nextDrawing.nbPlayers)   
+         App.nextDrawing.set("toolPlayers",  nextDrawing.toolPlayers)   
+         App.nextDrawing.set("nbTickets",    nextDrawing.nbTickets)   
+         App.nextDrawing.set("minPrice",     nextDrawing.minPrice)   
+         App.nextDrawing.set("maxPrice",     nextDrawing.maxPrice)   
+         App.nextDrawing.set("cpm",          nextDrawing.cpm)   
+         App.nextDrawing.set("theme",        $.parseJSON(nextDrawing.theme))  
+         App.nextDrawing.set("prizes",       $.parseJSON(nextDrawing.prizes))  
+         App.nextDrawing.set("result",       $.parseJSON(nextDrawing.result))
          
          App.free()
          

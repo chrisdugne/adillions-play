@@ -1,32 +1,40 @@
-<div id="shareWindow" class="reveal-modal">
-	
-	<div class="row-fluid">
-		<div class="span3">
-			<div class="btn-large button">Twitter</div>
-		</div>
-	</div>
+<div id="shareWindow" class="reveal-modal marketing">
 	
 	
-	<div class="row-fluid">
-		<div class="span3">
-			{{#if App.user.hasTwitterAccount}}
-			<div class="btn-large button">Tweet</div>
-			{{else}}
-			<div class="btn-large button">Connect to twitter</div>
-			{{/if}}
+	<div class="row-fluid margintop4">
+		<div class="span4 offset4">
+			<img src='@routes.Assets.at("images/icons/PictoShare.png")'></img>
 		</div>
 	</div>
 	
 	<div class="row-fluid">
-		<div class="span3">
+		<div class="span6 offset3">
+			{{langImage App.user.lang png='popup.Txt3.png'}}
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<p class="medium">{{App.translations.messages.EarnPointsGetTickets}}</p>
+	</div>
+	
+	<div class="row-fluid margintop">
+		<div class="span6 offset3 touchable">
 			{{#if App.user.hasFacebookAccount}}
-			<div class="btn-large button">Share on Facebook</div>
+				<div {{action shareFacebook}} >{{langImage App.user.lang png='popup.facebook.share.png'}}</div>
 			{{else}}
-			<div class="btn-large button">Connect to Facebook</div>
+				<div {{action facebookMerge}} >{{langImage App.user.lang png='popup.facebook.connect.png'}}</div>
 			{{/if}}
 		</div>
 	</div>
 	
+	<div class="row-fluid marginbottom2">
+		<div class="span6 offset3 touchable">
+			{{#if App.user.hasTweet}}
+			{{else}}
+				<div id="twitterShareButtonContainer" class="span3"></div>
+			{{/if}}
+		</div>
+	</div>
 	
 	<div class="row-fluid" {{action closeModal}}>
 		<div class="span2 offset5 touchable">

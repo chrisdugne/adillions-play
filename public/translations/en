@@ -232,7 +232,7 @@
     
     "Players"			: "Players",
     "Days"				: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    "Months"			: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November"],
+    "Months"			: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     
     "SelectLuckyBall"	: "Select your Lucky Ball : ",
     "ExtraTicket"		: "Instant Ticket",
@@ -250,6 +250,13 @@
     "Winners"			: "Winners",
     "Charity"			: "Charity",
 
+    "NbWinningTickets"	: "Winning tickets",
+    "PrizePerWinningTicket"	: "Prize / Winning ticket",
+
+    "EarnPointsGetTickets"	: "Gagnez des points et obtenez des Tickets Instantanés",
+    "EarnPointsIncreaseJackpot"	: "Earn points and increase the jackpot",
+    "GetAChance"		: "Free, fun and easy ! Get a chance to win the jackpot !",
+    
     "Charities"			: ["Starter","Level2","Level3","Level4","Level5","Level6","Level7"],
 
     "TotalPoints"		: "Total points",
@@ -260,5 +267,11 @@
     "TwoMoreBonusTickets" : "You have won 2 more Bonus Tickets !",
     "TwoLostBonusTickets" : "You have lost 2 Bonus Tickets...",
     
+ 	"##########################################" : "Messages",
+ 	
+ 	"JoinMeOnAdillions" 	: "Join me on Adillions !",
+ 	"JoinMeAndGetAChance" 	: "Join me on Adillions and get a chance to win the jackpot !",
+ 	"DownloadAndPlay" 		: "Dowload the free app on the App Store or Google Play / Play on Facebook and on www.adillions.com",
+
     "":""
 }

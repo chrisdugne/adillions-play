@@ -27,8 +27,7 @@ public class Application extends Controller {
 	public static final String FACEBOOK_APP_ID 				= "170148346520274";
 	public static final String FACEBOOK_API_SECRET 			= "887e8f7abb9b1cb9238a097e06585ae2";
 	public static final String FACEBOOK_APP_NAMESPACE 		= "adillions";
-	public static final String APP_HOSTNAME 					= "http://www.watchtocash.com";
-//	public static final String APP_HOSTNAME 					= "http://www.adillions.com";
+	public static final String APP_HOSTNAME 					= "http://www.adillions.com";
 
 	// DEV
 //	public static final String FACEBOOK_APP_ID 				= "534196239997712";

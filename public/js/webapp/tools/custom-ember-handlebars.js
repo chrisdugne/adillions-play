@@ -8,6 +8,11 @@ Ember.Handlebars.registerBoundHelper('themeWeb', function(theme) {
    return new Handlebars.SafeString(img)
 });
 
+Ember.Handlebars.registerBoundHelper('hrefEmail', function() {
+   var href = "<a href=\"mailto:?subject=" + App.translations.messages.JoinMeOnAdillions + "&body=" + App.translations.messages.JoinMeAndGetAChance + ". " + App.translations.messages.DownloadAndPlay+ "\">"
+   return new Handlebars.SafeString(href)
+});
+
 Ember.Handlebars.registerBoundHelper('charityName', function(level) {
    
    if(!level)
@@ -124,6 +129,16 @@ Ember.Handlebars.registerBoundHelper('oldticket', function(numbers, options) {
    var lotteryNumbers   = options.hash.lotteryNumbers;
    var theme            = options.hash.theme;
    
+   console.log("-------")
+   console.log(numbers)
+   console.log("--")
+   console.log(lotteryNumbers)
+   console.log("--")
+   console.log(theme)
+   
+   console.log("=====")
+   console.log(theme.icons)
+   console.log(numbers.length-1)
    if(theme.icons[numbers.length-1] == null)
       return "";
    
@@ -133,6 +148,9 @@ Ember.Handlebars.registerBoundHelper('oldticket', function(numbers, options) {
    
    //-------------------------------------------------------//
    // balls
+
+   console.log("=====")
+   console.log("numbers.length-1 : " + numbers.length-1)
    
    for(var n = 0; n < numbers.length-1; n++){
       
@@ -192,6 +210,8 @@ Ember.Handlebars.registerBoundHelper('oldticket', function(numbers, options) {
 
    div += "</div>";
 
+   console.log("=====")
+   console.log(div)
    return new Handlebars.SafeString(div)
 });
 
