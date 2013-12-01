@@ -28,7 +28,7 @@
       //------------------------------------------------------//
       
       $.get("https://freegeoip.net/json", function(response) {
-         App.Globals.set("country", response.country_code);
+         App.Globals.set("country", response["country_code"]);
 
          //------------------------------------------------------//
          //   App.youtubeManager = new YoutubeManager();
@@ -50,7 +50,7 @@
             notConnectedCallback    : failure, 
             sponsorRequestId        : sponsorRequestId
          })
-      }, "jsonp");
+      });
       
    }
 
