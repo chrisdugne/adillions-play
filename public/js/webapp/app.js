@@ -27,8 +27,8 @@
 
       //------------------------------------------------------//
       
-      $.get("https://https-api.ipaddresslabs.com/iplocation/v1.7/locateip?key=demo&ip=local-ip&format=json", function(response) {
-         App.Globals.set("country", response.geolocation_data["country_code_iso3166alpha2"]);
+      $.get("https://freegeoip.net/json", function(response) {
+         App.Globals.set("country", response.country_code]);
 
          //------------------------------------------------------//
          //   App.youtubeManager = new YoutubeManager();
