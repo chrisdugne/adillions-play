@@ -31,6 +31,7 @@
    App.changeLang = function(lang) {
       App.translator.setLang(lang);
       App.user.set("lang", lang);
+      App.Globals.set("lang", lang);
    }
    
    //------------------------------------------------------//

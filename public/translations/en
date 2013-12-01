@@ -148,52 +148,89 @@
  	
  	"##########################################" : "FAQ",
 	
-	
 	"Q1"				: "I forgot my password",
-	"A1"				: "If you lost/forgot your password, go to the login page and click on the \"Lost password\" button, send us an email to contact@adillions.com and specify your full name and date of birth. The Adillions team will answer you within the best delays",
+	"A1"				: "If you lost/forgot your password, go to the login page and click on \"Lost password\", send us an email to support@adillions.com and specify your full name and date of birth. The Adillions team will get back to you within the best delays.",
 	
 	"Q2"				: "How do I change my password and personal details?",
-	"A2"				: "Please send us an email to contact@adillions.com and specify your full name and date of birth",
+	"A2"				: "Please send an email to support@adillions.com and specify your full name and date of birth.",
 	
 	"Q3"				: "Can I create several Adillions accounts?",
-	"A3"				: "In order to prevent potential frauds and to guarantee equality of opportunities and treatment for all players, Adillions only allows one account per individual. All gains obtained in a unfair manner will be lost (see the Terms)",
+	"A3"				: "In order to prevent potential frauds and to guarantee equality of opportunities and treatment of players, Adillions only allows one account per individual. All gains obtained in a unfair manner will be lost (see the Terms).",
 	
 	"Q4"				: "How do I permanently delete my account?",
-	"A4"				: "Please send us an email to delete@adillions.com and specify \"Delete my account\" in the subject line and in the mail your full name and date of birth",
+	"A4"				: "Please send an email to support@adillions.com and specify \"Delete my account\" in the subject line and include your full name and date of birth in the mail.",
 	
 	"Q5"				: "I am having a connection problem",
-	"A5"				: "First, make sure you have a good access to the internet. If it is still not working, send us an email to support@adillions.com. Be sure to include details about your setup (which browser, internet connection, device you have, etc.) and a description of what's happening exactly. We are here to help you connect to the platform",
+	"A5"				: "First, make sure you fill out your correct email address/password or that you log in with the appropriate Facebook account. Second, make sure that you have a good access to the internet. If it is still not working, send an email to support@adillions.com with the details about your setup (which browser, internet connection, device you have, etc.) and a description of what's exactly happening. We are here to help you connect to the platform.",
 	
 	"Q6"				: "Is there a maximum number of tickets I am allowed to fill out for each draw?",
-	"A6"				: "Yes. Adillions allows a maximum number of tickets per user per draw to preserve equality of opportunities for all participants. You can gain Bonus Tickets by liking our Facebook Page, following us on Twitter, etc. (see Rewards)",
+	"A6"				: "Yes. Adillions allows a maximum number of tickets per user per draw to preserve equality of opportunities for all participants. You can gain Bonus Tickets by liking our Facebook Page, following us on Twitter, etc. (see Rewards).",
 	
 	"Q7"				: "Do I receive an alert/email if I win a prize?",
-	"A7"				: "At the end of each draw, if you are a winner, you will receive an email informing you about your gain",
+	"A7"				: "At the end of each draw, if you are a winner, you will receive an email informing you of your win.",
 	
-	"Q8"				: "Do I need to provide my bank account details?",
-	"A8"				: "No. Adillions does not require any bank account details to submit your registration",
+	"Q8"				: "During the registration, do I need to provide my bank account details?",
+	"A8"				: "No. Adillions does not require any bank account details to submit your registration.",
 	
-	"Q9"				: "When will I receive my payment? And How?",
-	"A9"				: "You will receive your gains 4 weeks after your gains have reached a minimum total balance of 10 euros and maximum 8 weeks after. They will be paid by bank transfer for winners inside the SEPA/EU zone and via PayPal for other countries (for more details please read our Terms)",
+	"Q9"				: "When will I receive my payment? And how?",
+	"A9"				: "You will receive payment within 4-8 weeks having won a minimum total balance of 10 euros. They will be paid by bank transfer for winners inside the SEPA/EU zone and via PayPal for other countries (for more details please read our Terms).",
 	
 	"Q10"				: "When do I need to give my bank account details?",
-	"A10"				: "Adillions only asks for your bank account details once it will proceed to your prize payment",
+	"A10"				: "Adillions only asks for your bank account details once it will proceed with your prize payment.",
 	
 	"Q11"				: "Does Adillions publish the real names / identities of the winners?",
-	"A11"				: "In accordance with our Privacy Policy, Adillions does not release the real full name of winning players on its platform but only publishes their first name and the first letter of their last name as well as their home address (at \"country\" or \"city\" level)",
+	"A11"				: "In accordance with our Privacy Policy, Adillions does not release the real full name of winning players on its platform but only publishes their first name and the first letter of their last name as well as their country and city.",
 	
 	"Q12"				: "Where can I find the results of previous draws?",
-	"A12"				: "All previous results are available on www.adillions.com",
+	"A12"				: "All previous results are available at www.adillions.com.",
 	
 	"Q13"				: "How does Adillions prevent game cheating and fraud?",
-	"A13"				: "Adillions is committed to guarantee equality of opportunities to all users and to prevent potential frauds through a series of measures:",
-	"A13a"				: "1. Adillions checks that each user has only one account",
-	"A13b"				: "2. Adillions asks for a probing ID document for winning players with gains above €2,000",
-	"A13c"				: "3. Before each draw, Adillions secures the whole database of tickets",
+	"A13"				: "Adillions is committed to guarantying equality of opportunities to all users and to prevent potential frauds through a series of measures, for example:",
+	"A13a"				: "1. Adillions checks that each user has only one account;",
+	"A13b"				: "2. Adillions asks for a probing ID document for winning players with gains above €2000;",
+	"A13c"				: "3. Before each draw, Adillions secures the whole database of tickets; and",
 	"A13d"				: "4. Adillions uses multiple anti-fraud softwares to protect the gaming experience",
-	"A13e"				: "5. Etc.",
+
 	
+ 	"##########################################" : "Privacy",
+ 	
+ 	 
+	"IntroPost"			: "Our Privacy Policy was last updated and posted on November [XXX], 2013. It governs the privacy terms of our website located at http://www.adillions.com and our mobile applications.",
+	"IntroLanguage"		: "Our Privacy Policy was written in French. To the extent any translated version of this Privacy Policy conflicts with the French version, the French version controls.",
 	
+	"Overview"			: "Overview",
+	"OverObjective"		: "This Privacy Policy covers how we collect, use, disclose, transfer, and store your personal information. Adillions takes the processing of your personal information very seriously and will use your information only in accordance with the terms of this Privacy Policy.",
+	"OverLegal"			: "Adillions (hereinafter referred to as the \"Company\") collects personal user data, such as name, email address, date of birth and potentially other information such as their home address, place of birth (city and country) or their bank account information (the latter information will solely be gathered for winners in order to transfer their prize).",
+	"OverModify"		: "The Company reserves the right to modify its Privacy Policy at any time without prior notice. Users should review this Privacy Policy frequently. If the Company makes material changes to this policy, it may notify users on its website, by email, or by any method it determines at its sole discretion. The Company will also change the \"Last Updated\" date at the beginning of this Privacy Policy. Any changes it makes to its Privacy Policy are effective as of this Last Updated date and replace any prior Privacy Policies.",
+	
+	"Purpose"			: "Purpose and usage of user information",
+	"PurpIntro"			: "Personal information is used exclusively by Adillions for the following purposes :",
+	"Manage_P"			: "manage the website and mobile applications;",
+	"Administer"		: "manage and administer the contractual relationship between Adillions and its users;",	
+	"TargetedAds"		: "provide targeted ads to users based on data collected through their prior consent for commercial offers by the Company and its business partners;",
+	"ProvideProducts"	: "provide the products and services and constantly improve their quality;",
+	"ConductInternal"	: "conduct internal studies, including statistics from anonymized data studies;",
+	"IdentifyPotential"	: "identify potential fraud or misuse of our products and services;",	
+	"ContactUsers"		: "contact users for the payment of their prizes and inform them about the next draws or any other type of information about the game;",
+	"CreateStudies"		: "create studies and reports based on the anonymization of users' personal information and communicate them to internal and external business partners.",
+	"AdillionsEnsures"	: "Adillions ensures the total confidentiality of bank account information of winners which are provided to Adillions in order to make payments.",	
+	"UsersAgree"		: "Users expressly agree that Adillions discloses any information including, without limitation, transaction information, account information and personal information to: competent governmental, intergovernmental or supranational bodies or any other competent authorities that we in good faith believe it is appropriate for us to cooperate with in investigations of fraud or other illegal activity or potential illegal activity, violations of our Terms of Use and any other situation contrary to law.",
+	"Subcontractors"	: "Personal information can be transmitted to subcontractors of Adillions for internal processing only and exclusively for and on behalf of Adillions.",
+	
+	"Permission"		: "Permission to use winner's name",	
+	"WinnerPermission"	: "Each winner allows Adillions to use his first name and the initial of his last name as well as their country or city without limitation or qualification, and without any remuneration, right or any other benefit other than the allocation of the gain, for a period of three (3) years from the date of use of the information.",
+	"PhotoWinner"		: "A photo may be requested for each user who obtained a gain of some kind. The user allows Adillions to use this photo for any promotional purposes and he can obviously oppose the use of his photo.",
+	
+	"Cookies"			: "Use of cookies",	
+	"LikePlatforms"		: "Like most web platforms, the Company uses cookies and other similar technologies to make our platform easier to use, to ensure its proper functioning, to better understand our users and their potential centers of interest and improve the quality of service of our products.",
+	"UsersInformed"		: "Users will be informed by a notice on the website of the installation of cookies on their digital device. Your use of our website does imply acceptance of the use of these cookies.",
+	"UsersConfigure"	: "Users can configure their browser so that they can remove the cookies.",
+	
+	"Questions_P"		: "If you have any questions or complaints regarding our Privacy Policy, please contact us by email at the following address contact[at]adillions.com",	
+	"ReadAndAccept"		: "By using the website and mobile applications of Adillions, you acknowledge that you have read and accepted the terms of this Privacy Policy and you consent to the use of your personal information as set out in this Privacy Policy.",
+
+ 	
+ 	
  	"##########################################" : "APP",
  		
     "Welcome"			: "Welcome",

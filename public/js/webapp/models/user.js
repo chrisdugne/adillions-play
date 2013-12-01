@@ -58,7 +58,6 @@
 	      return this.get('availableTickets') + this.get('totalBonusTickets') - this.get('playedBonusTickets');
 	   }.property('availableTickets', 'totalBonusTickets', 'playedBonusTickets'),
 
-	   
 	   hasFacebookAccount: function() {
 	      return this.get('facebookId') != null;
 	   }.property('facebookId'),
@@ -73,5 +72,6 @@
 	
 	App.user = User.create();
    App.user.set("lang", App.translator.lang);
+   App.Globals.set("lang", App.translator.lang);
 	
 })( App);

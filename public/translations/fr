@@ -147,52 +147,92 @@
 	"CTOStatus"			: "Directeur Technique",
 	"CTODesc"			: "Christophe a commencé sa carrière en tant que développeur au sein d'une start-up dans le domaine du marketing web. Il a participé à la création de plusieurs start-ups dans l'univers du gaming et du mobile ainsi qu'un outil cartographique sur le cloud, Maperial. Christophe est en charge du développement technique des produits d'Adillions. Christophe est diplômé de l'ENSEIRB à Bordeaux où il a étudié l'informatique",
  	
+ 	"##########################################" : "Privacy",
+ 	
+	"IntroPost"			: "",
+	"IntroLanguage"		: "",
+	
+	"Overview"			: "Dispositions générales",
+	"OverObjective"		: "La société Adillions collecte les données personnelles des utilisateurs, telles que nom, prénom, adresse électronique, date de naissance ainsi qu'éventuellement d'autres informations telles que leur adresse de résidence, leur lieu de naissance (ville et pays) ou encore les coordonnées de leur compte bancaire (ces dernières informations seront uniquement demandées aux gagnants afin de verser leurs gains).",
+	"OverLegal"			: "La société Adillions a la qualité de responsable de traitement au titre de la Loi Informatique et Libertés en date du 6 janvier 1978 telle que modifiée.",
+	"OverArticle"		: "Conformément aux dispositions de l'article 34 de cette Loi, les personnes qui se sont inscrites sur le site ou les applications Adillions disposent d'un droit d'opposition, d'accès et de rectification des données les concernant. En conséquence, tout joueur inscrit sur Adillions a le droit d'exiger que soient rectifiées, complétées, clarifiées, mises à jour ou effacées, les informations le concernant qui seraient inexactes, incomplètes, équivoques ou périmées. La demande peut être adressée, par écrit, avec les coordonnées du demandeur, à l'adresse suivante : Adillions - Service Support - 57 rue du Faubourg Montmartre, 75009 Paris - France.",
+	"OverCNIL"			: "Numéro de déclaration CNIL : 1716298",
+	"OverModify"		: "La société Adillions se réserve le droit de modifier à tout moment et sans préavis les conditions d'utilisation des données personnelles des utilisateurs. Les utilisateurs sont invités à consulter fréquemment les dispositions relatives à la protection des données. Si Adillions procède à des modifications, elle en notifiera les utilisateurs de la plateforme sur le site, par mail ou par tout autre moyen à sa disposition. La dernière version est effective à la date indiquée à la fin du présent accord et remplace les précédentes versions.",
+	
+	"Purpose"			: "Utilisation des données personnelles",
+	"PurpIntro"			: "Les données à caractère personnel des utilisateurs sont exclusivement utilisées par Adillions pour les finalités suivantes :",
+	"Manage"			: "gérer le site internet et les applications mobiles ;",
+	"Administer"		: "gérer et administrer la relation contractuelle entre Adillions et les utilisateurs ;",	
+	"TargetedAds"		: "proposer des publicités ciblées aux utilisateurs à partir des données collectées moyennant leur accord préalable à des opérations commerciales de la part la société Adillions et de partenaires commerciaux ;",
+	"ProvideProducts"	: "fournir les produits et services et améliorer constamment leur qualité ;",
+	"ConductInternal"	: "réaliser des études internes, notamment des études statistiques à partir de données anonymisées ;",
+	"IdentifyPotential": "identifier les potentielles utilisations frauduleuses ou abusives de nos produits et services ;",	
+	"ContactUsers"		: "contacter les utilisateurs pour notamment procéder au paiement des gains et les informer des prochains tirages ou tout autre type d'informations relatives au jeu ;",
+	"CreateStudies"	: "créer des études et rapports sur la base de l’anonymisation des données personnelles des utilisateurs qui seront communiqués à des clients internes ou externes.",
+	"AdillionsEnsures"	: "La société Adillions garantit à ses utilisateurs la parfaite confidentialité des informations bancaires éventuellement fournies à Adillions aux fins de perception des gains.",	
+	"UsersAgree"		: "La société Adillions pourra transmettre tout type d'informations personnelles à tout organisme gouvernemental ou autre autorité compétente avec qui Adillions est susceptible de coopérer dans le cadre d'investigations de fraude ou autres activités illégales ou potentielles activités illégales, de violations du règlement du jeu ainsi que toute autre situation contraire à la législation.",
+	"Subcontractors"	: "Les données à caractère personnel des utilisateurs peuvent être transmises à des sous-traitants d'Adillions à des fins de traitement interne qui agiront au nom et pour le compte exclusif d'Adillions.",
+	
+	"Permission"		: "Autorisation d'affichage du nom des gagnants",	
+	"WinnerPermission"	: "Chaque gagnant à un tirage autorise Adillions à utiliser son prénom et l'initiale de son nom ainsi que sa localisation géographique (niveau « pays » ou « ville ») sans restriction ni réserve et sans que cela ne lui confère une quelconque rémunération, un droit ou un avantage quelconque autre que l'attribution de son gain et ce, pour une durée de trois (3) ans à compter de la date d’utilisation de ses données.",
+	"PhotoWinner"		: "Une photo pourra être demandée à chaque utilisateur ayant obtenu un gain de quelque nature que ce soit et autorise la société Adillions à utiliser cette photo afin de la diffuser sur l'ensemble de ses supports de communication. L'utilisateur pourra bien évidemment s'opposer à ce que sa photo soit utilisée.",
+	
+	"Cookies"			: "Utilisation des cookies",	
+	"LikePlatforms"		: "Comme la plupart des plateformes Web, Adillions utilise des cookies et d’autres technologies similaires pour faciliter l'utilisation de la plateforme, assurer le fonctionnement de nos produits, mieux connaître nos utilisateurs et leurs centres d’intérêt potentiels et, enfin, améliorer la qualité de service de nos produits.",
+	"UsersInformed"		: "Les utilisateurs seront informés par un bandeau sur le site Internet de l’installation des cookies sur leur support digital. L’utilisation du site par les utilisateurs implique leur acceptation de l’installation de ces cookies.",
+	"UsersConfigure"	: "Les utilisateurs ont la possibilité de configurer leurs navigateurs internet afin de supprimer les différents cookies.",
+	
+	"Questions_P"		: "Si vous avez des questions ou des remarques concernant notre politique de confidentialité, contactez-nous par courrier à Adillions - Service Contact - 57 rue du Faubourg Montmartre 75009 Paris - France ou à contact [at] adillions.com",	
+	"ReadAndAccept"		: "Par l'utilisation du site internet et des applications mobiles d'Adillions, vous reconnaissez avoir pris connaissance de notre politique de protection et d'utilisation des données personnelles et vous y consentez tel qu'il vient d'être décrit et aux fins susmentionnées.",
+
+	"FaitAParis"		: "Fait à Paris, le xxx 2013",
+	
  	
  	"##########################################" : "FAQ",
  	
 	"Q1"				: "Vous avez oublié votre mot de passe",
-	"A1"				: "Si vous avez perdu ou oublié votre mot de passe, allez sur la page d'identification puis cliquez sur le bouton \"Mot de passe oublié\". Vous serez redirigé vers un mail automatique à envoyer à contact@adillions.com, vous devrez alors spécifiez votre prénom, nom et date de naissance. L'équipe d'Adillions s'engage à vous répondre dans les meilleurs délais",
+	"A1"				: "Si vous avez perdu ou oublié votre mot de passe, allez sur la page d'identification puis cliquez sur le bouton \"Mot de passe oublié\". Vous serez redirigé vers un mail automatique à envoyer à support@adillions.com, vous devrez alors spécifiez votre prénom, nom et date de naissance. L'équipe d'Adillions s'engage à vous répondre dans les meilleurs délais.",
 	
 	"Q2"				: "Vous souhaitez modifier votre mot de passe ou vos informations personnelles",
-	"A2"				: "Envoyez nous un email à contact@adillions.com en spécifiant votre prénom, nom et date de naissance",
+	"A2"				: "Envoyez nous un email à support@adillions.com en spécifiant votre prénom, nom et date de naissance.",
 	
 	"Q3"				: "Vous souhaitez créer un autre compte utilisateur",
-	"A3"				: "Dans un souci de garantir l'égalité des chances et d'éviter tout usage frauduleux de la plateforme, Adillions autorise uniquement un seul compte Adillions par utilisateur",
+	"A3"				: "Dans un souci de garantir l'égalité des chances et d'éviter tout usage frauduleux de la plateforme, Adillions autorise uniquement un seul compte Adillions par personne.",
 	
 	"Q4"				: "Vous souhaitez fermer votre compte définitivement",
-	"A4"				: "Pour procéder à la fermeture définitive de votre compte, veuillez nous envoyer un mail à delete@adillions.com en précisant en objet \"Fermeture de compte\" et en spécifiant votre prénom, nom et date de naissance",
+	"A4"				: "Pour procéder à la fermeture définitive de votre compte, veuillez nous envoyer un mail à l'adresse suivante support@adillions.com en précisant en objet \"Fermeture de compte\" et en spécifiant votre prénom, nom et date de naissance.",
 	
 	"Q5"				: "Vous rencontrez des problèmes de connexion",
-	"A5"				: "Vérifiez tout d'abord qu'il ne s'agit pas d'un problème avec votre connexion internet. Si le problème persiste, contactez nous en adressant un mail à support@adillions.com, en précisant votre identifiant, le type de plateforme que vous utilisez (app, web, etc.) et une description du problème. Nous serons heureux de vous aider à le résoudre",
+	"A5"				: "Vérifiez tout d'abord qu'il ne s'agit pas d'un problème d'identification (email et / ou mot de passe erronés ou encore connexion avec un mauvais compte Facebook) puis ensuite d'un problème de connexion internet. Si le problème persiste, contactez nous en adressant un mail à support@adillions.com, en précisant votre identifiant, le type de plateforme que vous utilisez (app, web, etc.) et une description du problème. Nous serons heureux de vous aider à le résoudre.",
 	
 	"Q6"				: "Le nombre de tickets par utilisateur est-il limité par tirage ?",
-	"A6"				: "Oui. Un nombre maximum de tickets est fixé pour chaque joueur par tirage afin de préserver l'égalité des chances entre les participants. Vous pouvez gagner des Tickets Bonus en likant notre page Facebook, en nous suivant sur Twitter, etc. (cf. Récompenses)",
+	"A6"				: "Oui. Un nombre maximum de tickets est fixé pour chaque joueur par tirage afin de préserver l'égalité des chances entre les participants. Vous pouvez gagner des Tickets Bonus en likant notre page Facebook, en nous suivant sur Twitter, etc. (cf. Récompenses).",
 	
 	"Q7"				: "Est-ce que je suis averti quand j'ai remporté un gain ?",
-	"A7"				: "Oui. A l'issue du tirage, si vous êtes parmi les gagnants, un mail vous est adressé pour vous informer du montant de votre gain",
+	"A7"				: "Oui. A l'issue du tirage, si vous êtes parmi les gagnants, un mail vous est adressé pour vous informer du montant de votre gain.",
 	
 	"Q8"				: "Est-ce que je dois renseigner mes coordonnées bancaires à l'inscription ?",
-	"A8"				: "Non. L'inscription sur Adillions ne requiert, à aucun moment, l'obligation de communiquer vos coordonnées bancaires",
+	"A8"				: "Non. L'inscription sur Adillions ne requiert, à aucun moment, l'obligation de communiquer vos coordonnées bancaires.",
 	
 	"Q9"				: "Quand et comment est-ce que je reçois mes gains ?",
-	"A9"				: "Les gains des joueurs sont versés au minimum 4 semaines après qu'ils aient atteint un solde global minimum de 10 euros et au maximum huit 8 semaines après. Le versement des gains s'effectue par virement bancaire pour les gagnants de la zone SEPA / Euro et via PayPal pour les autres gagnants (consultez le Règlement pour plus de détails)",
+	"A9"				: "Les gains des joueurs sont versés au minimum 4 semaines après qu'ils aient atteint un solde global minimum de 10 euros et au maximum huit 8 semaines après. Le versement des gains s'effectue par virement bancaire pour les gagnants de la zone SEPA / Euro et via PayPal pour les autres gagnants (consultez le Règlement pour plus de détails).",
 	
 	"Q10"				: "A quel moment dois-je transmettre mes coordonnées bancaires / PayPal ?",
-	"A10"				: "Adillions vous demande de fournir vos coordonnées bancaires / PayPal uniquement lors du versement de vos gains",
+	"A10"				: "Adillions vous demande de fournir vos coordonnées bancaires / PayPal uniquement lors du versement de vos gains.",
 	
 	"Q11"				: "Est-ce que l'identité du / des vainqueur(s) est publiée sur la plateforme ?",
-	"A11"				: "Non. Adillions s'engage à respecter la confidentialité de vos données personnelles. En accord avec notre Règlement et notre Politique de Confidentialité, seuls votre prénom, la première lettre de votre nom de famille ainsi que votre lieu de résidence (ville / pays) seront potentiellement affichés sur la plateforme",
+	"A11"				: "Non. Adillions s'engage à respecter la confidentialité de vos données personnelles. En accord avec notre Règlement et notre Politique de Confidentialité, seuls votre prénom, la première lettre de votre nom de famille ainsi que votre lieu de résidence (ville / pays) seront potentiellement affichés sur la plateforme.",
 	
 	"Q12"				: "Où consulter les résultats des précédents tirages ?",
-	"A12"				: "Vous pouvez consulter les résultats de tous les précédents tirages sur le site www.adillions.com/results",
+	"A12"				: "Vous pouvez consulter les résultats de tous les précédents tirages sur le site www.adillions.com/results.",
 	
 	"Q13"				: "Comment la plateforme se prémunit-elle contre de potentielles fraudes / triches ?",
 	"A13"				: "Adillions s'engage à limiter les risques de triche et de fraude et à protéger l'intégrité des tirages grâce à plusieurs mesures et notamment :",
-	"A13a"				: "1. Adillions vérifie l'unicité des comptes",
-	"A13b"				: "2. Pour les gains supérieurs à 2000 euros, il est demandé de fournir un document attestant de l'identité exacte du gagnant",
-	"A13c"				: "3. Avant chaque tirage, la base de données des tickets est sécurisée",
-	"A13d"				: "4. Des logiciels anti-fraude ont été développés afin de préserver l'intégrité du jeu",
-	"A13e"				: "5. Etc.",
+	"A13a"				: "1. Adillions vérifie l'unicité des comptes;",
+	"A13b"				: "2. Pour les gains supérieurs à 2000 euros, il est demandé de fournir un document attestant de l'identité exacte du gagnant;",
+	"A13c"				: "3. Avant chaque tirage, la base de données des tickets est sécurisée;",
+	"A13d"				: "4. Des logiciels anti-fraude ont été développés afin de préserver l'intégrité du jeu.",
+ 	
  	
  	"##########################################" : "APP",
 	
