@@ -26,32 +26,37 @@
    App.init = function(sponsorRequestId){
 
       //------------------------------------------------------//
-      
-      $.get("https://freegeoip.net/json", function(response) {
-         App.Globals.set("country", response["country_code"]);
 
-         //------------------------------------------------------//
-         //   App.youtubeManager = new YoutubeManager();
-         LotteryManager.refreshNextLottery()
-         LotteryManager.getFinishedLotteries()
+      $.ajax({ 
+         type        : "GET",
+         dataType    : "jsonp",
+         url         : "https://freegeoip.net/json/", 
+         success     : function(response) {
+            App.Globals.set("country", response["country_code"]);
 
-         //------------------------------------------------------//
+            //------------------------------------------------------//
+            //   App.youtubeManager = new YoutubeManager();
+            LotteryManager.refreshNextLottery()
+            LotteryManager.getFinishedLotteries()
 
-         var failure    = function(){
-            App.loginAdillions()
+            //------------------------------------------------------//
+
+            var failure    = function(){
+               App.loginAdillions()
+            }
+
+            var finalize   = function(){  
+               App.Globals.APP_READY = true
+            }
+
+            Facebook.init({
+               finalizeInit            : finalize,
+               notConnectedCallback    : failure, 
+               sponsorRequestId        : sponsorRequestId
+            })
          }
-
-         var finalize   = function(){  
-            App.Globals.APP_READY = true
-         }
-
-         Facebook.init({
-            finalizeInit            : finalize,
-            notConnectedCallback    : failure, 
-            sponsorRequestId        : sponsorRequestId
-         })
       });
-      
+
    }
 
    //------------------------------------------------------//

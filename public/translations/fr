@@ -161,7 +161,7 @@
 	
 	"Purpose"			: "Utilisation des données personnelles",
 	"PurpIntro"			: "Les données à caractère personnel des utilisateurs sont exclusivement utilisées par Adillions pour les finalités suivantes :",
-	"Manage"			: "gérer le site internet et les applications mobiles ;",
+	"Manage_P"			: "gérer le site internet et les applications mobiles ;",
 	"Administer"		: "gérer et administrer la relation contractuelle entre Adillions et les utilisateurs ;",	
 	"TargetedAds"		: "proposer des publicités ciblées aux utilisateurs à partir des données collectées moyennant leur accord préalable à des opérations commerciales de la part la société Adillions et de partenaires commerciaux ;",
 	"ProvideProducts"	: "fournir les produits et services et améliorer constamment leur qualité ;",
