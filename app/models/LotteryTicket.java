@@ -36,16 +36,15 @@ public class LotteryTicket extends Model {
 
 	@Expose
 	private Integer status;
+
+	@Expose
+	private Long creationDate;
 	
 	// -----------------------------------------------------------------------------------------------//
 	
 	@ManyToOne
 	private Player player;
 
-	// -----------------------------------------------------------------------------------------------//
-	
-	private Long creationDate;
-	
 	// -----------------------------------------------------------------------------------------------//
 	// -- Queries
 

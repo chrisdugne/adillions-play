@@ -79,7 +79,7 @@ def main():
     maxPrice    = lottery[7]
     CPM         = lottery[8]
     charity     = lottery[9]
-    price       = min(maxPrice, max(minPrice, round(float(len(tickets))/1000*CPM, 2)))
+    price       = min(maxPrice, max(minPrice, round(float(len(tickets))/1000*CPM, 1)))
     nbTickets   = len(tickets)
       
     print date + " Lottery"
@@ -155,23 +155,28 @@ def main():
     #--------------------------------------------------------------------
 
     print("\nNb Winners :" + str(len(winningTickets)))
-    toPay = 0
+    toShare = 0
     
     for i in range(0,len(rangs)):
         if rangs[i].winners > 0:
-            rangs[i].share =  round((rangs[i].percentage * price)/rangs[i].winners, 2)
-            toPay = toPay + rangs[i].percentage * price
+            rangs[i].share =  round((rangs[i].percentage * price)/rangs[i].winners, 1)
+            toShare = toShare + rangs[i].percentage * price
         else:
             rangs[i].share = 0 
     
     #---------------------------------
     
-    finalPrice = round(toPay, 2)
+    finalPrice = round(toShare, 1)
+    print("To share :" , finalPrice)
+    toPay = 0
     
-    print("To pay :" , finalPrice)
     for i in range(0,len(rangs)):
+        toPay = toPay + rangs[i].share * rangs[i].winners
         print("Winners Rang "+str(i+1)+" :" + str(rangs[i].winners), " share : " , str(rangs[i].share))
 
+    print("To pay :" , round(toPay, 1))
+    print("Nobody :" , round(finalPrice - round(toPay, 1), 1))
+    
     #---------------------------------
 
     requireRecord = raw_input("Record data ? (y/N) \n>") == 'y'
@@ -200,7 +205,7 @@ def recordToDB(database, lotteryUID, winningTickets, rangs, finalPrice):
         
         print "Name : ", ticket.player[4], "numbers:", ticket.numbers, "rang:", ticket.rang, "share :", rangs[ticket.rang-1].share, "nbTickets : " , ticket.nbTicketsPlayed 
         
-        database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"' WHERE uid='"+ticket.uid+"';") 
+        database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"', status='1' WHERE uid='"+ticket.uid+"';") 
 
     pricesJSON = "["
     for rang in rangs :
