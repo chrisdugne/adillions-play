@@ -166,23 +166,24 @@ def main():
     
     #---------------------------------
     
-    finalPrice = round(toShare, 1)
-    print("To share :" , finalPrice)
+    toShare = round(toShare, 1)
+    print("To share :" , toShare)
     toPay = 0
     
     for i in range(0,len(rangs)):
         toPay = toPay + rangs[i].share * rangs[i].winners
-        print("Winners Rang "+str(i+1)+" :" + str(rangs[i].winners), " share : " , str(rangs[i].share))
+        print("Winners Rang "+str(i+1)+ " :   " + str(rangs[i].winners), "   | share : " , str(rangs[i].share))
 
-    print("To pay :" , round(toPay, 1))
-    print("Nobody :" , round(finalPrice - round(toPay, 1), 1))
+    toPay = round(toPay, 1)
+    print("To pay :" , toPay)
+    print("Nobody :" , round(toShare - toPay, 1))
     
     #---------------------------------
 
     requireRecord = raw_input("Record data ? (y/N) \n>") == 'y'
        
     if requireRecord:
-        recordToDB(database, lotteryUID, winningTickets, rangs, finalPrice)
+        recordToDB(database, lotteryUID, winningTickets, rangs, toPay)
         
     #--------------------------------------------------------------------
     
