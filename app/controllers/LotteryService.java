@@ -18,8 +18,9 @@ public class LotteryService extends Application
 		JsonNode params 			= request().body().asJson();
 		String numbers 			= params.get("numbers").toString();
 		Boolean isExtraTicket 	= params.get("extraTicket").asBoolean();
+		Long creationTime 		= params.get("creationTime").asLong();
 
-		Player player = LotteryManager.storeLotteryTicket(numbers, isExtraTicket);
+		Player player = LotteryManager.storeLotteryTicket(numbers, isExtraTicket, creationTime);
 
 		if(player != null){
 			return ok(gson.toJson(player));

@@ -115,9 +115,10 @@ public class LotteryManager {
 	 * @param numbers
 	 * @param isExtraTicket utilise uniquement pour check de triche de joueur (multi connection) 
 	 * 	pour le decompte on utilise la donnee server player.getExtraTickets(), au cas ou l'appel serait une triche de developpeur (set isExtraTicket = false) 
+	 * @param creationTime 
 	 * @return
 	 */
-	public static Player storeLotteryTicket(String numbers, Boolean isExtraTicket){
+	public static Player storeLotteryTicket(String numbers, Boolean isExtraTicket, Long creationTime){
 
 		Player player = Application.player();
 		Lottery lottery = LotteryManager.getNextLottery();
@@ -233,7 +234,7 @@ public class LotteryManager {
 		lotteryTicket.setNumbers(numbers);
 		lotteryTicket.setLottery(lottery);
 		lotteryTicket.setPlayer(player);
-		lotteryTicket.setCreationDate(new Date().getTime());
+		lotteryTicket.setCreationDate(creationTime);
 		
 		if(isExtraTicket)
 			lotteryTicket.setType(LotteryTicket.INSTANT_TICKET);
