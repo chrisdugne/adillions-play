@@ -18,6 +18,9 @@ public class LotteryTicket extends Model {
 	public static final int payed 	= 3;
 	public static final int gift 		= 4;
 
+	public static final int CLASSIC_TICKET 		= 1;
+	public static final int INSTANT_TICKET 		= 2;
+
 	// -----------------------------------------------------------------------------------------------//
 
 	@Id
@@ -36,6 +39,9 @@ public class LotteryTicket extends Model {
 
 	@Expose
 	private Integer status;
+
+	@Expose
+	private Integer type;
 
 	@Expose
 	private Long creationDate;
@@ -66,6 +72,14 @@ public class LotteryTicket extends Model {
 
 	public void setLottery(Lottery lottery) {
 		this.lottery = lottery;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
 
 	public String getNumbers() {

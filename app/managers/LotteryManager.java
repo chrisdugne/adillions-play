@@ -235,6 +235,11 @@ public class LotteryManager {
 		lotteryTicket.setPlayer(player);
 		lotteryTicket.setCreationDate(new Date().getTime());
 		
+		if(isExtraTicket)
+			lotteryTicket.setType(LotteryTicket.INSTANT_TICKET);
+		else
+			lotteryTicket.setType(LotteryTicket.CLASSIC_TICKET);
+		
 		
 		lotteryTicket.save();
 		player.save();

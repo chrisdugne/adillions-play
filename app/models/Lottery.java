@@ -58,6 +58,9 @@ public class Lottery extends Model {
 	@Expose
 	private Float rateUSDtoEUR; 		// 1.34
 
+	@Expose
+	private int ticketTimer; 		// min
+
 	// -----------------------------------------------------------------------------------------------//
 
 	@Transient
@@ -198,6 +201,14 @@ public class Lottery extends Model {
 
 	public void setDate(Long date) {
 		this.date = date;
+	}
+
+	public int getTicketTimer() {
+		return ticketTimer;
+	}
+
+	public void setTicketTimer(int ticketTimer) {
+		this.ticketTimer = ticketTimer;
 	}
 
 	public Float getRateUSDtoEUR() {
