@@ -44,7 +44,7 @@ def main():
     rangs.append(Rang(2, 0, 0, 0.20))
     rangs.append(Rang(3, 0, 0, 0.15))
     rangs.append(Rang(4, 0, 0, 0.10))
-    rangs.append(Rang(5, 0, 0, 0.5))
+    rangs.append(Rang(5, 0, 0, 0.05))
     rangs.append(Rang(6, 0, 0, 0.10))
 
     #--------------------------------------------------------------------
