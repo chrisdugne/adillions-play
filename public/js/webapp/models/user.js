@@ -52,6 +52,8 @@
 	   themeLiked             : false,
 	   loggedIn               : false,
 
+	   timer                  : 0,
+
 	   //---------------------------//
 
 	   ticketsToPlay: function() {

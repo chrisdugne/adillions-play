@@ -47,6 +47,30 @@ Utils.dateToString = function(date)
    + Utils.zeroPad(date.getDate(), 2);
 }
 
+
+Utils.getHoursMinSecMillis = function (millis){
+   
+   var hours    = Math.floor(millis/(60*60*1000))
+   var min      = Math.floor((millis - hours * 60 * 60 * 1000) / (60 * 1000))
+   var sec      = Math.floor((millis - hours * 60 * 60 * 1000 - min * 60 * 1000)/1000)
+   var ms       = Math.floor(millis - hours * 60 * 60 * 1000 - min * 60 * 1000 - sec * 1000)
+   
+   if(hours < 10) 
+      hours = "0" + hours
+
+   if(min < 10) 
+      min = "0" + min
+
+   if(sec < 10) 
+      sec = "0" + sec
+
+   if(ms < 10) 
+      ms = "00" + ms
+   else if(ms < 100) 
+      ms = "0" + ms
+
+   return [hours, min, sec, ms]
+}
 //----------------------------------------------------------------------------------------//
 
 Utils.alert = function (area, type, title, message) {

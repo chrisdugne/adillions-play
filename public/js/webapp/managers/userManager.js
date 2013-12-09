@@ -92,7 +92,7 @@ UserManager.sortLotteryTickets = function(next){
       ticket.numbers = $.parseJSON(ticket.numbers)
       ticket.lottery.theme = $.parseJSON(ticket.lottery.theme)
       ticket.lottery.result = $.parseJSON(ticket.lottery.result)
-      
+
       if(!currentLottery || (currentLottery.uid != ticket.lottery.uid)){
          var lottery = {}
          lottery.uid       = ticket.lottery.uid
@@ -133,20 +133,20 @@ UserManager.setTotalGains = function(){
 //-------------------------------------------//
 
 UserManager.refreshFanStatus = function(next){
-   
+
    var totalBonusTickets = 0
 
    if(App.user.get("hasFacebookAccount")){
       totalBonusTickets += App.Globals.FACEBOOK_CONNECTION_TICKETS;
    }
-   
+
    if(App.user.get("hasTwitterAccount")){
       totalBonusTickets += App.Globals.TWITTER_CONNECTION_TICKETS;
    }
 
    var wasFacebookFan = App.user.isFacebookFan
    console.log("wasFacebookFan : " + wasFacebookFan)
-   
+
    Facebook.isFacebookFan(function(){
 
       //---------------------------------------------------------
@@ -164,10 +164,10 @@ UserManager.refreshFanStatus = function(next){
       else if(wasFacebookFan){
          App.message(App.translations.messages.TwoLostBonusTickets)
       }
-      
+
 
       App.user.set("totalBonusTickets", totalBonusTickets);
-      
+
       //---------------------------------------------------------
 
       UserManager.updateFanStatus(next);
@@ -248,6 +248,43 @@ UserManager.convertPointsToTickets = function() {
 }
 
 //-------------------------------------------------------------------------------------//
+
+
+UserManager.hasTicketsToPlay = function(){
+   return App.user.get("ticketsToPlay") > 0;
+}
+
+UserManager.checkTicketTiming = function(){
+
+   var lastTime = 0
+   var now = new Date().getTime()
+
+   for(var i = 0; i< App.user.lotteryTickets.length; i++){
+      var ticket = App.user.lotteryTickets[i]
+      if((App.user.currentLotteryUID == ticket.lottery.uid) && (ticket.creationDate > lastTime) && (ticket.type == 1)) {
+         lastTime = ticket.creationDate
+      }
+   }
+
+   var spentMillis = now - lastTime
+   
+   //var h,m,s,ms = utils.getHoursMinSecMillis(spentMillis)
+
+   if((spentMillis >= App.nextLottery.ticketTimer * 60 * 1000) || App.user.extraTickets > 0) 
+      return true;
+   else{
+
+      LotteryManager.startTimer(lastTime)
+         
+      $("#timerTicketWindow").reveal({
+         animation: 'fade',
+         animationspeed: 100, 
+      });   
+   }
+}
+
+
+//-------------------------------------------------------------------------------------//
 //Twitter TESTS
 //-------------------------------------------------------------------------------------//
 
@@ -257,7 +294,7 @@ UserManager.signinWithTwitter = function(){
       type: "POST",  
       url: "/signinWithTwitter"
    });
-   
+
 }
 
 
@@ -271,27 +308,27 @@ UserManager.receivedPlayer = function(player, next)
    console.log("receivedPlayer", player)
 
    App.user.set("loggedIn", true)   
-   
+
    var userName = ""
-   if(player.userName != undefined){
-      userName = player.userName
-   }
-   else{
-      userName = player.fistName // --> arrivee de FB
-   }
-   
+      if(player.userName != undefined){
+         userName = player.userName
+      }
+      else{
+         userName = player.fistName // --> arrivee de FB
+      }
+
    App.message("Welcome back " + userName + " !", true)
 
    UserManager.updatedPlayer(player, function(){
-      
+
       if(Facebook && Facebook.finalizeInit)
          Facebook.finalizeInit();
-      
+
       UserManager.checkUserCurrentLottery()
-      
+
       console.log(App.user)
       next()
-      
+
    })
 
 }
@@ -334,7 +371,7 @@ UserManager.updateFanStatus = function(next){
 
    App.user.facebookFan = App.user.isFacebookFan
    App.user.twitterFan = App.user.isTwitterFan
-   
+
    var params = new Object();
    params["user"] = App.user
 
@@ -351,7 +388,7 @@ UserManager.updateFanStatus = function(next){
             next()
       }
    });
-   
+
 }
 
 //-------------------------------------------//
@@ -376,7 +413,7 @@ UserManager.getPlayer = function()
       success: function (player, textStatus, jqXHR)
       {
          UserManager.receivedPlayer(player, function(){
-//            App.get('router').transitionTo('game.gameHome');
+//          App.get('router').transitionTo('game.gameHome');
          })
       }
    });
@@ -404,7 +441,7 @@ UserManager.getPlayerByFacebookId = function()
          console.log(result)
          App.authToken = result.authToken
          UserManager.receivedPlayer(result.player, function(){
-//            App.get('router').transitionTo('game.gameHome');
+//          App.get('router').transitionTo('game.gameHome');
          })
       },
       error:function(){
@@ -417,7 +454,7 @@ UserManager.getPlayerByFacebookId = function()
 
 
 //==============================================================================================================//
-// Sign up/ Login Workflow
+//Sign up/ Login Workflow
 //==============================================================================================================//
 
 UserManager.openSigninFB = function(){
@@ -440,7 +477,7 @@ UserManager.openSigninFB = function(){
 
    console.log("GRABBED ?  " + App.Globals.sponsorCodeToUse)
    if(App.Globals.sponsorCodeToUse != undefined){
-         $("#fbForm_referrerId").val(App.Globals.sponsorCodeToUse)
+      $("#fbForm_referrerId").val(App.Globals.sponsorCodeToUse)
    }
 }
 
@@ -482,7 +519,7 @@ UserManager.signin = function()
    App.user.lastName    = $("#lastName").val() 
    App.user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
    App.user.referrerId  = $("#referrerId").val() 
-   
+
    console.log("signin ", App.user.lang)
 
    delete App.user.facebookId
@@ -658,7 +695,7 @@ UserManager.mobileSignin = function(callback)
    user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
    user.referrerId  = $("#referrerId").val() 
    user.lang        = translator.lang; 
-   
+
    var passwordHash  = CryptoJS.SHA512($("#password").val());
    var password512   = passwordHash.toString(CryptoJS.enc.Hex)
    user.password = password512

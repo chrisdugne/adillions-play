@@ -180,17 +180,18 @@
       // actions
 		
 		requireNewTicket        : function() {
-		   
-	      if(LotteryManager.isGameAvailable()){
-	         GameController.startTicket()
-	      }
-	      else{
-            $("#noMoreTicketsWindow").reveal({
-               animation: 'fade',
-               animationspeed: 100, 
-            });         
-	      }
-		   
+
+		   if(UserManager.hasTicketsToPlay()){
+		      if(UserManager.checkTicketTiming()) {
+		         GameController.startTicket()
+		      }
+		   }
+		   else{
+		      $("#noMoreTicketsWindow").reveal({
+		         animation: 'fade',
+		         animationspeed: 100, 
+		      });         
+		   }
 		},		
       
       openGameHome            : Ember.Route.transitionTo('game.gameHome'),		

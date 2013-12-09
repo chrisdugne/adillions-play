@@ -264,6 +264,9 @@
     "MaxTickets1"		: "Vous avez atteint le nombre maximal de tickets pour ce tirage.",
     "MaxTickets2"		: "Vous pouvez gagner des tickets bonus en aimant notre page Facebook ou en nous suivant sur Twitter.",
     
+    "TimerTicket1"		: "Un ticket sera disponible dans :",
+    "TimerTicket2"		: "Gagnez des Tickets Instantanés en invitant vos amis, en partageant votre activité, en likant le thème, etc.",
+    
     "FBUsername"		: "Adillions utilise vos identifiants Facebook sur la plateforme",
     "FBImportant"		: "Attention :",
 	"FBRealName"		: "Il est important de nous fournir vos vrais noms et prénoms",

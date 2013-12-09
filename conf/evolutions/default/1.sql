@@ -19,6 +19,7 @@ create table lottery (
   final_price               float,
   prizes                    varchar(255),
   rate_usdto_eur            float,
+  ticket_timer              integer,
   last_update               timestamp not null,
   constraint pk_lottery primary key (uid))
 ;
@@ -29,8 +30,9 @@ create table lottery_ticket (
   lottery_uid               varchar(255),
   price                     float,
   status                    integer,
-  player_uid                varchar(255),
+  type                      integer,
   creation_date             bigint,
+  player_uid                varchar(255),
   constraint pk_lottery_ticket primary key (uid))
 ;
 

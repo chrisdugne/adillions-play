@@ -261,6 +261,9 @@
     "MaxTickets1"		: "You have reached the maximum number of tickets for this draw.",
     "MaxTickets2"		: "You can gain bonus tickets by liking our Facebook page or following us on Twitter.",
     
+    "TimerTicket1"		: "You can fill out a new ticket in :",
+    "TimerTicket2"		: "Get Instant Tickets by inviting your friends, sharing your activity, liking our theme, etc.",
+    
     "FBUsername"		: "Adillions uses your Facebook username on the platform.",
     "FBImportant"		: "Important:",
 	"FBRealName"		: "You must give us your real full name",

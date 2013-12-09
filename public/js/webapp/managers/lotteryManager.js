@@ -6,12 +6,6 @@ this.LotteryManager = {};
 
 //-------------------------------------------//
 
-LotteryManager.isGameAvailable = function(){
-   return App.user.get("ticketsToPlay") > 0;
-}
-
-//-------------------------------------------//
-
 LotteryManager.refreshNextLottery = function()
 {
    App.wait()
@@ -35,6 +29,7 @@ LotteryManager.refreshNextLottery = function()
          App.nextLottery.set("minPrice",     nextLottery.minPrice)   
          App.nextLottery.set("maxPrice",     nextLottery.maxPrice)   
          App.nextLottery.set("cpm",          nextLottery.cpm)   
+         App.nextLottery.set("ticketTimer",  nextLottery.ticketTimer)   
          App.nextLottery.set("theme",        $.parseJSON(nextLottery.theme))  
          App.nextLottery.set("prizes",       $.parseJSON(nextLottery.prizes))  
          App.nextLottery.set("result",       $.parseJSON(nextLottery.result))
@@ -49,6 +44,7 @@ LotteryManager.refreshNextLottery = function()
          App.nextDrawing.set("minPrice",     nextDrawing.minPrice)   
          App.nextDrawing.set("maxPrice",     nextDrawing.maxPrice)   
          App.nextDrawing.set("cpm",          nextDrawing.cpm)   
+         App.nextDrawing.set("ticketTimer",  nextDrawing.ticketTimer)   
          App.nextDrawing.set("theme",        $.parseJSON(nextDrawing.theme))  
          App.nextDrawing.set("prizes",       $.parseJSON(nextDrawing.prizes))  
          App.nextDrawing.set("result",       $.parseJSON(nextDrawing.result))
@@ -87,20 +83,57 @@ LotteryManager.getFinishedLotteries = function()
       }
    });
    
+
+}
+
+//-------------------------------------------//
+
+LotteryManager.startTimer = function(lastTime){
+   LotteryManager.refreshTimer(lastTime)
+}
+
+LotteryManager.refreshTimer = function(lastTime){
+
+   var now     = new Date().getTime()
+   var split   = Utils.getHoursMinSecMillis(now - lastTime)
    
+   if( split[1] >= App.nextLottery.ticketTimer){
+      alert("close")
+   }  
+   else{
+
+      var m = App.nextLottery.ticketTimer - 1 - split[1]
+      var s = 59 - split[2]
+
+      if(m < 10) 
+         m = "0"+m ;
+      if(s < 10) 
+         s = "0"+s ;
+
+      App.user.set("timer", m + " : " + s)
+
+      clearTimeout(App.ticketTimer);
+      App.ticketTimer = setTimeout(function(){
+         LotteryManager.refreshTimer(lastTime)
+      }, 1000)
+   }
+
 }
 
 //-------------------------------------------//
 
 LotteryManager.storeLotteryTicket = function(){
-   
+
    var numbers = GameManager.currentSelection
    var extraTicket = App.user.extraTickets > 0
+   var now = new Date().getTime()
+
    App.wait()
 
    var params = new Object();
-   params["numbers"] = numbers
-   params["extraTicket"] = extraTicket
+   params["numbers"]          = numbers
+   params["creationTime"]     = now
+   params["extraTicket"]      = extraTicket
 
    $.ajax({
       type: "POST",  
