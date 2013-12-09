@@ -31,13 +31,17 @@
 
 	GameController.startTicket = function()	{
 
+	   var next = function(){
+         App.get('router').transitionTo('game.fillLotteryTicket')
+      }
+	   
 	   if(App.user.extraTickets > 0){
 	      App.message(App.translations.messages.ExtraTicket + "!")
+	      next()
 	   }
-
-	   GameController.requireVideo( function(){
-	      App.get('router').transitionTo('game.fillLotteryTicket')
-	   }) 
+	   else{
+	      GameController.requireVideo(next) 
+	   }
 
 	}
 	
