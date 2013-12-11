@@ -25,7 +25,7 @@ Facebook.init = function(options)
 {
    //---------------------------------------------------------------
 
-// this.prod = 0
+//   this.prod = 0
    this.prod = 1  
 
    //---------------------------------------------------------------
@@ -121,8 +121,6 @@ Facebook.storePermissions = function(responseConnection)
    Facebook.facebookId     = responseConnection.authResponse.userID;
    Facebook.accessToken    = responseConnection.authResponse.accessToken;
 
-   console.log(Facebook.accessToken)
-
    $.cookie('facebookId', Facebook.facebookId);
 
    FB.api('/me/permissions', function (response) {
@@ -178,14 +176,7 @@ Facebook.defaultOpenApp = function()
 
 Facebook.getSponsor = function(next){
 
-
-   console.log("getSponsor")
-   console.log(Facebook.accessToken)
-   console.log(this.accessToken)
-
    var url = "https://graph.facebook.com/" + this.sponsorRequestId + "?access_token="+ this.accessToken;
-
-   console.log(url)
 
    if(this.sponsorRequestId){
       $.ajax({  
@@ -235,7 +226,7 @@ Facebook.getMe = function(next)
    console.log("getMe", this.accessToken)
    $.ajax({  
       type: "GET",  
-      url: "https://graph.facebook.com/me?fields=name,first_name,last_name,picture,locale,birthday,email&access_token="+ this.accessToken,
+      url: "https://graph.facebook.com/me?fields=name,first_name,last_name,picture.type(large),locale,birthday,email&access_token="+ this.accessToken,
       dataType: "jsonp",
       success: function (data, textStatus, jqXHR)
       {
@@ -310,7 +301,6 @@ Facebook.isFacebookFan = function(next){
          dataType: "jsonp",
          success: function (response)
          {
-            console.log("isFacebookFan ? " , response)
             if(!response.error && response.data[0]){
                App.user.set("isFacebookFan", true);
             }
@@ -351,13 +341,11 @@ Facebook.showLikeThemeButton = function(){
 
 Facebook.checkThemeLiked = function(){
 
-   console.log("=========> checkThemeLiked")
    if(this.accessToken){
 
       var theme = App.nextLottery.theme
       var url = "https://graph.facebook.com/me/"+this.FACEBOOK_APP_NAMESPACE+":enjoy?access_token=" + this.accessToken;
       App.wait()
-      console.log(url)
       
       $.ajax({  
          type: "GET",  
@@ -367,7 +355,6 @@ Facebook.checkThemeLiked = function(){
          {
             App.free()
             var liked = false
-            console.log("=========> response", response)
 
             if(response.data.length > 0){
                for(var i = 1; i < response.data.length; i++){
@@ -382,11 +369,9 @@ Facebook.checkThemeLiked = function(){
             }
 
             if(!liked){
-               console.log("theme Not liked")
                App.user.set("themeLiked", false);
             }
             else{
-               console.log("themeAlreadyLiked")
                App.user.set("themeLiked", true);
             }
          }
@@ -411,14 +396,10 @@ Facebook.likeTheme = function(){
    + '&locale='        + locale
 
    themeURL = encodeURIComponent(themeURL)
-   console.log(themeURL)
 
    var url = "https://graph.facebook.com/me/"+this.FACEBOOK_APP_NAMESPACE+":enjoy?method=post"
    +  "&theme=" + themeURL
    +  "&access_token=" + this.accessToken;
-
-   console.log("-----");
-   console.log(themeURL);
 
    $.ajax({  
       type: "GET",  
@@ -427,7 +408,6 @@ Facebook.likeTheme = function(){
       success: function (response)
       {
          App.free();
-         console.log(response)
          
          if(response.id){
             App.message("+ " + App.Globals.NB_POINTS_PER_THEME_LIKED + " Pts !");

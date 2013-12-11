@@ -317,7 +317,7 @@ UserManager.receivedPlayer = function(player, next)
          userName = player.fistName // --> arrivee de FB
       }
 
-   App.message("Welcome back " + userName + " !", true)
+   App.message("Welcome " + userName + " !", true)
 
    UserManager.updatedPlayer(player, function(){
 
@@ -414,6 +414,7 @@ UserManager.getPlayer = function()
       {
          UserManager.receivedPlayer(player, function(){
 //          App.get('router').transitionTo('game.gameHome');
+            App.user.set("picture", "/assets/images/hud/dummy.profile.png")
          })
       }
    });
@@ -442,6 +443,9 @@ UserManager.getPlayerByFacebookId = function()
          App.authToken = result.authToken
          UserManager.receivedPlayer(result.player, function(){
 //          App.get('router').transitionTo('game.gameHome');
+
+            console.log("---> set picture", Facebook.data)
+            App.user.set("picture", Facebook.data.picture.data.url)   
          })
       },
       error:function(){

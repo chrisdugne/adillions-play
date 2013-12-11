@@ -56,6 +56,10 @@
 
 	   //---------------------------//
 
+	   hasInstantTicket: function() {
+	      return this.get('extraTickets') > 0;
+	   }.property('extraTickets'),
+	   
 	   ticketsToPlay: function() {
 	      return this.get('availableTickets') + this.get('totalBonusTickets') - this.get('playedBonusTickets');
 	   }.property('availableTickets', 'totalBonusTickets', 'playedBonusTickets'),

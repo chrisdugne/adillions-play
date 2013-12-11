@@ -512,6 +512,10 @@
 
 /*---------------------------------------------*/
 
+#winningsImage {
+	width: 105px;
+}
+
 #statusImage {
 	width: 75px;
 }

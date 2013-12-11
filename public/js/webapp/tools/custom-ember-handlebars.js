@@ -3,6 +3,12 @@
 //Website
 //---------------------------------------------------------------------------------------//
 
+Ember.Handlebars.registerBoundHelper('image', function(url) {
+   console.log("--> image ", url)
+   var img = "<img src='"+url+"'></img>"
+   return new Handlebars.SafeString(img)
+});
+
 Ember.Handlebars.registerBoundHelper('themeWeb', function(theme) {
    var img = "<img id=\"themeWeb\" src='"+theme.webImage+"'></img>"
    return new Handlebars.SafeString(img)
@@ -16,9 +22,26 @@ Ember.Handlebars.registerBoundHelper('hrefEmail', function() {
 Ember.Handlebars.registerBoundHelper('charityName', function(level) {
    
    if(!level)
-      level = 0
+      level = 1
       
-   return App.translations.messages.Charities[level]
+      return App.translations.messages.Charities[level-1]
+});
+
+Ember.Handlebars.registerBoundHelper('charityLevel', function(level) {
+   
+   if(!level)
+      level = 1;
+   
+   var html = '<div class="span2 offset1"><img class="mobileIcon" src="/assets/images/icons/CharitiesON.png"></img></div>'
+   for(var i = 1; i < level; i++){
+      html += '<div class="span2"><img class="mobileIcon" src="/assets/images/icons/CharitiesON.png"></img></div>'
+   }
+
+   for(var i = level; i < 5; i++){
+      html += '<div class="span2"><img class="mobileIcon" src="/assets/images/icons/CharitiesOFF.png"></img></div>'
+   }
+   
+   return new Handlebars.SafeString(html)
 });
 
 //---------------------------------------------------------------------------------------//
@@ -106,7 +129,7 @@ Ember.Handlebars.registerBoundHelper('newticket', function(numbers) {
    //-------------------------------------------------------//
    // theme
    
-   var luckyball   = "<div class='span2'><img src='"+App.nextLottery.theme.icons[numbers.length-1].image+"' class='smallThemeBall'></img>"
+   var luckyball   = "<div class='span2'><img src='"+App.nextLottery.theme.icons[numbers[numbers.length-1] - 1].image+"' class='smallThemeBall'></img>"
    var mask   = "<img src='/assets/images/balls/ball.mask.png' class='smallThemeBall'></img></div>"
    
    div += luckyball
@@ -177,7 +200,7 @@ Ember.Handlebars.registerBoundHelper('oldticket', function(numbers, options) {
       imageClass = "smallThemeBall";
    }
    
-   var luckyball     = "<div class='span2'><img src='"+theme.icons[numbers.length-1].image+"' class='"+imageClass+"'></img>"
+   var luckyball     = "<div class='span2'><img src='"+theme.icons[numbers[numbers.length-1] - 1].image+"' class='"+imageClass+"'></img>"
    var mask          = "<img src='/assets/images/balls/ball.mask.png' class='"+imageClass+"'></img>";
 
    if(!won)

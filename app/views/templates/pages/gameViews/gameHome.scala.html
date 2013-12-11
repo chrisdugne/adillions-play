@@ -37,7 +37,11 @@
 	</div>
 	
 	<div id="fillOutContainer" class="row-fluid free">
+		{{#if App.user.hasInstantTicket}}
+		<div {{action requireNewTicket}}>{{langImage App.user.lang png='fillout.instant.ticket.png' id='fillOutTicket'}}</div>
+		{{else}}
 		<div {{action requireNewTicket}}>{{langImage App.user.lang png='filloutticket.button.png' id='fillOutTicket'}}</div>
+		{{/if}}
 	</div>
 	
 	<div id="themeImageContainer" class="row-fluid">

@@ -289,6 +289,7 @@
     "Gain"				: "Gain",
     "Winners"			: "Winners",
     "Charity"			: "Charity",
+    "CharityProfile"	: "Charity profile",
 
     "NbWinningTickets"	: "Winning tickets",
     "PrizePerWinningTicket"	: "Prize / Winning ticket",
@@ -296,8 +297,8 @@
     "EarnPointsGetTickets"	: "Gagnez des points et obtenez des Tickets Instantanés",
     "EarnPointsIncreaseJackpot"	: "Earn points and increase the jackpot",
     "GetAChance"		: "Free, fun and easy ! Get a chance to win the jackpot !",
-    
-    "Charities"			: ["Starter","Level2","Level3","Level4","Level5","Level6","Level7"],
+	
+    "Charities"			: ["Boy Scout","Contributor","Good Samaritan","Donor","Benefactor","Major Donor","Patron","Philanthropist"],
 
     "TotalPoints"		: "Total points",
     "TotalGains"		: "Total gains",

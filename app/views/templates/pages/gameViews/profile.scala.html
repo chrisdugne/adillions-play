@@ -1,6 +1,21 @@
 
 <div class="row-fluid gameView">
 		
+	<!----------------------  Picture ------------------------------>
+		
+	<div class="row-fluid marginbottom2">
+		<div class="span6 offset3 lotteryTickets">
+			<div class="row-fluid">
+				<div class="span4" id="pictureImage">
+					{{image App.user.picture}}
+				</div>
+				<div class="span8 margintop alignRight">
+					{{App.user.userName}}
+				</div>
+			</div>
+		</div>
+	</div>
+		
 	<!----------------------  Status ------------------------------>
 		
 	<div class="row-fluid marginbottom2">
@@ -8,6 +23,72 @@
 			<div class="row-fluid">
 				<div class="span10" id="statusImage">
 					{{langImage App.user.lang png='status.png' id='statusImage'}}
+				</div>
+			</div>
+
+			<!----------------------  Line 1 ------------------------------>
+
+			<div class="row-fluid marginbottom2">
+			
+				<!----------------------  Total Points ------------------------------>
+				
+				<div class="span3 offset1 alignLeft">
+					<div class="row-fluid marginbottom">
+						{{App.translations.messages.TotalPoints}} :
+					</div>
+					<div class="row-fluid">
+						{{App.user.totalPoints}} Pts
+					</div>
+				</div>
+				
+				<!----------------------  BonusTickets ------------------------------>
+				
+				<div class="span3 offset4 alignRight">
+					<div class="row-fluid marginbottom">
+						{{App.translations.messages.BonusTickets}} :
+					</div>
+					<div class="row-fluid">
+						<div class="span8 offset1 priceTicket">
+						{{App.user.totalBonusTickets}}
+						</div>
+						<div class="span3">
+							<img class="mobileIcon" src='@routes.Assets.at("images/icons/PictoBonus.png")'></img>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!----------------------  Line 2 ------------------------------>
+
+			<div class="row-fluid">
+				
+				<!----------------------  Charity ------------------------------>
+				
+				<div class="span6 offset3">
+					<div class="row-fluid marginbottom">
+						{{App.translations.messages.CharityProfile}} :
+					</div>
+					<div class="row-fluid">
+						{{charityLevel App.user.charity}}
+					</div>
+					<div class="row-fluid upper2">
+						<div class="span12 upper2">
+							{{charityName App.user.charity}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+		
+	<!----------------------  Status ------------------------------>
+		
+	<div class="row-fluid marginbottom2">
+		<div class="span6 offset3 lotteryTickets">
+			<div class="row-fluid">
+				<div class="span10" id="winningsImage">
+					{{langImage App.user.lang png='Gain.png'}}
 				</div>
 			</div>
 
