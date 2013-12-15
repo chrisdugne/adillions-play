@@ -77,7 +77,7 @@
 	   }.property('balance'),
 
 	   waitForPaiement: function() {
-	      return this.get('pendingWinnings') >= 0;
+	      return this.get('pendingWinnings') > 0;
 	   }.property('pendingWinnings'),
 
 	   //---------------------------//
