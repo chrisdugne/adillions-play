@@ -220,10 +220,32 @@
       },
 
       openInvite         : function(){
+         App.Router.closePopup()
          $("#inviteFriendsWindow").reveal({
             animation: 'fade',
             animationspeed: 100, 
          });
+      },
+      
+      openCashout         : function(){
+         App.Router.closePopup()
+         $("#cashoutWindow").reveal({
+            animation: 'fade',
+            animationspeed: 100, 
+         });
+      },
+      
+      openConfirmCashout         : function(){
+         App.Router.closePopup()
+         $("#confirmCashoutWindow").reveal({
+            animation: 'fade',
+            animationspeed: 100, 
+         });
+      },
+      
+      confirmCashout         : function(){
+         App.Router.closePopup()
+         UserManager.cashout();
       },
 
       

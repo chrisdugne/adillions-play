@@ -439,18 +439,36 @@ Utils.isEuroCountry = function(country)
 }
 
 
-Utils.displayPrice = function(euros, country){
-   
-   if(isNaN(euros))
-      euros = 0
-   
+Utils.displayPrice = function(price, country){
+
+   if(!price)
+      price = 0;
+
    if(Utils.isEuroCountry(country)){
-      return euros + " €";
+      return price + " €";
    }
    else{
-      return "$ " + Math.round(euros*1.4);
+      return "US$ " + price;
    }
 }
+
+Utils.countryPrice = function(euros, country, rateUSDtoEUR){
+   
+   if(!euros)
+      euros = 0;
+   
+   if(Utils.isEuroCountry(country)){
+      return euros;
+   }
+   else{
+      return Math.round(euros*rateUSDtoEUR);
+   }
+}
+
+Utils.convertAndDisplayPrice = function(price, country, rateUSDtoEUR){
+   return Utils.displayPrice(Utils.countryPrice(price, country, rateUSDtoEUR), country)
+}
+
 
 //----------------------------------------------------------------------------------------//
 

@@ -31,7 +31,7 @@
 	"ViralInvite"		: "Invite your friends to",
 	"ViralIncrease"		: "increase the jackpot",
 	
-	"Multi"				: "MULTI-PLATEFORM",
+	"Multi"				: "MULTIPLATEFORM",
 	"MultiRange"		: "Play on a whole range of platforms",
 	
 	"OnAdillionsTitle"	: "Now on", 
@@ -297,12 +297,18 @@
     "EarnPointsGetTickets"	: "Gagnez des points et obtenez des Tickets Instantanés",
     "EarnPointsIncreaseJackpot"	: "Earn points and increase the jackpot",
     "GetAChance"		: "Free, fun and easy ! Get a chance to win the jackpot !",
+    "CashoutText"		: "You can cash out when your winnings have reached a minimum total balance of ",
+ 	"CashoutSuccess"	: "You will receive your winnings within 4 to 8 weeks. We will contact you by email in the coming days to proceed with the payment", 	
+    "Congratulations"	: "Congratulations !",
+    
 	
     "Charities"			: ["Boy Scout","Contributor","Good Samaritan","Donor","Benefactor","Major Donor","Patron","Philanthropist"],
 
     "TotalPoints"		: "Total points",
-    "TotalGains"		: "Total gains",
-
+    "TotalWinnings"		: "Total winnings",
+    "Payed"				: "Payed",
+    "Balance"			: "Balance",
+    
     "HasPostOnFacebook"	: "You have already shared on FB for this draw",
     "HasTweet"			: "You have already tweet for this draw",
     "TwoMoreBonusTickets" : "You have won 2 more Bonus Tickets !",

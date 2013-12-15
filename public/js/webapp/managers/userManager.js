@@ -118,16 +118,39 @@ UserManager.sortLotteryTickets = function(next){
 
 UserManager.setTotalGains = function(){
 
-   var totalGains = 0
+
+   //--- lottery tickets status
+
+   var BLOCKED  = 1;
+   var PENDING  = 2;
+   var PAYED    = 3;
+   var GIFT     = 4;
+   
+   //--------------------------
+   
+   App.user.set("totalWinnings", 0);
+   App.user.set("balance", 0);
+   App.user.set("totalGift", 0);
+   App.user.set("receivedWinnings", 0);
+   App.user.set("pendingWinnings", 0);
 
    if(App.user.lotteryTickets){
       for (var i = 0; i < App.user.lotteryTickets.length; i++){
          var ticket = App.user.lotteryTickets[i]
-         totalGains += ticket.price || 0
+         var value  = Utils.countryPrice(ticket.price || 0, App.Globals.country, ticket.lottery.rateUSDtoEUR);
+         App.user.set("totalWinnings", App.user.totalWinnings + value)
+         
+         if(ticket.status == BLOCKED) 
+            App.user.set("balance", App.user.balance + value);
+         else if(ticket.status == GIFT) 
+            App.user.set("totalGift", App.user.totalGift + value);
+         else if(ticket.status == PENDING) 
+            App.user.set("pendingWinnings", App.user.pendingWinnings + value);
+         else
+            App.user.set("receivedWinnings", App.user.receivedWinnings + value);
+         
       }
    }
-
-   App.user.set("totalGains", totalGains);
 }
 
 //-------------------------------------------//
@@ -299,7 +322,7 @@ UserManager.signinWithTwitter = function(){
 
 
 //==============================================================================================================//
-//Calls to Back End
+//Calls to BackEnd
 //==============================================================================================================//
 
 
@@ -452,6 +475,31 @@ UserManager.getPlayerByFacebookId = function()
          console.log("--> unauthorized")
          UserManager.setupForms()
          UserManager.openSigninFB()
+      }
+   });
+}
+
+//-------------------------------------------//
+
+UserManager.cashout = function()
+{
+   var params = new Object();
+   params["country"] = App.Globals.country
+
+   App.wait()
+
+   $.ajax({
+      type: "POST",  
+      data: JSON.stringify(params),
+      contentType: "application/json; charset=utf-8",
+      url: "/cashout",
+      headers: {"X-Auth-Token": App.authToken},
+      dataType: "json",
+      success: function ()
+      {
+         UserManager.updatePlayer()
+         App.free()
+         App.message(App.translations.messages.Congratulations)
       }
    });
 }

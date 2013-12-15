@@ -72,6 +72,14 @@
 	      return this.get('twitterId') != null;
 	   }.property('twitterId'),
 
+	   enoughToCashout: function() {
+	      return this.get('balance') >= App.minToCashout();
+	   }.property('balance'),
+
+	   waitForPaiement: function() {
+	      return this.get('pendingWinnings') >= 0;
+	   }.property('pendingWinnings'),
+
 	   //---------------------------//
 
 	});

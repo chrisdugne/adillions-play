@@ -27,8 +27,8 @@
 
       FACEBOOK_FAN_TICKETS          : 2,
       TWITTER_FAN_TICKETS           : 2,
-      FACEBOOK_CONNECTION_TICKETS   : 2,
-      TWITTER_CONNECTION_TICKETS    : 2,
+      FACEBOOK_CONNECTION_TICKETS   : 1,
+      TWITTER_CONNECTION_TICKETS    : 1,
       
       //-------------------------------------------//
 
@@ -54,6 +54,10 @@
       isEn: function() {
          return this.get('lang') == "en";
       }.property('lang'),
+      
+      minToCashout: function() {
+         return App.minToCashout();
+      }.property('country'),
 
    });
 

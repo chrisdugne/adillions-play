@@ -117,6 +117,16 @@
    App.changedTranslations = function(event, messages) {
       App.translations.set("messages", messages);
    }
+   
+   
+   //------------------------------------------------------//
+   
+   App.minToCashout = function() {
+      var min = 10;
+      if(!Utils.isEuroCountry(App.Globals.country))
+         min = 15
+      return min   
+   }
 
    //------------------------------------------------------//
 

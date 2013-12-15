@@ -304,11 +304,17 @@
     "EarnPointsGetTickets"	: "Gagnez des points et obtenez des Tickets Instantanés",
     "EarnPointsIncreaseJackpot"	: "Gagnez des points et faites augmenter la cagnotte",
     "GetAChance"		: "Gratuit, sympa et simple ! Tente ta chance pour gagner le jackpot !",
+    "CashoutText"		: "Pour effectuer un retrait, il vous faut un solde minimum de gains de ",
+    "CashoutSuccess"	: "Vous recevrez vos gains d’ici 4 à 8 semaines. Nous vous contacterons par mail dans les prochains jours pour procéder au paiement",
+    "Congratulations"	: "Félicitations !",
     
     "Charities"			: ["Scout","Contributeur","Bon Samaritain","Donateur","Bienfaiteur","Grand Donateur","Mécène","Philanthrope"],
     
     "TotalPoints"		: "Points",
-    "TotalGains"		: "Total des gains",
+    "TotalWinnings"		: "Total des gains",
+    "Payed"				: "Gains perçus",
+    "Balance"			: "Solde",
+    
     
     "HasPostOnFacebook"	: "Vous avez déjå partagé sur FB pour ce tirage",
     "HasTweet"			: "Vous avez déjå twitté pour ce tirage",

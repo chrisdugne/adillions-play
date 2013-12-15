@@ -82,7 +82,7 @@
 	</div>
 		
 		
-	<!----------------------  Status ------------------------------>
+	<!----------------------  Winnings ------------------------------>
 		
 	<div class="row-fluid marginbottom2">
 		<div class="span6 offset3 lotteryTickets">
@@ -100,18 +100,7 @@
 				
 				<div class="span3 offset1 alignLeft">
 					<div class="row-fluid marginbottom">
-						{{App.translations.messages.TotalPoints}} :
-					</div>
-					<div class="row-fluid">
-						{{App.user.totalPoints}} Pts
-					</div>
-				</div>
-				
-				<!----------------------  Total Gains ------------------------------>
-				
-				<div class="span3 offset4 alignRight">
-					<div class="row-fluid marginbottom">
-						{{App.translations.messages.TotalGains}} :
+						{{App.translations.messages.TotalWinnings}} :
 					</div>
 					<div class="row-fluid">
 						<div class="span8 offset1 priceTicket">
@@ -122,46 +111,51 @@
 						</div>
 					</div>
 				</div>
+				
+				<!----------------------  Total Gains ------------------------------>
+				
+				<div class="span3 offset4 alignRight">
+					<div class="row-fluid marginbottom">
+						{{App.translations.messages.Payed}} :
+					</div>
+					<div class="row-fluid">
+						<div class="span8 offset1 priceTicket">
+						{{price App.user.receivedWinnings}}
+						</div>
+						<div class="span3 priceTicketIcon">
+							<img class="mobileIcon" src='@routes.Assets.at("images/icons/PictogainPayed.png")'></img>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<!----------------------  Line 2 ------------------------------>
 
 			<div class="row-fluid">
 				
-				<!----------------------  Charity ------------------------------>
+				<!----------------------  Balance ------------------------------>
 				
-				<div class="span3 offset1 alignLeft">
+				<div class="span6 offset3">
 					<div class="row-fluid marginbottom">
-						{{App.translations.messages.Charity}} :
+						{{App.translations.messages.Balance}} :
 					</div>
 					<div class="row-fluid">
-						<div class="span4">
-							<img class="mobileIcon" src='@routes.Assets.at("images/icons/charity.png")'></img>
+						<div class="span8 offset1 priceTicket">
+						{{#if App.user.waitForPaiement}}
+							({{price App.user.pendingWinnings}})
+						{{/if}}
+						{{price App.user.balance}}
 						</div>
-					</div>
-					<div class="row-fluid upper2">
-						<div class="span10 alignLeft upper2">
-							{{charityName App.user.charity}}
+						<div class="span3 priceTicketIcon">
+							<img class="mobileIcon" src='@routes.Assets.at("images/icons/PictoBalance.png")'></img>
 						</div>
 					</div>
 				</div>
-
-				<!----------------------  Bonus tickets ------------------------------>
-				
-				<div class="span3 offset4 alignRight">
-					<div class="row-fluid marginbottom">
-						{{App.translations.messages.BonusTickets}} :
-					</div>
-					<div class="row-fluid">
-						<div class="span4 offset8">
-							<img class="mobileIcon" src='@routes.Assets.at("images/icons/ticket.png")'></img>
-						</div>
-					</div>
-					<div class="row-fluid ">
-						<div class="span12 alignRight upper2">
-						+ {{App.user.totalBonusTickets}}
-						</div>
-					</div>
+			</div>
+			
+			<div class="row-fluid">
+				<div class="span8 offset2 margintop2 touchable">
+					<div {{action openCashout}}> {{langImage App.user.lang png='cashout.button.png'}} </div>
 				</div>
 			</div>
 		</div>
