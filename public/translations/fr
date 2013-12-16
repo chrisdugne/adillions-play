@@ -9,6 +9,7 @@
   	"Logout"			: "Déconnexion",
   	"SignIn"			: "S'inscrire",
 	"NoAccount"			: "Pas de compte ?",
+	"ConnectWithFacebook" : "Se connecter avec Facebook",
 	
 	"NextDrawing"		: "Prochain tirage",
 	"Drawing"			: "Tirage du",

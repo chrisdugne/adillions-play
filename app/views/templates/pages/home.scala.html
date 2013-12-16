@@ -102,6 +102,13 @@
 		 		<div class="multiPlatformsTitle">{{App.translations.messages.Multi}}</div>
 	 			<img src='@routes.Assets.at("images/website/separator.big.png")'></img>
 		 		<div class="multiPlatformsText">{{App.translations.messages.MultiRange}}</div>
+	 			
+				<div class="row-fluid margintop4">
+					<div {{action playOnAdillions}} class="span6 touchable">{{langImage App.user.lang png='available.adillions.png'}}</div>
+		 			<a href="http://apps.facebook.com/adillions/">
+						<div class="span6 touchable">{{langImage App.user.lang png='available.facebook.png'}}</div>
+					</a>
+				</div>
 	 		</div>
 	 		<div class="span5">
 	 			<img class="multiPlatformsImage" src='@routes.Assets.at("images/website/laptop.png")'></img>
@@ -115,14 +122,20 @@
 	 			<img id="mobilesImage" src='@routes.Assets.at("images/website/mobiles.png")'></img>
 	 		</div>
 	 		<div class="span5">
+	 			<!-- 
 		 		<div {{action playOnAdillions}} class="downloadText">{{App.translations.messages.OnAdillionsTitle}} <a class="link">{{App.translations.messages.OnAdillionsLink}}</a></div>
-		 		<div class="downloadText">{{App.translations.messages.OnFacebookTitle}} <a class="link" href="http://apps.facebook.com/adillions/">{{App.translations.messages.OnFacebookLink}}</a></div>
+		 		<div class="downloadText">{{App.translations.messages.OnFacebookTitle}}</div>
+		 		 -->
 				<div>{{langImage App.user.lang png='download.now.png' id='downloadHome'}}</div>
 	 			<img id="arrowDownDownload" src='@routes.Assets.at("images/website/arrow.down.png")'></img>
 	 			
 				<div class="row-fluid">
-					<div class="span6 touchable">{{langImage App.user.lang png='available.apple.png' id='availableApple'}}</div>
-					<div class="span6 touchable">{{langImage App.user.lang png='available.google.png' id='availableGoogle'}}</div>
+		 			<a href="http://apps.facebook.com/adillions/">
+						<div class="span6 touchable">{{langImage App.user.lang png='available.apple.png' id='availableApple'}}</div>
+					</a>
+		 			<a href="http://apps.facebook.com/adillions/">
+						<div class="span6 touchable">{{langImage App.user.lang png='available.google.png' id='availableGoogle'}}</div>
+					</a>
 				</div>
 	 		</div>
 		</div>

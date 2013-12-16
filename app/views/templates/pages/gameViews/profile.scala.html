@@ -215,17 +215,107 @@
 		</div>
 	</div>
 	
-	<!----------------------  Sponsor ------------------------------>
+	<!----------------------  Social ------------------------------>
 		
 	<div class="row-fluid marginbottom2">
 		<div class="span6 offset3 lotteryTickets">
 			<div class="row-fluid">
 				<div class="span10 huge" id="detailsImage">
+					{{langImage App.user.lang png='socials.png'}}
+				</div>
+			</div>
+
+			<!----------------------  Facebook Connection ------------------------------>
+			
+			<div class="row-fluid">
+				{{#if App.user.hasFacebookAccount}}
+				<div class="span3">
+					<img class="mobileIcon" src='@routes.Assets.at("images/icons/facebook.connected.png")'></img>
+				</div>
+				<div class="span4 alignLeft small">
+					{{App.user.userName}}
+				</div>
+				{{else}}
+				<div class="span4 offset4 touchable">
+					<div {{action facebookLogin}}> {{langImage App.user.lang png='popup.facebook.connect.png'}} </div>
+				</div>
+				{{/if}}
+				
+				<div class="span2 offset2 upper">
+					<img src='@routes.Assets.at("images/icons/Plus1Ticket.png")'></img>
+				</div>
+			</div>
+
+			<!----------------------  Facebook Fan ------------------------------>
+
+			<div class="row-fluid">
+				{{#if App.user.isFacebookFan}}
+				<div class="span2">
+					<div> {{langImage App.user.lang png='facebook.like.done.png'}} </div>
+				</div>
+				{{else}}
+				<div class="span2">
+					<div> {{langImage App.user.lang png='facebook.like.enabled.png'}} </div>
+				</div>
+				{{/if}}
+				
+				<div class="span2 offset7">
+					<img src='@routes.Assets.at("images/icons/Plus2Tickets.png")'></img>
+				</div>
+			</div>
+
+			<!----------------------  Twitter Connection ------------------------------>
+			
+			<div class="row-fluid">
+				<div class="span3">
+					<img class="mobileIcon" src='@routes.Assets.at("images/icons/twitter.connected.png")'></img>
+				</div>
+				{{#if App.user.hasTwitterAccount}}
+				<div class="span4 alignLeft small">
+					{{App.user.twitterName}}
+				</div>
+				{{else}}
+				<div class="span4 alignLeft small">
+					-
+				</div>
+				{{/if}}
+				
+				<div class="span2 offset2 upper">
+					<img src='@routes.Assets.at("images/icons/Plus1Ticket.png")'></img>
+				</div>
+			</div>
+
+			<!----------------------  Twitter Fan ------------------------------>
+
+			<div class="row-fluid">
+				{{#if App.user.isTwitterFan}}
+				<div class="span2">
+					<div> {{langImage App.user.lang png='twitter.following.png'}} </div>
+				</div>
+				{{else}}
+				<div class="span2">
+					<div> {{langImage App.user.lang png='twitter.follow.png'}} </div>
+				</div>
+				{{/if}}
+				
+				<div class="span2 offset7">
+					<img src='@routes.Assets.at("images/icons/Plus2Tickets.png")'></img>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!----------------------  Sponsor ------------------------------>
+		
+	<div class="row-fluid marginbottom2">
+		<div class="span6 offset3 lotteryTickets">
+			<div class="row-fluid marginBottom4">
+				<div class="span10 huge" id="detailsImage">
 					{{langImage App.user.lang png='sponsor.png'}}
 				</div>
 			</div>
 			<div class="row-fluid">
-				<div class="span5 offset1 alignLeft">
+				<div class="huge">
 					{{App.user.sponsorCode}}
 				</div>
 			</div>

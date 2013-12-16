@@ -8,6 +8,8 @@
   	"Logout"			: "Log Out",
   	"SignIn"			: "Sign Up",
 	"NoAccount"			: "No account ?",
+	"ConnectWithFacebook" : "ConnectWithFacebook",
+	
 	
 	"NextDrawing"		: "Next drawing",
 	"Drawing"			: "Drawing",
