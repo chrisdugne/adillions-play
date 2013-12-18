@@ -235,6 +235,43 @@
 	"A13d"				: "4. Des logiciels anti-fraude ont été développés afin de préserver l'intégrité du jeu.",
  	
  	
+ 	"##########################################" : "Press",
+
+	"PressIntro"		: "Si vous souhaitez tout savoir sur la création d'Adillions, l'équipe et plus encore, vous trouverez toutes les informations nécessaires dans notre dossier de presse",
+	"PressKit"			: "Dossier de presse",
+	"PressReleases"		: "Communiqués de presse",
+	"ContactUs"			: "Nous contacter :",
+	"ContactAddress"	: "press@adillions.com", 	
+ 	
+ 	"##########################################" : "Jobs",
+ 	
+	"JobsText"			: "Nous sommes toujours à la recherche de personnes brillantes et motivées",
+	"JobsEmail"			: "Si vous partagez notre vision et si vous souhaitez faire partie d'une aventure internationale, n'hésitez pas à nous envoyer un email à jobs@adillions.com",
+ 	
+ 	"##########################################" : "Key Rules",
+ 	
+	"RulesIntro"		: "Voilà les principales règles d'Adillions (pour plus de détails consultez le",
+	"RulesTerms"		: "Règlement", 
+	"RulesDetails"		: ") :",
+	
+	"RulesAge"			: "Adillions est interdit à toute personne ayant moins de 18 ans",
+	"RulesAccount"		: "Il est interdit de jouer avec plusieurs comptes Adillions",
+	"RulesPick"			: "Les joueurs sélectionnent 5 numéros dans la grille de numéros (1 à 49) et une Boule Chance dans la grille des 6 Boules Chances associée",
+	"RulesTickets"		: "Chaque tirage se caractérise par un nombre maximum de tickets par joueur (il est possible de gagner des Tickets Bonus additionnels - cf.",
+	"RulesRewards"		: " Récompenses",
+	"RulesTicketsEnd"	: ")",
+	"RulesDraws"		: "Les tirages sont effectués chaque XXX à XXX",
+	"RulesAmount"		: "La somme globale de la cagnotte est répartie entre les six différents rangs de gain (cf.",
+	"RulesPrize"		: " Gains",
+	"RulesAmountEnd"	: ")",
+	"RulesCategory"		: "La somme affectée à un rang est répartie par parts égales entre les combinaisons gagnantes de ce rang",
+    "RulesNoPayment"	: "Les gains ne seront pas versés aux joueurs qui auront fourni des données personnelles inexactes",
+	"RulesTransfer"		: "Les gains sont versés par virement bancaire SEPA (zone Euro) et par virement PayPal",
+	"RulesDelay"		: "Les gains des joueurs sont versés au minimum 4 semaines après qu'ils aient atteint un solde global minimum de 10 euros et au maximum 8 semaines après",
+	"RulesID"			: "Tout gagnant d’une somme supérieure ou égale à 2 000 euros doit justifier de son identité par la présentation d’un document écrit probant auprès d'Adillions",
+	"RulesBank"			: "Les coordonnées d’un même compte bancaire peuvent servir, au maximum, à deux comptes Adillions appartenant à deux personnes physiques distinctes",
+ 	
+ 	
  	"##########################################" : "APP",
 	
 	"Welcome"			: "Bienvenue",
@@ -263,7 +300,7 @@
     "Continue"			: "Continuer",
     
     "MaxTickets1"		: "Vous avez atteint le nombre maximal de tickets pour ce tirage.",
-    "MaxTickets2"		: "Vous pouvez gagner des tickets bonus en aimant notre page Facebook ou en nous suivant sur Twitter.",
+    "MaxTickets2"		: "Vous pouvez gagner des Tickets Bonus en aimant notre page Facebook ou en nous suivant sur Twitter.",
     
     "TimerTicket1"		: "Un ticket sera disponible dans :",
     "TimerTicket2"		: "Gagnez des Tickets Instantanés en invitant vos amis, en partageant votre activité, en likant le thème, etc.",
@@ -285,7 +322,7 @@
     "SelectLuckyBall"	: "Choisissez votre Boule Chance : ",
     "ExtraTicket"		: "Ticket Instantané",
     "ExtraTickets"		: "Tickets Instantanés",
-    "BonusTickets"		: "Tickets bonus",
+    "BonusTickets"		: "Tickets Bonus",
     
     "YourSelection"		: "Votre sélection !",
     "TicketsToPlay"		: "Tickets restants",
@@ -319,8 +356,8 @@
     
     "HasPostOnFacebook"	: "Vous avez déjå partagé sur FB pour ce tirage",
     "HasTweet"			: "Vous avez déjå twitté pour ce tirage",
-    "TwoMoreBonusTickets" : "Vous avez gagné 2 tickets bonus supplémentaires!",
-    "TwoLostBonusTickets" : "Vous avez perdu 2 tickets bonus...",
+    "TwoMoreBonusTickets" : "Vous avez gagné 2 Tickets Bonus supplémentaires!",
+    "TwoLostBonusTickets" : "Vous avez perdu 2 Tickets Bonus...",
     
  	"##########################################" : "Messages",
  	

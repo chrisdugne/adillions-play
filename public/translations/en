@@ -8,7 +8,7 @@
   	"Logout"			: "Log Out",
   	"SignIn"			: "Sign Up",
 	"NoAccount"			: "No account ?",
-	"ConnectWithFacebook" : "ConnectWithFacebook",
+	"ConnectWithFacebook" : "Connect With Facebook",
 	
 	
 	"NextDrawing"		: "Next drawing",
@@ -33,7 +33,7 @@
 	"ViralInvite"		: "Invite your friends to",
 	"ViralIncrease"		: "increase the jackpot",
 	
-	"Multi"				: "MULTIPLATEFORM",
+	"Multi"				: "MULTIPLATFORM",
 	"MultiRange"		: "Play on a whole range of platforms",
 	
 	"OnAdillionsTitle"	: "Now on", 
@@ -231,8 +231,43 @@
 	"Questions_P"		: "If you have any questions or complaints regarding our Privacy Policy, please contact us by email at the following address contact[at]adillions.com",	
 	"ReadAndAccept"		: "By using the website and mobile applications of Adillions, you acknowledge that you have read and accepted the terms of this Privacy Policy and you consent to the use of your personal information as set out in this Privacy Policy.",
 
+ 	"##########################################" : "Key Rules",
+ 	 
+	"RulesIntro"		: "Adillions key rules are the following (please see the",
+	"RulesTerms"		: " Terms",
+	"RulesDetails"		: " for more details):",
+	
+	"RulesAge"			: "Players must be 18 or over",
+	"RulesAccount"		: "Players must have only one Adillions account",
+	"RulesPick"			: "Players pick 5 different numbers from a pool of 49 numbers (from 1 to 49) and one Lucky Ball from a pool of 6 different Lucky Balls",
+	"RulesTickets"		: "Each draw is characterized by a maximum number of tickets per player (players can gain additional Bonus Tickets - see",
+	"RulesRewards"		: " Rewards",
+	"RulesTicketsEnd"	: ")",
+	"RulesDraws"		: "Draw takes place every XXX at XXX",
+	"RulesAmount"		: "The total amount of the Prize Fund is distributed over the six different prize categories (see",
+	"RulesPrize"		: " Prize",
+	"RulesAmountEnd"	: ")",
+	"RulesCategory"		: "The money allocated to a prize category is divided equally among the winning tickets in that category",
+	"RulesNoPayment"	: "There is no prize payment for winning players with inaccurate personal information (real full name required)",
+	"RulesTransfer"		: "Prizes are paid by bank transfer to the winning players inside the Single Euro Payments Area (SEPA) or by Paypal transfer",
+	"RulesDelay"		: "The winning players are paid at least 4 weeks after their gains reached a minimum total balance of 10 euros and maximum 8 weeks after",
+	"RulesID"			: "Any winning player of a sum greater than or equal to 2,000 euros will have to prove his identity by sending Adillions a supporting document (national identity card, driving license, passport, etc.)",
+	"RulesBank"			: "One bank account for a maximum of two Adillions accounts belonging to two distinct persons",
  	
  	
+ 	"##########################################" : "Press",
+ 	
+	"PressIntro"		: "If you want to know everything about the original idea for Adillions, the team behind Adillions and more, you will find all the relevant information in our press kit",
+	"PressKit"			: "Press kit",
+	"PressReleases"		: "Press releases",
+	"ContactUs"			: "Contact us:",
+	"ContactAddress"	: "press@adillions.com",
+	
+ 	"##########################################" : "Jobs",
+ 	
+	"JobsText"			: "We are always looking for talented and motivated people to join the Adillions team",
+	"JobsEmail"			: "If you share our vision and if you want to be part of a global adventure, do not hesitate to send an email to jobs@adillions.com",
+	
  	"##########################################" : "APP",
  		
     "Welcome"			: "Welcome",
@@ -261,7 +296,7 @@
     "Continue"			: "Continue",
 
     "MaxTickets1"		: "You have reached the maximum number of tickets for this draw.",
-    "MaxTickets2"		: "You can gain bonus tickets by liking our Facebook page or following us on Twitter.",
+    "MaxTickets2"		: "You can gain Bonus Tickets by liking our Facebook page or following us on Twitter.",
     
     "TimerTicket1"		: "You can fill out a new ticket in :",
     "TimerTicket2"		: "Get Instant Tickets by inviting your friends, sharing your activity, liking our theme, etc.",
@@ -279,7 +314,7 @@
     "SelectLuckyBall"	: "Select your Lucky Ball : ",
     "ExtraTicket"		: "Instant Ticket",
     "ExtraTickets"		: "Instant Tickets",
-    "BonusTickets"		: "Bonus tickets",
+    "BonusTickets"		: "Bonus Tickets",
 
     "YourSelection"		: "Your selection !",
     "TicketsToPlay"		: "Remaining tickets",

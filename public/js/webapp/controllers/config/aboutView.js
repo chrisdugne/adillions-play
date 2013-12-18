@@ -4,10 +4,11 @@
 	var AboutView = Ember.View.extend({
 		templateName: 'about',
 		didInsertElement: function(){
-         App.fillView()
+		    App.fillView()
 			App.AboutController.renderUI();
 		},
 		willDestroyElement: function(){
+		    App.releaseFooter()
 			App.AboutController.cleanUI();
 		}
 	});
@@ -22,6 +23,9 @@
       didInsertElement: function(){
          App.fillView()
       },
+      willDestroyElement: function(){
+          App.releaseFooter()
+      }
    });
    
    App.FaqController = Ember.ObjectController.extend({});
@@ -38,6 +42,9 @@
             });
          });
       },
+      willDestroyElement: function(){
+          App.releaseFooter()
+      }
    });
    
    App.TermsController = Ember.ObjectController.extend({});
@@ -46,30 +53,43 @@
       didInsertElement: function(){
          App.fillView()
       },
+      willDestroyElement: function(){
+          App.releaseFooter()
+      }
    });
    
    App.RewardsController = Ember.ObjectController.extend({});
    App.RewardsView = Ember.View.extend({
-      templateName: 'rewards',
-      didInsertElement: function(){
-         App.fillView()
-      },
+       templateName: 'rewards',
+       didInsertElement: function(){
+           App.fillView()
+       },
+       willDestroyElement: function(){
+           App.releaseFooter()
+       }
    });
-   
+
    App.JobsController = Ember.ObjectController.extend({});
    App.JobsView = Ember.View.extend({
-      templateName: 'jobs',
-      didInsertElement: function(){
-         App.fillView()
-      },
+       templateName: 'jobs',
+       didInsertElement: function(){
+           App.fillView()
+       },
+       willDestroyElement: function(){
+           console.log("releaseFooter")
+           App.releaseFooter()
+       }
    });
-   
+
    App.PressController = Ember.ObjectController.extend({});
    App.PressView = Ember.View.extend({
-      templateName: 'press',
-      didInsertElement: function(){
-         App.fillView()
-      },
+       templateName: 'press',
+       didInsertElement: function(){
+           App.fillView()
+       },
+      willDestroyElement: function(){
+          App.releaseFooter()
+      }
    });
    
    App.PrivacyController = Ember.ObjectController.extend({});
@@ -78,6 +98,9 @@
       didInsertElement: function(){
          App.fillView()
       },
+      willDestroyElement: function(){
+          App.releaseFooter()
+      }
    });
    
 })( App);

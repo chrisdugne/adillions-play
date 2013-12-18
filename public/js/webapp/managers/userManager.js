@@ -340,7 +340,7 @@ UserManager.receivedPlayer = function(player, next)
          userName = player.fistName // --> arrivee de FB
       }
 
-   App.message("Welcome " + userName + " !", true)
+   App.message(App.translations.messages.Welcome + " " + userName + " !", true)
 
    UserManager.updatedPlayer(player, function(){
 

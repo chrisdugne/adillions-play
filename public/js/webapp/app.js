@@ -78,9 +78,15 @@
    //------------------------------------------------------//
    
    App.fillView = function(){
-      if(($("#webappDiv").height() + App.Globals.FOOTER_HEIGHT) <= $(window).height()){
-         $("#webappDiv").css({ "height" : ($(window).height() - App.Globals.FOOTER_HEIGHT - App.Globals.HEADER_HEIGHT) +"px" });
+       console.log("fillView", $("#webappDiv").height() + App.Globals.FOOTER_HEIGHT, $(window).height())
+      if(($("#webappDiv").height() + App.Globals.FOOTER_HEIGHT) < $(window).height()){
+         $("#gameView").css({ "height" : ($(window).height() - App.Globals.FOOTER_HEIGHT - App.Globals.HEADER_HEIGHT) +"px" });
+         $("#footerHome").css({ "position" : "absolute" });
       }
+   }
+   
+   App.releaseFooter = function(){
+       $("#footerHome").css({ "position" : "relative" });
    }
 
    //------------------------------------------------------//
