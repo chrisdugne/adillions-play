@@ -178,26 +178,6 @@
 	width:100%;
 }
 
-#gameHomeButton 			{
-	background: url(/assets/images/bylang/en/OFF1.png) no-repeat center center;height:65px;background-size: 100px;margin:10px;
-}
-#gameHomeButton.selected 	{background: url(/assets/images/bylang/en/ON1.png) no-repeat center center;background-size: 100px}
-
-#myTicketsButton 			{
-	background: url(/assets/images/bylang/en/OFF2.png) no-repeat center center;height:65px;background-size: 100px;margin:10px;
-}
-#myTicketsButton.selected 	{background: url(/assets/images/bylang/en/ON2.png) no-repeat center center;background-size: 100px}
-
-#resultsButton 				{
-	background: url(/assets/images/bylang/en/OFF3.png) no-repeat center center;height:65px;background-size: 100px;margin:10px;
-}
-#resultsButton.selected 	{background: url(/assets/images/bylang/en/ON3.png) no-repeat center center;background-size: 100px}
-
-#profileButton 				{
-	background: url(/assets/images/bylang/en/OFF4.png) no-repeat center center;height:65px;background-size: 100px;margin:10px;
-}
-#profileButton.selected 	{background: url(/assets/images/bylang/en/ON4.png) no-repeat center center;background-size: 100px}
-
 /*---------------------------------------------*/
 
 #numbersToSelect{

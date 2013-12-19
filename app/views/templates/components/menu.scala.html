@@ -2,23 +2,39 @@
 <div id="menu">
 	<div class="span2">
 		<div class="row-fluid">
-			<div class="span10">
-				<div id="gameHomeButton" {{action openGameHome}} class="btn-large button"></div>
+			<div class="span10 touchable">
+				{{#if App.Globals.isGameHome}}
+				{{langImage App.user.lang png='home.on.png'}}
+				{{else}}
+				<div {{action openGameHome}}>{{langImage App.user.lang png='home.off.png'}}</div>
+				{{/if}}
 			</div>
 		</div>
 		<div class="row-fluid">
-			<div class="span10">
-				<div id="myTicketsButton" {{action openMyTickets}} class="btn-large button"></div>
+			<div class="span10 touchable">
+				{{#if App.Globals.isMyTickets}}
+				{{langImage App.user.lang png='mytickets.on.png'}}
+				{{else}}
+				<div {{action openMyTickets}}>{{langImage App.user.lang png='mytickets.off.png'}}</div>
+				{{/if}}
 			</div>
 		</div>
 		<div class="row-fluid">
-			<div class="span10">
-				<div id="resultsButton" {{action openResults}} class="btn-large button"></div>
+			<div class="span10 touchable">
+				{{#if App.Globals.isResults}}
+				{{langImage App.user.lang png='results.on.png'}}
+				{{else}}
+				<div {{action openResults}}>{{langImage App.user.lang png='results.off.png'}}</div>
+				{{/if}}
 			</div>
 		</div>
 		<div class="row-fluid">
-			<div class="span10">
-				<div id="profileButton" {{action openProfile}} class="btn-large button"></div>
+			<div class="span10 touchable">
+				{{#if App.Globals.isProfile}}
+				{{langImage App.user.lang png='profile.on.png'}}
+				{{else}}
+				<div {{action openProfile}}>{{langImage App.user.lang png='profile.off.png'}}</div>
+				{{/if}}
 			</div>
 		</div>
 	</div>

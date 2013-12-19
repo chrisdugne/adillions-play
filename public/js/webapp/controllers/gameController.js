@@ -7,21 +7,21 @@
 	//==================================================================//
 
 	GameController.renderUI = function(){
-	   App.Globals.signinRequested = true // reach /game directly : FB landing page, must use signinFBWindow
-	   UserManager.setupForms()
-	   
-	   GameManager.init()
-      GameManager.setSelectedButton()
-      
-      App.showSocialButtons()
-      
-      Facebook.checkThemeLiked()
+	    App.Globals.signinRequested = true // reach /game directly : FB landing page, must use signinFBWindow
+	    UserManager.setupForms()
+
+	    GameManager.init()
+	    GameManager.setSelectedButton()
+
+	    App.showSocialButtons()
+
+	    Facebook.checkThemeLiked()
 	}
 
 	GameController.cleanUI = function()	{
-	   App.hideSocialButtons()
+	    App.hideSocialButtons()
 	}
-	
+
 	//==================================================================//
 
 	GameController.gameHomeReady = function()	{
@@ -120,32 +120,32 @@
 		
 	   //---------------------------------
 	   
-	   route: '/game',
-		
-	   //---------------------------------
-	   
-	   gameHome: Ember.Route.extend({
-	      route: '/',
-         connectOutlets: function(router) {
-            App.Router.openComponent(router, "game");
-            GameManager.setSelectedButton()
-         }
-      }),
-      
-      myTickets: Ember.Route.extend({
-         route: '/tickets',
-         connectOutlets: function(router) {
-            App.Router.openComponent(router, "game");
-            GameManager.setSelectedButton()
-         }
-      }),
-      
-      profile: Ember.Route.extend({
-         route: '/profile',
-         connectOutlets: function(router) {
-            App.Router.openComponent(router, "game");
-            GameManager.setSelectedButton()
-         }
+	    route: '/game',
+
+	    //---------------------------------
+
+	    gameHome: Ember.Route.extend({
+	        route: '/',
+	        connectOutlets: function(router) {
+	            App.Router.openComponent(router, "game");
+	            GameManager.setSelectedButton()
+	        }
+	    }),
+
+	    myTickets: Ember.Route.extend({
+	        route: '/tickets',
+	        connectOutlets: function(router) {
+	            App.Router.openComponent(router, "game");
+	            GameManager.setSelectedButton()
+	        }
+	    }),
+
+	    profile: Ember.Route.extend({
+	        route: '/profile',
+	        connectOutlets: function(router) {
+	            App.Router.openComponent(router, "game");
+	            GameManager.setSelectedButton()
+	        }
       }),
       
       //---------------------------------

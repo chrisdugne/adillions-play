@@ -21,7 +21,7 @@ GameManager.setSelectedButton = function()   {
    $("#resultsButton").removeClass("selected")
    $("#profileButton").removeClass("selected")
 
-   var view = App.get('router').currentState.name
+   var view = App.get('router').currentState.name;
 
    if($("#"+view+"Button")){
       $("#"+view+"Button").addClass("selected")

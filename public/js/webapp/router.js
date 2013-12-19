@@ -19,6 +19,8 @@
 		   openFaq            : Ember.Route.transitionTo('about.faq'),
 		   openTerms          : Ember.Route.transitionTo('about.terms'),
 		   openRewards        : Ember.Route.transitionTo('about.rewards'),
+		   openPrizes         : Ember.Route.transitionTo('about.prizes'),
+		   openKeyRules       : Ember.Route.transitionTo('about.keyrules'),
 		   openJobs           : Ember.Route.transitionTo('about.jobs'),
 		   openPress          : Ember.Route.transitionTo('about.press'),
 		   openPrivacy        : Ember.Route.transitionTo('about.privacy'),

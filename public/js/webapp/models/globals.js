@@ -33,8 +33,7 @@
       //-------------------------------------------//
 
       isDev          : window.location.hostname == "192.168.0.9",
-//      isProd         : window.location.hostname == "www.adillions.com",
-      isProd         : window.location.hostname == "www.watchtocash.com",
+      isProd         : window.location.hostname == "www.adillions.com",
       debug          : false,
       
       //-------------------------------------------//
@@ -58,6 +57,22 @@
       minToCashout: function() {
          return App.minToCashout();
       }.property('country'),
+
+      isGameHome: function() {
+          return this.get("currentView") == "gameHome";
+      }.property('currentView'),
+      
+      isProfile: function() {
+          return this.get("currentView") == "profile";
+      }.property('currentView'),
+      
+      isMyTickets: function() {
+          return this.get("currentView") == "myTickets";
+      }.property('currentView'),
+      
+      isResults: function() {
+          return this.get("currentView") == "results";
+      }.property('currentView'),
 
    });
 

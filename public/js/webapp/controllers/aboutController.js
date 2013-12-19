@@ -20,8 +20,8 @@
 
 	   $(".aboutTab").removeClass("selected")
 
-	   var view = App.get('router').currentState.name
-
+	   var view = App.get('router').currentState.name;
+	   
 	   if($("#"+view+"Tab")){
 	      $("#"+view+"Tab").addClass("selected")
 	   }
@@ -72,6 +72,22 @@
             App.Router.openComponent(router, "about");
             App.AboutController.setSelectedTab()
          }
+      }),
+      
+      prizes: Ember.Route.extend({
+          route: '/prizes',
+          connectOutlets: function(router) {
+              App.Router.openComponent(router, "about");
+              App.AboutController.setSelectedTab()
+          }
+      }),
+      
+      keyrules: Ember.Route.extend({
+          route: '/keyrules',
+          connectOutlets: function(router) {
+              App.Router.openComponent(router, "about");
+              App.AboutController.setSelectedTab()
+          }
       }),
       
       jobs: Ember.Route.extend({

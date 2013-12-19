@@ -28,6 +28,8 @@
 @import views.html.templates.pages.aboutViews.faq;
 @import views.html.templates.pages.aboutViews.terms;
 @import views.html.templates.pages.aboutViews.rewards;
+@import views.html.templates.pages.aboutViews.prizes;
+@import views.html.templates.pages.aboutViews.keyrules;
 @import views.html.templates.pages.aboutViews.jobs;
 @import views.html.templates.pages.aboutViews.press;
 @import views.html.templates.pages.aboutViews.privacy;
@@ -41,11 +43,11 @@
 <!-- ------------------------------------------------------------------- -->
 
 <!-- --- Pages --- -->
-@pageTemplate("home", true)						{ @home()		}
-@pageTemplate("game", false)					{ @game()		}
-@pageTemplate("results", true)					{ @results()	}
-@pageTemplate("about", true)					{ @about()		}
-@pageTemplate("advertisers", true)				{ @advertisers()}
+@pageTemplate("home", true)						{ @home()					}
+@pageTemplate("game", false)					{ @game()					}
+@pageTemplate("results", true)					{ @results()				}
+@pageTemplate("about", true)					{ @about()					}
+@pageTemplate("advertisers", true)				{ @advertisers()			}
 
 <!-- ------------------------------------------------------------------- -->
 <!-- --- Components --- -->
@@ -64,6 +66,8 @@
 @componentTemplate("faq")						{ @faq()					}
 @componentTemplate("terms")						{ @terms()					}
 @componentTemplate("rewards")					{ @rewards()				}
+@componentTemplate("prizes")					{ @prizes()					}
+@componentTemplate("keyrules")					{ @keyrules()				}
 @componentTemplate("jobs")						{ @jobs()					}
 @componentTemplate("press")						{ @press()					}
 @componentTemplate("privacy")					{ @privacy()				}

@@ -58,6 +58,28 @@
       }
    });
    
+   App.PrizesController = Ember.ObjectController.extend({});
+   App.PrizesView = Ember.View.extend({
+       templateName: 'prizes',
+       didInsertElement: function(){
+           App.fillView()
+       },
+       willDestroyElement: function(){
+           App.releaseFooter()
+       }
+   });
+   
+   App.KeyrulesController = Ember.ObjectController.extend({});
+   App.KeyrulesView = Ember.View.extend({
+       templateName: 'keyrules',
+       didInsertElement: function(){
+           App.fillView()
+       },
+       willDestroyElement: function(){
+           App.releaseFooter()
+       }
+   });
+   
    App.RewardsController = Ember.ObjectController.extend({});
    App.RewardsView = Ember.View.extend({
        templateName: 'rewards',
