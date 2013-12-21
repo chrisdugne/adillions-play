@@ -549,16 +549,15 @@ UserManager.logout = function(){
 //-------------------------------------------//
 
 UserManager.signinFormReady = function(){
-
    var form1Ready = $("#signinForm1").valid()
    var form2Ready = $("#signinForm2").valid()
-   var formReady = form1Ready && form2Ready
-
+   var formReady = form1Ready && form2Ready && $("#check1")[0].checked && $("#check2")[0].checked
+   
    return formReady
 }
 
 UserManager.signinFormFBReady = function(){
-   return $("#fbForm").valid()
+   return $("#fbForm").valid() && $("#check1")[0].checked && $("#check2")[0].checked
 }
 
 
@@ -858,12 +857,6 @@ UserManager.setupForms = function()
             required: true,
             email: true
          },
-         check1: {
-            required: true,
-         },
-         check2: {
-            required: true,
-         },
       },
       messages: {
          firstName: {
@@ -889,12 +882,6 @@ UserManager.setupForms = function()
          repeatPassword: {
             required: true,
             same: "#password"
-         },
-         check1: {
-            required: true,
-         },
-         check2: {
-            required: true,
          },
       },
       messages: {
@@ -925,12 +912,6 @@ UserManager.setupForms = function()
             email: true
          },
          birthDate: {
-            required: true,
-         },
-         check1: {
-            required: true,
-         },
-         check2: {
             required: true,
          },
       },

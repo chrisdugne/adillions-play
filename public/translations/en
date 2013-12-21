@@ -339,7 +339,6 @@
     "CashoutText"		: "You can cash out when your winnings have reached a minimum total balance of ",
  	"CashoutSuccess"	: "You will receive your winnings within 4 to 8 weeks. We will contact you by email in the coming days to proceed with the payment", 	
     "Congratulations"	: "Congratulations !",
-    
 	
     "Charities"			: ["Boy Scout","Contributor","Good Samaritan","Donor","Benefactor","Major Donor","Patron","Philanthropist"],
 
@@ -350,8 +349,8 @@
     
     "HasPostOnFacebook"	: "You have already shared on FB for this draw",
     "HasTweet"			: "You have already tweet for this draw",
-    "TwoMoreBonusTickets" : "You have won 2 more Bonus Tickets !",
-    "TwoLostBonusTickets" : "You have lost 2 Bonus Tickets...",
+    "TwoMoreBonusTickets" : "You won 2 more Bonus Tickets !",
+    "TwoLostBonusTickets" : "You lost 2 Bonus Tickets...",
     
  	"##########################################" : "Messages",
  	

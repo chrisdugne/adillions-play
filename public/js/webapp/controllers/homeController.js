@@ -14,6 +14,7 @@
 	   }
 	   
       App.showSocialButtons()
+      App.initCheckboxes()
    }
 
 	HomeController.cleanUI = function() {
