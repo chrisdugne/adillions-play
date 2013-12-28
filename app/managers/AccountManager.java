@@ -320,10 +320,10 @@ public class AccountManager {
 	
 		//-------------------------------------//
 
-		String facebookId = null;
-		String twitterId 	= null;
-		String twitterName= null;
-		String userName 	= newUserJson.get("userName").asText();
+		String facebookId     = null;
+		String twitterId 	    = null;
+		String twitterName    = null;
+		String userName 	    = newUserJson.get("userName").asText();
 		
 		//-------------------------------------//
 
@@ -371,6 +371,8 @@ public class AccountManager {
 		System.out.println("hasPostOnFacebook : " + newUserJson.get("hasPostOnFacebook"));
 		System.out.println("hasTweetAnInvite : " + newUserJson.get("hasTweetAnInvite"));
 		System.out.println("hasInvitedOnFacebook : " + newUserJson.get("hasInvitedOnFacebook"));
+		System.out.println("isFacebookFan : " + player.isFacebookFan());
+		System.out.println("isTwitterFan : " + player.isTwitterFan());
 		
 		player.setTweet					(newUserJson.get("hasTweet").asBoolean());
 		player.setPostOnFacebook		(newUserJson.get("hasPostOnFacebook").asBoolean());
