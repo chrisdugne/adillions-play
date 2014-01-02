@@ -367,6 +367,7 @@
  	"JoinMeAndGetAChance" 	: "Inscris-toi sur Adillions et obtiens une chance de gagner le jackpot !",
  	"DownloadAndPlay" 		: "Télécharge l'application gratuite sur l'Apple Store ou Google Play / Joue sur Facebook et sur www.adillions.com",
  	
-    "":""
+ 	"##########################################" : "END",
 	
+    "":""
 }

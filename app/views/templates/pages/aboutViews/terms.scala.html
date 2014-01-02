@@ -1,7 +1,13 @@
 
+@import views.html.templates.components.termsContentEN;
+@import views.html.templates.components.termsContentFR;
+
 <div class="row-fluid gameView">
-	profile
-	
+		{{#if App.Globals.isEn}}
+			@termsContentEN()
+		{{else}}
+			@termsContentFR()
+		{{/if}}
 </div>
 
 		

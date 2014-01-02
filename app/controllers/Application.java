@@ -112,4 +112,14 @@ public class Application extends Controller {
 	{
 		return ok(views.html.mobile.faq.render());
 	}
+	
+	public static Result mobileTermsEN()
+	{
+	   return ok(views.html.mobile.termsEN.render());
+	}
+	
+	public static Result mobileTermsFR()
+	{
+	   return ok(views.html.mobile.termsFR.render());
+	}
 }

@@ -19,6 +19,8 @@ GET     /mvideo           			controllers.Application.mobileVideo()
 GET     /minvite           			controllers.Application.mobileInvite()
 GET     /mlogout           			controllers.Application.mobileLogout()
 GET     /mfaq 	        			controllers.Application.mobileFaq()
+GET     /mtermsFR 	        		controllers.Application.mobileTermsFR()
+GET     /mtermsEN 	        		controllers.Application.mobileTermsEN()
 
 ###################
 # Facebook Objects
