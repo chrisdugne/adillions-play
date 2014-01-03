@@ -38,6 +38,39 @@
 	line-height: 35px;
 }
 
+.I {
+	font-size: 21px;
+	font-weight: bold;
+	color: #333;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: left;
+	line-height: 22px;
+	font-family: "gillsans-light","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.II {
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: justify;
+	line-height: 22px;
+	font-family: "gillsans-light","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.III {
+	font-size: 18px;
+	color: #333;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: justify;
+	line-height: 22px;
+	font-family: "gillsans-light","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
 /************************************************/
 
 #partAdvertisersTitle {

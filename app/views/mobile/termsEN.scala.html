@@ -13,6 +13,7 @@
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/footer.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/global.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/website.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/footer.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/global.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/home.css")' />
@@ -59,6 +60,12 @@
     $("#TermsIntro1").text(Translator.messages["TermsIntro1"]);
     $("#TermsIntro2").text(Translator.messages["TermsIntro2"]);
     $("#TermsIntro3").text(Translator.messages["TermsIntro3"]);
+
+    var terms = $(".I, .II, .III");
+    for(var i = 0; i< terms.length; i++ ){
+	    $("#"+terms[i].id).text(Translator.messages[terms[i].id]);
+    }
+    
 </script>
 
 </html>

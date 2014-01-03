@@ -47,6 +47,7 @@
     //------------------------------------------------------//
 
     App.loadApp = function(){
+        
         //------------------------------------------------------//
         //   App.youtubeManager = new YoutubeManager();
         LotteryManager.refreshNextLottery()
