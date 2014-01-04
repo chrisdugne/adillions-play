@@ -9,9 +9,11 @@
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/bootstrap.min.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/header.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/mobile.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/game.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/footer.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/global.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/website.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/footer.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/global.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/home.css")' />
@@ -27,25 +29,44 @@
 </head>
 
 @import views.html.mobile.header;
-@import views.html.templates.components.termsContentFR;
+@import views.html.templates.components.termsContentEN;
 
 <body>
 	@header()
 
 	<div class="content">
 		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
+		@termsContentEN()
 	</div>
 
-	@termsContentFR()
 </body>
 
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src='@routes.Assets.at("js/webapp/tools/translator.js")' type="text/javascript"></script>
 
 <script type="text/javascript">
-   $("#closeButton").click(function() {
-      window.location.href = "/backToMobile"
-   });
+    //-----------------------------------// 
+    // setup 
+
+    window.translator = new Translator(true);
+    Translator.setLang('en');
+    
+    //-----------------------------------// 
+
+    $("#closeButton").click(function() {
+        window.location.href = "/backToMobile"
+    });
+
+    $("#TermsIntro1").text(Translator.messages["TermsIntro1"]);
+    $("#TermsIntro2").text(Translator.messages["TermsIntro2"]);
+    $("#TermsIntro3").text(Translator.messages["TermsIntro3"]);
+
+    var terms = $(".I, .II, .III");
+    for(var i = 0; i< terms.length; i++ ){
+	    $("#"+terms[i].id).text(Translator.messages[terms[i].id]);
+    }
+    
 </script>
 
 </html>
