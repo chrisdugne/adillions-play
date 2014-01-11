@@ -76,6 +76,10 @@
 	margin-top: -32px;
 }
 
+.demimarginbottom {
+	margin-bottom: 5px !important;
+}
+
 .marginbottom {
 	margin-bottom: 10px !important;
 }
@@ -108,6 +112,10 @@
 	margin-bottom: 80px !important;
 }
 
+
+.demimargintop {
+	margin-top: 5px !important;
+}
 
 .margintop {
 	margin-top: 10px !important;
@@ -353,11 +361,11 @@
 	width: 225px;
 	cursor: hand;
 	cursor: pointer;
-	opacity: 0.8;
+	opacity: 1;
 }
 
 #fillOutTicket:hover {
-	opacity: 1;
+	opacity: 0.8;
 }
 
 #ticketsRemainingHome {
@@ -369,22 +377,22 @@
 	width: 100px;
 	cursor: hand;
 	cursor: pointer;
-	opacity: 0.8;
+	opacity: 1;
 }
 
 #inviteButton:hover {
-	opacity: 1;
+	opacity: 0.8;
 }
 
 #shareButton {
 	width: 100px;
 	cursor: hand;
 	cursor: pointer;
-	opacity: 0.8;
+	opacity: 1;
 }
 
 #shareButton:hover {
-	opacity: 1;
+	opacity: 0.8;
 }
 
 /*---------------------------------------------*/
@@ -392,11 +400,11 @@
 	width: 126px;
 	cursor: hand;
 	cursor: pointer;
-	opacity: 0.8;
+	opacity: 1;
 }
 
 #validateButton.enabled:hover {
-	opacity: 1;
+	opacity: 0.8;
 }
 
 /*---------------------------------------------*/

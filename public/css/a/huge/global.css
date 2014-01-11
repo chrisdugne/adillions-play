@@ -688,12 +688,12 @@ body {
 .bigbutton {
 	cursor: hand;
 	cursor: pointer;
-	opacity: 0.8;
 	border: 1px #000;
+	opacity: 1;
 }
 
 .bigbutton:hover {
-	opacity: 1;
+	opacity: 0.8;
 }
 
 /*--------------------------------*/
@@ -762,11 +762,11 @@ body {
 .touchable {
 	cursor: hand;
 	cursor: pointer;
-	opacity: 0.8;
+	opacity: 1;
 }
 
 .touchable:hover {
-	opacity: 1;
+	opacity: 0.8;
 }
 
 .movable {

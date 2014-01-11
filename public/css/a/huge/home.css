@@ -60,13 +60,13 @@
 	width: 187px;
 	cursor: hand;
 	cursor: pointer;
-	opacity: 0.9;
+	opacity: 1;
 	margin-left: -40px;
 	margin-top: -65px;
 }
 
 #seeResultsHome:hover {
-	opacity: 1;
+	opacity: 0.8;
 }
 
 #cagnotteIconHome { 
@@ -298,9 +298,9 @@
 	padding-top: 25px;
 	cursor: hand;
 	cursor: pointer;
-	opacity: 0.9;
+	opacity: 1;
 }
 
 #advertisingButton:hover {
-	opacity: 1;
+	opacity: 0.8;
 }

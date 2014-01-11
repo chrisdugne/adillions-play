@@ -403,11 +403,11 @@
 	.bigbutton {
 		cursor: hand;
 		cursor: pointer;
-		opacity: 0.8;
 		border: 1px #000;
+		opacity: 1;
 	}
 	.bigbutton:hover {
-		opacity: 1;
+		opacity: 0.8;
 	}
 
 	/*--------------------------------*/
@@ -465,14 +465,6 @@
 	}
 
 	/*--------------------------------------------------*/
-	.touchable {
-		cursor: hand;
-		cursor: pointer;
-		opacity: 0.8;
-	}
-	.touchable:hover {
-		opacity: 1;
-	}
 	.movable {
 		cursor: move !important;
 	}

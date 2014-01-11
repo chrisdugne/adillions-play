@@ -132,10 +132,10 @@
 	display: block;
 	cursor: hand;
 	cursor: pointer;
-	opacity: 0.8;
+	opacity: 1;
 }
 
 .SocialIconsWidget ul li a:hover {
-	opacity: 1;
-}}
+	opacity: 0.8;
+}
 
