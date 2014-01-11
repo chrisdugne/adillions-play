@@ -828,15 +828,21 @@ UserManager.setupForms = function()
    $( "#birthDate" ).datepicker({
       changeMonth: true,
       changeYear: true,
-      yearRange: "-100:-12"
+      yearRange: "-104:-12"
    });
 
    $( "#fbForm_birthDate" ).datepicker({
       changeMonth: true,
       changeYear: true,
-      yearRange: "-100:-12"
+      yearRange: "-104:-12"
    });
+   
+   var queryDate = '1970-01-01';
+   var parsedDate = $.datepicker.parseDate('yy-mm-dd', queryDate);
 
+   $('#fbForm_birthDate').datepicker('setDate', parsedDate);
+   $('#birthDate').datepicker('setDate', parsedDate);
+   
    $.validator.addMethod(
          "same",
          function(value, element, params) {

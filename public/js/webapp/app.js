@@ -27,13 +27,13 @@
 
         //------------------------------------------------------//
 
-        App.Globals.set("country", "us");
+        App.Globals.set("country", "FR");
         
         $.ajax({ 
             type        : "GET",
             dataType    : "jsonp",
             url         : "https://freegeoip.net/json/", 
-            timeout     : 2000,
+            timeout     : 6000,
             success     : function(response) {
                 App.Globals.set("country", response["country_code"]);
             },
@@ -47,7 +47,7 @@
     //------------------------------------------------------//
 
     App.loadApp = function(){
-        
+
         //------------------------------------------------------//
         //   App.youtubeManager = new YoutubeManager();
         LotteryManager.refreshNextLottery()
