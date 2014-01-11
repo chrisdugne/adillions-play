@@ -6,23 +6,33 @@
 	</div>
 
 	<!-- --------------------------- -->
+	<!-- Play button -->
+	
+	<div class="span4 offset2">
+		<div class="row-fluid">
+			{{#if user.loggedIn}}
+				<div class="span8">
+					<div {{action openGame}} class="touchable">{{langImage App.user.lang png='on1.png' customclass='fixedAsset'}}</div>
+				</div>
+				<div class="span3">
+					<div {{action openPoints}}> {{pointsImage App.user.currentPoints}} </div>
+				</div>
+			{{else}}
+				<div class="span8">
+					<div {{action openLogin}} class="touchable">{{langImage App.user.lang png='off1.png' customclass='fixedAsset'}}</div>
+				</div>
+			{{/if}}
+		</div>
+	</div>
+	
+	<!-- --------------------------- -->
 	<!-- Language buttons -->
 	
-	<div id="langButtons">
+	<div class="span1 margintop">
 		<div id="enButton" {{action translateEn}} class="langButton">{{App.translations.messages.en}}</div>
 		<div id="frButton" {{action translateFr}} class="langButton">{{App.translations.messages.fr}}</div>
 	</div>
 	
-	<ul id="headerButtons">
-		{{#if user.loggedIn}}
-			<li {{action openGame}} class="btn-large button">{{App.translations.messages.Play}}</li>
-			<li {{action logout}} class="btn-large button">{{App.translations.messages.Logout}}</li>
-			<div id="headerPoints" {{action openPoints}}> {{pointsImage App.user.currentPoints}} </div>
-		{{else}}
-			<li {{action openSignin}} class="btn-large button">{{App.translations.messages.SignIn}}</li>
-			<li {{action openLogin}} class="btn-large button">{{App.translations.messages.LogIn}}</li>
-		{{/if}}
-	</ul>
 
 	<!-- --------------------------- -->
 

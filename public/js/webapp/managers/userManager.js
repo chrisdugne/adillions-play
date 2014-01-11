@@ -390,13 +390,13 @@ UserManager.updatePlayer = function(next)
 //-------------------------------------------//
 
 UserManager.updateFanStatus = function(next){
-   console.log("updateFanStatus")
+   console.log("updateFanStatus", App.user)
 
    App.user.facebookFan = App.user.isFacebookFan
    App.user.twitterFan = App.user.isTwitterFan
 
    var params = new Object();
-   params["user"] = App.user
+   params["user"] = App.user;
 
    $.ajax({
       type: "POST",  
@@ -408,7 +408,7 @@ UserManager.updateFanStatus = function(next){
       success: function (player)
       {
          if(next)
-            next()
+            next();
       }
    });
 

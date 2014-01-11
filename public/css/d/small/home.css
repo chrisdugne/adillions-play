@@ -12,7 +12,15 @@
 		padding: 0;
 		z-index: 1;
 	}
+	/*--------------------------------*/
 
+	#headerPrice  {
+		color: #fff;
+		font-size: 50px;
+		text-align: right;
+		margin-top: 90px;
+	}
+	
 	/*--------------------------------*/
 	.websiteContent {
 		padding-top: 50px;

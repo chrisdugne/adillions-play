@@ -41,24 +41,36 @@
 		
 		<div class="row-fluid" id="partHowItWorks">
 			<div class="row-fluid">
-		 		<div id="howItWorksTitle" class="span8 offset2"><b>{{App.translations.messages.Work}}</b></div>
+		 		<div id="howItWorksTitle" class="span10 offset2"><b>{{App.translations.messages.Work}}</b></div>
 			</div>
 			<!-- span2 offset3 , 2, 2 (reste3) -->
 			<!-- span3 offset1 , 4, 3 (reste1)-->
 			<div class="row-fluid" id="howItWorksWorkflow">
 		 		<div class="span3 offset1">
-		 			<img id="watchIconHome" src='@routes.Assets.at("images/website/watch.png")'></img>
-		 			<img id="arrow1Home" src='@routes.Assets.at("images/website/arrow.png")'></img>
+					<div class="row-fluid">
+				 		<div class="span7 offset2">
+			 				<img id="watchIconHome" src='@routes.Assets.at("images/website/watch.png")'></img>
+				 		</div>
+				 		<div class="span2 offset1 margintop">
+				 			<img src='@routes.Assets.at("images/website/arrow.png")'></img>
+				 		</div>
+			 		</div>
 			 		<div class="howItWorksText">
-		 			{{App.translations.messages.WatchAd}}
+		 				{{App.translations.messages.WatchAd}}
 			 		</div>
 		 		</div>
 		 		<div class="span4">
-		 			<img id="ticketIconHome" src='@routes.Assets.at("images/website/ticket.png")'></img>
-		 			<img id="arrow2Home" src='@routes.Assets.at("images/website/arrow.png")'></img>
-			 		<div class="howItWorksText">
-		 			{{App.translations.messages.LotteryTicket}}
+					<div class="row-fluid">
+				 		<div class="span7 offset2">
+		 					<img id="ticketIconHome" src='@routes.Assets.at("images/website/ticket.png")'></img>
+		 				</div>
+				 		<div class="span2 offset1 margintop">
+				 			<img src='@routes.Assets.at("images/website/arrow.png")'></img>
+				 		</div>
 			 		</div>
+			 		<div class="howItWorksText">
+		 				{{App.translations.messages.LotteryTicket}}
+	 				</div>
 		 		</div>
 		 		<div class="span3">
 		 			<img id="prizeIconHome" src='@routes.Assets.at("images/website/prize.png")'></img>
@@ -105,9 +117,7 @@
 	 			
 				<div class="row-fluid margintop4">
 					<div {{action playOnAdillions}} class="span6 touchable">{{langImage App.user.lang png='available.adillions.png'}}</div>
-		 			<a href="http://apps.facebook.com/adillions/">
-						<div class="span6 touchable">{{langImage App.user.lang png='available.facebook.png'}}</div>
-					</a>
+					<div class="span6 touchable" onclick="window.open('http://apps.facebook.com/adillions/')">{{langImage App.user.lang png='available.facebook.png'}}</div>
 				</div>
 	 		</div>
 	 		<div class="span5">
@@ -130,12 +140,8 @@
 	 			<img id="arrowDownDownload" src='@routes.Assets.at("images/website/arrow.down.png")'></img>
 	 			
 				<div class="row-fluid">
-		 			<a href="https://itunes.apple.com/us/app/adillions/id739060819">
-						<div class="span6 touchable">{{langImage App.user.lang png='available.apple.png' id='availableApple'}}</div>
-					</a>
-		 			<a href="https://play.google.com/store/apps/details?id=com.adillions.v1">
-						<div class="span6 touchable">{{langImage App.user.lang png='available.google.png' id='availableGoogle'}}</div>
-					</a>
+					<div class="span6 touchable" onclick="window.open('https://itunes.apple.com/us/app/adillions/id739060819')">{{langImage App.user.lang png='available.apple.png' id='availableApple'}}</div>
+					<div class="span6 touchable" onclick="window.open('https://play.google.com/store/apps/details?id=com.adillions.v1')">{{langImage App.user.lang png='available.google.png' id='availableGoogle'}}</div>
 				</div>
 	 		</div>
 		</div>

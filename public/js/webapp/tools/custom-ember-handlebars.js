@@ -67,9 +67,15 @@ Ember.Handlebars.registerBoundHelper('langImage', function(lang, options) {
    if(lang == null)
       lang = "en"
    
-   var customclass = options.hash.customclass
+   var customclass  = options.hash.customclass || "", 
+       id           = "";
+   
+   if(options.hash.id){
+       id           = "id='"+options.hash.id+"'";
+   }
+   
    var path = "/assets/images/bylang/" + lang + "/" + options.hash.png
-   var img = "<div><img id='"+options.hash.id+"' class='"+customclass+"' src='"+path+"'></img></div>"
+   var img = "<div><img "+id+" class='"+customclass+"' src='"+path+"'></img></div>"
    return new Handlebars.SafeString(img)
 });
 
