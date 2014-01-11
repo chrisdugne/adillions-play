@@ -87,7 +87,7 @@ Ember.Handlebars.registerBoundHelper('pointsImage', function(points) {
       points = 0
    
    var path = "/assets/images/points/points." + points + ".png"
-   var img = "<img class=\"mobileIcon touchable\" id='pointsImage' src='"+path+"'></img>"
+   var img = "<img class=\"mobileIcon touchable\" src='"+path+"'></img>"
   
    return new Handlebars.SafeString(img)
 });
