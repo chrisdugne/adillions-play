@@ -313,6 +313,9 @@
 	"FBReceive"			: "pour recevoir vos gains (cf. le Règlement) !",
 	"FBAttention"		: "Il est important de nous fournir vos vrais noms et prénoms pour recevoir vos gains (cf. le Règlement) !",
 	
+    "PersonalInfo"		: "Il est nécessaire de nous fournir des informations personnelles exactes afin de recevoir vos gains (cf. le Règlement)",
+    "PersonalInfoFB"	: "Adillions utilise votre identifiant Facebook mais il est nécessaire de nous fournir des informations personnelles exactes afin de recevoir vos gains (cf. le Règlement)",
+    
     "Players"			: "Players",
     "Days"				: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     "Months"			: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November"],

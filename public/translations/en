@@ -308,6 +308,9 @@
 	"FBRealName"		: "You must give us your real full name",
 	"FBReceive"			: "for prize payments (cf. the Terms)",
     "FBAttention"		: "Important, you must give us your real full name for prize payments (cf. the Terms).",
+
+    "PersonalInfo"		: "Personal information must be accurate in order to claim your winnings (cf. the Terms)",
+    "PersonalInfoFB"	: "Adillions uses your Facebook username but your personal information must be accurate in order to claim your winnings (cf. the Terms)",
     
     "Players"			: "Players",
     "Days"				: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],

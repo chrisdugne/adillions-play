@@ -9,6 +9,7 @@
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/bootstrap.min.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/header.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/mobile.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/game.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/footer.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/global.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/home.css")' />
@@ -38,20 +39,15 @@
 			<div class="span4 offset1"><a id="changeAccountButton"></a></div>
 		</div>
 
-		<div class="row-fluid">
+
+		<div class="row-fluid marginbottom2">
 			<div class="span3 offset1">
 				<img title="icon" id="facebookPicture"></img>
 			</div>
 		</div>
 		<br />
 
-	
-		<div class="row-fluid">
-			<p id="FBUsername"></p>
-			<p id="FBImportant"></p>
-			<p id="FBRealName"></p>
-			<p id="FBReceive"></p>
-		</div>
+		<div class="row-fluid normal marginbottom4 " id="personal_text_fb"></div>
 		<br />
 
 		<form id="fbForm">
@@ -94,7 +90,7 @@
 						<label for="check1"></label>
 					</div>
 				</div>
-				<div class="span8">
+				<div class="span8 offset2">
 					<div class="row-fluid" id="check1Label">
 					</div>
 				</div>
@@ -107,7 +103,7 @@
 						<label for="check2"></label>
 					</div>
 				</div>
-				<div class="span8">
+				<div class="span8 offset2">
 					<div class="row-fluid" id="check2Label">
 					</div>
 				</div>
@@ -213,6 +209,7 @@
       $("#fbForm_birthDate").datepicker("option", "dateFormat", 'dd/mm/yy');
    }
 
+   $("#personal_text_fb").text(Translator.messages["PersonalInfoFB"])
    $("#labelFirstName").text(Translator.messages["FirstName"])
    $("#labelLastName").text(Translator.messages["LastName"])
    $("#labelEmail").text(Translator.messages["Email"])
@@ -243,7 +240,19 @@
    $("#validateButton").click(function() {
       
       if(UserManager.signinFormFBReady()){
-
+          
+          UserManager.mobileSigninFB(function(result) {
+              var url = "/signedIn"
+              url += "?firstName=" + $("#fbForm_firstName").val()
+              url += "&lastName=" + $("#fbForm_lastName").val()
+              url += "&birthDate="
+                    + Utils.dateToString($("#fbForm_birthDate").datepicker(
+                          "getDate"))
+              url += "&authToken=" + result.authToken
+              window.location.href = url
+           });
+          
+/* 
          $("#confirmFirstName").text($("#fbForm_firstName").val())
          $("#confirmLastName").text($("#fbForm_lastName").val())
          $("#confirmBirthDate").text($("#fbForm_birthDate").val())
@@ -255,12 +264,12 @@
 	           	left : ($(window).width()/2 - 125) +  'px',
 	            width : '250px'
 	         }
-	      });
+	      }); */
       }
 
    })
    
-   $('#yes').click(
+/*    $('#yes').click(
       function() {
          UserManager.mobileSigninFB(function(result) {
             var url = "/signedIn"
@@ -277,7 +286,7 @@
    $('#no').click(function() {
       $.unblockUI();
       return false;
-   });
+   }); */
 
    //-------------------------------------------// 
    

@@ -31,15 +31,17 @@
 	
 	<div class="content">
 		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
-
-		<div class="row-fluid">
+		
+		<div class="row-fluid upper4 marginbottom2">
 			<div id="facebookButton" class="btn-large button-facebook">Connect with Facebook</div>
 		</div>
-		<div class="row-fluid">
+		<div class="row-fluid marginbottom4">
 			<p class="auth-method-separator">
             	<i>or</i>
         	</p>
 		</div>
+
+		<div class="row-fluid normal marginbottom4" id="personal_text"></div>
 
 		<form id="signinForm1">
 
@@ -206,6 +208,8 @@
       $("#birthDate").datepicker("option", "dateFormat", 'dd/mm/yy');
    }
    
+   $("#personal_text").text(Translator.messages["PersonalInfo"])
+   
    $("#labelFirstName").text(Translator.messages["FirstName"])
    $("#labelLastName").text(Translator.messages["LastName"])
    $("#labelEmail").text(Translator.messages["Email"])
@@ -230,9 +234,12 @@
    //-------------------------------------------// 
 
    $("#validateButton").click(function() {
-      
-      if(UserManager.signinFormReady()){
 
+       if(UserManager.signinFormReady()){
+	       	UserManager.mobileSignin(function() {
+	           window.location.href = "/signedIn"
+	        }); 
+/* 
          $("#confirmFirstName").text($("#firstName").val())
          $("#confirmLastName").text($("#lastName").val())
          $("#confirmBirthDate").text($("#birthDate").val())
@@ -244,11 +251,11 @@
 	           	left : ($(window).width()/2 - 125) +  'px',
 	            width : '250px'
 	         }
-	      });
+	      }); */
       }
 
    })
-   
+   /* 
    $('#yes').click(function() {
       UserManager.mobileSignin(function() {
          window.location.href = "/signedIn"
@@ -258,7 +265,7 @@
    $('#no').click(function() {
       $.unblockUI();
       return false;
-   });
+   }); */
 
    //-------------------------------------------// 
    
