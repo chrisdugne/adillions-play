@@ -436,8 +436,8 @@ UserManager.getPlayer = function()
       success: function (player, textStatus, jqXHR)
       {
          UserManager.receivedPlayer(player, function(){
-//          App.get('router').transitionTo('game.gameHome');
-            App.user.set("picture", "/assets/images/hud/dummy.profile.png")
+             App.get('router').transitionTo('game.gameHome');
+             App.user.set("picture", "/assets/images/hud/dummy.profile.png")
          })
       }
    });
@@ -465,10 +465,10 @@ UserManager.getPlayerByFacebookId = function()
          console.log(result)
          App.authToken = result.authToken
          UserManager.receivedPlayer(result.player, function(){
-//          App.get('router').transitionTo('game.gameHome');
+             App.get('router').transitionTo('game.gameHome');
 
-            console.log("---> set picture", Facebook.data)
-            App.user.set("picture", Facebook.data.picture.data.url)   
+             console.log("---> set picture", Facebook.data)
+             App.user.set("picture", Facebook.data.picture.data.url)   
          })
       },
       error:function(){
