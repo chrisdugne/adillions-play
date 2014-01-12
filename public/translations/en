@@ -107,7 +107,7 @@
 	"GlobalText"		: " : Join an international community of players",
 	"ResponsibleText"	: " : Whether there are winners or not, a part of each video ad finances the Adillions Solidarity & Sustainable Development Fund",
 	
-	"DrawAmount"		: "The lottery is drawn every Saturday at XXX p.m. (PST) and it is broadcast live online on Youtube. Like any traditional lottery, if nobody wins, the amount accumulates and is added to the next draw (do not hesitate to read our Terms of Use)",
+	"DrawAmount"		: "The lottery is drawn every Saturday at 8:00 p.m. (PST) and it is broadcast live online on Youtube. Like any traditional lottery, if nobody wins, the amount accumulates and is added to the next draw (do not hesitate to read our Terms of Use)",
 	
 	"EachPlay"			: "Each time you play on Adillions, you have a chance to win the jackpot and you dedicate few seconds of your day to charitable organizations",
 	
@@ -199,7 +199,7 @@
  	"##########################################" : "Privacy",
  	
  	 
-	"IntroPost"			: "Our Privacy Policy was last updated and posted on November [XXX], 2013. It governs the privacy terms of our website located at http://www.adillions.com and our mobile applications.",
+	"IntroPost"			: "Our Privacy Policy was last updated and posted on January 05th, 2014. It governs the privacy terms of our website located at http://www.adillions.com and our mobile applications.",
 	"IntroLanguage"		: "Our Privacy Policy was written in French. To the extent any translated version of this Privacy Policy conflicts with the French version, the French version controls.",
 	
 	"Overview"			: "Overview",
@@ -245,7 +245,7 @@
 	"RulesTickets"		: "Each draw is characterized by a maximum number of tickets per player (players can gain additional Bonus Tickets - see",
 	"RulesRewards"		: " Rewards",
 	"RulesTicketsEnd"	: ")",
-	"RulesDraws"		: "Draw takes place every XXX at XXX",
+	"RulesDraws"		: "Draw takes place every saturday at 8:00 pm (GMT)",
 	"RulesAmount"		: "The total amount of the Prize Fund is distributed over the six different prize categories (see",
 	"RulesPrize"		: " Prize",
 	"RulesAmountEnd"	: ")",

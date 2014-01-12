@@ -108,7 +108,7 @@
 	"GlobalText"		: " : Rejoignez une communauté internationale de joueurs",
 	"ResponsibleText"	: " : Qu'il y ait des gagnants ou non, une part de chaque spot publicitaire alimente le Fonds de Solidarité et de Développement Durable d'Adillions",
 	
-	"DrawAmount"		: "Les tirages ont lieu chaque samedi à XXX pm (PST) et ils sont diffusés en direct en ligne sur Youtube. Comme toutes les loteries traditionnelles, si personne ne gagne alors la cagnotte s'ajoute à celle du prochain tirage (n'hésitez pas à consulter notre Règlement)",
+	"DrawAmount"		: "Les tirages ont lieu chaque samedi à 20h00 (GMT) et ils sont diffusés en direct en ligne sur Youtube. Comme toutes les loteries traditionnelles, si personne ne gagne alors la cagnotte s'ajoute à celle du prochain tirage (n'hésitez pas à consulter notre Règlement)",
 	
 	"EachPlay"			: "Chaque fois que vous jouez sur Adillions, vous avez une chance de gagner le jackpot et vous consacrez quelques secondes de votre journée à des œuvres caritatives",
 	
@@ -188,7 +188,7 @@
 	"Questions_P"		: "Si vous avez des questions ou des remarques concernant notre politique de confidentialité, contactez-nous par courrier à Adillions - Service Contact - 57 rue du Faubourg Montmartre 75009 Paris - France ou à contact [at] adillions.com",	
 	"ReadAndAccept"		: "Par l'utilisation du site internet et des applications mobiles d'Adillions, vous reconnaissez avoir pris connaissance de notre politique de protection et d'utilisation des données personnelles et vous y consentez tel qu'il vient d'être décrit et aux fins susmentionnées.",
 
-	"FaitAParis"		: "Fait à Paris, le xxx 2013",
+	"FaitAParis"		: "Fait à Paris, le 05 janvier 2014",
 	
  	
  	"##########################################" : "FAQ",
@@ -262,7 +262,7 @@
 	"RulesTickets"		: "Chaque tirage se caractérise par un nombre maximum de tickets par joueur (il est possible de gagner des Tickets Bonus additionnels - cf.",
 	"RulesRewards"		: " Récompenses",
 	"RulesTicketsEnd"	: ")",
-	"RulesDraws"		: "Les tirages sont effectués chaque XXX à XXX",
+	"RulesDraws"		: "Les tirages sont effectués chaque samedi à 20h00 (GMT)",
 	"RulesAmount"		: "La somme globale de la cagnotte est répartie entre les six différents rangs de gain (cf.",
 	"RulesPrize"		: " Gains",
 	"RulesAmountEnd"	: ")",
