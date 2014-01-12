@@ -16,34 +16,46 @@
 
 	<div id="login" class="row-fluid">
 
-		<div class="span5 offset1">
-			
-			<form id="loginForm">
+		<form id="loginForm">
 
-				<div class="clearfix  " id="email_field">
-					<label for="loginemail">{{App.translations.messages.Email}}</label>
+			<div id="email_field">
+				<div class="row-fluid">
+					<label for="loginemail" class="span3 offset1 medium">{{App.translations.messages.Email}}</label>
+				</div>
+				<div class="row-fluid">
 					<div class="input">
-						<input type="text" id="loginemail" name="loginemail" value="">
+						<input type="text" id="loginemail" name="loginemail" value="" class="span10 offset1 margintop">
 					</div>
 				</div>
+			</div>
 
-				<div class="clearfix  " id="password_field">
-					<label for="loginpassword">{{App.translations.messages.Password}}</label>
+			<div id="password_field">
+				<div class="row-fluid margintop">
+					<label for="loginpassword" class="span4 offset1 medium">{{App.translations.messages.Password}}</label>
+				</div>
+				<div class="row-fluid">
 					<div class="input">
-						<input type="password" id="loginpassword" name="loginpassword">
+						<input type="password" id="loginpassword" name="loginpassword" class="span10 offset1 margintop">
 					</div>
 				</div>
+			</div>
 
-			</form>
-
-		</div>
+		</form>
 
 	</div>
+
 	<div class="row-fluid">
 		<div {{action login}} class="span10 offset1 btn-large button">{{App.translations.messages.LogIn}}</div>
 	</div>
+	
+	<div class="row-fluid">
+		<p class="auth-method-separator">
+           	<i>or</i>
+       	</p>
+	</div>
+	
 	<div class="row-fluid classictext">
-		<div class="span4 offset8">{{App.translations.messages.NoAccount}} <a {{action openSignin}} class="link">{{App.translations.messages.SignIn}} !</a></div>
+		<div class="span6 offset3 marketing medium margintop2">{{App.translations.messages.NoAccount}}   <a {{action openSignin}} class="link">{{App.translations.messages.SignIn}} !</a></div>
 	</div>
 
 	<br />
