@@ -19,7 +19,7 @@ def main():
     minPrice      = raw_input("Min price ? \n> ")
     date          = raw_input("data ? (yyyy-mm-dd) \n> ")
     
-    dateMillis    = utils.toTimestamp(date) + 22 * 60 * 60 * 1000  # 22h00
+    dateMillis    = utils.toTimestamp(date) + 20 * 60 * 60 * 1000  # 22h00
 
     if(not maxPicks 
     or not maxPrice    
