@@ -30,8 +30,8 @@
 	@header()
 
 	<div class="content">
-		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
-
+		<img id="closeButton" onclick="window.location.href='/backToMobile'" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
+		
 		<div class="row-fluid">
 			<div class="span7">
 				<p id="fbForm_title" class="popuptitle"></p>
@@ -289,10 +289,6 @@
    }); */
 
    //-------------------------------------------// 
-   
-   $("#closeButton").click(function() {
-      window.location.href = "/backToMobile"
-   });
 
    $("#changeAccountButton").click(function() {
       window.location.href = "/requireLogout"

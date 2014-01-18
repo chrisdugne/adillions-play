@@ -30,7 +30,7 @@
 	@header()
 	
 	<div class="content">
-		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
+		<img id="closeButton" onclick="window.location.href='/backToMobile'" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
 		
 		<div class="row-fluid upper4 marginbottom2">
 			<div id="facebookButton" class="btn-large button-facebook">Connect with Facebook</div>
@@ -260,9 +260,6 @@
       window.location.href = "/connectWithFB"
    })
 
-   $("#closeButton").click(function() {
-      window.location.href = "/backToMobile"
-   });
 </script>
 
 </html>

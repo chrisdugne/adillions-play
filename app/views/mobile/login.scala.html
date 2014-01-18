@@ -30,7 +30,7 @@
 	@header()
 
 	<div class="content">
-		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
+		<img id="closeButton" onclick="window.location.href='/backToMobile'" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
 
 		<!-- 
 		<div class="row-fluid">
@@ -113,10 +113,6 @@
             App.message("Wrong login/password", false)
          }
       })
-   });
-
-   $("#closeButton").click(function() {
-      window.location.href = "/backToMobile"
    });
 
    $("#facebookButton").click(function() {
