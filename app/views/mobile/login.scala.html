@@ -48,14 +48,14 @@
 			<form id="loginForm">
 
 				<div id="email_field" class="marginbottom2">
-					<label for="loginemail" class="normal">E-mail</label>
+					<label for="loginemail" id="labelEmail" class="normal"></label>
 					<div class="input">
 						<input type="text" id="loginemail" name="loginemail" value="">
 					</div>
 				</div>
 
 				<div id="password_field" class="marginbottom4">
-					<label for="loginpassword" class="normal">Password</label>
+					<label for="loginpassword" id="labelPassword"  class="normal"></label>
 					<div class="input">
 						<input type="password" id="loginpassword" name="loginpassword">
 					</div>
@@ -63,7 +63,7 @@
 
 			</form>
 
-			<div id="validateButton" class="btn-large button">Log in</div>
+			<div id="validateButton" class="btn-large button"></div>
 
 		</div>
 
@@ -91,16 +91,15 @@
 
 	//-------------------------------------------// 
 	
-	$(".input").on('focus', function(){
-	   header.css({position:'absolute'})
-	})
-	$(".input").on('blur', function(){
-	   header.css({position:'fixed'})
-	})
+   UserManager.setupForms();
 
-	//-------------------------------------------// 
+   //-------------------------------------------// 
 
-   UserManager.setupForms()
+   $("#labelEmail").text(Translator.messages["Email"]);
+   $("#labelPassword}").text(Translator.messages["Password"]);
+   $("#validateButton}").text(Translator.messages["Login"]);
+   
+   //-------------------------------------------// 
    
    $("#validateButton").click(function() {
       UserManager.mobileLogin(function(result) {
