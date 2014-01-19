@@ -288,6 +288,26 @@
       return false;
    }); */
 
+   //-------------------------------------------//
+   
+   $("#check1").click(function() {
+       if($("#check1")[0].checked){
+           $("#check1Label").removeClass("error");
+       }
+       else{
+           $("#check1Label").addClass("error");
+       }
+   });
+
+   $("#check2").click(function() {
+       if($("#check2")[0].checked){
+           $("#check2Label").removeClass("error");
+       }
+       else{
+           $("#check2Label").addClass("error");
+       }
+   });
+   
    //-------------------------------------------// 
 
    $("#changeAccountButton").click(function() {

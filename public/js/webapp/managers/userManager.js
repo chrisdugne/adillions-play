@@ -549,15 +549,33 @@ UserManager.logout = function(){
 //-------------------------------------------//
 
 UserManager.signinFormReady = function(){
-   var form1Ready = $("#signinForm1").valid()
-   var form2Ready = $("#signinForm2").valid()
-   var formReady = form1Ready && form2Ready && $("#check1")[0].checked && $("#check2")[0].checked
+   var form1Ready = $("#signinForm1").valid();
+   var form2Ready = $("#signinForm2").valid();
+   var formReady = form1Ready && form2Ready && $("#check1")[0].checked && $("#check2")[0].checked;
    
-   return formReady
+   if(!$("#check1")[0].checked){
+       $("#check1Label").addClass("error");
+   }
+
+   if(!$("#check2")[0].checked){
+       $("#check2Label").addClass("error");
+   }
+   
+   return formReady;
 }
 
 UserManager.signinFormFBReady = function(){
-   return $("#fbForm").valid() && $("#check1")[0].checked && $("#check2")[0].checked
+   var formReady = $("#fbForm").valid() && $("#check1")[0].checked && $("#check2")[0].checked;
+
+   if(!$("#check1")[0].checked){
+       $("#check1Label").addClass("error");
+   }
+
+   if(!$("#check2")[0].checked){
+       $("#check2Label").addClass("error");
+   }
+
+   return formReady;
 }
 
 
