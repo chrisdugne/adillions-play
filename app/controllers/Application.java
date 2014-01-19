@@ -120,6 +120,6 @@ public class Application extends Controller {
 	
 	public static Result mobileTermsFR()
 	{
-	   return ok(views.html.mobile.termsFR.render());
+	   return ok(views.html.mobile.termsEN.render());
 	}
 }
