@@ -122,6 +122,8 @@ public class LotteryManager {
 
 		Player player = Application.player();
 		Lottery lottery = LotteryManager.getNextLottery();
+		
+		System.out.print("===== SPECIAL_LOG | Player " + player.getUserName() + " | " + player.getUid() + " | stores : " + numbers + " | at : " + creationTime);
 
 		// -----------------------------------------------------//
 		// A - securite : on check cote server si le nb de tickets est ok

@@ -76,32 +76,32 @@
 	   }
 
 	   GameController.sponsorpay = new SPONSORPAY.Video.Iframe({
-	      
-	      appid:           '16913', 
-	      uid:             App.user.uid,
-	      height:          700,
-	      width:           700,
-	      display_format:  'bare_player',
-	      
-	      callback_on_start: function(offer) { 
-	         GameController.sponsorpay.showVideo();
-	      },
-	      
-	      callback_no_offers: function(){ 
-	         App.message("_No video to watch...")
-	         App.free()
-	      },
-	      
-	      callback_on_close: function(){ 
-	         console.log("on close")
-	         App.free()
-	      },
-	      
-	      callback_on_conversion: function(){ 
-	         console.log("on conversion")
-	         afterVideoSeen()
-	      }
-	      
+
+	       appid:           '16913', 
+	       uid:             App.user.uid,
+	       height:          700,
+	       width:           700,
+	       display_format:  'bare_player',
+
+	       callback_on_start: function(offer) { 
+	           GameController.sponsorpay.showVideo();
+	       },
+	       
+	       callback_no_offers: function(){ 
+	           App.free()
+	           App.message("_No video to watch...")
+	       },
+
+	       callback_on_close: function(){ 
+	           console.log("on close")
+	           App.free()
+	       },
+
+	       callback_on_conversion: function(){ 
+	           console.log("on conversion")
+	           afterVideoSeen()
+	       }
+
 	   });
 
 	   GameController.sponsorpay.backgroundLoad();

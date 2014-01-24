@@ -63,3 +63,7 @@ def toReadableDate(timestamp):
 # millis to yyyy-mm-dd (1382220000000 -> 2013-10-20) 
 def toDate(timestamp):
     return datetime.datetime.fromtimestamp(int(timestamp/1000)).strftime('%Y-%m-%d')
+
+# millis to yyyy-mm-dd (1382220000000 -> 2013-10-20) 
+def toSeconds(timestamp):
+    return datetime.datetime.fromtimestamp(int(timestamp/1000)).strftime('%Y-%m-%d %H:%m:%S')
