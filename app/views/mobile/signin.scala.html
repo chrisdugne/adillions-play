@@ -81,8 +81,8 @@
 				</div>
 			</div>
 
-			<label id="labelBirthDate" or="birthDate"></label> <input type="text" id="birthDate" name="birthDate" readonly
-				style="cursor: pointer !important;" />
+			<label id="labelBirthDate" or="birthDate"></label>
+			<input type="date" name="date" id="mbirthDate" />
 
 			<div class="clearfix  " id="name_field">
 				<label id="labelSponsorCode" for="referrerId"></label>
@@ -191,10 +191,7 @@
 
    //-------------------------------------------//
    
-   if (translator.lang == "fr") {
-      $("#birthDate").datepicker("option", "dateFormat", 'dd/mm/yy');
-   }
-   
+   $("#mbirthDate").val("1970-01-01");   
    $("#personal_text").text(Translator.messages["PersonalInfo"])
    
    $("#labelFirstName").text(Translator.messages["FirstName"])

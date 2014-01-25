@@ -758,7 +758,7 @@ UserManager.mobileSignin = function(callback)
     user.email       = $("#email").val() 
     user.firstName   = $("#firstName").val() 
     user.lastName    = $("#lastName").val() 
-    user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
+    user.birthDate   = $("#mbirthDate").val();
     user.referrerId  = $("#referrerId").val() 
     user.lang        = translator.lang; 
 
