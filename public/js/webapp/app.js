@@ -72,18 +72,10 @@
 
     //------------------------------------------------------//
 
-    App.loginAdillions = function(force){
-
+    App.loginAdillions = function(){
         console.log("---------> App.loginAdillions")
-        if(!$.cookie('facebookId') || force){
-            $.removeCookie('facebookId')  
-            UserManager.getPlayer();
-        }
-        else{
-            // le authToken est lié à un compte FB : ne pas logguer le mec, il est deco de FB ! (donc pas de getPlayer)
-            // delete authToken
-            $.removeCookie('authToken');
-        } 
+        $.removeCookie('facebookId')  
+        UserManager.getPlayer();
     }
 
     //------------------------------------------------------//
