@@ -9,21 +9,21 @@ this.UserManager = {};
 //==============================================================================================================//
 
 UserManager.checkUserCurrentLottery = function(){
-   console.log("checkUserCurrentLottery")
-   if(App.user.currentLotteryUID != App.nextLottery.uid){
-      console.log("new Lottery settings")
+    console.log("checkUserCurrentLottery")
+    if(App.user.currentLotteryUID != App.nextLottery.uid){
+        console.log("new Lottery settings")
 
-      App.user.set("currentLotteryUID",      App.nextLottery.uid)
-      App.user.set("availableTickets",       App.Globals.START_AVAILABLE_TICKETS )
-      App.user.set("playedBonusTickets",     0)
+        App.user.set("currentLotteryUID",      App.nextLottery.uid)
+        App.user.set("availableTickets",       App.Globals.START_AVAILABLE_TICKETS )
+        App.user.set("playedBonusTickets",     0)
 
-      App.user.set("hasTweet",               false)
-      App.user.set("hasPostOnFacebook",      false)
-      App.user.set("hasTweetAnInvite",       false)
-      App.user.set("hasInvitedOnFacebook",   false)
+        App.user.set("hasTweet",               false)
+        App.user.set("hasPostOnFacebook",      false)
+        App.user.set("hasTweetAnInvite",       false)
+        App.user.set("hasInvitedOnFacebook",   false)
 
-      UserManager.updatePlayer()
-   }
+        UserManager.updatePlayer()
+    }
 
 }
 
@@ -31,52 +31,52 @@ UserManager.checkUserCurrentLottery = function(){
 
 UserManager.updatedPlayer = function(player, next){
 
-   App.user.set("uid",                 player.uid);
-   App.user.set("email",               player.email);
-   App.user.set("userName",            player.userName);
-   App.user.set("firstName",           player.firstName);
-   App.user.set("lastName",            player.lastName);
-   App.user.set("birthDate",           player.birthDate);
-   App.user.set("referrerId",          player.referrerId);
-   App.user.set("sponsorCode",         player.sponsorCode);
-   App.user.set("giftToReferrer",      player.giftToReferrer);
+    App.user.set("uid",                 player.uid);
+    App.user.set("email",               player.email);
+    App.user.set("userName",            player.userName);
+    App.user.set("firstName",           player.firstName);
+    App.user.set("lastName",            player.lastName);
+    App.user.set("birthDate",           player.birthDate);
+    App.user.set("referrerId",          player.referrerId);
+    App.user.set("sponsorCode",         player.sponsorCode);
+    App.user.set("giftToReferrer",      player.giftToReferrer);
 
-   App.user.set("isFacebookFan",       player.isFacebookFan);
-   App.user.set("isTwitterFan",        player.isTwitterFan);
+    App.user.set("isFacebookFan",       player.isFacebookFan);
+    App.user.set("isTwitterFan",        player.isTwitterFan);
 
-   App.user.set("currentLotteryUID",   player.currentLotteryUID);
-   App.user.set("hasPostOnFacebook",   player.hasPostOnFacebook);
-   App.user.set("hasTweet",            player.hasTweet);
-   App.user.set("hasTweetAnInvite",    player.hasTweetAnInvite);
-   App.user.set("hasInvitedOnFacebook", player.hasInvitedOnFacebook);
+    App.user.set("currentLotteryUID",   player.currentLotteryUID);
+    App.user.set("hasPostOnFacebook",   player.hasPostOnFacebook);
+    App.user.set("hasTweet",            player.hasTweet);
+    App.user.set("hasTweetAnInvite",    player.hasTweetAnInvite);
+    App.user.set("hasInvitedOnFacebook", player.hasInvitedOnFacebook);
 
-   App.user.set("currentPoints",       player.currentPoints);
-   App.user.set("idlePoints",          player.idlePoints);
-   App.user.set("totalPoints",         player.totalPoints);
+    App.user.set("currentPoints",       player.currentPoints);
+    App.user.set("idlePoints",          player.idlePoints);
+    App.user.set("totalPoints",         player.totalPoints);
 
-   App.user.set("facebookId",          player.facebookId);
-   App.user.set("twitterId",           player.twitterId);
-   App.user.set("twitterName",         player.twitterName);
+    App.user.set("facebookId",          player.facebookId);
+    App.user.set("twitterId",           player.twitterId);
+    App.user.set("twitterName",         player.twitterName);
 
-   App.user.set("lotteryTickets",      player.lotteryTickets);
+    App.user.set("lotteryTickets",      player.lotteryTickets);
 
-   App.user.set("extraTickets",        player.extraTickets);
-   App.user.set("availableTickets",    player.availableTickets);
-   App.user.set("playedBonusTickets",  player.playedBonusTickets);
-   App.user.set("totalPaidTickets",    player.totalPaidTickets);
-   App.user.set("totalBonusTickets",   0);
+    App.user.set("extraTickets",        player.extraTickets);
+    App.user.set("availableTickets",    player.availableTickets);
+    App.user.set("playedBonusTickets",  player.playedBonusTickets);
+    App.user.set("totalPaidTickets",    player.totalPaidTickets);
+    App.user.set("totalBonusTickets",   0);
 
-   App.user.set("acceptEmails",        player.acceptEmails);
+    App.user.set("acceptEmails",        player.acceptEmails);
 
-   //----------------------------------------------//
+    //----------------------------------------------//
 
-   UserManager.sortLotteryTickets()
-   UserManager.setTotalGains()
+    UserManager.sortLotteryTickets()
+    UserManager.setTotalGains()
 
-   UserManager.checkIdlePoints()
-   UserManager.refreshFanStatus(next)   
+    UserManager.checkIdlePoints()
+    UserManager.refreshFanStatus(next)   
 
-   //----------------------------------------------//
+    //----------------------------------------------//
 
 }
 
@@ -84,34 +84,34 @@ UserManager.updatedPlayer = function(player, next){
 
 UserManager.sortLotteryTickets = function(next){
 
-   var lotteries = []
-   var currentLottery = null
+    var lotteries = []
+    var currentLottery = null
 
-   for(var i = 0; i < App.user.lotteryTickets.length; i++){
-      var ticket = App.user.lotteryTickets[i]
-      ticket.numbers = $.parseJSON(ticket.numbers)
-      ticket.lottery.theme = $.parseJSON(ticket.lottery.theme)
-      ticket.lottery.result = $.parseJSON(ticket.lottery.result)
+    for(var i = 0; i < App.user.lotteryTickets.length; i++){
+        var ticket = App.user.lotteryTickets[i]
+        ticket.numbers = $.parseJSON(ticket.numbers)
+        ticket.lottery.theme = $.parseJSON(ticket.lottery.theme)
+        ticket.lottery.result = $.parseJSON(ticket.lottery.result)
 
-      if(!currentLottery || (currentLottery.uid != ticket.lottery.uid)){
-         var lottery = {}
-         lottery.uid       = ticket.lottery.uid
-         lottery.result    = ticket.lottery.result
-         lottery.date      = ticket.lottery.date
-         lottery.theme     = ticket.lottery.theme
+        if(!currentLottery || (currentLottery.uid != ticket.lottery.uid)){
+            var lottery = {}
+            lottery.uid       = ticket.lottery.uid
+            lottery.result    = ticket.lottery.result
+            lottery.date      = ticket.lottery.date
+            lottery.theme     = ticket.lottery.theme
 
-         lotteries.push(lottery)
-         currentLottery = lotteries[lotteries.length - 1]
-         currentLottery.tickets = []
-      }
+            lotteries.push(lottery)
+            currentLottery = lotteries[lotteries.length - 1]
+            currentLottery.tickets = []
+        }
 
-      currentLottery.tickets.push(ticket)
-   }
+        currentLottery.tickets.push(ticket)
+    }
 
-   App.user.set("lotteries", lotteries)
+    App.user.set("lotteries", lotteries)
 
-   console.log("----------- user.lotteries")
-   console.log(App.user.lotteries)
+    console.log("----------- user.lotteries")
+    console.log(App.user.lotteries)
 }
 
 //-------------------------------------------//
@@ -119,84 +119,84 @@ UserManager.sortLotteryTickets = function(next){
 UserManager.setTotalGains = function(){
 
 
-   //--- lottery tickets status
+    //--- lottery tickets status
 
-   var BLOCKED  = 1;
-   var PENDING  = 2;
-   var PAYED    = 3;
-   var GIFT     = 4;
-   
-   //--------------------------
-   
-   App.user.set("totalWinnings", 0);
-   App.user.set("balance", 0);
-   App.user.set("totalGift", 0);
-   App.user.set("receivedWinnings", 0);
-   App.user.set("pendingWinnings", 0);
+    var BLOCKED  = 1;
+    var PENDING  = 2;
+    var PAYED    = 3;
+    var GIFT     = 4;
 
-   if(App.user.lotteryTickets){
-      for (var i = 0; i < App.user.lotteryTickets.length; i++){
-         var ticket = App.user.lotteryTickets[i]
-         var value  = Utils.countryPrice(ticket.price || 0, App.Globals.country, ticket.lottery.rateUSDtoEUR);
-         App.user.set("totalWinnings", App.user.totalWinnings + value)
-         
-         if(ticket.status == BLOCKED) 
-            App.user.set("balance", App.user.balance + value);
-         else if(ticket.status == GIFT) 
-            App.user.set("totalGift", App.user.totalGift + value);
-         else if(ticket.status == PENDING) 
-            App.user.set("pendingWinnings", App.user.pendingWinnings + value);
-         else
-            App.user.set("receivedWinnings", App.user.receivedWinnings + value);
-         
-      }
-   }
+    //--------------------------
+
+    App.user.set("totalWinnings", 0);
+    App.user.set("balance", 0);
+    App.user.set("totalGift", 0);
+    App.user.set("receivedWinnings", 0);
+    App.user.set("pendingWinnings", 0);
+
+    if(App.user.lotteryTickets){
+        for (var i = 0; i < App.user.lotteryTickets.length; i++){
+            var ticket = App.user.lotteryTickets[i]
+            var value  = Utils.countryPrice(ticket.price || 0, App.Globals.country, ticket.lottery.rateUSDtoEUR);
+            App.user.set("totalWinnings", App.user.totalWinnings + value)
+
+            if(ticket.status == BLOCKED) 
+                App.user.set("balance", App.user.balance + value);
+            else if(ticket.status == GIFT) 
+                App.user.set("totalGift", App.user.totalGift + value);
+            else if(ticket.status == PENDING) 
+                App.user.set("pendingWinnings", App.user.pendingWinnings + value);
+            else
+                App.user.set("receivedWinnings", App.user.receivedWinnings + value);
+
+        }
+    }
 }
 
 //-------------------------------------------//
 
 UserManager.refreshFanStatus = function(next){
 
-   var totalBonusTickets = 0
+    var totalBonusTickets = 0
 
-   if(App.user.get("hasFacebookAccount")){
-      totalBonusTickets += App.Globals.FACEBOOK_CONNECTION_TICKETS;
-   }
+    if(App.user.get("hasFacebookAccount")){
+        totalBonusTickets += App.Globals.FACEBOOK_CONNECTION_TICKETS;
+    }
 
-   if(App.user.get("hasTwitterAccount")){
-      totalBonusTickets += App.Globals.TWITTER_CONNECTION_TICKETS;
-   }
+    if(App.user.get("hasTwitterAccount")){
+        totalBonusTickets += App.Globals.TWITTER_CONNECTION_TICKETS;
+    }
 
-   var wasFacebookFan = App.user.isFacebookFan
-   console.log("wasFacebookFan : " + wasFacebookFan)
+    var wasFacebookFan = App.user.isFacebookFan
+    console.log("wasFacebookFan : " + wasFacebookFan)
 
-   Facebook.isFacebookFan(function(){
+    Facebook.isFacebookFan(function(){
 
-      //---------------------------------------------------------
+        //---------------------------------------------------------
 
-      if(App.user.isTwitterFan){
-         totalBonusTickets += App.Globals.TWITTER_FAN_TICKETS;
-      }
+        if(App.user.isTwitterFan){
+            totalBonusTickets += App.Globals.TWITTER_FAN_TICKETS;
+        }
 
-      if(App.user.isFacebookFan){
-         totalBonusTickets += App.Globals.FACEBOOK_FAN_TICKETS;
+        if(App.user.isFacebookFan){
+            totalBonusTickets += App.Globals.FACEBOOK_FAN_TICKETS;
 
-         if(!wasFacebookFan)
-            App.message(App.translations.messages.TwoMoreBonusTickets)
-      }
-      else if(wasFacebookFan){
-         App.message(App.translations.messages.TwoLostBonusTickets)
-      }
+            if(!wasFacebookFan)
+                App.message(App.translations.messages.TwoMoreBonusTickets)
+        }
+        else if(wasFacebookFan){
+            App.message(App.translations.messages.TwoLostBonusTickets)
+        }
 
 
-      App.user.set("totalBonusTickets", totalBonusTickets);
+        App.user.set("totalBonusTickets", totalBonusTickets);
 
-      //---------------------------------------------------------
+        //---------------------------------------------------------
 
-      UserManager.updateFanStatus(next);
+        UserManager.updateFanStatus(next);
 
-      //---------------------------------------------------------
-   })
+        //---------------------------------------------------------
+    })
 
 }
 
@@ -204,35 +204,35 @@ UserManager.refreshFanStatus = function(next){
 
 UserManager.checkIdlePoints = function() {
 
-   console.log("checkIdlePoints")
-   if(App.user.idlePoints > 0){
-      var points = App.user.idlePoints + App.user.currentPoints
-      var nbTickets = Math.floor(points/App.Globals.POINTS_TO_EARN_A_TICKET)
+    console.log("checkIdlePoints")
+    if(App.user.idlePoints > 0){
+        var points = App.user.idlePoints + App.user.currentPoints
+        var nbTickets = Math.floor(points/App.Globals.POINTS_TO_EARN_A_TICKET)
 
-      var message = App.translations.messages.YouHaveEarned + " : ";
-      message += points + " pts";
+        var message = App.translations.messages.YouHaveEarned + " : ";
+        message += points + " pts";
 
-      if(nbTickets > 0){
+        if(nbTickets > 0){
 
-         var plural = ""
-            if(nbTickets > 1) { plural = "s" }
+            var plural = ""
+                if(nbTickets > 1) { plural = "s" }
 
-         message += " = " + nbTickets + " " + App.translations.messages.Ticket + plural
-      }
+            message += " = " + nbTickets + " " + App.translations.messages.Ticket + plural
+        }
 
-      App.message(message);
-      UserManager.convertIdlePoints()
-   }
+        App.message(message);
+        UserManager.convertIdlePoints()
+    }
 
-   else if(App.user.currentPoints >= App.Globals.POINTS_TO_EARN_A_TICKET){
+    else if(App.user.currentPoints >= App.Globals.POINTS_TO_EARN_A_TICKET){
 
-      var message = App.translations.messages.YouHaveEarnedExtra;
-      message += " (" + App.Globals.POINTS_TO_EARN_A_TICKET + " pts = 1 " + App.translations.messages.Ticket + ")";
+        var message = App.translations.messages.YouHaveEarnedExtra;
+        message += " (" + App.Globals.POINTS_TO_EARN_A_TICKET + " pts = 1 " + App.translations.messages.Ticket + ")";
 
-      App.message(message);
+        App.message(message);
 
-      UserManager.convertCurrentPoints()
-   }
+        UserManager.convertCurrentPoints()
+    }
 }
 
 
@@ -240,70 +240,70 @@ UserManager.checkIdlePoints = function() {
 
 UserManager.convertIdlePoints = function() {
 
-   App.user.set("currentPoints", App.user.currentPoints + App.user.idlePoints)
-   App.user.set("totalPoints", App.user.totalPoints + App.user.idlePoints)
-   App.user.set("idlePoints", 0)
+    App.user.set("currentPoints", App.user.currentPoints + App.user.idlePoints)
+    App.user.set("totalPoints", App.user.totalPoints + App.user.idlePoints)
+    App.user.set("idlePoints", 0)
 
-   UserManager.convertCurrentPoints()
+    UserManager.convertCurrentPoints()
 }
 
 //-------------------------------------------------------------------//
 
 UserManager.convertCurrentPoints = function() {
-   UserManager.convertPointsToTickets()
-   UserManager.updatePlayer()
+    UserManager.convertPointsToTickets()
+    UserManager.updatePlayer()
 }
 
 //-----------------------------------------------------------------------------------------
 
 UserManager.convertPointsToTickets = function() {
 
-   var conversion = 0
+    var conversion = 0
 
-   while (App.user.currentPoints >= App.Globals.POINTS_TO_EARN_A_TICKET) {
-      App.user.set("currentPoints", App.user.currentPoints - App.Globals.POINTS_TO_EARN_A_TICKET)
-      App.user.set("extraTickets", App.user.extraTickets + 1)
+    while (App.user.currentPoints >= App.Globals.POINTS_TO_EARN_A_TICKET) {
+        App.user.set("currentPoints", App.user.currentPoints - App.Globals.POINTS_TO_EARN_A_TICKET)
+        App.user.set("extraTickets", App.user.extraTickets + 1)
 
-      conversion++
-   }
+        conversion++
+    }
 
-   return conversion
+    return conversion
 }
 
 //-------------------------------------------------------------------------------------//
 
 
 UserManager.hasTicketsToPlay = function(){
-   return App.user.get("ticketsToPlay") > 0;
+    return App.user.get("ticketsToPlay") > 0;
 }
 
 UserManager.checkTicketTiming = function(){
 
-   var lastTime = 0
-   var now = new Date().getTime()
+    var lastTime = 0
+    var now = new Date().getTime()
 
-   for(var i = 0; i< App.user.lotteryTickets.length; i++){
-      var ticket = App.user.lotteryTickets[i]
-      if((App.user.currentLotteryUID == ticket.lottery.uid) && (ticket.creationDate > lastTime) && (ticket.type == 1)) {
-         lastTime = ticket.creationDate
-      }
-   }
+    for(var i = 0; i< App.user.lotteryTickets.length; i++){
+        var ticket = App.user.lotteryTickets[i]
+        if((App.user.currentLotteryUID == ticket.lottery.uid) && (ticket.creationDate > lastTime) && (ticket.type == 1)) {
+            lastTime = ticket.creationDate
+        }
+    }
 
-   var spentMillis = now - lastTime
-   
-   //var h,m,s,ms = utils.getHoursMinSecMillis(spentMillis)
+    var spentMillis = now - lastTime
 
-   if((spentMillis >= App.nextLottery.ticketTimer * 60 * 1000) || App.user.extraTickets > 0) 
-      return true;
-   else{
+    //var h,m,s,ms = utils.getHoursMinSecMillis(spentMillis)
 
-      LotteryManager.startTimer(lastTime)
-         
-      $("#timerTicketWindow").reveal({
-         animation: 'fade',
-         animationspeed: 100, 
-      });   
-   }
+    if((spentMillis >= App.nextLottery.ticketTimer * 60 * 1000) || App.user.extraTickets > 0) 
+        return true;
+    else{
+
+        LotteryManager.startTimer(lastTime)
+
+        $("#timerTicketWindow").reveal({
+            animation: 'fade',
+            animationspeed: 100, 
+        });   
+    }
 }
 
 
@@ -313,10 +313,10 @@ UserManager.checkTicketTiming = function(){
 
 UserManager.signinWithTwitter = function(){
 
-   $.ajax({
-      type: "POST",  
-      url: "/signinWithTwitter"
-   });
+    $.ajax({
+        type: "POST",  
+        url: "/signinWithTwitter"
+    });
 
 }
 
@@ -328,31 +328,31 @@ UserManager.signinWithTwitter = function(){
 
 UserManager.receivedPlayer = function(player, next)
 {
-   console.log("receivedPlayer", player)
+    console.log("receivedPlayer", player)
 
-   App.user.set("loggedIn", true)   
+    App.user.set("loggedIn", true)   
 
-   var userName = ""
-      if(player.userName != undefined){
-         userName = player.userName
-      }
-      else{
-         userName = player.fistName // --> arrivee de FB
-      }
+    var userName = ""
+        if(player.userName != undefined){
+            userName = player.userName
+        }
+        else{
+            userName = player.fistName // --> arrivee de FB
+        }
 
-   App.message(App.translations.messages.Welcome + " " + userName + " !", true)
+    App.message(App.translations.messages.Welcome + " " + userName + " !", true)
 
-   UserManager.updatedPlayer(player, function(){
+    UserManager.updatedPlayer(player, function(){
 
-      if(Facebook && Facebook.finalizeInit)
-         Facebook.finalizeInit();
+        if(Facebook && Facebook.finalizeInit)
+            Facebook.finalizeInit();
 
-      UserManager.checkUserCurrentLottery()
+        UserManager.checkUserCurrentLottery()
 
-      console.log(App.user)
-      next()
+        console.log(App.user)
+        next()
 
-   })
+    })
 
 }
 
@@ -360,57 +360,57 @@ UserManager.receivedPlayer = function(player, next)
 
 UserManager.updatePlayer = function(next)
 {
-   console.log("updatePlayer")
-   var params = new Object();
-   params["user"] = App.user
+    console.log("updatePlayer")
+    var params = new Object();
+    params["user"] = App.user
 
-   console.log(App.user)
+    console.log(App.user)
 
-   $.ajax({
-      type: "POST",  
-      url: "/updatePlayer",
-      data: JSON.stringify(params),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      headers: {"X-Auth-Token": App.authToken},
-      success: function (player)
-      {
-         if(player){
-            UserManager.updatedPlayer(player, next)
-         }
-         else{
-            if(next)
-               next()
-         }
+    $.ajax({
+        type: "POST",  
+        url: "/updatePlayer",
+        data: JSON.stringify(params),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        headers: {"X-Auth-Token": App.authToken},
+        success: function (player)
+        {
+            if(player){
+                UserManager.updatedPlayer(player, next)
+            }
+            else{
+                if(next)
+                    next()
+            }
 
-      }
-   });
+        }
+    });
 }
 
 //-------------------------------------------//
 
 UserManager.updateFanStatus = function(next){
-   console.log("updateFanStatus", App.user)
+    console.log("updateFanStatus", App.user)
 
-   App.user.facebookFan = App.user.isFacebookFan
-   App.user.twitterFan = App.user.isTwitterFan
+    App.user.facebookFan = App.user.isFacebookFan
+    App.user.twitterFan = App.user.isTwitterFan
 
-   var params = new Object();
-   params["user"] = App.user;
+    var params = new Object();
+    params["user"] = App.user;
 
-   $.ajax({
-      type: "POST",  
-      url: "/updateFanStatus",
-      data: JSON.stringify(params),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      headers: {"X-Auth-Token": App.authToken},
-      success: function (player)
-      {
-         if(next)
-            next();
-      }
-   });
+    $.ajax({
+        type: "POST",  
+        url: "/updateFanStatus",
+        data: JSON.stringify(params),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        headers: {"X-Auth-Token": App.authToken},
+        success: function (player)
+        {
+            if(next)
+                next();
+        }
+    });
 
 }
 
@@ -418,90 +418,90 @@ UserManager.updateFanStatus = function(next){
 
 UserManager.mergePlayerWithFacebook = function(){
 
-   App.user.set("facebookId", Facebook.data.id);
-   App.user.set("facebookName", Facebook.data.name);
+    App.user.set("facebookId", Facebook.data.id);
+    App.user.set("facebookName", Facebook.data.name);
 
-   UserManager.updatePlayer()
+    UserManager.updatePlayer()
 }
 
 //-------------------------------------------//
 
 UserManager.getPlayer = function()
 {
-   $.ajax({
-      type: "POST",  
-      url: "/player",
-      headers: {"X-Auth-Token": App.authToken},
-      dataType: "json",
-      success: function (player, textStatus, jqXHR)
-      {
-         UserManager.receivedPlayer(player, function(){
-             App.get('router').transitionTo('game.gameHome');
-             App.user.set("picture", "/assets/images/hud/dummy.profile.png")
-         })
-      }
-   });
+    $.ajax({
+        type: "POST",  
+        url: "/player",
+        headers: {"X-Auth-Token": App.authToken},
+        dataType: "json",
+        success: function (player, textStatus, jqXHR)
+        {
+            UserManager.receivedPlayer(player, function(){
+                App.get('router').transitionTo('game.gameHome');
+                App.user.set("picture", "/assets/images/hud/dummy.profile.png")
+            })
+        }
+    });
 }
 
 //-------------------------------------------//
 
 UserManager.getPlayerByFacebookId = function()
 {
-   console.log("--> getPlayerByFacebookId")
+    console.log("--> getPlayerByFacebookId")
 
-   var params = new Object();
-   params["facebookData"] = Facebook.data
-   params["accessToken"] = Facebook.accessToken
+    var params = new Object();
+    params["facebookData"] = Facebook.data
+    params["accessToken"] = Facebook.accessToken
 
-   $.ajax({
-      type: "POST",  
-      url: "/playerFromFB",
-      data: JSON.stringify(params),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function (result)
-      {
-         console.log("---> getPlayerByFacebookId ok")
-         console.log(result)
-         App.authToken = result.authToken
-         UserManager.receivedPlayer(result.player, function(){
-             App.get('router').transitionTo('game.gameHome');
+    $.ajax({
+        type: "POST",  
+        url: "/playerFromFB",
+        data: JSON.stringify(params),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result)
+        {
+            console.log("---> getPlayerByFacebookId ok")
+            console.log(result)
+            App.authToken = result.authToken
+            UserManager.receivedPlayer(result.player, function(){
+                App.get('router').transitionTo('game.gameHome');
 
-             console.log("---> set picture", Facebook.data)
-             App.user.set("picture", Facebook.data.picture.data.url)   
-         })
-      },
-      error:function(){
-         console.log("--> unauthorized")
-         UserManager.setupForms()
-         UserManager.openSigninFB()
-      }
-   });
+                console.log("---> set picture", Facebook.data)
+                App.user.set("picture", Facebook.data.picture.data.url)   
+            })
+        },
+        error:function(){
+            console.log("--> unauthorized")
+            UserManager.setupForms()
+            UserManager.openSigninFB()
+        }
+    });
 }
 
 //-------------------------------------------//
 
 UserManager.cashout = function()
 {
-   var params = new Object();
-   params["country"] = App.Globals.country
+    var params = new Object();
+    params["country"] = App.Globals.country
 
-   App.wait()
+    App.wait()
 
-   $.ajax({
-      type: "POST",  
-      data: JSON.stringify(params),
-      contentType: "application/json; charset=utf-8",
-      url: "/cashout",
-      headers: {"X-Auth-Token": App.authToken},
-      dataType: "json",
-      success: function ()
-      {
-         UserManager.updatePlayer()
-         App.free()
-         App.message(App.translations.messages.Congratulations)
-      }
-   });
+    $.ajax({
+        type: "POST",  
+        data: JSON.stringify(params),
+        contentType: "application/json; charset=utf-8",
+        url: "/cashout",
+        headers: {"X-Auth-Token": App.authToken},
+        dataType: "json",
+        success: function ()
+        {
+            UserManager.updatePlayer()
+            App.free()
+            App.message(App.translations.messages.Congratulations)
+        }
+    });
 }
 
 
@@ -511,71 +511,71 @@ UserManager.cashout = function()
 
 UserManager.openSigninFB = function(){
 
-   $("#signinWindow").trigger("reveal:close");
-   $("#loginWindow").trigger("reveal:close");
-   $("#confirmFBWindow").trigger("reveal:close");
+    $("#signinWindow").trigger("reveal:close");
+    $("#loginWindow").trigger("reveal:close");
+    $("#confirmFBWindow").trigger("reveal:close");
 
-   $("#signinFBWindow").reveal({
-      animation: 'fade',
-      animationspeed: 100, 
-   });
+    $("#signinFBWindow").reveal({
+        animation: 'fade',
+        animationspeed: 100, 
+    });
 
-   $("#fbForm_title").text("Welcome " + Facebook.data.name + " !" )
-   $("#fbForm_firstName").val(Facebook.data.first_name)
-   $("#fbForm_lastName").val(Facebook.data.last_name)
-   $("#fbForm_birthDate").val(Facebook.data.birthday || "")
-   $("#fbForm_email").val(Facebook.data.email || "")
-   $("#facebookPicture").attr('src', Facebook.data.picture.data.url)
+    $("#fbForm_title").text("Welcome " + Facebook.data.name + " !" )
+    $("#fbForm_firstName").val(Facebook.data.first_name)
+    $("#fbForm_lastName").val(Facebook.data.last_name)
+    $("#fbForm_birthDate").val(Facebook.data.birthday || "")
+    $("#fbForm_email").val(Facebook.data.email || "")
+    $("#facebookPicture").attr('src', Facebook.data.picture.data.url)
 
-   console.log("GRABBED ?  " + App.Globals.sponsorCodeToUse)
-   if(App.Globals.sponsorCodeToUse != undefined){
-      $("#fbForm_referrerId").val(App.Globals.sponsorCodeToUse)
-   }
+    console.log("GRABBED ?  " + App.Globals.sponsorCodeToUse)
+    if(App.Globals.sponsorCodeToUse != undefined){
+        $("#fbForm_referrerId").val(App.Globals.sponsorCodeToUse)
+    }
 }
 
 //-------------------------------------------//
 
 UserManager.logout = function(){
-   if(Facebook.accessToken){
-      Facebook.logout()
-      $.removeCookie('facebookId');
-   }
+    if(Facebook.accessToken){
+        Facebook.logout()
+        $.removeCookie('facebookId');
+    }
 
-   $.removeCookie('authToken');
-   App.user.set("loggedIn", false)
-   App.get('router').transitionTo('home');
+    $.removeCookie('authToken');
+    App.user.set("loggedIn", false)
+    App.get('router').transitionTo('home');
 }
 
 //-------------------------------------------//
 
 UserManager.signinFormReady = function(){
-   var form1Ready = $("#signinForm1").valid();
-   var form2Ready = $("#signinForm2").valid();
-   var formReady = form1Ready && form2Ready && $("#check1")[0].checked && $("#check2")[0].checked;
-   
-   if(!$("#check1")[0].checked){
-       $("#check1Label").addClass("error");
-   }
+    var form1Ready = $("#signinForm1").valid();
+    var form2Ready = $("#signinForm2").valid();
+    var formReady = form1Ready && form2Ready && $("#check1")[0].checked && $("#check2")[0].checked;
 
-   if(!$("#check2")[0].checked){
-       $("#check2Label").addClass("error");
-   }
-   
-   return formReady;
+    if(!$("#check1")[0].checked){
+        $("#check1Label").addClass("error");
+    }
+
+    if(!$("#check2")[0].checked){
+        $("#check2Label").addClass("error");
+    }
+
+    return formReady;
 }
 
 UserManager.signinFormFBReady = function(){
-   var formReady = $("#fbForm").valid() && $("#check1")[0].checked && $("#check2")[0].checked;
+    var formReady = $("#fbForm").valid() && $("#check1")[0].checked && $("#check2")[0].checked;
 
-   if(!$("#check1")[0].checked){
-       $("#check1Label").addClass("error");
-   }
+    if(!$("#check1")[0].checked){
+        $("#check1Label").addClass("error");
+    }
 
-   if(!$("#check2")[0].checked){
-       $("#check2Label").addClass("error");
-   }
+    if(!$("#check2")[0].checked){
+        $("#check2Label").addClass("error");
+    }
 
-   return formReady;
+    return formReady;
 }
 
 
@@ -583,51 +583,51 @@ UserManager.signinFormFBReady = function(){
 
 UserManager.signin = function()
 {
-   App.user.email       = $("#email").val() 
-   App.user.firstName   = $("#firstName").val() 
-   App.user.lastName    = $("#lastName").val() 
-   App.user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
-   App.user.referrerId  = $("#referrerId").val() 
+    App.user.email       = $("#email").val() 
+    App.user.firstName   = $("#firstName").val() 
+    App.user.lastName    = $("#lastName").val() 
+    App.user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
+    App.user.referrerId  = $("#referrerId").val() 
 
-   console.log("signin ", App.user.lang)
+    console.log("signin ", App.user.lang)
 
-   delete App.user.facebookId
-   delete App.user.facebookName 
+    delete App.user.facebookId
+    delete App.user.facebookName 
 
-   var passwordHash  = CryptoJS.SHA512($("#password").val());
-   var password512   = passwordHash.toString(CryptoJS.enc.Hex)
-   App.user.password = password512
+    var passwordHash  = CryptoJS.SHA512($("#password").val());
+    var password512   = passwordHash.toString(CryptoJS.enc.Hex)
+    App.user.password = password512
 
-   $("#signinWindow").trigger("reveal:close");
-   App.wait()
+    $("#signinWindow").trigger("reveal:close");
+    App.wait()
 
-   var params = new Object();
-   params["user"] = App.user;
+    var params = new Object();
+    params["user"] = App.user;
 
-   $.ajax({
-      type: "POST",  
-      url: "/signin2",
-      data: JSON.stringify(params),  
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function (response){
-         App.free()
-         if(response){
-            App.authToken = response.authToken;
-            UserManager.getPlayer();
-         }
-      },
-      error: function (data){
-         //no json returned -> reach error
-         App.free()
-         if(data.responseText == "email"){
-            App.message(App.translations.messages.AccountEmailExists, false)
-         }
-         else if(data.responseText == "names"){
-            App.message(App.translations.messages.AccountNamesExist, false)
-         }
-      }
-   });
+    $.ajax({
+        type: "POST",  
+        url: "/signin2",
+        data: JSON.stringify(params),  
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response){
+            App.free()
+            if(response){
+                App.authToken = response.authToken;
+                UserManager.getPlayer();
+            }
+        },
+        error: function (data){
+            //no json returned -> reach error
+            App.free()
+            if(data.responseText == "email"){
+                App.message(App.translations.messages.AccountEmailExists, false)
+            }
+            else if(data.responseText == "names"){
+                App.message(App.translations.messages.AccountNamesExist, false)
+            }
+        }
+    });
 
 }
 
@@ -636,40 +636,40 @@ UserManager.signin = function()
 
 UserManager.signinFB = function()
 {
-   App.user.email                = $("#fbForm_email").val()
-   App.user.facebookName         = Facebook.data.name
-   App.user.facebookId           = Facebook.data.id
-   App.user.firstName            = $("#fbForm_firstName").val() 
-   App.user.lastName             = $("#fbForm_lastName").val() 
-   App.user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
-   App.user.referrerId           = $("#fbForm_referrerId").val() 
+    App.user.email                = $("#fbForm_email").val()
+    App.user.facebookName         = Facebook.data.name
+    App.user.facebookId           = Facebook.data.id
+    App.user.firstName            = $("#fbForm_firstName").val() 
+    App.user.lastName             = $("#fbForm_lastName").val() 
+    App.user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
+    App.user.referrerId           = $("#fbForm_referrerId").val() 
 
-   $("#signinFBWindow").trigger("reveal:close");
-   App.wait()
+    $("#signinFBWindow").trigger("reveal:close");
+    App.wait()
 
-   var params = new Object();
-   params["user"] = App.user;
-   params["accessToken"] = Facebook.accessToken;
+    var params = new Object();
+    params["user"] = App.user;
+    params["accessToken"] = Facebook.accessToken;
 
-   $.ajax({
-      type: "POST",  
-      url: "/signinFromFacebook",
-      data: JSON.stringify(params),  
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function (response){
-         if(response){
-            console.log("---> signinFB ok")
-            App.free()
-            App.authToken = response.authToken
-            UserManager.receivedPlayer($.parseJSON(response.player))
-         }
-         else{
-            // todo merge
-            App.message(App.translations.messages.AccountNamesExist, false)
-         }
-      }
-   });
+    $.ajax({
+        type: "POST",  
+        url: "/signinFromFacebook",
+        data: JSON.stringify(params),  
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response){
+            if(response){
+                console.log("---> signinFB ok")
+                App.free()
+                App.authToken = response.authToken
+                UserManager.receivedPlayer($.parseJSON(response.player))
+            }
+            else{
+                // todo merge
+                App.message(App.translations.messages.AccountNamesExist, false)
+            }
+        }
+    });
 
 }
 
@@ -677,359 +677,343 @@ UserManager.signinFB = function()
 
 UserManager.login = function()
 {
-   if($("#loginForm").valid()){
-      var user = {}
-      user.email       = $("#loginemail").val() 
+    if($("#loginForm").valid()){
+        var user = {}
+        user.email       = $("#loginemail").val() 
 
-      var passwordHash  = CryptoJS.SHA512($("#loginpassword").val());
-      var password512   = passwordHash.toString(CryptoJS.enc.Hex)
-      user.password = password512
+        var passwordHash  = CryptoJS.SHA512($("#loginpassword").val());
+        var password512   = passwordHash.toString(CryptoJS.enc.Hex)
+        user.password = password512
 
-      $("#loginWindow").trigger("reveal:close");
-      App.wait()
+        $("#loginWindow").trigger("reveal:close");
+        App.wait()
 
-      var params = new Object();
-      params["user"] = user;
+        var params = new Object();
+        params["user"] = user;
 
-      $.ajax({
-         type: "POST",  
-         url: "/login",
-         data: JSON.stringify(params),  
-         contentType: "application/json; charset=utf-8",
-         dataType: "json",
-         success: function (response){
-            App.free()
-            if(response){
-               App.authToken = response.authToken;
-               UserManager.getPlayer();
+        $.ajax({
+            type: "POST",  
+            url: "/login",
+            data: JSON.stringify(params),  
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response){
+                App.free()
+                if(response){
+                    App.authToken = response.authToken;
+                    UserManager.getPlayer();
+                }
+            },
+            error: function(){
+                App.free()
+                App.message("Wrong login/password", false)
             }
-         },
-         error: function(){
-            App.free()
-            App.message("Wrong login/password", false)
-         }
-      });
+        });
 
-   }
+    }
 }
 
 //-------------------------------------------//
 
 UserManager.mobileLogin = function(callback)
 {
-   if($("#loginForm").valid()){
-      var user = {}
-      user.email       = $("#loginemail").val() 
+    if($("#loginForm").valid()){
+        var user = {}
+        user.email       = $("#loginemail").val() 
 
-      var passwordHash  = CryptoJS.SHA512($("#loginpassword").val());
-      var password512   = passwordHash.toString(CryptoJS.enc.Hex)
-      user.password = password512
+        var passwordHash  = CryptoJS.SHA512($("#loginpassword").val());
+        var password512   = passwordHash.toString(CryptoJS.enc.Hex)
+        user.password = password512
 
-      App.wait()
+        App.wait()
 
-      var params = new Object();
-      params["user"] = user;
+        var params = new Object();
+        params["user"] = user;
 
-      $.ajax({
-         type: "POST",  
-         url: "/login",
-         data: JSON.stringify(params),  
-         contentType: "application/json; charset=utf-8",
-         dataType: "json",
-         success: function (result){
-            App.free()
-            callback(result)
-         },
-         error: function(){
-            App.free()
-            App.message("Wrong login/password", false)
-         }
-      });
-
-   }
-}
-
-//-------------------------------------------//
-
-UserManager.mobileSignin = function(callback)
-{
-   var user = {}
-
-   user.email       = $("#email").val() 
-   user.firstName   = $("#firstName").val() 
-   user.lastName    = $("#lastName").val() 
-   user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
-   user.referrerId  = $("#referrerId").val() 
-   user.lang        = translator.lang; 
-
-   var passwordHash  = CryptoJS.SHA512($("#password").val());
-   var password512   = passwordHash.toString(CryptoJS.enc.Hex);
-   user.password = password512;
-
-   App.wait();
-
-   var params = new Object();
-   params["user"] = user;
-
-   $.ajax({
-      type: "POST",  
-      url: "/signin",
-      data: JSON.stringify(params),  
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function (player){
-         App.free();
-         callback();
-      },
-      error: function (data){
-         //no json returned -> reach error
-         App.free();
-         if(data.responseText == "email"){
-            App.message(Translator.messages["AccountEmailExists"], false)
-         }
-         else if(data.responseText == "names"){
-            App.message(Translator.messages["AccountNamesExist"], false)
-         }
-      }
-   });
-}
-
-
-UserManager.mobileSignin2 = function(callback)
-{
-   var user = {}
-
-   user.email       = $("#email").val() 
-   user.firstName   = $("#firstName").val() 
-   user.lastName    = $("#lastName").val() 
-   user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
-   user.referrerId  = $("#referrerId").val() 
-   user.lang        = translator.lang; 
-
-   var passwordHash  = CryptoJS.SHA512($("#password").val());
-   var password512   = passwordHash.toString(CryptoJS.enc.Hex);
-   user.password = password512;
-
-   App.wait();
-
-   var params = new Object();
-   params["user"] = user;
-
-   $.ajax({
-      type: "POST",  
-      url: "/signin2",
-      data: JSON.stringify(params),  
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function (player){
-         console.log("created player", player)
-         var params = new Object();
-         params["user"] = player;
-
-         $.ajax({
+        $.ajax({
             type: "POST",  
             url: "/login",
             data: JSON.stringify(params),  
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result){
-
-               console.log("login after signin : result : ", result);
-               App.free();
-               callback(result);
+                App.free()
+                callback(result)
+            },
+            error: function(){
+                App.free()
+                App.message("Wrong login/password", false)
             }
-         });
-         
-         
-      },
-      error: function (data){
-         //no json returned -> reach error
-         App.free();
-         if(data.responseText == "email"){
-            App.message(Translator.messages["AccountEmailExists"], false)
-         }
-         else if(data.responseText == "names"){
-            App.message(Translator.messages["AccountNamesExist"], false)
-         }
-      }
-   });
+        });
+
+    }
+}
+
+//-------------------------------------------//
+
+UserManager.mobileSignin = function(callback)
+{
+    var user = {}
+
+    user.email       = $("#email").val() 
+    user.firstName   = $("#firstName").val() 
+    user.lastName    = $("#lastName").val() 
+    user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
+    user.referrerId  = $("#referrerId").val() 
+    user.lang        = translator.lang; 
+
+    var passwordHash  = CryptoJS.SHA512($("#password").val());
+    var password512   = passwordHash.toString(CryptoJS.enc.Hex);
+    user.password = password512;
+
+    App.wait();
+
+    var params = new Object();
+    params["user"] = user;
+
+    $.ajax({
+        type: "POST",  
+        url: "/signin",
+        data: JSON.stringify(params),  
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (player){
+            App.free();
+            callback();
+        },
+        error: function (data){
+            //no json returned -> reach error
+            App.free();
+            if(data.responseText == "email"){
+                App.message(Translator.messages["AccountEmailExists"], false)
+            }
+            else if(data.responseText == "names"){
+                App.message(Translator.messages["AccountNamesExist"], false)
+            }
+        }
+    });
+}
+
+
+UserManager.mobileSignin2 = function(callback)
+{
+    var user = {}
+
+    user.email       = $("#email").val() 
+    user.firstName   = $("#firstName").val() 
+    user.lastName    = $("#lastName").val() 
+    user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
+    user.referrerId  = $("#referrerId").val() 
+    user.lang        = translator.lang; 
+
+    var passwordHash  = CryptoJS.SHA512($("#password").val());
+    var password512   = passwordHash.toString(CryptoJS.enc.Hex);
+    user.password = password512;
+
+    App.wait();
+
+    var params = new Object();
+    params["user"] = user;
+
+    $.ajax({
+        type: "POST",  
+        url: "/signin2",
+        data: JSON.stringify(params),  
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result){
+            console.log("created and logged player", result)
+            App.free();
+            callback(result);
+        },
+        error: function (data){
+            //no json returned -> reach error
+            App.free();
+            if(data.responseText == "email"){
+                App.message(Translator.messages["AccountEmailExists"], false)
+            }
+            else if(data.responseText == "names"){
+                App.message(Translator.messages["AccountNamesExist"], false)
+            }
+        }
+    });
 }
 
 //-------------------------------------------//
 
 UserManager.mobileSigninFB = function(callback)
 {
-   if($("#fbForm").valid()){
-      var user = {}
-      user.email                = $("#fbForm_email").val()
-      user.facebookName         = Utils.getURLParameter("facebookName")
-      user.facebookId           = Utils.getURLParameter("facebookId")
-      user.firstName            = $("#fbForm_firstName").val() 
-      user.lastName             = $("#fbForm_lastName").val() 
-      user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
-      user.referrerId           = $("#fbForm_referrerId").val() 
-      user.lang                 = translator.lang 
+    if($("#fbForm").valid()){
+        var user = {}
+        user.email                = $("#fbForm_email").val()
+        user.facebookName         = Utils.getURLParameter("facebookName")
+        user.facebookId           = Utils.getURLParameter("facebookId")
+        user.firstName            = $("#fbForm_firstName").val() 
+        user.lastName             = $("#fbForm_lastName").val() 
+        user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
+        user.referrerId           = $("#fbForm_referrerId").val() 
+        user.lang                 = translator.lang 
 
-      App.wait()
+        App.wait()
 
-      var params = new Object();
-      params["user"] = user;
+        var params = new Object();
+        params["user"] = user;
 
-      $.ajax({
-         type: "POST",  
-         url: "/signinFromFacebook",
-         data: JSON.stringify(params),  
-         contentType: "application/json; charset=utf-8",
-         dataType: "json",
-         success: function (result){
-            if(result){
-               console.log("---> signinFromFacebook",result)
-               App.free()
-               callback(result)
+        $.ajax({
+            type: "POST",  
+            url: "/signinFromFacebook",
+            data: JSON.stringify(params),  
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result){
+                if(result){
+                    console.log("---> signinFromFacebook",result)
+                    App.free()
+                    callback(result)
+                }
+                else{
+                    // todo merge
+                    App.message(App.translations.messages.AccountNamesExist, false)
+                }
             }
-            else{
-               // todo merge
-               App.message(App.translations.messages.AccountNamesExist, false)
-            }
-         }
-      });
+        });
 
-   }
+    }
 }
 
 //-------------------------------------------//
 
 UserManager.setupForms = function() 
 {
-   $( "#birthDate" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      yearRange: "-104:-12"
-   });
+    $( "#birthDate" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-104:-12"
+    });
 
-   $( "#fbForm_birthDate" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      yearRange: "-104:-12"
-   });
-   
-   var queryDate = '1970-01-01';
-   var parsedDate = $.datepicker.parseDate('yy-mm-dd', queryDate);
+    $( "#fbForm_birthDate" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-104:-12"
+    });
 
-   $('#fbForm_birthDate').datepicker('setDate', parsedDate);
-   $('#birthDate').datepicker('setDate', parsedDate);
-   
-   $.validator.addMethod(
-         "same",
-         function(value, element, params) {
+    var queryDate = '1970-01-01';
+    var parsedDate = $.datepicker.parseDate('yy-mm-dd', queryDate);
+
+    $('#fbForm_birthDate').datepicker('setDate', parsedDate);
+    $('#birthDate').datepicker('setDate', parsedDate);
+
+    $.validator.addMethod(
+        "same",
+        function(value, element, params) {
             var target = $(params).val();
             return target == value
-         }
-   );
+        }
+    );
 
-   $("#signinForm1").validate({
-      rules: {
-         firstName: {
-            required: true,
-         },
-         lastName: {
-            required: true,
-         },
-         email: {
-            required: true,
-            email: true
-         },
-      },
-      messages: {
-         firstName: {
-            required: "Required",
-         },
-         lastName: {
-            required: "Required",
-         },
-         email: {
-            required: "Required",
-         },
-      }
-   });
+    $("#signinForm1").validate({
+        rules: {
+            firstName: {
+                required: true,
+            },
+            lastName: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true
+            },
+        },
+        messages: {
+            firstName: {
+                required: "Required",
+            },
+            lastName: {
+                required: "Required",
+            },
+            email: {
+                required: "Required",
+            },
+        }
+    });
 
-   $("#signinForm2").validate({
-      rules: {
-         birthDate: {
-            required: true,
-         },
-         password: {
-            required: true,
-         },
-         repeatPassword: {
-            required: true,
-            same: "#password"
-         },
-      },
-      messages: {
-         birthDate: {
-            required: "Required",
-         },
-         password: {
-            required: "Required",
-         },
-         repeatPassword: {
-            required: "Required",
-            same: "Must match password !"
-         }
-      }
-   });
+    $("#signinForm2").validate({
+        rules: {
+            birthDate: {
+                required: true,
+            },
+            password: {
+                required: true,
+            },
+            repeatPassword: {
+                required: true,
+                same: "#password"
+            },
+        },
+        messages: {
+            birthDate: {
+                required: "Required",
+            },
+            password: {
+                required: "Required",
+            },
+            repeatPassword: {
+                required: "Required",
+                same: "Must match password !"
+            }
+        }
+    });
 
 
-   $("#fbForm").validate({
-      rules: {
-         firstName: {
-            required: true,
-         },
-         lastName: {
-            required: true,
-         },
-         email: {
-            required: true,
-            email: true
-         },
-         birthDate: {
-            required: true,
-         },
-      },
-      messages: {
-         firstName: {
-            required: "Required",
-         },
-         lastName: {
-            required: "Required",
-         },
-         email: {
-            required: "Required",
-         },
-         birthDate: {
-            required: "Required",
-         }
-      }
-   });
+    $("#fbForm").validate({
+        rules: {
+            firstName: {
+                required: true,
+            },
+            lastName: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            birthDate: {
+                required: true,
+            },
+        },
+        messages: {
+            firstName: {
+                required: "Required",
+            },
+            lastName: {
+                required: "Required",
+            },
+            email: {
+                required: "Required",
+            },
+            birthDate: {
+                required: "Required",
+            }
+        }
+    });
 
-   $("#loginForm").validate({
-      rules: {
-         loginemail: {
-            required: true,
-            email: true
-         },
-         loginpassword: {
-            required: true,
-         },
-      },
-      messages: {
-         loginemail: {
-            required: "Required",
-         },
-         loginpassword: {
-            required: "Required",
-         },
-      }
-   });
+    $("#loginForm").validate({
+        rules: {
+            loginemail: {
+                required: true,
+                email: true
+            },
+            loginpassword: {
+                required: true,
+            },
+        },
+        messages: {
+            loginemail: {
+                required: "Required",
+            },
+            loginpassword: {
+                required: "Required",
+            },
+        }
+    });
 }
