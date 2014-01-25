@@ -766,10 +766,10 @@ UserManager.mobileSignin = function(callback)
    user.lang        = translator.lang; 
 
    var passwordHash  = CryptoJS.SHA512($("#password").val());
-   var password512   = passwordHash.toString(CryptoJS.enc.Hex)
-   user.password = password512
+   var password512   = passwordHash.toString(CryptoJS.enc.Hex);
+   user.password = password512;
 
-   App.wait()
+   App.wait();
 
    var params = new Object();
    params["user"] = user;
@@ -780,13 +780,74 @@ UserManager.mobileSignin = function(callback)
       data: JSON.stringify(params),  
       contentType: "application/json; charset=utf-8",
       dataType: "json",
-      success: function (){
-         App.free()
-         callback()
+      success: function (player){
+         App.free();
+         callback();
       },
       error: function (data){
          //no json returned -> reach error
-         App.free()
+         App.free();
+         if(data.responseText == "email"){
+            App.message(Translator.messages["AccountEmailExists"], false)
+         }
+         else if(data.responseText == "names"){
+            App.message(Translator.messages["AccountNamesExist"], false)
+         }
+      }
+   });
+}
+
+
+UserManager.mobileSignin2 = function(callback)
+{
+   var user = {}
+
+   user.email       = $("#email").val() 
+   user.firstName   = $("#firstName").val() 
+   user.lastName    = $("#lastName").val() 
+   user.birthDate   = Utils.dateToString($("#birthDate").datepicker("getDate"))
+   user.referrerId  = $("#referrerId").val() 
+   user.lang        = translator.lang; 
+
+   var passwordHash  = CryptoJS.SHA512($("#password").val());
+   var password512   = passwordHash.toString(CryptoJS.enc.Hex);
+   user.password = password512;
+
+   App.wait();
+
+   var params = new Object();
+   params["user"] = user;
+
+   $.ajax({
+      type: "POST",  
+      url: "/signin",
+      data: JSON.stringify(params),  
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (player){
+         console.log("created player", player)
+         var params = new Object();
+         params["user"] = player;
+
+         $.ajax({
+            type: "POST",  
+            url: "/login",
+            data: JSON.stringify(params),  
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result){
+
+               console.log("login after signin : result : ", result);
+               App.free();
+               callback(result);
+            }
+         });
+         
+         
+      },
+      error: function (data){
+         //no json returned -> reach error
+         App.free();
          if(data.responseText == "email"){
             App.message(Translator.messages["AccountEmailExists"], false)
          }

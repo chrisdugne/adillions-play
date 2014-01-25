@@ -105,18 +105,18 @@
    $("#validateButton").click(function() {
       UserManager.mobileLogin(function(result) {
          if (result) {
-            var url = "/loggedin"
-            url += "?authToken=" + result.authToken
-            window.location.href = url
+            var url = "/loggedin";
+            url += "?authToken=" + result.authToken;
+            window.location.href = url;
 
          } else {
-            App.message("Wrong login/password", false)
+            App.message("Wrong login/password", false);
          }
       })
    });
 
    $("#facebookButton").click(function() {
-      window.location.href = "/connectWithFB"
+      window.location.href = "/connectWithFB";
    })
 </script>
 

@@ -13,6 +13,7 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 # Mobile pages
 
 GET     /msignin           			controllers.Application.mobileSignin()
+GET     /msignin2           		controllers.Application.mobileSignin2()
 GET     /msigninFB         			controllers.Application.mobileSigninFromFacebook()
 GET     /mlogin           			controllers.Application.mobileLogin()
 GET     /mvideo           			controllers.Application.mobileVideo()
