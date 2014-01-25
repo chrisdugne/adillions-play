@@ -606,19 +606,16 @@ UserManager.signin = function()
 
    $.ajax({
       type: "POST",  
-      url: "/signin",
+      url: "/signin2",
       data: JSON.stringify(params),  
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function (response){
          App.free()
-
-         $("#loginWindow").reveal({
-            animation: 'fade',
-            animationspeed: 100, 
-         });
-
-         $("#loginemail").val(App.user.email)
+         if(response){
+            App.authToken = response.authToken;
+            UserManager.getPlayer();
+         }
       },
       error: function (data){
          //no json returned -> reach error
@@ -703,8 +700,8 @@ UserManager.login = function()
          success: function (response){
             App.free()
             if(response){
-               App.authToken = response.authToken
-               UserManager.getPlayer()
+               App.authToken = response.authToken;
+               UserManager.getPlayer();
             }
          },
          error: function(){
@@ -820,7 +817,7 @@ UserManager.mobileSignin2 = function(callback)
 
    $.ajax({
       type: "POST",  
-      url: "/signin",
+      url: "/signin2",
       data: JSON.stringify(params),  
       contentType: "application/json; charset=utf-8",
       dataType: "json",

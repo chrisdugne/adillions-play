@@ -55,20 +55,27 @@ public class SecurityController extends Action.Simple {
 	public static Result login() {
 		JsonNode params = request().body().asJson();
 		JsonNode userJson = params.get("user");
+		return _login(userJson);
+	}
+	
+	//----------------------------------------------------------------------------//
+	
+	private static Result _login(JsonNode userJson) {
 
-		Player player = AccountManager.getPlayerWithCredentials(userJson);
+      Player player = AccountManager.getPlayerWithCredentials(userJson);
 
-		if(player != null && player.getStatus() == Player.ON){
-			String authToken = player.createToken();
-			response().setCookie(AUTH_TOKEN, authToken);
-			
-			JsonObject authTokenJson = new JsonObject();
-			authTokenJson.addProperty(AUTH_TOKEN, authToken);
-			return ok(gson.toJson(authTokenJson));
-		}
-		else{
-			return unauthorized();
-		}
+      if(player != null && player.getStatus() == Player.ON){
+         String authToken = player.createToken();
+         response().setCookie(AUTH_TOKEN, authToken);
+         
+         JsonObject authTokenJson = new JsonObject();
+         authTokenJson.addProperty(AUTH_TOKEN, authToken);
+         return ok(gson.toJson(authTokenJson));
+      }
+      else{
+         return unauthorized();
+      }
+	   
 	}
 
 	// ---------------------------------------------//
@@ -91,6 +98,28 @@ public class SecurityController extends Action.Simple {
 			return ok("email");
 		}
 		
+	}
+	
+	// ---------------------------------------------//
+	
+	public static Result signIn2()
+	{
+	   JsonNode params = request().body().asJson();
+	   JsonNode userJson = params.get("user");
+	   
+	   if(!AccountManager.existEmail(userJson)){
+	      if(!AccountManager.existNames(userJson)){
+	         AccountManager.createNewPlayer(userJson);
+	         return _login(userJson);
+	      }
+	      else{
+	         return ok("names");
+	      }
+	   }
+	   else{
+	      return ok("email");
+	   }
+	   
 	}
 
 	//----------------------------------------------------------------------------//

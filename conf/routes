@@ -35,6 +35,7 @@ GET     /theme            			controllers.OpenGraph.theme()
 #   SecurityController 
 
 POST 	/signin						controllers.SecurityController.signIn()
+POST 	/signin2					controllers.SecurityController.signIn2()
 POST 	/signinFromFacebook			controllers.SecurityController.signinFromFacebook()
 POST    /login                      controllers.SecurityController.login()
 POST    /playerFromFB               controllers.SecurityController.getPlayerFromFB()
