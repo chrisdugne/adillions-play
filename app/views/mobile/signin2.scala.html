@@ -223,10 +223,10 @@
    $("#validateButton").click(function() {
 
        if(UserManager.signinFormReady()){
-	       	UserManager.mobileSignin2(function() {
-	       	 	 var url = "/loggedin"
-	             url += "?authToken=" + result.authToken
-	             window.location.href = url
+	       	UserManager.mobileSignin2(function(result) {
+	       	 	 var url = "/loggedin";
+	             url += "?authToken=" + result.authToken;
+	             window.location.href = url;
 	        }); 
       }
 
