@@ -127,4 +127,9 @@ public class Application extends Controller {
 	{
 	   return ok(views.html.mobile.termsEN.render());
 	}
+	
+	public static Result mtest()
+	{
+	   return ok(views.html.mobile.mtest.render());
+	}
 }

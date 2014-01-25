@@ -23,6 +23,8 @@ GET     /mfaq 	        			controllers.Application.mobileFaq()
 GET     /mtermsFR 	        		controllers.Application.mobileTermsFR()
 GET     /mtermsEN 	        		controllers.Application.mobileTermsEN()
 
+GET     /mtest 	        			controllers.Application.mtest()
+
 ###################
 # Facebook Objects
 
