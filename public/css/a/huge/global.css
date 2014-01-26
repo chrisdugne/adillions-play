@@ -99,15 +99,6 @@ input[type=checkbox] {
 	background: transparent;
 	top: 6px;
 	left: 7px;
-	border: 3px solid #911;
-	border-top: none;
-	border-right: none;
-
-	-webkit-transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
 }
 
 /**
