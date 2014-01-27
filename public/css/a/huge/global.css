@@ -102,21 +102,6 @@ input[type=checkbox] {
 }
 
 /**
- * Create the hover event of the tick
- */
-.checkboxFive label:hover::after {
-	opacity: 0.5;
-	border: 3px solid #191;
-	border-top: none;
-	border-right: none;
-	-webkit-transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
-}
-
-/**
  * Create the checkbox state for the tick
  */
 .checkboxFive input[type=checkbox]:checked + label:after {
