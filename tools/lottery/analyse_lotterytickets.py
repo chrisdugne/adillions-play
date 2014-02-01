@@ -30,13 +30,14 @@ def main():
         print "Check the lotteryUID"
         return
     
-    if(not lottery[11]):
-        print "No winningNumbers set"
-        return
+#     if(not lottery[11]):
+#         print "No winningNumbers set"
+#         return
     
     #--------------------------------------------------------------------
     
-    winningNumbers  = json.loads(lottery[11])
+#     winningNumbers  = json.loads(lottery[11])
+    winningNumbers  = [3,21,22,38,48,1]
     winningTickets  = []
     rangs           = []
      
