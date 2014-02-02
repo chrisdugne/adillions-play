@@ -850,7 +850,7 @@ UserManager.mobileSigninFB = function(callback)
         user.facebookId           = Utils.getURLParameter("facebookId")
         user.firstName            = $("#fbForm_firstName").val() 
         user.lastName             = $("#fbForm_lastName").val() 
-        user.birthDate            = Utils.dateToString($("#fbForm_birthDate").datepicker("getDate"))
+        user.birthDate            = $("#fbForm_mbirthDate").val()
         user.referrerId           = $("#fbForm_referrerId").val() 
         user.lang                 = translator.lang 
 
@@ -997,6 +997,126 @@ UserManager.setupForms = function()
         }
     });
 
+    $("#loginForm").validate({
+        rules: {
+            loginemail: {
+                required: true,
+                email: true
+            },
+            loginpassword: {
+                required: true,
+            },
+        },
+        messages: {
+            loginemail: {
+                required: "Required",
+            },
+            loginpassword: {
+                required: "Required",
+            },
+        }
+    });
+}
+
+
+//-------------------------------------------//
+
+UserManager.mobileSetupForms = function() 
+{
+    $.validator.addMethod(
+        "same",
+        function(value, element, params) {
+            var target = $(params).val();
+            return target == value
+        }
+    );
+    
+    $("#signinForm1").validate({
+        rules: {
+            firstName: {
+                required: true,
+            },
+            lastName: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true
+            },
+        },
+        messages: {
+            firstName: {
+                required: "Required",
+            },
+            lastName: {
+                required: "Required",
+            },
+            email: {
+                required: "Required",
+            },
+        }
+    });
+    
+    $("#signinForm2").validate({
+        rules: {
+            mbirthDate: {
+                required: true,
+            },
+            password: {
+                required: true,
+            },
+            repeatPassword: {
+                required: true,
+                same: "#password"
+            },
+        },
+        messages: {
+            birthDate: {
+                required: "Required",
+            },
+            password: {
+                required: "Required",
+            },
+            repeatPassword: {
+                required: "Required",
+                same: "Must match password !"
+            }
+        }
+    });
+    
+    
+    $("#fbForm").validate({
+        rules: {
+            firstName: {
+                required: true,
+            },
+            lastName: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            birthDate: {
+                required: true,
+            },
+        },
+        messages: {
+            firstName: {
+                required: "Required",
+            },
+            lastName: {
+                required: "Required",
+            },
+            email: {
+                required: "Required",
+            },
+            birthDate: {
+                required: "Required",
+            }
+        }
+    });
+    
     $("#loginForm").validate({
         rules: {
             loginemail: {

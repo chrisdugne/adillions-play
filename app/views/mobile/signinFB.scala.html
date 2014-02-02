@@ -73,8 +73,8 @@
 				</div>
 			</div>
 
-			<label id="labelBirthDate" for="birthDate"></label> <input type="text" id="fbForm_birthDate" name="birthDate" readonly
-				style="cursor: pointer !important;" />
+			<label id="labelBirthDate" for="birthDate">
+			<input type="date" name="date" id="fbForm_mbirthDate" />
 
 			<div class="clearfix">
 				<label id="labelReferrerCode" for="referrerId"></label>
@@ -180,7 +180,7 @@
    // setup 
 
    window.translator = new Translator(true);
-   UserManager.setupForms()
+   UserManager.mobileSetupForms()
 
    //-----------------------------------// 
    // read url params 
@@ -194,6 +194,7 @@
    //-----------------------------------// 
    // fill form 
 
+   $("#fbForm_mbirthDate").val("1970-01-01");
    $("#fbForm_title").text(Translator.messages["Welcome"] + " " + decodeURIComponent(Utils.getURLParameter("facebookName")) + " !")
                
    $("#fbForm_firstName").val(firstName)

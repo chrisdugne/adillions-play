@@ -82,7 +82,7 @@
 			</div>
 
 			<label id="labelBirthDate" or="birthDate"></label>
-			<input type="date" name="date" id="birthDate" />
+			<input type="date" name="date" id="mbirthDate" />
 
 			<div class="clearfix  " id="name_field">
 				<label id="labelSponsorCode" for="referrerId"></label>
@@ -187,11 +187,11 @@
    // setup 
 
    window.translator = new Translator(true);
-   UserManager.setupForms()
+   UserManager.mobileSetupForms()
 
    //-------------------------------------------//
    
-   $("#birthDate").val("1970-01-01");
+   $("#mbirthDate").val("1970-01-01");
    
    $("#personal_text").text(Translator.messages["PersonalInfo"])
    
