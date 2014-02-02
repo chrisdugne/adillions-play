@@ -176,6 +176,8 @@
 
 <script type="text/javascript">
 
+$(function() {
+   
    //-----------------------------------// 
    // setup 
 
@@ -252,43 +254,9 @@
               url += "&authToken=" + result.authToken
               window.location.href = url
            });
-          
-/* 
-         $("#confirmFirstName").text($("#fbForm_firstName").val())
-         $("#confirmLastName").text($("#fbForm_lastName").val())
-         $("#confirmBirthDate").text($("#fbForm_birthDate").val())
-         
-	      $.blockUI({
-	         message : $("#question"),
-	         css : {
-	           	top : '150px',
-	           	left : ($(window).width()/2 - 125) +  'px',
-	            width : '250px'
-	         }
-	      }); */
       }
-
-   })
-   
-/*    $('#yes').click(
-      function() {
-         UserManager.mobileSigninFB(function(result) {
-            var url = "/signedIn"
-            url += "?firstName=" + $("#fbForm_firstName").val()
-            url += "&lastName=" + $("#fbForm_lastName").val()
-            url += "&birthDate="
-                  + Utils.dateToString($("#fbForm_birthDate").datepicker(
-                        "getDate"))
-            url += "&authToken=" + result.authToken
-            window.location.href = url
-         })
    });
-
-   $('#no').click(function() {
-      $.unblockUI();
-      return false;
-   }); */
-
+   
    //-------------------------------------------//
    
    $("#check1").click(function() {
@@ -314,6 +282,8 @@
    $("#changeAccountButton").click(function() {
       window.location.href = "/requireLogout"
    });
+
+});
    
 </script>
 

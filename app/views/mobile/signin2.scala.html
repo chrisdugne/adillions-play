@@ -183,82 +183,81 @@
 
 
 <script type="text/javascript">
-   //-------------------------------------------// 
-   // setup 
 
-   window.translator = new Translator(true);
-   alert(Utils.getURLParameter("lang"));
-   alert(window.translator.lang);
-   UserManager.mobileSetupForms();
+    $(function() {
+	   
+       //-------------------------------------------// 
+	   // setup 
+	   
+	   window.translator = new Translator(true);
+	   UserManager.mobileSetupForms();
+	
+	   //-------------------------------------------//
+	   
+	   $("#mbirthDate").val("1970-01-01");
+	   
+	   $("#personal_text").text(Translator.messages["PersonalInfo"])
+	   
+	   $("#labelFirstName").text(Translator.messages["FirstName"])
+	   $("#labelLastName").text(Translator.messages["LastName"])
+	   $("#labelEmail").text(Translator.messages["Email"])
+	   $("#labelBirthDate").text(Translator.messages["BirthDate"])
+	   $("#labelPassword").text(Translator.messages["Password"])
+	   $("#labelRepeatPassword").text(Translator.messages["RepeatPassword"])
+	   $("#labelSponsorCode").text(Translator.messages["ReferrerCode"])
+	
+	   $("#confirmFirstNameLabel").text(Translator.messages["FirstName"] + " :")
+	   $("#confirmLastNameLabel").text(Translator.messages["LastName"] + " :")
+	   $("#confirmBirthDateLabel").text(Translator.messages["BirthDate"] + " :")
+	
+	   $("#check1Label").text(Translator.messages["AcceptTerms"])
+	   $("#check2Label").text(Translator.messages["AcceptOffers"])
+	   
+	   $("#validateButton").text(Translator.messages["SignIn"])
+	   
+	   $("#questionText").text(Translator.messages["FBAttention"])
+	   $("#yes").text(Translator.messages["Continue"])
+	   $("#no").text(Translator.messages["GoBack"])
+	   
+	   //-------------------------------------------// 
+	
+	   $("#validateButton").click(function() {
+	
+	       if(UserManager.signinFormReady()){
+		       	UserManager.mobileSignin2(function(result) {
+		       	 	 var url = "/loggedin";
+		             url += "?authToken=" + result.authToken;
+		             window.location.href = url;
+		        }); 
+	      }
+	
+	   })
+	
+	   //-------------------------------------------// 
+	   
+	   $("#facebookButton").click(function() {
+	      window.location.href = "/connectWithFB"
+	   })
+	
+	   $("#check1").click(function() {
+	       if($("#check1")[0].checked){
+	           $("#check1Label").removeClass("error");
+	       }
+	       else{
+	           $("#check1Label").addClass("error");
+	       }
+	   });
+	
+	   $("#check2").click(function() {
+	       if($("#check2")[0].checked){
+	           $("#check2Label").removeClass("error");
+	       }
+	       else{
+	           $("#check2Label").addClass("error");
+	       }
+	   });
 
-   alert(Translator.messages["FirstName"]);
-   alert("setup ok");
-   //-------------------------------------------//
-   
-   $("#mbirthDate").val("1970-01-01");
-   alert("date ok")
-   
-   $("#personal_text").text(Translator.messages["PersonalInfo"])
-   
-   $("#labelFirstName").text(Translator.messages["FirstName"])
-   $("#labelLastName").text(Translator.messages["LastName"])
-   $("#labelEmail").text(Translator.messages["Email"])
-   $("#labelBirthDate").text(Translator.messages["BirthDate"])
-   $("#labelPassword").text(Translator.messages["Password"])
-   $("#labelRepeatPassword").text(Translator.messages["RepeatPassword"])
-   $("#labelSponsorCode").text(Translator.messages["ReferrerCode"])
-
-   $("#confirmFirstNameLabel").text(Translator.messages["FirstName"] + " :")
-   $("#confirmLastNameLabel").text(Translator.messages["LastName"] + " :")
-   $("#confirmBirthDateLabel").text(Translator.messages["BirthDate"] + " :")
-
-   $("#check1Label").text(Translator.messages["AcceptTerms"])
-   $("#check2Label").text(Translator.messages["AcceptOffers"])
-   
-   $("#validateButton").text(Translator.messages["SignIn"])
-   
-   $("#questionText").text(Translator.messages["FBAttention"])
-   $("#yes").text(Translator.messages["Continue"])
-   $("#no").text(Translator.messages["GoBack"])
-   
-   //-------------------------------------------// 
-
-   $("#validateButton").click(function() {
-
-       if(UserManager.signinFormReady()){
-	       	UserManager.mobileSignin2(function(result) {
-	       	 	 var url = "/loggedin";
-	             url += "?authToken=" + result.authToken;
-	             window.location.href = url;
-	        }); 
-      }
-
-   })
-
-   //-------------------------------------------// 
-   
-   $("#facebookButton").click(function() {
-      window.location.href = "/connectWithFB"
-   })
-
-   $("#check1").click(function() {
-       if($("#check1")[0].checked){
-           $("#check1Label").removeClass("error");
-       }
-       else{
-           $("#check1Label").addClass("error");
-       }
-   });
-
-   $("#check2").click(function() {
-       if($("#check2")[0].checked){
-           $("#check2Label").removeClass("error");
-       }
-       else{
-           $("#check2Label").addClass("error");
-       }
-   });
-
+    });
 </script>
 
 </html>
