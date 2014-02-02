@@ -49,6 +49,10 @@ public class Lottery extends Model {
 	private String theme; 				// ["urlA","urlB",...]
 
 	@Expose
+	@Column(columnDefinition = "TEXT")
+	private String rangs; 				// {"matches":[],"percents":[]}
+
+	@Expose
 	private String result; 				// [34,65,2,5,65,7]
 	@Expose
 	private Double finalPrice; 		// 
@@ -155,7 +159,15 @@ public class Lottery extends Model {
 		this.theme = additionalIcons;
 	}
 
-	public String getResult() {
+	public String getRangs() {
+      return rangs;
+   }
+
+   public void setRangs(String rangs) {
+      this.rangs = rangs;
+   }
+
+   public String getResult() {
 		return result;
 	}
 
