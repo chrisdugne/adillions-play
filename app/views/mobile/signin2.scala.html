@@ -187,13 +187,16 @@
    // setup 
 
    window.translator = new Translator(true);
-   alert(Utils.getURLParameter("lang"))
-   alert(window.translator.lang)
-   UserManager.mobileSetupForms()
+   alert(Utils.getURLParameter("lang"));
+   alert(window.translator.lang);
+   UserManager.mobileSetupForms();
 
+   alert(Translator.messages["FirstName"]);
+   alert("setup ok");
    //-------------------------------------------//
    
    $("#mbirthDate").val("1970-01-01");
+   alert("date ok")
    
    $("#personal_text").text(Translator.messages["PersonalInfo"])
    
