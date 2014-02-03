@@ -170,10 +170,10 @@ public class LotteryManager {
 		System.out.println(player.getExtraTickets());
 		System.out.println(isExtraTicket);
 		if(player.getAvailableTickets() + facebookFanBonus + twitterFanBonus - player.getPlayedBonusTickets() <= 0) 
-			return null;
+	      return player;
 
 		if(isExtraTicket && player.getExtraTickets() <= 0){
-			return null;
+	      return player;
 		}
 		
 		// -----------------------------------------------------//
