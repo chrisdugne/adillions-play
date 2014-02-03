@@ -68,10 +68,10 @@ public class AccountService extends Application
          JsonNode newUserJson = params.get("user");
          
          if(newUserJson.get("facebookFan") != null)
-            facebookFan = params.get("facebookFan").asBoolean();
+            facebookFan = newUserJson.get("facebookFan").asBoolean();
          
          if(newUserJson.get("twitterFan") != null)
-            twitterFan = params.get("twitterFan").asBoolean();
+            twitterFan = newUserJson.get("twitterFan").asBoolean();
          
       }
       
