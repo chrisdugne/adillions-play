@@ -48,11 +48,38 @@ public class AccountService extends Application
 	public static Result updateFanStatus()
 	{
 		JsonNode params = request().body().asJson();
-		JsonNode newUserJson = params.get("user");
+
+		Boolean facebookFan = false;
+		Boolean twitterFan  = false;
+
+		//--------------------------------------------------//
+		// from 1.2
+		
+		if(params.get("facebookFan") != null)
+		   facebookFan = params.get("facebookFan").asBoolean();
+
+		if(params.get("twitterFan") != null)
+		   twitterFan = params.get("twitterFan").asBoolean();
+
+		//--------------------------------------------------//
+		// to remove : keep en attendant 1.2
+
+      if(params.get("user") != null){
+         JsonNode newUserJson = params.get("user");
+         
+         if(newUserJson.get("facebookFan") != null)
+            facebookFan = params.get("facebookFan").asBoolean();
+         
+         if(newUserJson.get("twitterFan") != null)
+            twitterFan = params.get("twitterFan").asBoolean();
+         
+      }
+      
+		//--------------------------------------------------//
 		
 		Player player = Application.player();
 		
-		AccountManager.updateFanStatus(player, newUserJson);
+		AccountManager.updateFanStatus(player, facebookFan, twitterFan);
 		
 		return ok();
 		

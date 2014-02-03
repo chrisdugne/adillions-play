@@ -388,17 +388,16 @@ public class AccountManager {
 
 	//------------------------------------------------------------------------------------//
 	
-	public static Player updateFanStatus(Player player, JsonNode newUserJson) {
+	public static Player updateFanStatus(Player player, Boolean facebookFan, Boolean twitterFan) {
 		
 		System.out.println("updateFanStatus");
+		System.out.println("facebookFan : " + facebookFan);
+		System.out.println("twitterFan : " + twitterFan);
 		
 		//-------------------------------------//
-
-		if(newUserJson.get("facebookFan") != null)
-			player.setFacebookFan (newUserJson.get("facebookFan").asBoolean());
 		
-		if(newUserJson.get("twitterFan") != null)
-			player.setTwitterFan (newUserJson.get("twitterFan").asBoolean());
+		player.setFacebookFan (facebookFan);
+		player.setTwitterFan (twitterFan);
 		
 		//-------------------------------------//
 		
