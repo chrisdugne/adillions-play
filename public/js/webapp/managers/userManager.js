@@ -552,6 +552,9 @@ UserManager.signinFormReady = function(){
     var form1Ready = $("#signinForm1").valid();
     var form2Ready = $("#signinForm2").valid();
     var formReady = form1Ready && form2Ready && $("#check1")[0].checked && $("#check2")[0].checked;
+    
+    if($("#mbirthDate").length > 0 && $("#mbirthDate").val().length == 0)
+        form2Ready = false;
 
     if(!$("#check1")[0].checked){
         $("#check1Label").addClass("error");
@@ -1059,9 +1062,6 @@ UserManager.mobileSetupForms = function()
     
     $("#signinForm2").validate({
         rules: {
-            mbirthDate: {
-                required: true,
-            },
             password: {
                 required: true,
             },
@@ -1071,9 +1071,6 @@ UserManager.mobileSetupForms = function()
             },
         },
         messages: {
-            mbirthDate: {
-                required: "Required",
-            },
             password: {
                 required: "Required",
             },
