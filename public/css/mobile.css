@@ -15,6 +15,10 @@
 	z-index:1000;
 }
 
+#mbirthDate.error {
+	background-color: #d00;
+}
+
 .ui-widget {
 	font-size: 0.9em;
 }

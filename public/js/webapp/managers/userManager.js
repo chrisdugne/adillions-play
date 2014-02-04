@@ -555,7 +555,7 @@ UserManager.signinFormReady = function(){
     
     if($("#mbirthDate").length > 0 && $("#mbirthDate").val().length == 0){
         $("#mbirthDate").addClass("error");      
-        form2Ready = false;
+        formReady = false;
     }
 
     if(!$("#check1")[0].checked){
