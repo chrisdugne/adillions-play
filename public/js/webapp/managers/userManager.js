@@ -553,8 +553,10 @@ UserManager.signinFormReady = function(){
     var form2Ready = $("#signinForm2").valid();
     var formReady = form1Ready && form2Ready && $("#check1")[0].checked && $("#check2")[0].checked;
     
-    if($("#mbirthDate").length > 0 && $("#mbirthDate").val().length == 0)
+    if($("#mbirthDate").length > 0 && $("#mbirthDate").val().length == 0){
+        $("#mbirthDate").addClass("error");      
         form2Ready = false;
+    }
 
     if(!$("#check1")[0].checked){
         $("#check1Label").addClass("error");
