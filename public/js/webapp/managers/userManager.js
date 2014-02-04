@@ -1071,7 +1071,7 @@ UserManager.mobileSetupForms = function()
             },
         },
         messages: {
-            birthDate: {
+            mbirthDate: {
                 required: "Required",
             },
             password: {
