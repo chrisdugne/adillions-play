@@ -40,6 +40,7 @@ def main():
     winningNumbers  = [3,21,22,38,48,1]
     winningTickets  = []
     rangs           = []
+    bonusRangs      = []
      
     rangs.append(Rang(1, 0, 0, 0.40))
     rangs.append(Rang(2, 0, 0, 0.20))
@@ -47,6 +48,11 @@ def main():
     rangs.append(Rang(4, 0, 0, 0.10))
     rangs.append(Rang(5, 0, 0, 0.05))
     rangs.append(Rang(6, 0, 0, 0.10))
+
+    bonusRangs.append(BonusRang(7,  0, 2, 0,))
+    bonusRangs.append(BonusRang(8,  0, 1, 0,))
+    bonusRangs.append(BonusRang(9,  0, 0, 2,))
+    bonusRangs.append(BonusRang(10, 0, 0, 1,))
 
     #--------------------------------------------------------------------
 
@@ -146,7 +152,8 @@ def main():
                 winningTicket.rang = 6
                 rangs[5].winners = rangs[5].winners + 1
                 winningTickets.append(winningTicket)
-                
+         
+        ## loading bar       
         utils.printPercentage(t, len(tickets))
      
     #--------------------------------------------------------------------
@@ -292,6 +299,13 @@ class Rang:
         self.winners        = winners
         self.share          = share
         self.percentage     = percentage
+             
+class BonusRang:
+    def __init__(self, num, winners, nbBonus, nbInstant):
+        self.num            = num
+        self.winners        = winners
+        self.nbBonus        = nbBonus
+        self.nbInstant      = nbInstant
             
 #----------------------------------------------------------------------------------
 
