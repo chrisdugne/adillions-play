@@ -199,7 +199,7 @@ $(function() {
 
 	// FB birthday is MM/DD/YYYY
 	var split = birthday.split("/");
-   birthday = split[2] + "-" + split[0] + "-" split[1];
+   birthday = split[2] + "-" + split[0] + "-" + split[1];
    
    $("#fbForm_mbirthDate").val(birthday);
    $("#fbForm_title").text(Translator.messages["Welcome"] + " " + decodeURIComponent(Utils.getURLParameter("facebookName")) + " !")
