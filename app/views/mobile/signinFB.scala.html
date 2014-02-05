@@ -196,21 +196,16 @@ $(function() {
    //-----------------------------------// 
    // fill form 
 
-   $("#fbForm_mbirthDate").val("1970-01-01");
+   $("#fbForm_mbirthDate").val(birthday);
    $("#fbForm_title").text(Translator.messages["Welcome"] + " " + decodeURIComponent(Utils.getURLParameter("facebookName")) + " !")
                
    $("#fbForm_firstName").val(firstName)
    $("#fbForm_lastName").val(lastName)
    $("#fbForm_email").val(email)
    $("#facebookPicture").attr("src", pictureUrl)
-   $("#fbForm_birthDate").datepicker('setDate', birthday);
 
    //-----------------------------------// 
    // locale/ translations 
-   
-   if (translator.lang == "fr") {
-      $("#fbForm_birthDate").datepicker("option", "dateFormat", 'dd/mm/yy');
-   }
 
    $("#personal_text_fb").text(Translator.messages["PersonalInfoFB"])
    $("#labelFirstName").text(Translator.messages["FirstName"])
@@ -246,11 +241,9 @@ $(function() {
           
           UserManager.mobileSigninFB(function(result) {
               var url = "/signedIn"
-              url += "?firstName=" + $("#fbForm_firstName").val()
-              url += "&lastName=" + $("#fbForm_lastName").val()
-              url += "&birthDate="
-                    + Utils.dateToString($("#fbForm_birthDate").datepicker(
-                          "getDate"))
+              url += "?firstName="	 	+ $("#fbForm_firstName").val()
+              url += "&lastName=" 		+ $("#fbForm_lastName").val()
+              url += "&birthDate="   	+ $("#fbForm_mbirthDate").val()
               url += "&authToken=" + result.authToken
               window.location.href = url
            });
@@ -258,6 +251,10 @@ $(function() {
    });
    
    //-------------------------------------------//
+   
+   $("#fbForm_mbirthDate").click(function() {
+       $("#fbForm_mbirthDate").removeClass("error");
+   });
    
    $("#check1").click(function() {
        if($("#check1")[0].checked){

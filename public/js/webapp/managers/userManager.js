@@ -557,6 +557,11 @@ UserManager.signinFormReady = function(){
         $("#mbirthDate").addClass("error");      
         formReady = false;
     }
+    
+    if($("#fbForm_mbirthDate").length > 0 && $("#fbForm_mbirthDate").val().length == 0){
+        $("#fbForm_mbirthDate").addClass("error");      
+        formReady = false;
+    }
 
     if(!$("#check1")[0].checked){
         $("#check1Label").addClass("error");
