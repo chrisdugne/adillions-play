@@ -30,8 +30,9 @@
 	@header()
 
 	<div class="content">
-		<img id="closeButton" onclick="window.location.href='/backToMobile'" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
-		
+		<img id="closeButton" onclick="window.location.href='/backToMobile'" src='@routes.Assets.at("images/ko.png")'
+			class="mobilecloser"></img>
+
 		<div class="row-fluid">
 			<div class="span7">
 				<p id="fbForm_title" class="popuptitle"></p>
@@ -43,7 +44,9 @@
 			<div class="span3 offset1">
 				<img title="icon" id="facebookPicture"></img>
 			</div>
-			<div class="span4 offset3"><a id="changeAccountButton"></a></div>
+			<div class="span4 offset3">
+				<a id="changeAccountButton"></a>
+			</div>
 		</div>
 		<br />
 
@@ -73,8 +76,7 @@
 				</div>
 			</div>
 
-			<label id="labelBirthDate" for="birthDate"></label>
-			<input type="date" name="date" id="fbForm_mbirthDate" required/>
+			<label id="labelBirthDate" for="birthDate"></label> <input type="date" name="date" id="fbForm_mbirthDate" required />
 
 			<div class="clearfix">
 				<label id="labelReferrerCode" for="referrerId"></label>
@@ -82,30 +84,26 @@
 					<input type="text" id="fbForm_referrerId" name="referrerId" value="">
 				</div>
 			</div>
-		
+
 			<div class="row-fluid">
 				<div class="span1">
 					<div class="checkboxFive">
-						<input type="checkbox" name="check1" id="check1"/>
-						<label for="check1"></label>
+						<input type="checkbox" name="check1" id="check1" /> <label for="check1"></label>
 					</div>
 				</div>
 				<div class="span8 offset2">
-					<div class="row-fluid" id="check1Label">
-					</div>
+					<div class="row-fluid" id="check1Label"></div>
 				</div>
 			</div>
 
 			<div class="row-fluid">
 				<div class="span1">
 					<div class="checkboxFive">
-						<input type="checkbox" name="check2" id="check2"/>
-						<label for="check2"></label>
+						<input type="checkbox" name="check2" id="check2" /> <label for="check2"></label>
 					</div>
 				</div>
 				<div class="span8 offset2">
-					<div class="row-fluid" id="check2Label">
-					</div>
+					<div class="row-fluid" id="check2Label"></div>
 				</div>
 			</div>
 
@@ -113,47 +111,50 @@
 		</form>
 
 	</div>
-	
 
-	<div id="question" style="display:none; cursor: default">
-	
+
+	<div id="question" style="display: none; cursor: default">
+
 		<br />
 
 		<div class="row-fluid">
 			<div class="offset2 span8" id="questionText"></div>
 		</div>
-		
-		<br />
-		<br />
-	
+
+		<br /> <br />
+
 		<div class="row-fluid">
 			<div class="span4 offset1" id="confirmFirstNameLabel"></div>
-			<div class="span4 offset1"><p id="confirmFirstName"></p></div>
+			<div class="span4 offset1">
+				<p id="confirmFirstName"></p>
+			</div>
 		</div>
-	
+
 		<div class="row-fluid">
 			<div class="span4 offset1" id="confirmLastNameLabel"></div>
-			<div class="span4 offset1"><p id="confirmLastName"></p></div>
+			<div class="span4 offset1">
+				<p id="confirmLastName"></p>
+			</div>
 		</div>
 
 		<div class="row-fluid">
 			<div class="span4 offset1" id="confirmBirthDateLabel"></div>
-			<div class="span4 offset1"><p id="confirmBirthDate"></p></div>
+			<div class="span4 offset1">
+				<p id="confirmBirthDate"></p>
+			</div>
 		</div>
-	
-	
-		<br />
-		<br />
-		
+
+
+		<br /> <br />
+
 		<div class="row-fluid">
-			<div id="no"  class="span6 btn-large button"></div>
+			<div id="no" class="span6 btn-large button"></div>
 			<div id="yes" class="span6 btn-large button"></div>
 		</div>
 
-		<br />
-		<br />
-	
-	</div> 
+		<br /> <br />
+
+	</div>
 </body>
 
 
@@ -196,6 +197,10 @@ $(function() {
    //-----------------------------------// 
    // fill form 
 
+	// FB birthday is MM/DD/YYYY
+	var split = birthday.split("/");
+   birthday = split[2] + "-" + split[0] + "-" split[1];
+   
    $("#fbForm_mbirthDate").val(birthday);
    $("#fbForm_title").text(Translator.messages["Welcome"] + " " + decodeURIComponent(Utils.getURLParameter("facebookName")) + " !")
                
