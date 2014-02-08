@@ -180,7 +180,7 @@ def main():
     
     #--------------------------------------------------------------------
 
-    print("\nNb Winners :" + str(len(winningTickets)))
+    print("\nNb winning tickets :" + str(len(winningTickets)))
     toShare = 0
     
     for i in range(0,len(rangs)):
@@ -237,29 +237,47 @@ def recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, finalPri
         playerUID = ticket.player[0]
 
         #--------------------------------------------------
+        # won a Price
+        # ticket.status set to 1
+        # ticket.price  set to share
         
         if(ticket.rang < 7) :
             price = rangs[ticket.rang-1]
             
-            print "Name : ", ticket.player[4], "email : ", ticket.player[2], "  numbers:", ticket.numbers, "  rang:", ticket.rang, "  share :", rangs[ticket.rang-1].share, "  nbTickets : " , ticket.nbTicketsPlayed 
+            print "Rang [", ticket.rang, "]   | Name : ", ticket.player[4], "  | email : ", ticket.player[5], "  | numbers:", ticket.numbers, "  | share :", rangs[ticket.rang-1].share, "    |  nbTickets : " , ticket.nbTicketsPlayed 
             
             if(not dryRun) :
                 database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"', status='1' WHERE uid='"+ticket.uid+"';")
                 
         #--------------------------------------------------
-        
+        # won a Bonus
+        # ticket.status set to 11,12,13,14 (rang 7,8,9,10 -> + 4)
+        # ticket.price  set to 0
+         
         else :
-            print ("todo rang ", ticket.rang) 
+            print "Rang [", ticket.rang, "]   | Name : ", ticket.player[4], "  | email : ", ticket.player[5], "  | numbers:", ticket.numbers
+
+            if(not dryRun) :
+                database.execute("UPDATE lottery_ticket SET price='0', status='"+str(ticket.rang+4)+"' WHERE uid='"+ticket.uid+"';")
     
     #--------------------------------------------------------
+    # JSON for the prizes
+    # prizes    : nbwinners + share 
+    # bonus     : nbwinners + 0 
 
     pricesJSON = "["
     
     for rang in rangs :
         pricesJSON = pricesJSON + "{\"num\":\"" + str(rang.num) + "\", \"winners\":\"" + str(rang.winners) + "\", \"share\":\"" + str(rang.share) + "\"}," 
+
+    for bonus in bonusRangs :
+        pricesJSON = pricesJSON + "{\"num\":\"" + str(bonus.num) + "\", \"winners\":\"" + str(bonus.winners) + "\", \"share\":\"0\"}," 
         
+    # remove last ','
     pricesJSON = pricesJSON[:-1]
     pricesJSON = pricesJSON + "]"
+    
+    print pricesJSON
 
     #--------------------------------------------------------
     

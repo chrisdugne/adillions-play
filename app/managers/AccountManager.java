@@ -70,7 +70,7 @@ public class AccountManager {
 		return player;
 	}
 
-	//------------------------------------------------------------------------------------//
+   //------------------------------------------------------------------------------------//
 	
 	public static Player getPlayer(String token) 
 	{
@@ -444,14 +444,14 @@ public class AccountManager {
 		String subject = "[Adillions - Cashout request]";
 
 		String content = "<p>Cashout</p>" + 
-				"<p>date : " + new Date().toString()  + "</p>" +
-				"<p>player : " + player.getUid() + "</p>" + 
-				"<p>email : " + player.getEmail() + "</p>" + 
-				"<p>firstName : " + player.getFirstName() + "</p>" + 
-				"<p>lastName : " + player.getLastName() + "</p>" + 
-				"<p>birthdate : " + player.getBirthDate() + "</p>" + 
-				"<p>amount : " + Utils.roundOneDecimals(amount) + "</p>" + 
-				"<p>country : " +country+"</p>" ; 
+				"<p>date : "        + new Date().toString()             + "</p>" +
+				"<p>player : "      + player.getUid()                   + "</p>" + 
+				"<p>email : "       + player.getEmail()                 + "</p>" + 
+				"<p>firstName : "   + player.getFirstName()             + "</p>" + 
+				"<p>lastName : "    + player.getLastName()              + "</p>" + 
+				"<p>birthdate : "   + player.getBirthDate()             + "</p>" + 
+				"<p>amount : "      + Utils.roundOneDecimals(amount)    + "</p>" + 
+				"<p>country : "     + country                           + "</p>" ; 
 		
 		MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
 		mail.setSubject(subject);
@@ -470,4 +470,29 @@ public class AccountManager {
    }
 
 	//------------------------------------------------------------------------------------//
+	
+	/**
+	 * on fetch player only
+	 * -> gather all bonus tickets not converted yet (status bonusi)
+	 * 
+	 * @param player
+	 */
+   public static void retrieveBonusTickets(Player player) {
+      System.out.println("retrieveBonusTickets");
+
+      for(LotteryTicket ticket : player.getLotteryTickets()){
+
+         if(ticket.getStatus() == null)
+            continue;
+         
+         if(ticket.getStatus() > 10 && ticket.getStatus() < 100 ){
+            System.out.println("ticket set to " + (ticket.getStatus() + 100));
+            
+            if()
+            
+//            ticket.setStatus(ticket.getStatus() + 100);
+//            Ebean.save(ticket);  
+         }
+      }
+   }
 }

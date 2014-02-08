@@ -18,7 +18,9 @@ select creation_date, numbers, lottery_uid from lottery_ticket where player_uid 
 ---------------------------------------------------------------------
 -- look for player
 
-select * from player where 	user_name 	like '%Morgan%' 
-					 or 	first_name 	like '%Morgan%' 
-					 or 	last_name 	like '%Morgan%' 
-					 or 	email 		like '%Morgan%'
+select * from player where 	user_name 		like '%UCDHS3%' 
+					 or 	first_name 		like '%UCDHS3%' 
+					 or 	last_name 		like '%UCDHS3%' 
+					 or 	email 			like '%UCDHS3%'
+					 or		referrer_id		like '%UCDHS3%'
+					 or		sponsor_code	like '%UCDHS3%'

@@ -32,15 +32,12 @@ public class SecurityController extends Action.Simple {
 	
 	public Result call(Http.Context ctx) throws Throwable {
 		Player player = null;
+
 		String[] authTokenHeaderValues = ctx.request().headers().get(AUTH_TOKEN_HEADER);
 
 		if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
 			player = models.Player.findByAuthToken(authTokenHeaderValues[0]);
 			if (player != null && player.getStatus() == Player.ON) {
-
-		      System.out.println("isFacebookFan : " + player.isFacebookFan());
-		      System.out.println("isTwitterFan : " + player.isTwitterFan());
-		      
 				ctx.args.put("player", player);
 				return delegate.call(ctx);
 			}
@@ -145,9 +142,8 @@ public class SecurityController extends Action.Simple {
 		
 		Player player = AccountManager.getPlayerByFacebookId(facebookId);
 
-		System.out.println(player);
-		
 		if(player != null && player.getStatus() == Player.ON){
+		   
 			String authToken = player.createToken();
 			response().setCookie(AUTH_TOKEN, authToken);
 

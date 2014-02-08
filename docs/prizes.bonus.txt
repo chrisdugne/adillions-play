@@ -1,0 +1,7 @@
+-> il faut ADD toutes les loteries suivantes avant un lancement de winners.py
+-> pour les tickets qui gagnent un BONUS, on set dans la colonne bonus un json qui indique :
+	- nb BT
+	- nb IT
+	- [lottery.uid] la liste des next lotteries pour lesquelles les BT sont valables.
+					on convertit dans le pool les BT à la premiere lottery.uid à laquelle on se connecte/ sinon perimés.
+					

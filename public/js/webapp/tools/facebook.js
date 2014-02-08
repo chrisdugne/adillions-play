@@ -25,8 +25,8 @@ Facebook.init = function(options)
 {
    //---------------------------------------------------------------
 
-//   this.prod = 0
-   this.prod = 1  
+   this.prod = 0
+//   this.prod = 1  
 
    //---------------------------------------------------------------
 
@@ -40,7 +40,7 @@ Facebook.init = function(options)
       this.FACEBOOK_APP_ID          = "534196239997712";
       this.FACEBOOK_APP_SECRET      = "46383d827867d50ef5d87b66c81f1a8e";
       this.FACEBOOK_APP_NAMESPACE   = "adillions-dev";
-      this.SERVER_OG_URL            = "http://192.168.0.9:9000/"
+      this.SERVER_OG_URL            = "http://192.168.0.10:9000/"
    }
 
    console.log("Facebook.init : Connection to FB", this.FACEBOOK_APP_NAMESPACE)
