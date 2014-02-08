@@ -11,9 +11,9 @@ def main():
     
     #--------------------------------------------------------------------
     
-    conn_string = utils.getDBConfig()
-    conn = psycopg2.connect(conn_string)
-    database = conn.cursor()
+    conn_string     = utils.getDBConfig()
+    conn            = psycopg2.connect(conn_string)
+    database        = conn.cursor()
 
     #--------------------------------------------------------------------
 
@@ -30,14 +30,9 @@ def main():
         print "Check the lotteryUID"
         return
     
-#     if(not lottery[11]):
-#         print "No winningNumbers set"
-#         return
-    
     #--------------------------------------------------------------------
     
-#     winningNumbers  = json.loads(lottery[11])
-    winningNumbers  = [3,21,22,38,48,1]
+    winningNumbers  = [2,21,22,38,48,1]
     winningTickets  = []
     rangs           = []
     bonusRangs      = []
@@ -118,39 +113,62 @@ def main():
         if numbers[len(numbers)-1] == winningNumbers[len(numbers)-1] :
             additional = 1
         
-        if (isWinningTicket(nbWinning, additional, winningNumbers)) :
+        if (isWinningTicket(nbWinning, additional)) :
             
             winningTicket = WinningTicket(ticket[0], ticket[4], nbWinning, additional, numbers)
             winningTicket.lotteryUID = lotteryUID
             
-            if isRang1(nbWinning,additional,winningNumbers) :
+            if isRang1(nbWinning,additional) :
                 winningTicket.rang = 1
                 rangs[0].winners = rangs[0].winners + 1
                 winningTickets.append(winningTicket)
     
-            elif isRang2(nbWinning,additional,winningNumbers) :
+            elif isRang2(nbWinning,additional) :
                 winningTicket.rang = 2
                 rangs[1].winners = rangs[1].winners + 1
                 winningTickets.append(winningTicket)
                 
-            elif isRang3(nbWinning,additional,winningNumbers) :
+            elif isRang3(nbWinning,additional) :
                 winningTicket.rang = 3
                 rangs[2].winners = rangs[2].winners + 1
                 winningTickets.append(winningTicket)
 
-            elif isRang4(nbWinning,additional,winningNumbers) :
+            elif isRang4(nbWinning,additional) :
                 winningTicket.rang = 4
                 rangs[3].winners = rangs[3].winners + 1
                 winningTickets.append(winningTicket)
 
-            elif isRang5(nbWinning,additional,winningNumbers) :
+            elif isRang5(nbWinning,additional) :
                 winningTicket.rang = 5
                 rangs[4].winners = rangs[4].winners + 1
                 winningTickets.append(winningTicket)
 
-            elif isRang6(nbWinning,additional,winningNumbers) :
+            elif isRang6(nbWinning,additional) :
                 winningTicket.rang = 6
                 rangs[5].winners = rangs[5].winners + 1
+                winningTickets.append(winningTicket)
+                
+            #-------------------------
+            # Bonus 
+            
+            elif isRang7(nbWinning,additional) :
+                winningTicket.rang = 7
+                bonusRangs[0].winners = bonusRangs[0].winners + 1
+                winningTickets.append(winningTicket)
+            
+            elif isRang8(nbWinning,additional) :
+                winningTicket.rang = 8
+                bonusRangs[1].winners = bonusRangs[1].winners + 1
+                winningTickets.append(winningTicket)
+            
+            elif isRang9(nbWinning,additional) :
+                winningTicket.rang = 9
+                bonusRangs[2].winners = bonusRangs[2].winners + 1
+                winningTickets.append(winningTicket)
+            
+            elif isRang10(nbWinning,additional) :
+                winningTicket.rang = 10
+                bonusRangs[3].winners = bonusRangs[3].winners + 1
                 winningTickets.append(winningTicket)
          
         ## loading bar       
@@ -178,20 +196,23 @@ def main():
     print("To share :" , toShare)
     toPay = 0
     
-    for i in range(0,len(rangs)):
+    for i in range(0, len(rangs)):
         toPay = toPay + rangs[i].share * rangs[i].winners
         print("Winners Rang "+str(i+1)+ " :   " + str(rangs[i].winners), "   | share : " , str(rangs[i].share))
 
     toPay = round(toPay, 1)
     print("To pay :" , toPay)
     print("Nobody :" , round(toShare - toPay, 1))
+    print("---------")
+    print("Bonus :")
+    for i in range(0, len(bonusRangs)):
+        print("Winners Rang "+str(i+7)+ " :   " + str(bonusRangs[i].winners))
     
     #---------------------------------
 
     requireRecord = raw_input("Record data ? (y/N) \n>") == 'y'
        
-    if requireRecord:
-        recordToDB(database, lotteryUID, winningTickets, rangs, toPay)
+    recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, toPay, not requireRecord)
         
     #--------------------------------------------------------------------
     
@@ -204,26 +225,46 @@ def main():
         
 #----------------------------------------------------------------------------------
 
-def recordToDB(database, lotteryUID, winningTickets, rangs, finalPrice):
+def recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, finalPrice, dryRun):
     print("Recording prizes in DB")
     
+    #--------------------------------------------------------
+    
+    print (len(winningTickets), " winning tickets") 
+
     for ticket in winningTickets :
         getWinnerData(database, ticket)
-        price = rangs[ticket.rang-1]
         playerUID = ticket.player[0]
+
+        #--------------------------------------------------
         
-        print "Name : ", ticket.player[4], "numbers:", ticket.numbers, "rang:", ticket.rang, "share :", rangs[ticket.rang-1].share, "nbTickets : " , ticket.nbTicketsPlayed 
+        if(ticket.rang < 7) :
+            price = rangs[ticket.rang-1]
+            
+            print "Name : ", ticket.player[4], "email : ", ticket.player[2], "  numbers:", ticket.numbers, "  rang:", ticket.rang, "  share :", rangs[ticket.rang-1].share, "  nbTickets : " , ticket.nbTicketsPlayed 
+            
+            if(not dryRun) :
+                database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"', status='1' WHERE uid='"+ticket.uid+"';")
+                
+        #--------------------------------------------------
         
-        database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"', status='1' WHERE uid='"+ticket.uid+"';") 
+        else :
+            print ("todo rang ", ticket.rang) 
+    
+    #--------------------------------------------------------
 
     pricesJSON = "["
+    
     for rang in rangs :
         pricesJSON = pricesJSON + "{\"num\":\"" + str(rang.num) + "\", \"winners\":\"" + str(rang.winners) + "\", \"share\":\"" + str(rang.share) + "\"}," 
         
     pricesJSON = pricesJSON[:-1]
     pricesJSON = pricesJSON + "]"
+
+    #--------------------------------------------------------
     
-    database.execute("UPDATE lottery SET final_price='"+str(finalPrice)+"', prizes='"+pricesJSON+"' WHERE uid='"+lotteryUID+"';") 
+    if(not dryRun) :
+        database.execute("UPDATE lottery SET final_price='"+str(finalPrice)+"', prizes='"+pricesJSON+"' WHERE uid='"+lotteryUID+"';") 
     
         
 #----------------------------------------------------------------------------------
@@ -240,43 +281,47 @@ def getWinnerData(database, ticket):
         
 #----------------------------------------------------------------------------------
 
-def isWinningTicket(nbWinning, additional, winningNumbers):
-    return isRang1(nbWinning,additional,winningNumbers) \
-    or isRang2(nbWinning,additional,winningNumbers)  \
-    or isRang3(nbWinning,additional,winningNumbers)  \
-    or isRang4(nbWinning,additional,winningNumbers)  \
-    or isRang5(nbWinning,additional,winningNumbers)  \
-    or isRang6(nbWinning,additional,winningNumbers)  \
-    or isRang7(nbWinning,additional,winningNumbers)  \
-    or isRang8(nbWinning,additional,winningNumbers)  \
-    or isRang9(nbWinning,additional,winningNumbers)  \
+def isWinningTicket(nbWinning, additional):
+    return isRang1(nbWinning,additional) \
+    or isRang2(nbWinning,additional)  \
+    or isRang3(nbWinning,additional)  \
+    or isRang4(nbWinning,additional)  \
+    or isRang5(nbWinning,additional)  \
+    or isRang6(nbWinning,additional)  \
+    or isRang7(nbWinning,additional)  \
+    or isRang8(nbWinning,additional)  \
+    or isRang9(nbWinning,additional)  \
+    or isRang10(nbWinning,additional)
     
-def isRang1(nbWinning, additional, winningNumbers):
-    return nbWinning == len(winningNumbers)-1 and additional == 1
+def isRang1(nbWinning, additional):
+    return nbWinning == 5 and additional == 1
 
-def isRang2(nbWinning, additional, winningNumbers):
-    return nbWinning == len(winningNumbers)-1 and additional == 0
+def isRang2(nbWinning, additional):
+    return nbWinning == 5 and additional == 0
 
-def isRang3(nbWinning, additional, winningNumbers):
-    return nbWinning == len(winningNumbers)-2 and additional == 1
+def isRang3(nbWinning, additional):
+    return nbWinning == 4 and additional == 1
 
-def isRang4(nbWinning, additional, winningNumbers):
-    return nbWinning == len(winningNumbers)-2 and additional == 0
+def isRang4(nbWinning, additional):
+    return nbWinning == 4 and additional == 0
             
-def isRang5(nbWinning, additional, winningNumbers):
-    return nbWinning == len(winningNumbers)-3 and additional == 1
+def isRang5(nbWinning, additional):
+    return nbWinning == 3 and additional == 1
             
-def isRang6(nbWinning, additional, winningNumbers):
-    return nbWinning == len(winningNumbers)-3 and additional == 0
+def isRang6(nbWinning, additional):
+    return nbWinning == 3 and additional == 0
 
-def isRang7(nbWinning, additional, winningNumbers):
-    return nbWinning == len(winningNumbers)-2 and additional == 1
+def isRang7(nbWinning, additional):
+    return nbWinning == 2 and additional == 1
 
-def isRang8(nbWinning, additional, winningNumbers):
-    return nbWinning == len(winningNumbers)-2 and additional == 0
+def isRang8(nbWinning, additional):
+    return nbWinning == 2 and additional == 0
 
-def isRang9(nbWinning, additional, winningNumbers):
-    return nbWinning == len(winningNumbers)-1 and additional == 1
+def isRang9(nbWinning, additional):
+    return nbWinning == 1 and additional == 1
+
+def isRang10(nbWinning, additional):
+    return nbWinning == 0 and additional == 1
             
 #----------------------------------------------------------------------------------
              
