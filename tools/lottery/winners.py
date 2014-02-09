@@ -32,7 +32,7 @@ def main():
     
     #--------------------------------------------------------------------
     
-    winningNumbers  = [2,21,22,38,48,1]
+    winningNumbers  = [7,12,21,25,44,3]
     winningTickets  = []
     rangs           = []
     bonusRangs      = []

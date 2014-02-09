@@ -488,7 +488,7 @@ public class AccountManager {
          if(ticket.getStatus() > 10 && ticket.getStatus() < 100 ){
             System.out.println("ticket set to " + (ticket.getStatus() + 100));
             
-            if()
+//            if()
             
 //            ticket.setStatus(ticket.getStatus() + 100);
 //            Ebean.save(ticket);  

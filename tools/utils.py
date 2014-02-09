@@ -22,7 +22,7 @@ def getDBConfig():
         return "host='localhost' dbname='adillions' user='mad'"
     
     if env == "PROD":
-        return "host='ec2-54-228-224-127.eu-west-1.compute.amazonaws.com' dbname='d4pq9slihvgnns' user='oubcukdgrmjfrz' password='Yepe_9jrgK0yIVuyhpan-JrWH5'"
+        return "host='ec2-54-195-246-19.eu-west-1.compute.amazonaws.com' dbname='dcnhrfq1ae93lf' user='ucebgnuu386q1e' password='p8jeo285b3sp8450hv9ob3j0uph' port='5562'"
     
  
 #------------------------------------------------------------------------------------
