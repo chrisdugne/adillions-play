@@ -37,7 +37,7 @@ def main():
     #--------------------------------------------------------------------
     
 #     winningNumbers  = json.loads(lottery[11])
-    winningNumbers  = [7,12,21,25,44,3]
+    winningNumbers  = [9,11,24,29,30,2]
     winningTickets  = []
     rangs           = []
      
@@ -183,8 +183,7 @@ def main():
 
     requireRecord = raw_input("Record data ? (y/N) \n>") == 'y'
        
-    if requireRecord:
-        recordToDB(database, lotteryUID, winningTickets, rangs, toPay)
+    recordToDB(database, lotteryUID, winningTickets, rangs, toPay, not requireRecord)
         
     #--------------------------------------------------------------------
     
@@ -197,17 +196,19 @@ def main():
         
 #----------------------------------------------------------------------------------
 
-def recordToDB(database, lotteryUID, winningTickets, rangs, finalPrice):
+def recordToDB(database, lotteryUID, winningTickets, rangs, finalPrice, dryRun):
     print("Recording prizes in DB")
+    print (len(winningTickets), " winning tickets") 
     
     for ticket in winningTickets :
         getWinnerData(database, ticket)
         price = rangs[ticket.rang-1]
         playerUID = ticket.player[0]
         
-        print "Name : ", ticket.player[4], "numbers:", ticket.numbers, "rang:", ticket.rang, "share :", rangs[ticket.rang-1].share, "nbTickets : " , ticket.nbTicketsPlayed 
-        
-        database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"', status='1' WHERE uid='"+ticket.uid+"';") 
+        print "Rang [", ticket.rang, "]   | Name : ", ticket.player[4], "  | email : ", ticket.player[5], "  | numbers:", ticket.numbers, "  | share :", rangs[ticket.rang-1].share, "    |  nbTickets : " , ticket.nbTicketsPlayed 
+            
+        if(not dryRun) :
+            database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"', status='1' WHERE uid='"+ticket.uid+"';") 
 
     pricesJSON = "["
     for rang in rangs :
@@ -216,7 +217,8 @@ def recordToDB(database, lotteryUID, winningTickets, rangs, finalPrice):
     pricesJSON = pricesJSON[:-1]
     pricesJSON = pricesJSON + "]"
     
-    database.execute("UPDATE lottery SET final_price='"+str(finalPrice)+"', prizes='"+pricesJSON+"' WHERE uid='"+lotteryUID+"';") 
+    if(not dryRun) :
+        database.execute("UPDATE lottery SET final_price='"+str(finalPrice)+"', prizes='"+pricesJSON+"' WHERE uid='"+lotteryUID+"';") 
     
         
 #----------------------------------------------------------------------------------
