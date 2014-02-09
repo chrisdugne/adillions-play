@@ -15,8 +15,6 @@ import utils.Utils;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.typesafe.plugin.MailerAPI;
@@ -320,8 +318,6 @@ public class AccountManager {
 	
 	public static Player updatePlayer(Player player, JsonNode newUserJson) {
 
-		System.out.println("updatePlayer");
-	
 		//-------------------------------------//
 
 		String facebookId     = null;
@@ -394,16 +390,8 @@ public class AccountManager {
 	
 	public static Player updateFanStatus(Player player, Boolean facebookFan, Boolean twitterFan) {
 		
-		System.out.println("updateFanStatus");
-		System.out.println("facebookFan : " + facebookFan);
-		System.out.println("twitterFan : " + twitterFan);
-		
-		//-------------------------------------//
-		
 		player.setFacebookFan (facebookFan);
 		player.setTwitterFan (twitterFan);
-		
-		//-------------------------------------//
 		
 		Ebean.save(player);  
 		
@@ -483,7 +471,6 @@ public class AccountManager {
 	 * @param player
 	 */
    public static void retrieveBonusTickets(Player player) {
-      System.out.println("retrieveBonusTickets");
 
       int instants     = 0;
       int stocks       = 0;
@@ -503,8 +490,6 @@ public class AccountManager {
          // money prizes 
          
          if(ticket.getStatus() == LotteryTicket.blocked){
-            System.out.println("ticket set to " + (ticket.getStatus() + 1) + " | price : " + ticket.getPrice());
-
             ticket.setStatus(LotteryTicket.read);
             prizes += ticket.getPrice();
             Ebean.save(ticket);  
@@ -514,7 +499,6 @@ public class AccountManager {
          // bonus 
          
          if(ticket.getStatus() > 10 && ticket.getStatus() < 100 ){
-            System.out.println("ticket set to " + (ticket.getStatus() + 100) + " | bonus : " + ticket.getBonus() );
             ticket.setStatus(ticket.getStatus() + 100);
             
             JsonParser parser = new JsonParser();
@@ -533,10 +517,9 @@ public class AccountManager {
       }
 
       JsonObject notifications = new JsonObject();
-
-      System.out.println("instants : " + instants);
-      System.out.println("stocks : " + stocks);
-      System.out.println("prizes : " + prizes);
+      notifications.addProperty("instants", instants);
+      notifications.addProperty("stocks", stocks);
+      notifications.addProperty("prizes", prizes);
       
       player.setNotifications(notifications);
    }
