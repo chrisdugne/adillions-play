@@ -472,9 +472,10 @@ public class AccountManager {
 	 */
    public static void retrieveBonusTickets(Player player) {
 
-      int instants     = 0;
-      int stocks       = 0;
-      double prizes    = 0;
+      int instants            = 0;
+      int stocks              = 0;
+      double prizes           = 0;
+      double prizesUSD        = 0;
       
       long now = new Date().getTime();
       
@@ -489,14 +490,16 @@ public class AccountManager {
          //--------------------------------------------//
          // money prizes 
          
-         if(ticket.getStatus() == LotteryTicket.blocked){
-            ticket.setStatus(LotteryTicket.read);
-            prizes += ticket.getPrice();
+         if(ticket.getStatus() == LotteryTicket.unseen){
+            ticket.setStatus(LotteryTicket.blocked);
+            prizes        += ticket.getPrice();
+            prizesUSD     += Utils.roundOneDecimals(ticket.getPrice() * ticket.getLottery().getRateUSDtoEUR());
             Ebean.save(ticket);  
          }
          
          //--------------------------------------------//
          // bonus 
+         // 11,12,13,14 --> 111,112,113,114 
          
          if(ticket.getStatus() > 10 && ticket.getStatus() < 100 ){
             ticket.setStatus(ticket.getStatus() + 100);
@@ -520,8 +523,14 @@ public class AccountManager {
       notifications.addProperty("instants", instants);
       notifications.addProperty("stocks", stocks);
       notifications.addProperty("prizes", prizes);
+      notifications.addProperty("prizesUSD", Utils.roundOneDecimals(prizesUSD));
       
-      player.setNotifications(notifications);
+      player.setNotifications(notifications.toString());
+      
+      player.setAvailableTickets(player.getAvailableTickets()  + stocks);
+      player.setExtraTickets(player.getExtraTickets()          + instants);
+      
+      Ebean.save(player);  
    }
 
 }

@@ -14,8 +14,8 @@ public class LotteryTicket extends Model {
 
 	// -----------------------------------------------------------------------------------------------//
 
-   public static final int blocked 	= 0; // set as winning ticket, before notification
-	public static final int read 	   = 1; // set as winning ticket, notification/popup read
+   public static final int unseen 	= 0; // set as winning ticket, before notification
+	public static final int blocked  = 1; // set as winning ticket, notification/popup read, cashout blocked (<10)
 	public static final int pending 	= 2; // cashout requested
 	public static final int payed 	= 3; // to set manually when paiement is done
 	public static final int gift 		= 4; // gift to charity

@@ -114,7 +114,7 @@ public class Player extends Model {
 
    @Transient
    @Expose
-   private JsonObject notifications;
+   private String notifications;
    
 	// -----------------------------------------------------------------------------------------------//
 	// utiliser normalement que coté client
@@ -506,11 +506,11 @@ public class Player extends Model {
 		this.isTwitterFan = isTwitterFan;
 	}
 
-	public JsonObject getNotifications() {
+	public String getNotifications() {
       return notifications;
    }
 
-   public void setNotifications(JsonObject notifications) {
+   public void setNotifications(String notifications) {
       this.notifications = notifications;
    }
 
