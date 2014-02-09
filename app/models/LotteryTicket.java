@@ -1,5 +1,6 @@
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -13,7 +14,8 @@ public class LotteryTicket extends Model {
 
 	// -----------------------------------------------------------------------------------------------//
 
-	public static final int blocked 	= 1; // set as winning ticket
+   public static final int blocked 	= 0; // set as winning ticket, before notification
+	public static final int read 	   = 1; // set as winning ticket, notification/popup read
 	public static final int pending 	= 2; // cashout requested
 	public static final int payed 	= 3; // to set manually when paiement is done
 	public static final int gift 		= 4; // gift to charity
@@ -55,6 +57,10 @@ public class LotteryTicket extends Model {
 	@Expose
 	private Integer type;
 
+   @Expose
+   @Column(columnDefinition = "TEXT")
+   private String bonus;            // {"stock":"x",instant:"x","maxTime":"lastLottery.date"}
+
 	@Expose
 	private Long creationDate;
 	
@@ -94,7 +100,15 @@ public class LotteryTicket extends Model {
 		this.type = type;
 	}
 
-	public String getNumbers() {
+	public String getBonus() {
+      return bonus;
+   }
+
+   public void setBonus(String bonus) {
+      this.bonus = bonus;
+   }
+
+   public String getNumbers() {
 		return numbers;
 	}
 

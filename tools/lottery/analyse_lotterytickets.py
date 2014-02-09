@@ -208,7 +208,7 @@ def recordToDB(database, lotteryUID, winningTickets, rangs, finalPrice, dryRun):
         print "Rang [", ticket.rang, "]   | Name : ", ticket.player[4], "  | email : ", ticket.player[5], "  | numbers:", ticket.numbers, "  | share :", rangs[ticket.rang-1].share, "    |  nbTickets : " , ticket.nbTicketsPlayed 
             
         if(not dryRun) :
-            database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"', status='1' WHERE uid='"+ticket.uid+"';") 
+            database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"', status='0' WHERE uid='"+ticket.uid+"';") 
 
     pricesJSON = "["
     for rang in rangs :

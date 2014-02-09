@@ -7,11 +7,13 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import play.db.ebean.Model;
 
 import com.avaje.ebean.Query;
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.Expose;
 
 @Entity
@@ -108,6 +110,12 @@ public class Player extends Model {
 	@Expose
 	private Boolean hasInvitedOnFacebook;
 
+   // -----------------------------------------------------------------------------------------------//
+
+   @Transient
+   @Expose
+   private JsonObject notifications;
+   
 	// -----------------------------------------------------------------------------------------------//
 	// utiliser normalement que coté client
 	// mais bon a savoir coté server pour eviter la triche (availableTickets + nbTickets de fans acceddible coté server)
@@ -498,7 +506,15 @@ public class Player extends Model {
 		this.isTwitterFan = isTwitterFan;
 	}
 
-	public int getTotalPoints() {
+	public JsonObject getNotifications() {
+      return notifications;
+   }
+
+   public void setNotifications(JsonObject notifications) {
+      this.notifications = notifications;
+   }
+
+   public int getTotalPoints() {
 		return totalPoints;
 	}
 

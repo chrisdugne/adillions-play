@@ -15,6 +15,10 @@ import utils.Utils;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.typesafe.plugin.MailerAPI;
 import com.typesafe.plugin.MailerPlugin;
 
@@ -25,8 +29,8 @@ public class AccountManager {
 	//------------------------------------------------------------------------------------//
 	
 	public static final int START_AVAILABLE_TICKETS 		= 10;
-	
-	//------------------------------------------------------------------------------------//
+
+   // -----------------------------------------------------------------------------------//
 
 	public static boolean existEmail(JsonNode userJson)
 	{
@@ -473,26 +477,69 @@ public class AccountManager {
 	
 	/**
 	 * on fetch player only
-	 * -> gather all bonus tickets not converted yet (status bonusi)
+	 * convert ticket as "notification done"
+	 * sum the notifications
 	 * 
 	 * @param player
 	 */
    public static void retrieveBonusTickets(Player player) {
       System.out.println("retrieveBonusTickets");
 
+      int instants     = 0;
+      int stocks       = 0;
+      double prizes    = 0;
+      
+      long now = new Date().getTime();
+      
       for(LotteryTicket ticket : player.getLotteryTickets()){
 
+         //--------------------------------------------//
+         // losing ticket
+            
          if(ticket.getStatus() == null)
             continue;
+
+         //--------------------------------------------//
+         // money prizes 
+         
+         if(ticket.getStatus() == LotteryTicket.blocked){
+            System.out.println("ticket set to " + (ticket.getStatus() + 1) + " | price : " + ticket.getPrice());
+
+            ticket.setStatus(LotteryTicket.read);
+            prizes += ticket.getPrice();
+            Ebean.save(ticket);  
+         }
+         
+         //--------------------------------------------//
+         // bonus 
          
          if(ticket.getStatus() > 10 && ticket.getStatus() < 100 ){
-            System.out.println("ticket set to " + (ticket.getStatus() + 100));
+            System.out.println("ticket set to " + (ticket.getStatus() + 100) + " | bonus : " + ticket.getBonus() );
+            ticket.setStatus(ticket.getStatus() + 100);
             
-//            if()
+            JsonParser parser = new JsonParser();
+            JsonObject bonus = (JsonObject)parser.parse(ticket.getBonus());
             
-//            ticket.setStatus(ticket.getStatus() + 100);
-//            Ebean.save(ticket);  
+            long maxTime = bonus.get("maxTime").getAsLong();
+            
+            if(now < maxTime)
+               stocks += bonus.get("stocks").getAsLong();
+            
+            instants += bonus.get("instants").getAsLong();
+            Ebean.save(ticket);  
          }
+
+         //--------------------------------------------//
       }
+
+      JsonObject notifications = new JsonObject();
+
+      System.out.println("instants : " + instants);
+      System.out.println("stocks : " + stocks);
+      System.out.println("prizes : " + prizes);
+      
+      player.setNotifications(notifications);
    }
+
 }
+

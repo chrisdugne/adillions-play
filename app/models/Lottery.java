@@ -26,7 +26,7 @@ public class Lottery extends Model {
 	@Expose
 	private Integer maxPicks; 			// 5
 	@Expose
-	private Integer maxNumbers; 		// 35
+	private Integer maxNumbers; 		// 49
 
 	@Expose
 	private Integer nbPlayers;

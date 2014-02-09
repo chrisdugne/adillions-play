@@ -16,22 +16,10 @@ def main():
     database        = conn.cursor()
 
     #--------------------------------------------------------------------
-
-    lotteryUID  = raw_input("lotteryUID ? \n> ")
+    # Settings
     
-    #--------------------------------------------------------------------
-
-    print "\nFetching lottery..."
-    
-    database.execute("SELECT * FROM lottery where uid='"+lotteryUID+"'")
-    lottery         = database.fetchone()
-
-    if(not lottery):
-        print "Check the lotteryUID"
-        return
-    
-    #--------------------------------------------------------------------
-    
+    lotteryUID      = "14411b846ab628aa9d7"
+    maxTime         = "1392544800000"
     winningNumbers  = [9,11,24,29,30,2]
     winningTickets  = []
     rangs           = []
@@ -48,6 +36,13 @@ def main():
     bonusRangs.append(BonusRang(8,  0, 1, 0,))
     bonusRangs.append(BonusRang(9,  0, 0, 2,))
     bonusRangs.append(BonusRang(10, 0, 0, 1,))
+
+    #--------------------------------------------------------------------
+    
+    print "\nFetching lottery..."
+    
+    database.execute("SELECT * FROM lottery where uid='"+lotteryUID+"'")
+    lottery = database.fetchone()
 
     #--------------------------------------------------------------------
 
@@ -71,7 +66,6 @@ def main():
   
     database.execute("SELECT * FROM lottery_ticket where lottery_uid='"+lotteryUID+"' ORDER BY uid DESC")
     tickets = database.fetchall()
-      
     
     #--------------------------------------------------------------------
 
@@ -212,7 +206,7 @@ def main():
 
     requireRecord = raw_input("Record data ? (y/N) \n>") == 'y'
        
-    recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, toPay, not requireRecord)
+    recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, toPay, maxTime, not requireRecord)
         
     #--------------------------------------------------------------------
     
@@ -225,7 +219,7 @@ def main():
         
 #----------------------------------------------------------------------------------
 
-def recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, finalPrice, dryRun):
+def recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, finalPrice, maxTime, dryRun):
     print("Recording prizes in DB")
     
     #--------------------------------------------------------
@@ -247,7 +241,7 @@ def recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, finalPri
             print "Rang [", ticket.rang, "]   | Name : ", ticket.player[4], "  | email : ", ticket.player[5], "  | numbers:", ticket.numbers, "  | share :", rangs[ticket.rang-1].share, "    |  nbTickets : " , ticket.nbTicketsPlayed 
             
             if(not dryRun) :
-                database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"', status='1' WHERE uid='"+ticket.uid+"';")
+                database.execute("UPDATE lottery_ticket SET price='"+str(rangs[ticket.rang-1].share)+"', status='0' WHERE uid='"+ticket.uid+"';")
                 
         #--------------------------------------------------
         # won a Bonus
@@ -255,10 +249,13 @@ def recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, finalPri
         # ticket.price  set to 0
          
         else :
-            print "Rang [", ticket.rang, "]   | Name : ", ticket.player[4], "  | email : ", ticket.player[5], "  | numbers:", ticket.numbers
+            instants    = bonusRangs[ticket.rang-7].instants
+            stocks      = bonusRangs[ticket.rang-7].stocks
+
+            bonusJSON = "{\"instants\":\"" + str(instants) + "\", \"stocks\":\"" + str(stocks) + "\", \"maxTime\":\""+ str(maxTime) +"\"}" 
 
             if(not dryRun) :
-                database.execute("UPDATE lottery_ticket SET price='0', status='"+str(ticket.rang+4)+"' WHERE uid='"+ticket.uid+"';")
+                database.execute("UPDATE lottery_ticket SET price='0', status='"+str(ticket.rang+4)+"', bonus='"+bonusJSON+"' WHERE uid='"+ticket.uid+"';")
     
     #--------------------------------------------------------
     # JSON for the prizes
@@ -364,11 +361,11 @@ class Rang:
         self.percentage     = percentage
              
 class BonusRang:
-    def __init__(self, num, winners, nbBonus, nbInstant):
+    def __init__(self, num, winners, stocks, instants):
         self.num            = num
         self.winners        = winners
-        self.nbBonus        = nbBonus
-        self.nbInstant      = nbInstant
+        self.stocks         = stocks
+        self.instants       = instants
             
 #----------------------------------------------------------------------------------
 
