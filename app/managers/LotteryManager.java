@@ -102,7 +102,7 @@ public class LotteryManager {
    }
 	
 	private static void findNbWinnersForLottery(Lottery lottery) {
-		String sql 		= "select count(*)  from lottery_ticket where lottery_uid='"+lottery.getUid()+"' and \"price\" IS NOT NULL;";
+		String sql 		= "select count(*)  from lottery_ticket where lottery_uid='"+lottery.getUid()+"' and \"price\" IS NOT NULL and \"price\" > 0;";
 		SqlRow result	= Ebean.createSqlQuery(sql).findUnique();  
 		
 		lottery.setNbWinners(result.getInteger("count"));
