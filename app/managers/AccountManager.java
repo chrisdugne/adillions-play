@@ -82,7 +82,9 @@ public class AccountManager {
 	//------------------------------------------------------------------------------------//
 
 	public static Player getPlayerByFacebookId(String facebookId) {
-		return Player.findByFacebookId(facebookId);
+		Player player = Player.findByFacebookId(facebookId);
+		retrieveBonusTickets(player);
+		return player;
    }
 	
 	//------------------------------------------------------------------------------------//
