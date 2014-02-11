@@ -26,7 +26,7 @@ public class AccountManager {
 
 	//------------------------------------------------------------------------------------//
 	
-	public static final int START_AVAILABLE_TICKETS 		= 10;
+	public static final int START_AVAILABLE_TICKETS 		= 8;
 
    // -----------------------------------------------------------------------------------//
 

@@ -21,9 +21,9 @@ public class LotteryManager {
 	public static final int NB_POINTS_PER_REFERRING 					= 1;
 	public static final int NB_LOTTERIES_TO_PLAY_TO_BE_REFERRED 	= 2;
 
-	public static final int FACEBOOK_FAN_TICKETS 						= 2;
+	public static final int FACEBOOK_FAN_TICKETS 						= 3;
 	public static final int FACEBOOK_CONNECTION_TICKETS 				= 1;
-	public static final int TWITTER_FAN_TICKETS 							= 2;
+	public static final int TWITTER_FAN_TICKETS 							= 3;
 	public static final int TWITTER_CONNECTION_TICKETS 				= 1;
 	
 	//------------------------------------------------------------------------------------//
