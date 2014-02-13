@@ -66,7 +66,7 @@ public class Player extends Model {
 	private int currentPoints;
 	
 	@Expose
-	private int idlePoints;
+	private int idlePoints; //meaning idleIT from 1.3
 
 	@Expose
 	private int totalPoints;

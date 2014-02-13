@@ -18,7 +18,7 @@ public class LotteryManager {
 	//------------------------------------------------------------------------------------//
 
 	public static final int NB_POINTS_PER_TICKET	 						= 1;
-	public static final int NB_POINTS_PER_REFERRING 					= 1;
+	public static final int NB_INSTANTS_PER_REFERRING 					= 2;
 	public static final int NB_LOTTERIES_TO_PLAY_TO_BE_REFERRED 	= 2;
 
 	public static final int FACEBOOK_FAN_TICKETS 						= 3;
@@ -123,8 +123,6 @@ public class LotteryManager {
 		Player player = Application.player();
 		Lottery lottery = LotteryManager.getNextLottery();
 		
-		System.out.print("===== SPECIAL_LOG | Player " + player.getUserName() + " | " + player.getUid() + " | stores : " + numbers + " | at : " + creationTime);
-
 		// -----------------------------------------------------//
 		// A - securite : on check cote server si le nb de tickets est ok
 		// coté client cest deja fait, mais un post 'dev tricheur' peut arriver ici sans pb
@@ -165,10 +163,6 @@ public class LotteryManager {
 		// -----------------------------------------------------//
 		// Triches 
 		
-		System.out.println("---------------");
-		System.out.println(player.getAvailableTickets() + facebookFanBonus + twitterFanBonus - player.getPlayedBonusTickets());
-		System.out.println(player.getExtraTickets());
-		System.out.println(isExtraTicket);
 		if(player.getAvailableTickets() + facebookFanBonus + twitterFanBonus - player.getPlayedBonusTickets() <= 0) 
 	      return player;
 
@@ -190,14 +184,14 @@ public class LotteryManager {
 		&& !player.hasGivenToReferrer()
 		&& player.getReferrerId() != null
 		&& player.getReferrerId().length() > 0){
-			System.out.println("---------->  gift to referrer !");
-			player.setGiftToReferrer(true);
+
+		   player.setGiftToReferrer(true);
 
 			Player referrer = AccountManager.getPlayerBySponsorCode(player.getReferrerId());
 			
 			if(referrer != null){
-				player.setIdlePoints(player.getIdlePoints() + NB_POINTS_PER_REFERRING);
-				referrer.setIdlePoints(referrer.getIdlePoints() + NB_POINTS_PER_REFERRING);
+				player.setIdlePoints(player.getIdlePoints() + NB_INSTANTS_PER_REFERRING);
+				referrer.setIdlePoints(referrer.getIdlePoints() + NB_INSTANTS_PER_REFERRING);
 				referrer.save();
 			}
 			// else : referrerId doesnt exist
