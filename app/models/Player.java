@@ -108,7 +108,9 @@ public class Player extends Model {
 	@Expose
 	private Boolean hasTweet;
 	@Expose
-	private Boolean hasTweetAnInvite;
+	private Boolean hasTweetTheme;
+	@Expose
+	private Boolean hasTweetAnInvite;   // -- deprecated
 	@Expose
 	private Boolean hasInvitedOnFacebook;
 
@@ -452,7 +454,15 @@ public class Player extends Model {
 		this.hasTweetAnInvite = hasTweetAnInvite;
 	}
 
-	public Boolean hasInvitedOnFacebook() {
+	public Boolean hasTweetTheme() {
+      return hasTweetTheme;
+   }
+
+   public void setTweetTheme(Boolean hasTweetTheme) {
+      this.hasTweetTheme = hasTweetTheme;
+   }
+
+   public Boolean hasInvitedOnFacebook() {
 		return hasInvitedOnFacebook;
 	}
 

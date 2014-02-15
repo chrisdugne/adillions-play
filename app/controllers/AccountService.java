@@ -14,7 +14,7 @@ public class AccountService extends Application
 	public static Result fetchPlayer()
 	{
 		Player player = Application.player();
-      AccountManager.retrieveBonusTickets(player);
+      AccountManager.refreshPlayer(player);
 		
 		if(player != null){
 			return ok(gson.toJson(player));

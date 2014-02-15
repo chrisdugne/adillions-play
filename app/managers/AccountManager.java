@@ -3,6 +3,7 @@ package managers;
 import java.util.ArrayList;
 import java.util.Date;
 
+import models.Lottery;
 import models.LotteryTicket;
 import models.RaffleTicket;
 import models.Player;
@@ -83,7 +84,7 @@ public class AccountManager {
 
 	public static Player getPlayerByFacebookId(String facebookId) {
 		Player player = Player.findByFacebookId(facebookId);
-		retrieveBonusTickets(player);
+		refreshPlayer(player);
 		return player;
    }
 	
@@ -464,6 +465,19 @@ public class AccountManager {
 	   
    }
 
+	//---------------------------------------------------------------------------------------------------------------//
+   
+	/**
+    * - Check if the player is reset and ready for the current Lottery
+    * - Then Check for bonus/winnings notifications
+    * 
+    * @param player
+    */
+	public static void refreshPlayer(Player player) {
+      checkLottery(player);
+      retrieveBonusTickets(player);
+	}
+	
 	//------------------------------------------------------------------------------------//
 	
 	/**
@@ -473,7 +487,34 @@ public class AccountManager {
 	 * 
 	 * @param player
 	 */
-   public static void retrieveBonusTickets(Player player) {
+	private static void checkLottery(Player player) {
+	   
+	   Lottery currentLottery = LotteryManager.getNextLottery();
+	   
+	   if(!player.getCurrentLotteryUID().equals(currentLottery.getUid())){
+	      
+	      player.setCurrentLotteryUID     (currentLottery.getUid());
+	      player.setAvailableTickets      (START_AVAILABLE_TICKETS);
+	      player.setPlayedBonusTickets    (0);
+	      player.setTemporaryBonusTickets (0);
+
+	      player.setTweet                 (false);
+	      player.setTweetTheme            (false);
+	      player.setPostOnFacebook        (false);
+	      player.setInvitedOnFacebook     (false);
+	   }
+   }
+	
+	//------------------------------------------------------------------------------------//
+	
+	/**
+	 * on fetch player only
+	 * convert ticket as "notification done"
+	 * sum the notifications
+	 * 
+	 * @param player
+	 */
+   private static void retrieveBonusTickets(Player player) {
 
       int instants            = 0;
       int stocks              = 0;
@@ -530,8 +571,7 @@ public class AccountManager {
       
       player.setNotifications(notifications.toString());
       
-      // reset des temporaryBT (c.f. docs/prizes.bonus.txt)
-      player.setTemporaryBonusTickets(stocks);
+      player.setTemporaryBonusTickets(player.getTemporaryBonusTickets() + stocks);
       player.setExtraTickets(player.getExtraTickets() + instants);
       
       Ebean.save(player);  
