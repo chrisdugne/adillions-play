@@ -529,15 +529,14 @@ public class AccountManager {
       
       for(LotteryTicket ticket : player.getLotteryTickets()){
 
-         System.out.println("ticket : " + ticket.getUid());
-         
          //--------------------------------------------//
          // losing ticket
             
          if(ticket.getStatus() == null){
-            System.out.println("ticket perime");
             continue;
          }
+
+         System.out.println("ticket : " + ticket.getUid());
 
          //--------------------------------------------//
          // money prizes 
