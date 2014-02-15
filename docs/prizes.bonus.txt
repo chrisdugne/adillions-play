@@ -5,3 +5,14 @@
 	- [lottery.uid] la liste des next lotteries pour lesquelles les BT sont valables.
 					on convertit dans le pool les BT à la premiere lottery.uid à laquelle on se connecte/ sinon perimés.
 					
+-> les BT bonus sont mis dans temporaryBonusTickets, ils RESET la colonne : on les chope juste apres un tirage, donc forcement sur un nouveau tirage.
+Si on donne des BT a la main, il faut etre sur que le user s'est connecté AVANT quon ne donne les tickets, sinon le don sera RESET.
+
+-> le reset des temporaryBT a lieu lors du calcul des notif/bonus car 
+    1 - fetchPlayer
+    2 - notif/bonus -> set temporaryBT
+    3 - nextLottery 
+    4 - checkCurrentLottery -> reset availableTickets 
+        => si on reset les temporaryBT ici, on perd les bonus du precedent SET (step 2).
+          
+					

@@ -180,6 +180,7 @@ public class AccountManager {
 		player.setInvitedOnFacebook	(false);
 
 		player.setAvailableTickets		(START_AVAILABLE_TICKETS);
+		player.setTemporaryBonusTickets(0);
 		player.setPlayedBonusTickets	(0);
 		player.setTotalPlayedTickets	(0);
 		player.setTotalPaidTickets		(0);
@@ -529,8 +530,9 @@ public class AccountManager {
       
       player.setNotifications(notifications.toString());
       
-      player.setAvailableTickets(player.getAvailableTickets()  + stocks);
-      player.setExtraTickets(player.getExtraTickets()          + instants);
+      // reset des temporaryBT (c.f. docs/prizes.bonus.txt)
+      player.setTemporaryBonusTickets(stocks);
+      player.setExtraTickets(player.getExtraTickets() + instants);
       
       Ebean.save(player);  
    }

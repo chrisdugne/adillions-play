@@ -163,7 +163,7 @@ public class LotteryManager {
 		// -----------------------------------------------------//
 		// Triches 
 		
-		if(player.getAvailableTickets() + facebookFanBonus + twitterFanBonus - player.getPlayedBonusTickets() <= 0) 
+		if(player.getAvailableTickets() + player.getTemporaryBonusTickets() + facebookFanBonus + twitterFanBonus - player.getPlayedBonusTickets() <= 0) 
 	      return player;
 
 		if(isExtraTicket && player.getExtraTickets() <= 0){
@@ -172,7 +172,6 @@ public class LotteryManager {
 		
 		// -----------------------------------------------------//
 		// New player / First ticket
-		// on ne check pas simplement avec getAvailableTickets car availableTickets peut avoir eu des bonus
 		
 		if(nbTicketsPlayed == 0)
 			incrementNbPlayers(lottery);
