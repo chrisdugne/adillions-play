@@ -13,7 +13,6 @@ import javax.persistence.Version;
 import play.db.ebean.Model;
 
 import com.avaje.ebean.Query;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.Expose;
 
 @Entity
@@ -79,6 +78,9 @@ public class Player extends Model {
 	@Expose
 	private int availableTickets;
 
+	@Expose
+	private int temporaryBonusTickets;
+	
 	@Expose
 	private int playedBonusTickets;
 
@@ -474,7 +476,15 @@ public class Player extends Model {
 		this.availableTickets = availableTickets;
 	}
 
-	public int getCurrentPoints() {
+	public int getTemporaryBonusTickets() {
+      return temporaryBonusTickets;
+   }
+
+   public void setTemporaryBonusTickets(int temporaryBonusTickets) {
+      this.temporaryBonusTickets = temporaryBonusTickets;
+   }
+
+   public int getCurrentPoints() {
 		return currentPoints;
 	}
 
