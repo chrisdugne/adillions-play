@@ -489,9 +489,12 @@ public class AccountManager {
 	 */
 	private static void checkLottery(Player player) {
 	   
+	   System.out.println("checkLottery");
 	   Lottery currentLottery = LotteryManager.getNextLottery();
 	   
 	   if(!player.getCurrentLotteryUID().equals(currentLottery.getUid())){
+
+	      System.out.println("--> reset");
 	      
 	      player.setCurrentLotteryUID     (currentLottery.getUid());
 	      player.setAvailableTickets      (START_AVAILABLE_TICKETS);
@@ -515,6 +518,7 @@ public class AccountManager {
 	 * @param player
 	 */
    private static void retrieveBonusTickets(Player player) {
+      System.out.println("retrieveBonusTickets");
 
       int instants            = 0;
       int stocks              = 0;
@@ -525,11 +529,15 @@ public class AccountManager {
       
       for(LotteryTicket ticket : player.getLotteryTickets()){
 
+         System.out.println("ticket : " + ticket.getUid());
+         
          //--------------------------------------------//
          // losing ticket
             
-         if(ticket.getStatus() == null)
+         if(ticket.getStatus() == null){
+            System.out.println("ticket perime");
             continue;
+         }
 
          //--------------------------------------------//
          // money prizes 
