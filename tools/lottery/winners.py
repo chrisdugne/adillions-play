@@ -18,9 +18,15 @@ def main():
     #--------------------------------------------------------------------
     # Settings
     
-    lotteryUID      = "14411b846ab628aa9d7"
-    maxTime         = "1392544800000"
-    winningNumbers  = [9,11,24,29,30,2]
+    #---------------------------------------------------
+    # MANDATORY : To change before a draw
+    
+    lotteryUID      = "14413f2868e6e9623b2"     #-- uid to analyse
+    maxTime         = "1393149600000"           #-- next lottery.date 
+    winningNumbers  = [11,12,17,28,39,5]        #-- result
+
+    #---------------------------------------------------
+    
     winningTickets  = []
     rangs           = []
     bonusRangs      = []
@@ -220,13 +226,20 @@ def main():
 #----------------------------------------------------------------------------------
 
 def recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, finalPrice, maxTime, dryRun):
-    print("Recording prizes in DB")
     
     #--------------------------------------------------------
     
+    print("Recording prizes in DB")
     print (len(winningTickets), " winning tickets") 
 
-    for ticket in winningTickets :
+    #--------------------------------------------------------
+    # TODO :  sortir les 'update' de la boucle pour faire 1 requete globale 
+
+    for t in range(0, len(winningTickets)):
+        
+        ticket = winningTickets[t]
+        
+        # TODO : sortir ce get de la boucle pour faire 1 requete, puis loop sur le result
         getWinnerData(database, ticket)
         playerUID = ticket.player[0]
 
@@ -256,6 +269,9 @@ def recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, finalPri
 
             if(not dryRun) :
                 database.execute("UPDATE lottery_ticket SET price='0', status='"+str(ticket.rang+4)+"', bonus='"+bonusJSON+"' WHERE uid='"+ticket.uid+"';")
+                
+        ## loading bar       
+        utils.printPercentage(t, len(winningTickets))
     
     #--------------------------------------------------------
     # JSON for the prizes
@@ -274,6 +290,7 @@ def recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, finalPri
     pricesJSON = pricesJSON[:-1]
     pricesJSON = pricesJSON + "]"
     
+    print(" ")
     print pricesJSON
 
     #--------------------------------------------------------
@@ -281,7 +298,6 @@ def recordToDB(database, lotteryUID, winningTickets, rangs, bonusRangs, finalPri
     if(not dryRun) :
         database.execute("UPDATE lottery SET final_price='"+str(finalPrice)+"', prizes='"+pricesJSON+"' WHERE uid='"+lotteryUID+"';") 
     
-        
 #----------------------------------------------------------------------------------
 
 def getWinnerData(database, ticket):
