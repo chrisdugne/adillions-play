@@ -7,6 +7,7 @@ import java.util.List;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.SqlRow;
 
+import models.Global;
 import models.Lottery;
 import models.LotteryTicket;
 import models.Player;
@@ -26,6 +27,13 @@ public class LotteryManager {
 	public static final int TWITTER_FAN_TICKETS 							= 3;
 	public static final int TWITTER_CONNECTION_TICKETS 				= 1;
 	
+	//------------------------------------------------------------------------------------//
+	
+	public static Global getGlobal()
+	{
+	   return Global.current();
+	}
+
 	//------------------------------------------------------------------------------------//
 
 	public static Lottery getNextLottery()
