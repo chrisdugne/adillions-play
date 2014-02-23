@@ -1,19 +1,19 @@
 (function() {
-	'use strict';
+    'use strict';
 
-	var AboutView = Ember.View.extend({
-		templateName: 'about',
-		didInsertElement: function(){
-		    App.fillView()
-			App.AboutController.renderUI();
-		},
-		willDestroyElement: function(){
-		    App.releaseFooter()
-			App.AboutController.cleanUI();
-		}
-	});
-	
-	App.AboutView = AboutView;
+    var AboutView = Ember.View.extend({
+        templateName: 'about',
+        didInsertElement: function(){
+            App.fillView()
+            App.AboutController.renderUI();
+        },
+        willDestroyElement: function(){
+            App.releaseFooter()
+            App.AboutController.cleanUI();
+        }
+    });
+    
+    App.AboutView = AboutView;
 
    //------------------------------------------------//
    

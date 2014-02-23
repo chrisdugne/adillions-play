@@ -1,47 +1,47 @@
 <div id="cashoutWindow" class="reveal-modal marketing">
-	<a id="lightbox-close" class="close-reveal-modal btn btn-rounded btn-icon-only btn-dark closer"> 
-		<i class="icon icon-ex-white-outline"></i>
-	</a> 
-	<br/>
-	
-	<div class="row-fluid">
-		<div>
-			<img class="mobileIcon upper" src='@routes.Assets.at("images/icons/PictoInfo.png")'></img>
-		</div>
-	</div>
-	
-	<div class="row-fluid">
-		<div class="span2 offset5">
-		{{langImage App.user.lang png='TxtInformation.png'}}
-		</div>
-	</div>
-	
-	
-	<div class="row-fluid">
-		<div class="span6 offset3">
-			<p class="">{{App.translations.messages.CashoutText}}{{price App.Globals.minToCashout}}</p>
-		</div>
-	</div>
-		
-	{{#if App.user.enoughToCashout}}
-	<div class="row-fluid margintop2" {{action openConfirmCashout}}>
-		<div class="span4 offset4 touchable">
-			{{langImage App.user.lang png='cashout.on.png'}}
-		</div>
-	</div>
-	{{else}}
-	<div class="row-fluid margintop2">
-		<div class="span4 offset4 touchable">
-			{{langImage App.user.lang png='cashout.off.png'}}
-		</div>
-	</div>
-	{{/if}}
-		
-	<div class="row-fluid" {{action closeModal}}>
-		<div class="span2 offset5 touchable">
-			{{langImage App.user.lang png='popup.Bt_close.png'}}
-		</div>
-	</div>
-	
-	
+    <a id="lightbox-close" class="close-reveal-modal btn btn-rounded btn-icon-only btn-dark closer"> 
+        <i class="icon icon-ex-white-outline"></i>
+    </a> 
+    <br/>
+    
+    <div class="row-fluid">
+        <div>
+            <img class="mobileIcon upper" src='@routes.Assets.at("images/icons/PictoInfo.png")'></img>
+        </div>
+    </div>
+    
+    <div class="row-fluid">
+        <div class="span2 offset5">
+        {{langImage App.user.lang png='TxtInformation.png'}}
+        </div>
+    </div>
+    
+    
+    <div class="row-fluid">
+        <div class="span6 offset3">
+            <p class="">{{App.translations.messages.CashoutText}}{{price App.Globals.minToCashout}}</p>
+        </div>
+    </div>
+        
+    {{#if App.user.enoughToCashout}}
+    <div class="row-fluid margintop2" {{action openConfirmCashout}}>
+        <div class="span4 offset4 touchable">
+            {{langImage App.user.lang png='cashout.on.png'}}
+        </div>
+    </div>
+    {{else}}
+    <div class="row-fluid margintop2">
+        <div class="span4 offset4 touchable">
+            {{langImage App.user.lang png='cashout.off.png'}}
+        </div>
+    </div>
+    {{/if}}
+        
+    <div class="row-fluid" {{action closeModal}}>
+        <div class="span2 offset5 touchable">
+            {{langImage App.user.lang png='popup.Bt_close.png'}}
+        </div>
+    </div>
+    
+    
 </div>

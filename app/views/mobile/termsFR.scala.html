@@ -32,12 +32,12 @@
 @import views.html.templates.components.termsContentEN;
 
 <body>
-	@header()
+    @header()
 
-	<div class="content">
-		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
-		@termsContentEN()
-	</div>
+    <div class="content">
+        <img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
+        @termsContentEN()
+    </div>
 
 </body>
 
@@ -67,7 +67,7 @@ $(function() {
 
     var terms = $(".I, .II, .III");
     for(var i = 0; i< terms.length; i++ ){
-	    $("#"+terms[i].id).text(Translator.messages[terms[i].id]);
+        $("#"+terms[i].id).text(Translator.messages[terms[i].id]);
     }
 
 });

@@ -11,34 +11,34 @@ import com.google.gson.annotations.Expose;
 @Entity
 public class Global extends Model { 
 
-	@Id
-	@Expose
-	private String id;
+    @Id
+    @Expose
+    private String id;
 
-	@Expose
-	@Column(columnDefinition = "TEXT")
-	private String tweet;
-	
-	@Expose
-	@Column(columnDefinition = "TEXT")
-	private String tweetTheme;
-	
-	@Expose
-	@Column(columnDefinition = "TEXT")
-	private String fbPost;
-	
-	@Expose
-	@Column(columnDefinition = "TEXT")
-	private String subheader;
-	
-	@Expose
-	@Column(columnDefinition = "TEXT")
-	private String confirmation;
+    @Expose
+    @Column(columnDefinition = "TEXT")
+    private String tweet;
+    
+    @Expose
+    @Column(columnDefinition = "TEXT")
+    private String tweetTheme;
+    
+    @Expose
+    @Column(columnDefinition = "TEXT")
+    private String fbPost;
+    
+    @Expose
+    @Column(columnDefinition = "TEXT")
+    private String subheader;
+    
+    @Expose
+    @Column(columnDefinition = "TEXT")
+    private String confirmation;
 
-	// -----------------------------------------------------------------------------------------------//
-	// -- Queries
+    // -----------------------------------------------------------------------------------------------//
+    // -- Queries
 
-	public static Model.Finder<String, Global> find = new Finder<String, Global>(String.class, Global.class);
+    public static Model.Finder<String, Global> find = new Finder<String, Global>(String.class, Global.class);
 
    // -----------------------------------------------------------------------------------------------//
    
@@ -53,7 +53,7 @@ public class Global extends Model {
       }
    }
    
-	// -----------------------------------------------------------------------------------------------//
+    // -----------------------------------------------------------------------------------------------//
 
    public String getId() {
       return id;

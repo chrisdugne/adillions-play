@@ -14,145 +14,145 @@ import java.util.Map;
 
 public class HttpHelper {
 
-	public static String post(String url, Map<String, String> parameters)
-	{
-		//--------------------------------------------------------------------------------//
-		// Set parameters
+    public static String post(String url, Map<String, String> parameters)
+    {
+        //--------------------------------------------------------------------------------//
+        // Set parameters
 
-		String charset = "UTF-8";
-		Object[] paramValues = new Object[parameters.size()];
-		String paramsURL = "";
+        String charset = "UTF-8";
+        Object[] paramValues = new Object[parameters.size()];
+        String paramsURL = "";
 
-		int i = 0;
-		for(String param : parameters.keySet())
-		{
-			try {
-				paramValues[i++] = URLEncoder.encode(parameters.get(param), charset);
-				paramsURL += param + "=%s&";
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-		}
+        int i = 0;
+        for(String param : parameters.keySet())
+        {
+            try {
+                paramValues[i++] = URLEncoder.encode(parameters.get(param), charset);
+                paramsURL += param + "=%s&";
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
 
-		String query = String.format(paramsURL, paramValues);
+        String query = String.format(paramsURL, paramValues);
 
-		//--------------------------------------------------------------------------------//
-		// Post Request
+        //--------------------------------------------------------------------------------//
+        // Post Request
 
-		HttpURLConnection connection = null;
-		OutputStream output = null;
+        HttpURLConnection connection = null;
+        OutputStream output = null;
 
-		try {
-			connection = (HttpURLConnection) new URL(url).openConnection();
-			connection.setRequestMethod("POST");
-			connection.setDoOutput(true); // Triggers POST.
-			connection.setRequestProperty("Accept-Charset", charset);
-			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
-			output = connection.getOutputStream();
-			output.write(query.getBytes(charset));
-		} 
-		catch (MalformedURLException e) {
-			e.printStackTrace();
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
+        try {
+            connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.setRequestMethod("POST");
+            connection.setDoOutput(true); // Triggers POST.
+            connection.setRequestProperty("Accept-Charset", charset);
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
+            output = connection.getOutputStream();
+            output.write(query.getBytes(charset));
+        } 
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
 
-		} finally {
-			if (output != null) try { output.close(); } catch (IOException logOrIgnore) {}
-		}
+        } finally {
+            if (output != null) try { output.close(); } catch (IOException logOrIgnore) {}
+        }
 
-		//--------------------------------------------------------------------------------//
-		// Get Response
+        //--------------------------------------------------------------------------------//
+        // Get Response
 
-		String response = null;
-		InputStream httpResponse = null;
+        String response = null;
+        InputStream httpResponse = null;
 
-		try {
-			httpResponse = connection.getInputStream();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+            httpResponse = connection.getInputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-		String contentType = connection.getHeaderField("Content-Type");
+        String contentType = connection.getHeaderField("Content-Type");
 
-		for (String param : contentType.replace(" ", "").split(";")) {
-			if (param.startsWith("charset=")) {
-				charset = param.split("=", 2)[1];
-				break;
-			}
-		}
+        for (String param : contentType.replace(" ", "").split(";")) {
+            if (param.startsWith("charset=")) {
+                charset = param.split("=", 2)[1];
+                break;
+            }
+        }
 
-		BufferedReader reader = null;
-		try {
-			reader = new BufferedReader(new InputStreamReader(httpResponse, charset));
-			response = reader.readLine();
-//			for (String line; (line = reader.readLine()) != null;) {
-//				result += line;
-//			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		finally {
-			if (reader != null) try { reader.close(); } catch (IOException logOrIgnore) {}
-		}
-		
-		
-		return response;
-	}
-	
-	
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new InputStreamReader(httpResponse, charset));
+            response = reader.readLine();
+//            for (String line; (line = reader.readLine()) != null;) {
+//                result += line;
+//            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (reader != null) try { reader.close(); } catch (IOException logOrIgnore) {}
+        }
+        
+        
+        return response;
+    }
+    
+    
 
-	public static String get(String url)
-	{
-		//--------------------------------------------------------------------------------//
-		// Set parameters
-		
-		String charset = "UTF-8";
-		
-		//--------------------------------------------------------------------------------//
-		// Post Request
-		
-		HttpURLConnection connection = null;
-		
-		try {
-			connection = (HttpURLConnection) new URL(url).openConnection();
-			connection.setRequestMethod("GET");
-			connection.setRequestProperty("Accept-Charset", charset);
-			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
-		} 
-		catch (MalformedURLException e) {
-			e.printStackTrace();
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-			
-		} finally {
-		}
-		
-		//--------------------------------------------------------------------------------//
-		// Get Response
-		
-		InputStream httpResponse = null;
-		String response = "";
-		
-		try {
-			httpResponse = connection.getInputStream();
-			
-			BufferedReader rd = new BufferedReader(new InputStreamReader(httpResponse));
+    public static String get(String url)
+    {
+        //--------------------------------------------------------------------------------//
+        // Set parameters
+        
+        String charset = "UTF-8";
+        
+        //--------------------------------------------------------------------------------//
+        // Post Request
+        
+        HttpURLConnection connection = null;
+        
+        try {
+            connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept-Charset", charset);
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
+        } 
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+            
+        } finally {
+        }
+        
+        //--------------------------------------------------------------------------------//
+        // Get Response
+        
+        InputStream httpResponse = null;
+        String response = "";
+        
+        try {
+            httpResponse = connection.getInputStream();
+            
+            BufferedReader rd = new BufferedReader(new InputStreamReader(httpResponse));
          String line;
-			while ((line = rd.readLine()) != null) {
-				response += line;
+            while ((line = rd.readLine()) != null) {
+                response += line;
          }
          
          rd.close();
          
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
-		return response;
-	}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        
+        return response;
+    }
 }

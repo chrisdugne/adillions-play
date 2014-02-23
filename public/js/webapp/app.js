@@ -9,7 +9,7 @@
         // Extend to inherit outlet support
         ApplicationController: Ember.Controller.extend(),
         ready: function() {
-            //	initialisation is done inside model.Globals
+            //    initialisation is done inside model.Globals
         }
     });
 

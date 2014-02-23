@@ -1,63 +1,63 @@
 
 <div class="gameView">
-	<div class="row-fluid">
-		<div class="medium span5 offset3 alignLeft">
-			{{App.translations.messages.Welcome}} {{App.user.firstName}} !
-		</div>
-		<div class="span4 alignRight">
-			<div {{action openInvite}}> {{langImage App.user.lang png='invite.friends.png' id='fillOutTicket'}} </div>
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span5 offset3 alignLeft">
-			{{#with App.nextLottery}}
-				{{App.translations.messages.NextDrawing}} {{readableFullDate App.user.lang date=date type='full'}}
-			{{/with}}
-		</div>
-	</div>
-	<br/>
-	<div class="row-fluid">
-		<div class="span3 offset3 huge">
-			{{price App.nextLottery.price}}
-		</div>
-		<div class="span1">
-			<img class="mobileIcon" src='@routes.Assets.at("images/icons/cagnotte.png")'></img>
-		</div>
+    <div class="row-fluid">
+        <div class="medium span5 offset3 alignLeft">
+            {{App.translations.messages.Welcome}} {{App.user.firstName}} !
+        </div>
+        <div class="span4 alignRight">
+            <div {{action openInvite}}> {{langImage App.user.lang png='invite.friends.png' id='fillOutTicket'}} </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span5 offset3 alignLeft">
+            {{#with App.nextLottery}}
+                {{App.translations.messages.NextDrawing}} {{readableFullDate App.user.lang date=date type='full'}}
+            {{/with}}
+        </div>
+    </div>
+    <br/>
+    <div class="row-fluid">
+        <div class="span3 offset3 huge">
+            {{price App.nextLottery.price}}
+        </div>
+        <div class="span1">
+            <img class="mobileIcon" src='@routes.Assets.at("images/icons/cagnotte.png")'></img>
+        </div>
 
-		{{#if App.nextLottery.enoughPlayers}}
-		<div class="span1">
-			<img class="mobileIcon" src='@routes.Assets.at("images/icons/separateur.png")'></img>
-		</div>
-		<div class="span4 free">
-			<img id="playersIcon" class="mobileIcon" src='@routes.Assets.at("images/icons/players.png")'></img>
-			<p id="playersText">{{App.translations.messages.Players}} : </p>
-			<p id="playersNumber"> {{App.nextLottery.nbPlayers}}</p>
-		</div>
-		{{/if}}
-	</div>
-	
-	<div id="fillOutContainer" class="row-fluid free">
-		{{#if App.user.hasInstantTicket}}
-		<div {{action requireNewTicket}}>{{langImage App.user.lang png='fillout.instant.ticket.png' id='fillOutTicket'}}</div>
-		{{else}}
-		<div {{action requireNewTicket}}>{{langImage App.user.lang png='filloutticket.button.png' id='fillOutTicket'}}</div>
-		{{/if}}
-	</div>
-	
-	<div id="themeImageContainer" class="row-fluid">
-		<div class="span6 offset3">
-			{{themeImage App.nextLottery}}
-			{{langImage App.user.lang png='theme.png' id='themeImageOver'}}
-	
-			{{#if App.user.themeLiked}}
-			{{else}}
-				<div {{action likeTheme}}>
-					<img id="likeThemeIcon" class="touchable" src='@routes.Assets.at("images/icons/like.png")'></img>
-				</div>
-			{{/if}}
-		</div>
-	</div>
+        {{#if App.nextLottery.enoughPlayers}}
+        <div class="span1">
+            <img class="mobileIcon" src='@routes.Assets.at("images/icons/separateur.png")'></img>
+        </div>
+        <div class="span4 free">
+            <img id="playersIcon" class="mobileIcon" src='@routes.Assets.at("images/icons/players.png")'></img>
+            <p id="playersText">{{App.translations.messages.Players}} : </p>
+            <p id="playersNumber"> {{App.nextLottery.nbPlayers}}</p>
+        </div>
+        {{/if}}
+    </div>
+    
+    <div id="fillOutContainer" class="row-fluid free">
+        {{#if App.user.hasInstantTicket}}
+        <div {{action requireNewTicket}}>{{langImage App.user.lang png='fillout.instant.ticket.png' id='fillOutTicket'}}</div>
+        {{else}}
+        <div {{action requireNewTicket}}>{{langImage App.user.lang png='filloutticket.button.png' id='fillOutTicket'}}</div>
+        {{/if}}
+    </div>
+    
+    <div id="themeImageContainer" class="row-fluid">
+        <div class="span6 offset3">
+            {{themeImage App.nextLottery}}
+            {{langImage App.user.lang png='theme.png' id='themeImageOver'}}
+    
+            {{#if App.user.themeLiked}}
+            {{else}}
+                <div {{action likeTheme}}>
+                    <img id="likeThemeIcon" class="touchable" src='@routes.Assets.at("images/icons/like.png")'></img>
+                </div>
+            {{/if}}
+        </div>
+    </div>
 
 </div>
 
-		
+        

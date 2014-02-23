@@ -1,100 +1,100 @@
 @(defaultHeader:Boolean = true)
 
 <div id="header" class="snapper">
-	<div class="span1 pointerCursor" {{action openHome}}>
-		<img id="logoHeader" src="http://static.maperial.localhost/images/global/logo.png"/>
-	</div>
-	<div class="span1 pointerCursor" {{action openHome}}>
-		<h1>@Messages("applicationName")</h1>
-	</div>
+    <div class="span1 pointerCursor" {{action openHome}}>
+        <img id="logoHeader" src="http://static.maperial.localhost/images/global/logo.png"/>
+    </div>
+    <div class="span1 pointerCursor" {{action openHome}}>
+        <h1>@Messages("applicationName")</h1>
+    </div>
 </div>
 
 <!-- --------------------------- -->
 <!-- Language buttons -->
 
 <div id="langButtons">
-	<div id="enButton" onClick="App.translator.setLang('en')" class="langButton">{{App.translations.messages.en}}</div>
-	<div id="frButton" onClick="App.translator.setLang('fr')" class="langButton">{{App.translations.messages.fr}}</div>
+    <div id="enButton" onClick="App.translator.setLang('en')" class="langButton">{{App.translations.messages.en}}</div>
+    <div id="frButton" onClick="App.translator.setLang('fr')" class="langButton">{{App.translations.messages.fr}}</div>
 </div>
 
 @if(defaultHeader){
 
-	{{#if user.waiting}}
-		<img class="headerButton" src="http://static.maperial.localhost/images/mapediting/spin.white.gif" width="25px"/>
-	{{else}}
-		{{#if user.loggedIn}}
-			<div class="headerTitle">
-			{{bound_equals App.Globals.currentPage value='dashboard'
-				yes='<h1>Dashboard</h1><p class="marketing-byline">Welcome home, capt&apos;n !</p>'
-		   	 	no=''
-		   	}}
-	
-			{{bound_equals App.Globals.currentPage value='styles'
-				yes='<h1>Styles</h1><p class="marketing-byline">Beautiful maps !</p>'
-		   	 	no=''
-		   	}}
-	
-			{{bound_equals App.Globals.currentPage value='colorbars'
-				yes='<h1>Colorbars</h1><p class="marketing-byline">Beautiful data !</p>'
-		   	 	no=''
-		   	}}
-	
-			{{bound_equals App.Globals.currentPage value='datasets'
-				yes='<h1>Datasets</h1><p class="marketing-byline">Upload your data</p>'
-		   	 	no=''
-		   	}}
-			
-			{{#if user.selectedMap}}
-				{{#if user.isCreatingANewMap}}
-					<h1>New Map</h1>
-				{{else}}
-					<h1>{{user.selectedMap.name}}</h1>
-				{{/if}}
-				{{#if user.isViewingAMap}}
-					<p class="marketing-byline">(final view)</p>
-				{{else}}
-					{{#if user.isExportingAMap}}
-						<p class="marketing-byline">(export)</p>
-					{{else}}
-						<div class="wizardStepper">
-							<div class="span2">
-								{{#if App.Globals.isViewLayerCreation}}
-								<h3>1 - Build the layers</h3>
-								{{else}}
-								<h4>1 - Build the layers</h4>
-								{{/if}}
-							</div>
-							<div class="span2">
-								{{#if App.Globals.isViewSettings}}
-								<h3>2 - Settings</h3>
-								{{else}}
-								<h4>2 - Settings</h4>
-								{{/if}}
-							</div>
-						</div>
-					{{/if}}
-				{{/if}}
-			{{/if}}
-	
-			{{bound_equals App.Globals.currentPage value='styleEditor'
-				yes='<h1>Style Editor</h1><p class="marketing-byline">Design your style</p>'
-		   	 	no=''
-		   	}}
-	
-			{{bound_equals App.Globals.currentPage value='colorbarEditor'
-				yes='<h1>Colorbar Editor</h1><p class="marketing-byline">Design your data</p>'
-		   	 	no=''
-		   	}}
-			</div>
-			
-	        <button {{action openDashboard}} class="btn-small btn-success headerButton">
-	            <i class="icon-th-large icon-white"></i>
-	        </button>
-			<div id="userDisplay" class="googleUser">{{user.email}}</div>
-		{{else}}
-			<div {{action openTryscreen}} id="tryButton" class="btn-large btn-primary">{{App.translations.messages.Try}}</div>
-			<div id="signinButton" {{action signin}} class="btn-large btn-primary">{{App.translations.messages.LogIn}}</div>
-		{{/if}}
-	{{/if}}
+    {{#if user.waiting}}
+        <img class="headerButton" src="http://static.maperial.localhost/images/mapediting/spin.white.gif" width="25px"/>
+    {{else}}
+        {{#if user.loggedIn}}
+            <div class="headerTitle">
+            {{bound_equals App.Globals.currentPage value='dashboard'
+                yes='<h1>Dashboard</h1><p class="marketing-byline">Welcome home, capt&apos;n !</p>'
+                    no=''
+               }}
+    
+            {{bound_equals App.Globals.currentPage value='styles'
+                yes='<h1>Styles</h1><p class="marketing-byline">Beautiful maps !</p>'
+                    no=''
+               }}
+    
+            {{bound_equals App.Globals.currentPage value='colorbars'
+                yes='<h1>Colorbars</h1><p class="marketing-byline">Beautiful data !</p>'
+                    no=''
+               }}
+    
+            {{bound_equals App.Globals.currentPage value='datasets'
+                yes='<h1>Datasets</h1><p class="marketing-byline">Upload your data</p>'
+                    no=''
+               }}
+            
+            {{#if user.selectedMap}}
+                {{#if user.isCreatingANewMap}}
+                    <h1>New Map</h1>
+                {{else}}
+                    <h1>{{user.selectedMap.name}}</h1>
+                {{/if}}
+                {{#if user.isViewingAMap}}
+                    <p class="marketing-byline">(final view)</p>
+                {{else}}
+                    {{#if user.isExportingAMap}}
+                        <p class="marketing-byline">(export)</p>
+                    {{else}}
+                        <div class="wizardStepper">
+                            <div class="span2">
+                                {{#if App.Globals.isViewLayerCreation}}
+                                <h3>1 - Build the layers</h3>
+                                {{else}}
+                                <h4>1 - Build the layers</h4>
+                                {{/if}}
+                            </div>
+                            <div class="span2">
+                                {{#if App.Globals.isViewSettings}}
+                                <h3>2 - Settings</h3>
+                                {{else}}
+                                <h4>2 - Settings</h4>
+                                {{/if}}
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+    
+            {{bound_equals App.Globals.currentPage value='styleEditor'
+                yes='<h1>Style Editor</h1><p class="marketing-byline">Design your style</p>'
+                    no=''
+               }}
+    
+            {{bound_equals App.Globals.currentPage value='colorbarEditor'
+                yes='<h1>Colorbar Editor</h1><p class="marketing-byline">Design your data</p>'
+                    no=''
+               }}
+            </div>
+            
+            <button {{action openDashboard}} class="btn-small btn-success headerButton">
+                <i class="icon-th-large icon-white"></i>
+            </button>
+            <div id="userDisplay" class="googleUser">{{user.email}}</div>
+        {{else}}
+            <div {{action openTryscreen}} id="tryButton" class="btn-large btn-primary">{{App.translations.messages.Try}}</div>
+            <div id="signinButton" {{action signin}} class="btn-large btn-primary">{{App.translations.messages.LogIn}}</div>
+        {{/if}}
+    {{/if}}
 }
 

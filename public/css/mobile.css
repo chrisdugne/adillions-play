@@ -1,26 +1,26 @@
 .content{
-	margin-left:35px;
-	margin-right:35px;
-	margin-top:90px;
-	margin-bottom: 100px;
-	min-height:650px;
+    margin-left:35px;
+    margin-right:35px;
+    margin-top:90px;
+    margin-bottom: 100px;
+    min-height:650px;
 }
 
 .mobilecloser{
-	top:25px;
-	width: 15px;
-	right: 20px;
-	cursor: pointer;
-	position: fixed;
-	z-index:1000;
+    top:25px;
+    width: 15px;
+    right: 20px;
+    cursor: pointer;
+    position: fixed;
+    z-index:1000;
 }
 
 #mbirthDate.error {
-	background-color: #d00;
+    background-color: #d00;
 }
 
 .ui-widget {
-	font-size: 0.9em;
+    font-size: 0.9em;
 }
 
 /* css for timepicker */

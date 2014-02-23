@@ -1,151 +1,151 @@
 
 #header {
-	position: fixed;
-	top: 0px;
-	background: #eee;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff),
-		to(#eee) ); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient(top, #fff, #eee);
-	/* Chrome 10+, Saf5.1+ */
-	background-image: -moz-linear-gradient(top, #fff, #eee); /* FF3.6+ */
-	background-image: -ms-linear-gradient(top, #fff, #eee); /* IE10 */
-	background-image: -o-linear-gradient(top, #fff, #eee);
-	/* Opera 11.10+ */
-	background-image: linear-gradient(top, #fff, #eee);
-	height: 67px;
-	width: 1430px;
-	z-index: 500;
-	-moz-box-shadow: 0px 4px 19px -8px #333;
-	-webkit-box-shadow: 0px 4px 19px -8px #333;
+    position: fixed;
+    top: 0px;
+    background: #eee;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff),
+        to(#eee) ); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #fff, #eee);
+    /* Chrome 10+, Saf5.1+ */
+    background-image: -moz-linear-gradient(top, #fff, #eee); /* FF3.6+ */
+    background-image: -ms-linear-gradient(top, #fff, #eee); /* IE10 */
+    background-image: -o-linear-gradient(top, #fff, #eee);
+    /* Opera 11.10+ */
+    background-image: linear-gradient(top, #fff, #eee);
+    height: 67px;
+    width: 1430px;
+    z-index: 500;
+    -moz-box-shadow: 0px 4px 19px -8px #333;
+    -webkit-box-shadow: 0px 4px 19px -8px #333;
 }
 
 @media screen and ( max-width : 1400px) {
-	#header {
-		width: 1200px;
-	}
+    #header {
+        width: 1200px;
+    }
 }
 
 @media screen and ( max-width : 1170px) {
-	#header {
-		width: 940px;
-	}
+    #header {
+        width: 940px;
+    }
 }
 
 @media screen and ( max-width : 910px) {
-	#header {
-		width: 760px;
-	}
+    #header {
+        width: 760px;
+    }
 }
 
 @media screen and ( max-width : 680px) {
-	#header {
-		position: relative;
-		width: 600px;
-	}
+    #header {
+        position: relative;
+        width: 600px;
+    }
 }
 
 #header h1 {
-	color: #eee;
-	margin-top: 7px;
-	font-size: 45px;
-	font-weight: 200;
-	line-height: 1;
-	letter-spacing: -1px;
+    color: #eee;
+    margin-top: 7px;
+    font-size: 45px;
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -1px;
 }
 
 /*--------------------------------*/
 
 #logo {
-	width: 140px;
-	margin-top: 20px;
+    width: 140px;
+    margin-top: 20px;
 }
 
 /*--------------------------------*/
 .headerTitle {
-	z-index: 2;
-	position: fixed;
-	color: #fff;
-	margin-left: 47%;
-	margin-top: -6px;
+    z-index: 2;
+    position: fixed;
+    color: #fff;
+    margin-left: 47%;
+    margin-top: -6px;
 }
 
 .headerTitle h1 {
-	font-size: 28px;
-	font-weight: normal;
-	color: #eee;
-	margin-top: -18px;
+    font-size: 28px;
+    font-weight: normal;
+    color: #eee;
+    margin-top: -18px;
 }
 
 .headerTitle p {
-	padding-left: 3px;
-	font-size: 17px;
-	color: #aaa;
-	margin-top: -13px;
-	margin-left: 30px;
+    padding-left: 3px;
+    font-size: 17px;
+    color: #aaa;
+    margin-top: -13px;
+    margin-left: 30px;
 }
 
 /*--------------------------------*/
 
 #headerButtons {
-	right: 130px;
-	top: 22px;
-	position: absolute;
-	width: 250px;
+    right: 130px;
+    top: 22px;
+    position: absolute;
+    width: 250px;
 }
 
 
 @media ( max-width : 1064px) {
-	#headerButtons {
-		right: 150px;
-		top: 22px;
-		position: fixed;
-	}
+    #headerButtons {
+        right: 150px;
+        top: 22px;
+        position: fixed;
+    }
 }
 
 
 @media ( max-width : 680px) {
-	#headerButtons {
-		display:none;
-	}
+    #headerButtons {
+        display:none;
+    }
 }
-	
+    
 #headerButtons .btn-large {
-	display: inline;
+    display: inline;
 }
 
 #headerPoints {
-	position: relative;
-	width: 100px;
-	left: 170px;
-	top: -23px;
+    position: relative;
+    width: 100px;
+    left: 170px;
+    top: -23px;
 }
 
 /*--------------------------------*/
 .headerWaitingSpin {
-	top: 19px;
-	right: 65px;
-	cursor: pointer;
-	cursor: hand;
-	position: fixed;
-	z-index: 2;
+    top: 19px;
+    right: 65px;
+    cursor: pointer;
+    cursor: hand;
+    position: fixed;
+    z-index: 2;
 }
 
 .googleUser {
-	margin-top: 21px;
-	right: 120px;
-	color: #bbb;
-	background:
-		url(http://static.maperial.localhost/images/global/arrow_down.png)
-		no-repeat right 8px;
-	cursor: pointer;
-	position: fixed;
-	padding-right: 15px;
-	z-index: 2;
+    margin-top: 21px;
+    right: 120px;
+    color: #bbb;
+    background:
+        url(http://static.maperial.localhost/images/global/arrow_down.png)
+        no-repeat right 8px;
+    cursor: pointer;
+    position: fixed;
+    padding-right: 15px;
+    z-index: 2;
 }
 
 #waitingSpin {
-	z-index: 999;
-	position: fixed;
-	margin-left: 47%;
-	margin-top: 155px;
+    z-index: 999;
+    position: fixed;
+    margin-left: 47%;
+    margin-top: 155px;
 }

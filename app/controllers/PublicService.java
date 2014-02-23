@@ -14,37 +14,37 @@ import play.mvc.Result;
  */
 public class PublicService extends Application 
 {
-	//-----------------------------------------------------------//
+    //-----------------------------------------------------------//
 
-	public static Result getFinishedLotteries()
-	{
-		return ok(gson.toJson(LotteryManager.getFinishedLotteries()));
-	}
-	
-	//-----------------------------------------------------------//
-	
-	public static Result getNextLottery()
-	{
-	   Global global       = LotteryManager.getGlobal();
-		Lottery nextLottery = LotteryManager.getNextLottery();
-		Lottery nextDrawing = LotteryManager.getNextDrawing();
+    public static Result getFinishedLotteries()
+    {
+        return ok(gson.toJson(LotteryManager.getFinishedLotteries()));
+    }
+    
+    //-----------------------------------------------------------//
+    
+    public static Result getNextLottery()
+    {
+       Global global       = LotteryManager.getGlobal();
+        Lottery nextLottery = LotteryManager.getNextLottery();
+        Lottery nextDrawing = LotteryManager.getNextDrawing();
 
-		JsonObject response = new JsonObject();
-		response.add("global",         gson.toJsonTree(global));
-		response.add("nextLottery",    gson.toJsonTree(nextLottery));
-		response.add("nextDrawing",    gson.toJsonTree(nextDrawing));
-		
-		return ok(gson.toJson(response));
-	}
+        JsonObject response = new JsonObject();
+        response.add("global",         gson.toJsonTree(global));
+        response.add("nextLottery",    gson.toJsonTree(nextLottery));
+        response.add("nextDrawing",    gson.toJsonTree(nextDrawing));
+        
+        return ok(gson.toJson(response));
+    }
 
-	//-----------------------------------------------------------//
-	
-//	public static Result incTest()
-//	{
-//		System.out.println("incrementNbPlayers");
-//		LotteryManager.incrementNbPlayers();
-//		return ok();
-//	}
-	
-	
+    //-----------------------------------------------------------//
+    
+//    public static Result incTest()
+//    {
+//        System.out.println("incrementNbPlayers");
+//        LotteryManager.incrementNbPlayers();
+//        return ok();
+//    }
+    
+    
 }

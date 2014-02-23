@@ -1,10 +1,10 @@
 (function() {
-	'use strict';
+    'use strict';
 
-	var ApplicationView = Ember.View.extend({
-		templateName: 'application'
-	});
-	
-	App.ApplicationView = ApplicationView;
+    var ApplicationView = Ember.View.extend({
+        templateName: 'application'
+    });
+    
+    App.ApplicationView = ApplicationView;
 
 })( App);

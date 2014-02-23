@@ -1,68 +1,68 @@
 
 <div class="row-fluid gameView unselectable">
-	
-	{{#each lottery in App.user.lotteries}} 
-		{{#with lottery}}
-			
-			<div class="row-fluid">
-				<div class="span8 offset2 lotteryTickets">
-					<div class="row-fluid margintop">
-						<div class="medium span10 offset1 alignLeft">
-							{{#if result}}
-								{{readableFullDate App.user.lang date=date type='full'}}
-							{{else}}			
-								{{App.translations.messages.NextDrawing}} 
-							{{/if}}			
-						</div>
-					</div>
-					<div class="row-fluid">
-						<div class="span10 offset1 alignLeft">
-							{{#if result}}
-							{{else}}			
-								{{readableFullDate App.user.lang date=date type='full'}}
-							{{/if}}			
-						</div>
-					</div>
-					
-					<br/>
-					
-					{{#each ticket in tickets}} 
-						{{#with ticket}}
-							{{#if lottery.result}}
-							<div class="row-fluid margintop">
-								<div class="span6 offset3">
-									{{oldticket numbers lotteryNumbers=lottery.result theme=lottery.theme}}
-								</div>
-							</div>
-							<div class="row-fluid">
-								<div class="span2 offset3 alignLeft">
-									{{App.translations.messages.Gain}}  : 		
-								</div>
-								<div class="span2 offset1 priceTicket">
-									{{price price}} 		
-								</div>
-								<div class="span1 priceTicketIcon">
-									<img class="mobileIcon" src='@routes.Assets.at("images/icons/money.png")'></img>
-								</div>
-							</div>
-							{{else}}			
-							<div class="row-fluid">
-								<div class="span6 offset3">
-									{{newticket numbers}}
-								</div>
-							</div>
-							{{/if}}			
-						{{/with}} 
-					{{/each}}
-				</div>
-			</div>
-			
-			<br/>
-			<br/>
-		{{/with}} 
-	{{/each}}
-	
-	
+    
+    {{#each lottery in App.user.lotteries}} 
+        {{#with lottery}}
+            
+            <div class="row-fluid">
+                <div class="span8 offset2 lotteryTickets">
+                    <div class="row-fluid margintop">
+                        <div class="medium span10 offset1 alignLeft">
+                            {{#if result}}
+                                {{readableFullDate App.user.lang date=date type='full'}}
+                            {{else}}            
+                                {{App.translations.messages.NextDrawing}} 
+                            {{/if}}            
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span10 offset1 alignLeft">
+                            {{#if result}}
+                            {{else}}            
+                                {{readableFullDate App.user.lang date=date type='full'}}
+                            {{/if}}            
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    
+                    {{#each ticket in tickets}} 
+                        {{#with ticket}}
+                            {{#if lottery.result}}
+                            <div class="row-fluid margintop">
+                                <div class="span6 offset3">
+                                    {{oldticket numbers lotteryNumbers=lottery.result theme=lottery.theme}}
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span2 offset3 alignLeft">
+                                    {{App.translations.messages.Gain}}  :         
+                                </div>
+                                <div class="span2 offset1 priceTicket">
+                                    {{price price}}         
+                                </div>
+                                <div class="span1 priceTicketIcon">
+                                    <img class="mobileIcon" src='@routes.Assets.at("images/icons/money.png")'></img>
+                                </div>
+                            </div>
+                            {{else}}            
+                            <div class="row-fluid">
+                                <div class="span6 offset3">
+                                    {{newticket numbers}}
+                                </div>
+                            </div>
+                            {{/if}}            
+                        {{/with}} 
+                    {{/each}}
+                </div>
+            </div>
+            
+            <br/>
+            <br/>
+        {{/with}} 
+    {{/each}}
+    
+    
 </div>
 
-		
+        

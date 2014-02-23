@@ -17,7 +17,7 @@ this.Utils = {};
 //} 
 
 /*
- * zeroPad(5, 2) 	--> "05"
+ * zeroPad(5, 2)     --> "05"
    zeroPad(1234, 2) --> "1234"
  */
 Utils.zeroPad = function(num, places) 

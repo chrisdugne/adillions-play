@@ -15,60 +15,60 @@ import com.google.gson.annotations.Expose;
 @Entity
 public class Raffle extends Model { 
 
-	@Id
-	@Expose
-	private String uid;
+    @Id
+    @Expose
+    private String uid;
 
-	@Expose
-	private Long date;
+    @Expose
+    private Long date;
 
-	@Expose
-	@OneToMany
-	private List<RaffleTicket> winningNumbers;
+    @Expose
+    @OneToMany
+    private List<RaffleTicket> winningNumbers;
 
-	// -----------------------------------------------------------------------------------------------//
-	
-	@Version
+    // -----------------------------------------------------------------------------------------------//
+    
+    @Version
    public Timestamp lastUpdate;
-	
-	// -----------------------------------------------------------------------------------------------//
-	// -- Queries
+    
+    // -----------------------------------------------------------------------------------------------//
+    // -- Queries
 
-	public static Model.Finder<String, Raffle> find = new Finder<String, Raffle>(String.class, Raffle.class);
+    public static Model.Finder<String, Raffle> find = new Finder<String, Raffle>(String.class, Raffle.class);
 
-	// -----------------------------------------------------------------------------------------------//
-	
-	public String getUid() {
-		return uid;
-	}
+    // -----------------------------------------------------------------------------------------------//
+    
+    public String getUid() {
+        return uid;
+    }
 
-	public void setUid(String accountUID) {
-		this.uid = accountUID;
-	}
+    public void setUid(String accountUID) {
+        this.uid = accountUID;
+    }
 
-	public List<RaffleTicket> getWinningNumbers() {
-		return winningNumbers;
-	}
+    public List<RaffleTicket> getWinningNumbers() {
+        return winningNumbers;
+    }
 
-	public void setWinningNumbers(List<RaffleTicket> winningNumbers) {
-		this.winningNumbers = winningNumbers;
-	}
+    public void setWinningNumbers(List<RaffleTicket> winningNumbers) {
+        this.winningNumbers = winningNumbers;
+    }
 
-	public Long getDate() {
-		return date;
-	}
+    public Long getDate() {
+        return date;
+    }
 
-	public void setDate(Long date) {
-		this.date = date;
-	}
+    public void setDate(Long date) {
+        this.date = date;
+    }
 
 
-	// -----------------------------------------------------------------------------------------------//
+    // -----------------------------------------------------------------------------------------------//
 
-	/**
-	 * 
-	 */
-   private static final long serialVersionUID = 1L;	
+    /**
+     * 
+     */
+   private static final long serialVersionUID = 1L;    
    
    
 }

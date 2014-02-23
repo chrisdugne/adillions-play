@@ -1,17 +1,17 @@
 (function() {
-	'use strict';
+    'use strict';
 
-	var ResultsView = Ember.View.extend({
-		templateName: 'results',
-		didInsertElement: function(){
+    var ResultsView = Ember.View.extend({
+        templateName: 'results',
+        didInsertElement: function(){
          App.fillView()
-			App.ResultsController.renderUI();
-		},
-		willDestroyElement: function(){
-			App.ResultsController.cleanUI();
-		}
-	});
-	
-	App.ResultsView = ResultsView;
+            App.ResultsController.renderUI();
+        },
+        willDestroyElement: function(){
+            App.ResultsController.cleanUI();
+        }
+    });
+    
+    App.ResultsView = ResultsView;
 
 })( App);

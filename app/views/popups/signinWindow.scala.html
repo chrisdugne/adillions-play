@@ -1,112 +1,112 @@
 <div id="signinWindow" class="reveal-modal">
-	<a id="lightbox-close" class="close-reveal-modal btn btn-rounded btn-icon-only btn-dark closer"> <i
-		class="icon icon-ex-white-outline"></i></a> <br />
+    <a id="lightbox-close" class="close-reveal-modal btn btn-rounded btn-icon-only btn-dark closer"> <i
+        class="icon icon-ex-white-outline"></i></a> <br />
 
-	<div class="row-fluid">
-		<div {{action facebookLogin}} id="facebookButton" class="span10 offset1 btn-large button-facebook">{{App.translations.messages.ConnectWithFacebook}}</div>
-	</div>
-	<div class="row-fluid">
-		<p class="auth-method-separator">
-           	<i>or</i>
-       	</p>
-	</div>
+    <div class="row-fluid">
+        <div {{action facebookLogin}} id="facebookButton" class="span10 offset1 btn-large button-facebook">{{App.translations.messages.ConnectWithFacebook}}</div>
+    </div>
+    <div class="row-fluid">
+        <p class="auth-method-separator">
+               <i>or</i>
+           </p>
+    </div>
 
-	<br />
+    <br />
 
-	<div id="signin" class="row-fluid">
+    <div id="signin" class="row-fluid">
 
-		<div class="span5 offset1">
-			
-			<form id="signinForm1">
+        <div class="span5 offset1">
+            
+            <form id="signinForm1">
 
-				<div class="marginbottom2" id="name_field">
-					<label for="firstName" class="normal marginbottom">{{App.translations.messages.FirstName}}</label>
-					<div class="input">
-						<input type="text" id="firstName" name="firstName" value=""> 
-					</div>
-				</div>
+                <div class="marginbottom2" id="name_field">
+                    <label for="firstName" class="normal marginbottom">{{App.translations.messages.FirstName}}</label>
+                    <div class="input">
+                        <input type="text" id="firstName" name="firstName" value=""> 
+                    </div>
+                </div>
 
-				<div class="marginbottom2" id="name_field">
-					<label for="lastName" class="normal marginbottom">{{App.translations.messages.LastName}}</label>
-					<div class="input">
-						<input type="text" id="lastName" name="lastName" value=""> 
-					</div>
-				</div>
+                <div class="marginbottom2" id="name_field">
+                    <label for="lastName" class="normal marginbottom">{{App.translations.messages.LastName}}</label>
+                    <div class="input">
+                        <input type="text" id="lastName" name="lastName" value=""> 
+                    </div>
+                </div>
 
-				<div class="marginbottom2" id="email_field">
-					<label for="email" class="normal marginbottom">{{App.translations.messages.Email}}</label>
-					<div class="input">
-						<input type="text" id="email" name="email" value="">
-					</div>
-				</div>
+                <div class="marginbottom2" id="email_field">
+                    <label for="email" class="normal marginbottom">{{App.translations.messages.Email}}</label>
+                    <div class="input">
+                        <input type="text" id="email" name="email" value="">
+                    </div>
+                </div>
 
-				<div class="row-fluid">
-					<div class="span3">
-						<div class="checkboxFive">
-							<input type="checkbox" name="check1" id="check1"/>
-							<label for="check1"></label>
-						</div>
-					</div>
-					<div class="span8">
-						<div class="row-fluid">
-						{{App.translations.messages.AcceptTerms}}
-						</div>
-					</div>
-				</div>
+                <div class="row-fluid">
+                    <div class="span3">
+                        <div class="checkboxFive">
+                            <input type="checkbox" name="check1" id="check1"/>
+                            <label for="check1"></label>
+                        </div>
+                    </div>
+                    <div class="span8">
+                        <div class="row-fluid">
+                        {{App.translations.messages.AcceptTerms}}
+                        </div>
+                    </div>
+                </div>
 
-				<div class="row-fluid">
-					<div class="span3">
-						<div class="checkboxFive">
-							<input type="checkbox" name="check2" id="check2"/>
-							<label for="check2"></label>
-						</div>
-					</div>
-					<div class="span8">
-						<div class="row-fluid">
-						{{App.translations.messages.AcceptOffers}}
-						</div>
-					</div>
-				</div>
+                <div class="row-fluid">
+                    <div class="span3">
+                        <div class="checkboxFive">
+                            <input type="checkbox" name="check2" id="check2"/>
+                            <label for="check2"></label>
+                        </div>
+                    </div>
+                    <div class="span8">
+                        <div class="row-fluid">
+                        {{App.translations.messages.AcceptOffers}}
+                        </div>
+                    </div>
+                </div>
 
-			</form>
-		</div>
+            </form>
+        </div>
 
-		<div class="span5">
-			
-			<form id="signinForm2">
+        <div class="span5">
+            
+            <form id="signinForm2">
 
-				<div class="marginbottom2" id="password_field">
-					<label for="password" class="normal marginbottom">{{App.translations.messages.Password}}</label>
-					<div class="input">
-						<input type="password" id="password" name="password">
-					</div>
-				</div>
+                <div class="marginbottom2" id="password_field">
+                    <label for="password" class="normal marginbottom">{{App.translations.messages.Password}}</label>
+                    <div class="input">
+                        <input type="password" id="password" name="password">
+                    </div>
+                </div>
 
-				<div class="marginbottom2" id="repeatPassword_field">
-					<label for="repeatPassword" class="normal marginbottom">{{App.translations.messages.RepeatPassword}}</label>
-					<div class="input">
-						<input type="password" id="repeatPassword" name="repeatPassword"> 
-					</div>
-				</div>
-				
-				<label for="birthDate" class="normal marginbottom">{{App.translations.messages.BirthDate}}</label>
-				<input type="text" id="birthDate" name="birthDate" readonly style="cursor:pointer!important;"/>
+                <div class="marginbottom2" id="repeatPassword_field">
+                    <label for="repeatPassword" class="normal marginbottom">{{App.translations.messages.RepeatPassword}}</label>
+                    <div class="input">
+                        <input type="password" id="repeatPassword" name="repeatPassword"> 
+                    </div>
+                </div>
+                
+                <label for="birthDate" class="normal marginbottom">{{App.translations.messages.BirthDate}}</label>
+                <input type="text" id="birthDate" name="birthDate" readonly style="cursor:pointer!important;"/>
 
-				<div class="marginbottom2 margintop2" id="name_field">
-					<label for="referrerId" class="normal marginbottom">{{App.translations.messages.ReferrerCode}}</label>
-					<div class="input">
-						<input type="text" id="referrerId" name="referrerId" value=""> 
-					</div>
-				</div>
+                <div class="marginbottom2 margintop2" id="name_field">
+                    <label for="referrerId" class="normal marginbottom">{{App.translations.messages.ReferrerCode}}</label>
+                    <div class="input">
+                        <input type="text" id="referrerId" name="referrerId" value=""> 
+                    </div>
+                </div>
 
-			</form>
-		</div>
+            </form>
+        </div>
 
-	</div>
-	
-	<div class="row-fluid">
-		<div {{action openConfirm}} class="span10 offset1 btn-large button">{{App.translations.messages.SignIn}}</div>
-	</div>
+    </div>
+    
+    <div class="row-fluid">
+        <div {{action openConfirm}} class="span10 offset1 btn-large button">{{App.translations.messages.SignIn}}</div>
+    </div>
 
-	<br />
+    <br />
 </div>

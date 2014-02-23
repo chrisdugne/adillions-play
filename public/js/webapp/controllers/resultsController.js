@@ -1,37 +1,37 @@
 
 (function() {
-	'use strict';
+    'use strict';
 
-	var ResultsController = Ember.ObjectController.extend({});
+    var ResultsController = Ember.ObjectController.extend({});
 
-	//==================================================================//
+    //==================================================================//
 
-	ResultsController.renderUI = function(){
+    ResultsController.renderUI = function(){
       GameManager.setSelectedButton()
       UserManager.setupForms()
-	}
+    }
 
-	ResultsController.cleanUI = function()	{
-	}
-	
-	//==================================================================//
+    ResultsController.cleanUI = function()    {
+    }
+    
+    //==================================================================//
 
-	App.ResultsController = ResultsController;
+    App.ResultsController = ResultsController;
 
-	//==================================================================//
-	// Routing
+    //==================================================================//
+    // Routing
 
-	App.ResultsRouting = App.Page.extend({
-		
-	   //---------------------------------
-	   
-	   route: '/results',
-		
-	   //---------------------------------
-		
-		connectOutlets: function(router){
-			App.Router.openPage(router, "results");
-		},
+    App.ResultsRouting = App.Page.extend({
+        
+       //---------------------------------
+       
+       route: '/results',
+        
+       //---------------------------------
+        
+        connectOutlets: function(router){
+            App.Router.openPage(router, "results");
+        },
 
       //-----------------------------------//
       // actions -- callable if App.user.loggedin only
@@ -40,9 +40,9 @@
       openMyTickets           : Ember.Route.transitionTo('game.myTickets'),      
       openProfile             : Ember.Route.transitionTo('game.profile'),     
       
-	});
+    });
 
-	//==================================================================//
+    //==================================================================//
 
 })();
 

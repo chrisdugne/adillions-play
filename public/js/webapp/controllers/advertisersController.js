@@ -1,44 +1,44 @@
 
 (function() {
-	'use strict';
+    'use strict';
 
-	var AdvertisersController = Ember.ObjectController.extend({});
+    var AdvertisersController = Ember.ObjectController.extend({});
 
-	//==================================================================//
+    //==================================================================//
 
-	AdvertisersController.renderUI = function(){
+    AdvertisersController.renderUI = function(){
       GameManager.setSelectedButton()
       App.fillView()
       UserManager.setupForms()
-	}
+    }
 
-	AdvertisersController.cleanUI = function()	{
-	}
-	
-	//==================================================================//
+    AdvertisersController.cleanUI = function()    {
+    }
+    
+    //==================================================================//
 
-	App.AdvertisersController = AdvertisersController;
+    App.AdvertisersController = AdvertisersController;
 
-	//==================================================================//
-	// Routing
+    //==================================================================//
+    // Routing
 
-	App.AdvertisersRouting = App.Page.extend({
-		
-	   //---------------------------------
-	   
-	   route: '/advertisers',
-		
-	   //---------------------------------
-		
-		connectOutlets: function(router){
-			App.Router.openPage(router, "advertisers");
-		},
-		
+    App.AdvertisersRouting = App.Page.extend({
+        
+       //---------------------------------
+       
+       route: '/advertisers',
+        
+       //---------------------------------
+        
+        connectOutlets: function(router){
+            App.Router.openPage(router, "advertisers");
+        },
+        
       //-----------------------------------//
       
-	});
+    });
 
-	//==================================================================//
+    //==================================================================//
 
 })();
 

@@ -29,53 +29,53 @@
 @import views.html.mobile.header;
 
 <body>
-	@header()
+    @header()
 
-	<div class="content">
-		<img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
+    <div class="content">
+        <img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
 
-		<div class="row-fluid">
-		<div id="accordion" class="span12 marginbottom8">
-			<div class="subtitleText">{{App.translations.messages.Q1}}</div>
-			<div><div class="classictext">{{App.translations.messages.A1}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q2}}</div>
-			<div><div class="classictext">{{App.translations.messages.A2}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q3}}</div>
-			<div><div class="classictext">{{App.translations.messages.A3}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q4}}</div>
-			<div><div class="classictext">{{App.translations.messages.A4}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q5}}</div>
-			<div><div class="classictext">{{App.translations.messages.A5}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q6}}</div>
-			<div><div class="classictext">{{App.translations.messages.A6}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q7}}</div>
-			<div><div class="classictext">{{App.translations.messages.A7}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q8}}</div>
-			<div><div class="classictext">{{App.translations.messages.A8}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q9}}</div>
-			<div><div class="classictext">{{App.translations.messages.A9}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q10}}</div>
-			<div><div class="classictext">{{App.translations.messages.A10}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q11}}</div>
-			<div><div class="classictext">{{App.translations.messages.A11}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q12}}</div>
-			<div><div class="classictext">{{App.translations.messages.A12}}</div></div>
-			<div class="subtitleText">{{App.translations.messages.Q13}}</div>
-			<div>
-				<div class="classictext">{{App.translations.messages.A13}}</div>
-				<ul>
-					<li class="textli">{{App.translations.messages.A13a}}</li>
-					<li class="textli">{{App.translations.messages.A13b}}</li>
-					<li class="textli">{{App.translations.messages.A13c}}</li>
-					<li class="textli">{{App.translations.messages.A13d}}</li>
-					<li class="textli">{{App.translations.messages.A13e}}</li>
-				</ul>
-			</div>
-		</div>
-		</div>
+        <div class="row-fluid">
+        <div id="accordion" class="span12 marginbottom8">
+            <div class="subtitleText">{{App.translations.messages.Q1}}</div>
+            <div><div class="classictext">{{App.translations.messages.A1}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q2}}</div>
+            <div><div class="classictext">{{App.translations.messages.A2}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q3}}</div>
+            <div><div class="classictext">{{App.translations.messages.A3}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q4}}</div>
+            <div><div class="classictext">{{App.translations.messages.A4}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q5}}</div>
+            <div><div class="classictext">{{App.translations.messages.A5}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q6}}</div>
+            <div><div class="classictext">{{App.translations.messages.A6}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q7}}</div>
+            <div><div class="classictext">{{App.translations.messages.A7}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q8}}</div>
+            <div><div class="classictext">{{App.translations.messages.A8}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q9}}</div>
+            <div><div class="classictext">{{App.translations.messages.A9}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q10}}</div>
+            <div><div class="classictext">{{App.translations.messages.A10}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q11}}</div>
+            <div><div class="classictext">{{App.translations.messages.A11}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q12}}</div>
+            <div><div class="classictext">{{App.translations.messages.A12}}</div></div>
+            <div class="subtitleText">{{App.translations.messages.Q13}}</div>
+            <div>
+                <div class="classictext">{{App.translations.messages.A13}}</div>
+                <ul>
+                    <li class="textli">{{App.translations.messages.A13a}}</li>
+                    <li class="textli">{{App.translations.messages.A13b}}</li>
+                    <li class="textli">{{App.translations.messages.A13c}}</li>
+                    <li class="textli">{{App.translations.messages.A13d}}</li>
+                    <li class="textli">{{App.translations.messages.A13e}}</li>
+                </ul>
+            </div>
+        </div>
+        </div>
 
 
-	</div>
+    </div>
 
 </body>
 
@@ -89,14 +89,14 @@
 <script src='@routes.Assets.at("js/webapp/app-common.js")' type="text/javascript"></script>
 
 <script type="text/javascript">
-	
-	$(function() {
-	   $( "#accordion" ).accordion({
-	      collapsible: true,
-	      active: false,
-	      heightStyle: "content"
-	   });
-	});
+    
+    $(function() {
+       $( "#accordion" ).accordion({
+          collapsible: true,
+          active: false,
+          heightStyle: "content"
+       });
+    });
 
 </script>
 </html>

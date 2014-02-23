@@ -457,10 +457,10 @@ var populateListeners = function(name) {
 };
 
 var time = (function() {
-	var perf = 'undefined' !== typeof window ? window.performance || {} : {};
-	var fn = perf.now || perf.mozNow || perf.webkitNow || perf.msNow || perf.oNow;
-	// fn.bind will be available in all the browsers that support the advanced window.performance... ;-)
-	return fn ? fn.bind(perf) : function() { return +new Date(); };
+    var perf = 'undefined' !== typeof window ? window.performance || {} : {};
+    var fn = perf.now || perf.mozNow || perf.webkitNow || perf.msNow || perf.oNow;
+    // fn.bind will be available in all the browsers that support the advanced window.performance... ;-)
+    return fn ? fn.bind(perf) : function() { return +new Date(); };
 })();
 
 
@@ -19843,13 +19843,13 @@ Ember.Router = Ember.StateManager.extend(
 
   serializeRecursively: function(state, contexts, hashes) {
     var parentState,
-			context = get(state, 'hasContext') ? contexts.pop() : null,
+            context = get(state, 'hasContext') ? contexts.pop() : null,
       hash = context ? state.serialize(this, context) : null;
 
-		hashes.push(hash);
-		parentState = state.get("parentState");
+        hashes.push(hash);
+        parentState = state.get("parentState");
 
-		if (parentState && parentState instanceof Ember.Route) {
+        if (parentState && parentState instanceof Ember.Route) {
       return this.serializeRecursively(parentState, contexts, hashes);
     } else {
       return hashes;

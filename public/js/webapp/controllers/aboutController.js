@@ -1,45 +1,45 @@
 
 (function() {
-	'use strict';
+    'use strict';
 
-	var AboutController = Ember.ObjectController.extend({});
+    var AboutController = Ember.ObjectController.extend({});
 
-	//==================================================================//
+    //==================================================================//
 
-	AboutController.renderUI = function(){
+    AboutController.renderUI = function(){
       App.AboutController.setSelectedTab()
       UserManager.setupForms()
-	}
+    }
 
-	AboutController.cleanUI = function()	{
-	}
+    AboutController.cleanUI = function()    {
+    }
 
-	//==================================================================//
+    //==================================================================//
 
-	AboutController.setSelectedTab = function()	{
+    AboutController.setSelectedTab = function()    {
 
-	   $(".aboutTab").removeClass("selected")
+       $(".aboutTab").removeClass("selected")
 
-	   var view = App.get('router').currentState.name;
-	   
-	   if($("#"+view+"Tab")){
-	      $("#"+view+"Tab").addClass("selected")
-	   }
-	}
+       var view = App.get('router').currentState.name;
+       
+       if($("#"+view+"Tab")){
+          $("#"+view+"Tab").addClass("selected")
+       }
+    }
 
-	//==================================================================//
+    //==================================================================//
 
-	App.AboutController = AboutController;
+    App.AboutController = AboutController;
 
-	//==================================================================//
-	// Routing
+    //==================================================================//
+    // Routing
 
-	App.AboutRouting = App.Page.extend({
-		
-	   //---------------------------------
-	   
-	   route: '/about',
-	   
+    App.AboutRouting = App.Page.extend({
+        
+       //---------------------------------
+       
+       route: '/about',
+       
       //---------------------------------
       
       aboutHome: Ember.Route.extend({
@@ -113,19 +113,19 @@
             App.AboutController.setSelectedTab()
          }
       }),
-		
-	   //---------------------------------
-		
-		connectOutlets: function(router){
-			App.Router.openPage(router, "about");
-		},
+        
+       //---------------------------------
+        
+        connectOutlets: function(router){
+            App.Router.openPage(router, "about");
+        },
 
       //-----------------------------------//
       
       
-	});
+    });
 
-	//==================================================================//
+    //==================================================================//
 
 })();
 

@@ -18,27 +18,27 @@
 
 <script type="text/javascript">
 
-	var failure = function() {
-	   console.log("failure")
-	   window.location.href = "/backToMobile"
-	}
-	var finalize = function() {
-	   console.log("finalize")
-	}
-	   
-	var loginSuccess = function() {
-	   console.log("loginSuccess")
+    var failure = function() {
+       console.log("failure")
+       window.location.href = "/backToMobile"
+    }
+    var finalize = function() {
+       console.log("finalize")
+    }
+       
+    var loginSuccess = function() {
+       console.log("loginSuccess")
 
-	   Facebook.logout(function(){
-		   window.location.href = "/backToMobile"
-	   })
-	}
+       Facebook.logout(function(){
+           window.location.href = "/backToMobile"
+       })
+    }
 
-	Facebook.init({
-	   finalizeInit 				: finalize,
-	   notConnectedCallback 		: failure, 
-	   openApp 						: loginSuccess
-	})
+    Facebook.init({
+       finalizeInit                 : finalize,
+       notConnectedCallback         : failure, 
+       openApp                         : loginSuccess
+    })
 
 </script>
 

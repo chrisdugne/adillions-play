@@ -1,37 +1,37 @@
 /***** [ big ] *****/
 @media screen and ( max-width : 1400px) {
-	/************************************************/
-	.centered {
-		float: none;
-		margin: 0 auto;
-	}
+    /************************************************/
+    .centered {
+        float: none;
+        margin: 0 auto;
+    }
 
-	/*--------------------------------*/
-	#homeContent {
-		padding: 0;
-		z-index: 1;
-	}
+    /*--------------------------------*/
+    #homeContent {
+        padding: 0;
+        z-index: 1;
+    }
 
-	/*--------------------------------*/
-	.websiteContent {
-		padding-top: 50px;
-	}
+    /*--------------------------------*/
+    .websiteContent {
+        padding-top: 50px;
+    }
 
-	/*--------------------------------*/
-	#seeResultsHome {
-		width: 187px;
-		cursor: hand;
-		cursor: pointer;
-		opacity: 0.9;
-		margin-left: -60px;
-		margin-top: -45px;
-	}
-	#themeWeb {
-		margin-top: -50px;
-		margin-left: -107px;
-	}
-	#themeText {
-		margin-top: -104px;
-		margin-left: -122px;
-	}
+    /*--------------------------------*/
+    #seeResultsHome {
+        width: 187px;
+        cursor: hand;
+        cursor: pointer;
+        opacity: 0.9;
+        margin-left: -60px;
+        margin-top: -45px;
+    }
+    #themeWeb {
+        margin-top: -50px;
+        margin-left: -107px;
+    }
+    #themeText {
+        margin-top: -104px;
+        margin-left: -122px;
+    }
 }

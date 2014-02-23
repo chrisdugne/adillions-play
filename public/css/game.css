@@ -1,216 +1,216 @@
 /*---------------------------------------------*/
 
 #menu {
-	position: fixed;
-	z-index: 1000;
+    position: fixed;
+    z-index: 1000;
 }
 
 /*---------------------------------------------*/
 #aboutContent {
-	margin-top: 95px;
+    margin-top: 95px;
 }
 
 .aboutTab {
-	background-color: #eee;
-	height: 40px;
-	padding-top: 10px;
-	text-align: left;
-	padding-left: 10px;
+    background-color: #eee;
+    height: 40px;
+    padding-top: 10px;
+    text-align: left;
+    padding-left: 10px;
 }
 
 .aboutTab.selected{
-	background-color: #fff;
-	color:#1b5c64;
-	font-weight:bold;
+    background-color: #fff;
+    color:#1b5c64;
+    font-weight:bold;
 }
 
 .aboutTab:hover {
-	background-color: #ebedec;
-	color:#188785;
+    background-color: #ebedec;
+    color:#188785;
 }
 
 #accordion {
-	text-align: left;
+    text-align: left;
 }
 
 .ui-accordion-header.ui-state-active {
-	background: #188785;
-	border: solid 1px #1b5c64;
-	color: #eee;
+    background: #188785;
+    border: solid 1px #1b5c64;
+    color: #eee;
 }
 /*---------------------------------------------*/
 
 #gameContent {
-	margin-top: 95px;
+    margin-top: 95px;
 }
 
 .gameView {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 .fixedAsset {
-	max-width: none;
+    max-width: none;
 }
 
 .free {
-	position: relative;
+    position: relative;
 }
 
 .lotteryTickets {
-	background-color: rgba(236,238,237,0.6);
-	padding: 20px;
-	border-radius: 25px;
-	-moz-border-radius: 25px;
-	-webkit-border-radius: 25px;
+    background-color: rgba(236,238,237,0.6);
+    padding: 20px;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
 }
 
 /*------------------------------------------------*/
 
 .upper {
-	margin-top: -7px;
+    margin-top: -7px;
 }
 .upper2 {
-	margin-top: -15px;
+    margin-top: -15px;
 }
 .upper4 {
-	margin-top: -32px;
+    margin-top: -32px;
 }
 
 .demimarginbottom {
-	margin-bottom: 5px !important;
+    margin-bottom: 5px !important;
 }
 
 .marginbottom {
-	margin-bottom: 10px !important;
+    margin-bottom: 10px !important;
 }
 
 .marginbottom2 {
-	margin-bottom: 20px !important;
+    margin-bottom: 20px !important;
 }
 
 .marginbottom3 {
-	margin-bottom: 30px !important;
+    margin-bottom: 30px !important;
 }
 
 .marginbottom4 {
-	margin-bottom: 40px !important;
+    margin-bottom: 40px !important;
 }
 
 .marginbottom5 {
-	margin-bottom: 50px !important;
+    margin-bottom: 50px !important;
 }
 
 .marginbottom6 {
-	margin-bottom: 60px !important;
+    margin-bottom: 60px !important;
 }
 
 .marginbottom7 {
-	margin-bottom: 70px !important;
+    margin-bottom: 70px !important;
 }
 
 .marginbottom8 {
-	margin-bottom: 80px !important;
+    margin-bottom: 80px !important;
 }
 
 
 .demimargintop {
-	margin-top: 5px !important;
+    margin-top: 5px !important;
 }
 
 .margintop {
-	margin-top: 10px !important;
+    margin-top: 10px !important;
 }
 
 .margintop2 {
-	margin-top: 20px !important;
+    margin-top: 20px !important;
 }
 
 .margintop3 {
-	margin-top: 30px !important;
+    margin-top: 30px !important;
 }
 
 .margintop4 {
-	margin-top: 40px !important;
+    margin-top: 40px !important;
 }
 
 .margintop5 {
-	margin-top: 50px !important;
+    margin-top: 50px !important;
 }
 
 .margintop6 {
-	margin-top: 60px !important;
+    margin-top: 60px !important;
 }
 
 .margintop7 {
-	margin-top: 70px !important;
+    margin-top: 70px !important;
 }
 
 .margintop8 {
-	margin-top: 80px !important;
+    margin-top: 80px !important;
 }
 
 
 /*------------------------------------------------*/
 
 .verticalElements {
-	position:relative;
-	left: -34px;
-	margin-top: 20px;
-	height: 40px;
-	margin-bottom: 40px;
+    position:relative;
+    left: -34px;
+    margin-top: 20px;
+    height: 40px;
+    margin-bottom: 40px;
 }
 
 .topIcon {
-	top: -25px;
-	position: absolute;
-	left: 10px;
+    top: -25px;
+    position: absolute;
+    left: 10px;
 }
 
 .centerText {
-	top: 6px;
-	width: 100%;
-	left: -45%;
-	position: absolute;
+    top: 6px;
+    width: 100%;
+    left: -45%;
+    position: absolute;
 }
 
 .bottomText  {
-	top: 33px;
-	position: absolute;
-	font-size: 26px;
-	left: -6px;
-	text-align: center;
-	width: 66px;
+    top: 33px;
+    position: absolute;
+    font-size: 26px;
+    left: -6px;
+    text-align: center;
+    width: 66px;
 }
 
 /*------------------------------------------------*/
 
 #gameTabs {
-	bottom: 100px;
-	position: absolute;
-	width:100%;
+    bottom: 100px;
+    position: absolute;
+    width:100%;
 }
 
 /*---------------------------------------------*/
 
 #numbersToSelect{
-	height:400px;
-	position: relative;
-	margin-top: -10px;
-	margin-bottom: -50px;
+    height:400px;
+    position: relative;
+    margin-top: -10px;
+    margin-bottom: -50px;
 }
 
 #selection {
-	height:115px;
-	position: relative;
+    height:115px;
+    position: relative;
 }
 
 #selectionTools {
 }
 
 #selectorNumbers {
-	width:230px;
-	margin-bottom: 10px;
-	margin-top: -15px;
+    width:230px;
+    margin-bottom: 10px;
+    margin-top: -15px;
 }
 
 #numbersSelected {
@@ -219,196 +219,196 @@
 /*---------------------------------------------*/
 
 #ballsToSelect{
-	height:400px;
-	position: relative;
-	margin-top: -120px;
+    height:400px;
+    position: relative;
+    margin-top: -120px;
 }
 
 #selectorLuckyBall {
-	width:290px;
-	height:55px;
-	margin-bottom: 10px;
-	margin-top: -15px;
+    width:290px;
+    height:55px;
+    margin-bottom: 10px;
+    margin-top: -15px;
 }
 
 #finalSelection  {
-	height: 115px;
-	position: relative;
-	margin-bottom: 10px;
-	margin-top: 50px;
+    height: 115px;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 50px;
 }
 
 /*---------------------------------------------*/
 
 .ball{
-	width:40px;
-	position: absolute;
+    width:40px;
+    position: absolute;
 }
 
 .ball.lost{
-	opacity:0.34;
+    opacity:0.34;
 }
 
 .checkIcon {
-	position: absolute;
-	width: 25px;
-	padding-left: 22px;
-	margin-top: -5px!important;
+    position: absolute;
+    width: 25px;
+    padding-left: 22px;
+    margin-top: -5px!important;
 }
 
 .themeBall{
-	width: 70px;
-	position: absolute;
-	opacity:0.5;
+    width: 70px;
+    position: absolute;
+    opacity:0.5;
 }
 
 .themeBall.selected{
-	opacity:1;
+    opacity:1;
 }
 
 .smallThemeBall{
-	width: 40px;
-	position: absolute;
+    width: 40px;
+    position: absolute;
 }
 
 .smallThemeBall.lost{
-	opacity:0.34;
+    opacity:0.34;
 }
 
 .themeText{
-	width: 160px;
-	position: absolute;
-	font-size:28px;
+    width: 160px;
+    position: absolute;
+    font-size:28px;
 }
 
 .themeBall.lost{
-	opacity:0.34;
+    opacity:0.34;
 }
 
 .numwhite {
-	width: 40px;
-	position: absolute;
-	color: #eee;
-	font-size: 17px !important;
-	font-weight: bold;
-	font-family: "gillsans", "arial";
-	padding-top: 7px;
+    width: 40px;
+    position: absolute;
+    color: #eee;
+    font-size: 17px !important;
+    font-weight: bold;
+    font-family: "gillsans", "arial";
+    padding-top: 7px;
 }
 
 .numblack {
-	width: 40px;
-	position: absolute;
-	color: #333;
-	font-size: 17px !important;
-	font-weight: bold;
-	font-family: "gillsans", "arial";
-	padding-top: 7px;
+    width: 40px;
+    position: absolute;
+    color: #333;
+    font-size: 17px !important;
+    font-weight: bold;
+    font-family: "gillsans", "arial";
+    padding-top: 7px;
 }
 
 .unselectable {
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 /*---------------------------------------------*/
 .huge {
-	font-size: 50px!important;
-	margin-top: 10px;
+    font-size: 50px!important;
+    margin-top: 10px;
 }
 
 .bigger {
-	font-size: 35px!important;
-	font-weight: bold!important;
-	margin-bottom: 6px;
+    font-size: 35px!important;
+    font-weight: bold!important;
+    margin-bottom: 6px;
 }
 
 .big {
-	font-size: 35px!important;
-	margin-bottom: 6px;
+    font-size: 35px!important;
+    margin-bottom: 6px;
 }
 
 .medium {
-	font-size: 25px!important;
+    font-size: 25px!important;
 }
 
 .normal {
-	font-size: 20px!important;
+    font-size: 20px!important;
 }
 
 .small {
-	font-size: 16px!important;
+    font-size: 16px!important;
 }
 
 .xsmall {
-	font-size: 12px!important;
+    font-size: 12px!important;
 }
 
 /*---------------------------------------------*/
 
 .alignLeft {
-	text-align: left;
+    text-align: left;
 }
 
 .alignRight {
-	text-align: right;
+    text-align: right;
 }
 
 .mobileIcon {
-	max-width: 35px;
+    max-width: 35px;
 }
 
 /*-------------------------------------------------------------------------------------------------------*/
-/*  Buttons																								 */
+/*  Buttons                                                                                                 */
 /*-------------------------------------------------------------------------------------------------------*/
 #fillOutTicket {
-	width: 225px;
-	cursor: hand;
-	cursor: pointer;
-	opacity: 1;
+    width: 225px;
+    cursor: hand;
+    cursor: pointer;
+    opacity: 1;
 }
 
 #fillOutTicket:hover {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 #ticketsRemainingHome {
-	position: absolute;
+    position: absolute;
 }
 
 /*---------------------------------------------*/
 #inviteButton {
-	width: 100px;
-	cursor: hand;
-	cursor: pointer;
-	opacity: 1;
+    width: 100px;
+    cursor: hand;
+    cursor: pointer;
+    opacity: 1;
 }
 
 #inviteButton:hover {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 #shareButton {
-	width: 100px;
-	cursor: hand;
-	cursor: pointer;
-	opacity: 1;
+    width: 100px;
+    cursor: hand;
+    cursor: pointer;
+    opacity: 1;
 }
 
 #shareButton:hover {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 /*---------------------------------------------*/
 #validateButton {
-	width: 126px;
-	cursor: hand;
-	cursor: pointer;
-	opacity: 1;
+    width: 126px;
+    cursor: hand;
+    cursor: pointer;
+    opacity: 1;
 }
 
 #validateButton.enabled:hover {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 /*---------------------------------------------*/
@@ -420,101 +420,101 @@
 }
 
 #actionSeparator {
-	width: 1px;
-	height: 20px;
+    width: 1px;
+    height: 20px;
 }
 
 #actionSeparatorBig {
-	width: 1px;
-	height: 145px;
+    width: 1px;
+    height: 145px;
 }
 
 /*---------------------------------------------*/
 #pointsImage {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 #menuBG {
-	width: 500px;
+    width: 500px;
 }
 
 /*---------------------------------------------*/
 
 #playersIcon {
-	top: -25px;
-	position: absolute;
-	left: 10px;
+    top: -25px;
+    position: absolute;
+    left: 10px;
 }
 
 #playersText {
-	top: 6px;
-	position: absolute;
+    top: 6px;
+    position: absolute;
 }
 
 #playersNumber {
-	top: 24px;
-	position: absolute;
-	font-size: 26px;
-	left: -6px;
-	text-align: center;
-	width: 66px;
+    top: 24px;
+    position: absolute;
+    font-size: 26px;
+    left: -6px;
+    text-align: center;
+    width: 66px;
 }
 
 /*---------------------------------------------*/
 #themeImageContainer {
-	position: relative;
+    position: relative;
 }
 
 .themeImage {
-	width: 450px;
+    width: 450px;
 }
 
 #themeImageOver {
-	margin-top: -67px;
-	margin-bottom: 10px;
-	max-width: 228px;
+    margin-top: -67px;
+    margin-bottom: 10px;
+    max-width: 228px;
 }
 
 #likeThemeIcon {
-	position: relative;
-	top: -212px;
-	left: 175px;
+    position: relative;
+    top: -212px;
+    left: 175px;
 }
 
 @media screen and ( max-width : 910px) {
-	#likeThemeIcon {
-		top: -180px;
-		left: 145px;
-	}
+    #likeThemeIcon {
+        top: -180px;
+        left: 145px;
+    }
 }
 
 /*---------------------------------------------*/
 
 .priceTicket {
-	text-align: right;
+    text-align: right;
 }
 
 .priceTicketIcon {
-	margin-left: 0px!important;
-	margin-top: -8px;
+    margin-left: 0px!important;
+    margin-top: -8px;
 }
 
 .resultIcon {
-	margin-left: 0px!important;
-	margin-top: -5px;
-	max-height: 20px;
+    margin-left: 0px!important;
+    margin-top: -5px;
+    max-height: 20px;
 }
 
 /*---------------------------------------------*/
 
 #winningsImage {
-	width: 105px;
+    width: 105px;
 }
 
 #statusImage {
-	width: 75px;
+    width: 75px;
 }
 
 #detailsImage {
-	width: 180px;
+    width: 180px;
 }

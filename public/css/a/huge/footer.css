@@ -1,19 +1,19 @@
 /*--------------------------------*/
 
 #footerClassic{
-	bottom:0px;
-	position:fixed;
-	height:30px;
-	padding-top: 5px;
-	width: 1430px;
-	border-top: 1px solid #fff;
-	opacity:0.9;
-	background-image:  -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee)); /* Saf4+, Chrome */
-	background-image:  -webkit-linear-gradient(top, #fff, #eee); /* Chrome 10+, Saf5.1+ */
-	background-image:  -moz-linear-gradient(top, #fff, #eee); /* FF3.6+ */
-	background-image:  -ms-linear-gradient(top, #fff, #eee); /* IE10 */
-	background-image:  -o-linear-gradient(top, #fff, #eee); /* Opera 11.10+ */
-	background-image:  linear-gradient(top, #fff, #eee);
+    bottom:0px;
+    position:fixed;
+    height:30px;
+    padding-top: 5px;
+    width: 1430px;
+    border-top: 1px solid #fff;
+    opacity:0.9;
+    background-image:  -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee)); /* Saf4+, Chrome */
+    background-image:  -webkit-linear-gradient(top, #fff, #eee); /* Chrome 10+, Saf5.1+ */
+    background-image:  -moz-linear-gradient(top, #fff, #eee); /* FF3.6+ */
+    background-image:  -ms-linear-gradient(top, #fff, #eee); /* IE10 */
+    background-image:  -o-linear-gradient(top, #fff, #eee); /* Opera 11.10+ */
+    background-image:  linear-gradient(top, #fff, #eee);
 }
 
 #footerClassic p {
@@ -21,17 +21,17 @@
 }
 
 #footerHome{
-	bottom:0px;
-	width: 100%;
-	border-top: 1px solid #fff;
-	padding-top: 30px;
-	padding-bottom: 30px;
-	background-image:  -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee)); /* Saf4+, Chrome */
-	background-image:  -webkit-linear-gradient(top, #fff, #eee); /* Chrome 10+, Saf5.1+ */
-	background-image:  -moz-linear-gradient(top, #fff, #eee); /* FF3.6+ */
-	background-image:  -ms-linear-gradient(top, #fff, #eee); /* IE10 */
-	background-image:  -o-linear-gradient(top, #fff, #eee); /* Opera 11.10+ */
-	background-image:  linear-gradient(top, #fff, #eee);
+    bottom:0px;
+    width: 100%;
+    border-top: 1px solid #fff;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-image:  -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee)); /* Saf4+, Chrome */
+    background-image:  -webkit-linear-gradient(top, #fff, #eee); /* Chrome 10+, Saf5.1+ */
+    background-image:  -moz-linear-gradient(top, #fff, #eee); /* FF3.6+ */
+    background-image:  -ms-linear-gradient(top, #fff, #eee); /* IE10 */
+    background-image:  -o-linear-gradient(top, #fff, #eee); /* Opera 11.10+ */
+    background-image:  linear-gradient(top, #fff, #eee);
 }
 
 .footer-links {
@@ -54,62 +54,62 @@
 
 /*--------------------------------*/
 .footerTitle {
-	color: #fff;
-	font-size: 19px;
-	margin-bottom: 14px;
+    color: #fff;
+    font-size: 19px;
+    margin-bottom: 14px;
 }
 
 .footerContent {
-	text-align: center;
-	color: #bbb;
-	margin-bottom: 5px;
+    text-align: center;
+    color: #bbb;
+    margin-bottom: 5px;
 }
 
 .footerContent .link {
-	color: #ccc;
-	font-weight: normal;
+    color: #ccc;
+    font-weight: normal;
 }
 
 .footerContent .link:hover {
-	color: #217E03;
+    color: #217E03;
 }
 
 .footerEnd {
-	text-align: center;
-	color: #777;
-	margin-top: 26px;
+    text-align: center;
+    color: #777;
+    margin-top: 26px;
 }
 
 
 /************************************************
-*	18.	Socials Widget 	       			     	* 
-************************************************/	
+*    18.    Socials Widget                                 * 
+************************************************/    
 
 .row-fluid .spanFooterLink{
-	width:11%;
+    width:11%;
 }
 
 .SocialIconsWidget {
-	margin-top: -6px;
+    margin-top: -6px;
 }
 
 .SocialIconsWidget ul {
-	margin: 0;
-	padding: 0;	
-	float: right;
+    margin: 0;
+    padding: 0;    
+    float: right;
 }
 
 .widget_socials_center {
-	margin-top: 3px!important;
-	float: left!important;
+    margin-top: 3px!important;
+    float: left!important;
 }
 
 .SocialIconsWidget ul li {
-	list-style-type: none;
-	display: block;
-	float: left;
-	margin: 0 5px 5px 0;
-	padding: 0;
+    list-style-type: none;
+    display: block;
+    float: left;
+    margin: 0 5px 5px 0;
+    padding: 0;
 }
 
 
@@ -127,15 +127,15 @@
 
 
 .SocialIconsWidget ul li a {
-	height: 30px;
-	width: 30px;
-	display: block;
-	cursor: hand;
-	cursor: pointer;
-	opacity: 1;
+    height: 30px;
+    width: 30px;
+    display: block;
+    cursor: hand;
+    cursor: pointer;
+    opacity: 1;
 }
 
 .SocialIconsWidget ul li a:hover {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 

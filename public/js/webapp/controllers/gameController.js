@@ -1,58 +1,58 @@
 
 (function() {
-	'use strict';
+    'use strict';
 
-	var GameController = Ember.ObjectController.extend({});
+    var GameController = Ember.ObjectController.extend({});
 
-	//==================================================================//
+    //==================================================================//
 
-	GameController.renderUI = function(){
-	    App.Globals.signinRequested = true // reach /game directly : FB landing page, must use signinFBWindow
-	    UserManager.setupForms()
+    GameController.renderUI = function(){
+        App.Globals.signinRequested = true // reach /game directly : FB landing page, must use signinFBWindow
+        UserManager.setupForms()
 
-	    GameManager.init()
-	    GameManager.setSelectedButton()
+        GameManager.init()
+        GameManager.setSelectedButton()
 
-	    App.showSocialButtons()
+        App.showSocialButtons()
 
-	    Facebook.checkThemeLiked()
-	}
+        Facebook.checkThemeLiked()
+    }
 
-	GameController.cleanUI = function()	{
-	    App.hideSocialButtons()
-	}
+    GameController.cleanUI = function()    {
+        App.hideSocialButtons()
+    }
 
-	//==================================================================//
+    //==================================================================//
 
-	GameController.gameHomeReady = function()	{
-	}
+    GameController.gameHomeReady = function()    {
+    }
 
-	//==================================================================//
+    //==================================================================//
 
-	GameController.startTicket = function()	{
+    GameController.startTicket = function()    {
 
-	   var next = function(){
+       var next = function(){
          App.get('router').transitionTo('game.fillLotteryTicket')
       }
-	   
-	   if(App.user.extraTickets > 0){
-	      App.message(App.translations.messages.ExtraTicket + "!")
-	      next()
-	   }
-	   else{
-	      GameController.requireVideo(next) 
-	   }
+       
+       if(App.user.extraTickets > 0){
+          App.message(App.translations.messages.ExtraTicket + "!")
+          next()
+       }
+       else{
+          GameController.requireVideo(next) 
+       }
 
-	}
-	
-	//==================================================================//
-	
-	GameController.shareFacebook = function(afterVideoSeen)	{
-	   if(!App.user.hasPostOnFacebook){
-	      
-	      var message = App.user.sponsorCode; 
+    }
+    
+    //==================================================================//
+    
+    GameController.shareFacebook = function(afterVideoSeen)    {
+       if(!App.user.hasPostOnFacebook){
+          
+          var message = App.user.sponsorCode; 
          
-	      Facebook.postOnWall(message, function(){
+          Facebook.postOnWall(message, function(){
             
             App.message("+ " + App.Globals.NB_POINTS_PER_POST + " Pts !");
             App.user.set("currentPoints", App.user.currentPoints + App.Globals.NB_POINTS_PER_POST)
@@ -61,91 +61,91 @@
             UserManager.updatePlayer()
          })
       }
-	   else{
-	      App.message(App.translations.messages.HasPostOnFacebook)
-	   }
-	}
+       else{
+          App.message(App.translations.messages.HasPostOnFacebook)
+       }
+    }
 
-	//==================================================================//
+    //==================================================================//
 
-	GameController.requireVideo = function(afterVideoSeen)	{
+    GameController.requireVideo = function(afterVideoSeen)    {
 
-	   if(App.Globals.isDev){
-	      afterVideoSeen()
-	      return
-	   }
+       if(App.Globals.isDev){
+          afterVideoSeen()
+          return
+       }
 
-	   GameController.sponsorpay = new SPONSORPAY.Video.Iframe({
+       GameController.sponsorpay = new SPONSORPAY.Video.Iframe({
 
-	       appid:           '16913', 
-	       uid:             App.user.uid,
-	       height:          700,
-	       width:           700,
-	       display_format:  'bare_player',
+           appid:           '16913', 
+           uid:             App.user.uid,
+           height:          700,
+           width:           700,
+           display_format:  'bare_player',
 
-	       callback_on_start: function(offer) { 
-	           GameController.sponsorpay.showVideo();
-	       },
-	       
-	       callback_no_offers: function(){ 
-	           App.free()
-	           App.message("_No video to watch...")
-	       },
+           callback_on_start: function(offer) { 
+               GameController.sponsorpay.showVideo();
+           },
+           
+           callback_no_offers: function(){ 
+               App.free()
+               App.message("_No video to watch...")
+           },
 
-	       callback_on_close: function(){ 
-	           console.log("on close")
-	           App.free()
-	       },
+           callback_on_close: function(){ 
+               console.log("on close")
+               App.free()
+           },
 
-	       callback_on_conversion: function(){ 
-	           console.log("on conversion")
-	           afterVideoSeen()
-	       }
+           callback_on_conversion: function(){ 
+               console.log("on conversion")
+               afterVideoSeen()
+           }
 
-	   });
+       });
 
-	   GameController.sponsorpay.backgroundLoad();
-	   App.lock()
-	}
+       GameController.sponsorpay.backgroundLoad();
+       App.lock()
+    }
 
-	//==================================================================//
-	// Controls
+    //==================================================================//
+    // Controls
 
-	App.GameController = GameController;
+    App.GameController = GameController;
 
-	//==================================================================//
-	// Routing
+    //==================================================================//
+    // Routing
 
-	App.GameRouting = App.Page.extend({
-		
-	   //---------------------------------
-	   
-	    route: '/game',
+    App.GameRouting = App.Page.extend({
+        
+       //---------------------------------
+       
+        route: '/game',
 
-	    //---------------------------------
+        //---------------------------------
 
-	    gameHome: Ember.Route.extend({
-	        route: '/',
-	        connectOutlets: function(router) {
-	            App.Router.openComponent(router, "game");
-	            GameManager.setSelectedButton()
-	        }
-	    }),
+        gameHome: Ember.Route.extend({
+            route: '/',
+            connectOutlets: function(router) {
+                App.Router.openComponent(router, "game");
+                GameManager.setSelectedButton()
+            }
+        }),
 
-	    myTickets: Ember.Route.extend({
-	        route: '/tickets',
-	        connectOutlets: function(router) {
-	            App.Router.openComponent(router, "game");
-	            GameManager.setSelectedButton()
-	        }
-	    }),
+        myTickets: Ember.Route.extend({
+            route: '/tickets',
+            connectOutlets: function(router) {
+                App.Router.openComponent(router, "game");
+                GameManager.setSelectedButton()
+            }
+        }),
 
-	    profile: Ember.Route.extend({
-	        route: '/profile',
-	        connectOutlets: function(router) {
-	            App.Router.openComponent(router, "game");
-	            GameManager.setSelectedButton()
-	        }
+        profile: Ember.Route.extend({
+            route: '/profile',
+            connectOutlets: function(router) {
+                App.Router.openComponent(router, "game");
+                GameManager.setSelectedButton()
+            }
       }),
       
       //---------------------------------
@@ -175,31 +175,31 @@
       }),
       
       //---------------------------------
-		
-		connectOutlets: function(router){
-			App.Router.openPage(router, "game");
-		},
+        
+        connectOutlets: function(router){
+            App.Router.openPage(router, "game");
+        },
 
       //-----------------------------------//
       // actions
-		
-		requireNewTicket        : function() {
+        
+        requireNewTicket        : function() {
 
-		   if(UserManager.hasTicketsToPlay()){
-		      if(UserManager.checkTicketTiming()) {
-		         GameController.startTicket()
-		      }
-		   }
-		   else{
-		      $("#noMoreTicketsWindow").reveal({
-		         animation: 'fade',
-		         animationspeed: 100, 
-		      });         
-		   }
-		},		
+           if(UserManager.hasTicketsToPlay()){
+              if(UserManager.checkTicketTiming()) {
+                 GameController.startTicket()
+              }
+           }
+           else{
+              $("#noMoreTicketsWindow").reveal({
+                 animation: 'fade',
+                 animationspeed: 100, 
+              });         
+           }
+        },        
       
-      openGameHome            : Ember.Route.transitionTo('game.gameHome'),		
-      openMyTickets           : Ember.Route.transitionTo('game.myTickets'),		
+      openGameHome            : Ember.Route.transitionTo('game.gameHome'),        
+      openMyTickets           : Ember.Route.transitionTo('game.myTickets'),        
       openProfile             : Ember.Route.transitionTo('game.profile'),
       upgradeProfile          : function(){
          App.Router.closePopup()
@@ -255,10 +255,10 @@
             animationspeed: 100, 
          });
       },
-		
-	});
+        
+    });
 
-	//==================================================================//
+    //==================================================================//
 
 })();
 

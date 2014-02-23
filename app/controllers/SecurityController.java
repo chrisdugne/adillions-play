@@ -19,45 +19,45 @@ import com.google.gson.JsonObject;
 
 public class SecurityController extends Action.Simple {
 
-	//----------------------------------------------------------------------------//
-	
-	public final static String AUTH_TOKEN_HEADER 	= "X-Auth-Token";
-	public static final String AUTH_TOKEN 				= "authToken";
+    //----------------------------------------------------------------------------//
+    
+    public final static String AUTH_TOKEN_HEADER     = "X-Auth-Token";
+    public static final String AUTH_TOKEN                 = "authToken";
 
-	//----------------------------------------------------------------------------//
-	
-	protected static Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+    //----------------------------------------------------------------------------//
+    
+    protected static Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
-	//----------------------------------------------------------------------------//
-	
-	public Result call(Http.Context ctx) throws Throwable {
-		Player player = null;
+    //----------------------------------------------------------------------------//
+    
+    public Result call(Http.Context ctx) throws Throwable {
+        Player player = null;
 
-		String[] authTokenHeaderValues = ctx.request().headers().get(AUTH_TOKEN_HEADER);
+        String[] authTokenHeaderValues = ctx.request().headers().get(AUTH_TOKEN_HEADER);
 
-		if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
-			player = models.Player.findByAuthToken(authTokenHeaderValues[0]);
-			if (player != null && player.getStatus() == Player.ON) {
-				ctx.args.put("player", player);
-				return delegate.call(ctx);
-			}
-		}
+        if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
+            player = models.Player.findByAuthToken(authTokenHeaderValues[0]);
+            if (player != null && player.getStatus() == Player.ON) {
+                ctx.args.put("player", player);
+                return delegate.call(ctx);
+            }
+        }
 
-		System.out.println("unauthorized");
-		return unauthorized("unauthorized");
-	}
-	
-	//----------------------------------------------------------------------------//
+        System.out.println("unauthorized");
+        return unauthorized("unauthorized");
+    }
+    
+    //----------------------------------------------------------------------------//
 
-	public static Result login() {
-		JsonNode params = request().body().asJson();
-		JsonNode userJson = params.get("user");
-		return _login(userJson);
-	}
-	
-	//----------------------------------------------------------------------------//
-	
-	private static Result _login(JsonNode userJson) {
+    public static Result login() {
+        JsonNode params = request().body().asJson();
+        JsonNode userJson = params.get("user");
+        return _login(userJson);
+    }
+    
+    //----------------------------------------------------------------------------//
+    
+    private static Result _login(JsonNode userJson) {
 
       Player player = AccountManager.getPlayerWithCredentials(userJson);
 
@@ -72,198 +72,198 @@ public class SecurityController extends Action.Simple {
       else{
          return unauthorized();
       }
-	   
-	}
+       
+    }
 
-	// ---------------------------------------------//
+    // ---------------------------------------------//
 
-	public static Result signIn()
-	{
-		JsonNode params = request().body().asJson();
-		JsonNode userJson = params.get("user");
-		
-		if(!AccountManager.existEmail(userJson)){
-			if(!AccountManager.existNames(userJson)){
-				Player player = AccountManager.createNewPlayer(userJson);
-				return ok(gson.toJson(player));
-			}
-			else{
-				return ok("names");
-			}
-		}
-		else{
-			return ok("email");
-		}
-		
-	}
-	
-	// ---------------------------------------------//
-	
-	public static Result signIn2()
-	{
-	   JsonNode params = request().body().asJson();
-	   JsonNode userJson = params.get("user");
-	   
-	   if(!AccountManager.existEmail(userJson)){
-	      if(!AccountManager.existNames(userJson)){
-	         AccountManager.createNewPlayer(userJson);
-	         return _login(userJson);
-	      }
-	      else{
-	         return ok("names");
-	      }
-	   }
-	   else{
-	      return ok("email");
-	   }
-	   
-	}
+    public static Result signIn()
+    {
+        JsonNode params = request().body().asJson();
+        JsonNode userJson = params.get("user");
+        
+        if(!AccountManager.existEmail(userJson)){
+            if(!AccountManager.existNames(userJson)){
+                Player player = AccountManager.createNewPlayer(userJson);
+                return ok(gson.toJson(player));
+            }
+            else{
+                return ok("names");
+            }
+        }
+        else{
+            return ok("email");
+        }
+        
+    }
+    
+    // ---------------------------------------------//
+    
+    public static Result signIn2()
+    {
+       JsonNode params = request().body().asJson();
+       JsonNode userJson = params.get("user");
+       
+       if(!AccountManager.existEmail(userJson)){
+          if(!AccountManager.existNames(userJson)){
+             AccountManager.createNewPlayer(userJson);
+             return _login(userJson);
+          }
+          else{
+             return ok("names");
+          }
+       }
+       else{
+          return ok("email");
+       }
+       
+    }
 
-	//----------------------------------------------------------------------------//
-	
-	public static Result getPlayerFromFB()
-	{
-		System.out.println("getPlayerFromFB");
-		JsonNode params = request().body().asJson();
-		JsonNode facebookData = params.get("facebookData");
+    //----------------------------------------------------------------------------//
+    
+    public static Result getPlayerFromFB()
+    {
+        System.out.println("getPlayerFromFB");
+        JsonNode params = request().body().asJson();
+        JsonNode facebookData = params.get("facebookData");
 
-		//----------------------
+        //----------------------
 
-		String facebookId = facebookData.get("id").asText();
-		
-		//----------------------
-		// verify token
-		
-//		String accessToken = params.get("accessToken").asText();
-//		if(!validAccessToken(accessToken, facebookId))
-//			return unauthorized();
-		
-		//----------------------
-		
-		Player player = AccountManager.getPlayerByFacebookId(facebookId);
+        String facebookId = facebookData.get("id").asText();
+        
+        //----------------------
+        // verify token
+        
+//        String accessToken = params.get("accessToken").asText();
+//        if(!validAccessToken(accessToken, facebookId))
+//            return unauthorized();
+        
+        //----------------------
+        
+        Player player = AccountManager.getPlayerByFacebookId(facebookId);
 
-		if(player != null && player.getStatus() == Player.ON){
-		   
-			String authToken = player.createToken();
-			response().setCookie(AUTH_TOKEN, authToken);
+        if(player != null && player.getStatus() == Player.ON){
+           
+            String authToken = player.createToken();
+            response().setCookie(AUTH_TOKEN, authToken);
 
-			JsonObject response = new JsonObject();
-			response.addProperty(AUTH_TOKEN, authToken);
-			response.add("player", gson.toJsonTree(player));
-			return ok(gson.toJson(response));
-		}
-		else{
-			// require signinFromFB
+            JsonObject response = new JsonObject();
+            response.addProperty(AUTH_TOKEN, authToken);
+            response.add("player", gson.toJsonTree(player));
+            return ok(gson.toJson(response));
+        }
+        else{
+            // require signinFromFB
 
-			System.out.println("require signinFromFB");
-			return unauthorized();
-		}
-		
-	}
-	
-	// ---------------------------------------------//
-	
-	public static Result signinFromFacebook()
-	{
-		JsonNode params = request().body().asJson();
+            System.out.println("require signinFromFB");
+            return unauthorized();
+        }
+        
+    }
+    
+    // ---------------------------------------------//
+    
+    public static Result signinFromFacebook()
+    {
+        JsonNode params = request().body().asJson();
 
-		//----------------------
+        //----------------------
 
-		JsonNode userJson = params.get("user");
-		
-		//----------------------
-		// verify token
-		
-//		String facebookId = userJson.get("facebookId").asText();
-//		String accessToken = params.get("accessToken").asText();
-//		if(!validAccessToken(accessToken, facebookId))
-//			return unauthorized();
-		
-		//----------------------
-		
-		if(!AccountManager.existNames(userJson)){
-			Player player = AccountManager.createNewPlayer(userJson);
+        JsonNode userJson = params.get("user");
+        
+        //----------------------
+        // verify token
+        
+//        String facebookId = userJson.get("facebookId").asText();
+//        String accessToken = params.get("accessToken").asText();
+//        if(!validAccessToken(accessToken, facebookId))
+//            return unauthorized();
+        
+        //----------------------
+        
+        if(!AccountManager.existNames(userJson)){
+            Player player = AccountManager.createNewPlayer(userJson);
 
-			String authToken = player.createToken();
-			response().setCookie(AUTH_TOKEN, authToken);
+            String authToken = player.createToken();
+            response().setCookie(AUTH_TOKEN, authToken);
 
-			JsonObject response = new JsonObject();
-			response.addProperty(AUTH_TOKEN, authToken);
-			response.addProperty("player", gson.toJson(player));
-			return ok(gson.toJson(response));
-		}
-		else{
-			return ok(gson.toJson(null));
-		}
-		
-	}
-	
-	// ---------------------------------------------//
+            JsonObject response = new JsonObject();
+            response.addProperty(AUTH_TOKEN, authToken);
+            response.addProperty("player", gson.toJson(player));
+            return ok(gson.toJson(response));
+        }
+        else{
+            return ok(gson.toJson(null));
+        }
+        
+    }
+    
+    // ---------------------------------------------//
 
-	public static Result existFBPlayer()
-	{
-		System.out.println("existFBPlayer ? ");
-		JsonNode params = request().body().asJson();
-		JsonNode facebookData = params.get("facebookData");
+    public static Result existFBPlayer()
+    {
+        System.out.println("existFBPlayer ? ");
+        JsonNode params = request().body().asJson();
+        JsonNode facebookData = params.get("facebookData");
 
-		//----------------------
+        //----------------------
 
-		String facebookId = facebookData.get("id").asText();
-		Player player = AccountManager.getPlayerByFacebookId(facebookId);
+        String facebookId = facebookData.get("id").asText();
+        Player player = AccountManager.getPlayerByFacebookId(facebookId);
 
-		Boolean existPlayer = player != null;
+        Boolean existPlayer = player != null;
 
-		System.out.println(existPlayer);
-		
-		JsonObject response = new JsonObject();
-		response.addProperty("existPlayer", existPlayer);
-		return ok(gson.toJson(response));
-	}
-	
-	// ---------------------------------------------//
-	
-	public static Result signinWithTwitter()
-	{
-		Twitter.getRequestToken();
-		return ok();
-	}
-	
-	// ---------------------------------------------//
-	
-//	private static boolean validAccessToken(String accessToken, String facebookId) {
+        System.out.println(existPlayer);
+        
+        JsonObject response = new JsonObject();
+        response.addProperty("existPlayer", existPlayer);
+        return ok(gson.toJson(response));
+    }
+    
+    // ---------------------------------------------//
+    
+    public static Result signinWithTwitter()
+    {
+        Twitter.getRequestToken();
+        return ok();
+    }
+    
+    // ---------------------------------------------//
+    
+//    private static boolean validAccessToken(String accessToken, String facebookId) {
 //
-//		// A REVOIR : You must provide an app access token or a user access token that is an owner or developer of the app
-//		// surement app_access_token
-//		
-//		try{
-//			String response= HttpHelper.get("https://graph.facebook.com/debug_token?access_token="+accessToken+"&input_token="+accessToken);
-//			
-//			JsonNode fbAnswer = Json.parse(response);
-//			
-//			String appId 		= fbAnswer.get("data").get("app_id").asText();
-//			Boolean isValid 	= fbAnswer.get("data").get("is_valid").asBoolean();
-//			String userId 		= fbAnswer.get("data").get("user_id").asText();
+//        // A REVOIR : You must provide an app access token or a user access token that is an owner or developer of the app
+//        // surement app_access_token
+//        
+//        try{
+//            String response= HttpHelper.get("https://graph.facebook.com/debug_token?access_token="+accessToken+"&input_token="+accessToken);
+//            
+//            JsonNode fbAnswer = Json.parse(response);
+//            
+//            String appId         = fbAnswer.get("data").get("app_id").asText();
+//            Boolean isValid     = fbAnswer.get("data").get("is_valid").asBoolean();
+//            String userId         = fbAnswer.get("data").get("user_id").asText();
 //
-//			if(!appId.equals(FACEBOOK_APP_ID)){
-//				System.out.println("ACCESS_TOKEN FOR WRONG APP_ID");
-//				return false;
-//			}
-//			
-//			if(!facebookId.equals(userId)){
-//				System.out.println("ACCESS_TOKEN FOR WRONG USER_ID");
-//				return false;
-//			}
+//            if(!appId.equals(FACEBOOK_APP_ID)){
+//                System.out.println("ACCESS_TOKEN FOR WRONG APP_ID");
+//                return false;
+//            }
+//            
+//            if(!facebookId.equals(userId)){
+//                System.out.println("ACCESS_TOKEN FOR WRONG USER_ID");
+//                return false;
+//            }
 //
-//			// timeout / logout
-//			if(!isValid){
-//				return false;
-//			}
-//		}
-//		catch(Exception e){
-//			System.out.println("COULDNT VALIDATE ACCESS_TOKEN WITH FACEBOOK");
-//			return false;
-//		}
+//            // timeout / logout
+//            if(!isValid){
+//                return false;
+//            }
+//        }
+//        catch(Exception e){
+//            System.out.println("COULDNT VALIDATE ACCESS_TOKEN WITH FACEBOOK");
+//            return false;
+//        }
 //
-//		return true;
+//        return true;
 //   }
 }

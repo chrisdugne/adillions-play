@@ -37,40 +37,40 @@
 <!-- ------------------------------------------------------------------- -->
 
 <script type="text/x-handlebars" data-template-name="application">
-	{{outlet}}
+    {{outlet}}
 </script>
 
 <!-- ------------------------------------------------------------------- -->
 
 <!-- --- Pages --- -->
-@pageTemplate("home", true)						{ @home()					}
-@pageTemplate("game", false)					{ @game()					}
-@pageTemplate("results", true)					{ @results()				}
-@pageTemplate("about", true)					{ @about()					}
-@pageTemplate("advertisers", true)				{ @advertisers()			}
+@pageTemplate("home", true)                        { @home()                    }
+@pageTemplate("game", false)                    { @game()                    }
+@pageTemplate("results", true)                    { @results()                }
+@pageTemplate("about", true)                    { @about()                    }
+@pageTemplate("advertisers", true)                { @advertisers()            }
 
 <!-- ------------------------------------------------------------------- -->
 <!-- --- Components --- -->
 
-@componentTemplate("homeLottery")				{ @homeLottery()			}
+@componentTemplate("homeLottery")                { @homeLottery()            }
 
-@componentTemplate("gameHome")					{ @gameHome()				}
-@componentTemplate("myTickets")					{ @myTickets()				}
-@componentTemplate("profile")					{ @profile()				}
+@componentTemplate("gameHome")                    { @gameHome()                }
+@componentTemplate("myTickets")                    { @myTickets()                }
+@componentTemplate("profile")                    { @profile()                }
 
-@componentTemplate("fillLotteryTicket")			{ @fillLotteryTicket()		}
-@componentTemplate("selectAdditionalNumber")	{ @selectAdditionalNumber()	}
-@componentTemplate("confirmation")				{ @confirmation()			}
+@componentTemplate("fillLotteryTicket")            { @fillLotteryTicket()        }
+@componentTemplate("selectAdditionalNumber")    { @selectAdditionalNumber()    }
+@componentTemplate("confirmation")                { @confirmation()            }
 
-@componentTemplate("aboutHome")					{ @aboutHome()				}
-@componentTemplate("faq")						{ @faq()					}
-@componentTemplate("terms")						{ @terms()					}
-@componentTemplate("rewards")					{ @rewards()				}
-@componentTemplate("prizes")					{ @prizes()					}
-@componentTemplate("keyrules")					{ @keyrules()				}
-@componentTemplate("jobs")						{ @jobs()					}
-@componentTemplate("press")						{ @press()					}
-@componentTemplate("privacy")					{ @privacy()				}
-	
+@componentTemplate("aboutHome")                    { @aboutHome()                }
+@componentTemplate("faq")                        { @faq()                    }
+@componentTemplate("terms")                        { @terms()                    }
+@componentTemplate("rewards")                    { @rewards()                }
+@componentTemplate("prizes")                    { @prizes()                    }
+@componentTemplate("keyrules")                    { @keyrules()                }
+@componentTemplate("jobs")                        { @jobs()                    }
+@componentTemplate("press")                        { @press()                    }
+@componentTemplate("privacy")                    { @privacy()                }
+    
 
 

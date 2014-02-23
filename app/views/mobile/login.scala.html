@@ -27,47 +27,47 @@
 @import views.html.mobile.header;
 
 <body>
-	@header()
+    @header()
 
-	<div class="content">
-		<img id="closeButton" onclick="window.location.href='/backToMobile'" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
+    <div class="content">
+        <img id="closeButton" onclick="window.location.href='/backToMobile'" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
 
-		<!-- 
-		<div class="row-fluid">
-			<div id="facebookButton" class="btn-large button-facebook">Connect with Facebook</div>
-		</div>
-		<div class="row-fluid">
-			<p class="auth-method-separator">
-            	<i>or</i>
-        	</p>
-		</div>
-		 -->
+        <!-- 
+        <div class="row-fluid">
+            <div id="facebookButton" class="btn-large button-facebook">Connect with Facebook</div>
+        </div>
+        <div class="row-fluid">
+            <p class="auth-method-separator">
+                <i>or</i>
+            </p>
+        </div>
+         -->
 
-		<div id="login" class="row-fluid">
+        <div id="login" class="row-fluid">
 
-			<form id="loginForm">
+            <form id="loginForm">
 
-				<div id="email_field" class="marginbottom2">
-					<label for="loginemail" id="labelEmail" class="normal"></label>
-					<div class="input">
-						<input type="text" id="loginemail" name="loginemail" value="">
-					</div>
-				</div>
+                <div id="email_field" class="marginbottom2">
+                    <label for="loginemail" id="labelEmail" class="normal"></label>
+                    <div class="input">
+                        <input type="text" id="loginemail" name="loginemail" value="">
+                    </div>
+                </div>
 
-				<div id="password_field" class="marginbottom4">
-					<label for="loginpassword" id="labelPassword"  class="normal"></label>
-					<div class="input">
-						<input type="password" id="loginpassword" name="loginpassword">
-					</div>
-				</div>
+                <div id="password_field" class="marginbottom4">
+                    <label for="loginpassword" id="labelPassword"  class="normal"></label>
+                    <div class="input">
+                        <input type="password" id="loginpassword" name="loginpassword">
+                    </div>
+                </div>
 
-			</form>
+            </form>
 
-			<div id="validateButton" class="btn-large button"></div>
+            <div id="validateButton" class="btn-large button"></div>
 
-		</div>
+        </div>
 
-	</div>
+    </div>
 
 </body>
 
@@ -91,8 +91,8 @@
 
 $(function() {
    
-	//-------------------------------------------// 
-	
+    //-------------------------------------------// 
+    
    window.translator = new Translator(true);
    UserManager.setupForms();
 

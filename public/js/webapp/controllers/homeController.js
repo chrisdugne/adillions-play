@@ -1,62 +1,62 @@
 
 (function() {
-	'use strict';
+    'use strict';
 
-	var HomeController = Ember.ObjectController.extend({});
+    var HomeController = Ember.ObjectController.extend({});
 
-	//==================================================================//
+    //==================================================================//
 
-	HomeController.renderUI = function(){
-	   UserManager.setupForms()
-	   
-	   if(App.nextLottery.date){
+    HomeController.renderUI = function(){
+       UserManager.setupForms()
+       
+       if(App.nextLottery.date){
          App.get('router').transitionTo('home.lottery')
-	   }
-	   
+       }
+       
       App.showSocialButtons()
       App.initCheckboxes()
    }
 
-	HomeController.cleanUI = function() {
+    HomeController.cleanUI = function() {
       App.hideSocialButtons()
    }
 
-	
-	//==================================================================//
-	// Controls
-	
-	HomeController.openLoginWindow = function() 
-	{
+    
+    //==================================================================//
+    // Controls
+    
+    HomeController.openLoginWindow = function() 
+    {
       App.Globals.signinRequested = true
       
       $("#loginWindow").reveal({
          animation: 'fade',
          animationspeed: 100, 
       });
-	}
+    }
 
-	HomeController.openVideoWindow = function() 
-	{
-	   window.youtubeManager.openVideoWindow();
-	}
+    HomeController.openVideoWindow = function() 
+    {
+       window.youtubeManager.openVideoWindow();
+    }
 
-	//----------------------------------------------------//
+    //----------------------------------------------------//
 
-	App.HomeController = HomeController;
+    App.HomeController = HomeController;
 
-	//==================================================================//
-	// Routing
+    //==================================================================//
+    // Routing
 
-	App.HomeRouting = App.Page.extend({
-		route: '/',
-		
-		connectOutlets: function(router){
-			App.Router.openPage(router, "home");
-		},
-		
-		//--------------------------------------//
+    App.HomeRouting = App.Page.extend({
+        route: '/',
+        
+        connectOutlets: function(router){
+            App.Router.openPage(router, "home");
+        },
+        
+        //--------------------------------------//
 
-		startWithoutLottery: Ember.Route.extend({
+        startWithoutLottery: Ember.Route.extend({
          route: '/'
       }),
       
@@ -68,22 +68,22 @@
             App.Router.openComponent(router, "home");
          }
       }),
-		
-		//--------------------------------------//
-		// actions
-		
-		playOnAdillions    : function(){
-		   if(App.user.loggedIn){
-		      App.get('router').transitionTo('game');
-		   }
-		   else{
-		      App.HomeController.openLoginWindow()
-		   }
-		},
-		openLoginWindow    : function(){App.HomeController.openLoginWindow()},
-		showVideo          : function(){App.HomeController.openVideoWindow()},
-		
-	});
+        
+        //--------------------------------------//
+        // actions
+        
+        playOnAdillions    : function(){
+           if(App.user.loggedIn){
+              App.get('router').transitionTo('game');
+           }
+           else{
+              App.HomeController.openLoginWindow()
+           }
+        },
+        openLoginWindow    : function(){App.HomeController.openLoginWindow()},
+        showVideo          : function(){App.HomeController.openVideoWindow()},
+        
+    });
 
 })();
 

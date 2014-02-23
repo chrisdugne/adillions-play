@@ -1,306 +1,306 @@
 /************************************************/
 .centered {
-	float: none;
-	margin: 0 auto;
+    float: none;
+    margin: 0 auto;
 }
 
 /*--------------------------------*/
 #homeContent {
-	padding: 0;
-	z-index: 1;
+    padding: 0;
+    z-index: 1;
 }
 
 /*--------------------------------*/
 .websiteContent {
-	padding-top: 50px;
+    padding-top: 50px;
 }
 
 /*--------------------------------*/
 #topHeader {
-	margin-top: 67px;
-	margin-bottom: -100px;
-	padding-top: 100px;
-	background: url(/assets/images/website/header.bg.jpg) no-repeat;
-	background-color: #0c4a58;
-	height: 500px;
-	background-position: right 0px top;
+    margin-top: 67px;
+    margin-bottom: -100px;
+    padding-top: 100px;
+    background: url(/assets/images/website/header.bg.jpg) no-repeat;
+    background-color: #0c4a58;
+    height: 500px;
+    background-position: right 0px top;
 }
 
 #themeWeb {
-	margin-top: -86px;
-	margin-left: -63px;
+    margin-top: -86px;
+    margin-left: -63px;
 }
 
 #themeText {
-	margin-top: -104px;
-	margin-left: -46px;
+    margin-top: -104px;
+    margin-left: -46px;
 } 
 
 #headerNextDrawing {
-	font-size: 29px;
-	color: #fff;
-	text-align: left;
+    font-size: 29px;
+    color: #fff;
+    text-align: left;
 }
 
 #headerDate {
-	color: #fff;
-	font-size: 35px;
-	text-align: left;
-	margin-top: 4px;
+    color: #fff;
+    font-size: 35px;
+    text-align: left;
+    margin-top: 4px;
 }
 
 #headerPrice  {
-	color: #fff;
-	font-size: 60px;
-	text-align: right;
-	margin-top: 90px;
+    color: #fff;
+    font-size: 60px;
+    text-align: right;
+    margin-top: 90px;
 }
 
 #seeResultsHome {
-	width: 187px;
-	cursor: hand;
-	cursor: pointer;
-	opacity: 1;
-	margin-left: -40px;
-	margin-top: -65px;
+    width: 187px;
+    cursor: hand;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: -40px;
+    margin-top: -65px;
 }
 
 #seeResultsHome:hover {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 #cagnotteIconHome { 
-	margin-top: 60px;
+    margin-top: 60px;
 }
 
 
 /*--------------------------------*/
 #partAdillionIs {
-	height: 195px;
-	background-color: #1b5c64;
+    height: 195px;
+    background-color: #1b5c64;
 }
 
 
 #partAdillionIsText {
-	color: #fff;
-	position: relative;
-	top: 80px;
-	font-size: 33px;
+    color: #fff;
+    position: relative;
+    top: 80px;
+    font-size: 33px;
 }
 
 
 /* 
 #partAdillionIsText {
-	color: #fff;
-	text-align: right;
-	width: 42%;
-	left: 42%;
-	position: relative;
-	top: 36px;
-	font-size: 34px;
+    color: #fff;
+    text-align: right;
+    width: 42%;
+    left: 42%;
+    position: relative;
+    top: 36px;
+    font-size: 34px;
 }
 
 #partAdillionIsTextBold {
-	color: #fff;
-	font-weight: bold;
-	text-align: left;
-	width: 58%;
-	left: 42%;
-	position: relative;
-	top: 36px;
-	font-size: 34px;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+    width: 58%;
+    left: 42%;
+    position: relative;
+    top: 36px;
+    font-size: 34px;
 } */
 
 
 /*--------------------------------*/
 #partHowItWorks {
-	height: 300px;
-	background-color: #ededed;
+    height: 300px;
+    background-color: #ededed;
 }
 
 #howItWorksTitle {
-	font-size: 38px;
-	color: #1b5c64;
-	height: 100px;
-	padding-top: 45px;
-	text-align:left;
+    font-size: 38px;
+    color: #1b5c64;
+    height: 100px;
+    padding-top: 45px;
+    text-align:left;
 }
 
 #howItWorksWorkflow {
-	padding-top: 26px;
+    padding-top: 26px;
 }
 
 #prizeIconHome {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .howItWorksText {
-	font-size: 25px;
-	color: #1b5c64;
-	padding-top: 5px;
+    font-size: 25px;
+    color: #1b5c64;
+    padding-top: 5px;
 }
 
 #arrow1Home {
-	position: absolute;
-	margin-top: -77px;
-	margin-left: 340px; /* huge only */
+    position: absolute;
+    margin-top: -77px;
+    margin-left: 340px; /* huge only */
 }
 
 #arrow2Home {
-	position: absolute;
-	margin-top: -77px;
-	margin-left: 440px; /* huge only */
+    position: absolute;
+    margin-top: -77px;
+    margin-left: 440px; /* huge only */
 }
 
 /*--------------------------------*/
 #partFunEasyViral {
-	height: 300px;
-	background-color: #fff;
+    height: 300px;
+    background-color: #fff;
 }
 
 .funEasyViralTitle {
-	font-size: 28px;
-	color: #1b5c64;
-	padding-top: 50px;
-	padding-bottom: 20px;
+    font-size: 28px;
+    color: #1b5c64;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 
 .funEasyViralText {
-	font-size: 22px;
-	color: #1b5c64;
+    font-size: 22px;
+    color: #1b5c64;
 }
 
 .funEasyViralImage {
-	padding-top: 35px;
+    padding-top: 35px;
 }
 
 #easyImage {
-	margin-top:-15px;
+    margin-top:-15px;
 }
 
 /*--------------------------------*/
 #partMultiPlatforms {
-	height: 315px;
-	background-color: #188785;
+    height: 315px;
+    background-color: #188785;
 }
 
 .multiPlatformsTitle {
-	font-size: 28px;
-	color: #fff;
-	padding-top: 90px;
-	padding-bottom: 30px;
+    font-size: 28px;
+    color: #fff;
+    padding-top: 90px;
+    padding-bottom: 30px;
 }
 
 .multiPlatformsText {
-	font-size: 22px;
-	color: #fff;
+    font-size: 22px;
+    color: #fff;
 }
 
 .multiPlatformsImage {
-	padding-top: 60px;
+    padding-top: 60px;
 }
 
 /*--------------------------------*/
 #partDownload {
-	height: 530px;
-	background-color: #ededed;
+    height: 530px;
+    background-color: #ededed;
 }
 
 #mobilesImage {
-	margin-top:0px;
+    margin-top:0px;
 }
 
 .downloadText {
-	font-size: 25px;
-	margin-bottom: 15px;
-	color: #1b5c64;
+    font-size: 25px;
+    margin-bottom: 15px;
+    color: #1b5c64;
 }
 
 #downloadHome {
-	padding-top: 20px;
+    padding-top: 20px;
 }
 
 /*--------------------------------*/
 #partResponsible {
-	height: 320px;
-	background-color: #fff;
+    height: 320px;
+    background-color: #fff;
 }
 
 .responsibleTitle {
-	font-size: 28px;
-	color: #1b5c64;
-	padding-top: 90px;
-	padding-bottom: 30px;
+    font-size: 28px;
+    color: #1b5c64;
+    padding-top: 90px;
+    padding-bottom: 30px;
 }
 
 .responsibleText {
-	font-size: 22px;
-	color: #1b5c64;
+    font-size: 22px;
+    color: #1b5c64;
 }
 
 #responsibleImage {
-	padding-top: 31px;
+    padding-top: 31px;
 }
 
 /*--------------------------------*/
 #partGlobal {
-	height: 680px;
-	background-color: #188785;
+    height: 680px;
+    background-color: #188785;
 }
 
 .globalTitle {
-	color: #fff;
-	font-size: 28px;
-	padding-bottom: 30px;
-	padding-top: 50px;
+    color: #fff;
+    font-size: 28px;
+    padding-bottom: 30px;
+    padding-top: 50px;
 }
 
 .globalText {
-	color: #fff;
-	font-size: 25px;
-	padding-bottom: 30px;
+    color: #fff;
+    font-size: 25px;
+    padding-bottom: 30px;
 }
 
 /*--------------------------------*/
 #partMedia {
-	height: 235px;
-	background-color: #fff;
+    height: 235px;
+    background-color: #fff;
 }
 
 .mediaTitle {
-	color: #1b5c64;
-	font-size: 28px;
-	padding-bottom: 30px;
-	padding-top: 50px;
+    color: #1b5c64;
+    font-size: 28px;
+    padding-bottom: 30px;
+    padding-top: 50px;
 }
 
 
 /*--------------------------------*/
 #partAdvertisers {
-	height: 275px;
-	background-color: #1c5d64;
+    height: 275px;
+    background-color: #1c5d64;
 }
 
 .advertisersTitle {
-	font-size: 28px;
-	color: #fff;
-	padding-top: 40px;
-	padding-bottom: 20px;
+    font-size: 28px;
+    color: #fff;
+    padding-top: 40px;
+    padding-bottom: 20px;
 }
 
 .advertisersText {
-	font-size: 22px;
-	color: #fff;
+    font-size: 22px;
+    color: #fff;
 }
 
 #advertisingButton {
-	width: 218px;
-	padding-top: 25px;
-	cursor: hand;
-	cursor: pointer;
-	opacity: 1;
+    width: 218px;
+    padding-top: 25px;
+    cursor: hand;
+    cursor: pointer;
+    opacity: 1;
 }
 
 #advertisingButton:hover {
-	opacity: 0.8;
+    opacity: 0.8;
 }
