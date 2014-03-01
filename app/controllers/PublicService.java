@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.Date;
+
 import com.google.gson.JsonObject;
 
 import managers.LotteryManager;
@@ -20,31 +22,32 @@ public class PublicService extends Application
     {
         return ok(gson.toJson(LotteryManager.getFinishedLotteries()));
     }
-    
+
     //-----------------------------------------------------------//
-    
+
     public static Result getNextLottery()
     {
-       Global global       = LotteryManager.getGlobal();
+        Global global       = LotteryManager.getGlobal();
         Lottery nextLottery = LotteryManager.getNextLottery();
         Lottery nextDrawing = LotteryManager.getNextDrawing();
 
         JsonObject response = new JsonObject();
+        response.addProperty("serverTime",  new Date().getTime());
         response.add("global",         gson.toJsonTree(global));
         response.add("nextLottery",    gson.toJsonTree(nextLottery));
         response.add("nextDrawing",    gson.toJsonTree(nextDrawing));
-        
+
         return ok(gson.toJson(response));
     }
 
     //-----------------------------------------------------------//
-    
-//    public static Result incTest()
-//    {
-//        System.out.println("incrementNbPlayers");
-//        LotteryManager.incrementNbPlayers();
-//        return ok();
-//    }
-    
-    
+
+    //    public static Result incTest()
+    //    {
+    //        System.out.println("incrementNbPlayers");
+    //        LotteryManager.incrementNbPlayers();
+    //        return ok();
+    //    }
+
+
 }

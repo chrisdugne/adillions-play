@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.Date;
+
 import managers.LotteryManager;
 import models.Player;
 
@@ -16,9 +18,14 @@ public class LotteryService extends Application
     public static Result storeLotteryTicket()
     {
         JsonNode params             = request().body().asJson();
-        String numbers             = params.get("numbers").toString();
-        Boolean isExtraTicket     = params.get("extraTicket").asBoolean();
-        Long creationTime         = params.get("creationTime").asLong();
+        String numbers              = params.get("numbers").toString();
+        Boolean isExtraTicket       = params.get("extraTicket").asBoolean();
+        Long creationTime           = null;
+        
+        if(params.get("creationTime") != null)
+            creationTime = params.get("creationTime").asLong();
+        else
+            creationTime = new Date().getTime();
 
         Player player = LotteryManager.storeLotteryTicket(numbers, isExtraTicket, creationTime);
 
