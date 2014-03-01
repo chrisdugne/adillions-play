@@ -12,23 +12,23 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 ####################################################################################
 # Mobile pages
 
-GET     /msignin                       controllers.Application.mobileSignin()
-GET     /msignin2                   controllers.Application.mobileSignin2()
-GET     /msigninFB                     controllers.Application.mobileSigninFromFacebook()
-GET     /mlogin                       controllers.Application.mobileLogin()
-GET     /mvideo                       controllers.Application.mobileVideo()
-GET     /minvite                       controllers.Application.mobileInvite()
-GET     /mlogout                       controllers.Application.mobileLogout()
-GET     /mfaq                         controllers.Application.mobileFaq()
-GET     /mtermsFR                     controllers.Application.mobileTermsFR()
-GET     /mtermsEN                     controllers.Application.mobileTermsEN()
+GET     /msignin                        controllers.Application.mobileSignin()
+GET     /msignin2                       controllers.Application.mobileSignin2()
+GET     /msigninFB                      controllers.Application.mobileSigninFromFacebook()
+GET     /mlogin                         controllers.Application.mobileLogin()
+GET     /mvideo                         controllers.Application.mobileVideo()
+GET     /minvite                        controllers.Application.mobileInvite()
+GET     /mlogout                        controllers.Application.mobileLogout()
+GET     /mfaq                           controllers.Application.mobileFaq()
+GET     /mtermsFR                       controllers.Application.mobileTermsFR()
+GET     /mtermsEN                       controllers.Application.mobileTermsEN()
 
-GET     /mtest                         controllers.Application.mtest()
+GET     /mtest                          controllers.Application.mtest()
 
 ###################
 # Facebook Objects
 
-GET     /theme                        controllers.OpenGraph.theme()
+GET     /theme                          controllers.OpenGraph.theme()
 
 ####################################################################################
 # Services
@@ -37,14 +37,15 @@ GET     /theme                        controllers.OpenGraph.theme()
 #   SecurityController 
 
 POST     /signin                        controllers.SecurityController.signIn()
-POST     /signin2                    controllers.SecurityController.signIn2()
+POST     /signin2                       controllers.SecurityController.signIn2()
 POST     /signinFromFacebook            controllers.SecurityController.signinFromFacebook()
-POST    /login                      controllers.SecurityController.login()
-POST    /playerFromFB               controllers.SecurityController.getPlayerFromFB()
-POST    /existFBPlayer              controllers.SecurityController.existFBPlayer()
-POST    /signinWithTwitter          controllers.SecurityController.signinWithTwitter()
+POST     /login                         controllers.SecurityController.login()
+POST     /playerFromFB                  controllers.SecurityController.getPlayerFromFB()
+POST     /existFBPlayer                 controllers.SecurityController.existFBPlayer()
+POST     /isMeFBPlayer                  controllers.SecurityController.isMeFBPlayer()
+POST     /signinWithTwitter             controllers.SecurityController.signinWithTwitter()
 
-#POST   /logout                    controllers.SecurityController.logout()
+#POST   /logout                         controllers.SecurityController.logout()
 
 #---------------------------------------------------------------------------
 #   AccountService 

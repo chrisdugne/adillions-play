@@ -219,6 +219,29 @@ public class SecurityController extends Action.Simple {
         response.addProperty("existPlayer", existPlayer);
         return ok(gson.toJson(response));
     }
+
+    // ---------------------------------------------//
+
+    public static Result isMeFBPlayer()
+    {
+        JsonNode params = request().body().asJson();
+        JsonNode facebookData = params.get("facebookData");
+
+        //----------------------
+
+        String facebookId = facebookData.get("id").asText();
+        Player player = AccountManager.getPlayerByFacebookId(facebookId);
+
+        Boolean existPlayer = player != null;
+        JsonObject response = new JsonObject();
+
+        if(existPlayer)
+            response.addProperty("uid", player.getUid());
+        else
+            response.addProperty("uid", "free");
+        
+        return ok(gson.toJson(response));
+    }
     
     // ---------------------------------------------//
     
