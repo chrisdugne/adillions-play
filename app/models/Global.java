@@ -40,8 +40,8 @@ public class Global extends Model {
 
     // -----------------------------------------------------------------------------------------------//
     
-    @Version
-   public Timestamp lastUpdate;
+    @Expose
+    public Long lastUpdate;
 
     // -----------------------------------------------------------------------------------------------//
     // -- Queries
@@ -103,11 +103,11 @@ public class Global extends Model {
        this.subheader = subheader;
    }
 
-   public Timestamp getLastUpdate() {
+   public Long getLastUpdate() {
        return lastUpdate;
    }
 
-   public void setLastUpdate(Timestamp lastUpdate) {
+   public void setLastUpdate(Long lastUpdate) {
        this.lastUpdate = lastUpdate;
    }
 
