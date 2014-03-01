@@ -1,8 +1,11 @@
 package models;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 import play.db.ebean.Model;
 
@@ -34,6 +37,11 @@ public class Global extends Model {
     @Expose
     @Column(columnDefinition = "TEXT")
     private String confirmation;
+
+    // -----------------------------------------------------------------------------------------------//
+    
+    @Version
+   public Timestamp lastUpdate;
 
     // -----------------------------------------------------------------------------------------------//
     // -- Queries
@@ -88,19 +96,27 @@ public class Global extends Model {
    }
 
    public String getSubheader() {
-      return subheader;
+       return subheader;
    }
 
    public void setSubheader(String subheader) {
-      this.subheader = subheader;
+       this.subheader = subheader;
+   }
+
+   public Timestamp getLastUpdate() {
+       return lastUpdate;
+   }
+
+   public void setLastUpdate(Timestamp lastUpdate) {
+       this.lastUpdate = lastUpdate;
    }
 
    public String getConfirmation() {
-      return confirmation;
+       return confirmation;
    }
 
    public void setConfirmation(String confirmation) {
-      this.confirmation = confirmation;
+       this.confirmation = confirmation;
    }
 
    // -----------------------------------------------------------------------------------------------//
