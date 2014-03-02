@@ -29,12 +29,8 @@ public class Global extends Model {
     
     @Expose
     @Column(columnDefinition = "TEXT")
-    private String subheader;
+    private String banners;
     
-    @Expose
-    @Column(columnDefinition = "TEXT")
-    private String confirmation;
-
     // -----------------------------------------------------------------------------------------------//
     
     @Expose
@@ -89,15 +85,15 @@ public class Global extends Model {
    }
 
    public void setFbPost(String fbPost) {
-      this.fbPost = fbPost;
+       this.fbPost = fbPost;
    }
 
-   public String getSubheader() {
-       return subheader;
+   public String getBanners() {
+       return banners;
    }
 
-   public void setSubheader(String subheader) {
-       this.subheader = subheader;
+   public void setBanners(String banners) {
+       this.banners = banners;
    }
 
    public Long getLastUpdate() {
@@ -106,14 +102,6 @@ public class Global extends Model {
 
    public void setLastUpdate(Long lastUpdate) {
        this.lastUpdate = lastUpdate;
-   }
-
-   public String getConfirmation() {
-       return confirmation;
-   }
-
-   public void setConfirmation(String confirmation) {
-       this.confirmation = confirmation;
    }
 
    // -----------------------------------------------------------------------------------------------//
