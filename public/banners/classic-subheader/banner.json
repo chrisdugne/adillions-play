@@ -1,0 +1,35 @@
+{
+    "source":"http://www.adillions.com/assets/banners/classic-subheader",
+    "elements":[{
+        "type":"image",
+        "name":"subheader.bg.png",
+        "fit":true,
+        "x":0.5,
+        "y":0.5,
+        "anchorX":0.5,
+        "anchorY":0.5,
+        "width":1,
+        "height":0.07
+    },
+    {
+        "type":"text",
+        "name":"title.png",
+        "x":0.7,
+        "y":0.7,
+        "anchorX":0.5,
+        "anchorY":0.5
+    },
+    {
+        "type":"text",
+        "name":"invite.friends.png",
+        "x":0.7,
+        "y":0.7,
+        "anchorX":0.5,
+        "anchorY":0.5
+    },
+    {
+        "type":"button",
+        "name":"button.subheader.png",
+        "action":1
+    }]
+}
