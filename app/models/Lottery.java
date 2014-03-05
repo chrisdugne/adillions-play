@@ -21,8 +21,8 @@ public class Lottery extends Model {
 
     @Expose
     private Long date;
-   
-    
+
+
     @Expose
     private Integer maxPicks;             // 5
     @Expose
@@ -34,7 +34,7 @@ public class Lottery extends Model {
     @Expose
     private Integer toolPlayers;         // seuil pour afficher les players
 
-    
+
     @Expose
     private Integer minPrice;              
     @Expose
@@ -74,11 +74,11 @@ public class Lottery extends Model {
     @Transient
     @Expose
     private Integer nbWinners;
-    
+
     // -----------------------------------------------------------------------------------------------//
-    
+
     @Version
-   public Timestamp lastUpdate;
+    public Timestamp lastUpdate;
 
     // -----------------------------------------------------------------------------------------------//
     // -- Queries
@@ -86,7 +86,7 @@ public class Lottery extends Model {
     public static Model.Finder<String, Lottery> find = new Finder<String, Lottery>(String.class, Lottery.class);
 
     // -----------------------------------------------------------------------------------------------//
-    
+
     public String getUid() {
         return uid;
     }
@@ -160,14 +160,14 @@ public class Lottery extends Model {
     }
 
     public String getRangs() {
-      return rangs;
-   }
+        return rangs;
+    }
 
-   public void setRangs(String rangs) {
-      this.rangs = rangs;
-   }
+    public void setRangs(String rangs) {
+        this.rangs = rangs;
+    }
 
-   public String getResult() {
+    public String getResult() {
         return result;
     }
 
@@ -236,6 +236,6 @@ public class Lottery extends Model {
     /**
      * 
      */
-   private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 }

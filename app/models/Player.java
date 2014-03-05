@@ -20,11 +20,11 @@ public class Player extends Model {
 
     // -----------------------------------------------------------------------------------------------//
     // Status
-    
-    public static final int ON             = 1;
+
+    public static final int ON              = 1;
     public static final int OFF             = -1;
     public static final int BLOCKED         = -2;
-    
+
     // -----------------------------------------------------------------------------------------------//
 
     @Id
@@ -33,19 +33,21 @@ public class Player extends Model {
 
     @Expose
     private String facebookId;
-    
+
     @Expose
     private String twitterId;
     @Expose
     private String twitterName;
     @Expose
     private String lang;
+    @Expose
+    private String country;
 
     // FB : facebookData.name
     // A    : firstName + lastName 
     @Expose
     private String userName;
-   
+
     @Expose
     private String email;
     @Expose
@@ -55,15 +57,15 @@ public class Player extends Model {
 
     @Expose
     private String birthDate;
-    
+
     @Expose
     private Boolean acceptEmails;
 
     // -----------------------------------------------------------------------------------------------//
-    
+
     @Expose
     private int currentPoints;
-    
+
     @Expose
     private int idlePoints; //meaning idleIT from 1.3
 
@@ -74,13 +76,13 @@ public class Player extends Model {
 
     @Expose
     private int extraTickets;
-    
+
     @Expose
     private int availableTickets;
 
     @Expose
     private int temporaryBonusTickets;
-    
+
     @Expose
     private int playedBonusTickets;
 
@@ -98,7 +100,7 @@ public class Player extends Model {
     private String referrerId;
     @Expose
     private boolean giftToReferrer;
-    
+
     // -----------------------------------------------------------------------------------------------//
 
     @Expose
@@ -114,12 +116,12 @@ public class Player extends Model {
     @Expose
     private Boolean hasInvitedOnFacebook;
 
-   // -----------------------------------------------------------------------------------------------//
+    // -----------------------------------------------------------------------------------------------//
 
-   @Transient
-   @Expose
-   private String notifications;
-   
+    @Transient
+    @Expose
+    private String notifications;
+
     // -----------------------------------------------------------------------------------------------//
     // utiliser normalement que coté client
     // mais bon a savoir coté server pour eviter la triche (availableTickets + nbTickets de fans acceddible coté server)
@@ -134,16 +136,21 @@ public class Player extends Model {
     @OneToMany
     @Expose
     private List<LotteryTicket> lotteryTickets;
-    
+
     @OneToMany
     @Expose
     private List<RaffleTicket> raffleTickets;
 
     // -----------------------------------------------------------------------------------------------//
-    
+
+    @Expose
+    private Float mobileVersion;
+
+    // -----------------------------------------------------------------------------------------------//
+
     @Version
-   public Timestamp lastUpdate;
-    
+    public Timestamp lastUpdate;
+
     // -----------------------------------------------------------------------------------------------//
 
     private String authToken;
@@ -172,7 +179,7 @@ public class Player extends Model {
     // -----------------------------------------------------------------------------------------------//
 
     public static Player findByAuthToken(String authToken) {
-        
+
         if (authToken == null) {
             return null;
         }
@@ -187,14 +194,14 @@ public class Player extends Model {
             return null;
         }
     }
-    
+
     // -----------------------------------------------------------------------------------------------//
-    
+
     public static Player findByFacebookId(String facebookId) {
         if (facebookId == null) {
             return null;
         }
-        
+
         try  {
             return playerQuery()
                     .where().eq("facebookId", facebookId)
@@ -204,14 +211,14 @@ public class Player extends Model {
             return null;
         }
     }
-    
+
     // -----------------------------------------------------------------------------------------------//
-    
+
     public static Player findBySponsorCode(String code) {
         if (code == null) {
             return null;
         }
-        
+
         try  {
             return playerQuery()
                     .where().eq("sponsorCode", code)
@@ -221,9 +228,9 @@ public class Player extends Model {
             return null;
         }
     }
-    
+
     // -----------------------------------------------------------------------------------------------//
-    
+
     public static Player findByUID(String playerUID) {
         try  {
             return playerQuery()
@@ -234,18 +241,18 @@ public class Player extends Model {
             return null;
         }
     }
-    
+
     // -----------------------------------------------------------------------------------------------//
-    
+
     private static Query<Player> playerQuery() {
         return find
                 .fetch("lotteryTickets")
                 .fetch("lotteryTickets.lottery")
                 .orderBy("lotteryTickets.lottery.date desc, lotteryTickets.creationDate desc");
     }
-    
+
     // -----------------------------------------------------------------------------------------------//
-    
+
     public String getUid() {
         return uid;
     }
@@ -389,7 +396,7 @@ public class Player extends Model {
     public void setCreationDate(Long creationDate) {
         this.creationDate = creationDate;
     }
-    
+
     public Boolean getAcceptEmails() {
         return acceptEmails;
     }
@@ -455,14 +462,14 @@ public class Player extends Model {
     }
 
     public Boolean hasTweetTheme() {
-      return hasTweetTheme;
-   }
+        return hasTweetTheme;
+    }
 
-   public void setTweetTheme(Boolean hasTweetTheme) {
-      this.hasTweetTheme = hasTweetTheme;
-   }
+    public void setTweetTheme(Boolean hasTweetTheme) {
+        this.hasTweetTheme = hasTweetTheme;
+    }
 
-   public Boolean hasInvitedOnFacebook() {
+    public Boolean hasInvitedOnFacebook() {
         return hasInvitedOnFacebook;
     }
 
@@ -487,14 +494,14 @@ public class Player extends Model {
     }
 
     public int getTemporaryBonusTickets() {
-      return temporaryBonusTickets;
-   }
+        return temporaryBonusTickets;
+    }
 
-   public void setTemporaryBonusTickets(int temporaryBonusTickets) {
-      this.temporaryBonusTickets = temporaryBonusTickets;
-   }
+    public void setTemporaryBonusTickets(int temporaryBonusTickets) {
+        this.temporaryBonusTickets = temporaryBonusTickets;
+    }
 
-   public int getCurrentPoints() {
+    public int getCurrentPoints() {
         return currentPoints;
     }
 
@@ -527,24 +534,40 @@ public class Player extends Model {
     }
 
     public String getNotifications() {
-      return notifications;
-   }
+        return notifications;
+    }
 
-   public void setNotifications(String notifications) {
-      this.notifications = notifications;
-   }
+    public void setNotifications(String notifications) {
+        this.notifications = notifications;
+    }
 
-   public int getTotalPoints() {
+    public Float getMobileVersion() {
+        return mobileVersion;
+    }
+
+    public void setMobileVersion(Float mobileVersion) {
+        this.mobileVersion = mobileVersion;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public int getTotalPoints() {
         return totalPoints;
     }
 
     public void setTotalPoints(int totalPoints) {
         this.totalPoints = totalPoints;
     }
-    
+
     // -----------------------------------------------------------------------------------------------//
 
 
     private static final long serialVersionUID = -8425213041824976820L;
-    
+
 }
