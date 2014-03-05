@@ -136,7 +136,6 @@ public class SecurityController extends Action.Simple {
 
         if(params.get("country") != null)
             country = params.get("country").asText(); 
-        
 
         //----------------------
 

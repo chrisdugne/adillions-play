@@ -14,8 +14,15 @@ public class AccountService extends Application
     public static Result fetchPlayer()
     {
         JsonNode params = request().body().asJson();
-        Double mobileVersion = params.get("version").asDouble();
-        String country = params.get("country").asText();
+
+        Double mobileVersion    = 0.9;
+        String country          = "-";
+
+        if(params.get("mobileVersion") != null)
+            mobileVersion = params.get("mobileVersion").asDouble(); 
+
+        if(params.get("country") != null)
+            country = params.get("country").asText(); 
         
         Player player = Application.player();
         AccountManager.refreshPlayer(player, mobileVersion, country);
