@@ -13,8 +13,12 @@ public class AccountService extends Application
 
     public static Result fetchPlayer()
     {
+        JsonNode params = request().body().asJson();
+        Double mobileVersion = params.get("version").asDouble();
+        String country = params.get("country").asText();
+        
         Player player = Application.player();
-        AccountManager.refreshPlayer(player);
+        AccountManager.refreshPlayer(player, mobileVersion, country);
 
         if(player != null){
             return ok(gson.toJson(player));

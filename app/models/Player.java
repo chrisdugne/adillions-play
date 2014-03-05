@@ -144,7 +144,7 @@ public class Player extends Model {
     // -----------------------------------------------------------------------------------------------//
 
     @Expose
-    private Float mobileVersion;
+    private Double mobileVersion;
 
     // -----------------------------------------------------------------------------------------------//
 
@@ -541,11 +541,11 @@ public class Player extends Model {
         this.notifications = notifications;
     }
 
-    public Float getMobileVersion() {
+    public Double getMobileVersion() {
         return mobileVersion;
     }
 
-    public void setMobileVersion(Float mobileVersion) {
+    public void setMobileVersion(Double mobileVersion) {
         this.mobileVersion = mobileVersion;
     }
 

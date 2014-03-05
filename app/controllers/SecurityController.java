@@ -125,7 +125,18 @@ public class SecurityController extends Action.Simple {
     {
         System.out.println("getPlayerFromFB");
         JsonNode params = request().body().asJson();
-        JsonNode facebookData = params.get("facebookData");
+        
+        JsonNode facebookData   = params.get("facebookData");
+        
+        Long version            = 0.9;
+        String country          = "-";
+
+        if(params.get("version") != null)
+            version = params.get("version").asLong(); 
+
+        if(params.get("country") != null)
+            country = params.get("country").asText(); 
+        
 
         //----------------------
 
@@ -140,7 +151,7 @@ public class SecurityController extends Action.Simple {
         
         //----------------------
         
-        Player player = AccountManager.getPlayerByFacebookId(facebookId);
+        Player player = AccountManager.fetchPlayerByFacebookId(facebookId, version, country);
 
         if(player != null && player.getStatus() == Player.ON){
            
@@ -202,7 +213,6 @@ public class SecurityController extends Action.Simple {
 
     public static Result existFBPlayer()
     {
-        System.out.println("existFBPlayer ? ");
         JsonNode params = request().body().asJson();
         JsonNode facebookData = params.get("facebookData");
 
@@ -213,8 +223,6 @@ public class SecurityController extends Action.Simple {
 
         Boolean existPlayer = player != null;
 
-        System.out.println(existPlayer);
-        
         JsonObject response = new JsonObject();
         response.addProperty("existPlayer", existPlayer);
         return ok(gson.toJson(response));

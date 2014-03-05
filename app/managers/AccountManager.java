@@ -79,13 +79,19 @@ public class AccountManager {
     {
         return Player.findByAuthToken(token);        
     }
+    
+    //------------------------------------------------------------------------------------//
+    
+    public static Player fetchPlayerByFacebookId(String facebookId, Double mobileVersion, String country) {
+        Player player = Player.findByFacebookId(facebookId);
+        refreshPlayer(player, mobileVersion, country);
+        return player;
+    }
 
     //------------------------------------------------------------------------------------//
 
     public static Player getPlayerByFacebookId(String facebookId) {
-        Player player = Player.findByFacebookId(facebookId);
-        refreshPlayer(player);
-        return player;
+        return Player.findByFacebookId(facebookId);
     }
 
     //------------------------------------------------------------------------------------//
@@ -466,8 +472,15 @@ public class AccountManager {
      * - Then Check for bonus/winnings notifications
      * 
      * @param player
+     * @param country 
+     * @param version 
      */
-    public static void refreshPlayer(Player player) {
+    public static void refreshPlayer(Player player, Double mobileVersion, String country) {
+        
+        player.setMobileVersion(mobileVersion);
+        player.setCountry(country);
+        Ebean.save(player);
+        
         checkLottery(player);
         retrieveBonusTickets(player);
     }
