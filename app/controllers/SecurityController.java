@@ -128,11 +128,11 @@ public class SecurityController extends Action.Simple {
         
         JsonNode facebookData   = params.get("facebookData");
         
-        Long version            = 0.9;
+        Double mobileVersion    = 0.9;
         String country          = "-";
 
-        if(params.get("version") != null)
-            version = params.get("version").asLong(); 
+        if(params.get("mobileVersion") != null)
+            mobileVersion = params.get("mobileVersion").asDouble(); 
 
         if(params.get("country") != null)
             country = params.get("country").asText(); 
@@ -151,7 +151,7 @@ public class SecurityController extends Action.Simple {
         
         //----------------------
         
-        Player player = AccountManager.fetchPlayerByFacebookId(facebookId, version, country);
+        Player player = AccountManager.fetchPlayerByFacebookId(facebookId, mobileVersion, country);
 
         if(player != null && player.getStatus() == Player.ON){
            
