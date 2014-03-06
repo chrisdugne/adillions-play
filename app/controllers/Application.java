@@ -83,6 +83,11 @@ public class Application extends Controller {
         return ok(views.html.mobile.login.render());
     }
     
+    public static Result mobileLogin2()
+    {
+        return ok(views.html.mobile.login2.render());
+    }
+    
     public static Result mobileSignin()
     {
         return ok(views.html.mobile.signin.render());
