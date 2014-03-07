@@ -28,17 +28,12 @@
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/e/tiniest/home.css")' />
 </head>
 
-@import views.html.mobile.header;
 @import views.html.templates.components.termsContentEN;
 
 <body>
-    @header()
-
     <div class="content">
-        <img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="mobilecloser"></img>
         @termsContentEN()
     </div>
-
 </body>
 
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -56,10 +51,6 @@ $(function() {
     window.translator.setLang('en', true);
     
     //-----------------------------------// 
-
-    $("#closeButton").click(function() {
-        window.location.href = "/backToMobile"
-    });
 
     $("#TermsIntro1").text(Translator.messages["TermsIntro1"]);
     $("#TermsIntro2").text(Translator.messages["TermsIntro2"]);
