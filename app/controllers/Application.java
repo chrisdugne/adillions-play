@@ -98,9 +98,19 @@ public class Application extends Controller {
        return ok(views.html.mobile.signin2.render());
     }
     
+    public static Result mobileSignin3()
+    {
+        return ok(views.html.mobile.signin3.render());
+    }
+    
     public static Result mobileSigninFromFacebook()
     {
         return ok(views.html.mobile.signinFB.render());
+    }
+
+    public static Result mobileSigninFromFacebook2()
+    {
+        return ok(views.html.mobile.signinFB2.render());
     }
 
     public static Result mobileVideo()

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+<title>Adillions - Sign in</title>
+<link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/favicon.png")'>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/bootstrap.min.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/header.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/mobile.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/game.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/a/huge/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/b/big/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/c/medium/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/c/medium/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/c/medium/home.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/d/small/footer.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/d/small/global.css")' />
+<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/d/small/home.css")' />
+</head>
+
+<body>
+
+    <div class="content">
+
+        <div class="row-fluid">
+            <div class="span7">
+                <p id="fbForm_title" class="popuptitle"></p>
+            </div>
+        </div>
+
+        <div class="row-fluid marginbottom2">
+            <div class="span3 offset1">
+                <img title="icon" id="facebookPicture"></img>
+            </div>
+            <div class="span4 offset3">
+                <a id="changeAccountButton"></a>
+            </div>
+        </div>
+        <br />
+
+        <div class="row-fluid normal marginbottom4 " id="personal_text_fb"></div>
+        <br />
+
+        <form id="fbForm">
+
+            <div class="clearfix">
+                <label id="labelFirstName" for="firstName"></label>
+                <div class="input">
+                    <input type="text" id="fbForm_firstName" name="firstName" value="">
+                </div>
+            </div>
+
+            <div class="clearfix">
+                <label id="labelLastName" for="lastName"></label>
+                <div class="input">
+                    <input type="text" id="fbForm_lastName" name="lastName" value="">
+                </div>
+            </div>
+
+            <div class="clearfix">
+                <label id="labelEmail" for="email"></label>
+                <div class="input">
+                    <input type="text" id="fbForm_email" name="email" value="">
+                </div>
+            </div>
+
+            <label id="labelBirthDate" for="birthDate"></label> <input type="date" name="date" id="fbForm_mbirthDate" required />
+
+            <div class="clearfix">
+                <label id="labelReferrerCode" for="referrerId"></label>
+                <div class="input">
+                    <input type="text" id="fbForm_referrerId" name="referrerId" value="">
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <div class="span1">
+                    <div class="checkboxFive">
+                        <input type="checkbox" name="check1" id="check1" /> <label for="check1"></label>
+                    </div>
+                </div>
+                <div class="span8 offset2">
+                    <div class="row-fluid" id="check1Label"></div>
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <div class="span1">
+                    <div class="checkboxFive">
+                        <input type="checkbox" name="check2" id="check2" /> <label for="check2"></label>
+                    </div>
+                </div>
+                <div class="span8 offset2">
+                    <div class="row-fluid" id="check2Label"></div>
+                </div>
+            </div>
+
+            <div id="validateButton" class="btn-large button"></div>
+        </form>
+
+    </div>
+
+
+    <div id="question" style="display: none; cursor: default">
+
+        <br />
+
+        <div class="row-fluid">
+            <div class="offset2 span8" id="questionText"></div>
+        </div>
+
+        <br /> <br />
+
+        <div class="row-fluid">
+            <div class="span4 offset1" id="confirmFirstNameLabel"></div>
+            <div class="span4 offset1">
+                <p id="confirmFirstName"></p>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span4 offset1" id="confirmLastNameLabel"></div>
+            <div class="span4 offset1">
+                <p id="confirmLastName"></p>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span4 offset1" id="confirmBirthDateLabel"></div>
+            <div class="span4 offset1">
+                <p id="confirmBirthDate"></p>
+            </div>
+        </div>
+
+
+        <br /> <br />
+
+        <div class="row-fluid">
+            <div id="no" class="span6 btn-large button"></div>
+            <div id="yes" class="span6 btn-large button"></div>
+        </div>
+
+        <br /> <br />
+
+    </div>
+</body>
+
+
+<!-- Libs -->
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript" src='@routes.Assets.at("js/libs/jquery.ui.touch-punch.min.js")'></script>
+
+<script src='@routes.Assets.at("js/libs/jquery.blockUI.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/libs/sha512.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/libs/jquery.validate.min.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/libs/spin.min.js")' type="text/javascript"></script>
+
+<script src='@routes.Assets.at("js/webapp/managers/userManager.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/webapp/app-common.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/webapp/tools/utils.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/webapp/tools/translator.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("js/libs/jquery.cookie.js")' type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+$(function() {
+   
+   //-----------------------------------// 
+   // setup 
+
+   window.translator = new Translator(true);
+   UserManager.mobileSetupForms()
+
+   //-----------------------------------// 
+   // read url params 
+
+   var firstName     = decodeURIComponent(Utils.getURLParameter("first_name"))
+   var lastName     = decodeURIComponent(Utils.getURLParameter("last_name"))
+   var pictureUrl     = decodeURIComponent(Utils.getURLParameter("picture_url"))
+   var birthday     = Utils.getURLParameter("birth_date")
+   var email         = Utils.getURLParameter("email")
+
+   //-----------------------------------// 
+   // fill form 
+
+    // FB birthday is MM/DD/YYYY
+    var split = birthday.split("/");
+   birthday = split[2] + "-" + split[0] + "-" + split[1];
+   
+   $("#fbForm_mbirthDate").val(birthday);
+   $("#fbForm_title").text(Translator.messages["Welcome"] + " " + decodeURIComponent(Utils.getURLParameter("facebookName")) + " !")
+               
+   $("#fbForm_firstName").val(firstName)
+   $("#fbForm_lastName").val(lastName)
+   $("#fbForm_email").val(email)
+   $("#facebookPicture").attr("src", pictureUrl)
+
+   //-----------------------------------// 
+   // locale/ translations 
+
+   $("#personal_text_fb").text(Translator.messages["PersonalInfoFB"])
+   $("#labelFirstName").text(Translator.messages["FirstName"])
+   $("#labelLastName").text(Translator.messages["LastName"])
+   $("#labelEmail").text(Translator.messages["Email"])
+   $("#labelBirthDate").text(Translator.messages["BirthDate"])
+
+   $("#confirmFirstNameLabel").text(Translator.messages["FirstName"] + " :")
+   $("#confirmLastNameLabel").text(Translator.messages["LastName"] + " :")
+   $("#confirmBirthDateLabel").text(Translator.messages["BirthDate"] + " :")
+   
+   $("#labelReferrerCode").text(Translator.messages["ReferrerCode"])
+   $("#changeAccountButton").text(Translator.messages["NotYou"])
+   $("#FBUsername").text(Translator.messages["FBUsername"])
+   $("#FBImportant").text(Translator.messages["FBImportant"])
+   $("#FBRealName").text(Translator.messages["FBRealName"])
+   $("#FBReceive").text(Translator.messages["FBReceive"])
+
+   $("#check1Label").text(Translator.messages["AcceptTerms"])
+   $("#check2Label").text(Translator.messages["AcceptOffers"])
+   
+   $("#validateButton").text(Translator.messages["SignIn"])
+
+   $("#questionText").text(Translator.messages["FBAttention"])
+   $("#yes").text(Translator.messages["Continue"])
+   $("#no").text(Translator.messages["GoBack"])
+   
+   //-------------------------------------------// 
+   
+   $("#validateButton").click(function() {
+      
+      if(UserManager.signinFormFBReady()){
+          
+          UserManager.mobileSigninFB(function(result) {
+              var url = "/signedIn"
+              url += "?firstName="         + $("#fbForm_firstName").val()
+              url += "&lastName="         + $("#fbForm_lastName").val()
+              url += "&birthDate="       + $("#fbForm_mbirthDate").val()
+              url += "&authToken=" + result.authToken
+              window.location.href = url
+           });
+      }
+   });
+   
+   //-------------------------------------------//
+   
+   $("#fbForm_mbirthDate").click(function() {
+       $("#fbForm_mbirthDate").removeClass("error");
+   });
+   
+   $("#check1").click(function() {
+       if($("#check1")[0].checked){
+           $("#check1Label").removeClass("error");
+       }
+       else{
+           $("#check1Label").addClass("error");
+       }
+   });
+
+   $("#check2").click(function() {
+       if($("#check2")[0].checked){
+           $("#check2Label").removeClass("error");
+       }
+       else{
+           $("#check2Label").addClass("error");
+       }
+   });
+   
+   //-------------------------------------------// 
+
+   $("#changeAccountButton").click(function() {
+      window.location.href = "/requireLogout"
+   });
+
+});
+   
+</script>
+
+</html>
