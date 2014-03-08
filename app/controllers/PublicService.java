@@ -27,10 +27,13 @@ public class PublicService extends Application
 
     public static Result getNextLottery()
     {
+        Global global       = LotteryManager.getGlobal();
         Lottery nextLottery = LotteryManager.getNextLottery();
         Lottery nextDrawing = LotteryManager.getNextDrawing();
 
         JsonObject response = new JsonObject();
+        response.addProperty("serverTime",  new Date().getTime());
+        response.add("global",         gson.toJsonTree(global));
         response.add("nextLottery",    gson.toJsonTree(nextLottery));
         response.add("nextDrawing",    gson.toJsonTree(nextDrawing));
 
