@@ -499,7 +499,10 @@ public class AccountManager {
     }
     
     private static List<LotteryTicket> findLotteryTickets(Player player) {
-        return new ArrayList<LotteryTicket>();
+        return LotteryTicket.find
+                .fetch("lottery")
+                .where().eq("player.uid", player.getUid())
+                .findList();
    }
     
     private static List<LotteryTicket> findAllLotteryTickets(Player player) {
