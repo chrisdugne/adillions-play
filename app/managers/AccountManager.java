@@ -2,6 +2,7 @@ package managers;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import models.Lottery;
 import models.LotteryTicket;
@@ -16,6 +17,8 @@ import utils.Utils;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
+import com.avaje.ebean.Query;
+import com.avaje.ebean.SqlRow;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.typesafe.plugin.MailerAPI;
@@ -481,8 +484,29 @@ public class AccountManager {
         player.setCountry(country);
         Ebean.save(player);
         
+        getLotteryTickets(player);
         checkLottery(player);
         retrieveBonusTickets(player);
+    }
+
+    //------------------------------------------------------------------------------------//
+
+    private static void getLotteryTickets(Player player) {
+        if(player.getMobileVersion() >= 1.3)
+            player.setLotteryTickets(findLotteryTickets(player));
+        else
+            player.setLotteryTickets(findAllLotteryTickets(player));
+    }
+    
+    private static List<LotteryTicket> findLotteryTickets(Player player) {
+        return new ArrayList<LotteryTicket>();
+   }
+    
+    private static List<LotteryTicket> findAllLotteryTickets(Player player) {
+        return LotteryTicket.find
+                .fetch("lottery")
+                .where().eq("player.uid", player.getUid())
+                .findList();
     }
 
     //------------------------------------------------------------------------------------//

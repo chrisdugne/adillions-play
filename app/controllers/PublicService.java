@@ -25,15 +25,12 @@ public class PublicService extends Application
 
     //-----------------------------------------------------------//
 
-    public static Result getNextLottery()
+    public static Result getNextLottery() 
     {
-        Global global       = LotteryManager.getGlobal();
         Lottery nextLottery = LotteryManager.getNextLottery();
         Lottery nextDrawing = LotteryManager.getNextDrawing();
 
         JsonObject response = new JsonObject();
-        response.addProperty("serverTime",  new Date().getTime());
-        response.add("global",         gson.toJsonTree(global));
         response.add("nextLottery",    gson.toJsonTree(nextLottery));
         response.add("nextDrawing",    gson.toJsonTree(nextDrawing));
 
@@ -44,7 +41,7 @@ public class PublicService extends Application
     
     public static Result getGlobals()
     {
-        Global global       = LotteryManager.getGlobal();
+        Global global = LotteryManager.getGlobal();
         
         JsonObject response = new JsonObject();
         response.addProperty("serverTime",  new Date().getTime());
@@ -54,13 +51,5 @@ public class PublicService extends Application
     }
 
     //-----------------------------------------------------------//
-
-    //    public static Result incTest()
-    //    {
-    //        System.out.println("incrementNbPlayers");
-    //        LotteryManager.incrementNbPlayers();
-    //        return ok();
-    //    }
-
 
 }

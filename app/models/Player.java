@@ -1,6 +1,7 @@
 package models;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -133,9 +134,8 @@ public class Player extends Model {
 
     // -----------------------------------------------------------------------------------------------//
 
-    @OneToMany
     @Expose
-    private List<LotteryTicket> lotteryTickets;
+    private List<LotteryTicket> lotteryTickets = new ArrayList<LotteryTicket>();
 
     @OneToMany
     @Expose
@@ -245,10 +245,11 @@ public class Player extends Model {
     // -----------------------------------------------------------------------------------------------//
 
     private static Query<Player> playerQuery() {
-        return find
-                .fetch("lotteryTickets")
-                .fetch("lotteryTickets.lottery")
-                .orderBy("lotteryTickets.lottery.date desc, lotteryTickets.creationDate desc");
+        return find;
+//        return find
+//                .fetch("lotteryTickets")
+//                .fetch("lotteryTickets.lottery")
+//                .orderBy("lotteryTickets.lottery.date desc, lotteryTickets.creationDate desc");
     }
 
     // -----------------------------------------------------------------------------------------------//
