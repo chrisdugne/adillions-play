@@ -127,19 +127,18 @@ public class SecurityController extends Action.Simple {
         JsonNode params = request().body().asJson();
         
         JsonNode facebookData   = params.get("facebookData");
-        
-        Double mobileVersion    = 0.9;
-        String country          = "-";
+        String facebookId = facebookData.get("id").asText();
 
-        if(params.get("mobileVersion") != null)
-            mobileVersion = params.get("mobileVersion").asDouble(); 
-
-        if(params.get("country") != null)
-            country = params.get("country").asText(); 
+        Double mobileVersion    = null;
+        String country          = null;
 
         //----------------------
 
-        String facebookId = facebookData.get("id").asText();
+        if(params.get("mobileVersion") != null)
+            mobileVersion = params.get("mobileVersion").asDouble(); 
+        
+        if(params.get("country") != null)
+            country = params.get("country").asText(); 
         
         //----------------------
         // verify token
@@ -153,19 +152,18 @@ public class SecurityController extends Action.Simple {
         Player player = AccountManager.fetchPlayerByFacebookId(facebookId, mobileVersion, country);
 
         if(player != null && player.getStatus() == Player.ON){
-           
+
             String authToken = player.createToken();
             response().setCookie(AUTH_TOKEN, authToken);
 
             JsonObject response = new JsonObject();
             response.addProperty(AUTH_TOKEN, authToken);
             response.add("player", gson.toJsonTree(player));
+            
             return ok(gson.toJson(response));
         }
         else{
             // require signinFromFB
-
-            System.out.println("require signinFromFB");
             return unauthorized();
         }
         

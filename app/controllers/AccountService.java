@@ -1,8 +1,11 @@
 package controllers;
 
+import java.util.List;
+
 import org.codehaus.jackson.JsonNode;
 
 import managers.AccountManager;
+import models.LotteryTicket;
 import models.Player;
 import play.mvc.Result;
 import play.mvc.With;
@@ -14,30 +17,40 @@ public class AccountService extends Application
     public static Result fetchPlayer()
     {
         JsonNode params = request().body().asJson();
+        Player player = Application.player();
 
-        Double mobileVersion    = 0.9;
-        String country          = "-";
+        if(player == null){
+            return ok(gson.toJson(null));
+        }
+
+        Double mobileVersion    = null;
+        String country          = null;
 
         if(params.get("mobileVersion") != null)
             mobileVersion = params.get("mobileVersion").asDouble(); 
-
+            
         if(params.get("country") != null)
             country = params.get("country").asText(); 
         
-        Player player = Application.player();
         AccountManager.refreshPlayer(player, mobileVersion, country);
-
-        if(player != null){
-            return ok(gson.toJson(player));
-        }
-        else{
-            return ok(gson.toJson(null));
-        }
+        return ok(gson.toJson(player));
 
     }
 
     // ---------------------------------------------//
 
+    public static Result getLotteryTickets() {
+        
+        JsonNode params = request().body().asJson();
+        Player player = Application.player();
+        String lastLotteryUID = params.get("lastLotteryUID").asText();
+        
+        List<LotteryTicket> tickets = AccountManager.getLotteryTickets(player, lastLotteryUID);
+        return ok(gson.toJson(tickets));
+    }
+    
+    // ---------------------------------------------//
+    
     public static Result updatePlayer()
     {
         JsonNode params = request().body().asJson();

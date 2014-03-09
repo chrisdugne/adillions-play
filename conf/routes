@@ -54,9 +54,10 @@ POST     /signinWithTwitter             controllers.SecurityController.signinWit
 #   AccountService 
 
 POST    /player                     controllers.AccountService.fetchPlayer()
+POST    /lotteryTickets             controllers.AccountService.getLotteryTickets()
 POST    /updatePlayer               controllers.AccountService.updatePlayer()
 POST    /updateFanStatus            controllers.AccountService.updateFanStatus()
-POST    /giveToCharity                controllers.AccountService.giveToCharity()
+POST    /giveToCharity              controllers.AccountService.giveToCharity()
 POST    /cashout                    controllers.AccountService.cashout()
 
 #---------------------------------------------------------------------------
