@@ -14,7 +14,7 @@
         "x":0.2,
         "y":0.3,
         "anchorX":0,
-        "anchorY":0.5
+        "anchorY":0.2
     },
     {
         "type":"text",
@@ -22,10 +22,10 @@
         "x":0.2,
         "y":0.35,
         "anchorX":0,
-        "anchorY":0.5
+        "anchorY":0.6
     },
     {
-        "type":"button",
+        "type":"image",
         "name":"button.subheader.png",
         "x":0.9,
         "y":0.5,
@@ -34,19 +34,20 @@
         "action":1
     },
     {
-        "type":"button",
+        "type":"image",
         "name":"button.subheader.png",
         "x":0.9,
-        "y":0.5,
+        "y":0.8,
         "anchorX":1,
         "anchorY":0.5,
         "action":2,
-        "actionContent":{
-            "type":"button",
+        "actionContent":[{
+            "type":"image",
             "name":"button.subheader.png",
             "x":0.5,
             "y":0.5,
-            "action":1
-        }
+            "action":0,
+            "url":"http://www.adillions.com/mfaq"
+        }]
     }]
 }

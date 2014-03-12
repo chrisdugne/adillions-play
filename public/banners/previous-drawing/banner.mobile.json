@@ -1,0 +1,9 @@
+{
+    "source":"http://www.adillions.com/assets/banners/previous-drawing",
+    "elements":[{
+        "type":"image",
+        "name":"banner.previousdrawing.png",
+        "x":0.5,
+        "y":0.5,
+    }]
+}
