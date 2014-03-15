@@ -25,6 +25,10 @@ public class AccountService extends Application
 
         Double mobileVersion    = null;
         String country          = null;
+        Boolean fromWeb         = false;
+
+        if(params.get("fromWeb") != null)
+            fromWeb = params.get("fromWeb").asBoolean(); 
 
         if(params.get("mobileVersion") != null)
             mobileVersion = params.get("mobileVersion").asDouble(); 
@@ -32,7 +36,7 @@ public class AccountService extends Application
         if(params.get("country") != null)
             country = params.get("country").asText(); 
         
-        AccountManager.refreshPlayer(player, mobileVersion, country);
+        AccountManager.refreshPlayer(player, fromWeb, mobileVersion, country);
         return ok(gson.toJson(player));
 
     }

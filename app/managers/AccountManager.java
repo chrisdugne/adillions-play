@@ -83,9 +83,9 @@ public class AccountManager {
     
     //------------------------------------------------------------------------------------//
     
-    public static Player fetchPlayerByFacebookId(String facebookId, Double mobileVersion, String country) {
+    public static Player fetchPlayerByFacebookId(String facebookId, Boolean fromWeb, Double mobileVersion, String country) {
         Player player = Player.findByFacebookId(facebookId);
-        refreshPlayer(player, mobileVersion, country);
+        refreshPlayer(player, fromWeb, mobileVersion, country);
         return player;
     }
 
@@ -476,10 +476,11 @@ public class AccountManager {
      * - Then Check for bonus/winnings notifications
      * 
      * @param player
+     * @param fromWeb 
      * @param country 
      * @param version 
      */
-    public static void refreshPlayer(Player player, Double mobileVersion, String country) {
+    public static void refreshPlayer(Player player, Boolean fromWeb, Double mobileVersion, String country) {
         
         if(mobileVersion != null)
             player.setMobileVersion(mobileVersion);
@@ -491,8 +492,10 @@ public class AccountManager {
         
         player.setLotteryTickets(getLotteryTickets(player, null));
         
-        checkLottery(player);
-        retrieveBonusTickets(player);
+        if(!fromWeb && player.getMobileVersion() > 1.3){
+            checkLottery(player);
+            retrieveBonusTickets(player);
+        }
     }
 
     //------------------------------------------------------------------------------------//

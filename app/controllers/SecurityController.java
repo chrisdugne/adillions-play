@@ -131,8 +131,12 @@ public class SecurityController extends Action.Simple {
 
         Double mobileVersion    = null;
         String country          = null;
+        Boolean fromWeb         = false;
 
         //----------------------
+
+        if(params.get("fromWeb") != null)
+            fromWeb = params.get("fromWeb").asBoolean(); 
 
         if(params.get("mobileVersion") != null)
             mobileVersion = params.get("mobileVersion").asDouble(); 
@@ -149,7 +153,7 @@ public class SecurityController extends Action.Simple {
         
         //----------------------
         
-        Player player = AccountManager.fetchPlayerByFacebookId(facebookId, mobileVersion, country);
+        Player player = AccountManager.fetchPlayerByFacebookId(facebookId, fromWeb, mobileVersion, country);
 
         if(player != null && player.getStatus() == Player.ON){
 
