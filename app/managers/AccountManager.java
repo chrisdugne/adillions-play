@@ -382,10 +382,13 @@ public class AccountManager {
         //-------------------------------------//
 
         player.setTweet                     (newUserJson.get("hasTweet").asBoolean());
-        player.setTweetTheme                (newUserJson.get("hasTweetTheme").asBoolean());
         player.setPostOnFacebook            (newUserJson.get("hasPostOnFacebook").asBoolean());
         player.setTweetAnInvite             (newUserJson.get("hasTweetAnInvite").asBoolean());
         player.setInvitedOnFacebook         (newUserJson.get("hasInvitedOnFacebook").asBoolean());
+        
+        if(player.getMobileVersion() > 1.3)
+            player.setTweetTheme                (newUserJson.get("hasTweetTheme").asBoolean());
+        
 
         //-------------------------------------//
 
