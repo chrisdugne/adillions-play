@@ -139,12 +139,26 @@ public class LotteryManager {
     }
 
     private static void findNbWinnersForLottery(Lottery lottery) {
-        String sql         = "select count(*)  from lottery_ticket where lottery_uid='"+lottery.getUid()+"' and \"price\" IS NOT NULL and \"price\" > 0;";
-        SqlRow result    = Ebean.createSqlQuery(sql).findUnique();  
+        String sql          = "select count(*)  from lottery_ticket where lottery_uid='"+lottery.getUid()+"' and \"price\" IS NOT NULL and \"price\" > 0;";
+        SqlRow result       = Ebean.createSqlQuery(sql).findUnique();  
 
         lottery.setNbWinners(result.getInteger("count"));
     }
 
+    //------------------------------------------------------------------------------------//
+    
+    private static Integer getNbLotteriesPlayed(String playerUID) {
+        String sql          = "select count (*) from ( select distinct lottery_uid from lottery_ticket where player_uid = '"+playerUID+"' ) as lotteries";
+        SqlRow result       = Ebean.createSqlQuery(sql).findUnique();  
+        return result.getInteger("count");
+    }
+    
+    private static Integer getNbTicketsPlayed(String playerUID, String lotteryUID) {
+        String sql          = "select count (*) from lottery_ticket where player_uid = '"+playerUID+"' and lottery_uid = '"+lotteryUID+"'";
+        SqlRow result       = Ebean.createSqlQuery(sql).findUnique();  
+        return result.getInteger("count");
+    }
+    
     //------------------------------------------------------------------------------------//
 
     /**
@@ -157,28 +171,8 @@ public class LotteryManager {
      */
     public static Player storeLotteryTicket(String numbers, Boolean isExtraTicket, Long creationTime){
 
-        Player player = Application.player();
-        Lottery lottery = LotteryManager.getNextLottery();
-
-        // -----------------------------------------------------//
-        // A - securite : on check cote server si le nb de tickets est ok
-        // coté client cest deja fait, mais un post 'dev tricheur' peut arriver ici sans pb
-        // ou meme plusieurs connections sur plusieurs devices ! les coquins.
-
-        // B - on compte le nbre de lotteries jouees pour eventuel gift to referrer
-
-        int nbTicketsPlayed = 0;
-        ArrayList<String> playedLotteries = new ArrayList<String>();
-
-        for(LotteryTicket t : player.getLotteryTickets()){
-            if(t.getLottery().getUid().equals(lottery.getUid())){
-                nbTicketsPlayed ++;
-            }
-
-            if(!playedLotteries.contains(t.getLottery().getUid())){
-                playedLotteries.add(t.getLottery().getUid());
-            }
-        }
+        Player player       = Application.player();
+        Lottery lottery     = LotteryManager.getNextLottery();
 
         // -----------------------------------------------------//
 
@@ -210,16 +204,16 @@ public class LotteryManager {
         // -----------------------------------------------------//
         // New player / First ticket
 
-        if(nbTicketsPlayed == 0)
+        if(getNbTicketsPlayed(player.getUid(), lottery.getUid()) == 0)
             incrementNbPlayers(lottery);
 
         // -----------------------------------------------------//
         // referring
-
-        if(playedLotteries.size() >= NB_LOTTERIES_TO_PLAY_TO_BE_REFERRED 
-                && !player.hasGivenToReferrer()
-                && player.getReferrerId() != null
-                && player.getReferrerId().length() > 0){
+        
+        if(!player.hasGivenToReferrer()
+            && player.getReferrerId() != null
+            && player.getReferrerId().length() > 0
+            && getNbLotteriesPlayed(player.getUid()) >= NB_LOTTERIES_TO_PLAY_TO_BE_REFERRED ){
 
             player.setGiftToReferrer(true);
 
