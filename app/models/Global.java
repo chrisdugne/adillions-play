@@ -11,9 +11,13 @@ import com.google.gson.annotations.Expose;
 @Entity
 public class Global extends Model { 
 
+    // -----------------------------------------------------------------------------------------------//
+
     @Id
     @Expose
     private String id;
+
+    // -----------------------------------------------------------------------------------------------//
 
     @Expose
     @Column(columnDefinition = "TEXT")
@@ -23,14 +27,42 @@ public class Global extends Model {
     @Column(columnDefinition = "TEXT")
     private String tweetTheme;
 
+    // -----------------------------------------------------------------------------------------------//
+    
     @Expose
     @Column(columnDefinition = "TEXT")
     private String fbPost;
+    
+    @Expose
+    @Column(columnDefinition = "TEXT")
+    private String fbSharePrize;
+
+    // -----------------------------------------------------------------------------------------------//
 
     @Expose
     @Column(columnDefinition = "TEXT")
     private String banners;
 
+    // -----------------------------------------------------------------------------------------------//
+
+    @Expose
+    @Column(columnDefinition = "TEXT")
+    private String sms;
+    
+    @Expose
+    @Column(columnDefinition = "TEXT")
+    private String email;
+    
+    @Expose
+    @Column(columnDefinition = "TEXT")
+    private String text48h;
+    
+    @Expose
+    @Column(columnDefinition = "TEXT")
+    private String text3min;
+    
+    // -----------------------------------------------------------------------------------------------//
+    
     @Expose
     public Double versionRequired;
 
@@ -105,6 +137,46 @@ public class Global extends Model {
 
     public void setVersionRequired(Double versionRequired) {
         this.versionRequired = versionRequired;
+    }
+
+    public String getFbSharePrize() {
+        return fbSharePrize;
+    }
+
+    public void setFbSharePrize(String fbSharePrize) {
+        this.fbSharePrize = fbSharePrize;
+    }
+
+    public String getSms() {
+        return sms;
+    }
+
+    public void setSms(String sms) {
+        this.sms = sms;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getText48h() {
+        return text48h;
+    }
+
+    public void setText48h(String text48h) {
+        this.text48h = text48h;
+    }
+
+    public String getText3min() {
+        return text3min;
+    }
+
+    public void setText3min(String text3min) {
+        this.text3min = text3min;
     }
 
     public Long getLastUpdate() {
