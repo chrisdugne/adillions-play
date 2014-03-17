@@ -176,30 +176,41 @@ public class LotteryManager {
 
         // -----------------------------------------------------//
 
-        int facebookFanBonus = 0;
-        int twitterFanBonus = 0;
-
-        if(player.getFacebookId() != null)
-            facebookFanBonus += FACEBOOK_CONNECTION_TICKETS;
-
-        if(player.isFacebookFan())
-            facebookFanBonus += FACEBOOK_FAN_TICKETS;
-
-        if(player.getTwitterId() != null)
-            twitterFanBonus += TWITTER_CONNECTION_TICKETS;
-
-        if(player.isTwitterFan())
-            twitterFanBonus += TWITTER_FAN_TICKETS;
+//        int facebookFanBonus = 0;
+//        int twitterFanBonus = 0;
+//
+//        if(player.getFacebookId() != null)
+//            facebookFanBonus += FACEBOOK_CONNECTION_TICKETS;
+//
+//        if(player.isFacebookFan())
+//            facebookFanBonus += FACEBOOK_FAN_TICKETS;
+//
+//        if(player.getTwitterId() != null)
+//            twitterFanBonus += TWITTER_CONNECTION_TICKETS;
+//
+//        if(player.isTwitterFan())
+//            twitterFanBonus += TWITTER_FAN_TICKETS;
 
         // -----------------------------------------------------//
         // Triches 
+//        
+//        System.out.println("storeLotteryTicket");
+//        System.out.println(player.getAvailableTickets() );
+//        System.out.println(player.getTemporaryBonusTickets() );
+//        System.out.println(facebookFanBonus );
+//        System.out.println(twitterFanBonus );
+//        System.out.println( player.getPlayedBonusTickets() );
+//
+//        if(player.getAvailableTickets() + player.getTemporaryBonusTickets() + facebookFanBonus + twitterFanBonus - player.getPlayedBonusTickets() <= 0){ 
+//            System.out.println("triche1");
+//            return player;
+//        }
+//
+//        if(isExtraTicket && player.getExtraTickets() <= 0){
+//            System.out.println("triche2");
+//            return player;
+//        }
 
-        if(player.getAvailableTickets() + player.getTemporaryBonusTickets() + facebookFanBonus + twitterFanBonus - player.getPlayedBonusTickets() <= 0) 
-            return player;
-
-        if(isExtraTicket && player.getExtraTickets() <= 0){
-            return player;
-        }
 
         // -----------------------------------------------------//
         // New player / First ticket
