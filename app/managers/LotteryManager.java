@@ -249,18 +249,19 @@ public class LotteryManager {
         // -----------------------------------------------------//
         // count down availble/played tickets
 
+        
         if(player.getAvailableTickets() > 0)
             player.setAvailableTickets    (player.getAvailableTickets() - 1);
         else
             player.setPlayedBonusTickets (player.getPlayedBonusTickets() + 1);
 
-        if(player.getExtraTickets() > 0){
+        
+        if(player.getExtraTickets() > 0)
             player.setExtraTickets(player.getExtraTickets() - 1);
-        }
-        else{
+        else
             player.setTotalPaidTickets (player.getTotalPaidTickets() + 1);
-        }
 
+        
         player.setTotalPlayedTickets    (player.getTotalPlayedTickets() + 1);
 
         // -----------------------------------------------------//
