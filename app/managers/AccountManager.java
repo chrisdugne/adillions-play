@@ -495,7 +495,9 @@ public class AccountManager {
         
         player.setLotteryTickets(getLotteryTickets(player, null));
         
+        System.out.println("----> refresh player | " + player.getMobileVersion() + " : " + fromWeb);
         if(!fromWeb && player.getMobileVersion() >= 1.3){
+            System.out.println("----> proceed");
             checkLottery(player);
             retrieveBonusTickets(player);
         }
@@ -602,6 +604,7 @@ public class AccountManager {
 
         long now = new Date().getTime();
 
+        System.out.println("----> retrieveBonusTickets");
         for(LotteryTicket ticket : player.getLotteryTickets()){
 
             //--------------------------------------------//
@@ -614,6 +617,7 @@ public class AccountManager {
             //--------------------------------------------//
             // money prizes 
 
+            System.out.println("----> ticket " + ticket.getUid() + " | status : " + ticket.getStatus());
             if(ticket.getStatus() == LotteryTicket.unseen){
                 ticket.setStatus(LotteryTicket.blocked);
                 prizes        += ticket.getPrice();
@@ -637,6 +641,8 @@ public class AccountManager {
                     stocks += bonus.get("stocks").getAsLong();
 
                 instants += bonus.get("instants").getAsLong();
+
+                System.out.println("----> ticket " + ticket.getUid() + " | IT : " + instants + " | BT : " + stocks);
                 Ebean.save(ticket);  
             }
 
