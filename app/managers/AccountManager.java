@@ -181,11 +181,12 @@ public class AccountManager {
         player.setLotteryTickets                (new ArrayList<LotteryTicket>());
         player.setRaffleTickets                 (new ArrayList<RaffleTicket>());
         
+        player.setCurrentLotteryUID             ("-");
         player.setMobileVersion                 (1d);
         player.setCountry                       ("-");
-        
 
         player.setTweet                     (false);
+        player.setTweetTheme                (false);
         player.setPostOnFacebook            (false);
         player.setTweetAnInvite             (false);
         player.setInvitedOnFacebook         (false);
