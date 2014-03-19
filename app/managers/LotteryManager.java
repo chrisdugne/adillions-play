@@ -30,17 +30,20 @@ public class LotteryManager {
 
     //------------------------------------------------------------------------------------//
 
-    public static Global getGlobal()
-    {
+    public static Global getGlobal()    {
         return Global.current();
     }
 
     //------------------------------------------------------------------------------------//
 
-    public static Lottery getNextLottery()
-    {
-        //-------------------------------------
+    public static Lottery getLottery(String lotteryUID) {
+        return Lottery.findByUID(lotteryUID);
+    }
 
+    //------------------------------------------------------------------------------------//
+
+    public static Lottery getNextLottery()    {
+        
         Long now = new Date().getTime();
         Long nowPlus2h = now + 2 * 60 * 60 * 1000;
 
@@ -58,10 +61,9 @@ public class LotteryManager {
         return lottery;
     }
 
+    //------------------------------------------------------------------------------------//
 
-    public static Lottery getNextDrawing()
-    {
-        //-------------------------------------
+    public static Lottery getNextDrawing()    {
 
         Long now = new Date().getTime();
 
@@ -70,6 +72,7 @@ public class LotteryManager {
                 .orderBy("date asc")
                 .findList().get(0);
 
+        //-------------------------------------
 
         findNbTicketsForLottery(nextDrawing);
 
@@ -311,6 +314,6 @@ public class LotteryManager {
         }
 
     }
-
+    
     //------------------------------------------------------------------------------------//
 }

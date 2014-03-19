@@ -87,6 +87,18 @@ public class Lottery extends Model {
 
     // -----------------------------------------------------------------------------------------------//
 
+    public static Lottery findByUID(String lotteryUID) {
+        try  {
+            return find
+                    .where().eq("uid", lotteryUID)
+                    .findUnique();
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
+    // -----------------------------------------------------------------------------------------------//
+
     public String getUid() {
         return uid;
     }
