@@ -64,6 +64,12 @@ public class Global extends Model {
     // -----------------------------------------------------------------------------------------------//
     
     @Expose
+    @Column(columnDefinition = "TEXT")
+    public String appStatus;
+
+    // -----------------------------------------------------------------------------------------------//
+    
+    @Expose
     public Double versionRequired;
 
     // -----------------------------------------------------------------------------------------------//
@@ -137,6 +143,14 @@ public class Global extends Model {
 
     public void setVersionRequired(Double versionRequired) {
         this.versionRequired = versionRequired;
+    }
+
+    public String getAppStatus() {
+        return appStatus;
+    }
+
+    public void setAppStatus(String appStatus) {
+        this.appStatus = appStatus;
     }
 
     public String getFbSharePrize() {

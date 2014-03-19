@@ -49,6 +49,14 @@ public class PublicService extends Application
         
         return ok(gson.toJson(response));
     }
+    
+    //-----------------------------------------------------------//
+    
+    public static Result getAppStatus()
+    {
+        Global global = LotteryManager.getGlobal();
+        return ok(gson.toJson(global.getAppStatus()));
+    }
 
     //-----------------------------------------------------------//
 

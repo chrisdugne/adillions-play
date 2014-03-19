@@ -71,3 +71,5 @@ POST    /storeLotteryTicket         controllers.LotteryService.storeLotteryTicke
 POST    /nextLottery                controllers.PublicService.getNextLottery()
 POST    /finishedLotteries          controllers.PublicService.getFinishedLotteries()
 POST    /globals                    controllers.PublicService.getGlobals()
+POST    /appStatus                  controllers.PublicService.getAppStatus()
+
