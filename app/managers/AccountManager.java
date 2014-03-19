@@ -495,7 +495,7 @@ public class AccountManager {
         
         player.setLotteryTickets(getLotteryTickets(player, null));
         
-        if(!fromWeb && player.getMobileVersion() > 1.3){
+        if(!fromWeb && player.getMobileVersion() >= 1.3){
             checkLottery(player);
             retrieveBonusTickets(player);
         }
@@ -563,10 +563,7 @@ public class AccountManager {
     //------------------------------------------------------------------------------------//
 
     /**
-     * on fetch player only
-     * convert ticket as "notification done"
-     * sum the notifications
-     * 
+     * reset for new lottery to play
      * @param player
      */
     private static void checkLottery(Player player) {

@@ -14,16 +14,16 @@ public class LotteryTicket extends Model {
 
     // -----------------------------------------------------------------------------------------------//
 
-   public static final int unseen     = 0; // set as winning ticket, before notification
-    public static final int blocked  = 1; // set as winning ticket, notification/popup read, cashout blocked (<10)
+    public static final int unseen      = 0; // set as winning ticket, before notification
+    public static final int blocked     = 1; // set as winning ticket, notification/popup read, cashout blocked (<10)
     public static final int pending     = 2; // cashout requested
-    public static final int payed     = 3; // to set manually when paiement is done
-    public static final int gift         = 4; // gift to charity
+    public static final int payed       = 3; // to set manually when paiement is done
+    public static final int gift        = 4; // gift to charity
 
-    public static final int bonus1     = 11; // rang 7
-    public static final int bonus2     = 12; // rang 8
-    public static final int bonus3     = 13; // rang 9
-    public static final int bonus4     = 14; // rang 10
+    public static final int bonus1      = 11; // rang 7
+    public static final int bonus2      = 12; // rang 8
+    public static final int bonus3      = 13; // rang 9
+    public static final int bonus4      = 14; // rang 10
     
     public static final int validatedBonus1     = 111; // rang 7 converted
     public static final int validatedBonus2     = 112; // rang 8 converted
