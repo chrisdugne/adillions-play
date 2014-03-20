@@ -35,9 +35,9 @@ public class AccountManager {
     public static boolean existEmail(JsonNode userJson)
     {
         String email = userJson.get("email").asText();
-        ExpressionList<Player> accounts = Player.find.where().ilike("email", email);
+        Player player = Player.findByEmail(email);
 
-        return accounts.findRowCount() == 1;
+        return player != null;
     }
 
     public static boolean existNames(JsonNode userJson)

@@ -241,6 +241,19 @@ public class Player extends Model {
             return null;
         }
     }
+    
+    // -----------------------------------------------------------------------------------------------//
+    
+    public static Player findByEmail(String email) {
+        try  {
+            return playerQuery()
+                    .where().eq("email", email)
+                    .findUnique();
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
 
     // -----------------------------------------------------------------------------------------------//
 

@@ -194,15 +194,24 @@ public class SecurityController extends Action.Simple {
         //----------------------
         
         if(!AccountManager.existNames(userJson)){
-            Player player = AccountManager.createNewPlayer(userJson);
-
-            String authToken = player.createToken();
-            response().setCookie(AUTH_TOKEN, authToken);
-
-            JsonObject response = new JsonObject();
-            response.addProperty(AUTH_TOKEN, authToken);
-            response.addProperty("player", gson.toJson(player));
-            return ok(gson.toJson(response));
+            if(!AccountManager.existEmail(userJson)){
+                Player player = AccountManager.createNewPlayer(userJson);
+    
+                String authToken = player.createToken();
+                response().setCookie(AUTH_TOKEN, authToken);
+    
+                JsonObject response = new JsonObject();
+                response.addProperty(AUTH_TOKEN, authToken);
+                response.addProperty("player", gson.toJson(player));
+                return ok(gson.toJson(response));
+            }
+            else{
+                // 1 - si player n'a pas de facebookId : on merge
+                // 2 - si player a un facebookId et facebookId != celui ci : annuler et demander un autre mail ou de se connecter avec lautre
+                //  (pas possible que facebookId soit egal : on aurait fetchPlayer non ?) 
+//                Player player = AccountManager.mergeUserUsingFB(userJson);
+                return ok(gson.toJson(null));
+            }
         }
         else{
             return ok(gson.toJson(null));
