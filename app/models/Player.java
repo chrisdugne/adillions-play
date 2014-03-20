@@ -247,7 +247,7 @@ public class Player extends Model {
     public static Player findByEmail(String email) {
         try  {
             return playerQuery()
-                    .where().eq("email", email)
+                    .where().ilike("email", email)
                     .findUnique();
         }
         catch (Exception e) {
