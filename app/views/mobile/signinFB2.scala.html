@@ -192,13 +192,15 @@ $(function() {
    // fill form 
 
     // FB birthday is MM/DD/YYYY
-    var split = birthday.split("/");
-   birthday = split[2] + "-" + split[0] + "-" + split[1];
    
-   if(birthday == "-")
+   if(birthday == "-"){
        $("#fbForm_mbirthDate").val("1970-01-01");
-   else
+   }
+   else{
+	    var split = birthday.split("/");
+	   birthday = split[2] + "-" + split[0] + "-" + split[1];
        $("#fbForm_mbirthDate").val(birthday);
+   }
    
    $("#fbForm_title").text(Translator.messages["Welcome"] + " " + decodeURIComponent(Utils.getURLParameter("facebookName")) + " !")
                
