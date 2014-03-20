@@ -85,8 +85,13 @@ public class AccountManager {
     
     public static Player fetchPlayerByFacebookId(String facebookId, Boolean fromWeb, Double mobileVersion, String country) {
         Player player = Player.findByFacebookId(facebookId);
-        refreshPlayer(player, fromWeb, mobileVersion, country);
-        return player;
+        
+        if(player != null){
+            refreshPlayer(player, fromWeb, mobileVersion, country);
+            return player;
+        }
+        else return null; 
+        
     }
 
     //------------------------------------------------------------------------------------//
