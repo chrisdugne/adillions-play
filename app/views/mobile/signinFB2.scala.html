@@ -182,11 +182,11 @@ $(function() {
    //-----------------------------------// 
    // read url params 
 
-   var firstName     = decodeURIComponent(Utils.getURLParameter("first_name"))
-   var lastName     = decodeURIComponent(Utils.getURLParameter("last_name"))
-   var pictureUrl     = decodeURIComponent(Utils.getURLParameter("picture_url"))
-   var birthday     = Utils.getURLParameter("birth_date")
-   var email         = Utils.getURLParameter("email")
+   var firstName        = decodeURIComponent(Utils.getURLParameter("first_name"))
+   var lastName         = decodeURIComponent(Utils.getURLParameter("last_name"))
+   var pictureUrl       = decodeURIComponent(Utils.getURLParameter("picture_url"))
+   var birthday         = Utils.getURLParameter("birth_date")
+   var email            = Utils.getURLParameter("email")
 
    //-----------------------------------// 
    // fill form 
@@ -195,12 +195,22 @@ $(function() {
     var split = birthday.split("/");
    birthday = split[2] + "-" + split[0] + "-" + split[1];
    
-   $("#fbForm_mbirthDate").val(birthday);
+   if(birthday == "-")
+       $("#fbForm_mbirthDate").val("1970-01-01");
+   else
+       $("#fbForm_mbirthDate").val(birthday);
+   
    $("#fbForm_title").text(Translator.messages["Welcome"] + " " + decodeURIComponent(Utils.getURLParameter("facebookName")) + " !")
                
    $("#fbForm_firstName").val(firstName)
    $("#fbForm_lastName").val(lastName)
-   $("#fbForm_email").val(email)
+   
+   
+   if(email == "-")
+       $("#fbForm_email").val("");
+   else
+       $("#fbForm_email").val(email);
+   
    $("#facebookPicture").attr("src", pictureUrl)
 
    //-----------------------------------// 
