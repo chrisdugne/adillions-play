@@ -123,11 +123,11 @@ public class SecurityController extends Action.Simple {
     
     public static Result getPlayerFromFB()
     {
-        System.out.println("getPlayerFromFB");
         JsonNode params = request().body().asJson();
         
         JsonNode facebookData   = params.get("facebookData");
-        String facebookId = facebookData.get("id").asText();
+        String facebookId       = facebookData.get("id").asText();
+        System.out.println("getPlayerFromFB : " + facebookId);
 
         Double mobileVersion    = null;
         String country          = null;

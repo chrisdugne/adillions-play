@@ -30,47 +30,9 @@
 <body>
     <div class="content">
         <div class="row-fluid">
-        <div id="accordion" class="span12 marginbottom8">
             
-            <div class="subtitleText" id="Q1"></div>
-            <div><div class="classictext" id="A1"></div></div>
-            <div class="subtitleText" id="Q2"></div>
-            <div><div class="classictext" id="A1"></div></div>
-            <div class="subtitleText" id="Q3"></div>
-            <div><div class="classictext" id="A3"></div></div>
-            <div class="subtitleText" id="Q4"></div>
-            <div><div class="classictext" id="A4"></div></div>
-            <div class="subtitleText" id="Q5"></div>
-            <div><div class="classictext" id="A5"></div></div>
-            <div class="subtitleText" id="Q6"></div>
-            <div><div class="classictext" id="A6"></div></div>
-            <div class="subtitleText" id="Q7"></div>
-            <div><div class="classictext" id="A7"></div></div>
-            <div class="subtitleText" id="Q8"></div>
-            <div><div class="classictext" id="A8"></div></div>
-            <div class="subtitleText" id="Q9"></div>
-            <div><div class="classictext" id="A9"></div></div>
-            <div class="subtitleText" id="Q10"></div>
-            <div><div class="classictext" id="A10"></div></div>
-            <div class="subtitleText" id="Q11"></div>
-            <div><div class="classictext" id="A11"></div></div>
-            <div class="subtitleText" id="Q12"></div>
-            <div><div class="classictext" id="A12"></div></div>
-            <div class="subtitleText" id="Q13"></div>
-            <div>
-                <div class="classictext" id="A13"></div>
-                <ul>
-                    <li class="textli" id="A13a"></li>
-                    <li class="textli" id="A13b"></li>
-                    <li class="textli" id="A13c"></li>
-                    <li class="textli" id="A13d"></li>
-                    <li class="textli" id="A13e"></li>
-                </ul>
-            </div>
-        </div>
-        </div>
 
-
+        </div>
     </div>
 
 </body>
@@ -84,24 +46,12 @@
 <script type="text/javascript">
     
     $(function() {
-        $("#accordion").accordion({
-            collapsible : true,
-            active : false,
-            heightStyle : "content"
-        });
-
         //-----------------------------------// 
         // setup 
 
         window.translator = new Translator(true);
 
         //-----------------------------------// 
-    
-        for(var i=1; i<14; i++)
-            $("#Q"+i).text(Translator.messages["Q"+i]);
-
-        for(var i=1; i<14; i++)
-            $("#A"+i).text(Translator.messages["A"+i]);
 
         $("#A13a").text(Translator.messages["A13a"]);
         $("#A13b").text(Translator.messages["A13b"]);
