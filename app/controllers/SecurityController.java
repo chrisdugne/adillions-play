@@ -210,11 +210,16 @@ public class SecurityController extends Action.Simple {
                 // 2 - si player a un facebookId et facebookId != celui ci : annuler et demander un autre mail ou de se connecter avec lautre
                 //  (pas possible que facebookId soit egal : on aurait fetchPlayer non ?) 
 //                Player player = AccountManager.mergeUserUsingFB(userJson);
-                return ok(gson.toJson(null));
+
+                JsonObject response = new JsonObject();
+                response.addProperty("emailExists", true);
+                return ok(gson.toJson(response));
             }
         }
         else{
-            return ok(gson.toJson(null));
+            JsonObject response = new JsonObject();
+            response.addProperty("namesExist", true);
+            return ok(gson.toJson(response));
         }
         
     }

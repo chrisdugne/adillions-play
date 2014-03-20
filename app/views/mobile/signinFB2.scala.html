@@ -251,12 +251,20 @@ $(function() {
       if(UserManager.signinFormFBReady()){
           
           UserManager.mobileSigninFB(function(result) {
-              var url = "/signedIn"
-              url += "?firstName="         + $("#fbForm_firstName").val()
-              url += "&lastName="         + $("#fbForm_lastName").val()
-              url += "&birthDate="       + $("#fbForm_mbirthDate").val()
-              url += "&authToken=" + result.authToken
-              window.location.href = url
+              if(result.authToken){
+	              var url = "/signedIn"
+	              url += "?firstName="             + $("#fbForm_firstName").val()
+	              url += "&lastName="              + $("#fbForm_lastName").val()
+	              url += "&birthDate="             + $("#fbForm_mbirthDate").val()
+	              url += "&authToken="             + result.authToken
+	              window.location.href = url
+              }
+              else{
+                  if(result.emailExists)
+                      App.message("Email already existing", false);
+                  else if(result.emailExists)
+                      App.message("Names already existing", false);
+              }
            });
       }
    });
