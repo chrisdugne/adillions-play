@@ -621,21 +621,22 @@ public class AccountManager {
         player.setReceivedWinnings  (0d);
         
         for(LotteryTicket ticket : getAllLotteryTickets(player)){
-            
             Double value = Utils.countryPrice(ticket.getPrice(), player.getCountry(), ticket.getLottery().getRateUSDtoEUR());
             player.setTotalWinnings(player.getTotalWinnings() + value);
 
-            if(ticket.getStatus() == LotteryTicket.blocked)
-                player.setBalance(player.getBalance() + value);
-
-            else if(ticket.getStatus() == LotteryTicket.gift)
-                player.setTotalGift(player.getTotalGift() + value);
-            
-            else if(ticket.getStatus() == LotteryTicket.pending)
-                player.setPendingWinnings(player.getPendingWinnings() + value);
-            
-            else
-                player.setReceivedWinnings(player.getReceivedWinnings() + value);
+            if(ticket.getStatus() != null){
+                if(ticket.getStatus() == LotteryTicket.blocked)
+                    player.setBalance(player.getBalance() + value);
+                
+                else if(ticket.getStatus() == LotteryTicket.gift)
+                    player.setTotalGift(player.getTotalGift() + value);
+                
+                else if(ticket.getStatus() == LotteryTicket.pending)
+                    player.setPendingWinnings(player.getPendingWinnings() + value);
+                
+                else
+                    player.setReceivedWinnings(player.getReceivedWinnings() + value);
+            }
         }
     }
     
