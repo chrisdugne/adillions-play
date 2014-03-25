@@ -310,6 +310,18 @@ end
                 || country.equals("BA");
     }
     
+    public static String displayPrice(Double price, String country)    {
+        if(price == null)
+            price = 0d;
+        
+        if(isEuroCountry(country))
+            return price + " €";
+
+        else
+            return "US$ " + price;
+        
+    }
+
     public static Double countryPrice(Double euros, String country, Double rateUSDtoEUR)
     {
         if(euros == null)
@@ -319,7 +331,7 @@ end
             return euros;
         
         else
-            return Utils.roundTwoDecimals(euros*rateUSDtoEUR);
+            return Utils.roundOneDecimals(euros*rateUSDtoEUR);
     }
 
 }

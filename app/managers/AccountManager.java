@@ -340,16 +340,16 @@ public class AccountManager {
 
         //-------------------------------------//
 
-        String facebookId     = null;
-        String twitterId         = null;
-        String twitterName    = null;
-        String userName         = newUserJson.get("userName").asText();
+        String facebookId           = null;
+        String twitterId            = null;
+        String twitterName          = null;
+        String userName             = newUserJson.get("userName").asText();
 
         //-------------------------------------//
 
         if(newUserJson.get("facebookId") != null && player.getFacebookId() == null){
-            facebookId     = newUserJson.get("facebookId").asText();
-            userName     = newUserJson.get("facebookName").asText();
+            facebookId      = newUserJson.get("facebookId").asText();
+            userName        = newUserJson.get("facebookName").asText();
 
             Player playerExisting = getPlayerByFacebookId(facebookId);
 
@@ -399,7 +399,7 @@ public class AccountManager {
         //-------------------------------------//
 
         Ebean.save(player);  
-
+        
         return player;
     }
 
@@ -450,7 +450,9 @@ public class AccountManager {
 
     public static void cashout(Player player, String country) {
 
-        Double amount = 0d;
+        Double euros    = 0d;
+        Double usd      = 0d;
+        
         List<LotteryTicket> tickets = null;
 
         //-------------------------------------//
@@ -474,12 +476,14 @@ public class AccountManager {
             if(ticket.getStatus() == LotteryTicket.blocked){
                 ticket.setStatus(LotteryTicket.pending);
                 Ebean.save(ticket);  
-                amount += ticket.getPrice();
+                euros   += ticket.getPrice();
+                usd     += Utils.countryPrice(euros, player.getCountry(), ticket.getLottery().getRateUSDtoEUR());
             }
         }
 
         //-------------------------------------//
-
+        // to winners@adillions.com
+        
         String subject = "[Adillions - Cashout request]";
 
         String content = "<p>Cashout</p>" + 
@@ -489,7 +493,7 @@ public class AccountManager {
                 "<p>firstName : "   + player.getFirstName()             + "</p>" + 
                 "<p>lastName : "    + player.getLastName()              + "</p>" + 
                 "<p>birthdate : "   + player.getBirthDate()             + "</p>" + 
-                "<p>amount : "      + Utils.roundOneDecimals(amount)    + "</p>" + 
+                "<p>amount : "      + Utils.roundOneDecimals(euros)     + "</p>" + 
                 "<p>country : "     + country                           + "</p>" ; 
 
         MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
@@ -501,11 +505,50 @@ public class AccountManager {
             mail.sendHtml("<html>"+content+"</html>" );
         }
         catch(Exception e){
-            System.out.println("couldn't cashout " + player.getEmail() + " | amount : " + amount);
+            System.out.println("couldn't cashout " + player.getEmail() + " | amount : " + euros);
         }
 
-        Ebean.save(player);  
+        //-------------------------------------//
+        // to player
+        
+        String price = "";
+        if(Utils.isEuroCountry(player.getCountry()))
+            price = Utils.displayPrice(euros, player.getCountry());
+        else
+            price = Utils.displayPrice(usd, player.getCountry());
+        
+        String subject2         = "[Adillions - Cashout request]";
+        String cashoutOK        = "";
+        String congratulations  = "";
+        
+        if(player.getLang().equals("fr")){
+            cashoutOK = "Your cash out request of "+ price + " has been successfully sent.";
+            congratulations = "Congratulations !";
+        }
+        else{
+            cashoutOK = "Votre demande de paiement de "+ price + " a été reçue avec succès.";
+            congratulations = "Félicitations !";
+        }
 
+        String content2 = "<p>" + cashoutOK + "</p>" + 
+                "<p>" + congratulations + "</p>" +
+
+                "<span style=\"color: #888888;\"><img id=\"logo\" style=\"width: 180px;\" src=\""+Application.APP_HOSTNAME+"/assets/images/logo.png\" alt=\"\" /></span>" +
+                "<p style=\"padding-left: 20px;margin-top:2px\"><span style=\"color: #888888;\">"+Application.APP_HOSTNAME+"</span></p>";
+
+        
+        
+        MailerAPI mail2 = play.Play.application().plugin(MailerPlugin.class).email();
+        mail.setSubject(subject2);
+        mail.addRecipient(player.getEmail());
+        mail.addFrom("winners@adillions.com");
+        
+        try{
+            mail2.sendHtml("<html>"+content2+"</html>" );
+        }
+        catch(Exception e){
+            System.out.println("couldn't tell player " + player.getEmail() + " | amount : " + euros);
+        }
     }
 
     //---------------------------------------------------------------------------------------------------------------//
