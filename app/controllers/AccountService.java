@@ -43,6 +43,9 @@ public class AccountService extends Application
 
     // ---------------------------------------------//
 
+    /*
+     * from 1.3
+     */
     public static Result getLotteryTickets() {
         
         JsonNode params = request().body().asJson();

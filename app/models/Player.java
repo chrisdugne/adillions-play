@@ -123,9 +123,29 @@ public class Player extends Model {
     @Expose
     private String notifications;
 
+    @Transient
+    @Expose
+    private Double totalWinnings;
+
+    @Transient
+    @Expose
+    private Double balance;
+
+    @Transient
+    @Expose
+    private Double totalGift;
+    
+    @Transient
+    @Expose
+    private Double receivedWinnings;
+    
+    @Transient
+    @Expose
+    private Double pendingWinnings;
+
     // -----------------------------------------------------------------------------------------------//
-    // utiliser normalement que coté client
-    // mais bon a savoir coté server pour eviter la triche (availableTickets + nbTickets de fans acceddible coté server)
+    // utilisé normalement que coté client
+    // mais bon à savoir coté server pour eviter la triche (availableTickets + nbTickets de fans acceddible coté server)
 
     @Expose
     private Boolean isFacebookFan;
@@ -569,6 +589,46 @@ public class Player extends Model {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Double getTotalWinnings() {
+        return totalWinnings;
+    }
+
+    public void setTotalWinnings(Double totalWinnings) {
+        this.totalWinnings = totalWinnings;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public Double getTotalGift() {
+        return totalGift;
+    }
+
+    public void setTotalGift(Double totalGift) {
+        this.totalGift = totalGift;
+    }
+
+    public Double getReceivedWinnings() {
+        return receivedWinnings;
+    }
+
+    public void setReceivedWinnings(Double receivedWinnings) {
+        this.receivedWinnings = receivedWinnings;
+    }
+
+    public Double getPendingWinnings() {
+        return pendingWinnings;
+    }
+
+    public void setPendingWinnings(Double pendingWinnings) {
+        this.pendingWinnings = pendingWinnings;
     }
 
     public int getTotalPoints() {

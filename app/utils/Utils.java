@@ -12,7 +12,7 @@ public class Utils {
     //======================================================================================//
     
     /*
-     * wait for nbSecs seconds
+     * wait fornbSecs seconds
      * sleep(3) = wait 3 secs
      */
     public static void sleep(long nbSecs){
@@ -63,7 +63,7 @@ public class Utils {
         char[] pw = new char[n];
         int c = 'A';
         int r1 = 0;
-        for (int i=0; i < n; i++)
+        for(int i=0; i < n; i++)
         {
             r1 = (int)(Math.random() * 3);
             switch(r1) {
@@ -80,7 +80,7 @@ public class Utils {
         
         char[] code = new char[6];
         
-        for (int i=0; i < 5; i++)
+        for(int i=0; i < 5; i++)
             code[i] = (char)('A' +  (int)(Math.random() * 26));
         
         code[5] = (char)('0' +  (int)(Math.random() * 10));
@@ -113,7 +113,7 @@ public class Utils {
 
     private static String convertToHex(byte[] data) {
         StringBuffer buf = new StringBuffer();
-        for (int i = 0; i < data.length; i++) {
+        for(int i = 0; i < data.length; i++) {
             int halfbyte = (data[i] >>> 4) & 0x0F;
             int two_halfs = 0;
             do {
@@ -157,7 +157,7 @@ public class Utils {
     //======================================================================================//
     
     
-    // return 1-i or 0
+    // return 1-i ||0
     public static int random(int i)
     {
         if(i == 0)
@@ -218,6 +218,108 @@ public class Utils {
         String random = Long.toHexString(d.longValue()); 
         
         return timestamp + random;
+    }
+    
+    //======================================================================================//
+    /*
+     * function isEuroCountry (country) 
+
+    local isEuro = country == "AT"
+    || country == "BE"
+    || country == "CY"
+    || country == "EE"
+    || country == "FI"
+    || country == "FR"
+    || country == "DE"
+    || country == "GR"
+    || country == "IE"
+    || country == "IT"
+    || country == "LU"
+    || country == "MT"
+    || country == "NL"
+    || country == "PT"
+    || country == "SK"
+    || country == "SI"
+    || country == "ES"
+    || country == "BG"
+    || country == "HR"
+    || country == "CZ"
+    || country == "DK"
+    || country == "HU"
+    || country == "LV"
+    || country == "LT"
+    || country == "PL"
+    || country == "RO"
+    || country == "SE"
+    || country == "GB"
+    || country == "IS"
+    || country == "LI"
+    || country == "NO"
+    || country == "CH"
+    || country == "MC"
+    || country == "AL"
+    || country == "MK"
+    || country == "ME"
+    || country == "RS"
+    || country == "BA"
+
+    return isEuro;
+end
+
+
+     */
+    public static Boolean isEuroCountry(String country)
+    {
+        return country.equals("AT")
+                || country.equals("BE")
+                || country.equals("CY")
+                || country.equals("EE")
+                || country.equals("FI")
+                || country.equals("FR")
+                || country.equals("DE")
+                || country.equals("GR")
+                || country.equals("IE")
+                || country.equals("IT")
+                || country.equals("LU")
+                || country.equals("MT")
+                || country.equals("NL")
+                || country.equals("PT")
+                || country.equals("SK")
+                || country.equals("SI")
+                || country.equals("ES")
+                || country.equals("BG")
+                || country.equals("HR")
+                || country.equals("CZ")
+                || country.equals("DK")
+                || country.equals("HU")
+                || country.equals("LV")
+                || country.equals("LT")
+                || country.equals("PL")
+                || country.equals("RO")
+                || country.equals("SE")
+                || country.equals("GB")
+                || country.equals("IS")
+                || country.equals("LI")
+                || country.equals("NO")
+                || country.equals("CH")
+                || country.equals("MC")
+                || country.equals("AL")
+                || country.equals("MK")
+                || country.equals("ME")
+                || country.equals("RS")
+                || country.equals("BA");
+    }
+    
+    public static Double countryPrice(Double euros, String country, Double rateUSDtoEUR)
+    {
+        if(euros == null)
+            euros = 0d;
+
+        if(isEuroCountry(country))
+            return euros;
+        
+        else
+            return Utils.roundTwoDecimals(euros*rateUSDtoEUR);
     }
 
 }

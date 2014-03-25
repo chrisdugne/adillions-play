@@ -60,7 +60,7 @@ public class Lottery extends Model {
     private String prizes;                 // [{"winners" : "2", "share" : "3.45"},{"winners" : "0", "share" : "0"},...]
 
     @Expose
-    private Float rateUSDtoEUR;         // 1.34
+    private Double rateUSDtoEUR;         // 1.34
 
     @Expose
     private int ticketTimer;         // min
@@ -235,11 +235,11 @@ public class Lottery extends Model {
         this.ticketTimer = ticketTimer;
     }
 
-    public Float getRateUSDtoEUR() {
+    public Double getRateUSDtoEUR() {
         return rateUSDtoEUR;
     }
 
-    public void setRateUSDtoEUR(Float rateUSDtoEUR) {
+    public void setRateUSDtoEUR(Double rateUSDtoEUR) {
         this.rateUSDtoEUR = rateUSDtoEUR;
     }
 

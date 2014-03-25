@@ -135,31 +135,31 @@ public class AccountManager {
 
         //-------------------------------------//
 
-        String referrerId = null;
+        String referrerId   = null;
         if(userJson.get("referrerId").asText().length() > 0){
-            referrerId     = userJson.get("referrerId").asText();
+            referrerId      = userJson.get("referrerId").asText();
         }
 
         //-------------------------------------//
 
-        String facebookId = null;
+        String facebookId   = null;
         if(userJson.get("facebookId") != null){
-            facebookId     = userJson.get("facebookId").asText();
-            userName     = userJson.get("facebookName").asText();
+            facebookId      = userJson.get("facebookId").asText();
+            userName        = userJson.get("facebookName").asText();
         }
 
         //-------------------------------------//
 
-        String twitterId         = null;
-        String twitterName     = null;
+        String twitterId    = null;
+        String twitterName  = null;
         if(userJson.get("twitterId") != null){
-            twitterId     = userJson.get("twitterId").asText();
-            twitterName = userJson.get("twitterName").asText();
+            twitterId       = userJson.get("twitterId").asText();
+            twitterName     = userJson.get("twitterName").asText();
         }
 
         //-------------------------------------//
 
-        String secret = null;
+        String secret       = null;
         if(userJson.get("password") != null){
             // password is SHA512 from client
             String password         = userJson.get("password").asText();
@@ -188,30 +188,30 @@ public class AccountManager {
         
         player.setCurrentLotteryUID             ("-");
         player.setMobileVersion                 (1d);
-        player.setCountry                       ("-");
+        player.setCountry                       ("US");
 
-        player.setTweet                     (false);
-        player.setTweetTheme                (false);
-        player.setPostOnFacebook            (false);
-        player.setTweetAnInvite             (false);
-        player.setInvitedOnFacebook         (false);
+        player.setTweet                         (false);
+        player.setTweetTheme                    (false);
+        player.setPostOnFacebook                (false);
+        player.setTweetAnInvite                 (false);
+        player.setInvitedOnFacebook             (false);
 
-        player.setAvailableTickets        (START_AVAILABLE_TICKETS);
-        player.setTemporaryBonusTickets(0);
-        player.setPlayedBonusTickets    (0);
-        player.setTotalPlayedTickets    (0);
-        player.setTotalPaidTickets        (0);
+        player.setAvailableTickets              (START_AVAILABLE_TICKETS);
+        player.setTemporaryBonusTickets         (0);
+        player.setPlayedBonusTickets            (0);
+        player.setTotalPlayedTickets            (0);
+        player.setTotalPaidTickets              (0);
 
-        player.setFacebookFan            (false);
-        player.setTwitterFan                (false);
+        player.setFacebookFan                   (false);
+        player.setTwitterFan                    (false);
 
-        player.setCurrentPoints            (0);
-        player.setTotalPoints            (0);
-        player.setIdlePoints                (0);
+        player.setCurrentPoints                 (0);
+        player.setTotalPoints                   (0);
+        player.setIdlePoints                    (0);
 
-        player.setCreationDate            (now);
-        player.setStatus                    (Player.ON);
-        player.setAcceptEmails            (true);
+        player.setCreationDate                  (now);
+        player.setStatus                        (Player.ON);
+        player.setAcceptEmails                  (true);
 
         //-------------------------------------//
 
@@ -418,7 +418,23 @@ public class AccountManager {
     //------------------------------------------------------------------------------------//
 
     public static void giveToCharity(Player player) {
-        for(LotteryTicket ticket : player.getLotteryTickets()){
+        
+        List<LotteryTicket> tickets = null;
+
+        //-------------------------------------//
+
+        if(player.getMobileVersion() >= 1.3){
+            tickets = getAllLotteryTickets(player);
+        }
+
+        else{
+            // 1.2 ------------- DEPRECATED -------
+            tickets = player.getLotteryTickets();
+        }
+
+        //-------------------------------------//
+
+        for(LotteryTicket ticket : tickets){
 
             if(ticket.getPrice() == null)
                 continue;
@@ -440,7 +456,7 @@ public class AccountManager {
         //-------------------------------------//
         
         if(player.getMobileVersion() >= 1.3){
-            tickets = findAllLotteryTickets(player);
+            tickets = getAllLotteryTickets(player);
         }
         
         else{
@@ -513,25 +529,31 @@ public class AccountManager {
         
         Ebean.save(player);
         
+        // set lastest tickets on player's list
         player.setLotteryTickets(getLotteryTickets(player, null));
         
         System.out.println("----> refresh player | " + player.getMobileVersion() + " : " + fromWeb);
         if(!fromWeb && player.getMobileVersion() >= 1.3){
             System.out.println("----> proceed");
+            calculateWinnings(player);
             checkLottery(player);
             retrieveBonusTickets(player);
         }
     }
 
     //------------------------------------------------------------------------------------//
-
+    
+    /*
+     * 1.2- : allTickets
+     * 1.3+ : tickets for specific lotteries
+     */
     public static List<LotteryTicket> getLotteryTickets(Player player, String lastLotteryUID) {
         if(player.getMobileVersion() >= 1.3){
             List<String> lotteryUIDs = getLotteryUIDsFrom(lastLotteryUID, player, 2);
             return findLotteryTickets(player, lotteryUIDs);
         }
         else
-            return findAllLotteryTickets(player);
+            return getAllLotteryTickets(player);
     }
     
     private static List<String> getLotteryUIDsFrom(String lastLotteryUID, Player player, int nb) {
@@ -576,7 +598,7 @@ public class AccountManager {
 
     //------------------------------------------------------------------------------------//
     
-    public static List<LotteryTicket> findAllLotteryTickets(Player player) {
+    public static List<LotteryTicket> getAllLotteryTickets(Player player) {
         return LotteryTicket.find
                 .fetch("lottery")
                 .where().eq("player.uid", player.getUid())
@@ -586,6 +608,39 @@ public class AccountManager {
     
     //------------------------------------------------------------------------------------//
 
+    /**
+     * sum winnings from all tickets
+     * @param player
+     */
+    private static void calculateWinnings(Player player) {
+
+        player.setTotalWinnings     (0d);
+        player.setBalance           (0d);
+        player.setTotalGift         (0d);
+        player.setPendingWinnings   (0d);
+        player.setReceivedWinnings  (0d);
+        
+        for(LotteryTicket ticket : getAllLotteryTickets(player)){
+            
+            Double value = Utils.countryPrice(ticket.getPrice(), player.getCountry(), ticket.getLottery().getRateUSDtoEUR());
+            player.setTotalWinnings(player.getTotalWinnings() + value);
+
+            if(ticket.getStatus() == LotteryTicket.blocked)
+                player.setBalance(player.getBalance() + value);
+
+            else if(ticket.getStatus() == LotteryTicket.gift)
+                player.setTotalGift(player.getTotalGift() + value);
+            
+            else if(ticket.getStatus() == LotteryTicket.pending)
+                player.setPendingWinnings(player.getPendingWinnings() + value);
+            
+            else
+                player.setReceivedWinnings(player.getReceivedWinnings() + value);
+        }
+    }
+    
+    //------------------------------------------------------------------------------------//
+    
     /**
      * reset for new lottery to play
      * @param player
@@ -627,7 +682,8 @@ public class AccountManager {
         long now = new Date().getTime();
 
         System.out.println("----> retrieveBonusTickets");
-        for(LotteryTicket ticket : player.getLotteryTickets()){
+
+        for(LotteryTicket ticket : getAllLotteryTickets(player)){
 
             //--------------------------------------------//
             // losing ticket
