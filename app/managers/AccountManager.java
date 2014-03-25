@@ -535,9 +535,9 @@ public class AccountManager {
         System.out.println("----> refresh player | " + player.getMobileVersion() + " : " + fromWeb);
         if(!fromWeb && player.getMobileVersion() >= 1.3){
             System.out.println("----> proceed");
-            calculateWinnings(player);
             checkLottery(player);
             retrieveBonusTickets(player);
+            calculateWinnings(player);
         }
     }
 
