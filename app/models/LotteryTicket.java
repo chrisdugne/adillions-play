@@ -13,6 +13,7 @@ import com.google.gson.annotations.Expose;
 public class LotteryTicket extends Model { 
 
     // -----------------------------------------------------------------------------------------------//
+    // STATUS
 
     public static final int unseen      = 0; // set as winning ticket, before notification
     public static final int blocked     = 1; // set as winning ticket, notification/popup read, cashout blocked (<10)
@@ -31,7 +32,8 @@ public class LotteryTicket extends Model {
     public static final int validatedBonus4     = 114; // rang 10 converted
 
     // -----------------------------------------------------------------------------------------------//
-
+    // TYPE
+    
     public static final int CLASSIC_TICKET         = 1;
     public static final int INSTANT_TICKET         = 2;
 

@@ -125,7 +125,7 @@ public class AccountManager {
     {
         long now = new Date().getTime();
 
-        String email                = userJson.get("email").asText();
+        String email                = userJson.get("email").asText().toLowerCase();
         String firstName            = userJson.get("firstName").asText();
         String lastName             = userJson.get("lastName").asText();
         String birthDate            = userJson.get("birthDate").asText();
@@ -435,12 +435,26 @@ public class AccountManager {
     public static void cashout(Player player, String country) {
 
         Double amount = 0d;
+        List<LotteryTicket> tickets = null;
 
-        for(LotteryTicket ticket : player.getLotteryTickets()){
+        //-------------------------------------//
+        
+        if(player.getMobileVersion() >= 1.3){
+            tickets = findAllLotteryTickets(player);
+        }
+        
+        else{
+            // 1.2 ------------- DEPRECATED -------
+            tickets = player.getLotteryTickets();
+        }
 
+        //-------------------------------------//
+
+        for(LotteryTicket ticket : tickets){
+            
             if(ticket.getPrice() == null)
                 continue;
-
+            
             if(ticket.getStatus() == LotteryTicket.blocked){
                 ticket.setStatus(LotteryTicket.pending);
                 Ebean.save(ticket);  
@@ -465,7 +479,7 @@ public class AccountManager {
         MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
         mail.setSubject(subject);
         mail.addRecipient("winners@adillions.com");
-        mail.addFrom(player.getEmail());
+        mail.addFrom("winners@adillions.com");
 
         try{
             mail.sendHtml("<html>"+content+"</html>" );
@@ -551,14 +565,6 @@ public class AccountManager {
                 .findList();
    }
     
-    private static List<LotteryTicket> findAllLotteryTickets(Player player) {
-        return LotteryTicket.find
-                .fetch("lottery")
-                .where().eq("player.uid", player.getUid())
-                .orderBy("creationDate desc")
-                .findList();
-    }
-    
     private static LotteryTicket findOneLotteryTicket(Player player, String lotteryUID) {
 
         return LotteryTicket.find
@@ -568,6 +574,16 @@ public class AccountManager {
                 .findUnique();
     }
 
+    //------------------------------------------------------------------------------------//
+    
+    public static List<LotteryTicket> findAllLotteryTickets(Player player) {
+        return LotteryTicket.find
+                .fetch("lottery")
+                .where().eq("player.uid", player.getUid())
+                .orderBy("creationDate desc")
+                .findList();
+    }
+    
     //------------------------------------------------------------------------------------//
 
     /**
