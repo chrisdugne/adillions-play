@@ -38,9 +38,11 @@
             <div class="span3 offset1">
                 <img title="icon" id="facebookPicture"></img>
             </div>
+            <!--             
             <div class="span4 offset3">
                 <a id="changeAccountButton"></a>
             </div>
+             -->
         </div>
         <br />
 
@@ -229,7 +231,7 @@ $(function() {
    $("#confirmBirthDateLabel").text(Translator.messages["BirthDate"] + " :")
    
    $("#labelReferrerCode").text(Translator.messages["ReferrerCode"])
-   $("#changeAccountButton").text(Translator.messages["NotYou"])
+   //$("#changeAccountButton").text(Translator.messages["NotYou"])
    $("#FBUsername").text(Translator.messages["FBUsername"])
    $("#FBImportant").text(Translator.messages["FBImportant"])
    $("#FBRealName").text(Translator.messages["FBRealName"])
@@ -294,10 +296,10 @@ $(function() {
    });
    
    //-------------------------------------------// 
-
+/* 
    $("#changeAccountButton").click(function() {
       window.location.href = "/requireLogout"
-   });
+   }); */
 
 });
    
