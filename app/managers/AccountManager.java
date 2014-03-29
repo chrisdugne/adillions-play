@@ -374,8 +374,6 @@ public class AccountManager {
 
         //-------------------------------------//
 
-        player.setCurrentPoints             (newUserJson.get("currentPoints").asInt());
-        player.setTotalPoints               (newUserJson.get("totalPoints").asInt());
         player.setIdlePoints                (newUserJson.get("idlePoints").asInt());
 
         //-------------------------------------//

@@ -360,11 +360,36 @@ UserManager.receivedPlayer = function(player, next)
 
 UserManager.updatePlayer = function(next)
 {
+    console.log("--------")
     console.log("updatePlayer")
-    var params = {};
-    params.user = App.user
+    
+    var params = {  
+        user : {
+            uid                     : App.user.uid,
+            userName                : App.user.userName,
+            
+            facebookId              : App.user.facebookId,
+            facebookName            : App.user.facebookName,
+            twitterId               : App.user.twitterId,
+            twitterName             : App.user.twitterName,
+
+            idlePoints              : App.user.idlePoints,
+
+            currentLotteryUID       : App.user.currentLotteryUID,
+            availableTickets        : App.user.availableTickets,
+            playedBonusTickets      : App.user.playedBonusTickets,
+            extraTickets            : App.user.extraTickets,
+            
+            hasTweet                : App.user.hasTweet,
+            hasPostOnFacebook       : App.user.hasPostOnFacebook,
+            hasTweetAnInvite        : App.user.hasTweetAnInvite,
+            hasInvitedOnFacebook    : App.user.hasInvitedOnFacebook,
+            hasTweetTheme           : App.user.hasTweetTheme,
+        }
+    };
 
     console.log(params.user)
+    console.log("--------")
 
     $.ajax({
         type: "POST",  
