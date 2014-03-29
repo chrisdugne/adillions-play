@@ -360,8 +360,8 @@ UserManager.receivedPlayer = function(player, next)
 
 UserManager.updatePlayer = function(next)
 {
-    console.log("--------")
-    console.log("updatePlayer")
+    console.log("--------");
+    console.log("updatePlayer");
     
     var params = {  
         user : {
@@ -388,8 +388,8 @@ UserManager.updatePlayer = function(next)
         }
     };
 
-    console.log(params.user)
-    console.log("--------")
+    console.log(params.user);
+    console.log("--------");
 
     $.ajax({
         type: "POST",  
@@ -415,13 +415,17 @@ UserManager.updatePlayer = function(next)
 //-------------------------------------------//
 
 UserManager.updateFanStatus = function(next){
-    console.log("updateFanStatus", App.user)
+    
+    console.log("--------");
+    console.log("updateFanStatus");
+    
+    var params = {
+            facebookFan         : App.user.facebookFan,
+            twitterFan          : App.user.twitterFan,
+    };
 
-    App.user.facebookFan = App.user.isFacebookFan
-    App.user.twitterFan = App.user.isTwitterFan
-
-    var params = new Object();
-    params["user"] = App.user;
+    console.log(params);
+    console.log("--------");
 
     $.ajax({
         type: "POST",  
