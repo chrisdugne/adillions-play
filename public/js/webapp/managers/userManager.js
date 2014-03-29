@@ -428,9 +428,15 @@ UserManager.mergePlayerWithFacebook = function(){
 
 UserManager.getPlayer = function()
 {
+    var params = new Object();
+    params["fromWeb"] = true;
+    params["country"] = App.Globals.get("country");
+    
     $.ajax({
         type: "POST",  
         url: "/player",
+        data: JSON.stringify(params),
+        contentType: "application/json; charset=utf-8",
         headers: {"X-Auth-Token": App.authToken},
         dataType: "json",
         success: function (player, textStatus, jqXHR)
@@ -552,12 +558,12 @@ UserManager.signinFormReady = function(){
     var form1Ready = $("#signinForm1").valid();
     var form2Ready = $("#signinForm2").valid();
     var formReady = form1Ready && form2Ready && $("#check1")[0].checked && $("#check2")[0].checked;
-    
+
     if($("#mbirthDate").length > 0 && $("#mbirthDate").val().length == 0){
         $("#mbirthDate").addClass("error");      
         formReady = false;
     }
-    
+
     if($("#fbForm_mbirthDate").length > 0 && $("#fbForm_mbirthDate").val().length == 0){
         $("#fbForm_mbirthDate").addClass("error");      
         formReady = false;
@@ -1040,7 +1046,7 @@ UserManager.mobileSetupForms = function()
             return target == value
         }
     );
-    
+
     $("#signinForm1").validate({
         rules: {
             firstName: {
@@ -1066,7 +1072,7 @@ UserManager.mobileSetupForms = function()
             },
         }
     });
-    
+
     $("#signinForm2").validate({
         rules: {
             password: {
@@ -1087,8 +1093,8 @@ UserManager.mobileSetupForms = function()
             }
         }
     });
-    
-    
+
+
     $("#fbForm").validate({
         rules: {
             firstName: {
@@ -1120,7 +1126,7 @@ UserManager.mobileSetupForms = function()
             }
         }
     });
-    
+
     $("#loginForm").validate({
         rules: {
             loginemail: {

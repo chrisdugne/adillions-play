@@ -146,9 +146,9 @@
    //------------------------------------------------------//
    
    App.minToCashout = function() {
-      var min = 10;
+      var min = 15;
       if(!Utils.isEuroCountry(App.Globals.country))
-         min = 15
+         min = 20
       return min   
    }
 

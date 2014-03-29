@@ -25,9 +25,7 @@
 
     App.init = function(sponsorRequestId){
 
-        //------------------------------------------------------//
-
-        App.Globals.set("country", "FR");
+        App.Globals.set("country", "US");
         
         $.ajax({ 
             type        : "GET",
