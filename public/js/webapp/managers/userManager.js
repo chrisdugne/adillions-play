@@ -73,7 +73,7 @@ UserManager.updatedPlayer = function(player, next){
     UserManager.sortLotteryTickets()
     UserManager.setTotalGains()
 
-    UserManager.checkIdlePoints()
+//    UserManager.checkIdlePoints()
     UserManager.refreshFanStatus(next)   
 
     //----------------------------------------------//
@@ -361,10 +361,10 @@ UserManager.receivedPlayer = function(player, next)
 UserManager.updatePlayer = function(next)
 {
     console.log("updatePlayer")
-    var params = new Object();
-    params["user"] = App.user
+    var params = {};
+    params.user = App.user
 
-    console.log(App.user)
+    console.log(params.user)
 
     $.ajax({
         type: "POST",  

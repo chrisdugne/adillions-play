@@ -500,12 +500,6 @@ GameManager.refreshThemeSelectionDisplay = function(){
 //==================================================================//
 
  GameManager.initConfirmation = function(){
-    
-    // if App.user.currentPoints == 0 -> conversion + message extra ticket.
-    if(!App.Globals.wasExtraTicket && App.user.currentPoints > 0){
-       App.message("+1 point")
-    }
-       
     App.Globals.wasExtraTicket      = false
  }
    

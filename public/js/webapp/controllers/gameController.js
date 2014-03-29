@@ -89,7 +89,7 @@
            
            callback_no_offers: function(){ 
                App.free()
-               App.message("_No video to watch...")
+               App.message("Sponsorpay : No video to watch...")
            },
 
            callback_on_close: function(){ 
