@@ -147,7 +147,8 @@
     "CEODesc"            : "Timothée brainstormed the original idea for Adillions. He worked in the banking and strategy consulting industries for several years. Today, in his role as CEO, he manages all the business aspects of the project from legal and finance to marketing and communication. Timothée holds a MBA in Finance and Private Equity from ESSEC Business School",
     "CTOName"            : "Christophe DUGNE-ESQUEVIN",
     "CTOStatus"            : "CTO",
-    "CTODesc"            : "Christophe started to work as a software developer for a start-up, a provider of search and contextual advertising. He already co-founded several start-ups in the mobile and gaming markets as well as an innovative GIS in the cloud, Maperial. Christophe is dedicated to design and develop the best products for Adillions players. Christophe graduated from ENSEIRB where he studied Computer Science and Software Engineering",
+    "CTODesc1"            : "Christophe started to work as a software developer for a start-up, a provider of search and contextual advertising. He already co-founded several start-ups in the mobile and gaming markets as well as an innovative GIS in the cloud, ",
+    "CTODesc2"            : ". Christophe is dedicated to design and develop the best products for Adillions players. Christophe graduated from ENSEIRB where he studied Computer Science and Software Engineering",
      
      
      "##########################################" : "FAQ",

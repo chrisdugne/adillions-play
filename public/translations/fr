@@ -148,7 +148,8 @@
     "CEODesc"            : "Timothée a initié le projet Adillions. Il a travaillé dans le secteur bancaire puis dans le conseil en stratégie pendant plusieurs années. Aujourd'hui, il supervise les aspects business et opérationnels du projet tels que le business développement, le marketing et la communication. Timothée est diplômé de l'ESSEC avec une spécialisation en Finance et Private Equity",
     "CTOName"            : "Christophe DUGNE-ESQUEVIN",
     "CTOStatus"            : "Directeur Technique",
-    "CTODesc"            : "Christophe a commencé sa carrière en tant que développeur au sein d'une start-up dans le domaine du marketing web. Il a participé à la création de plusieurs start-ups dans l'univers du gaming et du mobile ainsi qu'un outil cartographique sur le cloud, Maperial. Christophe est en charge du développement technique des produits d'Adillions. Christophe est diplômé de l'ENSEIRB à Bordeaux où il a étudié l'informatique",
+    "CTODesc1"            : "Christophe a commencé sa carrière en tant que développeur au sein d'une start-up dans le domaine du marketing web. Il a participé à la création de plusieurs start-ups dans l'univers du gaming et du mobile ainsi qu'un outil cartographique sur le cloud, ",
+    "CTODesc2"            : ". Christophe est en charge du développement technique des produits d'Adillions. Christophe est diplômé de l'ENSEIRB à Bordeaux où il a étudié l'informatique",
      
      "##########################################" : "Privacy",
      
