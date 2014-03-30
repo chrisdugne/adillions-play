@@ -7,6 +7,8 @@ import java.util.List;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Query;
 import com.avaje.ebean.SqlRow;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import models.Global;
 import models.Lottery;
@@ -174,9 +176,19 @@ public class LotteryManager {
      */
     public static Player storeLotteryTicket(String numbers, Boolean isExtraTicket, Long creationTime){
 
-        Player player       = Application.player();
-        Lottery lottery     = LotteryManager.getNextLottery();
+        Player player           = Application.player();
+        Lottery lottery         = LotteryManager.getNextLottery();
+        Global global           = LotteryManager.getGlobal();
+        JsonParser parser       = new JsonParser();
+        JsonObject appStatus    = (JsonObject)parser.parse(global.getAppStatus());
 
+        // -----------------------------------------------------//
+        
+        System.out.println("state : " + appStatus.get("state").getAsInt());
+        if(appStatus.get("state").getAsInt() != 1){
+            return null;
+        }
+        
         // -----------------------------------------------------//
 
 //        int facebookFanBonus = 0;
