@@ -711,6 +711,7 @@ UserManager.signinFB = function()
             }
             else{
                 // todo merge
+                console.log("---> AccountNamesExist")
                 App.message(App.translations.messages.AccountNamesExist, false)
             }
         }

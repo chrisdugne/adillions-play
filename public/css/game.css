@@ -477,14 +477,21 @@
 
 #likeThemeIcon {
     position: relative;
-    top: -212px;
-    left: 175px;
+    top: -75px;
+    left: 149px;
 }
 
 @media screen and ( max-width : 910px) {
     #likeThemeIcon {
-        top: -180px;
-        left: 145px;
+        top: -75px;
+        left: 114px;
+    }
+}
+
+@media screen and ( max-width : 680px) {
+    #likeThemeIcon {
+        top: -75px;
+        left: 75px;
     }
 }
 
