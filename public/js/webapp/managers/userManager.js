@@ -610,13 +610,13 @@ UserManager.signinFormReady = function(){
 }
 
 UserManager.signinFormFBReady = function(){
-    var formReady = $("#fbForm").valid() && $("#check1")[0].checked && $("#check2")[0].checked;
+    var formReady = $("#fbForm").valid() && $("#checkFB1")[0].checked && $("#checkFB2")[0].checked;
 
-    if(!$("#check1")[0].checked){
+    if(!$("#checkFB1")[0].checked){
         $("#check1Label").addClass("error");
     }
 
-    if(!$("#check2")[0].checked){
+    if(!$("#checkFB2")[0].checked){
         $("#check2Label").addClass("error");
     }
 
