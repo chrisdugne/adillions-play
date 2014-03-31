@@ -703,16 +703,27 @@ UserManager.signinFB = function()
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response){
+            
             if(response){
                 console.log("---> signinFB ok", response)
                 App.free()
-                App.authToken = response.authToken
-                UserManager.receivedPlayer($.parseJSON(response.player))
-            }
-            else{
-                // todo merge
-                console.log("---> AccountNamesExist")
-                App.message(App.translations.messages.AccountNamesExist, false)
+                
+                if(response.namesExist){
+                    // todo merge
+                    console.log("---> AccountNamesExist")
+                    App.message(App.translations.messages.AccountNamesExist, false)
+                    
+                }
+                else if(response.emailExists){
+                    // todo merge
+                    console.log("---> AccountNamesExist")
+                    App.message(App.translations.messages.AccountEmailExists, false)
+                    
+                }
+                else{
+                    App.authToken = response.authToken
+                    UserManager.receivedPlayer($.parseJSON(response.player))
+                }
             }
         }
     });
