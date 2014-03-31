@@ -254,14 +254,6 @@ public class LotteryManager {
         }
 
         // -----------------------------------------------------//
-        // give points
-
-        if(player.getExtraTickets() <= 0){
-            player.setCurrentPoints(player.getCurrentPoints() + NB_POINTS_PER_TICKET);
-            player.setTotalPoints(player.getTotalPoints() + NB_POINTS_PER_TICKET);
-        }
-
-        // -----------------------------------------------------//
         // count down availble/played tickets
 
         
