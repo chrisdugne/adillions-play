@@ -704,7 +704,7 @@ UserManager.signinFB = function()
         dataType: "json",
         success: function (response){
             if(response){
-                console.log("---> signinFB ok")
+                console.log("---> signinFB ok", response)
                 App.free()
                 App.authToken = response.authToken
                 UserManager.receivedPlayer($.parseJSON(response.player))
