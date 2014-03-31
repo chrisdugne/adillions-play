@@ -63,7 +63,7 @@
       PATRON          : 7,     // ?
       PHILANTHROPIST  : 8,     // ?
 
-      CHARITY : {"Boy Scout", "Contributor", "Junior donor", "Donor", "Benefactor", "Major Donor", "Patron", "Philanthropist"},
+      CHARITY         : ["Boy Scout", "Contributor", "Junior donor", "Donor", "Benefactor", "Major Donor", "Patron", "Philanthropist"],
 
       //-------------------------------------------//
 
