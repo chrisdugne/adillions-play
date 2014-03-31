@@ -410,11 +410,10 @@ Facebook.likeTheme = function(){
          App.free();
          
          if(response.id){
-            App.message("+ " + App.Globals.NB_POINTS_PER_THEME_LIKED + " Pts !");
-            App.user.set("currentPoints", App.user.currentPoints + App.Globals.NB_POINTS_PER_THEME_LIKED)
-            App.user.set("themeLiked", true);
-            
-            UserManager.updatePlayer()
+             App.user.set("themeLiked", true);
+             UserManager.giftInstants(NB_INSTANTS_PER_THEME_LIKED, function(){
+                 App.get('router').transitionTo('game.fillLotteryTicket');
+             })
          }
          else if(response.error.code == 200){
             Facebook.popupLogin();

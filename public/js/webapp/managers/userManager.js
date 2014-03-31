@@ -718,16 +718,36 @@ UserManager.signinFB = function()
                     // todo merge
                     console.log("---> AccountNamesExist")
                     App.message(App.translations.messages.AccountEmailExists, false)
-                    
                 }
                 else{
                     App.authToken = response.authToken
-                    UserManager.receivedPlayer($.parseJSON(response.player))
+                    UserManager.receivedPlayer($.parseJSON(response.player), function(){
+                        App.get('router').transitionTo('game.gameHome');
+
+                        console.log("from signinFB ---> set picture", Facebook.data)
+                        App.user.set("picture", Facebook.data.picture.data.url)   
+                    })
                 }
             }
         }
     });
 
+}
+
+//-------------------------------------------//
+
+UserManager.giftInstants = function(nbInstants, next){
+
+    App.user.set("idlePoints", App.user.idlePoints + nbInstants);
+    App.wait();
+
+    UserManager.updatePlayer(function(){
+        App.free();
+        App.message("+ " + nbInstants + " Instant Ticket !");
+
+        if(next)
+            next();
+    });
 }
 
 //-------------------------------------------//

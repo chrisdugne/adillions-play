@@ -32,15 +32,15 @@
     GameController.startTicket = function()    {
 
        var next = function(){
-         App.get('router').transitionTo('game.fillLotteryTicket')
+         App.get('router').transitionTo('game.fillLotteryTicket');
       }
        
        if(App.user.extraTickets > 0){
-          App.message(App.translations.messages.ExtraTicket + "!")
-          next()
+          App.message(App.translations.messages.ExtraTicket + "!");
+          next();
        }
        else{
-          GameController.requireVideo(next) 
+          GameController.requireVideo(next);
        }
 
     }
