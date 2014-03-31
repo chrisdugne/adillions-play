@@ -411,7 +411,7 @@ Facebook.likeTheme = function(){
          
          if(response.id){
              App.user.set("themeLiked", true);
-             UserManager.giftInstants(NB_INSTANTS_PER_THEME_LIKED, function(){
+             UserManager.giftInstants(App.Globals.NB_INSTANTS_PER_THEME_LIKED, function(){
                  App.get('router').transitionTo('game.fillLotteryTicket');
              })
          }
