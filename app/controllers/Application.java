@@ -78,73 +78,22 @@ public class Application extends Controller {
     // Mobile pages
     // -----------------------------------------------------------------------------------//
     
-    public static Result mobileLogin()
-    {
-        return ok(views.html.mobile.login.render());
-    }
+    public static Result mobileLogin()                  {   return ok(views.html.mobile.login.render());        }
+    public static Result mobileLogin2()                 {   return ok(views.html.mobile.login2.render());       }
+    public static Result mobileSignin()                 {   return ok(views.html.mobile.signin.render());       }
+    public static Result mobileSignin2()                {   return ok(views.html.mobile.signin2.render());      }
+    public static Result mobileSignin3()                {   return ok(views.html.mobile.signin3.render());      }
+    public static Result mobileSigninFromFacebook()     {   return ok(views.html.mobile.signinFB.render());     }
+    public static Result mobileSigninFromFacebook2()    {   return ok(views.html.mobile.signinFB2.render());    }
+    public static Result mobileVideo()                  {   return ok(views.html.mobile.video.render());        }
+    public static Result mobileInvite()                 {   return ok(views.html.mobile.invite.render());       }
+    public static Result mobileLogout()                 {   return ok(views.html.mobile.logout.render());       }
+    public static Result mobileFaq()                    {   return ok(views.html.mobile.faq.render());          }
+    public static Result mobilePrivacy()                {   return ok(views.html.mobile.privacy.render());      }
+    public static Result mobileKeyRules()               {   return ok(views.html.mobile.keyrules.render());     }
+    public static Result mobileTermsEN()                {   return ok(views.html.mobile.termsEN.render());      }
+    public static Result mobileTermsFR()                {   return ok(views.html.mobile.termsEN.render());      }
+    public static Result mtest()                        {   return ok(views.html.mobile.mtest.render());        }
     
-    public static Result mobileLogin2()
-    {
-        return ok(views.html.mobile.login2.render());
-    }
     
-    public static Result mobileSignin()
-    {
-        return ok(views.html.mobile.signin.render());
-    }
-
-    public static Result mobileSignin2()
-    {
-       return ok(views.html.mobile.signin2.render());
-    }
-    
-    public static Result mobileSignin3()
-    {
-        return ok(views.html.mobile.signin3.render());
-    }
-    
-    public static Result mobileSigninFromFacebook()
-    {
-        return ok(views.html.mobile.signinFB.render());
-    }
-
-    public static Result mobileSigninFromFacebook2()
-    {
-        return ok(views.html.mobile.signinFB2.render());
-    }
-
-    public static Result mobileVideo()
-    {
-        return ok(views.html.mobile.video.render());
-    }
-    
-    public static Result mobileInvite()
-    {
-        return ok(views.html.mobile.invite.render());
-    }
-    
-    public static Result mobileLogout()
-    {
-        return ok(views.html.mobile.logout.render());
-    }
-
-    public static Result mobileFaq()
-    {
-        return ok(views.html.mobile.faq.render());
-    }
-    
-    public static Result mobileTermsEN()
-    {
-       return ok(views.html.mobile.termsEN.render());
-    }
-    
-    public static Result mobileTermsFR()
-    {
-       return ok(views.html.mobile.termsEN.render());
-    }
-    
-    public static Result mtest()
-    {
-       return ok(views.html.mobile.mtest.render());
-    }
 }

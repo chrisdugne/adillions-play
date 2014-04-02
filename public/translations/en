@@ -236,27 +236,32 @@
 
      "##########################################" : "Key Rules",
       
-    "RulesIntro"        : "Adillions key rules are the following (please see the",
-    "RulesTerms"        : " Terms",
-    "RulesDetails"        : " for more details):",
+    "Rules0-1"          : "Adillions key rules are the following (please see the",
+    "Rules0-2"          : " Terms",
+    "Rules0-3"          : " for more details):",
     
-    "RulesAge"            : "Players must be 18 or over",
-    "RulesAccount"        : "Players must have only one Adillions account",
-    "RulesPick"            : "Players pick 5 different numbers from a pool of 49 numbers (from 1 to 49) and one Lucky Ball from a pool of 6 different Lucky Balls",
-    "RulesTickets"        : "Each draw is characterized by a maximum number of tickets per player (players can gain additional Bonus Tickets - see",
-    "RulesRewards"        : " Rewards",
-    "RulesTicketsEnd"    : ")",
-    "RulesDraws"        : "Draw takes place every saturday at 8:00 pm (GMT)",
-    "RulesAmount"        : "The total amount of the Prize Fund is distributed over the six different prize categories (see",
-    "RulesPrize"        : " Prize",
-    "RulesAmountEnd"    : ")",
-    "RulesCategory"        : "The money allocated to a prize category is divided equally among the winning tickets in that category",
-    "RulesNoPayment"    : "There is no prize payment for winning players with inaccurate personal information (real full name required)",
-    "RulesTransfer"        : "Prizes are paid by bank transfer to the winning players inside the Single Euro Payments Area (SEPA) or by Paypal transfer",
-    "RulesDelay"        : "The winning players are paid at least 4 weeks after their gains reached a minimum total balance of 10 euros and maximum 8 weeks after",
-    "RulesID"            : "Any winning player of a sum greater than or equal to 2,000 euros will have to prove his identity by sending Adillions a supporting document (national identity card, driving license, passport, etc.)",
-    "RulesBank"            : "One bank account for a maximum of two Adillions accounts belonging to two distinct persons",
-     
+    "Rules1"            : "Players must be 18 or over",
+    "Rules2"            : "Players must have only one Adillions account",
+    "Rules3"            : "Players must pick 5 different numbers from a pool of 49 numbers (from 1 to 49) and one Lucky Ball from a pool of 6 different Lucky Balls",
+    "Rules4"            : "Each draw is characterized by a maximum number of Tickets per player. The initial Stock for all Players is 8 Tickets",
+
+    "Rules5-1"          : "Players can gain additional Tickets above the initial stock ",
+    "Rules5-2"          : " Rewards",
+    "Rules5-3"          : ")",
+    
+    "Rules6"            : "Draw take place every Sunday at 9:00 a.m. (GMT)",
+    "Rules7"            : "Players cannot record any selection during the two hours preceding the draw",
+    
+    "Rules8-1"          : "The total amount of the Prize Fund is distributed over the different prize categories (see",
+    "Rules8-2"          : " Prize",
+    "Rules8-3"          : ")",
+    
+    "Rules9"            : "The money allocated to a prize category is divided equally among the winning Tickets in that category",
+    "Rules10"           : "There is no prize payment for winning Players who violated Adillions Terms",
+    "Rules11"           : "Prizes are paid by bank transfer to the winning Players inside the Single Euro Payments Area (SEPA) and by Paypal transfer to the winning Players located outside the SEPA",
+    "Rules12"           : "The winning players are paid at least 4 weeks after their cash-out request (winnings must have reached a minimum total balance of 15 euros / 20 US dollars) and maximum 8 weeks after.",
+    "Rules13"           : "Any winning player of a sum greater than or equal to 1,000 euros / 1,500 US dollars will have to prove his identity by sending Adillions a supporting document (national identity card, driving license, passport, etc.)",
+    "Rules14"           : "One bank account for a maximum of two Adillions Accounts belonging to two distinct persons",
      
      "##########################################" : "Press",
      

@@ -253,27 +253,34 @@
      
      "##########################################" : "Key Rules",
      
-    "RulesIntro"        : "Voilà les principales règles d'Adillions (pour plus de détails consultez le",
-    "RulesTerms"        : "Règlement", 
-    "RulesDetails"        : ") :",
+    "Rules0-1"              : "Voilà les principales règles d'Adillions (pour plus de détails consultez le",
+    "Rules0-2"              : "Règlement", 
+    "Rules0-3"              : ") :",
     
-    "RulesAge"            : "Adillions est interdit à toute personne ayant moins de 18 ans",
-    "RulesAccount"        : "Il est interdit de jouer avec plusieurs comptes Adillions",
-    "RulesPick"            : "Les joueurs sélectionnent 5 numéros dans la grille de numéros (1 à 49) et une Boule Chance dans la grille des 6 Boules Chances associée",
-    "RulesTickets"        : "Chaque tirage se caractérise par un nombre maximum de tickets par joueur (il est possible de gagner des Tickets Bonus additionnels - cf.",
-    "RulesRewards"        : " Récompenses",
-    "RulesTicketsEnd"    : ")",
-    "RulesDraws"        : "Les tirages sont effectués chaque samedi à 20h00 (GMT)",
-    "RulesAmount"        : "La somme globale de la cagnotte est répartie entre les six différents rangs de gain (cf.",
-    "RulesPrize"        : " Gains",
-    "RulesAmountEnd"    : ")",
-    "RulesCategory"        : "La somme affectée à un rang est répartie par parts égales entre les combinaisons gagnantes de ce rang",
-    "RulesNoPayment"    : "Les gains ne seront pas versés aux joueurs qui auront fourni des données personnelles inexactes",
-    "RulesTransfer"        : "Les gains sont versés par virement bancaire SEPA (zone Euro) et par virement PayPal",
-    "RulesDelay"        : "Les gains des joueurs sont versés au minimum 4 semaines après qu'ils aient atteint un solde global minimum de 10 euros et au maximum 8 semaines après",
-    "RulesID"            : "Tout gagnant d’une somme supérieure ou égale à 2 000 euros doit justifier de son identité par la présentation d’un document écrit probant auprès d'Adillions",
-    "RulesBank"            : "Les coordonnées d’un même compte bancaire peuvent servir, au maximum, à deux comptes Adillions appartenant à deux personnes physiques distinctes",
-     
+    "Rules1                 : "Adillions est interdit à toute personne ayant moins de 18 ans",
+    "Rules2"                : "Il est interdit de jouer avec plusieurs comptes Adillions",
+    "Rules3"                : "Les joueurs doivent sélectionner 5 numéros dans la grille de numéros (1 à 49) et une Boule Chance dans la grille des 6 Boules Chances associée",
+    
+    "Rules4"                : "Chaque tirage se caractérise par un nombre maximum de Tickets disponibles par joueur. Le stock initial de Tickets pour tous les joueurs est de 8 Tickets",
+    
+    "Rules5-1"              : "Les joueurs peuvent gagner des Tickets additionnels au delà du stock initial ( cf.",
+    "Rules5-2"              : " Récompenses",
+    "Rules5-3"              : ")",
+    
+    "Rules6"                : "Les tirages sont effectués chaque dimanche à 11:00 (heure française)",
+    "Rules7"                : "Les joueurs ne peuvent pas enregistrer de combinaison pendant les deux heures précédent le tirage",
+    
+    "Rules8-1"              : "La somme globale de la cagnotte est répartie entre les différents rangs de gain (cf.",
+    "Rules8-2"              : " Cagnotte",
+    "Rules8-3"              : ")",
+    
+    "Rules9"                : "La somme affectée à un rang est répartie par parts égales entre les combinaisons gagnantes de ce rang",
+    "Rules10"               : "Les gains ne seront pas versés aux joueurs qui ne respecteront pas les conditions visées dans le Règlement d'Adillions",
+    "Rules11"               : "Les gains sont versés par virement bancaire SEPA (zone Euro) et par virement PayPal",
+    "Rules12"               : "Les gains des joueurs sont versés au minimum 4 semaines après leur demande de paiement de gains (le solde global minimum de gains doit être supérieur à 15 euros) et au maximum 8 semaines après",
+    "Rules13"               : "Tout gagnant d’une somme supérieure ou égale à 1 000 euros doit justifier de son identité par la présentation d’un document écrit probant auprès d'Adillions",
+    "Rules14"               : "Les coordonnées d’un même compte bancaire peuvent servir, au maximum, à deux comptes Adillions appartenant à deux personnes physiques distinctes",
+    
      
      "##########################################" : "APP",
     
