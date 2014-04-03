@@ -481,11 +481,11 @@ public class Player extends Model {
         this.hasPostOnFacebook = hasPostOnFacebook;
     }
 
-    public Boolean getHasPostThemeOnFacebook() {
+    public Boolean hasPostThemeOnFacebook() {
         return hasPostThemeOnFacebook;
     }
 
-    public void setHasPostThemeOnFacebook(Boolean hasPostThemeOnFacebook) {
+    public void setPostThemeOnFacebook(Boolean hasPostThemeOnFacebook) {
         this.hasPostThemeOnFacebook = hasPostThemeOnFacebook;
     }
 
