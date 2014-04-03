@@ -35,6 +35,10 @@ public class Global extends Model {
     
     @Expose
     @Column(columnDefinition = "TEXT")
+    private String fbPostTheme;
+    
+    @Expose
+    @Column(columnDefinition = "TEXT")
     private String fbSharePrize;
 
     // -----------------------------------------------------------------------------------------------//
@@ -131,6 +135,14 @@ public class Global extends Model {
 
     public void setFbPost(String fbPost) {
         this.fbPost = fbPost;
+    }
+
+    public String getFbPostTheme() {
+        return fbPostTheme;
+    }
+
+    public void setFbPostTheme(String fbPostTheme) {
+        this.fbPostTheme = fbPostTheme;
     }
 
     public String getBanners() {

@@ -109,6 +109,8 @@ public class Player extends Model {
     @Expose
     private Boolean hasPostOnFacebook;
     @Expose
+    private Boolean hasPostThemeOnFacebook;
+    @Expose
     private Boolean hasTweet;
     @Expose
     private Boolean hasTweetTheme;
@@ -477,6 +479,14 @@ public class Player extends Model {
 
     public void setPostOnFacebook(Boolean hasPostOnFacebook) {
         this.hasPostOnFacebook = hasPostOnFacebook;
+    }
+
+    public Boolean getHasPostThemeOnFacebook() {
+        return hasPostThemeOnFacebook;
+    }
+
+    public void setHasPostThemeOnFacebook(Boolean hasPostThemeOnFacebook) {
+        this.hasPostThemeOnFacebook = hasPostThemeOnFacebook;
     }
 
     public Boolean hasTweet() {

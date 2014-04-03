@@ -11,18 +11,20 @@ this.UserManager = {};
 UserManager.checkUserCurrentLottery = function(){
     console.log("checkUserCurrentLottery")
     if(App.user.currentLotteryUID != App.nextLottery.uid){
-        console.log("new Lottery settings")
+        console.log("new Lottery settings");
 
-        App.user.set("currentLotteryUID",      App.nextLottery.uid)
-        App.user.set("availableTickets",       App.Globals.START_AVAILABLE_TICKETS )
-        App.user.set("playedBonusTickets",     0)
+        App.user.set("currentLotteryUID",      App.nextLottery.uid);
+        App.user.set("availableTickets",       App.Globals.START_AVAILABLE_TICKETS );
+        App.user.set("playedBonusTickets",     0);
 
-        App.user.set("hasTweet",               false)
-        App.user.set("hasPostOnFacebook",      false)
-        App.user.set("hasTweetAnInvite",       false)
-        App.user.set("hasInvitedOnFacebook",   false)
+        App.user.set("hasTweet",               false);
+        App.user.set("hasTweetTheme",          false);
+        App.user.set("hasPostOnFacebook",      false);
+        App.user.set("hasPostThemeOnFacebook", false);
+        App.user.set("hasTweetAnInvite",       false);
+        App.user.set("hasInvitedOnFacebook",   false);
 
-        UserManager.updatePlayer()
+        UserManager.updatePlayer();
     }
 
 }
@@ -46,7 +48,9 @@ UserManager.updatedPlayer = function(player, next){
 
     App.user.set("currentLotteryUID",   player.currentLotteryUID);
     App.user.set("hasPostOnFacebook",   player.hasPostOnFacebook);
+    App.user.set("hasPostThemeOnFacebook", player.hasPostThemeOnFacebook);
     App.user.set("hasTweet",            player.hasTweet);
+    App.user.set("hasTweetTheme",       player.hasTweetTheme);
     App.user.set("hasTweetAnInvite",    player.hasTweetAnInvite);
     App.user.set("hasInvitedOnFacebook", player.hasInvitedOnFacebook);
 

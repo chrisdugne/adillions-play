@@ -21,6 +21,7 @@
        
        currentLotteryUID      : "",
        hasPostOnFacebook      : "",
+       hasPostThemeOnFacebook : "",
        hasTweet               : "",
        hasTweetAnInvite       : "",
        hasInvitedOnFacebook   : "",

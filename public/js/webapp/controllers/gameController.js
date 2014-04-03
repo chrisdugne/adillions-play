@@ -55,14 +55,14 @@
           Facebook.postOnWall(message, function(){
             
             App.message("+ " + App.Globals.NB_POINTS_PER_POST + " Pts !");
-            App.user.set("currentPoints", App.user.currentPoints + App.Globals.NB_POINTS_PER_POST)
-            App.user.set("hasPostOnFacebook", true)
+            App.user.set("currentPoints", App.user.currentPoints + App.Globals.NB_POINTS_PER_POST);
+            App.user.set("hasPostOnFacebook", true);
             
-            UserManager.updatePlayer()
+            UserManager.updatePlayer();
          })
       }
        else{
-          App.message(App.translations.messages.HasPostOnFacebook)
+          App.message(App.translations.messages.HasPostOnFacebook);
        }
     }
 
