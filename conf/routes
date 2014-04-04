@@ -27,6 +27,9 @@ GET     /mprivacy                       controllers.Application.mobilePrivacy()
 GET     /mkeyrules                      controllers.Application.mobileKeyRules()
 GET     /mtermsFR                       controllers.Application.mobileTermsFR()
 GET     /mtermsEN                       controllers.Application.mobileTermsEN()
+GET     /mprivacy                       controllers.Application.mobilePrivacy()
+GET     /mprivacyFR                     controllers.Application.mobilePrivacyFR()
+GET     /mprivacyEN                     controllers.Application.mobilePrivacyEN()
 
 GET     /mtest                          controllers.Application.mtest()
 
