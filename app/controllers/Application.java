@@ -49,8 +49,7 @@ public class Application extends Controller {
     // Web 
     // ---------------------------------------------//
 
-    public static Result home()
-    {
+    public static Result home() {
         Map<String, String[]> queryParameters = request().queryString();
         String requestIds[] = queryParameters.get("request_ids");
         
@@ -65,6 +64,11 @@ public class Application extends Controller {
         }
     }
 
+    // -----------------------------------//
+    
+    public static Result watch() {
+        return ok(views.html.templates.pages.videoplayer.render());
+    }
     
     // -----------------------------------------------------------------------------------//
     // Common

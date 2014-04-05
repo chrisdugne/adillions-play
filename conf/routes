@@ -34,6 +34,11 @@ GET     /mprivacyEN                     controllers.Application.mobilePrivacyEN(
 GET     /mtest                          controllers.Application.mtest()
 
 ###################
+# Web Pages
+
+GET     /watch                          controllers.Application.watch()
+
+###################
 # Facebook Objects
 
 GET     /theme                          controllers.OpenGraph.theme()
