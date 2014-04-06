@@ -245,21 +245,21 @@
     "Rules3"            : "Players must pick 5 different numbers from a pool of 49 numbers (from 1 to 49) and one Lucky Ball from a pool of 6 different Lucky Balls",
     "Rules4"            : "Each player has a maximum number of available Tickets per draw (see stock of Tickets in the Profile section). The initial stock for all Players is 8 Tickets",
 
-    "Rules5-1"          : "Players can gain additional Tickets above the initial stock (see",
+    "Rules5-1"          : "Players can gain additional Tickets above the initial stock ( see",
     "Rules5-2"          : " Rewards",
     "Rules5-3"          : ")",
     
     "Rules6"            : "Draws take place every Sunday at 9:00 a.m. (GMT)",
     "Rules7"            : "Players cannot record any selection during the two hours preceding the draw",
     
-    "Rules8-1"          : "The total amount of the Prize Fund is distributed over the different prize categories (see",
+    "Rules8-1"          : "The total amount of the Prize Fund is distributed over the different prize categories ( see",
     "Rules8-2"          : " Prize",
     "Rules8-3"          : ")",
     
     "Rules9"            : "The money allocated to a prize category is divided equally among the winning Tickets in that category",
     "Rules10"           : "There is no prize payment for winning Players who violated Adillions Terms",
-    "Rules11"           : "Prizes are paid by bank transfer to the winning Players inside the Single Euro Payments Area (SEPA) and by Paypal transfer to the winning Players located outside the SEPA",
-    "Rules12"           : "The winning players are paid at least 4 weeks after their cash-out request (winnings must have reached a minimum total balance of 15 euros / 20 US dollars) and maximum 8 weeks after.",
+    "Rules11"           : "The winning players are paid at least 4 weeks after their cash-out request (winnings must have reached a minimum total balance of 15 euros / 20 US dollars) and maximum 8 weeks after",
+    "Rules12"           : "Winnings are paid by bank transfer to the winning Players inside the Single Euro Payments Area (SEPA) and by Paypal transfer",
     "Rules13"           : "Any winning player of a sum greater than or equal to 1,000 euros / 1,500 US dollars will have to prove his identity by sending Adillions a supporting document (national identity card, driving license, passport, etc.)",
     "Rules14"           : "One bank account for a maximum of two Adillions Accounts belonging to two distinct persons",
      
