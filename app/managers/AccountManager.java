@@ -392,9 +392,11 @@ public class AccountManager {
         
         if(player.getMobileVersion() >= 1.3 && newUserJson.get("hasTweetTheme") != null){
             player.setTweetTheme                (newUserJson.get("hasTweetTheme").asBoolean());
+        }
+
+        if(player.getMobileVersion() >= 1.3 && newUserJson.get("hasPostThemeOnFacebook") != null){
             player.setPostThemeOnFacebook       (newUserJson.get("hasPostThemeOnFacebook").asBoolean());
         }
-        
 
         //-------------------------------------//
 
@@ -703,6 +705,7 @@ public class AccountManager {
             player.setTweet                 (false);
             player.setTweetTheme            (false);
             player.setPostOnFacebook        (false);
+            player.setPostThemeOnFacebook   (false);
             player.setInvitedOnFacebook     (false);
         }
     }
