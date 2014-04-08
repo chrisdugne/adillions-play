@@ -95,7 +95,7 @@ public class Application extends Controller {
     public static Result mobileFaq()                    {   return ok(views.html.mobile.faq.render());          }
     public static Result mobileKeyRules()               {   return ok(views.html.mobile.keyrules.render());     }
     public static Result mobileTermsEN()                {   return ok(views.html.mobile.termsEN.render());      }
-    public static Result mobileTermsFR()                {   return ok(views.html.mobile.termsEN.render());      }
+    public static Result mobileTermsFR()                {   return ok(views.html.mobile.termsFR.render());      }
     public static Result mobilePrivacy()                {   return ok(views.html.mobile.privacy.render());      }
     public static Result mobilePrivacyFR()              {   return ok(views.html.mobile.privacyFR.render());    }
     public static Result mobilePrivacyEN()              {   return ok(views.html.mobile.privacyEN.render());    }
