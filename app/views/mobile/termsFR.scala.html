@@ -28,11 +28,11 @@
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/e/tiniest/home.css")' />
 </head>
 
-@import views.html.templates.components.termsContentEN;
+@import views.html.templates.components.termsContentFR;
 
 <body>
     <div class="content">
-        @termsContentEN()
+        @termsContentFR()
     </div>
 </body>
 
@@ -48,7 +48,7 @@ $(function() {
     // setup 
 
     window.translator = new Translator(true);
-    Translator.setLang('en');
+    Translator.setLang('fr');
     
     //-----------------------------------// 
 
