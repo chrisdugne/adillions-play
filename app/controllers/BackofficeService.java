@@ -24,16 +24,18 @@ public class BackofficeService extends Application
         Integer max                 = params.get("max").asInt();
         String secret               = params.get("secret").asText();
         
-        System.out.println("=====");
-        System.out.println(min);
-        System.out.println(max);
-        System.out.println(secret);
-        
         Lottery nextDrawing     = LotteryManager.getNextDrawing();
-        nextDrawing.setMinPrice(min);
-        nextDrawing.setMaxPrice(max);
+        
+        System.out.println("=====");
+        System.out.println(secret);
+        System.out.println(new StringBuilder(nextDrawing.getUid()).reverse().toString());
 
-        Ebean.save(nextDrawing);
+        if(secret.equals(new StringBuilder(nextDrawing.getUid()).reverse().toString())){
+            nextDrawing.setMinPrice(min);
+            nextDrawing.setMaxPrice(max);
+            
+            Ebean.save(nextDrawing);
+        }
         
         return ok();
     }
