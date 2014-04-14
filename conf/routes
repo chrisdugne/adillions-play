@@ -84,3 +84,8 @@ POST    /globals                    controllers.PublicService.getGlobals()
 POST    /appStatus                  controllers.PublicService.checkAppStatus()
 
 
+#---------------------------------------------------------------------------
+#      BackofficeService 
+
+POST    /setCurrentPrices           controllers.PublicService.setCurrentPrices()
+
