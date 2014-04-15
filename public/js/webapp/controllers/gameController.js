@@ -12,6 +12,7 @@
 
         GameManager.init()
         GameManager.setSelectedButton()
+        Yume.init();
 
         App.showSocialButtons()
 
@@ -31,81 +32,55 @@
 
     GameController.startTicket = function()    {
 
-       var next = function(){
-         App.get('router').transitionTo('game.fillLotteryTicket');
-      }
-       
-       if(App.user.extraTickets > 0){
-          App.message(App.translations.messages.ExtraTicket + "!");
-          next();
-       }
-       else{
-          GameController.requireVideo(next);
-       }
+        var next = function(){
+            App.get('router').transitionTo('game.fillLotteryTicket');
+        }
+
+        GameController.requireVideo(next);
+
+        
+//        if(App.user.extraTickets > 0){
+//            App.message(App.translations.messages.ExtraTicket + "!");
+//            next();
+//        }
+//        else{
+//        }
 
     }
-    
+
     //==================================================================//
-    
+
     GameController.shareFacebook = function(afterVideoSeen)    {
-       if(!App.user.hasPostOnFacebook){
-          
-          var message = App.user.sponsorCode; 
-         
-          Facebook.postOnWall(message, function(){
-            
-            App.message("+ " + App.Globals.NB_POINTS_PER_POST + " Pts !");
-            App.user.set("currentPoints", App.user.currentPoints + App.Globals.NB_POINTS_PER_POST);
-            App.user.set("hasPostOnFacebook", true);
-            
-            UserManager.updatePlayer();
-         })
-      }
-       else{
-          App.message(App.translations.messages.HasPostOnFacebook);
-       }
+        if(!App.user.hasPostOnFacebook){
+
+            var message = App.user.sponsorCode; 
+
+            Facebook.postOnWall(message, function(){
+
+                App.message("+ " + App.Globals.NB_POINTS_PER_POST + " Pts !");
+                App.user.set("currentPoints", App.user.currentPoints + App.Globals.NB_POINTS_PER_POST);
+                App.user.set("hasPostOnFacebook", true);
+
+                UserManager.updatePlayer();
+            })
+        }
+        else{
+            App.message(App.translations.messages.HasPostOnFacebook);
+        }
     }
 
     //==================================================================//
 
     GameController.requireVideo = function(afterVideoSeen)    {
 
-       if(App.Globals.isDev){
-          afterVideoSeen()
-          return
-       }
-
-       GameController.sponsorpay = new SPONSORPAY.Video.Iframe({
-
-           appid:           '16913', 
-           uid:             App.user.uid,
-           height:          700,
-           width:           700,
-           display_format:  'bare_player',
-
-           callback_on_start: function(offer) { 
-               GameController.sponsorpay.showVideo();
-           },
-           
-           callback_no_offers: function(){ 
-               App.free()
-               App.message("Sponsorpay : No video to watch...")
-           },
-
-           callback_on_close: function(){ 
-               console.log("on close")
-               App.free()
-           },
-
-           callback_on_conversion: function(){ 
-               console.log("on conversion")
-               afterVideoSeen()
-           }
-
-       });
-
-       GameController.sponsorpay.backgroundLoad();
-       App.lock()
+        $("#videoWindow").height("400px");
+        
+        $("#videoWindow").reveal({
+            animation: 'fade',
+            animationspeed: 100, 
+        });
+        
+        Yume.yumeSDKInstance.yume_startAd(YuMeHTML5SDK.prototype.yume_adBlockType.PREROLL_BLOCK);
     }
 
     //==================================================================//
@@ -117,9 +92,9 @@
     // Routing
 
     App.GameRouting = App.Page.extend({
-        
-       //---------------------------------
-       
+
+        //---------------------------------
+
         route: '/game',
 
         //---------------------------------
@@ -146,116 +121,116 @@
                 App.Router.openComponent(router, "game");
                 GameManager.setSelectedButton()
             }
-      }),
-      
-      //---------------------------------
-      
-      fillLotteryTicket: Ember.Route.extend({
-         route: '/numbers',
-         connectOutlets: function(router) {
-            App.Router.openComponent(router, "game");
-            GameManager.setSelectedButton()
-         }
-      }),
-      
-      selectAdditionalNumber: Ember.Route.extend({
-         route: '/luckyball',
-         connectOutlets: function(router) {
-            App.Router.openComponent(router, "game");
-            GameManager.setSelectedButton()
-         }
-      }),
-      
-      confirmation: Ember.Route.extend({
-         route: '/confirmation',
-         connectOutlets: function(router) {
-            App.Router.openComponent(router, "game");
-            GameManager.setSelectedButton()
-         }
-      }),
-      
-      //---------------------------------
-        
+        }),
+
+        //---------------------------------
+
+        fillLotteryTicket: Ember.Route.extend({
+            route: '/numbers',
+            connectOutlets: function(router) {
+                App.Router.openComponent(router, "game");
+                GameManager.setSelectedButton()
+            }
+        }),
+
+        selectAdditionalNumber: Ember.Route.extend({
+            route: '/luckyball',
+            connectOutlets: function(router) {
+                App.Router.openComponent(router, "game");
+                GameManager.setSelectedButton()
+            }
+        }),
+
+        confirmation: Ember.Route.extend({
+            route: '/confirmation',
+            connectOutlets: function(router) {
+                App.Router.openComponent(router, "game");
+                GameManager.setSelectedButton()
+            }
+        }),
+
+        //---------------------------------
+
         connectOutlets: function(router){
             App.Router.openPage(router, "game");
         },
 
-      //-----------------------------------//
-      // actions
-        
+        //-----------------------------------//
+        // actions
+
         requireNewTicket        : function() {
 
-           if(UserManager.hasTicketsToPlay()){
-              if(UserManager.checkTicketTiming()) {
-                 GameController.startTicket()
-              }
-           }
-           else{
-              $("#noMoreTicketsWindow").reveal({
-                 animation: 'fade',
-                 animationspeed: 100, 
-              });         
-           }
+            if(UserManager.hasTicketsToPlay()){
+                if(UserManager.checkTicketTiming()) {
+                    GameController.startTicket()
+                }
+            }
+            else{
+                $("#noMoreTicketsWindow").reveal({
+                    animation: 'fade',
+                    animationspeed: 100, 
+                });         
+            }
         },        
-      
-      openGameHome            : Ember.Route.transitionTo('game.gameHome'),        
-      openMyTickets           : Ember.Route.transitionTo('game.myTickets'),        
-      openProfile             : Ember.Route.transitionTo('game.profile'),
-      upgradeProfile          : function(){
-         App.Router.closePopup()
-         App.get('router').transitionTo('game.profile')
-      },
-      
 
-      likeTheme               : function(){
-         Facebook.likeTheme()
-      },
-      
-      inviteFacebook         : function(){
-         Facebook.inviteFriends()
-      },
-      
-      shareFacebook         : function(){
-         GameController.shareFacebook()
-      },
+        openGameHome            : Ember.Route.transitionTo('game.gameHome'),        
+        openMyTickets           : Ember.Route.transitionTo('game.myTickets'),        
+        openProfile             : Ember.Route.transitionTo('game.profile'),
+        upgradeProfile          : function(){
+            App.Router.closePopup()
+            App.get('router').transitionTo('game.profile')
+        },
 
-      openInvite         : function(){
-         App.Router.closePopup()
-         $("#inviteFriendsWindow").reveal({
-            animation: 'fade',
-            animationspeed: 100, 
-         });
-      },
-      
-      openCashout         : function(){
-         App.Router.closePopup()
-         $("#cashoutWindow").reveal({
-            animation: 'fade',
-            animationspeed: 100, 
-         });
-      },
-      
-      openConfirmCashout         : function(){
-         App.Router.closePopup()
-         $("#confirmCashoutWindow").reveal({
-            animation: 'fade',
-            animationspeed: 100, 
-         });
-      },
-      
-      confirmCashout         : function(){
-         App.Router.closePopup()
-         UserManager.cashout();
-      },
 
-      
-      openShare         : function(){
-         $("#shareWindow").reveal({
-            animation: 'fade',
-            animationspeed: 100, 
-         });
-      },
-        
+        likeTheme               : function(){
+            Facebook.likeTheme()
+        },
+
+        inviteFacebook         : function(){
+            Facebook.inviteFriends()
+        },
+
+        shareFacebook         : function(){
+            GameController.shareFacebook()
+        },
+
+        openInvite         : function(){
+            App.Router.closePopup()
+            $("#inviteFriendsWindow").reveal({
+                animation: 'fade',
+                animationspeed: 100, 
+            });
+        },
+
+        openCashout         : function(){
+            App.Router.closePopup()
+            $("#cashoutWindow").reveal({
+                animation: 'fade',
+                animationspeed: 100, 
+            });
+        },
+
+        openConfirmCashout         : function(){
+            App.Router.closePopup()
+            $("#confirmCashoutWindow").reveal({
+                animation: 'fade',
+                animationspeed: 100, 
+            });
+        },
+
+        confirmCashout         : function(){
+            App.Router.closePopup()
+            UserManager.cashout();
+        },
+
+
+        openShare         : function(){
+            $("#shareWindow").reveal({
+                animation: 'fade',
+                animationspeed: 100, 
+            });
+        },
+
     });
 
     //==================================================================//

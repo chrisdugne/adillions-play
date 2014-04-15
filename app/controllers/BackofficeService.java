@@ -23,13 +23,8 @@ public class BackofficeService extends Application
         Integer min                 = params.get("min").asInt();
         Integer max                 = params.get("max").asInt();
         String secret               = params.get("secret").asText();
+        Lottery nextDrawing         = LotteryManager.getNextDrawing();
         
-        Lottery nextDrawing     = LotteryManager.getNextDrawing();
-        
-        System.out.println("=====");
-        System.out.println(secret);
-        System.out.println(new StringBuilder(nextDrawing.getUid()).reverse().toString());
-
         if(secret.equals(new StringBuilder(nextDrawing.getUid()).reverse().toString())){
             nextDrawing.setMinPrice(min);
             nextDrawing.setMaxPrice(max);

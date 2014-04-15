@@ -26,98 +26,14 @@
 </body>
 
 <!-- Libs -->
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src='@routes.Assets.at("js/libs/video.js")' type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script type="text/javascript" src='@routes.Assets.at("js/libs/yume/yume_html5_sdk.js")'></script>
 <script type="text/javascript" src='@routes.Assets.at("js/libs/yume/yume_vast_util.js")'></script>
+<script src='@routes.Assets.at("js/webapp/tools/yume.js")' type="text/javascript"></script>
 
 <script type="text/javascript">
     $(function() {
-
-        function initYume() {
-            console.log("polo");
-            var yumeSDKInstance = new YuMeHTML5SDK();
-            var yumeInitObj = new YuMeHTML5SDKInitObject();
-
-            //this value needs to be the same as the MedRect div's id
-            yumeInitObj.cbMedRectDivId = "cb_medrect1_div";
-
-            //this value needs to be the same as the MedRect frame's id
-            yumeInitObj.cbMedRectIFrameId = "cb_medrect1_frame";
-
-            // NOTE: For testing this can be set to "http://shadow01.yumenetworks.com/"
-            yumeInitObj.adDomainUrl = "http://shadow01.yumenetworks.com/";
-
-            //yumeInitObj.domainId = "211DaVuJgGj";
-            // NOTE: For testing this should be set to "211DaVuJgGj"
-            yumeInitObj.domainId = "211DaVuJgGj";
-
-            yumeInitObj.prerollPlaylist = "dynamic_preroll_playlist.vast2xml?imu=medrect";
-
-            //this value needs to be the same as the HTML5 video element's id on the page
-            yumeInitObj.html5VideoId = "player";
-
-            //this value needs to be the same as the HTML5 video div element's id on the page
-            yumeInitObj.html5VideoDivId = "playerContainer";
-
-            //this value needs to be the same as the anchor tag's id around the <video> element
-            yumeInitObj.clickTagHRefId = "hRefClickTag";
-
-            yumeSDKInstance.yume_init(yumeInitObj);
-
-            yumeSDKInstance.yume_startAd(YuMeHTML5SDK.prototype.yume_adBlockType.PREROLL_BLOCK);
-
-        }
-
-
-        window.yumeSDKAdEventListener = function  (yume_event, yume_eventInfo) {
-            console.log("event ", yume_event);
-            switch (yume_event) {
-                case YuMeHTML5SDK.prototype.yume_adEvent.AD_PRESENT:
-                    //console.log("Received AD_PRESENT event from YuMe HTML5 Plug-in...");
-                    //do something
-                    break;
-                case YuMeHTML5SDK.prototype.yume_adEvent.AD_ABSENT:
-                    console.log("absent : no video");
-                    //do something
-                    break;
-                case YuMeHTML5SDK.prototype.yume_adEvent.AD_PLAYING:
-                    console.log("Video playing");
-                    //do something
-                    break;
-                case YuMeHTML5SDK.prototype.yume_adEvent.AD_COMPLETED:
-                    console.log("Video ..... not finished yet......");
-                    //do something
-                    break;
-                case YuMeHTML5SDK.prototype.yume_adEvent.AD_ERROR:
-                    console
-                            .log("Received AD_ERROR event from0 YuMe HTML5 Plug-in, Error Info:"
-                                    + yume_eventInfo);
-                    //do something
-                    break;
-                case YuMeHTML5SDK.prototype.yume_adEvent.AD_CLICKED2SITE:
-                    //console.log("Received AD_CLICKED2SITE event from YuMe HTML5 Plug-in...");
-                    //do something
-                    break;
-                case YuMeHTML5SDK.prototype.yume_adEvent.AD_CLICKED2vIDEO:
-                    //console.log("Received AD_CLICKED2VIDEO event from YuMe HTML5 Plug-in...");
-                    //do something
-                    break;
-
-                case YuMeHTML5SDK.prototype.yume_adEvent.PIP_VIDEO_PLAYING:
-                    //console.log("Received PIP_VIDEO_PLAYING event from YuMe HTML5 Plug-in...");
-                    //do something
-                    break;
-                case YuMeHTML5SDK.prototype.yume_adEvent.AD_CB_IFRAME:
-                    //console.log("Received AD_CB_IFRAME event from YuMe HTML5 Plug-in..." + yume_eventInfo);
-                    //do something
-                    break;
-                default:
-                    break;
-            }
-        }
-        
-        initYume();
+        Yume.yumeSDKInstance.yume_startAd(YuMeHTML5SDK.prototype.yume_adBlockType.PREROLL_BLOCK);
     })
 </script>
 
