@@ -92,6 +92,7 @@ public class LotteryManager {
         List<Lottery> lotteries = Lottery.find
                 .orderBy("date desc")
                 .where().isNotNull("result")
+                .setMaxRows(5)
                 .findList();
 
         //-------------------------------------
