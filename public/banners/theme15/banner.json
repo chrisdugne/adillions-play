@@ -1,0 +1,11 @@
+{
+    "source":"http://www.adillions.com/assets/banners/theme",
+    "elements":[{
+        "type":"text",
+        "name":"Mobile.png",
+        "x":0.5,
+        "y":0.5,
+        "anchorX":0.5,
+        "anchorY":0.5
+    }]
+}
