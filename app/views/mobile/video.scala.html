@@ -3,49 +3,38 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-<title>Adillions - Watch</title>
+<title>Adillions - Video</title>
 <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/favicon.png")'>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/bootstrap.min.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/responsive.min.css")' />
 <link rel="stylesheet" media="screen" href='@routes.Assets.at("css/video-js.css")' />
-<link rel="stylesheet" media="screen" href='@routes.Assets.at("css/global.css")' />
 </head>
 
-<body id="body" class="mobile">
+<body id="body">
     <div class="row-fluid">
         <div class="span6 offset3">
-            <video     id="video" 
-                    class="video-js vjs-default-skin" 
-                    width="640" height="264"
-                    poster="http://video-js.zencoder.com/oceans-clip.png" 
-                    data-setup='{ "controls": false, "autoplay": true, "preload": "auto" }'>
-                    
-                <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' ></source>
-                <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' ></source>
-                <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' ></source>
-            
-            </video>
+            <div id="playerContainer" style="width: 480px; height: 390px; float: left; position: absolute">
+                <a href="javascript:void(0)" id="hRefClickTag" style="cursor: default">
+                 
+                    <video id="player"
+                        class="video-js vjs-default-skin" width="640" height="264" poster="http://video-js.zencoder.com/oceans-clip.png"                        >
+                    </video>
+                </a>
+            </div>
         </div>
     </div>
-    
-    <img id="closeButton" src='@routes.Assets.at("images/ko.png")' class="videocloser"></img>
+
 </body>
 
 <!-- Libs -->
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script type="text/javascript" src='@routes.Assets.at("js/libs/jquery.ui.touch-punch.min.js")'></script>
-
-<script src='@routes.Assets.at("js/libs/jquery.blockUI.js")' type="text/javascript"></script>
-<script src='@routes.Assets.at("js/libs/spin.min.js")' type="text/javascript"></script>
-<script src='@routes.Assets.at("js/libs/video.js")' type="text/javascript"></script>
-<script src='@routes.Assets.at("js/webapp/app-common.js")' type="text/javascript"></script>
-
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script type="text/javascript" src='@routes.Assets.at("js/libs/yume/yume_html5_sdk.js")'></script>
+<script type="text/javascript" src='@routes.Assets.at("js/libs/yume/yume_vast_util.js")'></script>
+<script src='@routes.Assets.at("js/webapp/tools/yume.js")' type="text/javascript"></script>
 
 <script type="text/javascript">
-    videojs.options.flash.swf = '/assets/video-js.swf'
-    console.log($("#video").css("top"))
+    $(function() {
+        Yume.yumeSDKInstance.yume_startAd(YuMeHTML5SDK.prototype.yume_adBlockType.PREROLL_BLOCK);
+    })
 </script>
 
 </html>
