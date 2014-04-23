@@ -34,19 +34,22 @@ Yume.init = function() {
     //this value needs to be the same as the anchor tag's id around the <video> element
     this.yumeInitObj.clickTagHRefId = "hRefClickTag";
 
+//    alert("init yume..")
     console.log("yume init")
     this.yumeSDKInstance.yume_init(this.yumeInitObj);
 }
 
 window.yumeSDKAdEventListener = function  (yume_event, yume_eventInfo) {
+//    alert("yume event :")
     console.log("event ", yume_event);
     switch (yume_event) {
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_PRESENT:
+//            alert("AD_PRESENT");
             //console.log("Received AD_PRESENT event from YuMe HTML5 Plug-in...");
             //do something
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_ABSENT:
-            console.log("absent : no video");
+            alert("absent : no video");
             //do something
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_PLAYING:
@@ -58,23 +61,27 @@ window.yumeSDKAdEventListener = function  (yume_event, yume_eventInfo) {
             //do something
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_ERROR:
-            console.log("Received AD_ERROR event from0 YuMe HTML5 Plug-in, Error Info:" + yume_eventInfo);
+            alert("Received AD_ERROR event from0 YuMe HTML5 Plug-in, Error Info:" + yume_eventInfo);
             //do something
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_CLICKED2SITE:
+            alert("AD_CLICKED2SITE");
             //console.log("Received AD_CLICKED2SITE event from YuMe HTML5 Plug-in...");
             //do something
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_CLICKED2vIDEO:
+            alert("AD_CLICKED2vIDEO");
             //console.log("Received AD_CLICKED2VIDEO event from YuMe HTML5 Plug-in...");
             //do something
             break;
 
         case YuMeHTML5SDK.prototype.yume_adEvent.PIP_VIDEO_PLAYING:
+            alert("PIP_VIDEO_PLAYING");
             //console.log("Received PIP_VIDEO_PLAYING event from YuMe HTML5 Plug-in...");
             //do something
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_CB_IFRAME:
+            alert("AD_CB_IFRAME");
             //console.log("Received AD_CB_IFRAME event from YuMe HTML5 Plug-in..." + yume_eventInfo);
             //do something
             break;
