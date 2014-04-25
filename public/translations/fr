@@ -283,9 +283,12 @@
     
     "##########################################" : "messages",
 
-    "FirstNameRequired"             : "First name is required",
-    "LastNameRequired"              : "Last name is required",
-    "EmailRequired"                 : "Email is required",
+    "FirstNameRequired"             : "Veuillez entrer un prénom valide",
+    "LastNameRequired"              : "Veuillez entrer un nom valide",
+    "EmailRequired"                 : "Veuillez entrer un email valide",
+    "BirthdateRequired"             : "Veuillez entrer une date de naissance",
+    "PasswordRequired"              : "Veuillez entrer un mot de passe",
+    "RepeatPasswordRequired"        : "Veuillez confirmer le mot de passe",
      
      "##########################################" : "APP",
     

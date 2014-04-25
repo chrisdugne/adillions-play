@@ -278,9 +278,12 @@
     
      "##########################################" : "messages",
 
-    "FirstNameRequired"             : "First name is required",
-    "LastNameRequired"              : "Last name is required",
-    "EmailRequired"                 : "Email is required",
+    "FirstNameRequired"             : "Please enter a valid first name",
+    "LastNameRequired"              : "Please enter a valid last name",
+    "EmailRequired"                 : "Please enter a valid email address",
+    "BirthdateRequired"             : "Please enter a valid birth date",
+    "PasswordRequired"              : "Please enter a valid password",
+    "RepeatPasswordRequired"        : "Please enter a matching password",
 
      "##########################################" : "APP",
          

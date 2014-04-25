@@ -1033,13 +1033,13 @@ UserManager.setupForms = function()
         },
         messages: {
             birthDate: {
-                required: "Required",
+                required: Translator.messages["BirthdateRequired"],
             },
             password: {
-                required: "Required",
+                required: Translator.messages["PasswordRequired"],
             },
             repeatPassword: {
-                required: "Required",
+                required: Translator.messages["RepeatPasswordRequired"],
                 same: "Must match password !"
             }
         }
@@ -1064,16 +1064,16 @@ UserManager.setupForms = function()
         },
         messages: {
             firstName: {
-                required: "Required",
+                required: Translator.messages["FirstNameRequired"],
             },
             lastName: {
-                required: "Required",
+                required: Translator.messages["LastNameRequired"],
             },
             email: {
-                required: "Required",
+                required: Translator.messages["EmailRequired"],
             },
             birthDate: {
-                required: "Required",
+                required: Translator.messages["BirthdateRequired"],
             }
         }
     });
@@ -1090,10 +1090,10 @@ UserManager.setupForms = function()
         },
         messages: {
             loginemail: {
-                required: "Required",
+                required: Translator.messages["EmailRequired"],
             },
             loginpassword: {
-                required: "Required",
+                required: Translator.messages["PasswordRequired"],
             },
         }
     });
@@ -1150,10 +1150,10 @@ UserManager.mobileSetupForms = function()
         },
         messages: {
             password: {
-                required: "Required",
+                required: Translator.messages["PasswordRequired"],
             },
             repeatPassword: {
-                required: "Required",
+                required: Translator.messages["RepeatPasswordRequired"],
                 same: "Must match password !"
             }
         }
@@ -1178,16 +1178,16 @@ UserManager.mobileSetupForms = function()
         },
         messages: {
             firstName: {
-                required: "Required",
+                required: Translator.messages["FirstNameRequired"],
             },
             lastName: {
-                required: "Required",
+                required: Translator.messages["LastNameRequired"],
             },
             email: {
-                required: "Required",
+                required: Translator.messages["EmailRequired"],
             },
             birthDate: {
-                required: "Required",
+                required: Translator.messages["BirthdateRequired"],
             }
         }
     });
@@ -1204,10 +1204,10 @@ UserManager.mobileSetupForms = function()
         },
         messages: {
             loginemail: {
-                required: "Required",
+                required: Translator.messages["EmailRequired"],
             },
             loginpassword: {
-                required: "Required",
+                required: Translator.messages["PasswordRequired"],
             },
         }
     });
