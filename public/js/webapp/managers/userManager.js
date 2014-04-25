@@ -1127,13 +1127,13 @@ UserManager.mobileSetupForms = function()
         },
         messages: {
             firstName: {
-                required: "Required",
+                required: Translator.messages["FirstNameRequired"],
             },
             lastName: {
-                required: "Required",
+                required: Translator.messages["LastNameRequired"],
             },
             email: {
-                required: "Required",
+                required: Translator.messages["EmailRequired"],
             },
         }
     });
