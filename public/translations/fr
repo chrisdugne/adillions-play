@@ -281,6 +281,11 @@
     "Rules13"               : "Tout gagnant d’une somme supérieure ou égale à 1 000 euros doit justifier de son identité par la présentation d’un document écrit probant auprès d'Adillions",
     "Rules14"               : "Les coordonnées d’un même compte bancaire peuvent servir, au maximum, à deux comptes Adillions appartenant à deux personnes physiques distinctes",
     
+    "##########################################" : "messages",
+
+    "FirstNameRequired"             : "First name is required",
+    "LastNameRequired"              : "Last name is required",
+    "EmailRequired"                 : "Email is required",
      
      "##########################################" : "APP",
     

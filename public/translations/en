@@ -276,6 +276,12 @@
     "JobsText"            : "We are always looking for talented and motivated people to join the Adillions team",
     "JobsEmail"            : "If you share our vision and if you want to be part of a global adventure, do not hesitate to send an email to jobs@adillions.com",
     
+     "##########################################" : "messages",
+
+    "FirstNameRequired"             : "First name is required",
+    "LastNameRequired"              : "Last name is required",
+    "EmailRequired"                 : "Email is required",
+
      "##########################################" : "APP",
          
     "Welcome"            : "Welcome",
