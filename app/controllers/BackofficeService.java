@@ -22,12 +22,14 @@ public class BackofficeService extends Application
         JsonNode params             = request().body().asJson();
         Integer min                 = params.get("min").asInt();
         Integer max                 = params.get("max").asInt();
+        Double rateUSDtoEUR         = params.get("rateEuroToUSD").asDouble(); // attention nommage INVERSE et faux dans DB et PLAY
         String secret               = params.get("secret").asText();
         Lottery nextDrawing         = LotteryManager.getNextDrawing();
         
         if(secret.equals(new StringBuilder(nextDrawing.getUid()).reverse().toString())){
             nextDrawing.setMinPrice(min);
             nextDrawing.setMaxPrice(max);
+            nextDrawing.setRateUSDtoEUR(rateUSDtoEUR);
             
             Ebean.save(nextDrawing);
         }
