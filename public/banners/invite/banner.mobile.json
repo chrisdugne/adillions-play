@@ -1,0 +1,24 @@
+{
+    "source":"http://www.adillions.com/assets/banners/invite",
+    "elements":[{
+        "type":"image",
+        "name":"banner.invite.bg.png",
+        "fitToScreen":true,
+        "height":0.3,
+        "x":0.5,
+        "y":0.5
+    },
+    {
+        "type":"text",
+        "name":"banner.invite.title.png",
+        "x":0.5,
+        "y":0.4
+    },
+    {
+        "type":"text",
+        "name":"banner.invite.bt.png",
+        "action" :1,
+        "x":0.5,
+        "y":0.65
+    }]
+}
