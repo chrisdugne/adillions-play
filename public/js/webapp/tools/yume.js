@@ -49,20 +49,15 @@ window.yumeSDKAdEventListener = function  (yume_event, yume_eventInfo) {
             //do something
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_ABSENT:
-            alert("absent : no video");
-            //do something
+            window.location.href = "/yume_novideo"
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_PLAYING:
-            console.log("Video playing");
-            //do something
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_COMPLETED:
-            console.log("Video finished ");
-            //do something
+            window.location.href = "/yume_completed"
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_ERROR:
-            alert("Received AD_ERROR event from0 YuMe HTML5 Plug-in, Error Info:" + yume_eventInfo);
-            //do something
+            window.location.href = "/yume_error"
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_CLICKED2SITE:
             alert("AD_CLICKED2SITE");
