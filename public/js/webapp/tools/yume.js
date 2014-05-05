@@ -34,14 +34,11 @@ Yume.init = function() {
     //this value needs to be the same as the anchor tag's id around the <video> element
     this.yumeInitObj.clickTagHRefId = "hRefClickTag";
 
-//    alert("init yume..")
-    console.log("yume init")
+    window.yume_adPlaying = false;
     this.yumeSDKInstance.yume_init(this.yumeInitObj);
 }
 
 window.yumeSDKAdEventListener = function  (yume_event, yume_eventInfo) {
-//    alert("yume event :")
-    console.log("event ", yume_event);
     switch (yume_event) {
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_PRESENT:
 //            alert("AD_PRESENT");
@@ -49,15 +46,16 @@ window.yumeSDKAdEventListener = function  (yume_event, yume_eventInfo) {
             //do something
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_ABSENT:
-            window.location.href = "/yume_novideo"
+            window.location.href = "/yume_novideo";
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_PLAYING:
+            window.yume_adPlaying = true;
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_COMPLETED:
-            window.location.href = "/yume_completed"
+            window.location.href = "/yume_completed?status=" + window.yume_adPlaying;
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_ERROR:
-            window.location.href = "/yume_error"
+            window.location.href = "/yume_error";
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_CLICKED2SITE:
             alert("AD_CLICKED2SITE");
