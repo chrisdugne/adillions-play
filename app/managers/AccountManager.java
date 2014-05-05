@@ -484,6 +484,20 @@ public class AccountManager {
         }
 
         //-------------------------------------//
+        
+        String price = "";
+        String currency = "";
+        
+        if(Utils.isEuroCountry(player.getCountry())){
+            price       = Utils.displayPrice(euros, player.getCountry());
+            currency    = "Euros";
+        }
+        else{
+            price       = Utils.displayPrice(usd, player.getCountry());
+            currency    = "USD";
+        }
+        
+        //-------------------------------------//
         // to winners@adillions.com
         
         String subject = "[Adillions - Cashout request]";
@@ -495,8 +509,11 @@ public class AccountManager {
                 "<p>firstName : "   + player.getFirstName()             + "</p>" + 
                 "<p>lastName : "    + player.getLastName()              + "</p>" + 
                 "<p>birthdate : "   + player.getBirthDate()             + "</p>" + 
-                "<p>amount : "      + Utils.roundOneDecimals(euros)     + "</p>" + 
-                "<p>country : "     + country                           + "</p>" ; 
+                "<p>birthdate : "   + player.getBirthDate()             + "</p>" + 
+                "<p>country : "     + country                           + "</p>" +
+                "<p>lang : "        + player.getLang()                  + "</p>" +
+                "<p>amount : "      + price                             + "</p>" + 
+                "<p>currency : "    + currency                          + "</p>" ; 
 
         MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
         mail.setSubject(subject);
@@ -512,12 +529,6 @@ public class AccountManager {
 
         //-------------------------------------//
         // to player
-        
-        String price = "";
-        if(Utils.isEuroCountry(player.getCountry()))
-            price = Utils.displayPrice(euros, player.getCountry());
-        else
-            price = Utils.displayPrice(usd, player.getCountry());
         
         String subject2         = "[Adillions - Cashout request]";
         String cashoutOK        = "";
