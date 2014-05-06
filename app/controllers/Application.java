@@ -15,7 +15,8 @@ import views.html.mobile.signin;
 import views.html.mobile.signinFB;
 import views.html.mobile.login;
 import views.html.mobile.invite;
-import views.html.mobile.video;
+import views.html.mobile.videoIOS;
+import views.html.mobile.videoAndroid;
 import views.html.mobile.logout;
 
 public class Application extends Controller {
@@ -89,7 +90,8 @@ public class Application extends Controller {
     public static Result mobileSignin3()                {   return ok(views.html.mobile.signin3.render());      }
     public static Result mobileSigninFromFacebook()     {   return ok(views.html.mobile.signinFB.render());     }
     public static Result mobileSigninFromFacebook2()    {   return ok(views.html.mobile.signinFB2.render());    }
-    public static Result mobileVideo()                  {   return ok(views.html.mobile.video.render());        }
+    public static Result mobileVideoIOS()               {   return ok(views.html.mobile.videoIOS.render());     }
+    public static Result mobileVideoAndroid()           {   return ok(views.html.mobile.videoAndroid.render()); }
     public static Result mobileInvite()                 {   return ok(views.html.mobile.invite.render());       }
     public static Result mobileLogout()                 {   return ok(views.html.mobile.logout.render());       }
     public static Result mobileFaq()                    {   return ok(views.html.mobile.faq.render());          }

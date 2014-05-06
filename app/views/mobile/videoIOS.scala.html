@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Adillions - Video</title>
+<style>
+body {
+	margin: 0;
+	background-color:#000;
+}
+
+#player {
+    width:100%;
+    height:100%;
+    position:fixed;
+    -moz-transform:scale(1.5) rotate(90deg);
+    -webkit-transform:scale(1.5) rotate(90deg);
+    -o-transform:scale(1.5) rotate(90deg);
+    -ms-transform:scale(1.5) rotate(90deg);
+    transform:scale(1.5) rotate(90deg);
+}
+</style>
+</head>
+
+<body id="body1">
+	<div id="playerContainer">
+	    <video id="player" poster="http://www.adillions.com/assets/images/adillions.video.png"></video>
+	</div>
+</body>
+ 
+<!-- Libs -->
+<script src="http://code.jquery.com/jquery-2.0.2.js"></script>
+<script type="text/javascript" src='@routes.Assets.at("js/libs/yume/yume_html5_sdk.js")'></script>
+<script type="text/javascript" src='@routes.Assets.at("js/libs/yume/yume_vast_util.js")'></script>
+<script src='@routes.Assets.at("js/webapp/tools/yume.js")' type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(function() {
+        Yume.init();
+        Yume.yumeSDKInstance.yume_startAd(YuMeHTML5SDK.prototype.yume_adBlockType.PREROLL_BLOCK);
+    })
+</script>
+
+</html>
