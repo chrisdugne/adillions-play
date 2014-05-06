@@ -65,6 +65,10 @@ public class Global extends Model {
     @Column(columnDefinition = "TEXT")
     private String text3min;
     
+    @Expose
+    @Column(columnDefinition = "TEXT")
+    private String lastUpdatedPrizes;
+    
     // -----------------------------------------------------------------------------------------------//
     
     @Expose
@@ -199,6 +203,14 @@ public class Global extends Model {
 
     public void setText48h(String text48h) {
         this.text48h = text48h;
+    }
+
+    public String getLastUpdatedPrizes() {
+        return lastUpdatedPrizes;
+    }
+
+    public void setLastUpdatedPrizes(String lastUpdatedPrizes) {
+        this.lastUpdatedPrizes = lastUpdatedPrizes;
     }
 
     public String getMinMoney() {
