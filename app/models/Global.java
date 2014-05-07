@@ -25,6 +25,10 @@ public class Global extends Model {
 
     @Expose
     @Column(columnDefinition = "TEXT")
+    private String tweetShare;
+
+    @Expose
+    @Column(columnDefinition = "TEXT")
     private String tweetTheme;
 
     // -----------------------------------------------------------------------------------------------//
@@ -123,6 +127,14 @@ public class Global extends Model {
 
     public void setTweet(String tweet) {
         this.tweet = tweet;
+    }
+
+    public String getTweetShare() {
+        return tweetShare;
+    }
+
+    public void setTweetShare(String tweetShare) {
+        this.tweetShare = tweetShare;
     }
 
     public String getTweetTheme() {
