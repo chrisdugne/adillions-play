@@ -41,9 +41,7 @@ Yume.init = function() {
 window.yumeSDKAdEventListener = function  (yume_event, yume_eventInfo) {
     switch (yume_event) {
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_PRESENT:
-//            alert("AD_PRESENT");
-            //console.log("Received AD_PRESENT event from YuMe HTML5 Plug-in...");
-            //do something
+            $("#pleaseWait").hide();
             break;
         case YuMeHTML5SDK.prototype.yume_adEvent.AD_ABSENT:
             window.location.href = "/yume_novideo";
