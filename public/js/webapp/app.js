@@ -52,7 +52,7 @@
         LotteryManager.getFinishedLotteries()
 
         //------------------------------------------------------//
-
+            
         var failure    = function(){
             App.loginAdillions()
         }
@@ -61,11 +61,12 @@
             App.Globals.APP_READY = true
         }
 
-        Facebook.init({
-            finalizeInit            : finalize,
-            notConnectedCallback    : failure, 
-            sponsorRequestId        : sponsorRequestId
-        })
+        // no more login as of today
+//        Facebook.init({
+//            finalizeInit            : finalize,
+//            notConnectedCallback    : failure, 
+//            sponsorRequestId        : sponsorRequestId
+//        })
     }
 
     //------------------------------------------------------//
