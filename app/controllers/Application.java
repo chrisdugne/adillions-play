@@ -15,8 +15,7 @@ import views.html.mobile.signin;
 import views.html.mobile.signinFB;
 import views.html.mobile.login;
 import views.html.mobile.invite;
-import views.html.mobile.videoIOS;
-import views.html.mobile.videoAndroid;
+import views.html.mobile.video;
 import views.html.mobile.logout;
 
 public class Application extends Controller {
