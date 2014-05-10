@@ -20,8 +20,6 @@ GET     /msigninFB2                     controllers.Application.mobileSigninFrom
 GET     /mlogin                         controllers.Application.mobileLogin()
 GET     /mlogin2                        controllers.Application.mobileLogin2()
 GET     /mvideo                         controllers.Application.mobileVideo()
-GET     /mvideoIOS                      controllers.Application.mobileVideoIOS()
-GET     /mvideoAndroid                  controllers.Application.mobileVideoAndroid()
 GET     /minvite                        controllers.Application.mobileInvite()
 GET     /mlogout                        controllers.Application.mobileLogout()
 GET     /mfaq                           controllers.Application.mobileFaq()
