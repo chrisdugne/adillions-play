@@ -19,7 +19,6 @@ Yume.init = function() {
     // NOTE: For testing this can be set to "http://shadow01.yumenetworks.com/"
     this.yumeInitObj.adDomainUrl = "http://shadow01.yumenetworks.com/";
 
-    //yumeInitObj.domainId = "211DaVuJgGj";
     // NOTE: For testing this should be set to "211DaVuJgGj"
     this.yumeInitObj.domainId = "211DaVuJgGj";
 
