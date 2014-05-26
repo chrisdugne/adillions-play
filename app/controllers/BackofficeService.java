@@ -3,6 +3,7 @@ package controllers;
 import org.codehaus.jackson.JsonNode;
 
 import managers.LotteryManager;
+import models.Global;
 import models.Lottery;
 import play.mvc.Result;
 
@@ -24,14 +25,21 @@ public class BackofficeService extends Application
         Integer max                 = params.get("max").asInt();
         Double rateUSDtoEUR         = params.get("rateEuroToUSD").asDouble(); // attention nommage INVERSE et faux dans DB et PLAY
         String secret               = params.get("secret").asText();
+        JsonNode banners            = params.get("banners");
+        
         Lottery nextDrawing         = LotteryManager.getNextDrawing();
+        Global global               = LotteryManager.getGlobal();
+        
+        System.out.println(banners.toString());
         
         if(secret.equals(new StringBuilder(nextDrawing.getUid()).reverse().toString())){
             nextDrawing.setMinPrice(min);
             nextDrawing.setMaxPrice(max);
             nextDrawing.setRateUSDtoEUR(rateUSDtoEUR);
-            
             Ebean.save(nextDrawing);
+            
+            global.setBanners(banners.toString());
+            Ebean.save(global);
         }
         
         return ok();
