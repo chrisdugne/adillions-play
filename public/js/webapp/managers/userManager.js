@@ -14,7 +14,8 @@ UserManager.checkUserCurrentLottery = function(){
         console.log("new Lottery settings");
 
         App.user.set("currentLotteryUID",      App.nextLottery.uid);
-        App.user.set("availableTickets",       App.Globals.START_AVAILABLE_TICKETS );
+        // from 1.4 : availableTickets = lottery.startTickets
+//        App.user.set("availableTickets",       App.Globals.START_AVAILABLE_TICKETS );
         App.user.set("playedBonusTickets",     0);
 
         App.user.set("hasTweet",               false);

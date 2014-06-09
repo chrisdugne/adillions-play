@@ -19,30 +19,30 @@ import controllers.Application;
 
 public class LotteryManager {
 
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
 
-    public static final int NB_POINTS_PER_TICKET                                = 1;
-    public static final int NB_INSTANTS_PER_REFERRING                           = 2;
-    public static final int NB_LOTTERIES_TO_PLAY_TO_BE_REFERRED                 = 2;
+    public static final int NB_POINTS_PER_TICKET                        = 1;
+    public static final int NB_INSTANTS_PER_REFERRING                   = 2;
+    public static final int NB_LOTTERIES_TO_PLAY_TO_BE_REFERRED         = 2;
 
-    public static final int FACEBOOK_FAN_TICKETS                                = 3;
-    public static final int FACEBOOK_CONNECTION_TICKETS                         = 1;
-    public static final int TWITTER_FAN_TICKETS                                 = 3;
-    public static final int TWITTER_CONNECTION_TICKETS                          = 1;
+    public static final int FACEBOOK_FAN_TICKETS                        = 3;
+    public static final int FACEBOOK_CONNECTION_TICKETS                 = 1;
+    public static final int TWITTER_FAN_TICKETS                         = 3;
+    public static final int TWITTER_CONNECTION_TICKETS                  = 1;
 
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
 
     public static Global getGlobal()    {
         return Global.current();
     }
 
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
 
     public static Lottery getLottery(String lotteryUID) {
         return Lottery.findByUID(lotteryUID);
     }
 
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
 
     public static Lottery getNextLottery()    {
         
@@ -63,7 +63,7 @@ public class LotteryManager {
         return lottery;
     }
 
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
 
     public static Lottery getNextDrawing()    {
 
@@ -83,7 +83,7 @@ public class LotteryManager {
         return nextDrawing;
     }
 
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
 
     public static List<Lottery> getFinishedLotteries()
     {
@@ -107,7 +107,7 @@ public class LotteryManager {
         return lotteries;
     }
 
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
 
     public static List<String> getLotteryUIDsAfter(String lastLotteryUID, int nb) {
 
@@ -135,7 +135,7 @@ public class LotteryManager {
         return lotteryUIDs;
     }
 
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
 
     private static void findNbTicketsForLottery(Lottery lottery) {
         String sql          = "SELECT count(*) FROM lottery_ticket where lottery_uid='"+lottery.getUid()+"'";
@@ -151,7 +151,7 @@ public class LotteryManager {
         lottery.setNbWinners(result.getInteger("count"));
     }
 
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
     
     private static Integer getNbLotteriesPlayed(String playerUID) {
         String sql          = "select count (*) from ( select distinct lottery_uid from lottery_ticket where player_uid = '"+playerUID+"' ) as lotteries";
@@ -165,7 +165,7 @@ public class LotteryManager {
         return result.getInteger("count");
     }
     
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
 
     /**
      * 
@@ -183,14 +183,14 @@ public class LotteryManager {
         JsonParser parser       = new JsonParser();
         JsonObject appStatus    = (JsonObject)parser.parse(global.getAppStatus());
 
-        // -----------------------------------------------------//
+        // ----------------------------------------
         
         System.out.println("state : " + appStatus.get("state").getAsInt());
         if(appStatus.get("state").getAsInt() != 1){
             return null;
         }
         
-        // -----------------------------------------------------//
+        // ----------------------------------------
 
 //        int facebookFanBonus = 0;
 //        int twitterFanBonus = 0;
@@ -207,7 +207,7 @@ public class LotteryManager {
 //        if(player.isTwitterFan())
 //            twitterFanBonus += TWITTER_FAN_TICKETS;
 
-        // -----------------------------------------------------//
+        // ----------------------------------------
         // Triches 
 //        
 //        System.out.println("storeLotteryTicket");
@@ -228,13 +228,13 @@ public class LotteryManager {
 //        }
 
 
-        // -----------------------------------------------------//
+        // ----------------------------------------
         // New player / First ticket
 
         if(getNbTicketsPlayed(player.getUid(), lottery.getUid()) == 0)
             incrementNbPlayers(lottery);
 
-        // -----------------------------------------------------//
+        // ----------------------------------------
         // referring
         
         if(!player.hasGivenToReferrer()
@@ -254,7 +254,7 @@ public class LotteryManager {
             // else : referrerId doesnt exist
         }
 
-        // -----------------------------------------------------//
+        // ----------------------------------------
         // count down availble/played tickets
 
         
@@ -272,7 +272,7 @@ public class LotteryManager {
         
         player.setTotalPlayedTickets    (player.getTotalPlayedTickets() + 1);
 
-        // -----------------------------------------------------//
+        // ----------------------------------------
         // Store ticket
 
         LotteryTicket lotteryTicket = new LotteryTicket();
@@ -291,7 +291,7 @@ public class LotteryManager {
         lotteryTicket.save();
         player.save();
 
-        // -----------------------------------------------------//
+        // ----------------------------------------
 
         if(player.getMobileVersion() >= 1.3)
             player.setLotteryTickets(AccountManager.getLotteryTickets(player, null));
@@ -301,7 +301,7 @@ public class LotteryManager {
         return player;
     }
 
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
 
     private static void incrementNbPlayers(Lottery lottery){
         lottery.setNbPlayers(lottery.getNbPlayers()+1);
@@ -320,5 +320,5 @@ public class LotteryManager {
 
     }
     
-    //------------------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------
 }

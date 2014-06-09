@@ -28,10 +28,6 @@ public class AccountManager {
 
     //------------------------------------------------------------------------------------//
 
-    public static final int START_AVAILABLE_TICKETS         = 8;
-
-    // -----------------------------------------------------------------------------------//
-
     public static boolean existEmail(JsonNode userJson)
     {
         String email = userJson.get("email").asText();

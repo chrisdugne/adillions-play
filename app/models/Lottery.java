@@ -24,6 +24,8 @@ public class Lottery extends Model {
 
 
     @Expose
+    private Integer startTickets;             // 8
+    @Expose
     private Integer maxPicks;             // 5
     @Expose
     private Integer maxNumbers;         // 49
@@ -113,6 +115,14 @@ public class Lottery extends Model {
 
     public void setMaxPicks(Integer maxPicks) {
         this.maxPicks = maxPicks;
+    }
+
+    public Integer getStartTickets() {
+        return startTickets;
+    }
+
+    public void setStartTickets(Integer startTickets) {
+        this.startTickets = startTickets;
     }
 
     public Integer getNbPlayers() {
