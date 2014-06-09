@@ -17,10 +17,10 @@ Yume.init = function() {
     this.yumeInitObj.cbMedRectIFrameId = "cb_medrect1_frame";
 
     // NOTE: For testing this can be set to "http://shadow01.yumenetworks.com/"
-    this.yumeInitObj.adDomainUrl = "http://shadow01.yumenetworks.com/";
+    this.yumeInitObj.adDomainUrl = "http://plg1.yumenetworks.com/";
 
     // NOTE: For testing this should be set to "211DaVuJgGj"
-    this.yumeInitObj.domainId = "211DaVuJgGj";
+    this.yumeInitObj.domainId = "1742bKXBhrRz";
 
     this.yumeInitObj.prerollPlaylist = "dynamic_preroll_playlist.vast2xml?imu=medrect";
 
