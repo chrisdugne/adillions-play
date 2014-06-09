@@ -26,7 +26,7 @@ import controllers.Application;
 
 public class AccountManager {
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     public static boolean existEmail(JsonNode userJson)
     {
@@ -47,7 +47,7 @@ public class AccountManager {
         return accounts.findRowCount() == 1;
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     public static Player getPlayerWithCredentials(JsonNode userJson)
     {
@@ -70,14 +70,14 @@ public class AccountManager {
         return player;
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     public static Player getPlayer(String token) 
     {
         return Player.findByAuthToken(token);        
     }
     
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
     
     public static Player fetchPlayerByFacebookId(String facebookId, Boolean fromWeb, Double mobileVersion, String country) {
         Player player = Player.findByFacebookId(facebookId);
@@ -90,31 +90,31 @@ public class AccountManager {
         
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     public static Player getPlayerByFacebookId(String facebookId) {
         return Player.findByFacebookId(facebookId);
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     public static Player getPlayerByUID(String playerUID) {
         return Player.findByUID(playerUID);
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     public static Player getPlayerBySponsorCode(String code) {
         return Player.findBySponsorCode(code);
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     private static boolean existSponsorCode(String code) {
         return Player.findBySponsorCode(code) != null;
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     @Transactional
     public static Player createNewPlayer(JsonNode userJson) 
@@ -129,14 +129,14 @@ public class AccountManager {
 
         String userName             = firstName + " " + lastName;
 
-        //-------------------------------------//
+        //-------------------------
 
         String referrerId   = null;
         if(userJson.get("referrerId").asText().length() > 0){
             referrerId      = userJson.get("referrerId").asText();
         }
 
-        //-------------------------------------//
+        //-------------------------
 
         String facebookId   = null;
         if(userJson.get("facebookId") != null){
@@ -144,7 +144,7 @@ public class AccountManager {
             userName        = userJson.get("facebookName").asText();
         }
 
-        //-------------------------------------//
+        //-------------------------
 
         String twitterId    = null;
         String twitterName  = null;
@@ -153,7 +153,7 @@ public class AccountManager {
             twitterName     = userJson.get("twitterName").asText();
         }
 
-        //-------------------------------------//
+        //-------------------------
 
         String secret       = null;
         if(userJson.get("password") != null){
@@ -162,7 +162,7 @@ public class AccountManager {
             secret = Utils.SHA512(now + password);
         } // else : FB signin : no secret
 
-        //-------------------------------------//
+        //-------------------------
 
         Player player = new Player();
 
@@ -209,11 +209,11 @@ public class AccountManager {
         player.setStatus                        (Player.ON);
         player.setAcceptEmails                  (true);
 
-        //-------------------------------------//
+        //-------------------------
 
         Ebean.save(player);  
 
-        //-------------------------------------//
+        //-------------------------
 
         String subject = getSignupSubject(lang);
         String content = getSignupEmail(lang, player);
@@ -230,12 +230,12 @@ public class AccountManager {
             System.out.println("couldn't email " + player.getEmail());
         }
 
-        //-------------------------------------//
+        //-------------------------
 
         return player;
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     private static String getSignupSubject(String lang) {
 
@@ -318,7 +318,7 @@ public class AccountManager {
         return content;
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     private static String generateSponsorCode() {
 
@@ -330,18 +330,18 @@ public class AccountManager {
             return code;
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     public static Player updatePlayer(Player player, JsonNode newUserJson) {
 
-        //-------------------------------------//
+        //-------------------------
 
         String facebookId           = null;
         String twitterId            = null;
         String twitterName          = null;
         String userName             = newUserJson.get("userName").asText();
 
-        //-------------------------------------//
+        //-------------------------
 
         if(newUserJson.get("facebookId") != null && player.getFacebookId() == null){
             facebookId      = newUserJson.get("facebookId").asText();
@@ -358,7 +358,7 @@ public class AccountManager {
             player.setUserName            (userName);
         }
 
-        //-------------------------------------//
+        //-------------------------
 
         if(newUserJson.get("twitterId") != null && player.getTwitterId() == null){
             twitterId       = newUserJson.get("twitterId").asText();
@@ -368,18 +368,18 @@ public class AccountManager {
             player.setTwitterName           (twitterName);
         }
 
-        //-------------------------------------//
+        //-------------------------
 
         player.setIdlePoints                (newUserJson.get("idlePoints").asInt());
 
-        //-------------------------------------//
+        //-------------------------
 
         player.setCurrentLotteryUID         (newUserJson.get("currentLotteryUID").asText());
         player.setAvailableTickets          (newUserJson.get("availableTickets").asInt());
         player.setPlayedBonusTickets        (newUserJson.get("playedBonusTickets").asInt());
         player.setExtraTickets              (newUserJson.get("extraTickets").asInt());
 
-        //-------------------------------------//
+        //-------------------------
 
         player.setTweet                     (newUserJson.get("hasTweet").asBoolean());
         player.setPostOnFacebook            (newUserJson.get("hasPostOnFacebook").asBoolean());
@@ -394,14 +394,14 @@ public class AccountManager {
             player.setPostThemeOnFacebook       (newUserJson.get("hasPostThemeOnFacebook").asBoolean());
         }
 
-        //-------------------------------------//
+        //-------------------------
 
         Ebean.save(player);  
         
         return player;
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     public static Player updateFanStatus(Player player, Boolean facebookFan, Boolean twitterFan) {
 
@@ -413,13 +413,13 @@ public class AccountManager {
         return player;
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     public static void giveToCharity(Player player) {
         
         List<LotteryTicket> tickets = null;
 
-        //-------------------------------------//
+        //-------------------------
 
         if(player.getMobileVersion() >= 1.3){
             tickets = getAllLotteryTickets(player);
@@ -430,7 +430,7 @@ public class AccountManager {
             tickets = player.getLotteryTickets();
         }
 
-        //-------------------------------------//
+        //-------------------------
 
         for(LotteryTicket ticket : tickets){
 
@@ -444,7 +444,7 @@ public class AccountManager {
         }
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     public static void cashout(Player player, String country) {
 
@@ -453,7 +453,7 @@ public class AccountManager {
         
         List<LotteryTicket> tickets = null;
 
-        //-------------------------------------//
+        //-------------------------
         
         if(player.getMobileVersion() >= 1.3){
             tickets = getAllLotteryTickets(player);
@@ -464,7 +464,7 @@ public class AccountManager {
             tickets = player.getLotteryTickets();
         }
 
-        //-------------------------------------//
+        //-------------------------
 
         for(LotteryTicket ticket : tickets){
             
@@ -479,7 +479,7 @@ public class AccountManager {
             }
         }
 
-        //-------------------------------------//
+        //-------------------------
         
         String price = "";
         String currency = "";
@@ -493,7 +493,7 @@ public class AccountManager {
             currency    = "USD";
         }
         
-        //-------------------------------------//
+        //-------------------------
         // to winners@adillions.com
         
         String subject = "[Adillions - Cashout request]";
@@ -523,7 +523,7 @@ public class AccountManager {
             System.out.println("couldn't cashout " + player.getEmail() + " | amount : " + euros);
         }
 
-        //-------------------------------------//
+        //-------------------------
         // to player
         
         String subject2         = "[Adillions - Cashout request]";
@@ -560,7 +560,7 @@ public class AccountManager {
         }
     }
 
-    //---------------------------------------------------------------------------------------------------------------//
+    //---------------------------------------------------------------------------------------------------
 
     /**
      * - Check if the player is reset and ready for the current Lottery
@@ -593,7 +593,7 @@ public class AccountManager {
         }
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
     
     /*
      * 1.2- : allTickets
@@ -648,7 +648,7 @@ public class AccountManager {
                 .findUnique();
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
     
     public static List<LotteryTicket> getAllLotteryTickets(Player player) {
         return LotteryTicket.find
@@ -658,7 +658,7 @@ public class AccountManager {
                 .findList();
     }
     
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     /**
      * sum winnings from all tickets
@@ -692,7 +692,7 @@ public class AccountManager {
         }
     }
     
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
     
     /**
      * reset for new lottery to play
@@ -717,7 +717,7 @@ public class AccountManager {
         }
     }
 
-    //------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------
 
     /**
      * on fetch player only
@@ -739,14 +739,14 @@ public class AccountManager {
 
         for(LotteryTicket ticket : getAllLotteryTickets(player)){
 
-            //--------------------------------------------//
+            //--------------------------------
             // losing ticket
 
             if(ticket.getStatus() == null){
                 continue;
             }
 
-            //--------------------------------------------//
+            //--------------------------------
             // money prizes 
 
             System.out.println("----> ticket " + ticket.getUid() + " | status : " + ticket.getStatus());
@@ -757,7 +757,7 @@ public class AccountManager {
                 Ebean.save(ticket);  
             }
 
-            //--------------------------------------------//
+            //--------------------------------
             // bonus 
             // 11,12,13,14 --> 111,112,113,114 
 
@@ -778,7 +778,7 @@ public class AccountManager {
                 Ebean.save(ticket);  
             }
 
-            //--------------------------------------------//
+            //--------------------------------
         }
 
         JsonObject notifications = new JsonObject();
