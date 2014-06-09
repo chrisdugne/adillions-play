@@ -192,7 +192,7 @@ public class AccountManager {
         player.setTweetAnInvite                 (false);
         player.setInvitedOnFacebook             (false);
 
-        player.setAvailableTickets              (START_AVAILABLE_TICKETS);
+        player.setAvailableTickets              (0);
         player.setTemporaryBonusTickets         (0);
         player.setPlayedBonusTickets            (0);
         player.setTotalPlayedTickets            (0);
@@ -705,7 +705,7 @@ public class AccountManager {
         if(!player.getCurrentLotteryUID().equals(currentLottery.getUid())){
 
             player.setCurrentLotteryUID     (currentLottery.getUid());
-            player.setAvailableTickets      (START_AVAILABLE_TICKETS);
+            player.setAvailableTickets      (currentLottery.getStartTickets());
             player.setPlayedBonusTickets    (0);
             player.setTemporaryBonusTickets (0);
 
