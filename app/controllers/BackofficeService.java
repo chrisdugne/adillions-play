@@ -36,8 +36,8 @@ public class BackofficeService extends Application
             nextDrawing.setRateUSDtoEUR(rateUSDtoEUR);
             Ebean.save(nextDrawing);
             
-            global.set(min);
-            nextDrawing.setMaxPrice(max);
+            global.setCurrentLotteryFromPrice(startJackpot);
+            global.setCurrentLotteryToPrice(endJackpot);
             global.setBanners(banners.toString());
             Ebean.save(global);
         }
