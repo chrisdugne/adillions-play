@@ -34,6 +34,7 @@ public class BackofficeService extends Application
         
         if(secret.equals(new StringBuilder(nextDrawing.getUid()).reverse().toString())){
             nextDrawing.setRateUSDtoEUR(rateUSDtoEUR);
+            nextDrawing.setMaxPrice(endJackpot);
             Ebean.save(nextDrawing);
             
             global.setCurrentLotteryFromPrice(startJackpot);
