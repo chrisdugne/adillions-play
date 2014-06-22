@@ -82,6 +82,14 @@ public class Global extends Model {
     @Expose
     @Column(columnDefinition = "TEXT")
     public String minMoney;
+    
+    // -----------------------------------------------------------------------------------------------//
+    
+    @Expose
+    public int currentLotteryFromPrice;
+
+    @Expose
+    public int currentLotteryToPrice;
 
     // -----------------------------------------------------------------------------------------------//
     
@@ -239,6 +247,22 @@ public class Global extends Model {
 
     public void setText3min(String text3min) {
         this.text3min = text3min;
+    }
+
+    public int getCurrentLotteryFromPrice() {
+        return currentLotteryFromPrice;
+    }
+
+    public void setCurrentLotteryFromPrice(int currentLotteryFromPrice) {
+        this.currentLotteryFromPrice = currentLotteryFromPrice;
+    }
+
+    public int getCurrentLotteryToPrice() {
+        return currentLotteryToPrice;
+    }
+
+    public void setCurrentLotteryToPrice(int currentLotteryToPrice) {
+        this.currentLotteryToPrice = currentLotteryToPrice;
     }
 
     public Long getLastUpdate() {

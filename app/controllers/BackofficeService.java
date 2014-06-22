@@ -18,11 +18,11 @@ public class BackofficeService extends Application
 {
     //-----------------------------------------------------------//
 
-    public static Result setCurrentPrices() 
+    public static Result setCurrentState() 
     {
         JsonNode params             = request().body().asJson();
-        Integer min                 = params.get("min").asInt();
-        Integer max                 = params.get("max").asInt();
+        Integer startJackpot        = params.get("startJackpot").asInt();
+        Integer endJackpot          = params.get("endJackpot").asInt();
         Double rateUSDtoEUR         = params.get("rateEuroToUSD").asDouble(); // attention nommage INVERSE et faux dans DB et PLAY
         String secret               = params.get("secret").asText();
         JsonNode banners            = params.get("banners");
@@ -33,11 +33,11 @@ public class BackofficeService extends Application
         System.out.println(banners.toString());
         
         if(secret.equals(new StringBuilder(nextDrawing.getUid()).reverse().toString())){
-            nextDrawing.setMinPrice(min);
-            nextDrawing.setMaxPrice(max);
             nextDrawing.setRateUSDtoEUR(rateUSDtoEUR);
             Ebean.save(nextDrawing);
             
+            global.set(min);
+            nextDrawing.setMaxPrice(max);
             global.setBanners(banners.toString());
             Ebean.save(global);
         }

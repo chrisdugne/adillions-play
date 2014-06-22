@@ -87,5 +87,5 @@ POST    /appStatus                  controllers.PublicService.checkAppStatus()
 #---------------------------------------------------------------------------
 #      BackofficeService 
 
-POST    /setCurrentPrices           controllers.BackofficeService.setCurrentPrices()
+POST    /setCurrentState            controllers.BackofficeService.setCurrentState()
 
