@@ -448,8 +448,9 @@ public class AccountManager {
 
     public static void cashout(Player player, String country) {
 
-        Double euros    = 0d;
-        Double usd      = 0d;
+        Double euros      = 0d;
+        Double usd        = 0d;
+        String ticketUIDs = "";
         
         List<LotteryTicket> tickets = null;
 
@@ -474,8 +475,9 @@ public class AccountManager {
             if(ticket.getStatus() == LotteryTicket.blocked){
                 ticket.setStatus(LotteryTicket.pending);
                 Ebean.save(ticket);  
-                euros   += ticket.getPrice();
-                usd     += Utils.countryPrice(euros, player.getCountry(), ticket.getLottery().getRateUSDtoEUR());
+                euros      += ticket.getPrice();
+                usd        += Utils.countryPrice(euros, player.getCountry(), ticket.getLottery().getRateUSDtoEUR());
+                ticketUIDs += ticket.getUid() + " | ";
             }
         }
 
@@ -510,6 +512,7 @@ public class AccountManager {
                 "<p>lang : "        + player.getLang()                  + "</p>" +
                 "<p>amount : "      + price                             + "</p>" + 
                 "<p>currency : "    + currency                          + "</p>" ; 
+                "<p>tickets : "     + ticketUIDs                        + "</p>" ; 
 
         MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
         mail.setSubject(subject);
