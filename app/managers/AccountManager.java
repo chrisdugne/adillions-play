@@ -511,7 +511,7 @@ public class AccountManager {
                 "<p>country : "     + country                           + "</p>" +
                 "<p>lang : "        + player.getLang()                  + "</p>" +
                 "<p>amount : "      + price                             + "</p>" + 
-                "<p>currency : "    + currency                          + "</p>" ; 
+                "<p>currency : "    + currency                          + "</p>" + 
                 "<p>tickets : "     + ticketUIDs                        + "</p>" ; 
 
         MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
