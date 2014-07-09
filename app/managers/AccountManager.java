@@ -446,7 +446,7 @@ public class AccountManager {
 
     //------------------------------------------------------------------------
 
-    public static void cashout(Player player, String country) {
+    public static void cashout(Player player) {
 
         Double euros      = 0d;
         Double usd        = 0d;
@@ -508,7 +508,7 @@ public class AccountManager {
                 "<p>lastName : "    + player.getLastName()              + "</p>" + 
                 "<p>birthdate : "   + player.getBirthDate()             + "</p>" + 
                 "<p>birthdate : "   + player.getBirthDate()             + "</p>" + 
-                "<p>country : "     + country                           + "</p>" +
+                "<p>country : "     + player.getCountry()               + "</p>" +
                 "<p>lang : "        + player.getLang()                  + "</p>" +
                 "<p>amount : "      + price                             + "</p>" + 
                 "<p>currency : "    + currency                          + "</p>" + 
