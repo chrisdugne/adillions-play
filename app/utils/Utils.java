@@ -335,7 +335,6 @@ end
             System.out.println("euros:        " + euros );
             System.out.println("country:      " + country );
             System.out.println("rateUSDtoEUR: " + rateUSDtoEUR );
-            System.out.println("decimals:     " + decimals );
             return Utils.roundOneDecimals(euros*rateUSDtoEUR);
         }
     }
