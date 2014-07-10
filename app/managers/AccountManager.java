@@ -476,6 +476,11 @@ public class AccountManager {
                 ticket.setStatus(LotteryTicket.pending);
                 Ebean.save(ticket);  
                 euros      += ticket.getPrice();
+
+                System.out.println("--------- ticket  ");
+                System.out.println("euros:      " + euros );
+                System.out.println("lotteryUID: " + ticket.getLottery().getUid() );
+
                 usd        += Utils.countryPrice(euros, player.getCountry(), ticket.getLottery().getRateUSDtoEUR());
                 ticketUIDs += ticket.getUid() + " | ";
             }
