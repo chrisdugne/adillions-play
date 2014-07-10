@@ -329,14 +329,9 @@ end
 
         if(isEuroCountry(country))
             return euros;
-        
-        else{
-            System.out.println("----------countryPrice  ");
-            System.out.println("euros:        " + euros );
-            System.out.println("country:      " + country );
-            System.out.println("rateUSDtoEUR: " + rateUSDtoEUR );
+
+        else
             return Utils.roundOneDecimals(euros*rateUSDtoEUR);
-        }
     }
 
 }
