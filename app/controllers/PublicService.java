@@ -19,6 +19,7 @@ import play.mvc.Result;
  */
 public class PublicService extends Application 
 {
+
     //-----------------------------------------------------------//
 
     public static Result getFinishedLotteries()
@@ -38,7 +39,8 @@ public class PublicService extends Application
         response.add("nextLottery",    gson.toJsonTree(nextLottery));
         response.add("nextDrawing",    gson.toJsonTree(nextDrawing));
         response.addProperty("appStatus",    global.getAppStatus());
-
+        
+        response().setHeader("Access-Control-Allow-Origin", "*");
         return ok(gson.toJson(response));
     }
     
