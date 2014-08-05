@@ -24,7 +24,7 @@ public class PublicService extends Application
         response().setHeader("Access-Control-Allow-Origin", "*");       // Need to add the correct domain in here!!
         response().setHeader("Access-Control-Allow-Methods", "POST");   // Only allow POST
         response().setHeader("Access-Control-Max-Age", "300");          // Cache response for 5 minutes
-        response().setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");         // Ensure this header is also allowed!  
+        response().setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token");         // Ensure this header is also allowed!  
         return ok();
     }
 
@@ -39,17 +39,17 @@ public class PublicService extends Application
 
     public static Result getNextLottery() 
     {
-        Global global           = LotteryManager.getGlobal();
-        Lottery nextLottery     = LotteryManager.getNextLottery();
-        Lottery nextDrawing     = LotteryManager.getNextDrawing();
+        Global global       = LotteryManager.getGlobal();
+        Lottery nextLottery = LotteryManager.getNextLottery();
+        Lottery nextDrawing = LotteryManager.getNextDrawing();
+        JsonObject result   = new JsonObject();
 
-        JsonObject response = new JsonObject();
-        response.add("nextLottery",    gson.toJsonTree(nextLottery));
-        response.add("nextDrawing",    gson.toJsonTree(nextDrawing));
-        response.addProperty("appStatus",    global.getAppStatus());
+        result.add("nextLottery",       gson.toJsonTree(nextLottery));
+        result.add("nextDrawing",       gson.toJsonTree(nextDrawing));
+        result.addProperty("appStatus", global.getAppStatus());
         
         response().setHeader("Access-Control-Allow-Origin", "*");
-        return ok(gson.toJson(response));
+        return ok(gson.toJson(result));
     }
     
     //-----------------------------------------------------------//
