@@ -1,6 +1,6 @@
 import play.*;
 import play.mvc.*;
-import play.mvc.Http.RequestHeader;
+import play.libs.F.Promise;
 
 public class Global extends GlobalSettings {
 
