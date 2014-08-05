@@ -11,6 +11,7 @@ import managers.LotteryManager;
 import models.Global;
 import models.Lottery;
 import play.mvc.Result;
+import play.mvc.Http;
 import play.mvc.With;
 
 /**
@@ -21,14 +22,16 @@ import play.mvc.With;
 @With(CorsController.class)
 public class PublicService extends Application 
 {
-    /* http://stackoverflow.com/a/14437068/959219 */
-    public static Result checkPreFlight() {
-        response().setHeader("Access-Control-Allow-Origin", "*");       // Need to add the correct domain in here!!
-        response().setHeader("Access-Control-Allow-Methods", "POST");   // Only allow POST
-        response().setHeader("Access-Control-Max-Age", "300");          // Cache response for 5 minutes
-        response().setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token");         // Ensure this header is also allowed!  
-        return ok();
-    }
+    // /* http://stackoverflow.com/a/14437068/959219 */
+    // public static Result checkPreFlight() {
+    //     System.out.println("----> checkPreFlight");
+    //     Http.Response response = response();
+    //     response.setHeader("Access-Control-Allow-Origin", "*");       // Need to add the correct domain in here!!
+    //     response.setHeader("Access-Control-Allow-Methods", "POST");   // Only allow POST
+    //     response.setHeader("Access-Control-Max-Age", "300");          // Cache response for 5 minutes
+    //     response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token");         // Ensure this header is also allowed!  
+    //     return ok();
+    // }
 
     //-----------------------------------------------------------//
 
@@ -41,6 +44,7 @@ public class PublicService extends Application
 
     public static Result getNextLottery() 
     {
+        System.out.println("----> getNextLottery");
         Global global       = LotteryManager.getGlobal();
         Lottery nextLottery = LotteryManager.getNextLottery();
         Lottery nextDrawing = LotteryManager.getNextDrawing();
@@ -50,6 +54,7 @@ public class PublicService extends Application
         result.add("nextDrawing",       gson.toJsonTree(nextDrawing));
         result.addProperty("appStatus", global.getAppStatus());
 
+        response().setHeader("Access-Control-Allow-Origin", "*");
         return ok(gson.toJson(result));
     }
     

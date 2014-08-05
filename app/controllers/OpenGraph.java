@@ -19,21 +19,21 @@ public class OpenGraph extends Application
 
         Map<String, String[]> queryParameters = request().queryString();
 
-        String uid                 = null;
-        String title             = null;
-        String description     = null;
-        String imageURL         = null;
+        String uid           = null;
+        String title         = null;
+        String description   = null;
+        String imageURL      = null;
         String objectPageURL = null;
-        String locale             = null;
+        String locale        = null;
 
         try
         {
-            uid                         = queryParameters.get("uid")[0];
-            description                 = queryParameters.get("description")[0];
-            title                     = queryParameters.get("title")[0];
-            imageURL                 = queryParameters.get("imageURL")[0];
-            locale                     = queryParameters.get("locale")[0];
-            objectPageURL             = APP_HOSTNAME + request().uri();
+            uid           = queryParameters.get("uid")[0];
+            description   = queryParameters.get("description")[0];
+            title         = queryParameters.get("title")[0];
+            imageURL      = queryParameters.get("imageURL")[0];
+            locale        = queryParameters.get("locale")[0];
+            objectPageURL = APP_HOSTNAME + request().uri();
         }
         catch (Exception e)
         {

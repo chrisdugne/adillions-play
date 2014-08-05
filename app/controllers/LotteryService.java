@@ -17,10 +17,10 @@ public class LotteryService extends Application
     
     public static Result storeLotteryTicket()
     {
-        JsonNode params             = request().body().asJson();
-        String numbers              = params.get("numbers").toString();
-        Boolean isExtraTicket       = params.get("extraTicket").asBoolean();
-        Long creationTime           = null;
+        JsonNode params       = request().body().asJson();
+        String numbers        = params.get("numbers").toString();
+        Boolean isExtraTicket = params.get("extraTicket").asBoolean();
+        Long creationTime     = null;
         
         if(params.get("creationTime") != null)
             creationTime = params.get("creationTime").asLong();
