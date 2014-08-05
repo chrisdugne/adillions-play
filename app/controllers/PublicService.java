@@ -23,15 +23,14 @@ import play.mvc.With;
 public class PublicService extends Application 
 {
     // /* http://stackoverflow.com/a/14437068/959219 */
-    // public static Result checkPreFlight() {
-    //     System.out.println("----> checkPreFlight");
-    //     Http.Response response = response();
-    //     response.setHeader("Access-Control-Allow-Origin", "*");       // Need to add the correct domain in here!!
-    //     response.setHeader("Access-Control-Allow-Methods", "POST");   // Only allow POST
-    //     response.setHeader("Access-Control-Max-Age", "300");          // Cache response for 5 minutes
-    //     response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token");         // Ensure this header is also allowed!  
-    //     return ok();
-    // }
+    public static Result checkPreFlight() {
+        System.out.println("----> checkPreFlight in pub");
+        response().setHeader("Access-Control-Allow-Origin", "*");       // Need to add the correct domain in here!!
+        response().setHeader("Access-Control-Allow-Methods", "POST");   // Only allow POST
+        response().setHeader("Access-Control-Max-Age", "300");          // Cache response for 5 minutes
+        response().setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token");         // Ensure this header is also allowed!  
+        return ok();
+    }
 
     //-----------------------------------------------------------//
 
@@ -54,7 +53,6 @@ public class PublicService extends Application
         result.add("nextDrawing",       gson.toJsonTree(nextDrawing));
         result.addProperty("appStatus", global.getAppStatus());
 
-        response().setHeader("Access-Control-Allow-Origin", "*");
         return ok(gson.toJson(result));
     }
     

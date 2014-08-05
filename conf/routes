@@ -78,6 +78,7 @@ POST    /storeLotteryTicket         controllers.LotteryService.storeLotteryTicke
 #---------------------------------------------------------------------------
 #      PublicService 
 
+GET     /nextLottery                controllers.PublicService.getNextLottery
 POST    /nextLottery                controllers.PublicService.getNextLottery
 
 POST    /finishedLotteries          controllers.PublicService.getFinishedLotteries()
