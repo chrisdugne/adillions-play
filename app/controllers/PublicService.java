@@ -11,12 +11,14 @@ import managers.LotteryManager;
 import models.Global;
 import models.Lottery;
 import play.mvc.Result;
+import play.mvc.With;
 
 /**
  * ATTENTION DE NE PAS laisser des services tests ici : c'est ouvert sans sécurité !
  * @author mad
  *
  */
+@With(CorsController.class)
 public class PublicService extends Application 
 {
     /* http://stackoverflow.com/a/14437068/959219 */
@@ -47,8 +49,7 @@ public class PublicService extends Application
         result.add("nextLottery",       gson.toJsonTree(nextLottery));
         result.add("nextDrawing",       gson.toJsonTree(nextDrawing));
         result.addProperty("appStatus", global.getAppStatus());
-        
-        response().setHeader("Access-Control-Allow-Origin", "*");
+
         return ok(gson.toJson(result));
     }
     
