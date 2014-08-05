@@ -19,6 +19,14 @@ import play.mvc.Result;
  */
 public class PublicService extends Application 
 {
+    /* http://stackoverflow.com/a/14437068/959219 */
+    public static Result checkPreFlight() {
+        response().setHeader("Access-Control-Allow-Origin", "*");       // Need to add the correct domain in here!!
+        response().setHeader("Access-Control-Allow-Methods", "POST");   // Only allow POST
+        response().setHeader("Access-Control-Max-Age", "300");          // Cache response for 5 minutes
+        response().setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");         // Ensure this header is also allowed!  
+        return ok();
+    }
 
     //-----------------------------------------------------------//
 

@@ -78,7 +78,9 @@ POST    /storeLotteryTicket         controllers.LotteryService.storeLotteryTicke
 #---------------------------------------------------------------------------
 #      PublicService 
 
+OPTIONS /nextLottery                controllers.PublicService.checkPreFlight
 POST    /nextLottery                controllers.PublicService.getNextLottery()
+
 POST    /finishedLotteries          controllers.PublicService.getFinishedLotteries()
 POST    /globals                    controllers.PublicService.getGlobals()
 POST    /appStatus                  controllers.PublicService.checkAppStatus()
