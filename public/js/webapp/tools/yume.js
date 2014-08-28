@@ -20,7 +20,7 @@ Yume.init = function() {
     this.yumeInitObj.adDomainUrl = "http://plg1.yumenetworks.com/";
 
     // NOTE: For testing this should be set to "211DaVuJgGj"
-    this.yumeInitObj.domainId = "1742bKXBhrRz";
+    this.yumeInitObj.domainId = "1747sfOVoyMI";
 
     this.yumeInitObj.prerollPlaylist = "dynamic_preroll_playlist.vast2xml?imu=medrect";
 
