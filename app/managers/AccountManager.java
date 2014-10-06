@@ -72,22 +72,22 @@ public class AccountManager {
 
     //------------------------------------------------------------------------
 
-    public static Player getPlayer(String token) 
+    public static Player getPlayer(String token)
     {
-        return Player.findByAuthToken(token);        
+        return Player.findByAuthToken(token);
     }
-    
+
     //------------------------------------------------------------------------
-    
+
     public static Player fetchPlayerByFacebookId(String facebookId, Boolean fromWeb, Double mobileVersion, String country) {
         Player player = Player.findByFacebookId(facebookId);
-        
+
         if(player != null){
             refreshPlayer(player, fromWeb, mobileVersion, country);
             return player;
         }
-        else return null; 
-        
+        else return null;
+
     }
 
     //------------------------------------------------------------------------
@@ -117,7 +117,7 @@ public class AccountManager {
     //------------------------------------------------------------------------
 
     @Transactional
-    public static Player createNewPlayer(JsonNode userJson) 
+    public static Player createNewPlayer(JsonNode userJson)
     {
         long now = new Date().getTime();
 
@@ -181,7 +181,7 @@ public class AccountManager {
         player.setUserName                      (userName);
         player.setLotteryTickets                (new ArrayList<LotteryTicket>());
         player.setRaffleTickets                 (new ArrayList<RaffleTicket>());
-        
+
         player.setCurrentLotteryUID             ("-");
         player.setMobileVersion                 (1d);
         player.setCountry                       ("US");
@@ -211,7 +211,7 @@ public class AccountManager {
 
         //-------------------------
 
-        Ebean.save(player);  
+        Ebean.save(player);
 
         //-------------------------
 
@@ -298,11 +298,11 @@ public class AccountManager {
             final3 = "The Adillions Team.";
         }
 
-        String content = "<p>" + welcome + "</p>" + 
+        String content = "<p>" + welcome + "</p>" +
                 "<p>" + text1 + "</p>" +
                 "<p>" + text2 + "</p>" +
                 "<p>" + titleList + "</p>" +
-                "<ul>" + 
+                "<ul>" +
                 "<li>" + list1 + "</li>" +
                 "<li>" + list2 + "</li>" +
                 "<li>" + list3 + "</li>" +
@@ -385,7 +385,7 @@ public class AccountManager {
         player.setPostOnFacebook            (newUserJson.get("hasPostOnFacebook").asBoolean());
         player.setTweetAnInvite             (newUserJson.get("hasTweetAnInvite").asBoolean());
         player.setInvitedOnFacebook         (newUserJson.get("hasInvitedOnFacebook").asBoolean());
-        
+
         if(player.getMobileVersion() >= 1.3 && newUserJson.get("hasTweetTheme") != null){
             player.setTweetTheme                (newUserJson.get("hasTweetTheme").asBoolean());
         }
@@ -396,8 +396,8 @@ public class AccountManager {
 
         //-------------------------
 
-        Ebean.save(player);  
-        
+        Ebean.save(player);
+
         return player;
     }
 
@@ -408,7 +408,7 @@ public class AccountManager {
         player.setFacebookFan (facebookFan);
         player.setTwitterFan (twitterFan);
 
-        Ebean.save(player);  
+        Ebean.save(player);
 
         return player;
     }
@@ -416,7 +416,7 @@ public class AccountManager {
     //------------------------------------------------------------------------
 
     public static void giveToCharity(Player player) {
-        
+
         List<LotteryTicket> tickets = null;
 
         //-------------------------
@@ -439,7 +439,7 @@ public class AccountManager {
 
             if(ticket.getStatus() == LotteryTicket.blocked){
                 ticket.setStatus(LotteryTicket.gift);
-                Ebean.save(ticket);  
+                Ebean.save(ticket);
             }
         }
     }
@@ -451,15 +451,15 @@ public class AccountManager {
         Double euros      = 0d;
         Double usd        = 0d;
         String ticketUIDs = "";
-        
+
         List<LotteryTicket> tickets = null;
 
         //-------------------------
-        
+
         if(player.getMobileVersion() >= 1.3){
             tickets = getAllLotteryTickets(player);
         }
-        
+
         else{
             // 1.2 ------------- DEPRECATED -------
             tickets = player.getLotteryTickets();
@@ -468,13 +468,13 @@ public class AccountManager {
         //-------------------------
 
         for(LotteryTicket ticket : tickets){
-            
+
             if(ticket.getPrice() == null)
                 continue;
-            
+
             if(ticket.getStatus() == LotteryTicket.blocked){
                 ticket.setStatus(LotteryTicket.pending);
-                Ebean.save(ticket);  
+                Ebean.save(ticket);
                 euros      += ticket.getPrice();
                 usd        += Utils.countryPrice(ticket.getPrice(), player.getCountry(), ticket.getLottery().getRateUSDtoEUR());
                 ticketUIDs += ticket.getUid() + " | ";
@@ -482,10 +482,10 @@ public class AccountManager {
         }
 
         //-------------------------
-        
+
         String price = "";
         String currency = "";
-        
+
         if(Utils.isEuroCountry(player.getCountry())){
             price       = Utils.displayPrice(euros, player.getCountry());
             currency    = "Euros";
@@ -494,25 +494,25 @@ public class AccountManager {
             price       = Utils.displayPrice(usd, player.getCountry());
             currency    = "USD";
         }
-        
+
         //-------------------------
         // to winners@adillions.com
-        
+
         String subject = "[Adillions - Cashout request]";
 
-        String content = "<p>Cashout</p>" + 
+        String content = "<p>Cashout</p>" +
                 "<p>date : "        + new Date().toString()             + "</p>" +
-                "<p>player : "      + player.getUid()                   + "</p>" + 
-                "<p>email : "       + player.getEmail()                 + "</p>" + 
-                "<p>firstName : "   + player.getFirstName()             + "</p>" + 
-                "<p>lastName : "    + player.getLastName()              + "</p>" + 
-                "<p>birthdate : "   + player.getBirthDate()             + "</p>" + 
-                "<p>birthdate : "   + player.getBirthDate()             + "</p>" + 
+                "<p>player : "      + player.getUid()                   + "</p>" +
+                "<p>email : "       + player.getEmail()                 + "</p>" +
+                "<p>firstName : "   + player.getFirstName()             + "</p>" +
+                "<p>lastName : "    + player.getLastName()              + "</p>" +
+                "<p>birthdate : "   + player.getBirthDate()             + "</p>" +
+                "<p>birthdate : "   + player.getBirthDate()             + "</p>" +
                 "<p>country : "     + player.getCountry()               + "</p>" +
                 "<p>lang : "        + player.getLang()                  + "</p>" +
-                "<p>amount : "      + price                             + "</p>" + 
-                "<p>currency : "    + currency                          + "</p>" + 
-                "<p>tickets : "     + ticketUIDs                        + "</p>" ; 
+                "<p>amount : "      + price                             + "</p>" +
+                "<p>currency : "    + currency                          + "</p>" +
+                "<p>tickets : "     + ticketUIDs                        + "</p>" ;
 
         MailerAPI mail = play.Play.application().plugin(MailerPlugin.class).email();
         mail.setSubject(subject);
@@ -528,33 +528,33 @@ public class AccountManager {
 
         //-------------------------
         // to player
-        
+
         String subject2         = "[Adillions - Cashout request]";
         String cashoutOK        = "";
         String congratulations  = "";
-        
+
         if(player.getLang().equals("fr")){
-            cashoutOK = "Your cash out request of "+ price + " has been successfully sent.";
-            congratulations = "Congratulations !";
-        }
-        else{
             cashoutOK = "Votre demande de paiement de "+ price + " a été reçue avec succès.";
             congratulations = "Félicitations !";
         }
+        else{
+            cashoutOK = "Your cash out request of "+ price + " has been successfully sent.";
+            congratulations = "Congratulations !";
+        }
 
-        String content2 = "<p>" + cashoutOK + "</p>" + 
+        String content2 = "<p>" + cashoutOK + "</p>" +
                 "<p>" + congratulations + "</p>" +
 
                 "<span style=\"color: #888888;\"><img id=\"logo\" style=\"width: 180px;\" src=\""+Application.APP_HOSTNAME+"/assets/images/logo.png\" alt=\"\" /></span>" +
                 "<p style=\"padding-left: 20px;margin-top:2px\"><span style=\"color: #888888;\">"+Application.APP_HOSTNAME+"</span></p>";
 
-        
-        
+
+
         MailerAPI mail2 = play.Play.application().plugin(MailerPlugin.class).email();
         mail.setSubject(subject2);
         mail.addRecipient(player.getEmail());
         mail.addFrom("winners@adillions.com");
-        
+
         try{
             mail2.sendHtml("<html>"+content2+"</html>" );
         }
@@ -568,25 +568,25 @@ public class AccountManager {
     /**
      * - Check if the player is reset and ready for the current Lottery
      * - Then Check for bonus/winnings notifications
-     * 
+     *
      * @param player
-     * @param fromWeb 
-     * @param country 
-     * @param version 
+     * @param fromWeb
+     * @param country
+     * @param version
      */
     public static void refreshPlayer(Player player, Boolean fromWeb, Double mobileVersion, String country) {
-        
+
         if(mobileVersion != null)
             player.setMobileVersion(mobileVersion);
 
         if(country != null)
             player.setCountry(country);
-        
+
         Ebean.save(player);
-        
+
         // set lastest tickets on player's list
         player.setLotteryTickets(getLotteryTickets(player, null));
-        
+
         System.out.println("----> refresh player | " + player.getMobileVersion() + " : " + fromWeb);
         if(!fromWeb && player.getMobileVersion() >= 1.3){
             System.out.println("----> proceed");
@@ -597,7 +597,7 @@ public class AccountManager {
     }
 
     //------------------------------------------------------------------------
-    
+
     /*
      * 1.2- : allTickets
      * 1.3+ : tickets for specific lotteries
@@ -610,13 +610,13 @@ public class AccountManager {
         else
             return getAllLotteryTickets(player);
     }
-    
+
     private static List<String> getLotteryUIDsFrom(String lastLotteryUID, Player player, int nb) {
         ArrayList<String> lotteryUIDs = new ArrayList<String>();
-        
+
         while(lotteryUIDs.size() < nb){
             List<String> nextUIDs = LotteryManager.getLotteryUIDsAfter(lastLotteryUID, nb);
-            
+
             for(String nextUID : nextUIDs){
                 if(lotteryUIDs.size() < nb){
                     lastLotteryUID = nextUID;
@@ -625,11 +625,11 @@ public class AccountManager {
                     }
                 }
             }
-            
+
             if(nextUIDs.size() == 0)
                 break;
         }
-        
+
         return lotteryUIDs;
     }
 
@@ -641,7 +641,7 @@ public class AccountManager {
                 .orderBy("creationDate desc")
                 .findList();
    }
-    
+
     private static LotteryTicket findOneLotteryTicket(Player player, String lotteryUID) {
 
         return LotteryTicket.find
@@ -652,7 +652,7 @@ public class AccountManager {
     }
 
     //------------------------------------------------------------------------
-    
+
     public static List<LotteryTicket> getAllLotteryTickets(Player player) {
         return LotteryTicket.find
                 .fetch("lottery")
@@ -660,7 +660,7 @@ public class AccountManager {
                 .orderBy("creationDate desc")
                 .findList();
     }
-    
+
     //------------------------------------------------------------------------
 
     /**
@@ -674,7 +674,7 @@ public class AccountManager {
         player.setTotalGift         (0d);
         player.setPendingWinnings   (0d);
         player.setReceivedWinnings  (0d);
-        
+
         for(LotteryTicket ticket : getAllLotteryTickets(player)){
             Double value = Utils.countryPrice(ticket.getPrice(), player.getCountry(), ticket.getLottery().getRateUSDtoEUR());
             player.setTotalWinnings(player.getTotalWinnings() + value);
@@ -682,21 +682,21 @@ public class AccountManager {
             if(ticket.getStatus() != null){
                 if(ticket.getStatus() == LotteryTicket.blocked)
                     player.setBalance(player.getBalance() + value);
-                
+
                 else if(ticket.getStatus() == LotteryTicket.gift)
                     player.setTotalGift(player.getTotalGift() + value);
-                
+
                 else if(ticket.getStatus() == LotteryTicket.pending)
                     player.setPendingWinnings(player.getPendingWinnings() + value);
-                
+
                 else
                     player.setReceivedWinnings(player.getReceivedWinnings() + value);
             }
         }
     }
-    
+
     //------------------------------------------------------------------------
-    
+
     /**
      * reset for new lottery to play
      * @param player
@@ -726,7 +726,7 @@ public class AccountManager {
      * on fetch player only
      * convert ticket as "notification done"
      * sum the notifications
-     * 
+     *
      * @param player
      */
     private static void retrieveBonusTickets(Player player) {
@@ -750,19 +750,19 @@ public class AccountManager {
             }
 
             //--------------------------------
-            // money prizes 
+            // money prizes
 
             System.out.println("----> ticket " + ticket.getUid() + " | status : " + ticket.getStatus());
             if(ticket.getStatus() == LotteryTicket.unseen){
                 ticket.setStatus(LotteryTicket.blocked);
                 prizes        += ticket.getPrice();
                 prizesUSD     += Utils.roundOneDecimals(ticket.getPrice() * ticket.getLottery().getRateUSDtoEUR());
-                Ebean.save(ticket);  
+                Ebean.save(ticket);
             }
 
             //--------------------------------
-            // bonus 
-            // 11,12,13,14 --> 111,112,113,114 
+            // bonus
+            // 11,12,13,14 --> 111,112,113,114
 
             if(ticket.getStatus() > 10 && ticket.getStatus() < 100 ){
                 ticket.setStatus(ticket.getStatus() + 100);
@@ -778,7 +778,7 @@ public class AccountManager {
                 instants += bonus.get("instants").getAsLong();
 
                 System.out.println("----> ticket " + ticket.getUid() + " | IT : " + instants + " | BT : " + stocks);
-                Ebean.save(ticket);  
+                Ebean.save(ticket);
             }
 
             //--------------------------------
@@ -795,7 +795,7 @@ public class AccountManager {
         player.setTemporaryBonusTickets(player.getTemporaryBonusTickets() + stocks);
         player.setExtraTickets(player.getExtraTickets() + instants);
 
-        Ebean.save(player);  
+        Ebean.save(player);
     }
 
 }
